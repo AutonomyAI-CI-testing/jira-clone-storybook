@@ -2,7 +2,7 @@ import cx from "classix";
 
 export const LabelBadge = ({
   children,
-  color = "primary",
+  color = "info",
   variant = "subtle",
   size = "md",
   dot = false,
