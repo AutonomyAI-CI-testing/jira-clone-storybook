@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { UiMagicianAgent } from "./ui-magician-agent";
 
@@ -27,12 +27,7 @@ export const Default: Story = {
 };
 
 export const WithActions: Story = {
-  args: {
-    onAwesome: () => console.log("Awesome button clicked"),
-    onPrepare: () => console.log("Prepare button clicked"),
-    onSettingsClick: () => console.log("Settings icon clicked"),
-  },
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof UiMagicianAgent>) => (
     <div className="flex min-h-screen items-center justify-center bg-[#0d0d0d] p-8">
       <UiMagicianAgent {...args} />
     </div>

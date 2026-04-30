@@ -67,12 +67,12 @@ export const getProject = async (
     name: projectDb.name,
     description: projectDb.description || "",
     image: projectDb.image,
-    categories: projectDb.categories.map((category) => ({
+    categories: projectDb.categories.map((category: any) => ({
       id: category.id,
       name: category.name,
       type: category.type as CategoryType,
       order: category.order,
-      issues: category.issues.map((issue) => ({
+      issues: category.issues.map((issue: any) => ({
         id: issue.id,
         name: issue.name,
         priority: issue.priority as Priority,
@@ -142,7 +142,7 @@ export const getProjectsSummary = async (userId: UserId): Promise<ProjectSummary
     },
   });
 
-  const projectsSummary: ProjectSummary[] = projectsSummaryDb.map((projectSummaryDb) => ({
+  const projectsSummary: ProjectSummary[] = projectsSummaryDb.map((projectSummaryDb: any) => ({
     id: projectSummaryDb.id,
     name: projectSummaryDb.name,
     image: projectSummaryDb.image,

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import cx from "classix";
 import { FiSettings, FiInfo, FiChevronUp, FiChevronDown } from "react-icons/fi";
 
 export const UiMagicianAgent = ({
@@ -7,15 +6,26 @@ export const UiMagicianAgent = ({
   onPrepare,
   onSettingsClick,
 }: UiMagicianAgentProps): JSX.Element => {
+  // Collapsible section state - both sections start expanded for immediate access
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(true);
   const [isAddDesignExpanded, setIsAddDesignExpanded] = useState(true);
+
+  // Form state for Figma integration
   const [token, setToken] = useState("");
   const [designUrl, setDesignUrl] = useState("");
+
+  const toggleExpanded = (
+    setter: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    return () => setter((prev) => !prev);
+  };
 
   return (
     <div
       className="w-[254px] rounded-lg bg-[#1A1A1A] p-5"
-      style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif" }}
+      style={{
+        fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+      }}
     >
       {/* Header */}
       <div className="mb-4 flex items-center justify-between">
@@ -34,7 +44,7 @@ export const UiMagicianAgent = ({
       {/* Description Section */}
       <div className="mb-4">
         <button
-          onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+          onClick={toggleExpanded(setIsDescriptionExpanded)}
           className="mb-1 flex w-full cursor-pointer items-center gap-1 text-left"
         >
           {isDescriptionExpanded ? (
@@ -58,7 +68,7 @@ export const UiMagicianAgent = ({
       {/* Add New Design Section */}
       <div className="mb-4">
         <button
-          onClick={() => setIsAddDesignExpanded(!isAddDesignExpanded)}
+          onClick={toggleExpanded(setIsAddDesignExpanded)}
           className="mb-3 flex w-full cursor-pointer items-center gap-1.5 text-left"
         >
           {isAddDesignExpanded ? (
