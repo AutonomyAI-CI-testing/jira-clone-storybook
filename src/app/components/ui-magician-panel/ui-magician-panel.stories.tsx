@@ -1,5 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiMagicianPanel } from "./ui-magician-panel";
 
 const meta: Meta<typeof UiMagicianPanel> = {
@@ -7,24 +6,6 @@ const meta: Meta<typeof UiMagicianPanel> = {
   component: UiMagicianPanel,
   parameters: {
     layout: "centered",
-    backgrounds: {
-      default: "dark",
-      values: [
-        {
-          name: "dark",
-          value: "#0f0f0f",
-        },
-      ],
-    },
-  },
-  argTypes: {
-    onAwesome: { action: "awesome clicked" },
-    onPrepare: { action: "prepare clicked" },
-    className: {
-      control: {
-        type: "text",
-      },
-    },
   },
 };
 
@@ -32,10 +13,13 @@ export default meta;
 type Story = StoryObj<typeof UiMagicianPanel>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    onAwesome: () => console.log("Awesome clicked"),
+    onPrepare: () => console.log("Prepare clicked"),
+  },
 };
 
-export const WithHandlers: Story = {
+export const Collapsed: Story = {
   args: {
     onAwesome: () => console.log("Awesome clicked"),
     onPrepare: () => console.log("Prepare clicked"),

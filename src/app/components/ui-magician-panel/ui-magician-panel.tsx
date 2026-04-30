@@ -114,14 +114,14 @@ export const UiMagicianPanel = ({
               <button
                 type="button"
                 onClick={onAwesome}
-                className="flex-1 rounded bg-[#843a17] px-3 py-1.5 text-[11.5px] font-semibold text-[#8c8078] hover:bg-[#9a4419] active:bg-[#6e3014]"
+                className="flex-1 rounded bg-[#1e40af] px-3 py-1.5 text-[11.5px] font-semibold text-[#93c5fd] hover:bg-[#1e3a8a] active:bg-[#1e3a8a]"
               >
                 Awesome
               </button>
               <button
                 type="button"
                 onClick={onPrepare}
-                className="flex-1 rounded bg-[#843a17] px-3 py-1.5 text-[11.5px] font-semibold text-[#8c8078] hover:bg-[#9a4419] active:bg-[#6e3014]"
+                className="flex-1 rounded bg-[#1e40af] px-3 py-1.5 text-[11.5px] font-semibold text-[#93c5fd] hover:bg-[#1e3a8a] active:bg-[#1e3a8a]"
               >
                 Prepare
               </button>
