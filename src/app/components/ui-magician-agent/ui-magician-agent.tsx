@@ -119,13 +119,13 @@ export const UiMagicianAgent = ({
             <div className="flex gap-2">
               <button
                 onClick={onAwesome}
-                className="flex-1 rounded bg-[#843a17] px-3 py-1.5 text-[11.5px] font-semibold text-[#8c8078] hover:bg-[#9a4519] active:bg-[#723116]"
+                className="flex-1 rounded bg-[#2563eb] px-3 py-1.5 text-[11.5px] font-semibold text-white hover:bg-[#1d4ed8] active:bg-[#1e40af]"
               >
                 Awesome
               </button>
               <button
                 onClick={onPrepare}
-                className="flex-1 rounded bg-[#843a17] px-3 py-1.5 text-[11.5px] font-semibold text-[#8c8078] hover:bg-[#9a4519] active:bg-[#723116]"
+                className="flex-1 rounded bg-[#2563eb] px-3 py-1.5 text-[11.5px] font-semibold text-white hover:bg-[#1d4ed8] active:bg-[#1e40af]"
               >
                 Prepare
               </button>
