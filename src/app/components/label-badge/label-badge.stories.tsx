@@ -38,151 +38,115 @@ const meta: Meta<typeof LabelBadge> = {
 export default meta;
 type Story = StoryObj<typeof LabelBadge>;
 
-// Default story showing all color variants in both subtle and bold styles
+// Default story shows the badge with info (blue) color - the new default
 export const Default: Story = {
-  render: () => (
-    <div className="space-y-8">
-      {/* Subtle variants */}
-      <div>
-        <p className="mb-3 text-sm font-semibold text-font-primary">Subtle Variant</p>
-        <div className="grid grid-cols-6 gap-4">
-          <LabelBadge color="primary" variant="subtle">Primary</LabelBadge>
-          <LabelBadge color="neutral" variant="subtle">Neutral</LabelBadge>
-          <LabelBadge color="success" variant="subtle">Success</LabelBadge>
-          <LabelBadge color="danger" variant="subtle">Danger</LabelBadge>
-          <LabelBadge color="warning" variant="subtle">Warning</LabelBadge>
-          <LabelBadge color="info" variant="subtle">Info</LabelBadge>
-        </div>
-      </div>
-
-      {/* Bold variants */}
-      <div>
-        <p className="mb-3 text-sm font-semibold text-font-primary">Bold Variant</p>
-        <div className="grid grid-cols-6 gap-4">
-          <LabelBadge color="primary" variant="bold">Primary</LabelBadge>
-          <LabelBadge color="neutral" variant="bold">Neutral</LabelBadge>
-          <LabelBadge color="success" variant="bold">Success</LabelBadge>
-          <LabelBadge color="danger" variant="bold">Danger</LabelBadge>
-          <LabelBadge color="warning" variant="bold">Warning</LabelBadge>
-          <LabelBadge color="info" variant="bold">Info</LabelBadge>
-        </div>
-      </div>
-
-      {/* Size comparison */}
-      <div>
-        <p className="mb-3 text-sm font-semibold text-font-primary">Size Comparison</p>
-        <div className="flex items-center gap-4">
-          <LabelBadge color="primary" size="sm">Small (sm)</LabelBadge>
-          <LabelBadge color="primary" size="md">Medium (md)</LabelBadge>
-        </div>
-      </div>
-    </div>
-  ),
+  args: {
+    children: "Label",
+  },
 };
 
-// Individual stories for each color
 export const Primary: Story = {
   args: {
-    children: "Primary",
     color: "primary",
+    children: "Primary",
   },
 };
 
 export const Neutral: Story = {
   args: {
-    children: "Neutral",
     color: "neutral",
+    children: "Neutral",
   },
 };
 
 export const Success: Story = {
   args: {
-    children: "Success",
     color: "success",
+    children: "Success",
   },
 };
 
 export const Danger: Story = {
   args: {
-    children: "Danger",
     color: "danger",
+    children: "Danger",
   },
 };
 
 export const Warning: Story = {
   args: {
-    children: "Warning",
     color: "warning",
+    children: "Warning",
   },
 };
 
 export const Info: Story = {
   args: {
-    children: "Info",
     color: "info",
+    children: "Info",
   },
 };
 
-// Bold variant stories
+// Bold variants
 export const PrimaryBold: Story = {
   args: {
-    children: "Primary",
     color: "primary",
     variant: "bold",
+    children: "Primary Bold",
   },
 };
 
 export const NeutralBold: Story = {
   args: {
-    children: "Neutral",
     color: "neutral",
     variant: "bold",
+    children: "Neutral Bold",
   },
 };
 
 export const SuccessBold: Story = {
   args: {
-    children: "Success",
     color: "success",
     variant: "bold",
+    children: "Success Bold",
   },
 };
 
 export const DangerBold: Story = {
   args: {
-    children: "Danger",
     color: "danger",
     variant: "bold",
+    children: "Danger Bold",
   },
 };
 
 export const WarningBold: Story = {
   args: {
-    children: "Warning",
     color: "warning",
     variant: "bold",
+    children: "Warning Bold",
   },
 };
 
 export const InfoBold: Story = {
   args: {
-    children: "Info",
     color: "info",
     variant: "bold",
+    children: "Info Bold",
   },
 };
 
-// Size stories
+// Size variants
 export const SmallSize: Story = {
   args: {
-    children: "Small",
     size: "sm",
+    children: "Small",
   },
 };
 
 export const MediumSize: Story = {
   args: {
-    children: "Medium",
     size: "md",
+    children: "Medium",
   },
 };
