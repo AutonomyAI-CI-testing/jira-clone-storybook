@@ -8,48 +8,37 @@ const meta: Meta<typeof Tooltip> = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {
-    title: { control: "text" },
-    show: { control: "boolean" },
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
-  args: {
-    title: "This is a tooltip",
-    show: true,
-  },
-  render: (args) => (
-    <Tooltip {...args}>
-      <Button>Hover me</Button>
-    </Tooltip>
+  render: () => (
+    <div className="p-8">
+      <Tooltip title="This is a tooltip with red text">
+        <Button>Hover over me</Button>
+      </Tooltip>
+    </div>
   ),
 };
 
 export const CustomStyled: Story = {
-  args: {
-    title: "Custom styled tooltip",
-    show: true,
-    className: "bg-primary-main text-white",
-  },
-  render: (args) => (
-    <Tooltip {...args}>
-      <Button>Styled tooltip</Button>
-    </Tooltip>
+  render: () => (
+    <div className="p-8">
+      <Tooltip title="Custom styled tooltip" className="bg-blue-600">
+        <Button>Custom Style</Button>
+      </Tooltip>
+    </div>
   ),
 };
 
 export const Disabled: Story = {
-  args: {
-    title: "This tooltip is disabled",
-    show: false,
-  },
-  render: (args) => (
-    <Tooltip {...args}>
-      <Button>No tooltip</Button>
-    </Tooltip>
+  render: () => (
+    <div className="p-8">
+      <Tooltip title="This tooltip won't show" show={false}>
+        <Button>Tooltip Disabled</Button>
+      </Tooltip>
+    </div>
   ),
 };
