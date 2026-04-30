@@ -1,6 +1,10 @@
 import { useState } from "react";
 import cx from "classix";
-import { IoChevronUp, IoChevronDown, IoSettingsOutline } from "react-icons/io5";
+import {
+  IoChevronUp,
+  IoChevronDown,
+  IoSettingsOutline,
+} from "react-icons/io5";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
 interface Props {
