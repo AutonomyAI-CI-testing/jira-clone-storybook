@@ -3,6 +3,7 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
@@ -31,25 +32,26 @@ const meta: Meta<typeof Title> = {
         type: "text",
       },
     },
+    initSubtitle: {
+      defaultValue: "",
+      control: {
+        type: "text",
+      },
+    },
+    subtitlePlaceholder: {
+      control: {
+        type: "text",
+      },
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Title>;
 
-export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+export const DefaultTitle: Story = {
+  args: {},
 };
-
-export const DefaultTitle: Story = {};
 
 export const InitTitle: Story = {
   args: {
@@ -76,4 +78,24 @@ export const CustomMaxLength: Story = {
     placeholder: "Custom max length",
     maxLength: 10,
   },
+};
+
+export const WithSubtitle: Story = {
+  args: {
+    initTitle: "Title with subtitle",
+    initSubtitle: "This is a subtitle",
+    subtitlePlaceholder: "Add a subtitle",
+  },
+};
+
+export const Default: Story = {
+  render: (_) => (
+    <div className="grid grid-cols-1 gap-6">
+      {[DefaultTitle, InitTitle, ReadOnly, Error, CustomMaxLength, WithSubtitle].map(
+        (TitleStory, index) => (
+          <Title {...(TitleStory.args || {})} key={index} />
+        )
+      )}
+    </div>
+  ),
 };
