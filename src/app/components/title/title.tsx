@@ -13,23 +13,33 @@ export const Title = ({
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>("");
+  // Character counter is initially visible — hidden on blur
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Only show error if error message is provided AND title is empty/whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
-  const updateTitle = (newTitle: string) => {
-    if (newTitle.length > maxLength) return;
-
-    setTitle(newTitle);
+  const onBlur = () => {
+    setIsFocus(false);
   };
+
+  // Prevents input beyond maxLength — same validation for both title and subtitle
+  const createLengthLimitedSetter = (setter: (value: string) => void) => {
+    return (newValue: string) => {
+      if (newValue.length > maxLength) return;
+      setter(newValue);
+    };
+  };
+
+  const updateTitle = createLengthLimitedSetter(setTitle);
+  const updateSubtitle = createLengthLimitedSetter(setSubtitle);
 
   return (
     <div className="relative">
@@ -47,6 +57,16 @@ export const Title = ({
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
+      />
+      <TextareaAutosize
+        name="subtitle"
+        value={subtitle}
+        setValue={updateSubtitle}
+        placeholder="Write a subtitle (optional)"
+        readOnly={readOnly}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        textareaClassName="font-primary-regular text-lg"
       />
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
