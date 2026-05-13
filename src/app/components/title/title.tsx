@@ -7,28 +7,38 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Add a subtitle",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only when error prop is provided AND title is empty or contains only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
+    // Only allow focus state change for editable fields
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Prevent updates that exceed maxLength - block instead of truncate
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
+  };
+
+  const updateSubtitle = (newSubtitle: string) => {
+    setSubtitle(newSubtitle);
   };
 
   return (
@@ -48,11 +58,22 @@ export const Title = ({
         )}
         autofocus
       />
+      <div className="mt-1">
+        <TextareaAutosize
+          name="subtitle"
+          value={subtitle}
+          setValue={updateSubtitle}
+          placeholder={subtitlePlaceholder}
+          readOnly={readOnly}
+          textareaClassName="font-primary-light text-sm text-font-subtle"
+        />
+      </div>
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
         </span>
       )}
+      {/* Character counter only visible when focused - visual feedback for length limit */}
       {isFocus && (
         <span
           className={cx(
@@ -69,8 +90,10 @@ export const Title = ({
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
 }
