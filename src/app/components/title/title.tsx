@@ -7,28 +7,41 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Write the subtitle",
+  showSubtitle = false,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
+  // Start with focus state true to show character counter on initial render
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Only show error when error prop is provided AND title is empty or only spaces
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Prevent input beyond maxLength to avoid truncation confusion
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
+  };
+
+  const updateSubtitle = (newSubtitle: string) => {
+    // Prevent input beyond maxLength to avoid truncation confusion
+    if (newSubtitle.length > maxLength) return;
+
+    setSubtitle(newSubtitle);
   };
 
   return (
@@ -48,11 +61,24 @@ export const Title = ({
         )}
         autofocus
       />
+      {showSubtitle && (
+        <TextareaAutosize
+          name="subtitle"
+          value={subtitle}
+          setValue={updateSubtitle}
+          placeholder={subtitlePlaceholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName="font-primary-regular text-lg text-font-subtle"
+        />
+      )}
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
         </span>
       )}
+      {/* Character counter only shows when focused and tracks title length */}
       {isFocus && (
         <span
           className={cx(
@@ -69,8 +95,11 @@ export const Title = ({
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
+  showSubtitle?: boolean;
 }

@@ -1,35 +1,24 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
   argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
+    showSubtitle: {
+      control: "boolean",
+      description: "Show the subtitle input field",
     },
     readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
+      control: "boolean",
+      description: "Make inputs read-only",
     },
     error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
+      control: "text",
+      description: "Error message to display",
     },
   },
 };
@@ -38,42 +27,44 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {
+    initTitle: "Project Title",
+    placeholder: "Write the title",
+  },
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const WithSubtitle: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Main Project Title",
+    initSubtitle: "This is the subtitle for additional context",
+    showSubtitle: true,
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write the subtitle",
+  },
+};
+
+export const SubtitleEmpty: Story = {
+  args: {
+    initTitle: "Project with Subtitle",
+    showSubtitle: true,
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Add a subtitle here...",
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Read Only Title",
+    initSubtitle: "Read only subtitle text",
+    showSubtitle: true,
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const WithError: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
     error: "Title is required",
-  },
-};
-
-export const CustomMaxLength: Story = {
-  args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    placeholder: "Write the title",
   },
 };
