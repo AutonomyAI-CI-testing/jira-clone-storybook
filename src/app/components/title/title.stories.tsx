@@ -3,34 +3,9 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
-  },
-  argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
   },
 };
 
@@ -38,42 +13,55 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {},
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const WithInitialValues: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Main Title",
+    initSecondLine: "This is the subtitle for the component",
+  },
+};
+
+export const WithCustomPlaceholders: Story = {
+  args: {
+    placeholder: "Enter the main heading",
+    secondLinePlaceholder: "Enter a description (optional)",
+  },
+};
+
+export const WithCustomMaxLengths: Story = {
+  args: {
+    initTitle: "Short title",
+    initSecondLine: "Short subtitle",
+    maxLength: 40,
+    secondLineMaxLength: 60,
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Read-only Title",
+    initSecondLine: "This subtitle cannot be edited",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const WithError: Story = {
   args: {
-    placeholder: "Error title",
     error: "Title is required",
+    initTitle: "",
+    initSecondLine: "A subtitle without a title",
   },
 };
 
-export const CustomMaxLength: Story = {
+export const AtMaxLength: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle:
+      "This is a title that is exactly at the maximum character length for demonstration",
+    initSecondLine:
+      "This is a subtitle that demonstrates the second line counter when approaching the maximum character limit for testing purposes",
+    maxLength: 80,
+    secondLineMaxLength: 100,
   },
 };
