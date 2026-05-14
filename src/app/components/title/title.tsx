@@ -7,28 +7,44 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Write the subtitle",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
+  // Check if title has reached max length for character count display styling
   const isMaxLength = title.length >= maxLength;
+
+  // Show error only when error prop is provided and title is empty or whitespace-only
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
+  const onBlur = () => {
+    setIsFocus(false);
+  };
+
+  // Prevent title from exceeding maxLength by silently ignoring excess input
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
+  };
+
+  // Prevent subtitle from exceeding maxLength by silently ignoring excess input
+  const updateSubtitle = (newSubtitle: string) => {
+    if (newSubtitle.length > maxLength) return;
+
+    setSubtitle(newSubtitle);
   };
 
   return (
@@ -48,6 +64,18 @@ export const Title = ({
         )}
         autofocus
       />
+      <div className="mt-2">
+        <TextareaAutosize
+          name="subtitle"
+          value={subtitle}
+          setValue={updateSubtitle}
+          placeholder={subtitlePlaceholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName="font-primary text-lg"
+        />
+      </div>
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
@@ -69,8 +97,10 @@ export const Title = ({
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
 }
