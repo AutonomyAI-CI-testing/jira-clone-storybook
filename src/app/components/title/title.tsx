@@ -13,19 +13,21 @@ export const Title = ({
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Start in focus mode to show character count on initial render
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Only show error if error message is provided and the field is empty or contains only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Prevent input beyond max length
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
@@ -63,6 +65,9 @@ export const Title = ({
           {title.length} / {maxLength}
         </span>
       )}
+      <p className="mt-2 font-primary-light text-sm text-font-subtle">
+        Additional line for title component
+      </p>
     </div>
   );
 };

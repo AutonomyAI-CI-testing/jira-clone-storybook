@@ -3,34 +3,16 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
   argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
+    initTitle: { control: "text" },
+    placeholder: { control: "text" },
+    maxLength: { control: "number" },
+    error: { control: "text" },
+    readOnly: { control: "boolean" },
   },
 };
 
@@ -38,42 +20,40 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {
+    initTitle: "",
+    placeholder: "Write the title",
+    maxLength: 80,
+  },
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const WithContent: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "This is a sample title",
+    placeholder: "Write the title",
+    maxLength: 80,
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    initTitle: "",
+    placeholder: "Write the title",
+    error: "Title is required",
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "This title cannot be edited",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const NearMaxLength: Story = {
   args: {
-    placeholder: "Error title",
-    error: "Title is required",
-  },
-};
-
-export const CustomMaxLength: Story = {
-  args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle:
+      "This is a long title that is approaching the maximum character limit allowed",
+    maxLength: 80,
   },
 };
