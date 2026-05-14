@@ -13,19 +13,20 @@ export const Title = ({
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Always show character count initially to guide user input
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
-  const requireError =
-    error && (title.length === 0 || textAreOnlySpaces(title));
+  const hasValidationError = shouldShowError(title, error);
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Reject input exceeding max length rather than truncating
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
@@ -43,12 +44,13 @@ export const Title = ({
         onBlur={onBlur}
         textareaClassName={cx(
           "font-primary-black text-2xl",
-          requireError &&
+          hasValidationError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
+        minRows={2}
       />
-      {requireError && (
+      {hasValidationError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
         </span>
@@ -66,6 +68,14 @@ export const Title = ({
     </div>
   );
 };
+
+/**
+ * Determines if validation error should be displayed.
+ * Only shows error if error message is provided and title is empty or whitespace-only.
+ */
+function shouldShowError(title: string, error?: string): boolean {
+  return !!error && (title.length === 0 || textAreOnlySpaces(title));
+}
 
 interface TitleProps {
   initTitle?: string;
