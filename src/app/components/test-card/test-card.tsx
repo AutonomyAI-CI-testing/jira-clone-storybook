@@ -1,122 +1,114 @@
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { IoSettingsOutline } from "react-icons/io5";
-import { FiChevronUp } from "react-icons/fi";
-import type { ReactNode } from "react";
+import { IoSettingsSharp } from "react-icons/io5";
+import { FiChevronUp, FiInfo } from "react-icons/fi";
 
 /**
- * Renders a label with an associated info icon
- * Used consistently across form fields to provide contextual help
+ * Common styles extracted as constants for consistency and maintainability
  */
-const FormLabel = ({
-  htmlFor,
-  color,
-  children,
-}: {
-  htmlFor: string;
-  color: string;
-  children: ReactNode;
-}) => (
+const STYLES = {
+  primaryText: "text-[#b6c2cf]",
+  secondaryText: "text-[#8c9bab]",
+  inputBase:
+    "w-full rounded border border-[#3d4449] bg-[#22272b] px-3 py-2 text-sm text-[#8c9bab] placeholder-[#8c9bab] focus:outline-none",
+  buttonPrimary:
+    "flex-1 rounded bg-[#b65c02] px-6 py-2 font-primary-bold text-sm text-white hover:bg-[#a04f01] focus:outline-none",
+} as const;
+
+/**
+ * Renders a label with an info icon
+ */
+const LabelWithInfo = ({ text }: { text: string }) => (
   <div className="mb-2 flex items-center gap-2">
-    <label
-      htmlFor={htmlFor}
-      className="text-[14px] font-semibold leading-[17px]"
-      style={{ color }}
-    >
-      {children}
-    </label>
-    <AiOutlineInfoCircle size={20} color={color} />
+    <label className={`text-sm ${STYLES.primaryText}`}>{text}</label>
+    <FiInfo className={`h-4 w-4 ${STYLES.secondaryText}`} />
   </div>
 );
 
+/**
+ * Renders a collapsible section header with chevron icon
+ */
+const CollapsibleHeader = ({
+  text,
+  size = "base",
+}: {
+  text: string;
+  size?: "small" | "base";
+}) => (
+  <div className="mb-6 flex items-center gap-2">
+    <FiChevronUp
+      className={`${size === "small" ? "h-4 w-4" : "h-5 w-5"} ${
+        STYLES.primaryText
+      }`}
+    />
+    <h2 className={`font-primary-bold text-base ${STYLES.primaryText}`}>
+      {text}
+    </h2>
+  </div>
+);
+
+/**
+ * TestCard component displays a UI configuration card for design automation.
+ * This is a static presentation component with read-only inputs and placeholder content.
+ */
 export const TestCard = (): JSX.Element => {
   return (
-    <div className="w-64 rounded bg-[#1a1a17] p-8 font-[Inter,sans-serif]">
-      {/* Header Row */}
+    <div
+      className={`w-full max-w-[480px] rounded-lg bg-[#1d2125] p-10 ${STYLES.primaryText}`}
+    >
+      {/* Header with title and settings icon */}
       <div className="mb-6 flex items-center justify-between">
-        <h1
-          className="text-[20px] font-semibold leading-[24px]"
-          style={{ color: "#b5b5b5" }}
-        >
+        <h1 className={`font-primary-bold text-xl ${STYLES.primaryText}`}>
           UI magician Agent
         </h1>
-        <IoSettingsOutline size={24} color="#b5b5b5" />
+        <IoSettingsSharp className={`h-6 w-6 ${STYLES.primaryText}`} />
       </div>
 
-      {/* Subtitle Row */}
-      <div className="mb-40 flex items-center gap-2">
-        <FiChevronUp size={16} color="#8b9291" />
-        <span
-          className="text-[13px] font-semibold leading-[16px]"
-          style={{ color: "#8b9291" }}
-        >
+      {/* Collapsible description preview */}
+      <div className="mb-10 flex items-center gap-2">
+        <FiChevronUp className={`h-4 w-4 ${STYLES.secondaryText}`} />
+        <span className={`text-sm ${STYLES.secondaryText}`}>
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Add New Design Section */}
-      <div className="mb-8 flex items-center gap-2">
-        <FiChevronUp size={18} color="#b2b2b1" />
-        <h2
-          className="text-[18px] font-semibold leading-[22px]"
-          style={{ color: "#b2b2b1" }}
-        >
-          Add New Design
-        </h2>
-      </div>
+      {/* Add New Design section header */}
+      <CollapsibleHeader text="Add New Design" />
 
-      {/* Personal Access Token Input Group */}
-      <div className="mb-8">
-        <FormLabel htmlFor="token" color="#a4a4a3">
-          Personal Access Token
-        </FormLabel>
-        <input
-          id="token"
-          type="text"
-          placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full rounded border border-[#a5adad] bg-[#272822] px-3 py-6 text-[14px] font-semibold leading-[17px] placeholder:text-[#737470] focus:outline-none"
-        />
-      </div>
+      {/* Personal Access Token input */}
+      <LabelWithInfo text="Personal Access Token" />
+      <input
+        type="text"
+        readOnly
+        placeholder="figd_xxxxxxxxxxxxxxxxxx"
+        className={`mb-6 ${STYLES.inputBase}`}
+      />
 
-      {/* Design URL Input Group */}
-      <div className="mb-8">
-        <FormLabel htmlFor="url" color="#a3a3a2">
-          Design URL
-        </FormLabel>
-        <input
-          id="url"
-          type="text"
-          placeholder="https://www.figma.com/file/:"
-          className="w-full rounded border-2 border-[#929291] bg-[#272822] px-3 py-6 text-[13px] font-semibold leading-[16px] placeholder:text-[#71726e] focus:outline-none"
-        />
-      </div>
+      {/* Design URL input */}
+      <LabelWithInfo text="Design URL" />
+      <input
+        type="text"
+        readOnly
+        placeholder="https://www.figma.com/file/:"
+        className={`mb-6 ${STYLES.inputBase}`}
+      />
 
-      {/* Button Row */}
-      <div className="mb-32 flex gap-4">
-        <button
-          className="flex-1 rounded bg-[#843a17] px-4 py-5 text-[14px] font-semibold leading-[17px]"
-          style={{ color: "#8c8078" }}
-        >
+      {/* Action buttons for primary interactions */}
+      <div className="mb-10 flex gap-4">
+        <button type="button" className={STYLES.buttonPrimary}>
           Awesome
         </button>
-        <button
-          className="flex-1 rounded bg-[#843a17] px-4 py-5 text-[14px] font-semibold leading-[17px]"
-          style={{ color: "#8c8078" }}
-        >
+        <button type="button" className={STYLES.buttonPrimary}>
           Prepare
         </button>
       </div>
 
-      {/* Recent Breakdowns Heading */}
-      <h3
-        className="text-[18px] font-semibold leading-[22px]"
-        style={{ color: "#b0b0b0" }}
-      >
+      {/* Recent Breakdowns section */}
+      <h2 className={`font-primary-bold text-base ${STYLES.primaryText}`}>
         Recent Breakdowns
-      </h3>
+      </h2>
 
-      {/* Footer */}
-      <div className="border-t border-gray-300 pt-3 text-center">
-        <p className="text-[12px]">© AutonomyAI</p>
+      {/* Footer with copyright */}
+      <div className="border-gray-700 border-t pt-3 text-center">
+        <p className={`text-sm ${STYLES.primaryText}`}>© AutonomyAI</p>
       </div>
     </div>
   );
