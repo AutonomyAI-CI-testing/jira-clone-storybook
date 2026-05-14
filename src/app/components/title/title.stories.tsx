@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
@@ -69,51 +69,51 @@ export const DefaultTitle: Story = {
 
 export const InitTitle: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Project Alpha",
+    initSubtitle: "Building the next generation platform",
+    readOnly: false,
+    maxLength: 80,
+    subtitleMaxLength: 120,
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write a subtitle",
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Project Alpha",
+    initSubtitle: "Building the next generation platform",
     readOnly: true,
+    maxLength: 80,
+    subtitleMaxLength: 120,
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write a subtitle",
   },
 };
 
 export const Error: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
+    initSubtitle: "",
+    readOnly: false,
+    maxLength: 80,
+    subtitleMaxLength: 120,
     error: "Title is required",
+    subtitleError: "Subtitle is required",
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write a subtitle",
   },
 };
 
 export const CustomMaxLength: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
-  },
-};
-
-export const WithSubtitle: Story = {
-  args: {
-    initTitle: "Main Title",
-    initSubtitle: "Secondary subtitle line",
-  },
-};
-
-export const WithSubtitleAndError: Story = {
-  args: {
-    placeholder: "Title required",
-    subtitlePlaceholder: "Subtitle",
-    error: "Title is required",
-    subtitleError: "Subtitle cannot be empty",
-  },
-};
-
-export const SubtitleReadOnly: Story = {
-  args: {
-    initTitle: "Read only title",
-    initSubtitle: "Read only subtitle",
-    readOnly: true,
+    initTitle: "This is a very long title that approaches the maximum length",
+    initSubtitle:
+      "This is a very long subtitle that provides additional context about the project",
+    readOnly: false,
+    maxLength: 80,
+    subtitleMaxLength: 120,
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write a subtitle",
   },
 };
