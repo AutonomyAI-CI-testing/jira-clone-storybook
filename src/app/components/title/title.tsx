@@ -11,21 +11,26 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only when error prop is provided AND title is empty or contains only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
+    // Prevent exceeding maxLength by rejecting updates that are too long
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
@@ -48,6 +53,11 @@ export const Title = ({
         )}
         autofocus
       />
+      {subtitle && (
+        <div className="ml-3 mt-2 font-primary-light text-base text-font-subtle">
+          {subtitle}
+        </div>
+      )}
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
@@ -73,4 +83,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitle?: string;
 }
