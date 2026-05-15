@@ -3,6 +3,7 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
@@ -40,7 +41,7 @@ type Story = StoryObj<typeof Title>;
 export const Default: Story = {
   render: (_) => (
     <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
+      {[DefaultTitle, ReadOnly, Error, CustomMaxLength, MultipleLines].map(
         (TitleStory, index) => (
           <Title {...TitleStory.args} key={index} />
         )
@@ -75,5 +76,11 @@ export const CustomMaxLength: Story = {
   args: {
     placeholder: "Custom max length",
     maxLength: 10,
+  },
+};
+
+export const MultipleLines: Story = {
+  args: {
+    initTitle: ["First line of the title", "Second line of the title"],
   },
 };

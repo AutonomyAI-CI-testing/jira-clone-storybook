@@ -12,20 +12,25 @@ export const Title = ({
   error,
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
-  const [title, setTitle] = useState<string>(initTitle);
+  // Allow initTitle to be a string array for convenience — join with newlines for multi-line support
+  const normalizedInitTitle = Array.isArray(initTitle)
+    ? initTitle.join("\n")
+    : initTitle;
+  const [title, setTitle] = useState<string>(normalizedInitTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Only show error when title is empty or contains only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Enforce max length by rejecting any input that exceeds it
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
@@ -68,7 +73,7 @@ export const Title = ({
 };
 
 interface TitleProps {
-  initTitle?: string;
+  initTitle?: string | string[];
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
