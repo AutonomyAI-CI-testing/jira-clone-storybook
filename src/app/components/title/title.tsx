@@ -7,29 +7,38 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Write a subtitle",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Only show error when title is empty or contains only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
+
+  // Enforce max length constraint for both title and subtitle
+  const createLengthConstrainedSetter = (setter: (value: string) => void) => {
+    return (newValue: string) => {
+      if (newValue.length > maxLength) return;
+      setter(newValue);
+    };
+  };
+
+  const updateTitle = createLengthConstrainedSetter(setTitle);
+  const updateSubtitle = createLengthConstrainedSetter(setSubtitle);
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
-  const updateTitle = (newTitle: string) => {
-    if (newTitle.length > maxLength) return;
-
-    setTitle(newTitle);
-  };
+  const onBlur = () => setIsFocus(false);
 
   return (
     <div className="relative">
@@ -47,6 +56,16 @@ export const Title = ({
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
+      />
+      <TextareaAutosize
+        name="subtitle"
+        value={subtitle}
+        setValue={updateSubtitle}
+        placeholder={subtitlePlaceholder}
+        readOnly={readOnly}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        textareaClassName="mt-1 font-primary-light text-lg"
       />
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
@@ -69,8 +88,10 @@ export const Title = ({
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
 }
