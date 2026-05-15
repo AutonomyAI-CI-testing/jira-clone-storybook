@@ -3,6 +3,7 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
@@ -53,7 +54,7 @@ export const DefaultTitle: Story = {};
 
 export const InitTitle: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Default title\nSecond line of the title",
   },
 };
 
