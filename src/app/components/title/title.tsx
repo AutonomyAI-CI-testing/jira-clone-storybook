@@ -4,6 +4,7 @@ import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
 const DEFAULT_MAX_LENGTH = 80;
+const DEFAULT_LINES = 1;
 
 export const Title = ({
   initTitle = "",
@@ -11,6 +12,7 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  lines = DEFAULT_LINES,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -22,8 +24,7 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -47,6 +48,7 @@ export const Title = ({
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
+        minLines={lines}
       />
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
@@ -73,4 +75,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  lines?: number;
 }

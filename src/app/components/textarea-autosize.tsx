@@ -12,9 +12,11 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    minLines = 1,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  const [lineHeight, setLineHeight] = useState<number>(0);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -37,8 +39,20 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
-  }, [value]);
+    // Calculate line height on first render to enable minLines calculation
+    // We need the computed line height from the actual rendered element
+    if (lineHeight === 0) {
+      const computedStyle = window.getComputedStyle(textareaRef.current);
+      const calculatedLineHeight = parseFloat(computedStyle.lineHeight);
+      setLineHeight(calculatedLineHeight);
+    }
+
+    const contentHeight = textareaRef.current.scrollHeight;
+    // Enforce minimum height based on minLines prop
+    // 24px accounts for vertical padding (p-3 = 12px top + 12px bottom)
+    const minHeight = lineHeight > 0 ? lineHeight * minLines + 24 : 40;
+    setTextareaHeight(Math.max(contentHeight, minHeight));
+  }, [value, lineHeight, minLines]);
 
   return (
     <div className="relative">
@@ -80,4 +94,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  minLines?: number;
 }
