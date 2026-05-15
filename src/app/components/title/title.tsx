@@ -9,6 +9,7 @@ export const Title = ({
   initTitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
+  maxRows = 1,
   error,
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
@@ -16,16 +17,18 @@ export const Title = ({
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only when error prop is provided AND title is empty/whitespace-only
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Prevent input beyond maxLength (hard limit)
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
@@ -41,6 +44,7 @@ export const Title = ({
         readOnly={readOnly}
         onFocus={onFocus}
         onBlur={onBlur}
+        maxRows={maxRows}
         textareaClassName={cx(
           "font-primary-black text-2xl",
           requireError &&
@@ -71,6 +75,7 @@ interface TitleProps {
   initTitle?: string;
   readOnly?: boolean;
   maxLength?: number;
+  maxRows?: number;
   error?: string;
   placeholder?: string;
 }
