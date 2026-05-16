@@ -16,16 +16,18 @@ export const Title = ({
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only when error prop is provided AND title is empty or contains only spaces
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Prevent input that exceeds max length rather than truncating after the fact
+    // This preserves the user's typing flow and makes the limit feel natural
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
@@ -47,12 +49,14 @@ export const Title = ({
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
+        minRows={2}
       />
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
         </span>
       )}
+      {/* Show character count only when focused to reduce visual clutter */}
       {isFocus && (
         <span
           className={cx(

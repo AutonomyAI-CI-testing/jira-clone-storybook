@@ -12,6 +12,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    minRows = 1,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
@@ -20,7 +21,8 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
     const length = target.value.length;
-    // Place cursor at the end of the current text
+    // Place cursor at the end of the current text to avoid selecting all on focus
+    // This provides a better UX when clicking into an existing title
     target.setSelectionRange(length, length);
     if (onFocus) onFocus();
   };
@@ -56,7 +58,10 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         onBlur={onBlur}
         style={{ height: `${textareaHeight}px` }}
         autoFocus={autofocus}
+        rows={minRows}
       />
+      {/* Hidden paragraph mirrors textarea content to calculate correct height.
+          Must have identical styling (padding, font, etc.) to measure accurately */}
       <p
         ref={textareaRef}
         className={cx(
@@ -80,4 +85,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  minRows?: number;
 }
