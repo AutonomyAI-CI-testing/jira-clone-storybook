@@ -3,12 +3,19 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
   argTypes: {
     initTitle: {
       defaultValue: "Title",
+      control: {
+        type: "text",
+      },
+    },
+    initSubtitle: {
+      defaultValue: "",
       control: {
         type: "text",
       },
@@ -54,12 +61,14 @@ export const DefaultTitle: Story = {};
 export const InitTitle: Story = {
   args: {
     initTitle: "Default title",
+    initSubtitle: "Default subtitle",
   },
 };
 
 export const ReadOnly: Story = {
   args: {
     initTitle: "Read only title",
+    initSubtitle: "Read only subtitle",
     readOnly: true,
   },
 };
