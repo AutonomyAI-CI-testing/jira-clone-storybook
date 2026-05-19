@@ -7,70 +7,118 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSecondLine = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  secondLinePlaceholder = "Write the second line",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [secondLine, setSecondLine] = useState<string>(initSecondLine);
+
+  // Title field starts focused to show the character counter immediately
   const [isFocus, setIsFocus] = useState<boolean>(true);
+  const [isSecondLineFocus, setIsSecondLineFocus] = useState<boolean>(false);
 
   const isMaxLength = title.length >= maxLength;
+  const isSecondLineMaxLength = secondLine.length >= maxLength;
+
+  // Show error only if error prop is provided and title is empty or contains only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
+  // Focus handlers show the character counter when a field is focused
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
+  const onSecondLineFocus = () => {
+    if (!readOnly) setIsSecondLineFocus(true);
+  };
+
+  // Blur handlers hide the character counter when a field loses focus
+  const onBlur = () => setIsFocus(false);
+
+  const onSecondLineBlur = () => setIsSecondLineFocus(false);
+
+  // Prevent input beyond maxLength by rejecting updates that exceed the limit
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
-
     setTitle(newTitle);
   };
 
+  const updateSecondLine = (newSecondLine: string) => {
+    if (newSecondLine.length > maxLength) return;
+    setSecondLine(newSecondLine);
+  };
+
   return (
-    <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
-      )}
-      {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
+    <div className="space-y-2">
+      <div className="relative">
+        <TextareaAutosize
+          name="title"
+          value={title}
+          setValue={updateTitle}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary-black text-2xl",
+            requireError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
           )}
-        >
-          {title.length} / {maxLength}
-        </span>
-      )}
+          autofocus
+        />
+        {requireError && (
+          <span className="ml-3 font-primary-light text-sm text-font-danger">
+            {error}
+          </span>
+        )}
+        {isFocus && (
+          <span
+            className={cx(
+              "absolute right-0 top-full z-10 bg-white font-primary-light text-sm",
+              isMaxLength ? "text-font-danger" : "text-font-subtlest"
+            )}
+          >
+            {title.length} / {maxLength}
+          </span>
+        )}
+      </div>
+      <div className="relative">
+        <TextareaAutosize
+          name="secondLine"
+          value={secondLine}
+          setValue={updateSecondLine}
+          placeholder={secondLinePlaceholder}
+          readOnly={readOnly}
+          onFocus={onSecondLineFocus}
+          onBlur={onSecondLineBlur}
+          textareaClassName="font-primary-black text-2xl"
+        />
+        {isSecondLineFocus && (
+          <span
+            className={cx(
+              "absolute right-0 top-full z-10 bg-white font-primary-light text-sm",
+              isSecondLineMaxLength ? "text-font-danger" : "text-font-subtlest"
+            )}
+          >
+            {secondLine.length} / {maxLength}
+          </span>
+        )}
+      </div>
     </div>
   );
 };
 
 interface TitleProps {
   initTitle?: string;
+  initSecondLine?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  secondLinePlaceholder?: string;
 }
