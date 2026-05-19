@@ -7,6 +7,7 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  subtitle,
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
@@ -22,8 +23,11 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  
+  // Blur behavior disabled to keep character count always visible
+  const onBlur = () => {
+    // setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -48,6 +52,11 @@ export const Title = ({
         )}
         autofocus
       />
+      {subtitle && (
+        <p className="mt-2 font-primary-light text-sm text-font-subtle">
+          {subtitle}
+        </p>
+      )}
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
@@ -69,6 +78,7 @@ export const Title = ({
 
 interface TitleProps {
   initTitle?: string;
+  subtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
