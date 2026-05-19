@@ -12,15 +12,17 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    minRows = 1,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  const [minHeight, setMinHeight] = useState<number>(40);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
     const length = target.value.length;
-    // Place cursor at the end of the current text
+    // Place cursor at the end to allow immediate appending without selecting all text
     target.setSelectionRange(length, length);
     if (onFocus) onFocus();
   };
@@ -34,11 +36,26 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     return !/^( )\1*$/.test(value);
   };
 
+  // Adjust height dynamically as content changes, respecting the minimum height
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
-  }, [value]);
+    const scrollHeight = textareaRef.current.scrollHeight;
+    setTextareaHeight(Math.max(scrollHeight, minHeight));
+  }, [value, minHeight]);
+
+  // Calculate minimum height based on minRows to ensure the textarea never shrinks below the specified number of visible lines
+  useLayoutEffect(() => {
+    if (!textareaRef.current) return;
+
+    const styles = window.getComputedStyle(textareaRef.current);
+    const lineHeight = parseFloat(styles.lineHeight);
+    const paddingTop = parseFloat(styles.paddingTop);
+    const paddingBottom = parseFloat(styles.paddingBottom);
+    
+    const calculatedMinHeight = lineHeight * minRows + paddingTop + paddingBottom;
+    setMinHeight(calculatedMinHeight);
+  }, [minRows]);
 
   return (
     <div className="relative">
@@ -57,6 +74,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         style={{ height: `${textareaHeight}px` }}
         autoFocus={autofocus}
       />
+      {/* Hidden paragraph used to measure the actual rendered height of the text */}
       <p
         ref={textareaRef}
         className={cx(
@@ -80,4 +98,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  minRows?: number;
 }
