@@ -22,8 +22,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -46,6 +46,7 @@ export const Title = ({
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
+        minRows={2} // Ensures multi-line titles display properly from the start
         autofocus
       />
       {requireError && (
