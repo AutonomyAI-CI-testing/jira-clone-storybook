@@ -20,7 +20,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
     const length = target.value.length;
-    // Place cursor at the end of the current text
+    // Place cursor at the end of the text to avoid selecting all content on focus
     target.setSelectionRange(length, length);
     if (onFocus) onFocus();
   };
@@ -56,7 +56,9 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         onBlur={onBlur}
         style={{ height: `${textareaHeight}px` }}
         autoFocus={autofocus}
+        rows={1} // Start with single-row height, then expand via dynamic height calculation
       />
+      {/* Hidden measurement element with identical styling to calculate required height */}
       <p
         ref={textareaRef}
         className={cx(
