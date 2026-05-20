@@ -11,58 +11,74 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  lines = [""],
 }: TitleProps): JSX.Element => {
-  const [title, setTitle] = useState<string>(initTitle);
+  // Initialize with lines prop if provided, otherwise fall back to initTitle for backwards compatibility
+  const [titleLines, setTitleLines] = useState<string[]>(
+    lines.length > 0 ? lines : initTitle ? [initTitle] : [""]
+  );
   const [isFocus, setIsFocus] = useState<boolean>(true);
-
-  const isMaxLength = title.length >= maxLength;
-  const requireError =
-    error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
-  const updateTitle = (newTitle: string) => {
-    if (newTitle.length > maxLength) return;
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
-    setTitle(newTitle);
+  const updateTitleLine = (index: number, newValue: string) => {
+    // Prevent input beyond maxLength to maintain validation consistency
+    if (newValue.length > maxLength) return;
+
+    const newLines = [...titleLines];
+    newLines[index] = newValue;
+    setTitleLines(newLines);
   };
 
   return (
-    <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
-      )}
-      {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
-          )}
-        >
-          {title.length} / {maxLength}
-        </span>
-      )}
+    <div className="space-y-2">
+      {titleLines.map((line, index) => {
+        const isLineMaxLength = line.length >= maxLength;
+        // Show error if provided and line is empty or only whitespace
+        const requireLineError =
+          error && (line.length === 0 || textAreOnlySpaces(line));
+
+        return (
+          <div key={index} className="relative">
+            <TextareaAutosize
+              name={`title-${index}`}
+              value={line}
+              setValue={(newValue) => updateTitleLine(index, newValue)}
+              placeholder={`${placeholder} ${index + 1}`}
+              readOnly={readOnly}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              textareaClassName={cx(
+                "font-primary-black text-2xl",
+                requireLineError &&
+                  "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+              )}
+              autofocus={index === 0}
+            />
+            {requireLineError && (
+              <span className="ml-3 font-primary-light text-sm text-font-danger">
+                {error}
+              </span>
+            )}
+            {isFocus && (
+              <span
+                className={cx(
+                  "absolute right-0 top-full font-primary-light text-sm",
+                  isLineMaxLength ? "text-font-danger" : "text-font-subtlest"
+                )}
+              >
+                {line.length} / {maxLength}
+              </span>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -73,4 +89,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  lines?: string[];
 }
