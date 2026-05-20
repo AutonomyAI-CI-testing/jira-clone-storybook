@@ -3,33 +3,54 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
   argTypes: {
     initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
+      control: "text",
+      description: "Initial title value",
+    },
+    initSubtitle: {
+      control: "text",
+      description: "Initial subtitle value",
     },
     readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
+      description: "Makes the input read-only",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables the input",
+    },
+    loading: {
+      control: "boolean",
+      description: "Shows loading skeleton",
     },
     maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
+      control: "number",
+      description: "Maximum length for title",
+    },
+    subtitleMaxLength: {
+      control: "number",
+      description: "Maximum length for subtitle",
     },
     error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
+      control: "text",
+      description: "Error message for title",
+    },
+    subtitleError: {
+      control: "text",
+      description: "Error message for subtitle",
+    },
+    placeholder: {
+      control: "text",
+      description: "Placeholder text for title",
+    },
+    subtitlePlaceholder: {
+      control: "text",
+      description: "Placeholder text for subtitle",
     },
   },
 };
@@ -38,42 +59,67 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {
+    initTitle: "",
+    initSubtitle: "",
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Add a subtitle (optional)",
+  },
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const WithContent: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Project Dashboard Redesign",
+    initSubtitle:
+      "Update the main dashboard with new analytics widgets and improved navigation",
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    loading: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    initTitle: "Disabled Title",
+    initSubtitle: "This input is disabled",
+    disabled: true,
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Read Only Title",
+    initSubtitle: "This input is read only",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const WithValidationError: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
+    initSubtitle: "",
     error: "Title is required",
+    subtitleError: "Subtitle is required",
   },
 };
 
-export const CustomMaxLength: Story = {
+export const NearMaxLength: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle:
+      "This is a title that is getting close to the maximum character limit allowed",
+    initSubtitle:
+      "This subtitle demonstrates validation when approaching the character limit - you can see the counter when focused",
+    maxLength: 80,
+    subtitleMaxLength: 120,
+  },
+};
+
+export const CustomPlaceholders: Story = {
+  args: {
+    placeholder: "Enter issue title here...",
+    subtitlePlaceholder: "Enter description here...",
   },
 };
