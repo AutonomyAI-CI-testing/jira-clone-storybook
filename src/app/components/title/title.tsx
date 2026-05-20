@@ -7,70 +7,95 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Write the subtitle",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
+  // Start in focus state to show character counter immediately when component mounts
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only when title is empty or contains only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
+  // Only allow focus state changes in editable mode to prevent counter flicker in read-only
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  
+  const onBlur = () => {
+    if (!readOnly) setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
+    // Silently reject input exceeding maxLength instead of truncating
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
   };
 
   return (
-    <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
-      )}
-      {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
+    <div className="relative space-y-2">
+      <div className="relative">
+        <TextareaAutosize
+          name="title"
+          value={title}
+          setValue={updateTitle}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary-black text-2xl",
+            requireError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
           )}
-        >
-          {title.length} / {maxLength}
-        </span>
-      )}
+          autofocus
+        />
+        {requireError && (
+          <span className="ml-3 font-primary-light text-sm text-font-danger">
+            {error}
+          </span>
+        )}
+        {isFocus && (
+          <span
+            className={cx(
+              "absolute right-0 top-full font-primary-light text-sm",
+              isMaxLength ? "text-font-danger" : "text-font-subtlest"
+            )}
+          >
+            {title.length} / {maxLength}
+          </span>
+        )}
+      </div>
+      <div>
+        <TextareaAutosize
+          name="subtitle"
+          value={subtitle}
+          setValue={setSubtitle}
+          placeholder={subtitlePlaceholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName="font-primary-light text-lg text-font-subtlest"
+        />
+      </div>
     </div>
   );
 };
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
 }
