@@ -3,7 +3,7 @@ import cx from "classix";
 import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
-const DEFAULT_MAX_LENGTH = 80;
+const DEFAULT_MAX_LENGTH = 200;
 
 export const Title = ({
   initTitle = "",
@@ -22,8 +22,10 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
