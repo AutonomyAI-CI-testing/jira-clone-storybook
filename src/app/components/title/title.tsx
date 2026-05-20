@@ -3,7 +3,7 @@ import cx from "classix";
 import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
-const DEFAULT_MAX_LENGTH = 80;
+const DEFAULT_MAX_LENGTH = 160;
 
 export const Title = ({
   initTitle = "",
@@ -13,9 +13,11 @@ export const Title = ({
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Character counter visibility is focus-dependent to reduce visual clutter
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only when error prop is provided AND the title is empty or whitespace-only
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
@@ -25,6 +27,7 @@ export const Title = ({
   const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Prevent input beyond maxLength rather than truncating
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
