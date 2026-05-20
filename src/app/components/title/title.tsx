@@ -6,61 +6,89 @@ import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
-  initTitle = "",
+  initTitles = ["", ""],
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
-  placeholder = "Write the title",
+  placeholders = ["Write the title", "Add a second line"],
 }: TitleProps): JSX.Element => {
-  const [title, setTitle] = useState<string>(initTitle);
-  const [isFocus, setIsFocus] = useState<boolean>(true);
+  const [titles, setTitles] = useState<string[]>(initTitles);
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(0);
 
-  const isMaxLength = title.length >= maxLength;
+  // Calculate total length across all title lines
+  const getTotalLength = () => titles.join("").length;
+  
+  const isMaxLength = getTotalLength() >= maxLength;
+  
+  // Show error if error prop is provided AND all titles are empty or only whitespace
   const requireError =
-    error && (title.length === 0 || textAreOnlySpaces(title));
+    error && (getTotalLength() === 0 || titles.every(textAreOnlySpaces));
 
-  const onFocus = () => {
-    if (!readOnly) setIsFocus(true);
+  const onFocus = (index: number) => {
+    if (!readOnly) setFocusedIndex(index);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setFocusedIndex(null);
 
-  const updateTitle = (newTitle: string) => {
-    if (newTitle.length > maxLength) return;
+  const updateTitle = (index: number, newValue: string) => {
+    const newTitles = [...titles];
+    
+    // Calculate how much space is available for this title line
+    // by subtracting the length of all other lines from the max length
+    const otherTitlesLength = titles
+      .filter((_, i) => i !== index)
+      .join("").length;
+    const availableLength = maxLength - otherTitlesLength;
 
-    setTitle(newTitle);
+    // Prevent exceeding max length across all title lines
+    if (newValue.length > availableLength) return;
+
+    newTitles[index] = newValue;
+    setTitles(newTitles);
   };
 
   return (
     <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
+      <div className="space-y-2">
+        {titles.map((title, index) => {
+          // First line is larger (text-2xl), subsequent lines are smaller (text-lg)
+          const textSizeClass =
+            index === 0
+              ? "font-primary-black text-2xl"
+              : "font-primary-black text-lg";
+
+          return (
+            <TextareaAutosize
+              key={index}
+              name={`title-${index}`}
+              value={title}
+              setValue={(newValue) => updateTitle(index, newValue)}
+              placeholder={placeholders[index] || ""}
+              readOnly={readOnly}
+              onFocus={() => onFocus(index)}
+              onBlur={onBlur}
+              textareaClassName={cx(
+                textSizeClass,
+                requireError &&
+                  "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+              )}
+              autofocus={index === 0}
+            />
+          );
+        })}
+      </div>
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
         </span>
       )}
-      {isFocus && (
+      {focusedIndex !== null && (
         <span
           className={cx(
             "absolute right-0 top-full font-primary-light text-sm",
             isMaxLength ? "text-font-danger" : "text-font-subtlest"
           )}
         >
-          {title.length} / {maxLength}
+          {getTotalLength()} / {maxLength}
         </span>
       )}
     </div>
@@ -68,9 +96,9 @@ export const Title = ({
 };
 
 interface TitleProps {
-  initTitle?: string;
+  initTitles?: string[];
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
-  placeholder?: string;
+  placeholders?: string[];
 }
