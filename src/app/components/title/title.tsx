@@ -11,21 +11,29 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  minRows = 2,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
+  // Track when max length is reached to display warning color
   const isMaxLength = title.length >= maxLength;
+  
+  // Only show error if an error message exists and title is empty or only spaces
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
+    // Only activate focus state for editable fields to show character counter
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
+    // Prevent input beyond max length rather than truncating
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
@@ -46,6 +54,7 @@ export const Title = ({
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
+        minRows={minRows}
         autofocus
       />
       {requireError && (
@@ -73,4 +82,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  minRows?: number;
 }
