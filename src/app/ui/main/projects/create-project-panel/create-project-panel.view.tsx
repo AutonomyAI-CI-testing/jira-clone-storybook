@@ -108,7 +108,6 @@ export const CreateProjectPanelView = ({
                   <Dialog.Title className="-ml-3 mb-8 mt-5">
                     <Title
                       initTitle={project?.name || ""}
-                      maxLength={30}
                       error={actionData?.errors?.name}
                     />
                   </Dialog.Title>
