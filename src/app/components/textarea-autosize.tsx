@@ -12,10 +12,13 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    maxRows,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
   const textareaRef = useRef<HTMLParagraphElement>(null);
+  // Line height constant used to calculate max height when maxRows is set
+  const lineHeight = 24;
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
@@ -37,15 +40,25 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
-  }, [value]);
+    let calculatedHeight = textareaRef.current.scrollHeight;
+    
+    // When maxRows is set, cap the height and enable scrolling
+    if (maxRows) {
+      // 24px accounts for vertical padding (12px top + 12px bottom)
+      const maxHeight = lineHeight * maxRows + 24;
+      calculatedHeight = Math.min(calculatedHeight, maxHeight);
+    }
+    
+    setTextareaHeight(calculatedHeight);
+  }, [value, maxRows]);
 
   return (
     <div className="relative">
       <textarea
         name={name}
         className={cx(
-          "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          "box-border w-full resize-none rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          maxRows ? "overflow-y-auto" : "overflow-y-hidden",
           textareaClassName
         )}
         value={value}
@@ -80,4 +93,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  maxRows?: number;
 }
