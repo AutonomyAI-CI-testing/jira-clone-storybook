@@ -13,19 +13,22 @@ export const Title = ({
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Start focused by default to show character counter immediately
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only when error prop is provided AND title is empty or whitespace-only
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
+    // Prevent input beyond maxLength rather than truncating
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
