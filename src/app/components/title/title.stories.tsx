@@ -3,34 +3,9 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
+    layout: "padded",
   },
 };
 
@@ -38,42 +13,48 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {
+    initTitle: "Epic Story Title",
+    initTitle2: "Subtitle or Secondary Title",
+  },
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const Empty: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "",
+    initTitle2: "",
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "This title is read only",
+    initTitle2: "This subtitle is also read only",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const WithErrors: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
+    initTitle2: "",
     error: "Title is required",
+    error2: "Second title is required",
+  },
+};
+
+export const CustomPlaceholders: Story = {
+  args: {
+    placeholder: "Enter issue title",
+    placeholder2: "Enter issue description",
   },
 };
 
 export const CustomMaxLength: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle: "Short max",
+    initTitle2: "Also short",
+    maxLength: 20,
+    maxLength2: 15,
   },
 };
