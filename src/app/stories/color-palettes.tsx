@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type MutableRefObject } from "react";
 import cx from "classix";
 import { Tooltip } from "@app/components/tooltip";
 
@@ -156,7 +156,7 @@ const ColorPalette = ({ colors }: ColorPaletteProps) => {
 
         return (
           <div
-            key={i}
+            key={color}
             className={cx(
               "flex justify-between p-2 text-xs",
               i === 0 ? "rounded-t" : "",
@@ -187,7 +187,7 @@ const CopyButton = ({ colorValue }: CopyButtonProps) => {
   const [isCopied, setIsCopied] = useState(false);
   const [buttonWidth, setButtonWidth] = useState(0);
 
-  const columnRef = useRef() as React.MutableRefObject<HTMLButtonElement>;
+  const columnRef = useRef() as MutableRefObject<HTMLButtonElement>;
 
   const copyTextToClipboard = async (text: string) => {
     if ("clipboard" in navigator) {
@@ -206,7 +206,7 @@ const CopyButton = ({ colorValue }: CopyButtonProps) => {
         }, 1500);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   };
 
