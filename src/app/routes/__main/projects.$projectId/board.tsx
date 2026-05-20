@@ -112,6 +112,7 @@ export const action: ActionFunction = async ({ request }) => {
     }
   }
   console.error("Unknown action", _action);
+  return null;
 };
 
 export function ErrorBoundary({ error }: { error: Error }) {
