@@ -3,77 +3,65 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
-  },
-  argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Title>;
 
+/**
+ * Default editable title with an empty initial value.
+ */
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {},
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+/**
+ * Title with a pre-filled initial value.
+ */
+export const WithInitialValue: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Implement user authentication feature",
   },
 };
 
+/**
+ * Title in read-only mode (no editing, no add/remove buttons).
+ */
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Read-only title text",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+/**
+ * Title with a validation error displayed.
+ */
+export const WithError: Story = {
   args: {
-    placeholder: "Error title",
     error: "Title is required",
   },
 };
 
+/**
+ * Title with a custom placeholder.
+ */
+export const CustomPlaceholder: Story = {
+  args: {
+    placeholder: "Enter the issue title...",
+  },
+};
+
+/**
+ * Title with a reduced max length (shows character count sooner).
+ */
 export const CustomMaxLength: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle: "Short title",
+    maxLength: 30,
   },
 };
