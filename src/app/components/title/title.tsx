@@ -22,8 +22,7 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -42,7 +41,7 @@ export const Title = ({
         onFocus={onFocus}
         onBlur={onBlur}
         textareaClassName={cx(
-          "font-primary-black text-2xl",
+          "font-primary-black text-2xl whitespace-pre-wrap break-words",
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
@@ -67,7 +66,7 @@ export const Title = ({
   );
 };
 
-interface TitleProps {
+export interface TitleProps {
   initTitle?: string;
   readOnly?: boolean;
   maxLength?: number;
