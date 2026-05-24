@@ -8,27 +8,34 @@ const DEFAULT_MAX_LENGTH = 80;
 export const Title = ({
   initTitle = "",
   readOnly,
+  multiline = false,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // isFocus controls whether the character counter is visible. Component starts with counter visible.
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Error displays only when the title is empty or contains only spaces AND an error message was provided
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
+  // Show character counter on focus, but only if component is not read-only
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
-    if (newTitle.length > maxLength) return;
+    // In single-line mode, strip newlines to prevent user input from creating multiple lines
+    const processedTitle = !multiline ? newTitle.replace(/\n/g, "") : newTitle;
+    
+    // Enforce max length limit on the processed title
+    if (processedTitle.length > maxLength) return;
 
-    setTitle(newTitle);
+    setTitle(processedTitle);
   };
 
   return (
@@ -70,6 +77,7 @@ export const Title = ({
 interface TitleProps {
   initTitle?: string;
   readOnly?: boolean;
+  multiline?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
