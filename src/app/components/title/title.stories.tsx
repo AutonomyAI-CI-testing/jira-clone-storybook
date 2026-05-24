@@ -3,77 +3,63 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
+    layout: "padded",
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Title>;
 
+// Sample text values used across stories
+const SAMPLE_TITLE = "Project Alpha";
+const SAMPLE_SUBTITLE = "A comprehensive project management tool";
+
+// Default state with sample content
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
-};
-
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: SAMPLE_TITLE,
+    initSubtitle: SAMPLE_SUBTITLE,
   },
 };
 
+// Empty state with no initial content
+export const Empty: Story = {
+  args: {},
+};
+
+// Component populated with sample content
+export const WithContent: Story = {
+  args: {
+    initTitle: SAMPLE_TITLE,
+    initSubtitle: SAMPLE_SUBTITLE,
+  },
+};
+
+// Read-only mode with sample content
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: SAMPLE_TITLE,
+    initSubtitle: SAMPLE_SUBTITLE,
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+// Error state with validation messages
+export const WithErrors: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
+    initSubtitle: "",
     error: "Title is required",
+    subtitleError: "Subtitle is required",
   },
 };
 
-export const CustomMaxLength: Story = {
+// Custom placeholder text for alternative use case
+export const WithCustomPlaceholders: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    placeholder: "Enter issue title...",
+    subtitlePlaceholder: "Enter a brief description...",
   },
 };
