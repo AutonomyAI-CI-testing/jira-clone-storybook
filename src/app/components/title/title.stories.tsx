@@ -1,36 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
+    layout: "padded",
   },
 };
 
@@ -38,42 +14,38 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {
+    initTitle: "Fix login button not responding on mobile devices",
+    placeholder: "Write the title",
+  },
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const Empty: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "",
+    placeholder: "Write the title",
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Implement dark mode for the dashboard",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const WithError: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
     error: "Title is required",
   },
 };
 
-export const CustomMaxLength: Story = {
+export const MultiLine: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle:
+      "This is a very long title that spans multiple lines when the content overflows the available width and wraps to a second or even third line in the text area",
+    placeholder: "Write the title",
+    maxLength: 255,
   },
 };
