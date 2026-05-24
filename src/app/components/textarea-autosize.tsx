@@ -12,9 +12,12 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    minRows = 1,
   } = props;
 
-  const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  // Calculate minimum height: 40px base height + 24px for each additional row beyond the first
+  const minHeight = 40 + (minRows - 1) * 24;
+  const [textareaHeight, setTextareaHeight] = useState<number>(minHeight);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -37,8 +40,9 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
-  }, [value]);
+    const scrollHeight = textareaRef.current.scrollHeight;
+    setTextareaHeight(Math.max(scrollHeight, minHeight));
+  }, [value, minHeight]);
 
   return (
     <div className="relative">
@@ -80,4 +84,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  minRows?: number;
 }
