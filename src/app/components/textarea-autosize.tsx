@@ -14,7 +14,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     onBlur,
   } = props;
 
-  const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  const [textareaHeight, setTextareaHeight] = useState<number>(80);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -59,6 +59,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
       />
       <p
         ref={textareaRef}
+        style={{ whiteSpace: "pre-wrap", width: "100%" }}
         className={cx(
           "absolute left-0 top-0 -z-10 box-border overflow-y-hidden p-3 opacity-0",
           textareaClassName
