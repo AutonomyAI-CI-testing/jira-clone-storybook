@@ -1,5 +1,6 @@
 import { useState } from "react";
 import cx from "classix";
+import { FaSpinner } from "react-icons/fa";
 import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
@@ -7,70 +8,160 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
+  subtitleMaxLength = DEFAULT_MAX_LENGTH,
   error,
+  subtitleError,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Write the subtitle",
+  loading = false,
+  disabled = false,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
+  // Track focus state to show character count only when focused
   const [isFocus, setIsFocus] = useState<boolean>(true);
+  const [isSubtitleFocus, setIsSubtitleFocus] = useState<boolean>(true);
 
+  // Determine if we're at or near the character limit
   const isMaxLength = title.length >= maxLength;
+  const isSubtitleMaxLength = subtitle.length >= subtitleMaxLength;
+
+  // Only show error message if text is empty or contains only whitespace
+  // This prevents error messages when user is actively typing
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
+  const requireSubtitleError =
+    subtitleError && (subtitle.length === 0 || textAreOnlySpaces(subtitle));
+
+  // Disable all interactions when component is readOnly, disabled, or loading
+  const isInteractionDisabled = readOnly || disabled || loading;
 
   const onFocus = () => {
-    if (!readOnly) setIsFocus(true);
+    if (!isInteractionDisabled) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onSubtitleFocus = () => {
+    if (!isInteractionDisabled) setIsSubtitleFocus(true);
+  };
 
+  // Hide character count when blurred
+  const onBlur = () => setIsFocus(false);
+  const onSubtitleBlur = () => setIsSubtitleFocus(false);
+
+  // Update title while enforcing max length and respecting disabled state
   const updateTitle = (newTitle: string) => {
+    if (isInteractionDisabled) return;
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
   };
 
+  // Update subtitle while enforcing max length and respecting disabled state
+  const updateSubtitle = (newSubtitle: string) => {
+    if (isInteractionDisabled) return;
+    if (newSubtitle.length > subtitleMaxLength) return;
+
+    setSubtitle(newSubtitle);
+  };
+
   return (
-    <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
+    // Container with reduced opacity when disabled to indicate non-interactive state
+    <div className={cx("space-y-3", disabled && "opacity-60")}>
+      {/* Show loading indicator during async operations */}
+      {loading && (
+        <div className="flex items-center gap-2">
+          <FaSpinner
+            className="animate-spin text-font-subtlest"
+            aria-hidden="true"
+          />
+          <span className="text-sm text-font-subtlest">Loading...</span>
+        </div>
       )}
-      {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
+      <div className="relative">
+        <TextareaAutosize
+          name="title"
+          value={title}
+          setValue={updateTitle}
+          placeholder={placeholder}
+          readOnly={isInteractionDisabled}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary-black text-2xl",
+            requireError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger",
+            disabled && "cursor-not-allowed"
           )}
-        >
-          {title.length} / {maxLength}
-        </span>
-      )}
+          autofocus
+        />
+        {/* Display error message only when title is empty/whitespace-only and error prop is set */}
+        {requireError && (
+          <span className="ml-3 font-primary-light text-sm text-font-danger">
+            {error}
+          </span>
+        )}
+        {/* Show character count with warning color when at max length */}
+        {isFocus && !loading && (
+          <span
+            className={cx(
+              "absolute right-0 top-full font-primary-light text-sm",
+              isMaxLength ? "text-font-danger" : "text-font-subtlest"
+            )}
+          >
+            {title.length} / {maxLength}
+          </span>
+        )}
+      </div>
+      <div className="relative">
+        <TextareaAutosize
+          name="subtitle"
+          value={subtitle}
+          setValue={updateSubtitle}
+          placeholder={subtitlePlaceholder}
+          readOnly={isInteractionDisabled}
+          onFocus={onSubtitleFocus}
+          onBlur={onSubtitleBlur}
+          textareaClassName={cx(
+            "font-primary-regular text-base",
+            requireSubtitleError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger",
+            disabled && "cursor-not-allowed"
+          )}
+        />
+        {/* Display error message only when subtitle is empty/whitespace-only and error prop is set */}
+        {requireSubtitleError && (
+          <span className="ml-3 font-primary-light text-sm text-font-danger">
+            {subtitleError}
+          </span>
+        )}
+        {/* Show character count with warning color when at max length */}
+        {isSubtitleFocus && !loading && (
+          <span
+            className={cx(
+              "absolute right-0 top-full font-primary-light text-sm",
+              isSubtitleMaxLength ? "text-font-danger" : "text-font-subtlest"
+            )}
+          >
+            {subtitle.length} / {subtitleMaxLength}
+          </span>
+        )}
+      </div>
     </div>
   );
 };
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
+  subtitleMaxLength?: number;
   error?: string;
+  subtitleError?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
+  loading?: boolean;
+  disabled?: boolean;
 }
