@@ -4,6 +4,7 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
+
   darkMode: "class",
   theme: {
     colors: {
@@ -208,6 +209,19 @@ module.exports = {
       "dialog-overlay": "rgba(0,0,0,0.45)",
     },
     extend: {
+      colors: {
+        gray: {
+          400: "#d1d5db",
+          500: "#9ca3af",
+          600: "#4b5563",
+          900: "#111827",
+        },
+        orange: {
+          200: "#fed7aa",
+          700: "#b45309",
+          800: "#92400e",
+        },
+      },
       fontSize: {
         "2xs": ["0.75rem", "1rem"],
         xs: ["0.8125rem", "1rem"],
