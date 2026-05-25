@@ -3,12 +3,19 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
   argTypes: {
     initTitle: {
       defaultValue: "Title",
+      control: {
+        type: "text",
+      },
+    },
+    initSubtitle: {
+      defaultValue: "",
       control: {
         type: "text",
       },
@@ -25,7 +32,19 @@ const meta: Meta<typeof Title> = {
         type: "number",
       },
     },
+    subtitleMaxLength: {
+      defaultValue: 80,
+      control: {
+        type: "number",
+      },
+    },
     error: {
+      defaultValue: "",
+      control: {
+        type: "text",
+      },
+    },
+    subtitleError: {
       defaultValue: "",
       control: {
         type: "text",
@@ -40,11 +59,15 @@ type Story = StoryObj<typeof Title>;
 export const Default: Story = {
   render: (_) => (
     <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
+      {[
+        DefaultTitle,
+        WithSubtitle,
+        ReadOnly,
+        Error,
+        CustomMaxLength,
+      ].map((TitleStory, index) => (
+        <Title {...TitleStory.args} key={index} />
+      ))}
     </div>
   ),
 };
@@ -57,9 +80,17 @@ export const InitTitle: Story = {
   },
 };
 
+export const WithSubtitle: Story = {
+  args: {
+    initTitle: "Main title",
+    initSubtitle: "This is a subtitle line",
+  },
+};
+
 export const ReadOnly: Story = {
   args: {
     initTitle: "Read only title",
+    initSubtitle: "Read only subtitle",
     readOnly: true,
   },
 };
@@ -71,9 +102,19 @@ export const Error: Story = {
   },
 };
 
+export const SubtitleError: Story = {
+  args: {
+    initTitle: "Valid title",
+    subtitlePlaceholder: "Error subtitle",
+    subtitleError: "Subtitle is required",
+  },
+};
+
 export const CustomMaxLength: Story = {
   args: {
     placeholder: "Custom max length",
+    subtitlePlaceholder: "Custom subtitle max length",
     maxLength: 10,
+    subtitleMaxLength: 15,
   },
 };
