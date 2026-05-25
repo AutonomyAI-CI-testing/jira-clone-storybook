@@ -5,54 +5,71 @@ import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
 const DEFAULT_MAX_LENGTH = 80;
 
-export const Title = ({
-  initTitle = "",
+interface TitleField {
+  value: string;
+  placeholder: string;
+  textareaClassName?: string;
+  name: string;
+  autofocus?: boolean;
+}
+
+interface TitleProps {
+  initTitle?: string;
+  initSubtitle?: string;
+  readOnly?: boolean;
+  maxLength?: number;
+  error?: string;
+  placeholder?: string;
+  subtitlePlaceholder?: string;
+}
+
+/**
+ * Internal component for a single textarea field with character count.
+ * Reused for both title and subtitle fields to avoid code duplication.
+ * Only shows the character count when the field has focus.
+ */
+const TitleTextField = ({
+  field,
   readOnly,
-  maxLength = DEFAULT_MAX_LENGTH,
+  maxLength,
+  isFocus,
   error,
-  placeholder = "Write the title",
-}: TitleProps): JSX.Element => {
-  const [title, setTitle] = useState<string>(initTitle);
-  const [isFocus, setIsFocus] = useState<boolean>(true);
-
-  const isMaxLength = title.length >= maxLength;
-  const requireError =
-    error && (title.length === 0 || textAreOnlySpaces(title));
-
-  const onFocus = () => {
-    if (!readOnly) setIsFocus(true);
-  };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
-
-  const updateTitle = (newTitle: string) => {
-    if (newTitle.length > maxLength) return;
-
-    setTitle(newTitle);
-  };
+  value,
+  onChange,
+  onFocus,
+  onBlur,
+  showError,
+}: {
+  field: TitleField;
+  readOnly?: boolean;
+  maxLength: number;
+  isFocus: boolean;
+  error?: string;
+  value: string;
+  onChange: (newValue: string) => void;
+  onFocus: () => void;
+  onBlur: () => void;
+  showError?: boolean;
+}): JSX.Element => {
+  const isMaxLength = value.length >= maxLength;
 
   return (
     <div className="relative">
       <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
+        name={field.name}
+        value={value}
+        setValue={onChange}
+        placeholder={field.placeholder}
         readOnly={readOnly}
         onFocus={onFocus}
         onBlur={onBlur}
         textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
+          field.textareaClassName,
+          showError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
-        autofocus
+        autofocus={field.autofocus}
       />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
-      )}
       {isFocus && (
         <span
           className={cx(
@@ -60,17 +77,94 @@ export const Title = ({
             isMaxLength ? "text-font-danger" : "text-font-subtlest"
           )}
         >
-          {title.length} / {maxLength}
+          {value.length} / {maxLength}
         </span>
       )}
     </div>
   );
 };
 
-interface TitleProps {
-  initTitle?: string;
-  readOnly?: boolean;
-  maxLength?: number;
-  error?: string;
-  placeholder?: string;
-}
+export const Title = ({
+  initTitle = "",
+  initSubtitle = "",
+  readOnly,
+  maxLength = DEFAULT_MAX_LENGTH,
+  error,
+  placeholder = "Write the title",
+  subtitlePlaceholder = "Add a subtitle",
+}: TitleProps): JSX.Element => {
+  const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
+  const [isFocus, setIsFocus] = useState<boolean>(true);
+
+  // Only show error if an error message was provided AND the title is empty or only spaces
+  const requireError = !!(
+    error &&
+    (title.length === 0 || textAreOnlySpaces(title))
+  );
+
+  // Track focus state to show/hide character count and validation styling
+  const onFocus = () => {
+    if (!readOnly) setIsFocus(true);
+  };
+  const onBlur = () => {
+    setIsFocus(false);
+  };
+
+  // Prevent input beyond maxLength by ignoring updates that exceed the limit
+  const updateTitle = (newTitle: string) => {
+    if (newTitle.length > maxLength) return;
+    setTitle(newTitle);
+  };
+
+  const updateSubtitle = (newSubtitle: string) => {
+    if (newSubtitle.length > maxLength) return;
+    setSubtitle(newSubtitle);
+  };
+
+  return (
+    <div className="space-y-2">
+      <div className="relative">
+        <TitleTextField
+          field={{
+            value: title,
+            placeholder,
+            textareaClassName: "font-primary-black text-2xl",
+            name: "title",
+            autofocus: true,
+          }}
+          readOnly={readOnly}
+          maxLength={maxLength}
+          isFocus={isFocus}
+          error={error}
+          value={title}
+          onChange={updateTitle}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          showError={requireError}
+        />
+        {requireError && (
+          <span className="ml-3 font-primary-light text-sm text-font-danger">
+            {error}
+          </span>
+        )}
+      </div>
+      <TitleTextField
+        field={{
+          value: subtitle,
+          placeholder: subtitlePlaceholder,
+          textareaClassName: "font-primary text-sm",
+          name: "subtitle",
+        }}
+        readOnly={readOnly}
+        maxLength={maxLength}
+        isFocus={isFocus}
+        value={subtitle}
+        onChange={updateSubtitle}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        showError={false}
+      />
+    </div>
+  );
+};
