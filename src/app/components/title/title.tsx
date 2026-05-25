@@ -11,6 +11,10 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  minRows = 1,
+  maxRows = undefined,
+  loading = false,
+  disabled = false,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -20,16 +24,31 @@ export const Title = ({
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
-    if (!readOnly) setIsFocus(true);
+    if (!readOnly && !disabled) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
   };
+
+  if (loading) {
+    return (
+      <div className="relative">
+        <div
+          className={cx(
+            "box-border w-full resize-none rounded-md border-none bg-background-accent-grey-subtlest p-3",
+            "h-[40px] animate-pulse"
+          )}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="relative">
@@ -38,13 +57,16 @@ export const Title = ({
         value={title}
         setValue={updateTitle}
         placeholder={placeholder}
-        readOnly={readOnly}
+        readOnly={readOnly || disabled}
         onFocus={onFocus}
         onBlur={onBlur}
+        minRows={minRows}
+        maxRows={maxRows}
         textareaClassName={cx(
           "font-primary-black text-2xl",
           requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+            "focus-visible:outline-border-danger outline outline-2 outline-border-danger",
+          disabled && "opacity-60 cursor-not-allowed"
         )}
         autofocus
       />
@@ -73,4 +95,8 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  minRows?: number;
+  maxRows?: number;
+  loading?: boolean;
+  disabled?: boolean;
 }

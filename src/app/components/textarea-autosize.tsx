@@ -12,10 +12,13 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    minRows = 1,
+    maxRows,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
   const textareaRef = useRef<HTMLParagraphElement>(null);
+  const textareaInputRef = useRef<HTMLTextAreaElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
@@ -35,17 +38,41 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   };
 
   useLayoutEffect(() => {
-    if (!textareaRef.current) return;
+    if (!textareaRef.current || !textareaInputRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
-  }, [value]);
+    const textarea = textareaInputRef.current;
+    const textareaClone = textareaRef.current;
+    
+    // Calculate line height
+    const style = window.getComputedStyle(textarea);
+    const lineHeight = parseFloat(style.lineHeight);
+    
+    // Calculate minimum height based on minRows
+    const minHeight = lineHeight * minRows;
+    
+    // Get the scroll height from the hidden textarea
+    let height = textareaClone.scrollHeight;
+    
+    // Apply minimum height
+    height = Math.max(height, minHeight);
+    
+    // Apply maximum height if specified
+    if (maxRows) {
+      const maxHeight = lineHeight * maxRows;
+      height = Math.min(height, maxHeight);
+    }
+    
+    setTextareaHeight(height);
+  }, [value, minRows, maxRows]);
 
   return (
     <div className="relative">
       <textarea
+        ref={textareaInputRef}
         name={name}
         className={cx(
-          "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          "box-border w-full resize-none rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          maxRows ? "overflow-y-auto" : "overflow-y-hidden",
           textareaClassName
         )}
         value={value}
@@ -80,4 +107,6 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  minRows?: number;
+  maxRows?: number;
 }
