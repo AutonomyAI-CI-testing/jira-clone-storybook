@@ -3,34 +3,16 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
+  decorators: [
+    (Story: React.FC) => (
+      <div style={{ width: "600px", padding: "24px" }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     layout: "centered",
-  },
-  argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
   },
 };
 
@@ -38,42 +20,59 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {
+    initTitle: "Fix the broken login flow for OAuth users",
+    initSubtitle: "Users cannot authenticate using Google or GitHub",
+    readOnly: false,
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write the subtitle",
+  },
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const WithSubtitleOnly: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Main issue title",
+    initSubtitle: "Detailed context and additional information about the title",
+    readOnly: false,
+  },
+};
+
+export const Empty: Story = {
+  args: {
+    initTitle: "",
+    initSubtitle: "",
+    readOnly: false,
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write the subtitle",
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    initTitle: "",
+    initSubtitle: "Additional context",
+    error: "Title is required",
+    readOnly: false,
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write the subtitle",
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Update dashboard performance metrics for Q4 reporting",
+    initSubtitle: "Ensure all KPIs are captured and displayed correctly",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const NearMaxLength: Story = {
   args: {
-    placeholder: "Error title",
-    error: "Title is required",
-  },
-};
-
-export const CustomMaxLength: Story = {
-  args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle:
+      "This is a title that is approaching the maximum allowed character limit",
+    initSubtitle: "This subtitle is also approaching the maximum length allowed",
+    readOnly: false,
+    maxLength: 80,
+    subtitleMaxLength: 120,
   },
 };
