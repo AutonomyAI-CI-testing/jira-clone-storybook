@@ -10,6 +10,8 @@ import {
   ScrollRestoration,
   useFetcher,
   useLoaderData,
+  useRouteError,
+  isRouteErrorResponse,
 } from "@remix-run/react";
 import cx from "classix";
 import {
@@ -25,13 +27,13 @@ import { Error404 } from "./components/error-404";
 import { Error500 } from "./components/error-500";
 import styles from "./styles/app-compiled.css";
 import fonts from "./styles/fonts.css";
-import fuck from "react-toastify/dist/ReactToastify.css";
+import toastifyStyles from "react-toastify/dist/ReactToastify.css";
 
 export const links = () => {
   return [
     { rel: "stylesheet", href: fonts },
     { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: fuck },
+    { rel: "stylesheet", href: toastifyStyles },
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   ];
 };
@@ -166,7 +168,33 @@ const errorComponentStyle: CSSProperties = {
   fontWeight: "bold",
 };
 
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    // Handle thrown Response errors (404, etc.)
+    if (error.status === 404) {
+      return (
+        <html>
+          <head>
+            <title>Ooops! Not found</title>
+            <Meta />
+            <Links />
+          </head>
+          <body>
+            <div style={errorComponentStyle}>
+              <Error404
+                message="It seems that you have lost! Go to the main page"
+                href="/"
+              />
+            </div>
+          </body>
+        </html>
+      );
+    }
+  }
+
+  // Handle all other errors (including Error instances)
   console.error(error);
   const errorMessage =
     "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
@@ -176,25 +204,5 @@ export function ErrorBoundary({ error }: { error: Error }) {
     <div style={errorComponentStyle}>
       <Error500 message={errorMessage} href="/" />
     </div>
-  );
-}
-
-export function CatchBoundary() {
-  return (
-    <html>
-      <head>
-        <title>Ooops! Not found</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
-      </body>
-    </html>
   );
 }
