@@ -3,12 +3,19 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
   argTypes: {
     initTitle: {
       defaultValue: "Title",
+      control: {
+        type: "text",
+      },
+    },
+    initSubtitle: {
+      defaultValue: "",
       control: {
         type: "text",
       },
@@ -25,8 +32,32 @@ const meta: Meta<typeof Title> = {
         type: "number",
       },
     },
+    subtitleMaxLength: {
+      defaultValue: 80,
+      control: {
+        type: "number",
+      },
+    },
     error: {
       defaultValue: "",
+      control: {
+        type: "text",
+      },
+    },
+    subtitleError: {
+      defaultValue: "",
+      control: {
+        type: "text",
+      },
+    },
+    placeholder: {
+      defaultValue: "Write the title",
+      control: {
+        type: "text",
+      },
+    },
+    subtitlePlaceholder: {
+      defaultValue: "Write the subtitle",
       control: {
         type: "text",
       },
@@ -40,7 +71,7 @@ type Story = StoryObj<typeof Title>;
 export const Default: Story = {
   render: (_) => (
     <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
+      {[DefaultTitle, WithSubtitle, ReadOnly, ReadOnlyWithSubtitle, Error, CustomMaxLength].map(
         (TitleStory, index) => (
           <Title {...TitleStory.args} key={index} />
         )
@@ -68,6 +99,21 @@ export const Error: Story = {
   args: {
     placeholder: "Error title",
     error: "Title is required",
+  },
+};
+
+export const WithSubtitle: Story = {
+  args: {
+    initTitle: "Default title",
+    initSubtitle: "Default subtitle",
+  },
+};
+
+export const ReadOnlyWithSubtitle: Story = {
+  args: {
+    initTitle: "Read only title",
+    initSubtitle: "Read only subtitle",
+    readOnly: true,
   },
 };
 
