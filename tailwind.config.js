@@ -5,6 +5,15 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
+  safelist: [
+    { pattern: /^(text|bg|border|placeholder)-gray-(300|400|500|600|700)$/ },
+    { pattern: /^hover:(text|bg|border)-gray-(300|400|500|600|700)$/, variants: ["hover"] },
+    "bg-[#2b2b2b]",
+    "bg-[#333333]",
+    "bg-[#843a17]",
+    "hover:bg-[#953d1a]",
+    "active:bg-[#73341a]",
+  ],
   theme: {
     colors: {
       font: {
@@ -191,6 +200,13 @@ module.exports = {
       white: "white",
       black: "black",
       transparent: "transparent",
+      gray: {
+        300: "#d1d5db",
+        400: "#9ca3af",
+        500: "#6b7280",
+        600: "#4b5563",
+        700: "#374151",
+      },
     },
     fontFamily: {
       "primary-light": ["CircularStdLight", "sans-serif"],
