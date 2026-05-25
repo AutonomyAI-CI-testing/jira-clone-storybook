@@ -25,13 +25,15 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     if (onFocus) onFocus();
   };
 
+  // Change handler for textarea — passes new value up to parent
   const handleTitleChange = (e: React.FormEvent<HTMLTextAreaElement>): void => {
     const value = e.currentTarget.value;
     setValue(value);
   };
 
+  // Check if value has any non-whitespace content to determine placeholder vs. actual content display
   const valueIsNotOnlySpaces = (): boolean => {
-    return !/^( )\1*$/.test(value);
+    return !/^\s*$/.test(value);
   };
 
   useLayoutEffect(() => {
@@ -57,10 +59,11 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         style={{ height: `${textareaHeight}px` }}
         autoFocus={autofocus}
       />
+      {/* Hidden mirror element — measures text height to auto-size the textarea above it */}
       <p
         ref={textareaRef}
         className={cx(
-          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden p-3 opacity-0",
+          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden whitespace-pre-wrap p-3 opacity-0",
           textareaClassName
         )}
       >
