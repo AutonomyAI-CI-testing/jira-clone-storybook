@@ -3,34 +3,9 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
+    layout: "padded",
   },
 };
 
@@ -38,42 +13,48 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {
+    initTitle: "Implement user authentication flow",
+    initSubtitle: "Add login, registration, and password reset functionality",
+  },
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const WithLongSubtitle: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Project onboarding",
+    initSubtitle: "Welcome to the Jira clone project. This subtitle describes the scope and goals of the project in more detail.",
+    subtitleMaxLength: 120,
+  },
+};
+
+export const EmptyEditable: Story = {
+  args: {
+    initTitle: "",
+    initSubtitle: "",
+    placeholder: "Write the title",
+    subtitlePlaceholder: "Write the subtitle",
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Fix critical bug in authentication module",
+    initSubtitle: "The login flow fails when users have special characters in their email address",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const WithError: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
+    initSubtitle: "A subtitle is provided but the title is empty",
     error: "Title is required",
   },
 };
 
-export const CustomMaxLength: Story = {
+export const LongContent: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle: "Redesign the main navigation and improve accessibility",
+    initSubtitle: "Update the navigation component to meet WCAG 2.1 AA standards and improve keyboard navigation for all user flows",
   },
 };
