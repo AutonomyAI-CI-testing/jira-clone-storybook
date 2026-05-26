@@ -11,21 +11,28 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  lines = 1,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Track focus to conditionally show character count display
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error when required validation message exists and content is empty or whitespace only
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
+    // Show character count display on focus (unless read-only)
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => {
+    // Hide character count display on blur
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
+    // Prevent updates that exceed max length constraint
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
@@ -47,6 +54,7 @@ export const Title = ({
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
+        lines={lines}
       />
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
@@ -73,4 +81,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  lines?: number;
 }

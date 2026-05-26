@@ -12,10 +12,16 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    lines = 1,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
   const textareaRef = useRef<HTMLParagraphElement>(null);
+
+  // For multi-line textareas, calculate max height to prevent unbounded growth.
+  // Allows scrolling when content exceeds the specified line count.
+  const lineHeight = 24;
+  const maxHeight = lines * lineHeight + 24; // 24px for padding + borders
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
@@ -37,15 +43,21 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
-  }, [value]);
+    // Measure hidden element's scroll height to determine actual content size
+    const scrollHeight = textareaRef.current.scrollHeight;
+    // Constrain to maxHeight to limit visible rows while enabling scroll overflow
+    const finalHeight = Math.min(scrollHeight, maxHeight);
+    setTextareaHeight(finalHeight);
+  }, [value, maxHeight]);
 
   return (
     <div className="relative">
       <textarea
         name={name}
+        // Enable scrolling only for multi-line textareas that exceed max height
         className={cx(
-          "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          "box-border w-full resize-none rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          lines > 1 ? "overflow-y-auto" : "overflow-y-hidden",
           textareaClassName
         )}
         value={value}
@@ -80,4 +92,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  lines?: number;
 }
