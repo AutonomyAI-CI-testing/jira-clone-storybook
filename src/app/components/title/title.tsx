@@ -4,15 +4,20 @@ import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
 const DEFAULT_MAX_LENGTH = 80;
+const DEFAULT_SUBTITLE_MAX_LENGTH = 120;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
+  subtitleMaxLength = DEFAULT_SUBTITLE_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Write the subtitle",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
@@ -22,13 +27,19 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
 
     setTitle(newTitle);
+  };
+
+  const updateSubtitle = (newSubtitle: string) => {
+    if (newSubtitle.length > subtitleMaxLength) return;
+
+    setSubtitle(newSubtitle);
   };
 
   return (
@@ -63,14 +74,37 @@ export const Title = ({
           {title.length} / {maxLength}
         </span>
       )}
+      <TextareaAutosize
+        name="subtitle"
+        value={subtitle}
+        setValue={updateSubtitle}
+        placeholder={subtitlePlaceholder}
+        readOnly={readOnly}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        textareaClassName={cx(
+          "font-primary text-base",
+          requireError &&
+            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+        )}
+        autofocus={false}
+      />
+      {isFocus && subtitle.length > 0 && (
+        <span className="ml-3 font-primary-light text-sm text-font-subtlest">
+          {subtitle.length} / {subtitleMaxLength}
+        </span>
+      )}
     </div>
   );
 };
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
+  subtitleMaxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
 }
