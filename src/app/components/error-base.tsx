@@ -1,4 +1,4 @@
-export const ErrorBase = ({ variant, message, href }: Props) => {
+export const ErrorBase = ({ variant, message, href }: Props): JSX.Element => {
   const imgPath = `/images/error-${variant}.svg`;
 
   return (
@@ -25,5 +25,5 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
 interface Props {
   variant: "500" | "404";
   message: string;
-  href: string;
+  href?: string;
 }
