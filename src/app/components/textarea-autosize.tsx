@@ -12,6 +12,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    lines,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
@@ -34,11 +35,48 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     return !/^( )\1*$/.test(value);
   };
 
-  useLayoutEffect(() => {
+  // Measure the height of the hidden paragraph element to size the textarea appropriately.
+  // The paragraph mirrors the textarea content to calculate the required height for multi-line text.
+  // When the paragraph is hidden (display:none, visibility:hidden), temporarily make it visible to measure.
+  const calculateHeight = (): void => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
+    const scrollHeight = textareaRef.current.scrollHeight;
+
+    if (scrollHeight === 0) {
+      const p = textareaRef.current;
+      const originalDisplay = p.style.display;
+      const originalVisibility = p.style.visibility;
+      const originalPosition = p.style.position;
+      const originalZIndex = p.style.zIndex;
+
+      p.style.display = "block";
+      p.style.visibility = "visible";
+      p.style.position = "relative";
+      p.style.zIndex = "1";
+
+      const measuredHeight = p.scrollHeight;
+
+      p.style.display = originalDisplay;
+      p.style.visibility = originalVisibility;
+      p.style.position = originalPosition;
+      p.style.zIndex = originalZIndex;
+
+      setTextareaHeight(Math.max(40, measuredHeight));
+    } else {
+      setTextareaHeight(scrollHeight);
+    }
+  };
+
+  useLayoutEffect(() => {
+    calculateHeight();
   }, [value]);
+
+  // Initial height calculation on mount to ensure multi-line content displays fully.
+  // This is necessary for content that may already be populated (e.g., editing existing titles).
+  useLayoutEffect(() => {
+    calculateHeight();
+  }, []);
 
   return (
     <div className="relative">
@@ -56,11 +94,12 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         onBlur={onBlur}
         style={{ height: `${textareaHeight}px` }}
         autoFocus={autofocus}
+        rows={lines}
       />
       <p
         ref={textareaRef}
         className={cx(
-          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden p-3 opacity-0",
+          "absolute left-0 top-0 -z-10 box-border w-full overflow-y-hidden whitespace-pre-wrap p-3 opacity-0",
           textareaClassName
         )}
       >
@@ -80,4 +119,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  lines?: number;
 }
