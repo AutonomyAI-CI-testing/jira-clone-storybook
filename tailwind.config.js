@@ -208,6 +208,10 @@ module.exports = {
       "dialog-overlay": "rgba(0,0,0,0.45)",
     },
     extend: {
+      colors: {
+        gray: require("tailwindcss/colors").gray,
+        orange: require("tailwindcss/colors").orange,
+      },
       fontSize: {
         "2xs": ["0.75rem", "1rem"],
         xs: ["0.8125rem", "1rem"],
