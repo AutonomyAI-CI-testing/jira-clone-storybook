@@ -1,0 +1,56 @@
+/* Supplemental styles for TestCard - provides standard Tailwind gray/orange utilities
+   that are not part of the project's custom Tailwind theme */
+
+/* Background colors */
+.bg-black {
+  background-color: #2b2b2b;
+}
+.bg-gray-900 {
+  background-color: transparent;
+}
+
+/* Text colors */
+.text-gray-300 {
+  color: #b5b5b5;
+}
+.text-gray-400 {
+  color: #a3a3a2;
+}
+.text-gray-500 {
+  color: #8b9291;
+}
+.text-gray-600 {
+  color: #737470;
+}
+.text-gray-700 {
+  color: #71726e;
+}
+
+/* Border colors */
+.border-gray-600 {
+  border-color: #5a5a5a;
+}
+.border-gray-300 {
+  border-color: #d1d5db;
+}
+
+/* Padding */
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
+/* Placeholder colors */
+.placeholder-gray-700::placeholder {
+  color: #a3a3a2;
+}
+
+/* Brown-orange button backgrounds */
+.bg-orange-700 {
+  background-color: #8b4513;
+}
+.hover\:bg-orange-600:hover {
+  background-color: #a0522d;
+}
+.active\:bg-orange-800:active {
+  background-color: #654321;
+}
