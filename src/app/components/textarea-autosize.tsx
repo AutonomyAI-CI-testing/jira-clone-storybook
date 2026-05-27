@@ -12,15 +12,16 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    maxHeight,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
+  // On focus, move cursor to end of text to ensure visible insertion point
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
     const length = target.value.length;
-    // Place cursor at the end of the current text
     target.setSelectionRange(length, length);
     if (onFocus) onFocus();
   };
@@ -30,10 +31,12 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     setValue(value);
   };
 
+  // Check if value contains anything other than spaces (regex avoids showing placeholder text if only whitespace)
   const valueIsNotOnlySpaces = (): boolean => {
     return !/^( )\1*$/.test(value);
   };
 
+  // Update textarea height based on content by reading the hidden paragraph's scrollHeight
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
@@ -46,7 +49,8 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         name={name}
         className={cx(
           "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
-          textareaClassName
+          textareaClassName,
+          maxHeight && "overflow-y-auto"
         )}
         value={value}
         onChange={handleTitleChange}
@@ -54,7 +58,10 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         readOnly={readOnly}
         onFocus={handleOnFocus}
         onBlur={onBlur}
-        style={{ height: `${textareaHeight}px` }}
+        style={{
+          height: `${textareaHeight}px`,
+          ...(maxHeight && { maxHeight }),
+        }}
         autoFocus={autofocus}
       />
       <p
@@ -80,4 +87,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  maxHeight?: string;
 }

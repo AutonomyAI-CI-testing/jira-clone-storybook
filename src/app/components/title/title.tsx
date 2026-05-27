@@ -11,20 +11,24 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  maxLines,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
+  // Show error only if error prop is provided AND title is empty or only whitespace
   const isMaxLength = title.length >= maxLength;
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
+  // Show focus state only in editable mode
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
+  const onBlur = () => setIsFocus(false);
+
+  // Update title only if it doesn't exceed maxLength
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
 
@@ -46,6 +50,8 @@ export const Title = ({
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
+        // Limit textarea height to a specific number of lines (36px per line)
+        maxHeight={maxLines ? `${maxLines * 36}px` : undefined}
         autofocus
       />
       {requireError && (
@@ -73,4 +79,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  maxLines?: number;
 }
