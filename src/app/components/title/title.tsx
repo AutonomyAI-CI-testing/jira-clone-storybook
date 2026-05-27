@@ -3,7 +3,7 @@ import cx from "classix";
 import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
-const DEFAULT_MAX_LENGTH = 80;
+const DEFAULT_MAX_LENGTH = 200;
 
 export const Title = ({
   initTitle = "",
@@ -18,12 +18,12 @@ export const Title = ({
   const isMaxLength = title.length >= maxLength;
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
+  const lineCount = title.split("\n").length;
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -54,14 +54,18 @@ export const Title = ({
         </span>
       )}
       {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
-          )}
-        >
-          {title.length} / {maxLength}
-        </span>
+        <div className="mt-2 flex justify-between font-primary-light text-sm">
+          <span>
+            {lineCount} {lineCount === 1 ? "line" : "lines"}
+          </span>
+          <span
+            className={cx(
+              isMaxLength ? "text-font-danger" : "text-font-subtlest"
+            )}
+          >
+            {title.length} / {maxLength}
+          </span>
+        </div>
       )}
     </div>
   );
