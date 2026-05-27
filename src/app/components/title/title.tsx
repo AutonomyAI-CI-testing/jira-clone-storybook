@@ -7,70 +7,115 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Add a description",
+  variant = "default",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
+  // Get variant-specific classes for title textarea
+  const getTextareaVariantClasses = (): string => {
+    if (variant === "outline") {
+      return "border-2 border-border-input focus-visible:border-border-brand";
+    }
+    if (variant === "ghost") {
+      return "text-font-subtlest focus-visible:text-font";
+    }
+    return "";
+  };
+
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
+    // Prevent setting title beyond max length
     if (newTitle.length > maxLength) return;
-
     setTitle(newTitle);
   };
 
+  const updateSubtitle = (newSubtitle: string) => {
+    setSubtitle(newSubtitle);
+  };
+
   return (
-    <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
-      )}
-      {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
+    <div className="space-y-3">
+      <div className="relative">
+        <TextareaAutosize
+          name="title"
+          value={title}
+          setValue={updateTitle}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary-black text-2xl",
+            getTextareaVariantClasses(),
+            requireError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
           )}
-        >
-          {title.length} / {maxLength}
-        </span>
-      )}
+          autofocus
+        />
+        {requireError && (
+          <span className="ml-3 font-primary-light text-sm text-font-danger">
+            {error}
+          </span>
+        )}
+        {isFocus && (
+          <span
+            className={cx(
+              "absolute right-0 top-full font-primary-light text-sm",
+              isMaxLength ? "text-font-danger" : "text-font-subtlest"
+            )}
+          >
+            {title.length} / {maxLength}
+          </span>
+        )}
+      </div>
+      <div>
+        <TextareaAutosize
+          name="subtitle"
+          value={subtitle}
+          setValue={updateSubtitle}
+          placeholder={subtitlePlaceholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary text-lg",
+            // Apply variant-specific classes to subtitle textarea
+            variant === "outline" &&
+              "border-2 border-border-input focus-visible:border-border-brand",
+            variant === "ghost" && "text-font-subtlest focus-visible:text-font"
+          )}
+        />
+      </div>
     </div>
   );
 };
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
+  variant?: "default" | "outline" | "ghost";
 }
