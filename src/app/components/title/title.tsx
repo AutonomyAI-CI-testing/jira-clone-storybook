@@ -11,25 +11,31 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  variant = "default",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Track focus state to show/hide character counter
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Only show error when both the error prop exists AND the input is empty or whitespace-only
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
+  // Only allow focus state changes when not in read-only mode
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
+  // Prevent setting title beyond max length to enforce UI constraint
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
-
     setTitle(newTitle);
   };
+
+  // Calculate line count for display when not in read-only mode
+  const lineCount = title.split("\n").length;
 
   return (
     <div className="relative">
@@ -42,12 +48,21 @@ export const Title = ({
         onFocus={onFocus}
         onBlur={onBlur}
         textareaClassName={cx(
-          "font-primary-black text-2xl",
+          "font-primary-black text-2xl leading-tight",
+          variant === "outline" &&
+            "border-2 border-border-brand focus-visible:outline-none",
+          variant === "ghost" &&
+            "bg-transparent text-font-subtlest opacity-70 focus-visible:outline-none focus-visible:opacity-100 focus-visible:text-font",
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
       />
+      {!readOnly && lineCount > 1 && (
+        <div className="mt-1 font-primary-light text-xs text-font-subtlest">
+          {lineCount} line{lineCount !== 1 ? "s" : ""}
+        </div>
+      )}
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
@@ -67,10 +82,11 @@ export const Title = ({
   );
 };
 
-interface TitleProps {
+export interface TitleProps {
   initTitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  variant?: "default" | "outline" | "ghost";
 }
