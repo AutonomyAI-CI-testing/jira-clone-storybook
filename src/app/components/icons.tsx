@@ -1,6 +1,11 @@
 import { FaCheckSquare } from "react-icons/fa";
 import cx from "classix";
 
+interface IconProps {
+  size?: number;
+  className?: string;
+}
+
 export const TaskIcon = ({
   size = 24,
   className = "",
@@ -13,8 +18,3 @@ export const TaskIcon = ({
     />
   </span>
 );
-
-interface IconProps {
-  size?: number;
-  className?: string;
-}

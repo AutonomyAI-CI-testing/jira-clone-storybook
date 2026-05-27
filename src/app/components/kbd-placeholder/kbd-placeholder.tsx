@@ -1,3 +1,7 @@
+interface Props {
+  children: string;
+}
+
 export const Kbd = ({ children }: Props): JSX.Element => {
   return (
     <kbd
@@ -8,7 +12,3 @@ export const Kbd = ({ children }: Props): JSX.Element => {
     </kbd>
   );
 };
-
-interface Props {
-  children: string;
-}

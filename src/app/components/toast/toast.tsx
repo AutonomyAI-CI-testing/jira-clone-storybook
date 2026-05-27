@@ -1,6 +1,10 @@
 import { ToastContainer } from "react-toastify";
 import { Theme } from "@app/store/theme.store";
 
+interface Props {
+  theme: Theme;
+}
+
 export const Toast = ({ theme }: Props) => {
   const toastTheme = theme === "light" ? "light" : "dark";
 
@@ -19,7 +23,3 @@ export const Toast = ({ theme }: Props) => {
     />
   );
 };
-
-interface Props {
-  theme: Theme;
-}

@@ -5,6 +5,7 @@ import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
 const DEFAULT_MAX_LENGTH = 80;
 
+// Title component for editing and displaying a title with character limit and optional error handling
 export const Title = ({
   initTitle = "",
   readOnly,
@@ -15,16 +16,21 @@ export const Title = ({
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
+  // Check if at max length to show warning color in character counter
   const isMaxLength = title.length >= maxLength;
+  // Show error when provided AND (title is empty OR contains only spaces)
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
+  const onBlur = () => {
+    setIsFocus(false);
+  };
+
+  // Prevent title from exceeding max length
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
 
@@ -47,6 +53,7 @@ export const Title = ({
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
+        minRows={2}
       />
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
