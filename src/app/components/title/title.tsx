@@ -7,12 +7,15 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Add a description",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
@@ -22,8 +25,7 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -41,12 +43,24 @@ export const Title = ({
         readOnly={readOnly}
         onFocus={onFocus}
         onBlur={onBlur}
+        minHeight={80}
         textareaClassName={cx(
           "font-primary-black text-2xl",
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
+      />
+      <TextareaAutosize
+        name="subtitle"
+        value={subtitle}
+        setValue={setSubtitle}
+        placeholder={subtitlePlaceholder}
+        readOnly={readOnly}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        minHeight={40}
+        textareaClassName="font-primary-medium text-base text-font-subtle"
       />
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
@@ -69,8 +83,10 @@ export const Title = ({
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
 }
