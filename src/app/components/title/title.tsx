@@ -22,8 +22,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -32,37 +32,41 @@ export const Title = ({
   };
 
   return (
-    <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
-      )}
-      {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
+    <div className="flex flex-col">
+      <div className="relative">
+        <TextareaAutosize
+          name="title"
+          value={title}
+          setValue={updateTitle}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary-black text-2xl",
+            requireError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
           )}
-        >
-          {title.length} / {maxLength}
-        </span>
-      )}
+          autofocus
+        />
+      </div>
+      <div className="mt-2 flex flex-col gap-1">
+        {requireError && (
+          <span className="font-primary-light text-sm text-font-danger">
+            {error}
+          </span>
+        )}
+        {isFocus && (
+          <span
+            className={cx(
+              "text-right font-primary-light text-sm",
+              isMaxLength ? "text-font-danger" : "text-font-subtlest"
+            )}
+          >
+            {title.length} / {maxLength}
+          </span>
+        )}
+      </div>
     </div>
   );
 };
