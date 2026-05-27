@@ -106,6 +106,74 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
         return "text-font-info hover:bg-background-info-hovered active:bg-background-info-pressed";
       }
 
+      if (variant === "outline") {
+        return "border-2 border-background-info text-font-info hover:bg-background-info-hovered active:bg-background-info-pressed";
+      }
+
+      if (variant === "ghost") {
+        return "text-font-info hover:bg-background-info-hovered active:bg-background-info-pressed";
+      }
+
+      return "";
+    };
+
+    const primaryOutlineAndGhostStyle = (): string => {
+      if (variant === "outline") {
+        return "border-2 border-background-brand-bold text-font-brand hover:bg-background-brand-subtlest-hovered active:bg-background-brand-subtlest-pressed";
+      }
+
+      if (variant === "ghost") {
+        return "text-font-brand hover:bg-background-brand-subtlest-hovered active:bg-background-brand-subtlest-pressed";
+      }
+
+      return "";
+    };
+
+    const neutralOutlineAndGhostStyle = (): string => {
+      if (variant === "outline") {
+        return "border-2 border-background-neutral-bold text-font-subtle hover:bg-background-neutral-hovered active:bg-background-neutral-pressed";
+      }
+
+      if (variant === "ghost") {
+        return "text-font-subtle hover:bg-background-neutral-hovered active:bg-background-neutral-pressed";
+      }
+
+      return "";
+    };
+
+    const successOutlineAndGhostStyle = (): string => {
+      if (variant === "outline") {
+        return "border-2 border-background-success-bold text-font-success hover:bg-background-success-hovered active:bg-background-success-pressed";
+      }
+
+      if (variant === "ghost") {
+        return "text-font-success hover:bg-background-success-hovered active:bg-background-success-pressed";
+      }
+
+      return "";
+    };
+
+    const dangerOutlineAndGhostStyle = (): string => {
+      if (variant === "outline") {
+        return "border-2 border-background-danger-bold text-font-danger hover:bg-background-danger-hovered active:bg-background-danger-pressed";
+      }
+
+      if (variant === "ghost") {
+        return "text-font-danger hover:bg-background-danger-hovered active:bg-background-danger-pressed";
+      }
+
+      return "";
+    };
+
+    const warningOutlineAndGhostStyle = (): string => {
+      if (variant === "outline") {
+        return "border-2 border-background-warning-bold text-font-warning hover:bg-background-warning-hovered active:bg-background-warning-pressed";
+      }
+
+      if (variant === "ghost") {
+        return "text-font-warning hover:bg-background-warning-hovered active:bg-background-warning-pressed";
+      }
+
       return "";
     };
 
@@ -114,11 +182,15 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
         ref={forwardedRef}
         className={cx(
           "flex cursor-pointer items-center justify-center gap-2 rounded p-2 text-font disabled:cursor-not-allowed disabled:opacity-60",
-          color === "primary" && primaryStyle(),
-          color === "neutral" && neutralStyle(),
-          color === "success" && successStyle(),
-          color === "danger" && dangerStyle(),
-          color === "warning" && warningStyle(),
+          color === "primary" &&
+            (primaryStyle() || primaryOutlineAndGhostStyle()),
+          color === "neutral" &&
+            (neutralStyle() || neutralOutlineAndGhostStyle()),
+          color === "success" &&
+            (successStyle() || successOutlineAndGhostStyle()),
+          color === "danger" && (dangerStyle() || dangerOutlineAndGhostStyle()),
+          color === "warning" &&
+            (warningStyle() || warningOutlineAndGhostStyle()),
           color === "info" && infoStyle(),
           size === "lg" && "gap-3 px-8 py-2 text-lg",
           className
@@ -136,6 +208,6 @@ Button.displayName = "Button";
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   color?: "primary" | "neutral" | "success" | "danger" | "warning" | "info";
-  variant?: "contained" | "subtlest" | "text";
+  variant?: "contained" | "subtlest" | "text" | "outline" | "ghost";
   size?: "md" | "lg";
 }
