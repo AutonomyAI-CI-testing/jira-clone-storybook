@@ -13,7 +13,7 @@ export const Title = ({
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
-  const [isFocus, setIsFocus] = useState<boolean>(true);
+  const [isFocus, setIsFocus] = useState<boolean>(false);
 
   const isMaxLength = title.length >= maxLength;
   const requireError =
@@ -22,8 +22,7 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
