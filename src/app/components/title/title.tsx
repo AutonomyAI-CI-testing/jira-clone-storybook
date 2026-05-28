@@ -13,6 +13,7 @@ export const Title = ({
   placeholder = "Write the title",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Focus state is true on initial render — the component autofocuses on mount
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
@@ -22,11 +23,13 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
-    if (newTitle.length > maxLength) return;
+    // Limit character count but allow newlines — they don't count toward the limit
+    // This enables multi-line titles while enforcing a character budget
+    const charCountWithoutNewlines = newTitle.replace(/\n/g, "").length;
+    if (charCountWithoutNewlines > maxLength) return;
 
     setTitle(newTitle);
   };
@@ -54,6 +57,7 @@ export const Title = ({
         </span>
       )}
       {isFocus && (
+        // Character counter displays only while focused to reduce visual clutter
         <span
           className={cx(
             "absolute right-0 top-full font-primary-light text-sm",
