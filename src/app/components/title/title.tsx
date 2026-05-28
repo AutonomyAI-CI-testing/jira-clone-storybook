@@ -11,19 +11,24 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  minRows = 2,
+  variant = "default",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only if title is empty or contains only spaces
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -41,8 +46,15 @@ export const Title = ({
         readOnly={readOnly}
         onFocus={onFocus}
         onBlur={onBlur}
+        minRows={minRows}
         textareaClassName={cx(
           "font-primary-black text-2xl",
+          // Apply variant-specific styling: outline adds border, ghost removes background
+          variant === "outline" &&
+            "border-2 border-border-brand focus-visible:border-border-brand",
+          variant === "ghost" &&
+            "bg-transparent focus-visible:bg-transparent hover:bg-transparent opacity-80 hover:opacity-100",
+          // Error state takes precedence: show red border with danger outline
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
@@ -53,6 +65,7 @@ export const Title = ({
           {error}
         </span>
       )}
+      {/* Character counter: visible when focused, red when at max length */}
       {isFocus && (
         <span
           className={cx(
@@ -73,4 +86,6 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  minRows?: number;
+  variant?: "default" | "outline" | "ghost";
 }

@@ -12,9 +12,13 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    minRows = 1,
   } = props;
 
-  const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  // Calculate minimum height based on minRows: ~28px per row + 6px padding
+  const minHeight = Math.max(40, minRows * 28 + 6);
+  const [textareaHeight, setTextareaHeight] = useState<number>(minHeight);
+  // Ref to the hidden paragraph that mirrors textarea height for accurate auto-sizing
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -30,15 +34,18 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     setValue(value);
   };
 
+  // Check if value contains any non-space characters
   const valueIsNotOnlySpaces = (): boolean => {
     return !/^( )\1*$/.test(value);
   };
 
+  // Sync textarea height with content: measure the hidden paragraph's scroll height
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
-  }, [value]);
+    const scrollHeight = textareaRef.current.scrollHeight;
+    setTextareaHeight(Math.max(minHeight, scrollHeight));
+  }, [value, minHeight]);
 
   return (
     <div className="relative">
@@ -57,6 +64,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         style={{ height: `${textareaHeight}px` }}
         autoFocus={autofocus}
       />
+      {/* Hidden paragraph with same styling as textarea to measure content height */}
       <p
         ref={textareaRef}
         className={cx(
@@ -80,4 +88,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  minRows?: number;
 }
