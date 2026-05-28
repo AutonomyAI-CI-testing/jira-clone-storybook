@@ -5,6 +5,13 @@ import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
 const DEFAULT_MAX_LENGTH = 80;
 
+/**
+ * Title Component
+ * Renders an editable title field with a character counter.
+ * Character counter displays only when focused to minimize UI clutter.
+ * Max length enforcement prevents users from exceeding character limits.
+ */
+
 export const Title = ({
   initTitle = "",
   readOnly,
@@ -22,8 +29,10 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
