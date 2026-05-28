@@ -14,7 +14,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     onBlur,
   } = props;
 
-  const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  const [textareaHeight, setTextareaHeight] = useState<number>(0);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -31,13 +31,17 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   };
 
   const valueIsNotOnlySpaces = (): boolean => {
-    return !/^( )\1*$/.test(value);
+    return !/^[ \n]*$/.test(value);
   };
 
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
+    // Use the phantom paragraph's scrollHeight to calculate textarea height
+    const phantomHeight = textareaRef.current.scrollHeight;
+    // Ensure minimum height and add a small buffer for padding/border
+    const minHeight = 40;
+    setTextareaHeight(Math.max(phantomHeight, minHeight));
   }, [value]);
 
   return (
@@ -60,9 +64,10 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
       <p
         ref={textareaRef}
         className={cx(
-          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden p-3 opacity-0",
+          "absolute left-0 top-0 -z-10 box-border whitespace-pre-wrap overflow-y-hidden p-3 opacity-0",
           textareaClassName
         )}
+        aria-hidden="true"
       >
         {(valueIsNotOnlySpaces() && value) || placeholder}
       </p>
