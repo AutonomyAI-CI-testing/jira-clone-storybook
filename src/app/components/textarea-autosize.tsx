@@ -14,7 +14,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     onBlur,
   } = props;
 
-  const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  const [textareaHeight, setTextareaHeight] = useState<number>(80);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -37,7 +37,10 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
-    setTextareaHeight(textareaRef.current.scrollHeight);
+    const scrollHeight = textareaRef.current.scrollHeight;
+    // Maintain minimum height of ~80px (2 lines) to ensure visibility
+    const minHeight = 80;
+    setTextareaHeight(Math.max(scrollHeight, minHeight));
   }, [value]);
 
   return (
@@ -45,7 +48,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
       <textarea
         name={name}
         className={cx(
-          "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          "box-border w-full resize-none overflow-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
           textareaClassName
         )}
         value={value}
@@ -60,7 +63,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
       <p
         ref={textareaRef}
         className={cx(
-          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden p-3 opacity-0",
+          "absolute left-0 top-0 -z-10 box-border overflow-hidden whitespace-pre-wrap p-3 opacity-0",
           textareaClassName
         )}
       >
@@ -80,4 +83,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  minLines?: number;
 }
