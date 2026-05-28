@@ -4,31 +4,51 @@ import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
 const DEFAULT_MAX_LENGTH = 80;
+const DEFAULT_SUBTITLE_MAX_LENGTH = 120;
 
 export const Title = ({
   initTitle = "",
+  initSubtitle = "",
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
+  subtitleMaxLength = DEFAULT_SUBTITLE_MAX_LENGTH,
   error,
+  subtitleError,
   placeholder = "Write the title",
+  subtitlePlaceholder = "Write the subtitle",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  const [subtitle, setSubtitle] = useState<string>(initSubtitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
+  // Determine if character limit has been reached for styling/warning purposes
   const isMaxLength = title.length >= maxLength;
+  const subtitleIsMaxLength = subtitle.length >= subtitleMaxLength;
+  
+  // Only show error state if an error message is provided AND the field is empty/whitespace-only
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
+  const requireSubtitleError =
+    subtitleError && (subtitle.length === 0 || textAreOnlySpaces(subtitle));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
+  const onBlur = () => {
+    setIsFocus(false);
+  };
+
+  // Update title only if it doesn't exceed the max length
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
-
     setTitle(newTitle);
+  };
+
+  // Update subtitle only if it doesn't exceed the max length
+  const updateSubtitle = (newSubtitle: string) => {
+    if (newSubtitle.length > subtitleMaxLength) return;
+    setSubtitle(newSubtitle);
   };
 
   return (
@@ -63,14 +83,47 @@ export const Title = ({
           {title.length} / {maxLength}
         </span>
       )}
+      <TextareaAutosize
+        name="subtitle"
+        value={subtitle}
+        setValue={updateSubtitle}
+        placeholder={subtitlePlaceholder}
+        readOnly={readOnly}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        textareaClassName={cx(
+          "font-primary-light text-lg",
+          requireSubtitleError &&
+            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+        )}
+      />
+      {requireSubtitleError && (
+        <span className="ml-3 font-primary-light text-sm text-font-danger">
+          {subtitleError}
+        </span>
+      )}
+      {isFocus && (
+        <span
+          className={cx(
+            "absolute right-0 top-full font-primary-light text-sm",
+            subtitleIsMaxLength ? "text-font-danger" : "text-font-subtlest"
+          )}
+        >
+          {subtitle.length} / {subtitleMaxLength}
+        </span>
+      )}
     </div>
   );
 };
 
 interface TitleProps {
   initTitle?: string;
+  initSubtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
+  subtitleMaxLength?: number;
   error?: string;
+  subtitleError?: string;
   placeholder?: string;
+  subtitlePlaceholder?: string;
 }
