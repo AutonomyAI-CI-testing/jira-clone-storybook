@@ -31,7 +31,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   };
 
   const valueIsNotOnlySpaces = (): boolean => {
-    return !/^( )\1*$/.test(value);
+    return !/^\s*$/.test(value);
   };
 
   useLayoutEffect(() => {
@@ -60,11 +60,12 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
       <p
         ref={textareaRef}
         className={cx(
-          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden p-3 opacity-0",
+          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden whitespace-pre-wrap break-words p-3 opacity-0",
           textareaClassName
         )}
       >
         {(valueIsNotOnlySpaces() && value) || placeholder}
+        {value.endsWith("\n") && " "}
       </p>
     </div>
   );
