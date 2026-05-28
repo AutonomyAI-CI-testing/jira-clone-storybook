@@ -12,9 +12,12 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    minRows = 1,
   } = props;
 
-  const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  const lineHeight = 20;
+  const initialHeight = minRows * lineHeight + 16; // 16px for padding (p-3 = 12px + 4px)
+  const [textareaHeight, setTextareaHeight] = useState<number>(initialHeight);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -60,7 +63,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
       <p
         ref={textareaRef}
         className={cx(
-          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden p-3 opacity-0",
+          "absolute left-0 top-0 -z-10 box-border overflow-y-hidden p-3 opacity-0 whitespace-pre-wrap",
           textareaClassName
         )}
       >
@@ -80,4 +83,5 @@ interface TitleProps {
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  minRows?: number;
 }

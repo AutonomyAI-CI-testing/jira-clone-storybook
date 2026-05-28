@@ -22,8 +22,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -41,6 +41,7 @@ export const Title = ({
         readOnly={readOnly}
         onFocus={onFocus}
         onBlur={onBlur}
+        minRows={2}
         textareaClassName={cx(
           "font-primary-black text-2xl",
           requireError &&
