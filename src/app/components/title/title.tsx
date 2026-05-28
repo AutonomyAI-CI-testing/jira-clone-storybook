@@ -22,8 +22,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -32,7 +32,7 @@ export const Title = ({
   };
 
   return (
-    <div className="relative">
+    <div className="relative [&_p]:font-primary-black [&_p]:text-2xl [&_p]:leading-8 [&_textarea]:leading-8">
       <TextareaAutosize
         name="title"
         value={title}
