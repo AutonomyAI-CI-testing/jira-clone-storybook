@@ -11,20 +11,24 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Track focus to show character count only when actively editing
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Show error only if provided AND title is empty or whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
 
+  const onBlur = () => setIsFocus(false);
+
+  // Prevent exceeding maxLength by rejecting updates over the limit
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
 
@@ -48,11 +52,18 @@ export const Title = ({
         )}
         autofocus
       />
+      {/* Optional subtitle displayed below the title input */}
+      {subtitle && (
+        <p className="mt-2 font-primary-light text-base text-font-subtlest">
+          {subtitle}
+        </p>
+      )}
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
         </span>
       )}
+      {/* Character count shown only while focused; changes to danger color at max length */}
       {isFocus && (
         <span
           className={cx(
@@ -73,4 +84,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitle?: string;
 }
