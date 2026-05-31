@@ -238,3 +238,13 @@ export const PrimaryTextBig: Story = {
     children: "Primary",
   },
 };
+
+export const Disabled: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-3">
+      <Button color="primary" variant="contained" disabled>Primary</Button>
+      <Button color="neutral" variant="subtlest" disabled>Neutral</Button>
+      <Button color="danger" variant="text" disabled>Danger</Button>
+    </div>
+  ),
+};

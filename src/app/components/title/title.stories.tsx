@@ -3,6 +3,7 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
@@ -31,49 +32,125 @@ const meta: Meta<typeof Title> = {
         type: "text",
       },
     },
+    subtitle: {
+      defaultValue: "",
+      control: {
+        type: "text",
+      },
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Title>;
 
+// Labels for the showcase stories in Default view
+const SHOWCASE_LABELS = [
+  "Editable",
+  "Read-only",
+  "Error — Empty",
+  "Error — Spaces Only",
+  "Near Max Length",
+  "Short Title",
+  "Long Title",
+  "Outline",
+  "Ghost",
+];
+
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
+  render: () => (
+    <div className="grid grid-cols-1 gap-10 w-[600px]">
+      {[Editable, ReadOnly, WithError, ErrorSpacesOnly, CharacterCountWarning, ShortTitle, LongTitle, Outline, Ghost].map(
         (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
+          <div key={index}>
+            <p className="text-xs font-primary-medium text-font-subtlest mb-1 uppercase tracking-wide">
+              {SHOWCASE_LABELS[index]}
+            </p>
+            <Title {...TitleStory.args} />
+          </div>
         )
       )}
     </div>
   ),
 };
 
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
+export const Editable: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Build new authentication flow",
+    readOnly: false,
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "This title is read-only and cannot be edited",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const WithError: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
     error: "Title is required",
   },
 };
 
-export const CustomMaxLength: Story = {
+export const ErrorSpacesOnly: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle: "   ",
+    error: "Title cannot be empty or contain only spaces",
+  },
+};
+
+export const CharacterCountWarning: Story = {
+  args: {
+    initTitle: "This title is approaching the maximum character limit now!!!!",
+    maxLength: 80,
+  },
+};
+
+export const ShortTitle: Story = {
+  args: {
+    initTitle: "Fix bug",
+    readOnly: false,
+  },
+};
+
+export const LongTitle: Story = {
+  args: {
+    initTitle:
+      "Implement comprehensive end-to-end testing suite for the entire application",
+    maxLength: 80,
+  },
+};
+
+export const WithShortSubtitle: Story = {
+  args: {
+    initTitle: "Build new authentication flow",
+    subtitle: "Q1 2024 Initiative",
+    readOnly: false,
+  },
+};
+
+export const WithLongSubtitle: Story = {
+  args: {
+    initTitle: "Implement comprehensive end-to-end testing suite",
+    subtitle:
+      "This initiative aims to improve test coverage across all critical user workflows and ensure platform stability in production environments.",
+    readOnly: false,
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    initTitle: "Styled with border outline",
+    readOnly: false,
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    initTitle: "Minimal ghost style",
+    readOnly: true,
   },
 };
