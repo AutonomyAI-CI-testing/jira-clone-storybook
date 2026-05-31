@@ -7,6 +7,7 @@ const DEFAULT_MAX_LENGTH = 80;
 
 export const Title = ({
   initTitle = "",
+  subtitle,
   readOnly,
   maxLength = DEFAULT_MAX_LENGTH,
   error,
@@ -22,8 +23,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -33,21 +34,30 @@ export const Title = ({
 
   return (
     <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+      {/* Title input with optional subtitle */}
+      <div>
+        <TextareaAutosize
+          name="title"
+          value={title}
+          setValue={updateTitle}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary-black text-2xl",
+            requireError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+          )}
+          autofocus
+        />
+        {/* Display optional subtitle below the title */}
+        {subtitle && (
+          <div className="mt-1 font-primary-light text-sm text-font-subtlest">
+            {subtitle}
+          </div>
         )}
-        autofocus
-      />
+      </div>
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
@@ -69,6 +79,7 @@ export const Title = ({
 
 interface TitleProps {
   initTitle?: string;
+  subtitle?: string;
   readOnly?: boolean;
   maxLength?: number;
   error?: string;
