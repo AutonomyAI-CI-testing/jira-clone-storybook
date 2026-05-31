@@ -11,19 +11,22 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Track focus state to show/hide the character counter
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Only show error if title is empty or contains only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -33,21 +36,29 @@ export const Title = ({
 
   return (
     <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+      <div>
+        <TextareaAutosize
+          name="title"
+          value={title}
+          setValue={updateTitle}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary-black text-2xl",
+            requireError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+          )}
+          autofocus
+        />
+        {/* Optional subtitle rendered below the title for additional context */}
+        {subtitle && (
+          <p className="mt-1 font-primary-light text-sm text-font-subtle">
+            {subtitle}
+          </p>
         )}
-        autofocus
-      />
+      </div>
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
@@ -73,4 +84,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitle?: string;
 }
