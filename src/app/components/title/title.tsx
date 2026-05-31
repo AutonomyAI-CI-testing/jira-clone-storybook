@@ -11,8 +11,10 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
+  // Track focus state to conditionally show the character counter and manage visual feedback
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
@@ -22,8 +24,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -33,26 +35,35 @@ export const Title = ({
 
   return (
     <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+      <div>
+        <TextareaAutosize
+          name="title"
+          value={title}
+          setValue={updateTitle}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          textareaClassName={cx(
+            "font-primary-black text-2xl",
+            requireError &&
+              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+          )}
+          autofocus
+        />
+        {/* Display subtitle below the title in a muted style when provided */}
+        {subtitle && (
+          <p className="font-primary-light text-sm text-font-subtle">
+            {subtitle}
+          </p>
         )}
-        autofocus
-      />
+      </div>
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
         </span>
       )}
+      {/* Character counter shown during focus; turns red when reaching max length */}
       {isFocus && (
         <span
           className={cx(
@@ -73,4 +84,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitle?: string;
 }
