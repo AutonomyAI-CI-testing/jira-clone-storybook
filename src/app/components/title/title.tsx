@@ -11,6 +11,8 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
+  variant = "default",
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -22,8 +24,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -43,11 +45,18 @@ export const Title = ({
         onBlur={onBlur}
         textareaClassName={cx(
           "font-primary-black text-2xl",
+          variant === "outline" && "border-2 border-border-default bg-background-neutral rounded-md px-3 py-2",
+          variant === "ghost" && "text-font-subtle",
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
         autofocus
       />
+      {subtitle && (
+        <p className="mt-1 font-primary-light text-sm text-font-subtle">
+          {subtitle}
+        </p>
+      )}
       {requireError && (
         <span className="ml-3 font-primary-light text-sm text-font-danger">
           {error}
@@ -73,4 +82,6 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitle?: string;
+  variant?: "default" | "outline" | "ghost";
 }
