@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
@@ -76,4 +77,49 @@ export const CustomMaxLength: Story = {
     placeholder: "Custom max length",
     maxLength: 10,
   },
+};
+
+export const WithShortSubtitle: Story = {
+  args: {
+    initTitle: "Project Overview",
+    subtitle: "Updated 5 minutes ago",
+  },
+};
+
+export const WithLongSubtitle: Story = {
+  args: {
+    initTitle: "Technical Documentation",
+    subtitle:
+      "A comprehensive guide covering all aspects of the system architecture, design patterns, and implementation details for developers.",
+  },
+};
+
+export const Outline: Story = {
+  parameters: {
+    layout: "centered",
+  },
+  render: () => (
+    <div style={{ width: 480 }}>
+      <Title
+        initTitle="Project Requirements"
+        subtitle="Due by end of Q3"
+        maxLength={50}
+      />
+    </div>
+  ),
+};
+
+export const Ghost: Story = {
+  parameters: {
+    layout: "centered",
+  },
+  render: () => (
+    <div style={{ width: 480 }}>
+      <Title
+        initTitle="Archive 2024"
+        readOnly={true}
+        subtitle="Read-only reference document"
+      />
+    </div>
+  ),
 };
