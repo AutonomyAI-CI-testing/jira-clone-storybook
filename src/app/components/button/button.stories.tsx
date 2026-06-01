@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Button } from "./button";
 
@@ -17,14 +17,14 @@ const meta: Meta<typeof Button> = {
     color: {
       control: {
         type: "select",
-        options: ["primary", "neutral", "danger"],
+        options: ["primary", "neutral", "success", "danger", "warning", "info"],
       },
     },
     variant: {
       description: "The variant of the button",
       control: {
         type: "select",
-        options: ["contained", "text"],
+        options: ["contained", "subtlest", "text"],
       },
     },
     size: {
@@ -34,6 +34,7 @@ const meta: Meta<typeof Button> = {
       },
     },
   },
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -41,43 +42,104 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   render: () => (
-    <>
-      <div className="grid grid-cols-6 gap-4 p-4">
-        {[
-          Primary,
-          Neutral,
-          Success,
-          Danger,
-          Warning,
-          Info,
-          PrimarySubtle,
-          NeutralSubtle,
-          SuccessSubtle,
-          DangerSubtle,
-          WarningSubtle,
-          InfoSubtle,
-          PrimaryText,
-          NeutralText,
-          SuccessText,
-          DangerText,
-          WarningText,
-          InfoText,
-        ].map((ButtonStory, index) => (
-          <Button {...ButtonStory.args} className="w-fit" key={index}>
-            {ButtonStory.args?.children}
-          </Button>
-        ))}
+    <div className="space-y-8 p-8">
+      {/* Color Themes - Contained Variant (Medium) */}
+      <div>
+        <h3 className="mb-4 font-bold">Colors - Contained (Medium)</h3>
+        <div className="flex flex-wrap gap-3">
+          {[Primary, Neutral, Success, Danger, Warning, Info].map(
+            (ButtonStory, index) => (
+              <Button {...ButtonStory.args} className="w-fit" key={index}>
+                {ButtonStory.args?.children}
+              </Button>
+            )
+          )}
+        </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
-        {[PrimaryContainedBig, PrimarySubtleBig, PrimaryTextBig].map(
-          (ButtonStory, index) => (
+
+      {/* Variant Types - Primary Color */}
+      <div>
+        <h3 className="mb-4 font-bold">Variants - Primary Color (Medium)</h3>
+        <div className="flex flex-wrap gap-3">
+          {[Primary, PrimarySubtle, PrimaryText].map((ButtonStory, index) => (
             <Button {...ButtonStory.args} className="w-fit" key={index}>
               {ButtonStory.args?.children}
             </Button>
-          )
-        )}
+          ))}
+        </div>
       </div>
-    </>
+
+      {/* All Variants Subtlest - All Colors (Medium) */}
+      <div>
+        <h3 className="mb-4 font-bold">Subtlest Variant - All Colors (Medium)</h3>
+        <div className="flex flex-wrap gap-3">
+          {[
+            PrimarySubtle,
+            NeutralSubtle,
+            SuccessSubtle,
+            DangerSubtle,
+            WarningSubtle,
+            InfoSubtle,
+          ].map((ButtonStory, index) => (
+            <Button {...ButtonStory.args} className="w-fit" key={index}>
+              {ButtonStory.args?.children}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* All Variants Text - All Colors (Medium) */}
+      <div>
+        <h3 className="mb-4 font-bold">Text Variant - All Colors (Medium)</h3>
+        <div className="flex flex-wrap gap-3">
+          {[
+            PrimaryText,
+            NeutralText,
+            SuccessText,
+            DangerText,
+            WarningText,
+            InfoText,
+          ].map((ButtonStory, index) => (
+            <Button {...ButtonStory.args} className="w-fit" key={index}>
+              {ButtonStory.args?.children}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* Large Size Variants */}
+      <div>
+        <h3 className="mb-4 font-bold">Size - Large (All Variants)</h3>
+        <div className="flex flex-wrap gap-3">
+          {[PrimaryContainedBig, PrimarySubtleBig, PrimaryTextBig].map(
+            (ButtonStory, index) => (
+              <Button {...ButtonStory.args} className="w-fit" key={index}>
+                {ButtonStory.args?.children}
+              </Button>
+            )
+          )}
+        </div>
+      </div>
+
+      {/* Disabled States - All Colors */}
+      <div>
+        <h3 className="mb-4 font-bold">Disabled State - All Colors</h3>
+        <div className="flex flex-wrap gap-3">
+          {[
+            PrimaryDisabled,
+            NeutralDisabled,
+            SuccessDisabled,
+            DangerDisabled,
+            WarningDisabled,
+            InfoDisabled,
+          ].map((ButtonStory, index) => (
+            <Button {...ButtonStory.args} className="w-fit" key={index}>
+              {ButtonStory.args?.children}
+            </Button>
+          ))}
+        </div>
+      </div>
+    </div>
   ),
 };
 
@@ -213,6 +275,53 @@ export const InfoText: Story = {
     variant: "text",
     color: "info",
     children: "Info",
+  },
+};
+
+export const PrimaryDisabled: Story = {
+  args: {
+    disabled: true,
+    children: "Disabled",
+  },
+};
+
+export const NeutralDisabled: Story = {
+  args: {
+    color: "neutral",
+    disabled: true,
+    children: "Disabled",
+  },
+};
+
+export const SuccessDisabled: Story = {
+  args: {
+    color: "success",
+    disabled: true,
+    children: "Disabled",
+  },
+};
+
+export const DangerDisabled: Story = {
+  args: {
+    color: "danger",
+    disabled: true,
+    children: "Disabled",
+  },
+};
+
+export const WarningDisabled: Story = {
+  args: {
+    color: "warning",
+    disabled: true,
+    children: "Disabled",
+  },
+};
+
+export const InfoDisabled: Story = {
+  args: {
+    color: "info",
+    disabled: true,
+    children: "Disabled",
   },
 };
 
