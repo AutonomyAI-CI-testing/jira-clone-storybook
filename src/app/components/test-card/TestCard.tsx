@@ -4,20 +4,20 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="min-h-screen bg-black p-6 text-sm font-primary"
+      className="min-h-screen bg-black p-6 font-primary text-sm"
     >
       {/* Header Section */}
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-sm font-primary-bold text-gray-400">
+        <h1 className="text-gray-400 font-primary-bold text-sm">
           UI magician Agent
         </h1>
         <button className="text-gray-500 hover:text-gray-300">⚛</button>
       </div>
 
       {/* Collapsible Section */}
-      <div className="mb-6 border border-gray-800 rounded px-4 py-3">
-        <button className="flex items-center justify-between w-full hover:text-gray-300">
-          <span className="text-xs text-gray-500">
+      <div className="border-gray-800 mb-6 rounded border px-4 py-3">
+        <button className="hover:text-gray-300 flex w-full items-center justify-between">
+          <span className="text-gray-500 text-xs">
             From entire frame to a singl...
           </span>
           <span className="text-gray-500">▼</span>
@@ -25,9 +25,9 @@ export const TestCard = () => {
       </div>
 
       {/* Add New Design Section */}
-      <div className="mb-8 border-b border-gray-800 pb-4">
-        <button className="flex items-center justify-between w-full hover:text-gray-300">
-          <span className="text-xs font-primary text-gray-400">
+      <div className="border-gray-800 mb-8 border-b pb-4">
+        <button className="hover:text-gray-300 flex w-full items-center justify-between">
+          <span className="text-gray-400 font-primary text-xs">
             Add New Design
           </span>
           <span className="text-gray-500">▶</span>
@@ -38,43 +38,43 @@ export const TestCard = () => {
       <div className="mb-8 space-y-5">
         {/* Personal Access Token Field */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs text-gray-500">
+          <label className="text-gray-500 flex items-center gap-2 text-xs">
             Personal Access Token
             <span className="text-gray-600">ⓘ</span>
           </label>
           <input
             type="text"
             placeholder="Enter your Figma personal access token"
-            className="w-full bg-black border border-gray-700 rounded px-3 py-2 text-xs text-gray-600 placeholder-gray-700 hover:border-gray-600 focus:outline-none focus:border-gray-500"
+            className="border-gray-700 text-gray-600 placeholder-gray-700 hover:border-gray-600 focus:border-gray-500 w-full rounded border bg-black px-3 py-2 text-xs focus:outline-none"
           />
         </div>
 
         {/* Design URL Field */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs text-gray-500">
+          <label className="text-gray-500 flex items-center gap-2 text-xs">
             Design URL
             <span className="text-gray-600">ⓘ</span>
           </label>
           <input
             type="text"
             placeholder="Enter the Figma file URL"
-            className="w-full bg-black border border-gray-700 rounded px-3 py-2 text-xs text-gray-600 placeholder-gray-700 hover:border-gray-600 focus:outline-none focus:border-gray-500"
+            className="border-gray-700 text-gray-600 placeholder-gray-700 hover:border-gray-600 focus:border-gray-500 w-full rounded border bg-black px-3 py-2 text-xs focus:outline-none"
           />
         </div>
       </div>
 
       {/* Action Buttons */}
       <div className="mb-8 flex gap-3">
-        <button className="flex-1 bg-orange-700 hover:bg-orange-600 text-gray-300 text-xs font-primary py-2 px-4 rounded transition-colors">
+        <button className="bg-orange-700 hover:bg-orange-600 text-gray-300 flex-1 rounded px-4 py-2 font-primary text-xs transition-colors">
           Awesome
         </button>
-        <button className="flex-1 bg-orange-800 hover:bg-orange-700 text-gray-300 text-xs font-primary py-2 px-4 rounded transition-colors">
+        <button className="bg-orange-800 hover:bg-orange-700 text-gray-300 flex-1 rounded px-4 py-2 font-primary text-xs transition-colors">
           Prepare
         </button>
       </div>
 
       {/* Footer Text */}
-      <div className="text-xs text-gray-600">Recent Breakdowns</div>
+      <div className="text-gray-600 text-xs">Recent Breakdowns</div>
     </div>
   );
 };
