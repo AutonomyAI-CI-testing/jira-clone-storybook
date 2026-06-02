@@ -4,6 +4,11 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
+  safelist: [
+    "bg-orange-600",
+    "hover:bg-orange-700",
+    "active:bg-orange-800",
+  ],
   darkMode: "class",
   theme: {
     colors: {
@@ -191,6 +196,11 @@ module.exports = {
       white: "white",
       black: "black",
       transparent: "transparent",
+      orange: {
+        600: "#ea580c",
+        700: "#c2410c",
+        800: "#9a3412",
+      },
     },
     fontFamily: {
       "primary-light": ["CircularStdLight", "sans-serif"],
