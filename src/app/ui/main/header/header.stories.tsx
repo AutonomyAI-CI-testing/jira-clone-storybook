@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { withMainContext, withRemixStub } from "@app/stories/utils";
 import { Header } from "./header";
 
@@ -6,7 +6,7 @@ const meta: Meta<typeof Header> = {
   title: "Pages/Main/Header",
   component: Header,
   parameters: {
-    layout: "top",
+    layout: "fullscreen",
   },
   decorators: [
     (Story) => (
