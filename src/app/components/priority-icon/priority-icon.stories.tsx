@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PriorityId } from "@domain/priority";
 import { PriorityIcon } from "./priority-icon";
 
