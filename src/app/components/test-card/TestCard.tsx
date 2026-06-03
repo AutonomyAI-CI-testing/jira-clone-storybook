@@ -1,6 +1,13 @@
 import { MdSettings, MdKeyboardArrowUp, MdInfo } from "react-icons/md";
 
+/**
+ * A UI card component for the UI magician agent.
+ * Displays a form with token and design URL fields, along with action buttons.
+ * Uses a dark theme with specific brand colors for visual consistency.
+ */
+
 // Color palette for the UI magician card
+// Defines all visual colors used throughout the component for consistent theming
 const COLORS = {
   background: "#000000",
   headerText: "#b5b5b5",
@@ -20,13 +27,15 @@ const COLORS = {
 } as const;
 
 // Icon sizes for consistent sizing throughout the component
+// Using rem units to ensure proper scaling with base font size
 const ICON_SIZES = {
-  settings: { h: 5, w: 5 },
-  arrow: { h: 5, w: 5 },
-  info: { h: 4, w: 4 },
+  settings: { size: '1.25rem' },
+  arrow: { size: '1.25rem' },
+  info: { size: '1rem' },
 } as const;
 
 // Form field configuration
+// Contains labels and placeholder text for both form input fields
 const FORM_FIELDS = {
   token: {
     label: "Personal Access Token",
@@ -39,6 +48,7 @@ const FORM_FIELDS = {
 } as const;
 
 // Button labels
+// Action button text for form submission
 const BUTTON_LABELS = {
   awesome: "Awesome",
   prepare: "Prepare",
@@ -60,16 +70,14 @@ export const TestCard = (): JSX.Element => {
           UI magician Agent
         </h1>
         <MdSettings
-          className={`h-${ICON_SIZES.settings.h} w-${ICON_SIZES.settings.w}`}
-          style={{ color: COLORS.icon }}
+          style={{ width: ICON_SIZES.settings.size, height: ICON_SIZES.settings.size, color: COLORS.icon }}
         />
       </div>
 
       {/* Subtitle Section */}
       <div className="mb-12 flex items-center gap-3">
         <MdKeyboardArrowUp
-          className={`h-${ICON_SIZES.arrow.h} w-${ICON_SIZES.arrow.w}`}
-          style={{ color: COLORS.subtitleText }}
+          style={{ width: ICON_SIZES.arrow.size, height: ICON_SIZES.arrow.size, color: COLORS.subtitleText }}
         />
         <span
           className="font-primary-bold text-[11.5px]"
@@ -82,8 +90,7 @@ export const TestCard = (): JSX.Element => {
       {/* Add New Design Section */}
       <div className="mb-12 flex items-center gap-3">
         <MdKeyboardArrowUp
-          className={`h-${ICON_SIZES.arrow.h} w-${ICON_SIZES.arrow.w}`}
-          style={{ color: COLORS.icon }}
+          style={{ width: ICON_SIZES.arrow.size, height: ICON_SIZES.arrow.size, color: COLORS.icon }}
         />
         <h2
           className="font-primary-bold text-base"
@@ -130,6 +137,8 @@ export const TestCard = (): JSX.Element => {
 /**
  * FormField component for displaying labeled input fields with info icons.
  * Used for displaying read-only form fields in the UI magician card.
+ * The component accepts a custom placeholder color to allow different styling per field,
+ * which is necessary because different fields may have different visual emphasis in the design.
  */
 interface FormFieldProps {
   label: string;
@@ -151,8 +160,7 @@ const FormField = ({
         {label}
       </label>
       <MdInfo
-        className={`h-${ICON_SIZES.info.h} w-${ICON_SIZES.info.w}`}
-        style={{ color: COLORS.icon }}
+        style={{ width: ICON_SIZES.info.size, height: ICON_SIZES.info.size, color: COLORS.icon }}
       />
     </div>
     <input
@@ -172,6 +180,8 @@ const FormField = ({
 /**
  * ActionButton component for the primary action buttons in the card.
  * Provides consistent styling and hover states across the form.
+ * Uses inline onMouseEnter/onMouseLeave handlers to update background color on hover,
+ * as this provides better visual feedback than CSS-only alternatives in this dark theme.
  */
 interface ActionButtonProps {
   children: React.ReactNode;
