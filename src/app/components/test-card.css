@@ -1,0 +1,31 @@
+/* Styles for TestCard - provides standard Tailwind gray/orange color classes
+   not present in the project's custom Tailwind theme */
+
+/* Background colors */
+.bg-gray-800 { background-color: rgb(31 41 55); }
+.bg-gray-900 { background-color: rgb(17 24 39); }
+.bg-orange-900 { background-color: rgb(124 45 18); }
+
+/* Hover variants */
+.hover\:bg-orange-800:hover { background-color: rgb(154 52 18); }
+.hover\:text-gray-200:hover { color: rgb(229 231 235); }
+.hover\:text-gray-300:hover { color: rgb(209 213 219); }
+
+/* Text colors */
+.text-gray-100 { color: rgb(243 244 246); }
+.text-gray-200 { color: rgb(229 231 235); }
+.text-gray-300 { color: rgb(209 213 219); }
+.text-gray-400 { color: rgb(156 163 175); }
+.text-gray-500 { color: rgb(107 114 128); }
+.text-gray-600 { color: rgb(75 85 99); }
+
+/* Border colors */
+.border-gray-600 { border-color: rgb(75 85 99); }
+.border-gray-700 { border-color: rgb(55 65 81); }
+
+/* Focus variants */
+.focus\:border-gray-500:focus { border-color: rgb(107 114 128); }
+.focus\:outline-none:focus { outline: none; }
+
+/* Placeholder colors */
+.placeholder-gray-600::placeholder { color: rgb(75 85 99); }
