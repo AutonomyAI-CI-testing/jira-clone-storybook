@@ -108,7 +108,7 @@ export const ThemeProvider = ({
 };
 
 interface ThemeProviderProps {
-  children: JSX.Element;
+  children: React.ReactNode;
   specifiedTheme: Theme | undefined;
   specifiedPreference: Preference | undefined;
 }
