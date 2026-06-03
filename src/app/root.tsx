@@ -19,19 +19,19 @@ import {
   useTheme,
 } from "@app/store/theme.store";
 import { formatTags, formatProperties } from "@utils/meta";
-import { getThemeSession } from "./session-storage/theme-storage.server";
-import { Toast } from "./components/toast";
-import { Error404 } from "./components/error-404";
-import { Error500 } from "./components/error-500";
-import styles from "./styles/app-compiled.css";
-import fonts from "./styles/fonts.css";
-import fuck from "react-toastify/dist/ReactToastify.css";
+import { getThemeSession } from "@app/session-storage/theme-storage.server";
+import { Toast } from "@app/components/toast";
+import { Error404 } from "@app/components/error-404";
+import { Error500 } from "@app/components/error-500";
+import styles from "@app/styles/app-compiled.css";
+import fonts from "@app/styles/fonts.css";
+import toastifyStyles from "react-toastify/dist/ReactToastify.css";
 
 export const links = () => {
   return [
     { rel: "stylesheet", href: fonts },
     { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: fuck },
+    { rel: "stylesheet", href: toastifyStyles },
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   ];
 };
