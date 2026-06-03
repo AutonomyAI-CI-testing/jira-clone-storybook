@@ -1,3 +1,29 @@
+// Small dark-themed card for design/token input UI
+const InfoIcon = (): JSX.Element => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+    <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="0.8" />
+    <text
+      x="6"
+      y="7.5"
+      textAnchor="middle"
+      fontSize="8"
+      fill="currentColor"
+    >
+      i
+    </text>
+  </svg>
+);
+
+const InfoButton = ({ label }: { label: string }): JSX.Element => (
+  <button
+    type="button"
+    className="text-[#a3a3a2] hover:text-[#b5b5b5]"
+    aria-label={label}
+  >
+    <InfoIcon />
+  </button>
+);
+
 export const TestCard = (): JSX.Element => {
   return (
     <div
@@ -97,24 +123,7 @@ export const TestCard = (): JSX.Element => {
           >
             Personal Access Token
           </label>
-          <button
-            type="button"
-            className="text-[#a3a3a2] hover:text-[#b5b5b5]"
-            aria-label="Info"
-          >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="0.8" />
-              <text
-                x="6"
-                y="7.5"
-                textAnchor="middle"
-                fontSize="8"
-                fill="currentColor"
-              >
-                i
-              </text>
-            </svg>
-          </button>
+          <InfoButton label="Info" />
         </div>
         <input
           id="token"
@@ -133,24 +142,7 @@ export const TestCard = (): JSX.Element => {
           >
             Design URL
           </label>
-          <button
-            type="button"
-            className="text-[#a3a3a2] hover:text-[#b5b5b5]"
-            aria-label="Info"
-          >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="0.8" />
-              <text
-                x="6"
-                y="7.5"
-                textAnchor="middle"
-                fontSize="8"
-                fill="currentColor"
-              >
-                i
-              </text>
-            </svg>
-          </button>
+          <InfoButton label="Info" />
         </div>
         <input
           id="url"
