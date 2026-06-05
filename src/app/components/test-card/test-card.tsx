@@ -1,25 +1,44 @@
 import cx from "classix";
-import { Button } from "@app/components/button";
+
+// Reusable class combinations
+const INPUT_CLASSES = cx(
+  "w-full px-4 py-3 rounded bg-slate-800 border border-slate-600",
+  "text-gray-300 placeholder-gray-500",
+  "focus:outline-none focus:ring-2 focus:ring-orange-600",
+  "font-mono text-sm"
+);
+
+const BUTTON_CLASSES = cx(
+  "flex-1 px-6 py-3 rounded font-semibold",
+  "bg-orange-700 hover:bg-orange-600 active:bg-orange-800",
+  "text-white transition-colors",
+  "text-lg"
+);
+
+const HELP_ICON_CLASSES = cx(
+  "w-5 h-5 rounded-full border border-gray-500",
+  "flex items-center justify-center text-gray-400 text-xs"
+);
 
 export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
       className={cx(
-        "w-full min-h-screen bg-dark",
-        "bg-gradient-to-br from-slate-900 to-slate-950",
+        "bg-dark min-h-screen w-full",
+        "from-slate-900 to-slate-950 bg-gradient-to-br",
         "text-gray-100 p-8"
       )}
     >
-      <div className={cx("max-w-2xl mx-auto")}>
+      <div className={cx("mx-auto max-w-2xl")}>
         {/* Header Section */}
         <div className={cx("mb-12 flex items-center justify-between")}>
           <h1 className={cx("text-3xl font-bold text-white")}>
             UI magician Agent
           </h1>
-          <div className={cx("w-8 h-8 rounded-full border-2 border-gray-400")}>
+          <div className={cx("border-gray-400 h-8 w-8 rounded-full border-2")}>
             <svg
-              className={cx("w-full h-full p-1")}
+              className={cx("h-full w-full p-1")}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -41,9 +60,9 @@ export const TestCard = (): JSX.Element => {
 
         {/* Add New Design Section */}
         <div className={cx("mb-12")}>
-          <div className={cx("flex items-center gap-2 mb-6")}>
+          <div className={cx("mb-6 flex items-center gap-2")}>
             <span className={cx("text-gray-400 text-xl")}>⌃</span>
-            <h2 className={cx("text-2xl font-semibold text-gray-200")}>
+            <h2 className={cx("text-gray-200 text-2xl font-semibold")}>
               Add New Design
             </h2>
           </div>
@@ -53,86 +72,48 @@ export const TestCard = (): JSX.Element => {
             {/* Personal Access Token Field */}
             <div className={cx("space-y-2")}>
               <label
-                className={cx("flex items-center gap-2 text-gray-300 font-medium")}
+                className={cx(
+                  "text-gray-300 flex items-center gap-2 font-medium"
+                )}
               >
                 Personal Access Token
-                <span
-                  className={cx(
-                    "w-5 h-5 rounded-full border border-gray-500",
-                    "flex items-center justify-center text-gray-400 text-xs"
-                  )}
-                >
-                  ⓘ
-                </span>
+                <span className={HELP_ICON_CLASSES}>ⓘ</span>
               </label>
               <input
                 type="text"
                 placeholder="figd_xxxxxxxxxxxxxx"
-                className={cx(
-                  "w-full px-4 py-3 rounded bg-slate-800 border border-slate-600",
-                  "text-gray-300 placeholder-gray-500",
-                  "focus:outline-none focus:ring-2 focus:ring-orange-600",
-                  "font-mono text-sm"
-                )}
+                className={INPUT_CLASSES}
               />
             </div>
 
             {/* Design URL Field */}
             <div className={cx("space-y-2")}>
               <label
-                className={cx("flex items-center gap-2 text-gray-300 font-medium")}
+                className={cx(
+                  "text-gray-300 flex items-center gap-2 font-medium"
+                )}
               >
                 Design URL
-                <span
-                  className={cx(
-                    "w-5 h-5 rounded-full border border-gray-500",
-                    "flex items-center justify-center text-gray-400 text-xs"
-                  )}
-                >
-                  ⓘ
-                </span>
+                <span className={HELP_ICON_CLASSES}>ⓘ</span>
               </label>
               <input
                 type="url"
                 placeholder="https://www.figma.com/file/:"
-                className={cx(
-                  "w-full px-4 py-3 rounded bg-slate-800 border border-slate-600",
-                  "text-gray-300 placeholder-gray-500",
-                  "focus:outline-none focus:ring-2 focus:ring-orange-600",
-                  "font-mono text-sm"
-                )}
+                className={INPUT_CLASSES}
               />
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div className={cx("flex gap-4 mt-8")}>
-            <button
-              className={cx(
-                "flex-1 px-6 py-3 rounded font-semibold",
-                "bg-orange-700 hover:bg-orange-600 active:bg-orange-800",
-                "text-white transition-colors",
-                "text-lg"
-              )}
-            >
-              Awesome
-            </button>
-            <button
-              className={cx(
-                "flex-1 px-6 py-3 rounded font-semibold",
-                "bg-orange-700 hover:bg-orange-600 active:bg-orange-800",
-                "text-white transition-colors",
-                "text-lg"
-              )}
-            >
-              Prepare
-            </button>
+          <div className={cx("mt-8 flex gap-4")}>
+            <button className={BUTTON_CLASSES}>Awesome</button>
+            <button className={BUTTON_CLASSES}>Prepare</button>
           </div>
         </div>
 
         {/* Recent Breakdowns Section */}
         <div className={cx("mt-16")}>
-          <h3 className={cx("text-2xl font-semibold text-gray-200")}>
+          <h3 className={cx("text-gray-200 text-2xl font-semibold")}>
             Recent Breakdowns
           </h3>
         </div>
