@@ -29,16 +29,16 @@ const InputField = ({
   label,
   placeholder,
   borderColor = COLORS.inputBorder,
-  borderWidth = "border",
+  borderWidth = 1,
 }: {
   label: string;
   placeholder: string;
   borderColor?: string;
-  borderWidth?: string;
+  borderWidth?: number;
 }) => (
   <div className="flex flex-col gap-1">
     <div className="flex items-center gap-1">
-      <label className={`text-[${COLORS.labelText}] text-sm`}>
+      <label className="text-sm" style={{ color: COLORS.labelText }}>
         {label}
       </label>
       <Info size={ICON_SIZE.info} color={COLORS.labelText} />
@@ -46,14 +46,27 @@ const InputField = ({
     <input
       type="text"
       placeholder={placeholder}
-      className={`w-full bg-[${COLORS.inputBackground}] ${borderWidth}-[${borderColor}] rounded px-3 py-2 text-[${COLORS.inputText}] placeholder-[${COLORS.inputText}] text-sm outline-none`}
+      className="w-full rounded px-3 py-2 text-sm outline-none"
+      style={{
+        backgroundColor: COLORS.inputBackground,
+        color: COLORS.inputText,
+        borderColor,
+        borderWidth,
+        borderStyle: "solid",
+      }}
     />
   </div>
 );
 
 // Reusable button component
 const ActionButton = ({ label }: { label: string }) => (
-  <button className={`bg-[${COLORS.buttonBackground}] text-[${COLORS.buttonText}] font-semibold rounded px-6 py-2 text-sm`}>
+  <button
+    className="rounded px-6 py-2 text-sm font-semibold"
+    style={{
+      backgroundColor: COLORS.buttonBackground,
+      color: COLORS.buttonText,
+    }}
+  >
     {label}
   </button>
 );
@@ -62,11 +75,15 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className={`w-[254px] bg-[${COLORS.background}] px-4 py-5 flex flex-col gap-4`}
+      className="flex w-[254px] flex-col gap-4 px-4 py-5"
+      style={{ backgroundColor: COLORS.background }}
     >
       {/* Header with title and settings icon */}
       <div className="flex items-center justify-between">
-        <span className={`font-bold text-[${COLORS.headerText}] text-base`}>
+        <span
+          className="text-base font-bold"
+          style={{ color: COLORS.headerText }}
+        >
           UI magician Agent
         </span>
         <Settings size={ICON_SIZE.header} color={COLORS.headerText} />
@@ -75,7 +92,7 @@ export const TestCard = () => {
       {/* Collapsible section for current design/task description */}
       <div className="flex items-center gap-2">
         <ChevronUp size={ICON_SIZE.collapsible} color={COLORS.secondaryText} />
-        <span className={`text-[${COLORS.secondaryText}] text-sm`}>
+        <span className="text-sm" style={{ color: COLORS.secondaryText }}>
           From entire frame to a singl...
         </span>
       </div>
@@ -85,8 +102,14 @@ export const TestCard = () => {
 
       {/* Section heading for the form below */}
       <div className="flex items-center gap-2">
-        <ChevronUp size={ICON_SIZE.sectionHeading} color={COLORS.sectionHeading} />
-        <span className={`text-[${COLORS.sectionHeading}] font-semibold text-xl`}>
+        <ChevronUp
+          size={ICON_SIZE.sectionHeading}
+          color={COLORS.sectionHeading}
+        />
+        <span
+          className="text-xl font-semibold"
+          style={{ color: COLORS.sectionHeading }}
+        >
           Add New Design
         </span>
       </div>
@@ -103,18 +126,21 @@ export const TestCard = () => {
         label="Design URL"
         placeholder="https://www.figma.com/file/:"
         borderColor={COLORS.designUrlBorder}
-        borderWidth="border-2"
+        borderWidth={2}
       />
 
       {/* Action buttons for form submission */}
-      <div className="flex gap-3 mt-1 justify-center">
+      <div className="mt-1 flex justify-center gap-3">
         <ActionButton label="Awesome" />
         <ActionButton label="Prepare" />
       </div>
 
       {/* Section heading for list of recent designs */}
       <div className="mt-2">
-        <span className={`text-[${COLORS.recentBreakdownsText}] font-semibold text-xl`}>
+        <span
+          className="text-xl font-semibold"
+          style={{ color: COLORS.recentBreakdownsText }}
+        >
           Recent Breakdowns
         </span>
       </div>
