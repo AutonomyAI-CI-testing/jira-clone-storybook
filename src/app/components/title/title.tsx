@@ -11,6 +11,7 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -32,7 +33,8 @@ export const Title = ({
   };
 
   return (
-    <div className="relative">
+    <div id="testElem">
+    <div className="relative" style={{ paddingBottom: "1.5rem" }}>
       <TextareaAutosize
         name="title"
         value={title}
@@ -64,6 +66,12 @@ export const Title = ({
         </span>
       )}
     </div>
+    {subtitle && (
+      <p className="font-primary-light text-sm text-font-subtlest" style={{ marginTop: "1.5rem" }}>
+        {subtitle}
+      </p>
+    )}
+    </div>
   );
 };
 
@@ -73,4 +81,5 @@ interface TitleProps {
   maxLength?: number;
   error?: string;
   placeholder?: string;
+  subtitle?: string;
 }
