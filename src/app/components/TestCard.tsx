@@ -1,19 +1,5 @@
 import { LuSettings2, LuChevronUp, LuInfo } from "react-icons/lu";
 
-// Color palette used throughout the card for dark theme consistency
-const COLORS = {
-  cardBg: "#1e1e1e",
-  headerText: "#b5b5b5",
-  subtitleText: "#8b9291",
-  sectionHeadText: "#b2b2b1",
-  labelText: "#a4a4a3",
-  inputBg: "#2a2a2a",
-  inputBorder: "#3a3a3a",
-  inputText: "#737470",
-  buttonBg: "#b45309",
-  footerText: "#b0b0b0",
-};
-
 // CSS class names for input fields and buttons
 const INPUT_STYLES =
   "bg-[#2a2a2a] border border-[#3a3a3a] rounded-md px-3 py-2 text-sm text-[#737470] placeholder-[#737470] outline-none w-full";
@@ -23,43 +9,35 @@ const BUTTON_STYLES =
 export const TestCard = () => (
   <div
     id="testElem"
-    className={`bg-[${COLORS.cardBg}] flex w-[300px] flex-col gap-4 rounded-xl p-5`}
+    className="flex w-[300px] flex-col gap-4 rounded-xl bg-[#1e1e1e] p-5"
   >
     {/* Header row with agent name and settings icon */}
     <div className="flex items-center justify-between">
-      <span className={`text-[${COLORS.headerText}] text-lg font-bold`}>
+      <span className="text-lg font-bold text-[#b5b5b5]">
         UI magician Agent
       </span>
-      <LuSettings2 className={`text-[${COLORS.headerText}] text-xl`} />
+      <LuSettings2 className="text-xl text-[#b5b5b5]" />
     </div>
 
     {/* Subtitle row with agent status */}
     <div className="flex items-center gap-2">
-      <LuChevronUp
-        className={`text-[${COLORS.subtitleText}] shrink-0 text-base`}
-      />
-      <span className={`text-[${COLORS.subtitleText}] truncate text-sm`}>
+      <LuChevronUp className="shrink-0 text-base text-[#8b9291]" />
+      <span className="truncate text-sm text-[#8b9291]">
         From entire frame to a singl...
       </span>
     </div>
 
     {/* "Add New Design" section heading */}
     <div className="mt-4 flex items-center gap-2">
-      <LuChevronUp
-        className={`text-[${COLORS.sectionHeadText}] shrink-0 text-base`}
-      />
-      <span className={`text-[${COLORS.sectionHeadText}] text-base font-bold`}>
-        Add New Design
-      </span>
+      <LuChevronUp className="shrink-0 text-base text-[#b2b2b1]" />
+      <span className="text-base font-bold text-[#b2b2b1]">Add New Design</span>
     </div>
 
     {/* Personal Access Token input field */}
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">
-        <span className={`text-[${COLORS.labelText}] text-sm`}>
-          Personal Access Token
-        </span>
-        <LuInfo className={`text-[${COLORS.labelText}] text-base`} />
+        <span className="text-sm text-[#a4a4a3]">Personal Access Token</span>
+        <LuInfo className="text-base text-[#a4a4a3]" />
       </div>
       <input
         type="text"
@@ -72,8 +50,8 @@ export const TestCard = () => (
     {/* Design URL input field */}
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">
-        <span className={`text-[${COLORS.labelText}] text-sm`}>Design URL</span>
-        <LuInfo className={`text-[${COLORS.labelText}] text-base`} />
+        <span className="text-sm text-[#a4a4a3]">Design URL</span>
+        <LuInfo className="text-base text-[#a4a4a3]" />
       </div>
       <input
         type="text"
@@ -91,7 +69,7 @@ export const TestCard = () => (
 
     {/* Footer displaying recent activity label */}
     <div className="mt-4">
-      <span className={`text-[${COLORS.footerText}] text-base font-bold`}>
+      <span className="text-base font-bold text-[#b0b0b0]">
         Recent Breakdowns
       </span>
     </div>
