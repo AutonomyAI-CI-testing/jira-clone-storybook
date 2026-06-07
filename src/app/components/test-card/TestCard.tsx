@@ -20,6 +20,11 @@ const COLORS = {
   footerText: "#b0b0b0",
 };
 
+/**
+ * Icon components for the TestCard UI.
+ * These are extracted from the main component to improve readability and maintainability.
+ */
+
 const GearIcon = () => (
   <svg
     width="20"
@@ -75,6 +80,29 @@ const InfoIcon = () => (
 );
 
 /**
+ * Renders an action button with consistent styling.
+ * Used in pairs for form submission actions.
+ */
+const ActionButton = ({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick?: () => void;
+}) => (
+  <button
+    className="rounded-lg px-6 py-2 text-xs font-semibold transition-opacity hover:opacity-80"
+    style={{
+      backgroundColor: COLORS.buttonBg,
+      color: COLORS.buttonText,
+    }}
+    onClick={onClick}
+  >
+    {label}
+  </button>
+);
+
+/**
  * Renders a labeled form input field with an info icon.
  * Used for token and URL inputs in the design connection form.
  */
@@ -99,7 +127,7 @@ const FormField = ({
     <input
       type="text"
       placeholder={placeholder}
-      className="w-full rounded border outline-none px-3 py-2 text-xs"
+      className="w-full rounded border px-3 py-2 text-xs outline-none"
       style={{
         borderColor: COLORS.inputBorder,
         backgroundColor: COLORS.inputBg,
@@ -114,12 +142,15 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="w-full max-w-[400px] p-4 rounded"
+      className="w-full max-w-[400px] rounded p-4"
       style={{ backgroundColor: COLORS.cardBg }}
     >
       {/* Header: Title with settings icon */}
       <div className="flex items-center justify-between">
-        <span className="text-sm font-semibold" style={{ color: COLORS.headerText }}>
+        <span
+          className="text-sm font-semibold"
+          style={{ color: COLORS.headerText }}
+        >
           UI magician Agent
         </span>
         <GearIcon />
@@ -128,7 +159,10 @@ export const TestCard = () => {
       {/* Subtitle: Description of the agent's capability */}
       <div className="mt-1 flex items-center gap-1">
         <ChevronUpIcon stroke={COLORS.subtitleText} />
-        <span className="text-xs font-semibold" style={{ color: COLORS.subtitleText }}>
+        <span
+          className="text-xs font-semibold"
+          style={{ color: COLORS.subtitleText }}
+        >
           From entire frame to a singl...
         </span>
       </div>
@@ -139,7 +173,10 @@ export const TestCard = () => {
       {/* Section header for form inputs */}
       <div className="mb-4 flex items-center gap-2">
         <ChevronUpIcon stroke={COLORS.sectionHeader} />
-        <span className="text-sm font-semibold" style={{ color: COLORS.sectionHeader }}>
+        <span
+          className="text-sm font-semibold"
+          style={{ color: COLORS.sectionHeader }}
+        >
           Add New Design
         </span>
       </div>
@@ -164,29 +201,16 @@ export const TestCard = () => {
 
       {/* Action buttons for submitting form */}
       <div className="mt-4 flex justify-center gap-3">
-        <button
-          className="rounded-lg px-6 py-2 text-xs font-semibold transition-opacity hover:opacity-80"
-          style={{
-            backgroundColor: COLORS.buttonBg,
-            color: COLORS.buttonText,
-          }}
-        >
-          Awesome
-        </button>
-        <button
-          className="rounded-lg px-6 py-2 text-xs font-semibold transition-opacity hover:opacity-80"
-          style={{
-            backgroundColor: COLORS.buttonBg,
-            color: COLORS.buttonText,
-          }}
-        >
-          Prepare
-        </button>
+        <ActionButton label="Awesome" />
+        <ActionButton label="Prepare" />
       </div>
 
       {/* Footer: Section label for recent items */}
       <div className="mt-6">
-        <p className="text-sm font-semibold" style={{ color: COLORS.footerText }}>
+        <p
+          className="text-sm font-semibold"
+          style={{ color: COLORS.footerText }}
+        >
           Recent Breakdowns
         </p>
       </div>
