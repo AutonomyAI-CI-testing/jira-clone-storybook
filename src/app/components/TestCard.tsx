@@ -1,3 +1,4 @@
+// Icon components - small, reusable SVG assets
 const GearIcon = () => (
   <svg
     width="20"
@@ -52,11 +53,12 @@ const InfoIcon = () => (
   </svg>
 );
 
+// Design integration preview card showing agent configuration for Figma design syncing
 export const TestCard = () => {
   return (
     <div id="testElem">
       <div className="w-full bg-[#1e1e1e] p-4">
-        {/* Header row */}
+        {/* Header with title and settings icon */}
         <div className="flex items-center justify-between">
           <span className="text-lg font-bold text-[#b5b5b5]">
             UI magician Agent
@@ -66,7 +68,7 @@ export const TestCard = () => {
           </span>
         </div>
 
-        {/* Subtitle row */}
+        {/* Subtitle showing agent description */}
         <div className="mt-2 flex items-center gap-2">
           <span className="text-[#8b9291]">
             <ChevronUpIcon />
@@ -76,10 +78,10 @@ export const TestCard = () => {
           </span>
         </div>
 
-        {/* Spacer */}
+        {/* Visual spacer */}
         <div className="mt-8" />
 
-        {/* Add New Design row */}
+        {/* Action row for adding new design configurations */}
         <div className="flex items-center gap-2">
           <span className="text-[#b2b2b1]">
             <ChevronUpIcon />
@@ -89,7 +91,7 @@ export const TestCard = () => {
           </span>
         </div>
 
-        {/* Personal Access Token */}
+        {/* Personal Access Token input field - read-only for display */}
         <div className="mt-4">
           <div className="flex items-center gap-2">
             <span className="text-sm text-[#a4a4a3]">
@@ -106,7 +108,7 @@ export const TestCard = () => {
           />
         </div>
 
-        {/* Design URL */}
+        {/* Design URL input field - read-only for display */}
         <div className="mt-4">
           <div className="flex items-center gap-2">
             <span className="text-sm text-[#a4a4a3]">Design URL</span>
@@ -121,7 +123,7 @@ export const TestCard = () => {
           />
         </div>
 
-        {/* Buttons row */}
+        {/* Action buttons for design operations */}
         <div className="mt-6 flex justify-center gap-4">
           <button className="rounded-lg bg-[#843a17] px-6 py-3 font-semibold text-white">
             Awesome
@@ -131,7 +133,7 @@ export const TestCard = () => {
           </button>
         </div>
 
-        {/* Recent Breakdowns */}
+        {/* Section header for recent design breakdowns */}
         <div className="mt-8">
           <span className="text-base font-semibold text-[#b0b0b0]">
             Recent Breakdowns
