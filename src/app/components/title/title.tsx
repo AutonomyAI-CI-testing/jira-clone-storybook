@@ -12,6 +12,8 @@ export const Title = ({
   error,
   placeholder = "Write the title",
   subtitle,
+  loading,
+  disabled,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -32,29 +34,36 @@ export const Title = ({
   };
 
   return (
-    <div id="testElem">
+    <div
+      id="testElem"
+      className={cx(disabled && !loading && "opacity-50 cursor-not-allowed")}
+    >
       <div className="relative">
-        <TextareaAutosize
-          name="title"
-          value={title}
-          setValue={updateTitle}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          textareaClassName={cx(
-            "font-primary-black text-2xl",
-            requireError &&
-              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-          )}
-          autofocus
-        />
-        {requireError && (
+        {loading ? (
+          <div className="h-10 w-full animate-pulse rounded-md bg-background-neutral" />
+        ) : (
+          <TextareaAutosize
+            name="title"
+            value={title}
+            setValue={updateTitle}
+            placeholder={placeholder}
+            readOnly={readOnly || disabled}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            textareaClassName={cx(
+              "font-primary-black text-2xl",
+              requireError &&
+                "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+            )}
+            autofocus
+          />
+        )}
+        {!loading && requireError && (
           <span className="ml-3 font-primary-light text-sm text-font-danger">
             {error}
           </span>
         )}
-        {isFocus && (
+        {!loading && !disabled && isFocus && (
           <span
             className={cx(
               "absolute right-0 top-full font-primary-light text-sm",
@@ -65,7 +74,10 @@ export const Title = ({
           </span>
         )}
       </div>
-      {subtitle && (
+      {loading && subtitle && (
+        <div className="mt-2 h-4 w-1/2 animate-pulse rounded bg-background-neutral" />
+      )}
+      {!loading && subtitle && (
         <p className="font-primary-light text-sm text-font-subtlest mt-1 ml-3">{subtitle}</p>
       )}
     </div>
@@ -79,4 +91,6 @@ interface TitleProps {
   error?: string;
   placeholder?: string;
   subtitle?: string;
+  loading?: boolean;
+  disabled?: boolean;
 }
