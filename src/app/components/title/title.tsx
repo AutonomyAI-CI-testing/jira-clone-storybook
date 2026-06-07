@@ -12,6 +12,8 @@ export const Title = ({
   error,
   placeholder = "Write the title",
   subtitle,
+  loading,
+  disabled,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -33,43 +35,53 @@ export const Title = ({
   };
 
   return (
-    <div id="testElem">
-      <div className="relative">
-        <TextareaAutosize
-          name="title"
-          value={title}
-          setValue={updateTitle}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          textareaClassName={cx(
-            "font-primary-black text-2xl",
-            requireError &&
-              "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-          )}
-          autofocus
-        />
-        {requireError && (
-          <span className="ml-3 font-primary-light text-sm text-font-danger">
-            {error}
-          </span>
-        )}
-        {isFocus && (
-          <span
-            className={cx(
-              "absolute right-0 top-full font-primary-light text-sm",
-              isMaxLength ? "text-font-danger" : "text-font-subtlest"
+    <div id="testElem" className={cx(disabled && !loading && "opacity-50 cursor-not-allowed")}>
+      {loading ? (
+        <div className="animate-pulse">
+          <div className="h-10 rounded-md bg-background-neutral" />
+          {subtitle && <div className="mt-2 h-4 w-1/3 rounded bg-background-neutral" />}
+        </div>
+      ) : (
+        <>
+          <div className="relative">
+            <TextareaAutosize
+              name="title"
+              value={title}
+              setValue={updateTitle}
+              placeholder={placeholder}
+              readOnly={readOnly || disabled}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              textareaClassName={cx(
+                "font-primary-black text-2xl",
+                disabled && "cursor-not-allowed",
+                requireError &&
+                  "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+              )}
+              autofocus
+            />
+            {requireError && (
+              <span className="ml-3 font-primary-light text-sm text-font-danger">
+                {error}
+              </span>
             )}
-          >
-            {title.length} / {maxLength}
-          </span>
-        )}
-      </div>
-      {subtitle && (
-        <p className="mt-1 ml-3 text-sm font-primary-light text-font-subtlest">
-          {subtitle}
-        </p>
+            {isFocus && !disabled && (
+              <span
+                className={cx(
+                  "absolute right-0 top-full font-primary-light text-sm",
+                  isMaxLength ? "text-font-danger" : "text-font-subtlest"
+                )}
+              >
+                {title.length} / {maxLength}
+              </span>
+            )}
+          </div>
+          {subtitle && (
+            <p className="mt-1 ml-3 text-sm font-primary-light text-font-subtlest">
+              {subtitle}
+            </p>
+          )}
+        </>
       )}
     </div>
   );
@@ -82,4 +94,6 @@ interface TitleProps {
   error?: string;
   placeholder?: string;
   subtitle?: string;
+  loading?: boolean;
+  disabled?: boolean;
 }
