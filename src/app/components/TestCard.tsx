@@ -32,10 +32,32 @@ const TYPOGRAPHY = {
   },
 };
 
+// Helper function to create icon styling with consistent flex-shrink behavior
+const createIconClass = (textColor: string) => `flex-shrink-0 ${textColor}`;
+
+// Helper component for label with optional info icon
+const LabelWithIcon = ({
+  label,
+  typographyStyle,
+  iconColor,
+}: {
+  label: string;
+  typographyStyle: (typeof TYPOGRAPHY)[keyof typeof TYPOGRAPHY];
+  iconColor?: string;
+}) => (
+  <div className="mb-[8px] flex items-center gap-[8px]">
+    <span className={typographyStyle.className} style={typographyStyle.style}>
+      {label}
+    </span>
+    {iconColor && <FiInfo className={createIconClass(iconColor)} size={15} />}
+  </div>
+);
+
 // Input field styles
 const INPUT_STYLES = {
   pat: {
-    className: "w-full bg-[#272822] border border-[#a5adad] px-[18px] py-[12px] outline-none",
+    className:
+      "w-full bg-[#272822] border border-[#a5adad] px-[18px] py-[12px] outline-none",
     style: {
       fontFamily: "Inter, sans-serif",
       fontSize: "11.5px",
@@ -45,7 +67,8 @@ const INPUT_STYLES = {
     },
   },
   url: {
-    className: "w-full bg-[#272822] border-2 border-[#929291] px-[18px] py-[12px] outline-none",
+    className:
+      "w-full bg-[#272822] border-2 border-[#929291] px-[18px] py-[12px] outline-none",
     style: {
       fontFamily: "Inter, sans-serif",
       fontSize: "10.5px",
@@ -56,10 +79,25 @@ const INPUT_STYLES = {
   },
 };
 
+// Helper component for CTA button
+const CTAButton = ({ label }: { label: string }) => (
+  <button
+    className="flex flex-1 items-center justify-center rounded-[4px] bg-[#843a17] py-[12px]"
+    style={{ fontFamily: "Inter, sans-serif" }}
+  >
+    <span
+      className={TYPOGRAPHY.buttonText.className}
+      style={TYPOGRAPHY.buttonText.style}
+    >
+      {label}
+    </span>
+  </button>
+);
+
 /**
  * TestCard component renders a dark-themed UI card for agent information,
  * access token management, and design file configuration.
- * 
+ *
  * The component is a visual UI composition from Figma design with:
  * - Header with agent name and settings icon
  * - Breadcrumb navigation
@@ -71,20 +109,26 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="bg-[#2a2a2a] w-[254px] min-h-[508px] flex flex-col px-[20px] pt-[20px] pb-[24px]"
+      className="flex min-h-[508px] w-[254px] flex-col bg-[#2a2a2a] px-[20px] pb-[24px] pt-[20px]"
     >
       {/* Header row */}
       <div className="flex items-center justify-between">
-        <span className={TYPOGRAPHY.headerLabel.className} style={TYPOGRAPHY.headerLabel.style}>
+        <span
+          className={TYPOGRAPHY.headerLabel.className}
+          style={TYPOGRAPHY.headerLabel.style}
+        >
           UI magician Agent
         </span>
         <FiSettings className="text-[#b5b5b5]" size={14} />
       </div>
 
       {/* Breadcrumb row */}
-      <div className="flex items-center gap-[8px] mt-[14px]">
-        <FiChevronUp className="text-[#8b9291] flex-shrink-0" size={10} />
-        <span className={TYPOGRAPHY.breadcrumb.className} style={TYPOGRAPHY.breadcrumb.style}>
+      <div className="mt-[14px] flex items-center gap-[8px]">
+        <FiChevronUp className={createIconClass("text-[#8b9291]")} size={10} />
+        <span
+          className={TYPOGRAPHY.breadcrumb.className}
+          style={TYPOGRAPHY.breadcrumb.style}
+        >
           From entire frame to a singl...
         </span>
       </div>
@@ -94,20 +138,22 @@ export const TestCard = () => {
 
       {/* Add New Design row */}
       <div className="flex items-center gap-[9px]">
-        <FiChevronUp className="text-[#b2b2b1] flex-shrink-0" size={12} />
-        <span className={TYPOGRAPHY.sectionLabel.className} style={TYPOGRAPHY.sectionLabel.style}>
+        <FiChevronUp className={createIconClass("text-[#b2b2b1]")} size={12} />
+        <span
+          className={TYPOGRAPHY.sectionLabel.className}
+          style={TYPOGRAPHY.sectionLabel.style}
+        >
           Add New Design
         </span>
       </div>
 
       {/* Personal Access Token */}
       <div className="mt-[24px]">
-        <div className="flex items-center gap-[8px] mb-[8px]">
-          <span className={TYPOGRAPHY.inputLabel.className} style={TYPOGRAPHY.inputLabel.style}>
-            Personal Access Token
-          </span>
-          <FiInfo className="text-[#a4a4a3] flex-shrink-0" size={15} />
-        </div>
+        <LabelWithIcon
+          label="Personal Access Token"
+          typographyStyle={TYPOGRAPHY.inputLabel}
+          iconColor="text-[#a4a4a3]"
+        />
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
@@ -119,12 +165,11 @@ export const TestCard = () => {
 
       {/* Design URL */}
       <div className="mt-[18px]">
-        <div className="flex items-center gap-[8px] mb-[8px]">
-          <span className={TYPOGRAPHY.designUrlLabel.className} style={TYPOGRAPHY.designUrlLabel.style}>
-            Design URL
-          </span>
-          <FiInfo className="text-[#a3a3a2] flex-shrink-0" size={15} />
-        </div>
+        <LabelWithIcon
+          label="Design URL"
+          typographyStyle={TYPOGRAPHY.designUrlLabel}
+          iconColor="text-[#a3a3a2]"
+        />
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
@@ -135,30 +180,19 @@ export const TestCard = () => {
       </div>
 
       {/* CTA Buttons */}
-      <div className="flex items-center gap-[16px] mt-[24px] px-[2px]">
+      <div className="mt-[24px] flex items-center gap-[16px] px-[2px]">
         {/* Awesome button - primary action for confirming design connection */}
-        <button
-          className="flex-1 bg-[#843a17] rounded-[4px] py-[12px] flex items-center justify-center"
-          style={{ fontFamily: "Inter, sans-serif" }}
-        >
-          <span className={TYPOGRAPHY.buttonText.className} style={TYPOGRAPHY.buttonText.style}>
-            Awesome
-          </span>
-        </button>
+        <CTAButton label="Awesome" />
         {/* Prepare button - secondary action for configuration */}
-        <button
-          className="flex-1 bg-[#843a17] rounded-[4px] py-[12px] flex items-center justify-center"
-          style={{ fontFamily: "Inter, sans-serif" }}
-        >
-          <span className={TYPOGRAPHY.buttonText.className} style={TYPOGRAPHY.buttonText.style}>
-            Prepare
-          </span>
-        </button>
+        <CTAButton label="Prepare" />
       </div>
 
       {/* Footer */}
       <div className="mt-[52px]">
-        <span className={TYPOGRAPHY.footer.className} style={TYPOGRAPHY.footer.style}>
+        <span
+          className={TYPOGRAPHY.footer.className}
+          style={TYPOGRAPHY.footer.style}
+        >
           Recent Breakdowns
         </span>
       </div>
