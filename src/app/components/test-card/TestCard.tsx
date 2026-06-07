@@ -46,91 +46,91 @@ const InfoCircleIcon = () => (
   </svg>
 );
 
+// Reusable chevron icon used in the "Add New Design" section
+const ChevronDownIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#b2b2b1"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="18 15 12 9 6 15" />
+  </svg>
+);
+
+/**
+ * TestCard component displays Figma design integration settings.
+ * Used to configure personal access tokens and design URLs for design syncing.
+ */
 export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="bg-[#1a1a1a] p-5 w-full max-w-[340px] min-h-screen"
+      className="min-h-screen w-full max-w-[340px] bg-[#1a1a1a] p-5"
     >
-      {/* 1. Header row */}
-      <div className="flex items-center justify-between mb-3">
-        <span className="text-[#b5b5b5] font-semibold text-[13.5px]">
+      <div className="mb-3 flex items-center justify-between">
+        <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
         <GearIcon />
       </div>
 
-      {/* 2. Subtitle row */}
-      <div className="flex items-center gap-2 mb-10">
+      <div className="mb-10 flex items-center gap-2">
         <ChevronUpIcon />
-        <span className="text-[#8b9291] text-[11.5px] font-semibold">
+        <span className="text-[11.5px] font-semibold text-[#8b9291]">
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* 3. Add New Design section row */}
-      <div className="flex items-center gap-2 mb-5">
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#b2b2b1"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="18 15 12 9 6 15" />
-        </svg>
-        <span className="text-[#b2b2b1] font-semibold text-[13.5px]">
+      <div className="mb-5 flex items-center gap-2">
+        <ChevronDownIcon />
+        <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
           Add New Design
         </span>
       </div>
 
-      {/* 4. Personal Access Token label */}
-      <div className="flex items-center gap-1.5 mb-2">
-        <span className="text-[#a4a4a3] text-[11.5px] font-semibold">
+      <div className="mb-2 flex items-center gap-1.5">
+        <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
           Personal Access Token
         </span>
         <InfoCircleIcon />
       </div>
 
-      {/* 5. Token input */}
       <input
         type="text"
         readOnly
         placeholder="figd_xxxxxxxxxxxxxxxxxx"
-        className="w-full bg-[#252525] border border-[#555] text-[#737470] placeholder-[#737470] text-[11.5px] px-3 py-2.5 rounded mb-4 outline-none"
+        className="mb-4 w-full rounded border border-[#555] bg-[#252525] px-3 py-2.5 text-[11.5px] text-[#737470] placeholder-[#737470] outline-none"
       />
 
-      {/* 6. Design URL label */}
-      <div className="flex items-center gap-1.5 mb-2">
-        <span className="text-[#a3a3a2] text-[11.5px] font-semibold">
+      <div className="mb-2 flex items-center gap-1.5">
+        <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
           Design URL
         </span>
         <InfoCircleIcon />
       </div>
 
-      {/* 7. URL input */}
       <input
         type="text"
         readOnly
         placeholder="https://www.figma.com/file/:"
-        className="w-full bg-[#252525] border border-[#555] text-[#71726e] placeholder-[#71726e] text-[11.5px] px-3 py-2.5 rounded mb-6 outline-none"
+        className="mb-6 w-full rounded border border-[#555] bg-[#252525] px-3 py-2.5 text-[11.5px] text-[#71726e] placeholder-[#71726e] outline-none"
       />
 
-      {/* 8. Button row */}
-      <div className="flex gap-4 mb-12">
-        <button className="flex-1 bg-[#7a4a30] text-[#d4b8a8] font-semibold text-[11.5px] py-3 px-4 rounded-lg">
+      <div className="mb-12 flex gap-4">
+        <button className="flex-1 rounded-lg bg-[#7a4a30] px-4 py-3 text-[11.5px] font-semibold text-[#d4b8a8]">
           Awesome
         </button>
-        <button className="flex-1 bg-[#7a4a30] text-[#d4b8a8] font-semibold text-[11.5px] py-3 px-4 rounded-lg">
+        <button className="flex-1 rounded-lg bg-[#7a4a30] px-4 py-3 text-[11.5px] font-semibold text-[#d4b8a8]">
           Prepare
         </button>
       </div>
 
-      {/* 9. Recent Breakdowns heading */}
-      <span className="text-[#b0b0b0] font-semibold text-[13.5px]">
+      <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
         Recent Breakdowns
       </span>
     </div>
