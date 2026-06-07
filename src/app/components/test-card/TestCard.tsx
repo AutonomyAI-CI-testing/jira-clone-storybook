@@ -25,6 +25,41 @@ const COLORS = {
   placeholder: "#737470",
 };
 
+/**
+ * FormInputField is a labeled input with an optional info icon.
+ * Extracted to reduce duplication between Personal Access Token and Design URL fields.
+ */
+const FormInputField = ({
+  label,
+  placeholder,
+  borderColor,
+  borderWidth = "1px",
+}: {
+  label: string;
+  placeholder: string;
+  borderColor: string;
+  borderWidth?: string;
+}) => (
+  <div>
+    <div className="flex items-center gap-2">
+      <span className="text-sm" style={{ color: COLORS.text.label }}>
+        {label}
+      </span>
+      <AiOutlineInfoCircle style={{ color: COLORS.icons.label }} size={16} />
+    </div>
+    <input
+      type="text"
+      placeholder={placeholder}
+      className="w-full mt-1 px-3 py-2 rounded text-gray-400 outline-none text-sm"
+      style={{
+        backgroundColor: COLORS.background,
+        borderColor,
+        borderWidth,
+      }}
+    />
+  </div>
+);
+
 export const TestCard = () => {
   return (
     <div
@@ -32,7 +67,7 @@ export const TestCard = () => {
       className={`text-white p-6 rounded-xl max-w-sm w-full`}
       style={{ backgroundColor: COLORS.background }}
     >
-      {/* Header row */}
+      {/* Header with title and settings icon */}
       <div className="flex justify-between items-center">
         <span className="font-bold" style={{ color: COLORS.text.primary }}>
           UI magician Agent
@@ -40,7 +75,7 @@ export const TestCard = () => {
         <LuSettings2 style={{ color: COLORS.text.primary }} size={20} />
       </div>
 
-      {/* Subtitle row */}
+      {/* Agent status line */}
       <div className="flex items-center gap-2 mt-2">
         <FiChevronUp style={{ color: COLORS.icons.accent }} size={16} />
         <span className="text-sm" style={{ color: COLORS.text.secondary }}>
@@ -48,7 +83,7 @@ export const TestCard = () => {
         </span>
       </div>
 
-      {/* Add New Design row */}
+      {/* Section header: Add New Design */}
       <div className="flex items-center gap-2 mt-6">
         <FiChevronUp style={{ color: COLORS.icons.muted }} size={16} />
         <span className="font-bold" style={{ color: COLORS.text.muted }}>
@@ -56,50 +91,22 @@ export const TestCard = () => {
         </span>
       </div>
 
-      {/* Form section */}
+      {/* Form inputs for design configuration */}
       <div className="mt-4 flex flex-col gap-4">
-        {/* Personal Access Token field */}
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm" style={{ color: COLORS.text.label }}>
-              Personal Access Token
-            </span>
-            <AiOutlineInfoCircle style={{ color: COLORS.icons.label }} size={16} />
-          </div>
-          <input
-            type="text"
-            placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            className="w-full mt-1 px-3 py-2 rounded text-gray-400 outline-none text-sm"
-            style={{
-              backgroundColor: COLORS.background,
-              borderColor: COLORS.borders.light,
-              borderWidth: "1px",
-            }}
-          />
-        </div>
-
-        {/* Design URL field */}
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm" style={{ color: COLORS.text.label }}>
-              Design URL
-            </span>
-            <AiOutlineInfoCircle style={{ color: COLORS.icons.label }} size={16} />
-          </div>
-          <input
-            type="text"
-            placeholder="https://www.figma.com/file/:"
-            className="w-full mt-1 px-3 py-2 rounded text-gray-400 outline-none text-sm"
-            style={{
-              backgroundColor: COLORS.background,
-              borderColor: COLORS.borders.medium,
-              borderWidth: "2px",
-            }}
-          />
-        </div>
+        <FormInputField
+          label="Personal Access Token"
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          borderColor={COLORS.borders.light}
+        />
+        <FormInputField
+          label="Design URL"
+          placeholder="https://www.figma.com/file/:"
+          borderColor={COLORS.borders.medium}
+          borderWidth="2px"
+        />
       </div>
 
-      {/* Button row */}
+      {/* Action buttons */}
       <div className="flex gap-3 mt-6 justify-center">
         <button
           className="text-white rounded-lg px-6 py-3 font-semibold"
@@ -115,7 +122,7 @@ export const TestCard = () => {
         </button>
       </div>
 
-      {/* Recent Breakdowns heading */}
+      {/* Recent activity section header */}
       <div className="mt-8">
         <span className="font-bold text-xl" style={{ color: COLORS.text.heading }}>
           Recent Breakdowns
