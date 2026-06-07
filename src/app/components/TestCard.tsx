@@ -1,3 +1,5 @@
+import React from "react";
+
 // Gear icon (settings) - appears in header
 const GearIcon = () => (
   <svg
@@ -68,6 +70,8 @@ const InfoIcon = ({ color }: { color: string }) => (
 );
 
 // Reusable label + info icon component
+// Note: spacing prop is applied via className concatenation (e.g., mt-4, mt-5)
+// color prop is passed to InfoIcon and inlined in span's style prop to avoid dynamic tailwind class issues
 const LabelWithInfo = ({
   text,
   color,
@@ -79,7 +83,8 @@ const LabelWithInfo = ({
 }) => (
   <div className={`${spacing} flex items-center gap-2`}>
     <span
-      className={`text-[11.5px] font-semibold leading-[13.92px] text-[${color}]`}
+      className="text-[11.5px] font-semibold leading-[13.92px]"
+      style={{ color }}
     >
       {text}
     </span>
@@ -88,6 +93,8 @@ const LabelWithInfo = ({
 );
 
 // Reusable collapsible row component
+// Note: spacing prop is applied via className concatenation (e.g., mt-4)
+// color prop is passed to ChevronUpIcon and inlined in span's style prop to avoid dynamic tailwind class issues
 const CollapsibleRow = ({
   text,
   color,
@@ -100,12 +107,21 @@ const CollapsibleRow = ({
   <div className={`${spacing} flex items-center gap-2`}>
     <ChevronUpIcon color={color} />
     <span
-      className={`text-[11.5px] font-semibold leading-[13.92px] text-[${color}]`}
+      className="text-[11.5px] font-semibold leading-[13.92px]"
+      style={{ color }}
     >
       {text}
     </span>
   </div>
 );
+
+// Shared styles for read-only input fields with dark theme styling
+const INPUT_FIELD_CLASS =
+  "mt-2 w-full rounded border border-[#444] bg-[#2a2a2a] px-3 py-2 text-[11.5px] font-semibold outline-none";
+
+// Shared styles for action buttons with brown/tan color scheme
+const ACTION_BUTTON_CLASS =
+  "flex-1 rounded-lg bg-[#a0522d] px-6 py-3 text-[11.5px] font-semibold text-[#8c8078]";
 
 export const TestCard = () => (
   <div
@@ -145,7 +161,10 @@ export const TestCard = () => (
       type="text"
       placeholder="figd_xxxxxxxxxxxxxxxxxx"
       readOnly
-      className="mt-2 w-full rounded border border-[#444] bg-[#2a2a2a] px-3 py-2 text-[11.5px] font-semibold text-[#737470] placeholder-[#737470] outline-none"
+      className={INPUT_FIELD_CLASS}
+      style={{
+        color: "#737470",
+      }}
     />
 
     {/* Design URL field */}
@@ -154,17 +173,16 @@ export const TestCard = () => (
       type="text"
       placeholder="https://www.figma.com/file/:"
       readOnly
-      className="mt-2 w-full rounded border border-[#444] bg-[#2a2a2a] px-3 py-2 text-[11.5px] font-semibold text-[#71726e] placeholder-[#71726e] outline-none"
+      className={INPUT_FIELD_CLASS}
+      style={{
+        color: "#71726e",
+      }}
     />
 
     {/* Action buttons */}
     <div className="mt-5 flex gap-3">
-      <button className="flex-1 rounded-lg bg-[#a0522d] px-6 py-3 text-[11.5px] font-semibold text-[#8c8078]">
-        Awesome
-      </button>
-      <button className="flex-1 rounded-lg bg-[#a0522d] px-6 py-3 text-[11.5px] font-semibold text-[#8c8078]">
-        Prepare
-      </button>
+      <button className={ACTION_BUTTON_CLASS}>Awesome</button>
+      <button className={ACTION_BUTTON_CLASS}>Prepare</button>
     </div>
 
     {/* Spacer */}
