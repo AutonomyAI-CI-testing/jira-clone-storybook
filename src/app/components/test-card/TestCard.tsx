@@ -1,4 +1,8 @@
-// Design tokens: colors, typography, and spacing values
+/**
+ * Design tokens for the TestCard component
+ * Colors, typography, and spacing values are centralized for consistency
+ * and easier theme adjustments.
+ */
 const COLORS = {
   background: "#1a1a1a",
   inputBg: "#272822",
@@ -14,35 +18,32 @@ const COLORS = {
   recentBreakdownsText: "#b0b0b0",
 };
 
+// Typography sizes and weights for consistent visual hierarchy across the component
 const TYPOGRAPHY = {
-  // Header title
   headerTitle: { fontSize: "13.5px", fontWeight: 600, lineHeight: "16.34px" },
-  // Header icon
   headerIcon: { fontSize: "14px" },
-  // Caret icon
   caretIcon: { fontSize: "10px", lineHeight: 1 },
-  // Caret text
   caretText: { fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" },
-  // Section heading caret
   sectionCaret: { fontSize: "13px", lineHeight: 1 },
-  // Section heading text
   sectionTitle: { fontSize: "13.5px", fontWeight: 600, lineHeight: "16.34px" },
-  // Form label
   formLabel: { fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" },
-  // Form label icon
   formIcon: { fontSize: "13px" },
-  // Input text (token)
   inputToken: { fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" },
-  // Input text (URL)
   inputUrl: { fontSize: "10.5px", fontWeight: 600, lineHeight: "12.71px" },
-  // Button text
   buttonText: { fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" },
-  // Recent breakdowns
   recentBreakdowns: {
     fontSize: "13.5px",
     fontWeight: 600,
     lineHeight: "16.34px",
   },
+};
+
+// Button styling configuration shared by all action buttons
+const BUTTON_STYLE = {
+  ...TYPOGRAPHY.buttonText,
+  borderRadius: "4px",
+  width: "85px",
+  height: "37px",
 };
 
 interface FormInputProps {
@@ -52,6 +53,10 @@ interface FormInputProps {
   labelColor: string;
 }
 
+/**
+ * FormInput component for displaying read-only input fields with labels and help icons.
+ * Used for displaying tokens and URLs that users need to reference but not edit.
+ */
 const FormInput = ({
   label,
   placeholder,
@@ -77,6 +82,10 @@ const FormInput = ({
   </div>
 );
 
+/**
+ * SectionHeading component for displaying collapsible section headers.
+ * Shows a caret icon followed by the section title text.
+ */
 const SectionHeading = ({ text }: { text: string }) => (
   <div className="flex items-center gap-2">
     <span className="text-[#b2b2b1]" style={TYPOGRAPHY.sectionCaret}>
@@ -88,6 +97,10 @@ const SectionHeading = ({ text }: { text: string }) => (
   </div>
 );
 
+/**
+ * CaretRow component for displaying a description row with a caret indicator.
+ * Used for expandable/collapsible content hints.
+ */
 const CaretRow = ({ text }: { text: string }) => (
   <div className="flex items-center gap-2">
     <span className="text-[#8b9291]" style={TYPOGRAPHY.caretIcon}>
@@ -99,6 +112,10 @@ const CaretRow = ({ text }: { text: string }) => (
   </div>
 );
 
+/**
+ * TestCard component displays a card UI for configuring design integrations.
+ * Shows form inputs for authentication tokens and URLs, along with action buttons.
+ */
 export const TestCard = () => {
   return (
     <div
@@ -158,24 +175,14 @@ export const TestCard = () => {
         <button
           type="button"
           className="rounded bg-[#843a17] px-6 py-2.5 text-[#8c8078]"
-          style={{
-            ...TYPOGRAPHY.buttonText,
-            borderRadius: "4px",
-            width: "85px",
-            height: "37px",
-          }}
+          style={BUTTON_STYLE}
         >
           Awesome
         </button>
         <button
           type="button"
           className="rounded bg-[#843a17] px-6 py-2.5 text-[#8c8078]"
-          style={{
-            ...TYPOGRAPHY.buttonText,
-            borderRadius: "4px",
-            width: "85px",
-            height: "37px",
-          }}
+          style={BUTTON_STYLE}
         >
           Prepare
         </button>
