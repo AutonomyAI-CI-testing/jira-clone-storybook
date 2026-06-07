@@ -25,8 +25,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -35,11 +35,15 @@ export const Title = ({
   };
 
   return (
-    <div id="testElem" className={cx(disabled && !loading && "opacity-50 cursor-not-allowed")}>
+    <div
+      className={cx(disabled && !loading && "cursor-not-allowed opacity-50")}
+    >
       {loading ? (
         <div className="animate-pulse">
           <div className="h-10 rounded-md bg-background-neutral" />
-          {subtitle && <div className="mt-2 h-4 w-1/3 rounded bg-background-neutral" />}
+          {subtitle && (
+            <div className="mt-2 h-4 w-1/3 rounded bg-background-neutral" />
+          )}
         </div>
       ) : (
         <>
@@ -77,7 +81,7 @@ export const Title = ({
             )}
           </div>
           {subtitle && (
-            <p className="mt-1 ml-3 text-sm font-primary-light text-font-subtlest">
+            <p className="ml-3 mt-1 font-primary-light text-sm text-font-subtlest">
               {subtitle}
             </p>
           )}
