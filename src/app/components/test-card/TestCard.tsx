@@ -22,6 +22,14 @@ const FONT_SIZES = {
 
 const FONT_WEIGHT = 600;
 
+// Additional UI-specific colors not in main COLORS token (used in single sections)
+const UI_COLORS = {
+  addNewDesignText: "#b2b2b1",
+  designUrlBorder: "#929291",
+  designUrlText: "#71726e",
+  buttonText: "#8c8078",
+} as const;
+
 /** Gear icon SVG */
 const GearIcon = () => (
   <svg
@@ -74,6 +82,36 @@ const InfoIcon = () => (
 );
 
 /**
+ * LabelWithIcon component
+ * Displays a label with an optional info icon. Extracted to reduce repetition.
+ */
+interface LabelWithIconProps {
+  text: string;
+  color: string;
+  showIcon?: boolean;
+}
+
+const LabelWithIcon = ({
+  text,
+  color,
+  showIcon = true,
+}: LabelWithIconProps) => (
+  <div className="flex items-center gap-2">
+    <span
+      className={`text-[${color}]`}
+      style={{ fontSize: FONT_SIZES.labelFont, fontWeight: FONT_WEIGHT }}
+    >
+      {text}
+    </span>
+    {showIcon && (
+      <span className={`text-[${color}]`}>
+        <InfoIcon />
+      </span>
+    )}
+  </div>
+);
+
+/**
  * TestCard component
  *
  * Displays a Figma plugin UI card with configuration inputs and controls.
@@ -117,11 +155,11 @@ export const TestCard = () => {
 
       {/* Add New Design section row */}
       <div className="flex items-center gap-2">
-        <span className="text-[#b2b2b1]">
+        <span className={`text-[${UI_COLORS.addNewDesignText}]`}>
           <ChevronUpIcon size={12} />
         </span>
         <span
-          className="text-[#b2b2b1]"
+          className={`text-[${UI_COLORS.addNewDesignText}]`}
           style={{ fontSize: FONT_SIZES.headerFont, fontWeight: FONT_WEIGHT }}
         >
           Add New Design
@@ -130,17 +168,7 @@ export const TestCard = () => {
 
       {/* Personal Access Token */}
       <div className="mt-5">
-        <div className="flex items-center gap-2">
-          <span
-            className={`text-[${COLORS.labelText}]`}
-            style={{ fontSize: FONT_SIZES.labelFont, fontWeight: FONT_WEIGHT }}
-          >
-            Personal Access Token
-          </span>
-          <span className={`text-[${COLORS.labelText}]`}>
-            <InfoIcon />
-          </span>
-        </div>
+        <LabelWithIcon text="Personal Access Token" color={COLORS.labelText} />
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
@@ -152,22 +180,12 @@ export const TestCard = () => {
 
       {/* Design URL */}
       <div className="mt-4">
-        <div className="flex items-center gap-2">
-          <span
-            className={`text-[${COLORS.infoText}]`}
-            style={{ fontSize: FONT_SIZES.labelFont, fontWeight: FONT_WEIGHT }}
-          >
-            Design URL
-          </span>
-          <span className={`text-[${COLORS.infoText}]`}>
-            <InfoIcon />
-          </span>
-        </div>
+        <LabelWithIcon text="Design URL" color={COLORS.infoText} />
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
           readOnly
-          className="mt-2 w-full rounded border-2 border-[#929291] bg-[#272822] px-3 py-2 text-[#71726e] outline-none"
+          className={`mt-2 w-full rounded border-2 border-[${UI_COLORS.designUrlBorder}] bg-[${COLORS.inputBg}] px-3 py-2 text-[${UI_COLORS.designUrlText}] outline-none`}
           style={{
             fontSize: FONT_SIZES.designUrlFont,
             fontWeight: FONT_WEIGHT,
@@ -178,13 +196,13 @@ export const TestCard = () => {
       {/* Buttons row */}
       <div className="mt-6 flex gap-3">
         <button
-          className={`flex-1 rounded-[4px] bg-[${COLORS.buttonBg}] px-4 py-[10px] text-[#8c8078]`}
+          className={`flex-1 rounded-[4px] bg-[${COLORS.buttonBg}] px-4 py-[10px] text-[${UI_COLORS.buttonText}]`}
           style={{ fontSize: FONT_SIZES.labelFont, fontWeight: FONT_WEIGHT }}
         >
           Awesome
         </button>
         <button
-          className={`flex-1 rounded-[4px] bg-[${COLORS.buttonBg}] px-4 py-[10px] text-[#8c8078]`}
+          className={`flex-1 rounded-[4px] bg-[${COLORS.buttonBg}] px-4 py-[10px] text-[${UI_COLORS.buttonText}]`}
           style={{ fontSize: FONT_SIZES.labelFont, fontWeight: FONT_WEIGHT }}
         >
           Prepare
