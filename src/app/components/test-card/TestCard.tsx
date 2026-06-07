@@ -34,6 +34,93 @@ const ICON_SIZES = {
   small: 15,
 };
 
+interface LabelWithIconProps {
+  label: string;
+  color: string;
+}
+
+// Reusable component for label rows with info icon
+const LabelWithIcon = ({ label, color }: LabelWithIconProps) => (
+  <div className="mb-1 flex items-center gap-2">
+    <span
+      className="font-semibold"
+      style={{ fontSize: FONT_SIZES.medium, color }}
+    >
+      {label}
+    </span>
+    <AiOutlineInfoCircle style={{ color }} size={ICON_SIZES.small} />
+  </div>
+);
+
+interface ReadOnlyInputProps {
+  placeholder: string;
+  fontSize: string;
+  color: string;
+  borderColor: string;
+  borderWidth?: string;
+}
+
+// Reusable component for read-only input fields
+const ReadOnlyInput = ({
+  placeholder,
+  fontSize,
+  color,
+  borderColor,
+  borderWidth = "1px",
+}: ReadOnlyInputProps) => (
+  <input
+    readOnly
+    style={{
+      fontSize,
+      fontWeight: 600,
+      backgroundColor: COLORS.surfaceBackground,
+      borderColor,
+      borderWidth,
+      color,
+    }}
+    className="w-full rounded border p-2 outline-none"
+    placeholder={placeholder}
+  />
+);
+
+interface CollapsibleSectionProps {
+  text: string;
+  color: string;
+  fontSize: string;
+}
+
+// Reusable component for collapsible section headers
+const CollapsibleSection = ({
+  text,
+  color,
+  fontSize,
+}: CollapsibleSectionProps) => (
+  <div className="flex items-center gap-2">
+    <FiChevronUp style={{ color }} size={ICON_SIZES.medium} />
+    <span className="font-semibold" style={{ fontSize, color }}>
+      {text}
+    </span>
+  </div>
+);
+
+interface ActionButtonProps {
+  children: string;
+}
+
+// Reusable component for action buttons
+const ActionButton = ({ children }: ActionButtonProps) => (
+  <button
+    style={{
+      backgroundColor: COLORS.buttonBackground,
+      color: COLORS.buttonText,
+      fontSize: FONT_SIZES.medium,
+    }}
+    className="flex-1 rounded-[4px] px-6 py-3 font-semibold"
+  >
+    {children}
+  </button>
+);
+
 export const TestCard = (): JSX.Element => {
   return (
     <div
@@ -56,112 +143,50 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       {/* Collapsed row - appears to be a collapsed section */}
-      <div className="mb-8 flex items-center gap-2">
-        <FiChevronUp
-          style={{ color: COLORS.collapsedText }}
-          size={ICON_SIZES.medium}
+      <div className="mb-8">
+        <CollapsibleSection
+          text="From entire frame to a singl..."
+          color={COLORS.collapsedText}
+          fontSize={FONT_SIZES.medium}
         />
-        <span
-          className="font-semibold"
-          style={{ fontSize: FONT_SIZES.medium, color: COLORS.collapsedText }}
-        >
-          From entire frame to a singl...
-        </span>
       </div>
 
       {/* Add New Design section - collapsible section header */}
-      <div className="mb-4 flex items-center gap-2">
-        <FiChevronUp
-          style={{ color: COLORS.sectionText }}
-          size={ICON_SIZES.medium}
+      <div className="mb-4">
+        <CollapsibleSection
+          text="Add New Design"
+          color={COLORS.sectionText}
+          fontSize={FONT_SIZES.large}
         />
-        <span
-          className="font-semibold"
-          style={{ fontSize: FONT_SIZES.large, color: COLORS.sectionText }}
-        >
-          Add New Design
-        </span>
       </div>
 
       {/* Personal Access Token field - read-only input for token display */}
       <div className="mb-3">
-        <div className="mb-1 flex items-center gap-2">
-          <span
-            className="font-semibold"
-            style={{ fontSize: FONT_SIZES.medium, color: COLORS.labelText }}
-          >
-            Personal Access Token
-          </span>
-          <AiOutlineInfoCircle
-            style={{ color: COLORS.labelText }}
-            size={ICON_SIZES.small}
-          />
-        </div>
-        <input
-          readOnly
-          style={{
-            fontSize: FONT_SIZES.medium,
-            fontWeight: 600,
-            backgroundColor: COLORS.surfaceBackground,
-            borderColor: COLORS.inputBorder,
-            color: COLORS.inputText,
-          }}
-          className="w-full rounded border p-2 outline-none"
+        <LabelWithIcon label="Personal Access Token" color={COLORS.labelText} />
+        <ReadOnlyInput
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          fontSize={FONT_SIZES.medium}
+          color={COLORS.inputText}
+          borderColor={COLORS.inputBorder}
         />
       </div>
 
       {/* Design URL field - read-only input for URL display */}
       <div className="mb-5">
-        <div className="mb-1 flex items-center gap-2">
-          <span
-            className="font-semibold"
-            style={{ fontSize: FONT_SIZES.medium, color: COLORS.labelText2 }}
-          >
-            Design URL
-          </span>
-          <AiOutlineInfoCircle
-            style={{ color: COLORS.labelText2 }}
-            size={ICON_SIZES.small}
-          />
-        </div>
-        <input
-          readOnly
-          style={{
-            fontSize: FONT_SIZES.small,
-            fontWeight: 600,
-            backgroundColor: COLORS.surfaceBackground,
-            borderColor: COLORS.inputBorder2,
-            borderWidth: "2px",
-            color: COLORS.inputText2,
-          }}
-          className="w-full rounded border p-2 outline-none"
+        <LabelWithIcon label="Design URL" color={COLORS.labelText2} />
+        <ReadOnlyInput
           placeholder="https://www.figma.com/file/:"
+          fontSize={FONT_SIZES.small}
+          color={COLORS.inputText2}
+          borderColor={COLORS.inputBorder2}
+          borderWidth="2px"
         />
       </div>
 
       {/* Action buttons - two primary CTAs for the configuration flow */}
       <div className="mb-8 flex gap-4">
-        <button
-          style={{
-            backgroundColor: COLORS.buttonBackground,
-            color: COLORS.buttonText,
-            fontSize: FONT_SIZES.medium,
-          }}
-          className="flex-1 rounded-[4px] px-6 py-3 font-semibold"
-        >
-          Awesome
-        </button>
-        <button
-          style={{
-            backgroundColor: COLORS.buttonBackground,
-            color: COLORS.buttonText,
-            fontSize: FONT_SIZES.medium,
-          }}
-          className="flex-1 rounded-[4px] px-6 py-3 font-semibold"
-        >
-          Prepare
-        </button>
+        <ActionButton>Awesome</ActionButton>
+        <ActionButton>Prepare</ActionButton>
       </div>
 
       {/* Recent Breakdowns section header - placeholder for future content */}
