@@ -1,3 +1,6 @@
+/**
+ * Icon Components
+ */
 const GearIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -49,15 +52,21 @@ const InfoIcon = () => (
   </svg>
 );
 
+/**
+ * TestCard component
+ *
+ * Displays a settings/configuration panel for a UI automation agent.
+ * Features a dark theme interface with form inputs and action buttons.
+ */
 export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="bg-[#1a1a1a] p-5 w-[254px] min-h-[508px] font-sans"
+      className="font-sans min-h-[508px] w-[254px] bg-[#1a1a1a] p-5"
     >
-      {/* Header row */}
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-[#b5b5b5] font-semibold text-sm">
+      {/* Header with title and settings icon */}
+      <div className="mb-2 flex items-center justify-between">
+        <span className="text-sm font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
         <span className="text-[#b5b5b5]">
@@ -65,61 +74,61 @@ export const TestCard = () => {
         </span>
       </div>
 
-      {/* Subtitle row */}
-      <div className="flex items-center gap-1 text-[#8b9291] mb-12">
+      {/* Subtitle with collapsed section indicator */}
+      <div className="mb-12 flex items-center gap-1 text-[#8b9291]">
         <ChevronUpIcon />
         <span className="text-xs font-semibold">
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Add New Design section */}
-      <div className="flex items-center gap-2 mb-4 text-[#b2b2b1]">
+      {/* Section header: Add New Design */}
+      <div className="mb-4 flex items-center gap-2 text-[#b2b2b1]">
         <ChevronUpIcon />
-        <span className="font-semibold text-sm">Add New Design</span>
+        <span className="text-sm font-semibold">Add New Design</span>
       </div>
 
       {/* Form field: Personal Access Token */}
       <div className="mb-3">
-        <div className="flex items-center gap-1 mb-1 text-[#a4a4a3]">
+        <div className="mb-1 flex items-center gap-1 text-[#a4a4a3]">
           <span className="text-xs font-semibold">Personal Access Token</span>
           <InfoIcon />
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full bg-[#2a2a2a] border border-[#4a4a4a] rounded px-3 py-2 text-[#737470] text-xs outline-none"
+          className="w-full rounded border border-[#4a4a4a] bg-[#2a2a2a] px-3 py-2 text-xs text-[#737470] outline-none"
           readOnly
         />
       </div>
 
       {/* Form field: Design URL */}
       <div className="mb-4">
-        <div className="flex items-center gap-1 mb-1 text-[#a4a4a3]">
+        <div className="mb-1 flex items-center gap-1 text-[#a4a4a3]">
           <span className="text-xs font-semibold">Design URL</span>
           <InfoIcon />
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
-          className="w-full bg-[#2a2a2a] border border-[#4a4a4a] rounded px-3 py-2 text-[#737470] text-xs outline-none"
+          className="w-full rounded border border-[#4a4a4a] bg-[#2a2a2a] px-3 py-2 text-xs text-[#737470] outline-none"
           readOnly
         />
       </div>
 
-      {/* Buttons row */}
-      <div className="flex gap-3 mb-8">
-        <button className="flex-1 bg-[#b5451b] text-[#d4b8a8] text-xs font-semibold rounded-xl py-3 cursor-pointer">
+      {/* Action buttons */}
+      <div className="mb-8 flex gap-3">
+        <button className="flex-1 cursor-pointer rounded-xl bg-[#b5451b] py-3 text-xs font-semibold text-[#d4b8a8]">
           Awesome
         </button>
-        <button className="flex-1 bg-[#b5451b] text-[#d4b8a8] text-xs font-semibold rounded-xl py-3 cursor-pointer">
+        <button className="flex-1 cursor-pointer rounded-xl bg-[#b5451b] py-3 text-xs font-semibold text-[#d4b8a8]">
           Prepare
         </button>
       </div>
 
-      {/* Footer */}
+      {/* Footer: Recent items section header */}
       <div>
-        <span className="text-[#b0b0b0] font-semibold text-sm">
+        <span className="text-sm font-semibold text-[#b0b0b0]">
           Recent Breakdowns
         </span>
       </div>
