@@ -1,24 +1,51 @@
 import { AiOutlineSetting, AiOutlineInfoCircle } from "react-icons/ai";
 import { BiChevronUp } from "react-icons/bi";
 
+// Color palette for the dark-themed card
+const COLORS = {
+  background: "#2a2824",
+  headerText: "#b5b5b5",
+  headerIcon: "#b5b5b5",
+  subtitleIcon: "#8b9291",
+  subtitleText: "#8b9291",
+  sectionIcon: "#b2b2b1",
+  sectionText: "#b2b2b1",
+  labelText: "#a4a4a3",
+  labelIcon: "#a4a4a3",
+  inputBorder: "#a5adad",
+  inputBackground: "#272822",
+  inputText: "#737470",
+  designUrlLabel: "#a3a3a2",
+  designUrlIcon: "#a3a3a2",
+  designUrlBorder: "#929291",
+  designUrlText: "#71726e",
+  buttonBackground: "#843a17",
+  buttonText: "#8c8078",
+  recentBreakdownsText: "#b0b0b0",
+};
+
+// Button styling (both buttons share the same style)
+const BUTTON_STYLE =
+  "h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] font-semibold text-[#8c8078]";
+
 export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
       className="flex w-[254px] flex-col p-5"
-      style={{ backgroundColor: "#2a2824", fontFamily: "Inter, sans-serif" }}
+      style={{ backgroundColor: COLORS.background, fontFamily: "Inter, sans-serif" }}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
         <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
-        <AiOutlineSetting size={18} color="#b5b5b5" />
+        <AiOutlineSetting size={18} color={COLORS.headerIcon} />
       </div>
 
       {/* Subtitle */}
       <div className="mt-2 flex items-center gap-1">
-        <BiChevronUp size={14} color="#8b9291" />
+        <BiChevronUp size={14} color={COLORS.subtitleIcon} />
         <span className="text-[11.5px] font-semibold text-[#8b9291]">
           From entire frame to a singl...
         </span>
@@ -29,7 +56,7 @@ export const TestCard = (): JSX.Element => {
 
       {/* Add New Design header */}
       <div className="flex items-center gap-2">
-        <BiChevronUp size={16} color="#b2b2b1" />
+        <BiChevronUp size={16} color={COLORS.sectionIcon} />
         <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
           Add New Design
         </span>
@@ -43,7 +70,7 @@ export const TestCard = (): JSX.Element => {
             <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
               Personal Access Token
             </span>
-            <AiOutlineInfoCircle size={15} color="#a4a4a3" />
+            <AiOutlineInfoCircle size={15} color={COLORS.labelIcon} />
           </div>
           <input
             readOnly
@@ -61,7 +88,7 @@ export const TestCard = (): JSX.Element => {
             <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
               Design URL
             </span>
-            <AiOutlineInfoCircle size={15} color="#a3a3a2" />
+            <AiOutlineInfoCircle size={15} color={COLORS.designUrlIcon} />
           </div>
           <input
             readOnly
@@ -76,20 +103,10 @@ export const TestCard = (): JSX.Element => {
 
       {/* Buttons */}
       <div className="mt-4 flex justify-center gap-3">
-        <button
-          className={
-            "h-[37px] w-[85px] rounded bg-[#843a17]" +
-            " text-[11.5px] font-semibold text-[#8c8078]"
-          }
-        >
+        <button className={BUTTON_STYLE}>
           Awesome
         </button>
-        <button
-          className={
-            "h-[37px] w-[85px] rounded bg-[#843a17]" +
-            " text-[11.5px] font-semibold text-[#8c8078]"
-          }
-        >
+        <button className={BUTTON_STYLE}>
           Prepare
         </button>
       </div>
