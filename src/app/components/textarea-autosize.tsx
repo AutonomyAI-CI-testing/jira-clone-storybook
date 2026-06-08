@@ -12,6 +12,8 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     textareaClassName,
     onFocus,
     onBlur,
+    disabled,
+    style,
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
@@ -46,15 +48,17 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         name={name}
         className={cx(
           "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          disabled && "disabled:opacity-50 disabled:cursor-not-allowed disabled:select-none",
           textareaClassName
         )}
         value={value}
         onChange={handleTitleChange}
         placeholder={placeholder}
         readOnly={readOnly}
+        disabled={disabled}
         onFocus={handleOnFocus}
         onBlur={onBlur}
-        style={{ height: `${textareaHeight}px` }}
+        style={{ height: `${textareaHeight}px`, ...style }}
         autoFocus={autofocus}
       />
       <p
@@ -77,7 +81,9 @@ interface TitleProps {
   placeholder: string;
   autofocus?: boolean;
   readOnly?: boolean;
+  disabled?: boolean;
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  style?: React.CSSProperties;
 }

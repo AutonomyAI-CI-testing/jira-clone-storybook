@@ -12,6 +12,8 @@ export const Title = ({
   error,
   placeholder = "Write the title",
   subtitle,
+  loading,
+  disabled,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -40,7 +42,8 @@ export const Title = ({
           value={title}
           setValue={updateTitle}
           placeholder={placeholder}
-          readOnly={readOnly}
+          readOnly={readOnly || loading}
+          disabled={disabled}
           onFocus={onFocus}
           onBlur={onBlur}
           textareaClassName={cx(
@@ -48,8 +51,32 @@ export const Title = ({
             requireError &&
               "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
           )}
+          style={loading ? { paddingRight: "40px", opacity: 0.7 } : undefined}
           autofocus
         />
+        {loading && (
+          <div className="absolute flex items-center" style={{ right: "12px", top: "12px" }}>
+            <svg
+              className="h-5 w-5 animate-spin text-font-brand"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              />
+            </svg>
+          </div>
+        )}
         {requireError && (
           <span className="ml-3 font-primary-light text-sm text-font-danger">
             {error}
@@ -82,4 +109,6 @@ interface TitleProps {
   error?: string;
   placeholder?: string;
   subtitle?: string;
+  loading?: boolean;
+  disabled?: boolean;
 }
