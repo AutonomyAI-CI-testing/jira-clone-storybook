@@ -9,6 +9,48 @@ const BUTTON_HOVER_COLOR = "#a65d3a";
 const INPUT_CLASSNAME =
   "shadow appearance-none border border-neutral-700 rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline bg-neutral-800";
 
+// Button event handlers for hover state changes
+const handleButtonMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.currentTarget.style.backgroundColor = BUTTON_HOVER_COLOR;
+};
+
+const handleButtonMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.currentTarget.style.backgroundColor = BUTTON_BG_COLOR;
+};
+
+// Reusable label component with icon for input fields
+interface InputLabelProps {
+  htmlFor: string;
+  children: string;
+}
+
+const InputLabel: React.FC<InputLabelProps> = ({ htmlFor, children }) => (
+  <label
+    htmlFor={htmlFor}
+    className="text-neutral-400 mb-2 block text-sm font-bold"
+  >
+    {children}
+    <FiInfo className="text-neutral-400 ml-1 inline-block" size={16} />
+  </label>
+);
+
+// Reusable button component with hover color transition
+interface StyledButtonProps {
+  label: string;
+  marginClass: string;
+}
+
+const StyledButton: React.FC<StyledButtonProps> = ({ label, marginClass }) => (
+  <button
+    style={{ backgroundColor: BUTTON_BG_COLOR }}
+    className={`focus:shadow-outline ${marginClass} flex-1 rounded px-4 py-2 font-bold text-white hover:opacity-90 focus:outline-none`}
+    onMouseEnter={handleButtonMouseEnter}
+    onMouseLeave={handleButtonMouseLeave}
+  >
+    {label}
+  </button>
+);
+
 const TestCard: React.FC = () => {
   return (
     <div id="testElem" className="bg-neutral-900 min-h-screen p-4 text-white">
@@ -32,13 +74,9 @@ const TestCard: React.FC = () => {
 
       {/* Personal Access Token Input */}
       <div className="mb-4">
-        <label
-          htmlFor="personalAccessToken"
-          className="text-neutral-400 mb-2 block text-sm font-bold"
-        >
+        <InputLabel htmlFor="personalAccessToken">
           Personal Access Token
-          <FiInfo className="text-neutral-400 ml-1 inline-block" size={16} />
-        </label>
+        </InputLabel>
         <input
           type="text"
           id="personalAccessToken"
@@ -49,13 +87,9 @@ const TestCard: React.FC = () => {
 
       {/* Design URL Input */}
       <div className="mb-6">
-        <label
-          htmlFor="designURL"
-          className="text-neutral-400 mb-2 block text-sm font-bold"
-        >
+        <InputLabel htmlFor="designURL">
           Design URL
-          <FiInfo className="text-neutral-400 ml-1 inline-block" size={16} />
-        </label>
+        </InputLabel>
         <input
           type="text"
           id="designURL"
@@ -66,30 +100,8 @@ const TestCard: React.FC = () => {
 
       {/* Buttons */}
       <div className="mb-6 flex justify-between">
-        <button
-          style={{ backgroundColor: BUTTON_BG_COLOR }}
-          className="focus:shadow-outline mr-2 flex-1 rounded px-4 py-2 font-bold text-white hover:opacity-90 focus:outline-none"
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = BUTTON_HOVER_COLOR)
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.backgroundColor = BUTTON_BG_COLOR)
-          }
-        >
-          Awesome
-        </button>
-        <button
-          style={{ backgroundColor: BUTTON_BG_COLOR }}
-          className="focus:shadow-outline ml-2 flex-1 rounded px-4 py-2 font-bold text-white hover:opacity-90 focus:outline-none"
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = BUTTON_HOVER_COLOR)
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.backgroundColor = BUTTON_BG_COLOR)
-          }
-        >
-          Prepare
-        </button>
+        <StyledButton label="Awesome" marginClass="mr-2" />
+        <StyledButton label="Prepare" marginClass="ml-2" />
       </div>
 
       {/* Recent Breakdowns Header */}
