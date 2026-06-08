@@ -1,6 +1,11 @@
+/**
+ * TestCard component — a simple presentational card for displaying test content.
+ * Used primarily for testing and development purposes.
+ */
 export const TestCard = (): JSX.Element => {
   return (
     <div
+      // testElem id used for testing and element identification
       id="testElem"
       className="rounded-md border border-border bg-elevation-surface p-5 shadow-xs"
     >
