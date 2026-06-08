@@ -25,8 +25,8 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -36,6 +36,7 @@ export const Title = ({
 
   return (
     <div id="testElem">
+      {/* Input container with loading spinner */}
       <div className="relative">
         <TextareaAutosize
           name="title"
@@ -55,11 +56,13 @@ export const Title = ({
           autofocus
         />
         {loading && (
+          /* Spinner displayed when loading is true */
           <div className="absolute flex items-center" style={{ right: "12px", top: "12px" }}>
             <svg
               className="h-5 w-5 animate-spin text-font-brand"
               viewBox="0 0 24 24"
               fill="none"
+              aria-hidden="true"
             >
               <circle
                 className="opacity-25"
@@ -93,6 +96,7 @@ export const Title = ({
           </span>
         )}
       </div>
+      {/* Optional subtitle displayed below the title */}
       {subtitle && (
         <div className="mt-2 pr-16 text-sm text-font-subtle">
           {subtitle}
