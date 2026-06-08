@@ -1,6 +1,13 @@
-
 import React from "react";
 import { Settings, ChevronUp, Info } from "lucide-react";
+
+// Consistent styling for all text input fields in the form
+const INPUT_FIELD_CLASS =
+  "w-full p-3 bg-[#2f2f2f] border border-gray-600 rounded text-gray-200 placeholder-gray-500 focus:outline-none focus:border-gray-400";
+
+// Consistent styling for primary action buttons
+const BUTTON_CLASS =
+  "flex-1 bg-[#b5541c] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#a04a18] transition-colors";
 
 const TestCard: React.FC = () => {
   return (
@@ -37,7 +44,7 @@ const TestCard: React.FC = () => {
           type="text"
           id="accessToken"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full p-3 bg-[#2f2f2f] border border-gray-600 rounded text-gray-200 placeholder-gray-500 focus:outline-none focus:border-gray-400"
+          className={INPUT_FIELD_CLASS}
         />
       </div>
 
@@ -53,18 +60,17 @@ const TestCard: React.FC = () => {
           type="text"
           id="designUrl"
           placeholder="https://www.figma.com/file/:"
-          className="w-full p-3 bg-[#2f2f2f] border border-gray-600 rounded text-gray-200 placeholder-gray-500 focus:outline-none focus:border-gray-400"
+          className={INPUT_FIELD_CLASS}
         />
       </div>
 
-      {/* Button Row */}
+      {/* Action Buttons Row */}
       <div className="flex space-x-4 mb-12">
-        <button className="flex-1 bg-[#b5541c] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#a04a18] transition-colors">
-          Awesome
-        </button>
-        <button className="flex-1 bg-[#b5541c] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#a04a18] transition-colors">
-          Prepare
-        </button>
+        {["Awesome", "Prepare"].map((buttonLabel) => (
+          <button key={buttonLabel} className={BUTTON_CLASS}>
+            {buttonLabel}
+          </button>
+        ))}
       </div>
 
       {/* Footer: Recent Breakdowns */}
