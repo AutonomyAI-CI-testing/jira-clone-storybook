@@ -18,9 +18,7 @@ const FormField = ({
 }: FormFieldProps) => (
   <div className="mt-3">
     <div className="mb-1 flex items-center gap-1.5">
-      <span className="text-xs font-semibold text-[#a4a4a3]">
-        {label}
-      </span>
+      <span className="text-xs font-semibold text-[#a4a4a3]">{label}</span>
       <LuInfo className="text-[#a4a4a3]" size={14} />
     </div>
     <input
@@ -42,10 +40,7 @@ const FormField = ({
  */
 export const TestCard = () => {
   return (
-    <div
-      id="testElem"
-      className="w-[253px] rounded bg-[#2a2a2a] p-4 font-sans"
-    >
+    <div id="testElem" className="font-sans w-[253px] rounded bg-[#2a2a2a] p-4">
       {/* Header with agent name and settings action */}
       <div className="flex items-center justify-between">
         <span className="text-sm font-semibold text-[#b5b5b5]">
