@@ -1,6 +1,4 @@
-/**
- * Icon Components
- */
+// Icon components for the settings panel
 const GearIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -69,9 +67,13 @@ export const TestCard = () => {
         <span className="text-sm font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
-        <span className="text-[#b5b5b5]">
+        <button
+          type="button"
+          className="text-[#b5b5b5] transition-colors hover:text-white"
+          aria-label="Settings"
+        >
           <GearIcon />
-        </span>
+        </button>
       </div>
 
       {/* Subtitle with collapsed section indicator */}
@@ -90,11 +92,15 @@ export const TestCard = () => {
 
       {/* Form field: Personal Access Token */}
       <div className="mb-3">
-        <div className="mb-1 flex items-center gap-1 text-[#a4a4a3]">
+        <label
+          htmlFor="token-input"
+          className="mb-1 flex items-center gap-1 text-[#a4a4a3]"
+        >
           <span className="text-xs font-semibold">Personal Access Token</span>
           <InfoIcon />
-        </div>
+        </label>
         <input
+          id="token-input"
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
           className="w-full rounded border border-[#4a4a4a] bg-[#2a2a2a] px-3 py-2 text-xs text-[#737470] outline-none"
@@ -104,11 +110,15 @@ export const TestCard = () => {
 
       {/* Form field: Design URL */}
       <div className="mb-4">
-        <div className="mb-1 flex items-center gap-1 text-[#a4a4a3]">
+        <label
+          htmlFor="url-input"
+          className="mb-1 flex items-center gap-1 text-[#a4a4a3]"
+        >
           <span className="text-xs font-semibold">Design URL</span>
           <InfoIcon />
-        </div>
+        </label>
         <input
+          id="url-input"
           type="text"
           placeholder="https://www.figma.com/file/:"
           className="w-full rounded border border-[#4a4a4a] bg-[#2a2a2a] px-3 py-2 text-xs text-[#737470] outline-none"
@@ -118,10 +128,16 @@ export const TestCard = () => {
 
       {/* Action buttons */}
       <div className="mb-8 flex gap-3">
-        <button className="flex-1 cursor-pointer rounded-xl bg-[#b5451b] py-3 text-xs font-semibold text-[#d4b8a8]">
+        <button
+          type="button"
+          className="flex-1 cursor-pointer rounded-xl bg-[#b5451b] py-3 text-xs font-semibold text-[#d4b8a8] transition-colors hover:bg-[#a53a15]"
+        >
           Awesome
         </button>
-        <button className="flex-1 cursor-pointer rounded-xl bg-[#b5451b] py-3 text-xs font-semibold text-[#d4b8a8]">
+        <button
+          type="button"
+          className="flex-1 cursor-pointer rounded-xl bg-[#b5451b] py-3 text-xs font-semibold text-[#d4b8a8] transition-colors hover:bg-[#a53a15]"
+        >
           Prepare
         </button>
       </div>
