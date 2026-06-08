@@ -1,8 +1,10 @@
-import React from "react";
 import { AiOutlineSetting, AiOutlineInfoCircle } from "react-icons/ai";
 import { BiChevronUp } from "react-icons/bi";
 
-// Color scheme for dark theme card
+/**
+ * Color palette for the dark-themed card component.
+ * All hex values are intentionally chosen to match the "UI magician Agent" design theme.
+ */
 const COLORS = {
   bg: "#2a2a2a",
   inputBg: "#272822",
@@ -18,6 +20,11 @@ const COLORS = {
   iconColor: "text-gray-400",
 };
 
+/**
+ * TestCard component displays a UI design configuration form.
+ * Allows users to input a Figma personal access token and design file URL
+ * to initiate design-to-code conversion via the "UI magician Agent".
+ */
 export const TestCard = (): JSX.Element => {
   return (
     <div
@@ -73,7 +80,7 @@ export const TestCard = (): JSX.Element => {
           }}
         />
       </div>
-      {/* Design URL Field */}
+      {/* Design URL Field - 2px border emphasizes it as the primary input requiring user focus */}
       <div className="mb-6">
         <label
           className="mb-1 flex items-center gap-1 text-sm"
