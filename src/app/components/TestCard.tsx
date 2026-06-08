@@ -61,6 +61,19 @@ const FormInput = ({
   />
 );
 
+// Reusable action button with consistent styling
+const ActionButton = ({ label }: { label: string }): JSX.Element => (
+  <button
+    className="flex-1 rounded-lg px-6 py-3 text-base font-medium"
+    style={{
+      backgroundColor: COLORS.buttonBg,
+      color: COLORS.buttonText,
+    }}
+  >
+    {label}
+  </button>
+);
+
 export const TestCard = () => {
   return (
     <div
@@ -124,7 +137,7 @@ export const TestCard = () => {
           <FormInput placeholder="figd_xxxxxxxxxxxxxxxxxx" />
         </div>
 
-        {/* Design URL field with thicker border for emphasis */}
+        {/* Design URL field with thicker border for emphasis to signal primary CTA */}
         <div className="flex flex-col gap-2">
           <FormFieldLabel label="Design URL" />
           <FormInput placeholder="https://www.figma.com/file/:" useBorderAlt />
@@ -133,24 +146,8 @@ export const TestCard = () => {
 
       {/* Action buttons */}
       <div className="mt-2 flex items-center justify-center gap-4">
-        <button
-          className="flex-1 rounded-lg px-6 py-3 text-base font-medium"
-          style={{
-            backgroundColor: COLORS.buttonBg,
-            color: COLORS.buttonText,
-          }}
-        >
-          Awesome
-        </button>
-        <button
-          className="flex-1 rounded-lg px-6 py-3 text-base font-medium"
-          style={{
-            backgroundColor: COLORS.buttonBg,
-            color: COLORS.buttonText,
-          }}
-        >
-          Prepare
-        </button>
+        <ActionButton label="Awesome" />
+        <ActionButton label="Prepare" />
       </div>
 
       {/* Vertical spacing */}

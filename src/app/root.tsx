@@ -172,7 +172,7 @@ export function ErrorBoundary() {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
-    // Handle thrown Response (404, etc.)
+    // Handle thrown Response (404, 5xx, etc.) — log for debugging
     console.error(error);
     const message =
       error.status === 404
@@ -201,7 +201,7 @@ export function ErrorBoundary() {
     );
   }
 
-  // Handle regular Error
+  // Handle regular Error — log for debugging
   console.error(error);
   const errorMessage =
     "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
