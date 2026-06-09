@@ -13,7 +13,7 @@ export const withMainContext = (Story: Story): JSX.Element => {
         specifiedTheme={Theme.LIGHT}
         specifiedPreference={Preference.SELECTED}
       >
-        <div className="w-full">
+        <div className="w-full light">
           <Story />
         </div>
       </ThemeProvider>
