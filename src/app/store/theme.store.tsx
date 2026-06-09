@@ -65,7 +65,14 @@ export const ThemeProvider = ({
     return DEFAULT_PREFERENCE;
   });
 
-  const persistTheme = useFetcher();
+  // useFetcher throws if used outside of Remix context (e.g. in Storybook)
+  // We provide a mock submit function to prevent crashes and allow normal component rendering
+  let persistTheme: any;
+  try {
+    persistTheme = useFetcher();
+  } catch (e) {
+    persistTheme = { submit: () => {} };
+  }
   const persistThemeRef = useRef(persistTheme);
   useEffect(() => {
     persistThemeRef.current = persistTheme;
