@@ -6,6 +6,14 @@ module.exports = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
+    extend: {
+      fontFamily: {
+        "primary-light": ["CircularStdLight", "sans-serif"],
+        "primary-medium": ["CircularStdMedium", "sans-serif"],
+        "primary-bold": ["CircularStdBold", "sans-serif"],
+        "primary-black": ["CircularStdBlack", "sans-serif"],
+      },
+    },
     colors: {
       font: {
         DEFAULT: "var(--color-font)",

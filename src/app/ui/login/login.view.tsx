@@ -8,6 +8,10 @@ import * as Select from "@app/components/select";
 export const LoginView = ({ users }: Props) => {
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
+  /**
+   * Updates the selected user when the select value changes.
+   * This allows the preview to show the correct avatar and name before login.
+   */
   const onValueChange = (userId: UserId) => {
     const foundUser = users.find((user) => user.id === userId);
 
@@ -22,6 +26,7 @@ export const LoginView = ({ users }: Props) => {
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
+        {/* Simple mock auth: any user can be selected to simulate membership-based access */}
         There is no authentication involved. You can login with any user you
         want! Keep in mind you can only access the projects the user is member
         of. Try to create issues and comments with different users to see how it
