@@ -1,3 +1,7 @@
+/**
+ * TestCard is a presentational component used for testing UI primitives.
+ * It follows the project's standard elevated card design pattern.
+ */
 export const TestCard = (): JSX.Element => {
   return (
     <div
