@@ -5,7 +5,7 @@ interface UserStore {
   user: User;
 }
 
-const UserContext = createContext<UserStore | undefined>(undefined);
+export const UserContext = createContext<UserStore | undefined>(undefined);
 
 export const UserContextProvider = ({
   user,

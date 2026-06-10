@@ -1,3 +1,9 @@
+interface Props {
+  variant: "500" | "404";
+  message: string;
+  href?: string;
+}
+
 export const ErrorBase = ({ variant, message, href }: Props) => {
   const imgPath = `/images/error-${variant}.svg`;
 
@@ -21,9 +27,3 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
     </div>
   );
 };
-
-interface Props {
-  variant: "500" | "404";
-  message: string;
-  href: string;
-}

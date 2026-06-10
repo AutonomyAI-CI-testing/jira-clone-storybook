@@ -1,6 +1,18 @@
 import { useLayoutEffect, useState, useRef } from "react";
 import cx from "classix";
 
+interface TitleProps {
+  name: string;
+  value: string;
+  setValue: (value: string) => void;
+  placeholder: string;
+  autofocus?: boolean;
+  readOnly?: boolean;
+  textareaClassName?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
+}
+
 export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   const {
     name,
@@ -69,15 +81,3 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     </div>
   );
 };
-
-interface TitleProps {
-  name: string;
-  value: string;
-  setValue: (value: string) => void;
-  placeholder: string;
-  autofocus?: boolean;
-  readOnly?: boolean;
-  textareaClassName?: string;
-  onFocus?: () => void;
-  onBlur?: () => void;
-}
