@@ -1,3 +1,7 @@
+/**
+ * A self-contained card component displaying a title and description.
+ * Uses the elevation surface token to stand out from the page background.
+ */
 export const TestCard = (): JSX.Element => {
   return (
     <div
