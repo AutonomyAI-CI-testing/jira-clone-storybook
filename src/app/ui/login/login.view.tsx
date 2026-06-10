@@ -6,6 +6,9 @@ import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
 export const LoginView = ({ users }: Props) => {
+  // This component allows users to select a profile and "log in" by submitting a form.
+  // The login process is handled by a Remix action on the server-side, which
+  // typically sets a session cookie based on the selected user's ID.
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
   const onValueChange = (userId: UserId) => {
@@ -46,8 +49,8 @@ export const LoginView = ({ users }: Props) => {
           <Select.Content>
             <Select.ScrollUpButton />
             <Select.Viewport>
-              {users.map((user, index) => (
-                <Select.Item key={index} value={user.id}>
+              {users.map((user) => (
+                <Select.Item key={user.id} value={user.id}>
                   <Select.ItemIndicator />
                   <UserAvatar {...user} />
                   <Select.ItemText>{user.name}</Select.ItemText>
