@@ -5,45 +5,50 @@ import cx from "classix";
 import { useUserStore } from "@app/store/user.store";
 import { UserAvatar } from "@app/components/user-avatar";
 import { Button } from "@app/components/button";
+import { Tooltip } from "@app/components/tooltip";
 
 export const UserProfile = (): JSX.Element => {
   const { user } = useUserStore();
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="ml-1 rounded-full outline outline-2 outline-border-disabled hover:outline-border-brand">
-        <UserAvatar {...user} />
-      </DropdownMenu.Trigger>
+      <Tooltip title="User settings">
+        <DropdownMenu.Trigger
+          aria-label="Toggle user profile menu"
+          className="ml-1 rounded-full outline outline-2 outline-border-disabled hover:outline-border-brand transition-all"
+        >
+          <UserAvatar {...user} />
+        </DropdownMenu.Trigger>
+      </Tooltip>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           align="end"
           sideOffset={5}
           className={cx(
-            "z-50 rounded bg-elevation-surface-overlay shadow-md",
+            "z-50 min-w-[200px] rounded bg-elevation-surface-overlay shadow-md",
             "radix-side-bottom:animate-slide-down radix-side-top:animate-slide-up"
           )}
         >
-          <DropdownMenu.Item className="flex flex-col items-center p-3 !outline-none">
+          <div className="flex flex-col items-center p-4">
             <UserAvatar {...user} size={80} />
-            <span className="mt-2 text-lg text-font">{user.name}</span>
-          </DropdownMenu.Item>
+            <span className="mt-3 text-lg font-medium text-font">{user.name}</span>
+            <span className="text-sm text-font-subtle">{user.email}</span>
+          </div>
           <DropdownMenu.Separator className="h-px bg-border" />
-          <DropdownMenu.Item className="select-none p-1 !outline-none">
+          <div className="p-2">
             <Form action="action/logout" method="post">
               <Button
                 color="danger"
                 variant="subtlest"
                 type="submit"
-                onClick={(e) => e.stopPropagation()} // To prevent dropdown menu from closing
-                className="w-full"
-                // className="flex w-full items-center gap-2 rounded bg-transparent p-2 text-sm text-font-danger hover:bg-background-danger-hovered active:bg-background-danger-pressed"
-                aria-label="Log out"
+                className="w-full justify-start gap-2"
+                aria-label="Log out of account"
               >
                 <FaPowerOff />
                 <span>Log out</span>
               </Button>
             </Form>
-          </DropdownMenu.Item>
+          </div>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

@@ -1,0 +1,12 @@
+export const TestCard = (): JSX.Element => {
+  return (
+    <div id="testElem">
+      <div className="rounded bg-elevation-surface-raised p-4 shadow-sm text-font">
+        <h2 className="font-primary-bold text-lg">Test Card Title</h2>
+        <p className="mt-1 font-primary-light text-sm text-font-subtle">
+          This is a short description for the test card.
+        </p>
+      </div>
+    </div>
+  );
+};

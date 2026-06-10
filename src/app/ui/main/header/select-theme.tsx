@@ -12,9 +12,10 @@ import {
 } from "@app/store/theme.store";
 import { Tooltip } from "@app/components/tooltip";
 
-export const SelctTheme = (): JSX.Element => {
+export const SelectTheme = (): JSX.Element => {
   const { theme, setTheme, preference } = useTheme();
 
+  // Define theme options with their metadata for the selection menu
   const themeOptions: {
     value: Theme | Preference.SYSTEM;
     label: string;
@@ -64,12 +65,22 @@ export const SelctTheme = (): JSX.Element => {
     }
   };
 
+  /**
+   * Determine grid columns based on number of options to ensure a balanced layout.
+   * Default to 2 columns for the standard set of 6 themes.
+   */
+  const getGridCols = (count: number) => {
+    if (count > 6) return "grid-cols-3";
+    if (count > 1) return "grid-cols-2";
+    return "grid-cols-1";
+  };
+
   return (
     <DropdownMenu.Root>
       <Tooltip title="Select theme">
         <DropdownMenu.Trigger
-          aria-label="Open theme select"
-          className="group flex h-[30px] w-[30px] rounded-full outline outline-2 outline-icon flex-center hover:bg-background-brand-subtlest hover:outline-border-brand"
+          aria-label="Change color theme"
+          className="group flex h-[30px] w-[30px] rounded-full outline outline-2 outline-icon flex-center hover:bg-background-brand-subtlest hover:outline-border-brand transition-all"
         >
           {theme === Theme.LIGHT ? (
             <MdLightMode className={triggerIconClass} />
@@ -84,20 +95,13 @@ export const SelctTheme = (): JSX.Element => {
           sideOffset={5}
           className="z-50 origin-top-right rounded bg-elevation-surface-overlay p-3 text-font shadow-md radix-side-bottom:animate-slide-down radix-side-top:animate-slide-up"
         >
-          <DropdownMenu.Label className="select-none pb-2 text-lg">
-            Select theme
+          <DropdownMenu.Label className="select-none pb-2 text-lg font-medium">
+            Select Theme
           </DropdownMenu.Label>
           <DropdownMenu.RadioGroup
             value={currentValue || DEFAULT_THEME}
             onValueChange={selectTheme}
-            className={cx(
-              "grid gap-2",
-              themeOptions.length > 6
-                ? "grid-cols-3"
-                : themeOptions.length > 3
-                ? "grid-cols-2"
-                : "grid-cols-1"
-            )}
+            className={cx("grid gap-2", getGridCols(themeOptions.length))}
           >
             {themeOptions.map(({ value, label, image }) => (
               <DropdownMenu.RadioItem
