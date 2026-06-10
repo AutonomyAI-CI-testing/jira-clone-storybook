@@ -11,6 +11,9 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
+  loading,
+  disabled,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -22,8 +25,7 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -33,41 +35,61 @@ export const Title = ({
 
   return (
     <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
-      )}
-      {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
+      {loading ? (
+        <>
+          <div className="animate-pulse bg-background-neutral-bold opacity-20 rounded h-10 w-full min-w-[300px]" />
+          <div className="h-4 w-1/3 mt-2 animate-pulse bg-background-neutral-bold opacity-20 rounded" />
+        </>
+      ) : (
+        <>
+          <TextareaAutosize
+            name="title"
+            value={title}
+            setValue={updateTitle}
+            placeholder={placeholder}
+            readOnly={readOnly || disabled}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            textareaClassName={cx(
+              "font-primary-black text-2xl",
+              requireError &&
+                "focus-visible:outline-border-danger outline outline-2 outline-border-danger",
+              disabled && "opacity-50 cursor-not-allowed"
+            )}
+            autofocus
+          />
+          {requireError && (
+            <span className="ml-3 font-primary-light text-sm text-font-danger">
+              {error}
+            </span>
           )}
-        >
-          {title.length} / {maxLength}
-        </span>
+          {/* Show character count when focused and not disabled to help users stay within limits */}
+          {isFocus && !disabled && (
+            <span
+              className={cx(
+                "absolute right-0 top-full font-primary-light text-sm",
+                isMaxLength ? "text-font-danger" : "text-font-subtlest"
+              )}
+            >
+              {title.length} / {maxLength}
+            </span>
+          )}
+          {subtitle && (
+            <div className="text-sm text-font-subtlest font-primary-light ml-3 mt-1">
+              {subtitle}
+            </div>
+          )}
+        </>
       )}
     </div>
+
   );
 };
 
 interface TitleProps {
+  loading?: boolean;
+  disabled?: boolean;
+  subtitle?: string;
   initTitle?: string;
   readOnly?: boolean;
   maxLength?: number;
