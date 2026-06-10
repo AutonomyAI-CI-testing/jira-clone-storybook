@@ -5,10 +5,15 @@ import { Button } from "@app/components/button";
 import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
+/**
+ * Simple login selection screen that allows users to pick a mock user profile.
+ * Note: This application uses mock authentication for demonstration purposes.
+ * Users can only access projects where their selected character is a member.
+ */
 export const LoginView = ({ users }: Props) => {
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
-  const onValueChange = (userId: UserId) => {
+  const handleUserChange = (userId: UserId) => {
     const foundUser = users.find((user) => user.id === userId);
 
     if (foundUser) {
@@ -31,7 +36,7 @@ export const LoginView = ({ users }: Props) => {
         <Select.Root
           name="user"
           defaultValue={userMock1.id}
-          onValueChange={onValueChange}
+          onValueChange={handleUserChange}
         >
           <Select.Trigger
             className="flex w-full justify-between"
