@@ -6,6 +6,8 @@ import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
 export const LoginView = ({ users }: Props) => {
+  // Track selected user for local UI state (avatar preview in trigger)
+  // Defaulting to userMock1 to match the Select component's defaultValue
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
   const onValueChange = (userId: UserId) => {
@@ -22,6 +24,11 @@ export const LoginView = ({ users }: Props) => {
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
+        {/*
+            This is a public demo application, so we use a simplified "login"
+            mechanism that allows users to switch between different mock personas.
+            No actual authentication is performed.
+        */}
         There is no authentication involved. You can login with any user you
         want! Keep in mind you can only access the projects the user is member
         of. Try to create issues and comments with different users to see how it
