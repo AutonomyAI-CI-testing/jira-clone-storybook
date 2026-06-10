@@ -48,7 +48,7 @@ export const meta: V2_MetaFunction = () => {
   return [{ title }, ...formatTags(tags), ...formatProperties(properties)];
 };
 
-type LoaderData = {
+export type LoaderData = {
   users: User[];
 };
 
