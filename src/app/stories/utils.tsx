@@ -26,11 +26,6 @@ export const withRemixStub = (children: JSX.Element) => {
     {
       path: "/",
       element: children,
-      action: async () => {
-        return {
-          status: 200,
-        };
-      },
     },
   ]);
 
