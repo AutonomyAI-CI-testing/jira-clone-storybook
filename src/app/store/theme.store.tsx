@@ -65,7 +65,12 @@ export const ThemeProvider = ({
     return DEFAULT_PREFERENCE;
   });
 
-  const persistTheme = useFetcher();
+  let persistTheme: any;
+  try {
+    persistTheme = useFetcher();
+  } catch (e) {
+    persistTheme = { submit: () => {} };
+  }
   const persistThemeRef = useRef(persistTheme);
   useEffect(() => {
     persistThemeRef.current = persistTheme;
@@ -87,10 +92,12 @@ export const ThemeProvider = ({
 
   const setTheme = useCallback(
     (newTheme: Theme, newPreference: Preference = Preference.SYSTEM) => {
-      persistThemeRef.current.submit(
-        { theme: newTheme, preference: newPreference },
-        { action: "action/set-theme", method: "post" }
-      );
+      if ('submit' in persistThemeRef.current) {
+        persistThemeRef.current.submit(
+          { theme: newTheme, preference: newPreference },
+          { action: "action/set-theme", method: "post" }
+        );
+      }
       setThemeState(newTheme);
       setPreference(newPreference);
     },

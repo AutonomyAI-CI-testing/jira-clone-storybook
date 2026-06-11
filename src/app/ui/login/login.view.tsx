@@ -6,9 +6,14 @@ import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
 export const LoginView = ({ users }: Props) => {
+  // Initializing state with the first user from the mock data as a sensible default
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
-  const onValueChange = (userId: UserId) => {
+  /**
+   * Handles user selection from the dropdown.
+   * Updates the local state to reflect the currently selected user's avatar and name in the trigger.
+   */
+  const handleUserSelection = (userId: UserId) => {
     const foundUser = users.find((user) => user.id === userId);
 
     if (foundUser) {
@@ -17,7 +22,7 @@ export const LoginView = ({ users }: Props) => {
   };
 
   return (
-    <div className="mx-auto max-w-[400px] pt-[10vh]">
+    <div className="mx-auto max-w-[400px]">
       <h1 className="font-primary-black text-5xl text-font">
         Select login user
       </h1>
@@ -31,7 +36,7 @@ export const LoginView = ({ users }: Props) => {
         <Select.Root
           name="user"
           defaultValue={userMock1.id}
-          onValueChange={onValueChange}
+          onValueChange={handleUserSelection}
         >
           <Select.Trigger
             className="flex w-full justify-between"
