@@ -6,18 +6,20 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
       control: {
         type: "text",
       },
+      description: "The error description message displayed below the title",
     },
     href: {
       control: {
         type: "text",
       },
+      description: "The link for the primary 'Go back home' button",
     },
   },
 };
@@ -25,23 +27,27 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {},
+};
 
-export const Message: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    message:
+      "We couldn't find the page you were looking for. It might have been moved or deleted.",
   },
 };
 
-export const Link: Story = {
+export const CustomLink: Story = {
   args: {
-    href: "/link-to-safe-place",
+    href: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+export const FullyCustomized: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message:
+      "The project you're trying to access doesn't exist or you don't have permission to view it.",
+    href: "/projects",
   },
 };

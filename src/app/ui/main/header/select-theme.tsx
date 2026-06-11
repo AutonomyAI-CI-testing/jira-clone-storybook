@@ -12,7 +12,7 @@ import {
 } from "@app/store/theme.store";
 import { Tooltip } from "@app/components/tooltip";
 
-export const SelctTheme = (): JSX.Element => {
+export const SelectTheme = (): JSX.Element => {
   const { theme, setTheme, preference } = useTheme();
 
   const themeOptions: {
