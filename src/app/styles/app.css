@@ -157,7 +157,7 @@
 :root,
 .light {
   /* Text */
-  --color-font: var(--Neutral1000);
+  --color-font: var(--Red700);
   --color-font-brand: var(--Blue700);
   --color-font-success: var(--Green800);
   --color-font-danger: var(--Red800);
