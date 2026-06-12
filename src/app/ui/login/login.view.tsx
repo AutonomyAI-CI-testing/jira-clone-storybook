@@ -5,10 +5,19 @@ import { Button } from "@app/components/button";
 import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
-export const LoginView = ({ users }: Props) => {
+export interface LoginViewProps {
+  users: User[];
+}
+
+/**
+ * LoginView component allows users to select a user to "login" as.
+ * This is a simulated login for development/demo purposes in this Jira clone.
+ */
+export const LoginView = ({ users }: LoginViewProps) => {
+  // We keep track of the selected user locally to update the avatar in the trigger
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
-  const onValueChange = (userId: UserId) => {
+  const handleUserChange = (userId: UserId) => {
     const foundUser = users.find((user) => user.id === userId);
 
     if (foundUser) {
@@ -31,7 +40,7 @@ export const LoginView = ({ users }: Props) => {
         <Select.Root
           name="user"
           defaultValue={userMock1.id}
-          onValueChange={onValueChange}
+          onValueChange={handleUserChange}
         >
           <Select.Trigger
             className="flex w-full justify-between"
@@ -71,7 +80,3 @@ export const LoginView = ({ users }: Props) => {
     </div>
   );
 };
-
-interface Props {
-  users: User[];
-}
