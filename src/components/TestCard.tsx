@@ -11,7 +11,7 @@ export const TestCard = (): JSX.Element => {
         The dark background #2a2a2a is a custom theme color outside the standard Tailwind palette.
       */}
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">UI magician Agent</h2>
+        <h2 className="text-xl font-semibold text-white">UI magician Agent</h2>
         <IoSettingsOutline className="text-xl" />
       </div>
 
@@ -24,7 +24,7 @@ export const TestCard = (): JSX.Element => {
       <div className="mb-6">
         <div className="flex items-center mb-4">
           <IoChevronUpOutline className="text-sm mr-2" />
-          <h3 className="text-lg font-medium">Add New Design</h3>
+          <h3 className="text-lg font-medium text-white">Add New Design</h3>
         </div>
 
         <ReadOnlyInput
@@ -48,7 +48,7 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       <div>
-        <h3 className="text-lg font-medium">Recent Breakdowns</h3>
+        <h3 className="text-lg font-medium text-white">Recent Breakdowns</h3>
       </div>
     </div>
   );
