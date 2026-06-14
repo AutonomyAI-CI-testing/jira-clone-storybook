@@ -11,9 +11,12 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
+  loading,
+  disabled,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
-  const [isFocus, setIsFocus] = useState<boolean>(true);
+  const [isFocus, setIsFocus] = useState<boolean>(false);
 
   const isMaxLength = title.length >= maxLength;
   const requireError =
@@ -22,8 +25,9 @@ export const Title = ({
   const onFocus = () => {
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => {
+    setIsFocus(false);
+  };
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -32,13 +36,25 @@ export const Title = ({
   };
 
   return (
+<div
+  id="testElem"
+  className={cx(
+    disabled && !loading && "opacity-50 cursor-not-allowed"
+  )}
+>
+  {loading ? (
+    <div
+      className="animate-pulse rounded-md"
+      style={{ height: "40px", width: "100%", backgroundColor: "#DFE1E6" }}
+    />
+  ) : (
     <div className="relative">
       <TextareaAutosize
         name="title"
         value={title}
         setValue={updateTitle}
         placeholder={placeholder}
-        readOnly={readOnly}
+        readOnly={readOnly || disabled}
         onFocus={onFocus}
         onBlur={onBlur}
         textareaClassName={cx(
@@ -53,7 +69,7 @@ export const Title = ({
           {error}
         </span>
       )}
-      {isFocus && (
+      {isFocus && !disabled && (
         <span
           className={cx(
             "absolute right-0 top-full font-primary-light text-sm",
@@ -64,10 +80,27 @@ export const Title = ({
         </span>
       )}
     </div>
+  )}
+  {loading ? (
+    subtitle && (
+      <div
+        className="animate-pulse rounded"
+        style={{ marginTop: "20px", height: "14px", width: "66%", backgroundColor: "#EBECF0" }}
+      />
+    )
+  ) : (
+    subtitle && (
+      <p className="mt-5 text-sm text-font-subtlest font-primary-light">{subtitle}</p>
+    )
+  )}
+</div>
   );
 };
 
 interface TitleProps {
+  loading?: boolean;
+  disabled?: boolean;
+  subtitle?: string;
   initTitle?: string;
   readOnly?: boolean;
   maxLength?: number;
