@@ -6,6 +6,8 @@ import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
 export const LoginView = ({ users }: Props) => {
+  // Local state to keep track of the selected user for the avatar preview in the trigger.
+  // The form submission itself uses the 'user' name attribute from the Select.Root.
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
   const onValueChange = (userId: UserId) => {
@@ -46,8 +48,8 @@ export const LoginView = ({ users }: Props) => {
           <Select.Content>
             <Select.ScrollUpButton />
             <Select.Viewport>
-              {users.map((user, index) => (
-                <Select.Item key={index} value={user.id}>
+              {users.map((user) => (
+                <Select.Item key={user.id} value={user.id}>
                   <Select.ItemIndicator />
                   <UserAvatar {...user} />
                   <Select.ItemText>{user.name}</Select.ItemText>
