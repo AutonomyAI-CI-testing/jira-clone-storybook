@@ -3,7 +3,6 @@ import {
   useContext,
   useState,
   useEffect,
-  useRef,
   useCallback,
 } from "react";
 import { useFetcher } from "@remix-run/react";
@@ -31,7 +30,7 @@ type ThemeContextType = {
   setTheme: (theme: Theme, preference?: Preference) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 // Inspired from Kent C. Dodds repo https://github.com/kentcdodds/kentcdodds.com/blob/main/app/utils/theme-provider.tsx
 const prefersLightMQ = "(prefers-color-scheme: light)";
@@ -65,16 +64,20 @@ export const ThemeProvider = ({
     return DEFAULT_PREFERENCE;
   });
 
-  const persistTheme = useFetcher();
-  const persistThemeRef = useRef(persistTheme);
-  useEffect(() => {
-    persistThemeRef.current = persistTheme;
-  }, [persistTheme]);
+  const persistTheme = (() => {
+    try {
+      return useFetcher();
+    } catch (e) {
+      // Fallback for environments where Remix hooks are unavailable (e.g. Storybook)
+      return { submit: () => {}, state: "idle" };
+    }
+  })();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(prefersLightMQ);
 
     const handleChange = () => {
+      // Only auto-switch themes if the user preference is set to 'system'
       if (preference !== Preference.SYSTEM) return;
 
       const newTheme = mediaQuery.matches ? Theme.LIGHT : Theme.DARK;
@@ -82,19 +85,18 @@ export const ThemeProvider = ({
     };
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preference]);
 
   const setTheme = useCallback(
     (newTheme: Theme, newPreference: Preference = Preference.SYSTEM) => {
-      persistThemeRef.current.submit(
+      persistTheme.submit?.(
         { theme: newTheme, preference: newPreference },
         { action: "action/set-theme", method: "post" }
       );
       setThemeState(newTheme);
       setPreference(newPreference);
     },
-    []
+    [persistTheme]
   );
 
   const value = {
