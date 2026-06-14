@@ -11,19 +11,23 @@ export const Title = ({
   maxLength = DEFAULT_MAX_LENGTH,
   error,
   placeholder = "Write the title",
+  subtitle,
+  loading,
+  disabled,
 }: TitleProps): JSX.Element => {
   const [title, setTitle] = useState<string>(initTitle);
   const [isFocus, setIsFocus] = useState<boolean>(true);
 
   const isMaxLength = title.length >= maxLength;
+  // Error state is triggered when external error is provided AND the input is empty or only whitespace
   const requireError =
     error && (title.length === 0 || textAreOnlySpaces(title));
 
   const onFocus = () => {
+    // Only allow focus state tracking when not in read-only mode to prevent character counter bleed
     if (!readOnly) setIsFocus(true);
   };
-  // const onBlur = () => setIsFocus(false);
-  const onBlur = () => console.log("onBlur");
+  const onBlur = () => setIsFocus(false);
 
   const updateTitle = (newTitle: string) => {
     if (newTitle.length > maxLength) return;
@@ -32,42 +36,61 @@ export const Title = ({
   };
 
   return (
-    <div className="relative">
-      <TextareaAutosize
-        name="title"
-        value={title}
-        setValue={updateTitle}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        textareaClassName={cx(
-          "font-primary-black text-2xl",
-          requireError &&
-            "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
-        )}
-        autofocus
-      />
-      {requireError && (
-        <span className="ml-3 font-primary-light text-sm text-font-danger">
-          {error}
-        </span>
-      )}
-      {isFocus && (
-        <span
-          className={cx(
-            "absolute right-0 top-full font-primary-light text-sm",
-            isMaxLength ? "text-font-danger" : "text-font-subtlest"
+    <div
+      className={cx(disabled && "opacity-50 cursor-not-allowed")}
+    >
+      {loading ? (
+        <>
+          <div className="h-10 w-full animate-pulse rounded-md bg-background-accent-grey-subtler" />
+          <div className="mt-2 h-4 w-1/2 animate-pulse rounded bg-background-accent-grey-subtler" />
+        </>
+      ) : (
+        <>
+          <div className="relative">
+            <TextareaAutosize
+              name="title"
+              value={title}
+              setValue={updateTitle}
+              placeholder={placeholder}
+              readOnly={readOnly || disabled}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              textareaClassName={cx(
+                "font-primary-black text-2xl",
+                requireError &&
+                  "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
+              )}
+              autofocus
+            />
+            {requireError && (
+              <span className="ml-3 font-primary-light text-sm text-font-danger">
+                {error}
+              </span>
+            )}
+            {isFocus && !disabled && (
+              <span
+                className={cx(
+                  "absolute right-0 top-full font-primary-light text-sm",
+                  isMaxLength ? "text-font-danger" : "text-font-subtlest"
+                )}
+              >
+                {title.length} / {maxLength}
+              </span>
+            )}
+          </div>
+          {subtitle && (
+            <p className="text-sm text-font-subtlest mt-1 ml-3">{subtitle}</p>
           )}
-        >
-          {title.length} / {maxLength}
-        </span>
+        </>
       )}
     </div>
   );
 };
 
 interface TitleProps {
+  subtitle?: string;
+  loading?: boolean;
+  disabled?: boolean;
   initTitle?: string;
   readOnly?: boolean;
   maxLength?: number;
