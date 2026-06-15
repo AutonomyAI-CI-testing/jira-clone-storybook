@@ -25,12 +25,14 @@ export const TestCard = (): JSX.Element => {
     <div
       id="testElem"
       style={{ backgroundColor: COLORS.background, color: COLORS.textPrimary }}
-      className="w-full max-w-xs rounded-lg p-4 font-sans space-y-4"
+      className="w-full max-w-xs p-4 font-sans space-y-4"
     >
       {/* ── Header ────────────────────────────────────────────────────────── */}
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-bold">UI magician Agent</h2>
-        <HiCog className="h-6 w-6" aria-hidden="true" />
+        <button type="button" aria-label="Settings">
+          <HiCog className="h-6 w-6" aria-hidden="true" />
+        </button>
       </div>
 
       {/* ── Subtitle row ──────────────────────────────────────────────────── */}
@@ -59,8 +61,8 @@ export const TestCard = (): JSX.Element => {
               Personal Access Token
             </label>
             <HiInformationCircle
-              className="h-4 w-4"
-              style={{ color: COLORS.textMuted }}
+              className="h-5 w-5"
+              style={{ color: COLORS.textPrimary }}
               aria-label="Personal access tokens are generated in Figma account settings"
             />
           </div>
@@ -68,7 +70,7 @@ export const TestCard = (): JSX.Element => {
             type="text"
             id="pat-input"
             placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            className="w-full p-2 rounded-md text-sm outline-none transition-shadow focus:ring-2 focus:ring-orange-700"
+            className="w-full p-2 text-sm outline-none transition-shadow focus:ring-2 focus:ring-orange-700"
             style={{
               backgroundColor: COLORS.inputBg,
               borderColor: COLORS.inputBorder,
@@ -85,8 +87,8 @@ export const TestCard = (): JSX.Element => {
               Design URL
             </label>
             <HiInformationCircle
-              className="h-4 w-4"
-              style={{ color: COLORS.textMuted }}
+              className="h-5 w-5"
+              style={{ color: COLORS.textPrimary }}
               aria-label="Paste a Figma file or frame URL"
             />
           </div>
@@ -94,7 +96,7 @@ export const TestCard = (): JSX.Element => {
             type="url"
             id="design-url-input"
             placeholder="https://www.figma.com/file/:"
-            className="w-full p-2 rounded-md text-sm outline-none transition-shadow focus:ring-2 focus:ring-orange-700"
+            className="w-full p-2 text-sm outline-none transition-shadow focus:ring-2 focus:ring-orange-700"
             style={{
               backgroundColor: COLORS.inputBg,
               borderColor: COLORS.inputBorder,
@@ -108,14 +110,14 @@ export const TestCard = (): JSX.Element => {
         <div className="flex gap-4 pt-2">
           <button
             type="button"
-            className="flex-1 px-6 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-90 active:opacity-75"
+            className="flex-1 px-6 py-3 rounded text-white font-semibold transition-opacity hover:opacity-90 active:opacity-75"
             style={{ backgroundColor: COLORS.buttonBg }}
           >
             Awesome
           </button>
           <button
             type="button"
-            className="flex-1 px-6 py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-90 active:opacity-75"
+            className="flex-1 px-6 py-3 rounded text-white font-semibold transition-opacity hover:opacity-90 active:opacity-75"
             style={{ backgroundColor: COLORS.buttonBg }}
           >
             Prepare
