@@ -12,13 +12,14 @@ export const TestCard = (): JSX.Element => {
       style={{
         width: '100%',
         maxWidth: '390px',
-        backgroundColor: '#272220',
+        backgroundColor: '#1a1914',
         color: '#ffffff',
         display: 'flex',
         flexDirection: 'column',
-        padding: '28px 24px 40px',
+        padding: '36px 28px 48px',
         minHeight: '100vh',
         boxSizing: 'border-box',
+        fontFamily: 'Circular Std, sans-serif',
       }}
     >
       {/* Header row */}
@@ -27,13 +28,13 @@ export const TestCard = (): JSX.Element => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '14px',
+          marginBottom: '28px',
         }}
       >
         <h2
           style={{
-            fontSize: '22px',
-            fontWeight: '700',
+            fontSize: '24px',
+            fontWeight: '500',
             color: '#e8e8e8',
             margin: 0,
             lineHeight: 1.2,
@@ -42,7 +43,7 @@ export const TestCard = (): JSX.Element => {
           UI magician Agent
         </h2>
         <IoSettingsOutline
-          style={{ color: '#a0a0a0', fontSize: '26px', flexShrink: 0, marginLeft: '12px' }}
+          style={{ color: '#a0a0a0', fontSize: '28px', flexShrink: 0, marginLeft: '12px', strokeWidth: '1px' }}
         />
       </div>
 
@@ -51,19 +52,20 @@ export const TestCard = (): JSX.Element => {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '8px',
-          marginBottom: '40px',
+          gap: '14px',
+          marginBottom: '84px',
         }}
       >
-        <HiChevronUp style={{ color: '#a0a0a0', fontSize: '18px', flexShrink: 0 }} />
+        <HiChevronUp style={{ color: '#a0a0a0', fontSize: '22px', flexShrink: 0 }} />
         <p
           style={{
             color: '#a0a0a0',
-            fontSize: '15px',
+            fontSize: '18px',
             margin: 0,
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
+            fontWeight: '400',
           }}
         >
           From entire frame to a singl...
@@ -75,43 +77,44 @@ export const TestCard = (): JSX.Element => {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
-          marginBottom: '24px',
+          gap: '14px',
+          marginBottom: '40px',
         }}
       >
-        <HiChevronUp style={{ color: '#a0a0a0', fontSize: '22px', flexShrink: 0 }} />
-        <h3 style={{ color: '#e8e8e8', fontSize: '22px', fontWeight: '700', margin: 0 }}>
+        <HiChevronUp style={{ color: '#a0a0a0', fontSize: '26px', flexShrink: 0 }} />
+        <h3 style={{ color: '#e8e8e8', fontSize: '24px', fontWeight: '500', margin: 0 }}>
           Add New Design
         </h3>
       </div>
 
       {/* Personal Access Token field */}
-      <div style={{ marginBottom: '18px' }}>
+      <div style={{ marginBottom: '32px' }}>
         <label
           htmlFor="personalAccessToken"
           style={{
             color: '#d0d0d0',
-            fontSize: '15px',
+            fontSize: '18px',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            marginBottom: '10px',
+            marginBottom: '14px',
+            fontWeight: '400',
           }}
         >
           <span>Personal Access Token</span>
-          <AiOutlineInfoCircle style={{ color: '#888888', fontSize: '18px', flexShrink: 0 }} />
+          <AiOutlineInfoCircle style={{ color: '#888888', fontSize: '20px', flexShrink: 0 }} />
         </label>
         <input
           type="text"
           id="personalAccessToken"
           style={{
             width: '100%',
-            padding: '14px 12px',
-            backgroundColor: 'transparent',
+            padding: '18px 14px',
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
             border: '1px solid #585858',
             borderRadius: '4px',
             color: '#888888',
-            fontSize: '15px',
+            fontSize: '18px',
             boxSizing: 'border-box',
             outline: 'none',
           }}
@@ -122,32 +125,33 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       {/* Design URL field */}
-      <div style={{ marginBottom: '32px' }}>
+      <div style={{ marginBottom: '52px' }}>
         <label
           htmlFor="designUrl"
           style={{
             color: '#d0d0d0',
-            fontSize: '15px',
+            fontSize: '18px',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            marginBottom: '10px',
+            marginBottom: '14px',
+            fontWeight: '400',
           }}
         >
           <span>Design URL</span>
-          <AiOutlineInfoCircle style={{ color: '#888888', fontSize: '18px', flexShrink: 0 }} />
+          <AiOutlineInfoCircle style={{ color: '#888888', fontSize: '20px', flexShrink: 0 }} />
         </label>
         <input
           type="text"
           id="designUrl"
           style={{
             width: '100%',
-            padding: '14px 12px',
-            backgroundColor: 'transparent',
+            padding: '18px 14px',
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
             border: '1px solid #585858',
             borderRadius: '4px',
             color: '#888888',
-            fontSize: '15px',
+            fontSize: '18px',
             boxSizing: 'border-box',
             outline: 'none',
           }}
@@ -158,16 +162,16 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       {/* Two CTA buttons */}
-      <div style={{ display: 'flex', gap: '16px', marginBottom: '48px' }}>
+      <div style={{ display: 'flex', gap: '20px', marginBottom: '100px' }}>
         <button
           style={{
             flex: 1,
-            backgroundColor: '#b5451b',
+            backgroundColor: '#8B3A1C',
             color: '#ffffff',
-            borderRadius: '10px',
-            padding: '16px 20px',
-            fontWeight: '600',
-            fontSize: '18px',
+            borderRadius: '8px',
+            padding: '18px 20px',
+            fontWeight: '500',
+            fontSize: '20px',
             border: 'none',
             cursor: 'pointer',
           }}
@@ -177,12 +181,12 @@ export const TestCard = (): JSX.Element => {
         <button
           style={{
             flex: 1,
-            backgroundColor: '#b5451b',
+            backgroundColor: '#8B3A1C',
             color: '#ffffff',
-            borderRadius: '10px',
-            padding: '16px 20px',
-            fontWeight: '600',
-            fontSize: '18px',
+            borderRadius: '8px',
+            padding: '18px 20px',
+            fontWeight: '500',
+            fontSize: '20px',
             border: 'none',
             cursor: 'pointer',
           }}
@@ -193,7 +197,7 @@ export const TestCard = (): JSX.Element => {
 
       {/* Recent Breakdowns heading */}
       <div>
-        <h3 style={{ color: '#e8e8e8', fontSize: '22px', fontWeight: '700', margin: 0 }}>
+        <h3 style={{ color: '#e8e8e8', fontSize: '24px', fontWeight: '500', margin: 0 }}>
           Recent Breakdowns
         </h3>
       </div>
