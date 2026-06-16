@@ -5,7 +5,7 @@ import { LabelBadge } from "./label-badge";
 const meta: Meta<typeof LabelBadge> = {
   title: "Components/LabelBadge",
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     text: {
@@ -27,10 +27,15 @@ type Story = StoryObj<typeof LabelBadge>;
 
 export const Default: Story = {
   render: () => (
-    <div className="flex gap-3 p-4">
-      <LabelBadge text="Bug" color="red" />
-      <LabelBadge text="Feature" color="green" />
-      <LabelBadge text="Improvement" color="blue" />
+    <div className="w-full">
+      <div className="flex gap-3 p-4">
+        <LabelBadge text="Bug" color="red" />
+        <LabelBadge text="Feature" color="green" />
+        <LabelBadge text="Improvement" color="blue" />
+      </div>
+      <div className="border-t border-gray-300 pt-3 text-center">
+        © AutonomyAI
+      </div>
     </div>
   ),
 };
