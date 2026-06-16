@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useCallback,
+  type ReactNode,
 } from "react";
 import { useFetcher } from "@remix-run/react";
 
@@ -20,7 +21,7 @@ export enum Preference {
   SELECTED = "selected",
   SYSTEM = "system",
 }
-const preferences: Array<Preference> = Object.values(Preference);
+export const preferences: Array<Preference> = Object.values(Preference);
 
 export const DEFAULT_THEME: Theme = Theme.LIGHT;
 const DEFAULT_PREFERENCE: Preference = Preference.SYSTEM;
@@ -31,7 +32,7 @@ type ThemeContextType = {
   setTheme: (theme: Theme, preference?: Preference) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 // Inspired from Kent C. Dodds repo https://github.com/kentcdodds/kentcdodds.com/blob/main/app/utils/theme-provider.tsx
 const prefersLightMQ = "(prefers-color-scheme: light)";
@@ -108,7 +109,7 @@ export const ThemeProvider = ({
 };
 
 interface ThemeProviderProps {
-  children: JSX.Element;
+  children: ReactNode;
   specifiedTheme: Theme | undefined;
   specifiedPreference: Preference | undefined;
 }
