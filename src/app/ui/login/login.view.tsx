@@ -9,6 +9,7 @@ export const LoginView = ({ users }: Props) => {
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
   const onValueChange = (userId: UserId) => {
+    // We search for the user object matching the selected ID to update the UI (avatar/name)
     const foundUser = users.find((user) => user.id === userId);
 
     if (foundUser) {
@@ -46,8 +47,8 @@ export const LoginView = ({ users }: Props) => {
           <Select.Content>
             <Select.ScrollUpButton />
             <Select.Viewport>
-              {users.map((user, index) => (
-                <Select.Item key={index} value={user.id}>
+              {users.map((user) => (
+                <Select.Item key={user.id} value={user.id}>
                   <Select.ItemIndicator />
                   <UserAvatar {...user} />
                   <Select.ItemText>{user.name}</Select.ItemText>
