@@ -2,11 +2,11 @@ import type { Preview } from "@storybook/react";
 
 import { withThemeByClassName } from "@storybook/addon-styling";
 
-/* TODO: update import to your tailwind styles file. If you're using Angular, inject this through your angular.json config instead */
 import "../src/app/styles/app-compiled.css";
 
 const preview: Preview = {
   parameters: {
+    layout: "padded",
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
@@ -28,7 +28,6 @@ const preview: Preview = {
   decorators: [
     // Adds theme switching support.
     // NOTE: requires setting "darkMode" to "class" in your tailwind config
-    // @ts-ignore
     withThemeByClassName({
       themes: {
         light: "light",
