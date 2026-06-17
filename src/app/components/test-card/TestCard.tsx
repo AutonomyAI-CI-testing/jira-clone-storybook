@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HiOutlineCog, HiChevronUp, HiInformationCircle } from 'react-icons/hi';
 
@@ -8,80 +7,134 @@ import { HiOutlineCog, HiChevronUp, HiInformationCircle } from 'react-icons/hi';
  * along with action buttons and a list of recent breakdowns.
  */
 export const TestCard = (): JSX.Element => {
-  // Constants for colors to maintain consistency and ease of updates
-  const COLORS = {
-    primary: '#b85c2a',
-    primaryHover: '#a0522d',
-    bgMain: '#1e1e1e',
-    bgInput: '#2a2a2a',
-    textMuted: '#c4703a',
-    border: '#4b5563', // gray-600
-    borderSeparator: '#374151', // gray-700
-  };
-
   return (
-    <div id="testElem" className="bg-[#1e1e1e] p-6 min-w-[400px] rounded-lg shadow-lg font-sans text-white">
+    <div
+      id="testElem"
+      style={{
+        backgroundColor: '#1e1e1e',
+        color: '#c9c9c9',
+        padding: '2.5rem 2rem',
+        maxWidth: '440px',
+        borderRadius: '12px',
+        boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
+        fontFamily: 'sans-serif',
+      }}
+    >
       {/* Header section */}
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-xl font-bold">UI magician Agent</h1>
-        <HiOutlineCog className="text-gray-400 text-2xl" />
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <h1 style={{ fontSize: '1.375rem', fontWeight: 700, color: '#e1e1e1', margin: 0 }}>UI magician Agent</h1>
+        <HiOutlineCog style={{ color: '#a0a0a0', fontSize: '1.5rem', flexShrink: 0 }} />
       </div>
 
-      {/* Subtitle row - Indicates the current scope or capability */}
-      <div className="flex items-center text-[#c4703a] text-sm mb-6">
-        <HiChevronUp className="mr-1 text-lg" aria-hidden="true" />
+      {/* Subtitle row */}
+      <div style={{ display: 'flex', alignItems: 'center', color: '#c4703a', fontSize: '0.9rem', marginBottom: '2.5rem', cursor: 'pointer' }}>
+        <HiChevronUp style={{ marginRight: '0.5rem', fontSize: '1.1rem' }} aria-hidden="true" />
         <span>From entire frame to a singl...</span>
       </div>
 
-      {/* Add New Design section - Main configuration header */}
-      <div className="flex items-center text-white font-bold text-lg mb-4 mt-6 border-t border-gray-700 pt-6">
-        <HiChevronUp className="mr-2 text-xl" aria-hidden="true" />
+      {/* Add New Design section */}
+      <div style={{ display: 'flex', alignItems: 'center', color: '#e1e1e1', fontWeight: 700, fontSize: '1.15rem', marginBottom: '1.5rem', cursor: 'pointer' }}>
+        <HiChevronUp style={{ marginRight: '0.75rem', fontSize: '1.25rem' }} aria-hidden="true" />
         <span>Add New Design</span>
       </div>
 
       {/* Personal Access Token field */}
-      <div className="mb-4">
-        <label htmlFor="pat" className="flex items-center text-sm text-white mb-2">
+      <div style={{ marginBottom: '1.25rem' }}>
+        <label
+          htmlFor="pat"
+          style={{ display: 'flex', alignItems: 'center', fontSize: '0.9rem', color: '#c9c9c9', marginBottom: '0.5rem' }}
+        >
           Personal Access Token
-          <HiInformationCircle className="ml-1 text-gray-400" aria-label="Information about Personal Access Token" />
+          <HiInformationCircle
+            style={{ marginLeft: '0.4rem', color: '#a0a0a0', fontSize: '1rem' }}
+            aria-label="Information about Personal Access Token"
+          />
         </label>
         <input
           type="text"
           id="pat"
-          readOnly
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full p-3 rounded-md bg-[#2a2a2a] border border-gray-600 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-[#b85c2a]"
+          style={{
+            width: '100%',
+            padding: '0.75rem 1rem',
+            borderRadius: '4px',
+            backgroundColor: '#2a2a2a',
+            border: '1px solid #4a4a4a',
+            color: '#f0f0f0',
+            fontSize: '0.9rem',
+            outline: 'none',
+            boxSizing: 'border-box',
+          }}
         />
       </div>
 
       {/* Design URL field */}
-      <div className="mb-6">
-        <label htmlFor="designUrl" className="flex items-center text-sm text-white mb-2">
+      <div style={{ marginBottom: '1.75rem' }}>
+        <label
+          htmlFor="designUrl"
+          style={{ display: 'flex', alignItems: 'center', fontSize: '0.9rem', color: '#c9c9c9', marginBottom: '0.5rem' }}
+        >
           Design URL
-          <HiInformationCircle className="ml-1 text-gray-400" aria-label="Information about Design URL" />
+          <HiInformationCircle
+            style={{ marginLeft: '0.4rem', color: '#a0a0a0', fontSize: '1rem' }}
+            aria-label="Information about Design URL"
+          />
         </label>
         <input
           type="text"
           id="designUrl"
-          readOnly
           placeholder="https://www.figma.com/file/:"
-          className="w-full p-3 rounded-md bg-[#2a2a2a] border border-gray-600 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-[#b85c2a]"
+          style={{
+            width: '100%',
+            padding: '0.75rem 1rem',
+            borderRadius: '4px',
+            backgroundColor: '#2a2a2a',
+            border: '1px solid #4a4a4a',
+            color: '#f0f0f0',
+            fontSize: '0.9rem',
+            outline: 'none',
+            boxSizing: 'border-box',
+          }}
         />
       </div>
 
       {/* Action buttons row */}
-      <div className="flex space-x-4 mb-8">
-        <button className="flex-1 px-5 py-3 bg-[#b85c2a] text-white font-semibold rounded-lg hover:bg-[#a0522d] transition-colors text-sm">
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '2.5rem' }}>
+        <button
+          style={{
+            flex: 1,
+            padding: '0.75rem 1.25rem',
+            backgroundColor: '#b85c2a',
+            color: '#f0f0f0',
+            fontWeight: 600,
+            borderRadius: '8px',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '1rem',
+          }}
+        >
           Awesome
         </button>
-        <button className="flex-1 px-5 py-3 bg-[#b85c2a] text-white font-semibold rounded-lg hover:bg-[#a0522d] transition-colors text-sm">
+        <button
+          style={{
+            flex: 1,
+            padding: '0.75rem 1.25rem',
+            backgroundColor: '#b85c2a',
+            color: '#f0f0f0',
+            fontWeight: 600,
+            borderRadius: '8px',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '1rem',
+          }}
+        >
           Prepare
         </button>
       </div>
 
       {/* Recent Breakdowns heading */}
       <div>
-        <h2 className="text-white font-bold text-xl">Recent Breakdowns</h2>
+        <h2 style={{ color: '#e1e1e1', fontWeight: 700, fontSize: '1.25rem', margin: 0 }}>Recent Breakdowns</h2>
       </div>
     </div>
   );
