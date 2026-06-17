@@ -1,4 +1,4 @@
-import {
+import React, {
   createContext,
   useContext,
   useState,
@@ -6,7 +6,7 @@ import {
   useRef,
   useCallback,
 } from "react";
-import { useFetcher } from "@remix-run/react";
+import { useFetcher, UNSAFE_RemixContext } from "@remix-run/react";
 
 export enum Theme {
   LIGHT = "light",
@@ -31,7 +31,7 @@ type ThemeContextType = {
   setTheme: (theme: Theme, preference?: Preference) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 // Inspired from Kent C. Dodds repo https://github.com/kentcdodds/kentcdodds.com/blob/main/app/utils/theme-provider.tsx
 const prefersLightMQ = "(prefers-color-scheme: light)";
@@ -65,7 +65,11 @@ export const ThemeProvider = ({
     return DEFAULT_PREFERENCE;
   });
 
-  const persistTheme = useFetcher();
+  const context = useContext(UNSAFE_RemixContext);
+
+  // useFetcher must be used within a data router context.
+  // In Storybook, we might not have one, so we guard against it.
+  const persistTheme = context ? useFetcher() : ({} as any);
   const persistThemeRef = useRef(persistTheme);
   useEffect(() => {
     persistThemeRef.current = persistTheme;
@@ -108,9 +112,9 @@ export const ThemeProvider = ({
 };
 
 interface ThemeProviderProps {
-  children: JSX.Element;
-  specifiedTheme: Theme | undefined;
-  specifiedPreference: Preference | undefined;
+  children: React.ReactNode;
+  specifiedTheme?: Theme;
+  specifiedPreference?: Preference;
 }
 
 export const useTheme = () => {
