@@ -25,7 +25,13 @@ const meta: Meta<typeof Error500> = {
 export default meta;
 type Story = StoryObj<typeof Error500>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    message:
+      "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com",
+    href: "/",
+  },
+};
 
 export const Message: Story = {
   args: {

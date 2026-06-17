@@ -1,4 +1,11 @@
-export const ErrorBase = ({ variant, message, href }: Props) => {
+import cx from "classix";
+
+export const ErrorBase = ({
+  variant,
+  message,
+  href,
+  messageClassName,
+}: Props) => {
   const imgPath = `/images/error-${variant}.svg`;
 
   return (
@@ -8,15 +15,23 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
         alt="Server error"
         className="mx-auto mb-4 h-[350px] w-auto"
       />
+      {/* Render as link if href provided, otherwise plain text */}
       {href ? (
         <a
           href={href}
-          className="max-w-[100px] text-lg text-link hover:underline active:text-link-pressed"
+          className={cx(
+            "max-w-[100px] text-lg text-link hover:underline active:text-link-pressed",
+            messageClassName
+          )}
         >
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span
+          className={cx("max-w-[100px] text-lg text-font", messageClassName)}
+        >
+          {message}
+        </span>
       )}
     </div>
   );
@@ -26,4 +41,6 @@ interface Props {
   variant: "500" | "404";
   message: string;
   href: string;
+  /** Optional className override for message styling (e.g., custom text color) */
+  messageClassName?: string;
 }
