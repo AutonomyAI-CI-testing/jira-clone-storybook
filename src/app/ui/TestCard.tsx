@@ -1,4 +1,3 @@
-
 import { IoSettingsOutline } from "react-icons/io5";
 import { HiChevronUp } from "react-icons/hi";
 import { AiOutlineInfoCircle } from "react-icons/ai";
@@ -11,14 +10,18 @@ export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="bg-[#2a2a2a] text-white p-4 max-w-sm mx-auto rounded-lg shadow-xl"
+      style={{ backgroundColor: "#252525", width: "320px" }}
+      className="text-white px-6 pt-6 pb-10 rounded-md shadow-xl"
     >
       <Header />
       <SubHeader />
 
-      <div className="border-b border-gray-600 pb-4 mb-4" />
+      {/* Spacer between subtitle and Add New Design section */}
+      <div style={{ height: "100px" }} />
 
       <SectionTitle title="Add New Design" />
+
+      <div style={{ height: "20px" }} />
 
       <InputGroup
         label="Personal Access Token"
@@ -26,38 +29,52 @@ export const TestCard = (): JSX.Element => {
         placeholder="figd_xxxxxxxxxxxxxxxxxx"
       />
 
+      <div style={{ height: "16px" }} />
+
       <InputGroup
         label="Design URL"
         id="design-url-input"
         placeholder="https://www.figma.com/file/:"
       />
 
+      <div style={{ height: "48px" }} />
+
       <ActionButtons />
 
-      <footer className="mt-2">
-        <h3 className="text-lg font-bold">Recent Breakdowns</h3>
+      <div style={{ height: "72px" }} />
+
+      <footer>
+        <h3 className="text-xl font-bold text-white">Recent Breakdowns</h3>
       </footer>
     </div>
   );
 };
 
 const Header = () => (
-  <header className="flex justify-between items-center mb-4">
-    <h2 className="text-lg font-bold">UI magician Agent</h2>
-    <IoSettingsOutline className="text-xl cursor-pointer hover:text-gray-300 transition-colors" />
+  <header className="flex justify-between items-center" style={{ marginBottom: "16px" }}>
+    <h2 style={{ fontSize: "22px", fontWeight: 700 }} className="text-white">
+      UI magician Agent
+    </h2>
+    <IoSettingsOutline
+      style={{ fontSize: "26px" }}
+      className="text-gray-300 cursor-pointer hover:text-white transition-colors"
+    />
   </header>
 );
 
 const SubHeader = () => (
-  <div className="flex items-center text-gray-400 text-sm mb-6">
-    <HiChevronUp className="mr-1" />
+  <div className="flex items-center" style={{ color: "#888888", fontSize: "14px", gap: "8px" }}>
+    <HiChevronUp style={{ fontSize: "18px", flexShrink: 0 }} />
     <span>From entire frame to a singl...</span>
   </div>
 );
 
 const SectionTitle = ({ title }: { title: string }) => (
-  <div className="flex items-center font-bold mb-4">
-    <HiChevronUp className="mr-1" />
+  <div
+    className="flex items-center text-white font-bold"
+    style={{ fontSize: "20px", gap: "10px" }}
+  >
+    <HiChevronUp style={{ fontSize: "20px", flexShrink: 0 }} />
     <span>{title}</span>
   </div>
 );
@@ -71,29 +88,67 @@ const InputGroup = ({
   id: string;
   placeholder: string;
 }) => (
-  <div className="mb-4 last-of-type:mb-6">
-    <div className="flex items-center text-sm mb-1 text-gray-300">
-      <label htmlFor={id} className="mr-1 cursor-pointer">
+  <div>
+    <div
+      className="flex items-center gap-2"
+      style={{ color: "#cccccc", fontSize: "14px", marginBottom: "12px" }}
+    >
+      <label htmlFor={id} className="cursor-pointer">
         {label}
       </label>
-      <AiOutlineInfoCircle className="cursor-help" title={`Information about ${label}`} />
+      <AiOutlineInfoCircle
+        className="cursor-help"
+        style={{ fontSize: "18px", color: "#aaaaaa" }}
+        title={`Information about ${label}`}
+      />
     </div>
     <input
       id={id}
       type="text"
       placeholder={placeholder}
-      className="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500 transition-all"
+      style={{
+        backgroundColor: "transparent",
+        border: "1.5px solid #666666",
+        borderRadius: "6px",
+        color: "#cccccc",
+        padding: "14px",
+        width: "100%",
+        fontSize: "14px",
+        boxSizing: "border-box",
+      }}
+      className="placeholder-gray-600 focus:outline-none focus:border-gray-400 transition-colors"
     />
   </div>
 );
 
 const ActionButtons = () => (
-  <div className="flex justify-between space-x-4 mb-6">
-    {/* bg-[#b5451b] matches the orange/brown branding from the original requirement */}
-    <button className="flex-1 p-2 rounded bg-[#b5451b] hover:bg-[#a03d18] text-white font-semibold transition-colors">
+  <div className="flex" style={{ gap: "20px" }}>
+    <button
+      style={{
+        backgroundColor: "#b5451b",
+        borderRadius: "10px",
+        padding: "14px 20px",
+        fontWeight: 600,
+        fontSize: "16px",
+        flex: 1,
+        color: "#ffffff",
+      }}
+      className="hover:opacity-90 transition-opacity"
+    >
       Awesome
     </button>
-    <button className="flex-1 p-2 rounded bg-[#b5451b] hover:bg-[#a03d18] text-white font-semibold transition-colors">
+    <button
+      style={{
+        backgroundColor: "#b5451b",
+        borderRadius: "10px",
+        padding: "14px 20px",
+        fontWeight: 600,
+        fontSize: "16px",
+        flex: 1,
+        color: "#ffffff",
+      }}
+      className="hover:opacity-90 transition-opacity"
+    >
       Prepare
     </button>
   </div>
