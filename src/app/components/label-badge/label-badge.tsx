@@ -25,10 +25,22 @@ export const LabelBadge = ({
 
 export default function LabelBadgeDemo(): JSX.Element {
   return (
-    <div className="flex gap-3">
-      <LabelBadge text="Bug" color="red" />
-      <LabelBadge text="Feature" color="green" />
-      <LabelBadge text="Improvement" color="blue" />
+    <div className="flex flex-col min-h-screen">
+      <div className="flex gap-3 p-6">
+        <LabelBadge text="Bug" color="red" />
+        <LabelBadge text="Feature" color="green" />
+        <LabelBadge text="Improvement" color="blue" />
+      </div>
+      <footer
+        className="w-full text-center mt-auto"
+        style={{
+          borderTop: "1px solid #d1d5db",
+          paddingTop: "0.75rem",
+          paddingBottom: "0.75rem",
+        }}
+      >
+        © AutonomyAI
+      </footer>
     </div>
   );
 }
