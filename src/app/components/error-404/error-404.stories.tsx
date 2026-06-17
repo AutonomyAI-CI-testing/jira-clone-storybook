@@ -6,14 +6,10 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    // Fullscreen layout to showcase the centered error page design
+    layout: "fullscreen",
   },
   argTypes: {
-    message: {
-      control: {
-        type: "text",
-      },
-    },
     href: {
       control: {
         type: "text",
@@ -25,23 +21,19 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
+// Default story with the default href (/projects)
 export const Default: Story = {};
 
-export const Message: Story = {
+// Custom href example pointing to root
+export const CustomHref: Story = {
   args: {
-    message: "This is the error message",
+    href: "/",
   },
 };
 
-export const Link: Story = {
+// Explicitly showing /projects href (same as default for documentation)
+export const ProjectsHref: Story = {
   args: {
-    href: "/link-to-safe-place",
-  },
-};
-
-export const MessageLink: Story = {
-  args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    href: "/projects",
   },
 };

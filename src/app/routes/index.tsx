@@ -18,13 +18,11 @@ export default function IndexRoute() {
   );
 }
 
+// Catches 4xx errors (like 404s) from this route's loader
 export function CatchBoundary() {
   return (
     <div>
-      <Error404
-        message="It seems that you have lost! Go to the main page"
-        href="/"
-      />
+      <Error404 href="/" />
     </div>
   );
 }

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="550" viewBox="0 0 500 550" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for the green screen -->
+    <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C7E89A"/>
+      <stop offset="45%" stop-color="#9FD45F"/>
+      <stop offset="100%" stop-color="#6FA83C"/>
+    </linearGradient>
+    <!-- Gradient for the copper body -->
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D2A578"/>
+      <stop offset="100%" stop-color="#B07F54"/>
+    </linearGradient>
+    <linearGradient id="hatGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3E597F"/>
+      <stop offset="100%" stop-color="#2C405E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background (warm beige/parchment) -->
+  <rect width="500" height="550" fill="#EFE7D2"/>
+  <!-- subtle speckle texture -->
+  <g fill="#C9B68C" opacity="0.5">
+    <circle cx="60" cy="70" r="2"/><circle cx="120" cy="120" r="1.5"/><circle cx="430" cy="90" r="2"/>
+    <circle cx="470" cy="200" r="1.8"/><circle cx="40" cy="260" r="1.6"/><circle cx="90" cy="430" r="2"/>
+    <circle cx="200" cy="500" r="1.7"/><circle cx="330" cy="510" r="1.5"/><circle cx="450" cy="460" r="2"/>
+    <circle cx="160" cy="60" r="1.4"/><circle cx="380" cy="160" r="1.6"/><circle cx="60" cy="170" r="1.4"/>
+    <circle cx="470" cy="330" r="1.6"/><circle cx="30" cy="360" r="1.5"/><circle cx="260" cy="40" r="1.5"/>
+    <circle cx="410" cy="400" r="1.4"/><circle cx="150" cy="470" r="1.4"/><circle cx="300" cy="80" r="1.3"/>
+  </g>
+
+  <!-- Vitruvian guides (burgundy circle + square) -->
+  <g opacity="0.75" stroke="#7A4A52" stroke-width="2.5" fill="none">
+    <circle cx="250" cy="278" r="205"/>
+    <rect x="92" y="170" width="316" height="316"/>
+  </g>
+
+  <!-- ===================== ARMS (drawn behind body, four spread wide) ===================== -->
+  <g id="arms" stroke="#26303A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <!-- helper styles applied per element -->
+
+    <!-- LEFT upper arm -->
+    <g>
+      <line x1="208" y1="300" x2="120" y2="262" stroke="#3C4650" stroke-width="14" stroke-linecap="round"/>
+      <circle cx="208" cy="300" r="7" fill="#5A6470"/>
+      <!-- glove -->
+      <g transform="translate(118,262)">
+        <circle cx="0" cy="0" r="16" fill="#FFFFFF"/>
+        <path d="M-6,-14 Q-10,-22 -5,-24 Q-1,-22 -2,-14 Z" fill="#FFFFFF"/>
+        <path d="M2,-16 Q2,-25 7,-25 Q11,-23 8,-15 Z" fill="#FFFFFF"/>
+        <path d="M9,-12 Q15,-19 18,-15 Q19,-11 12,-7 Z" fill="#FFFFFF"/>
+        <path d="M-13,-6 Q-22,-9 -22,-4 Q-20,0 -12,1 Z" fill="#FFFFFF"/>
+        <path d="M-15,13 Q-9,19 -3,15" fill="none" stroke-width="2.5"/>
+      </g>
+    </g>
+
+    <!-- LEFT lower arm -->
+    <g>
+      <line x1="206" y1="328" x2="120" y2="350" stroke="#3C4650" stroke-width="14" stroke-linecap="round"/>
+      <circle cx="206" cy="328" r="7" fill="#5A6470"/>
+      <g transform="translate(116,352)">
+        <circle cx="0" cy="0" r="16" fill="#FFFFFF"/>
+        <path d="M-8,-13 Q-13,-21 -8,-24 Q-3,-22 -4,-13 Z" fill="#FFFFFF"/>
+        <path d="M0,-16 Q-1,-25 4,-25 Q9,-23 6,-15 Z" fill="#FFFFFF"/>
+        <path d="M8,-12 Q14,-18 17,-13 Q18,-9 10,-6 Z" fill="#FFFFFF"/>
+        <path d="M-14,-4 Q-23,-6 -22,-1 Q-19,3 -11,2 Z" fill="#FFFFFF"/>
+      </g>
+    </g>
+
+    <!-- RIGHT upper arm -->
+    <g>
+      <line x1="292" y1="300" x2="380" y2="262" stroke="#3C4650" stroke-width="14" stroke-linecap="round"/>
+      <circle cx="292" cy="300" r="7" fill="#5A6470"/>
+      <g transform="translate(382,262)">
+        <circle cx="0" cy="0" r="16" fill="#FFFFFF"/>
+        <path d="M6,-14 Q10,-22 5,-24 Q1,-22 2,-14 Z" fill="#FFFFFF"/>
+        <path d="M-2,-16 Q-2,-25 -7,-25 Q-11,-23 -8,-15 Z" fill="#FFFFFF"/>
+        <path d="M-9,-12 Q-15,-19 -18,-15 Q-19,-11 -12,-7 Z" fill="#FFFFFF"/>
+        <path d="M13,-6 Q22,-9 22,-4 Q20,0 12,1 Z" fill="#FFFFFF"/>
+        <path d="M15,13 Q9,19 3,15" fill="none" stroke-width="2.5"/>
+      </g>
+    </g>
+
+    <!-- RIGHT lower arm -->
+    <g>
+      <line x1="294" y1="328" x2="380" y2="350" stroke="#3C4650" stroke-width="14" stroke-linecap="round"/>
+      <circle cx="294" cy="328" r="7" fill="#5A6470"/>
+      <g transform="translate(384,352)">
+        <circle cx="0" cy="0" r="16" fill="#FFFFFF"/>
+        <path d="M8,-13 Q13,-21 8,-24 Q3,-22 4,-13 Z" fill="#FFFFFF"/>
+        <path d="M0,-16 Q1,-25 -4,-25 Q-9,-23 -6,-15 Z" fill="#FFFFFF"/>
+        <path d="M-8,-12 Q-14,-18 -17,-13 Q-18,-9 -10,-6 Z" fill="#FFFFFF"/>
+        <path d="M14,-4 Q23,-6 22,-1 Q19,3 11,2 Z" fill="#FFFFFF"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===================== LEGS / BOOTS ===================== -->
+  <g id="legs" stroke="#26303A" stroke-width="3" stroke-linejoin="round">
+    <!-- left leg -->
+    <line x1="218" y1="430" x2="206" y2="470" stroke="#9A7150" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="218" cy="432" r="6" fill="#7A5538"/>
+    <path d="M178,470 Q176,460 196,462 L210,464 Q214,478 206,486 L182,488 Q174,482 178,470 Z" fill="#5A3E29"/>
+    <!-- right leg -->
+    <line x1="282" y1="430" x2="294" y2="470" stroke="#9A7150" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="282" cy="432" r="6" fill="#7A5538"/>
+    <path d="M322,470 Q324,460 304,462 L290,464 Q286,478 294,486 L318,488 Q326,482 322,470 Z" fill="#5A3E29"/>
+  </g>
+
+  <!-- ===================== BODY ===================== -->
+  <g id="body" stroke="#7A5538" stroke-width="3.5" stroke-linejoin="round">
+    <rect x="186" y="288" width="128" height="148" rx="14" fill="url(#bodyGrad)"/>
+    <!-- side shading -->
+    <rect x="290" y="292" width="20" height="140" rx="10" fill="#9A7150" opacity="0.4" stroke="none"/>
+    <!-- chest panel -->
+    <rect x="214" y="338" width="72" height="64" rx="8" fill="#6A4A33" stroke="#4A3322" stroke-width="2.5"/>
+    <!-- dial -->
+    <circle cx="250" cy="370" r="15" fill="#E0B23C" stroke="#A87E1E" stroke-width="2.5"/>
+    <circle cx="250" cy="370" r="6" fill="#C49526" stroke="none"/>
+  </g>
+
+  <!-- ===================== TV HEAD ===================== -->
+  <g id="head" stroke="#7A5538" stroke-width="3.5" stroke-linejoin="round">
+    <!-- side ears/knobs -->
+    <rect x="178" y="206" width="18" height="44" rx="6" fill="#B07F54"/>
+    <rect x="304" y="206" width="18" height="44" rx="6" fill="#9A7150"/>
+    <!-- TV body -->
+    <rect x="190" y="178" width="120" height="104" rx="16" fill="url(#bodyGrad)"/>
+    <!-- bezel -->
+    <rect x="202" y="190" width="96" height="80" rx="10" fill="#7A5538" stroke="#5A3E29" stroke-width="2.5"/>
+    <!-- screen -->
+    <rect x="210" y="198" width="80" height="64" rx="7" fill="url(#screenGrad)" stroke="#5A7A2E" stroke-width="1.5"/>
+    <!-- screen reflections -->
+    <path d="M218,214 Q240,206 268,212 Q250,224 222,224 Z" fill="#FFFFFF" opacity="0.55" stroke="none"/>
+    <ellipse cx="234" cy="232" rx="14" ry="7" fill="#FFFFFF" opacity="0.45" stroke="none"/>
+    <path d="M214,250 L286,234" stroke="#FFFFFF" stroke-width="3" opacity="0.25" stroke-linecap="round"/>
+    <!-- bolts -->
+    <circle cx="200" cy="188" r="3.2" fill="#5A3E29" stroke="none"/>
+    <circle cx="300" cy="188" r="3.2" fill="#5A3E29" stroke="none"/>
+    <circle cx="200" cy="272" r="3.2" fill="#5A3E29" stroke="none"/>
+    <circle cx="300" cy="272" r="3.2" fill="#5A3E29" stroke="none"/>
+  </g>
+
+  <!-- ===================== WIZARD HAT ===================== -->
+  <g id="hat" stroke="#1E2C42" stroke-width="3" stroke-linejoin="round">
+    <!-- wide brim -->
+    <ellipse cx="250" cy="178" rx="118" ry="26" fill="url(#hatGrad)"/>
+    <!-- cone, tall and curved to the right at the tip -->
+    <path d="M196,180
+             C196,150 206,96 224,60
+             C236,34 252,22 266,28
+             C280,34 282,52 274,66
+             C268,78 268,92 276,104
+             C286,118 296,150 304,180 Z"
+          fill="url(#hatGrad)"/>
+    <!-- tip fold accent -->
+    <path d="M252,30 C264,32 268,48 262,60" fill="none" stroke="#1E2C42" stroke-width="2.5"/>
+
+    <!-- highlight stripe on cone -->
+    <path d="M236,70 C228,108 222,150 218,178" stroke="#52719B" stroke-width="6" fill="none" opacity="0.5" stroke-linecap="round"/>
+
+    <!-- stars and moons -->
+    <g fill="#F4C44A" stroke="#D8A020" stroke-width="0.6">
+      <!-- tip star -->
+      <path d="M252,46 l2.4,5 5.4,.7 -4,3.8 1,5.4 -4.8,-2.7 -4.8,2.7 1,-5.4 -4,-3.8 5.4,-.7 Z"/>
+      <!-- cone crescent upper -->
+      <path d="M232,96 a7.5,7.5 0 1,1 0,15 a5.6,5.6 0 1,0 0,-15 Z"/>
+      <!-- cone star mid -->
+      <path d="M262,120 l2.6,5.4 5.8,.8 -4.2,4.1 1,5.8 -5.2,-2.9 -5.2,2.9 1,-5.8 -4.2,-4.1 5.8,-.8 Z"/>
+      <!-- cone crescent lower -->
+      <path d="M236,150 a6.5,6.5 0 1,1 0,13 a4.9,4.9 0 1,0 0,-13 Z"/>
+      <!-- brim star left -->
+      <path d="M196,176 l2.6,5.4 5.8,.8 -4.2,4.1 1,5.8 -5.2,-2.9 -5.2,2.9 1,-5.8 -4.2,-4.1 5.8,-.8 Z"/>
+      <!-- brim crescent left -->
+      <path d="M168,182 a8,8 0 1,1 0,16 a6,6 0 1,0 0,-16 Z"/>
+      <!-- brim star right -->
+      <path d="M306,182 l2.8,5.8 6.2,.9 -4.5,4.4 1.1,6.2 -5.6,-3.1 -5.6,3.1 1.1,-6.2 -4.5,-4.4 6.2,-.9 Z"/>
+      <!-- brim crescent right -->
+      <path d="M330,176 a7,7 0 1,1 0,14 a5.3,5.3 0 1,0 0,-14 Z"/>
+    </g>
+  </g>
+</svg>
