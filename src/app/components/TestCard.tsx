@@ -10,27 +10,27 @@ import { FiSettings, FiChevronUp, FiInfo } from 'react-icons/fi';
  */
 export const TestCard = () => {
   return (
-    <div id="testElem" className="bg-[#252525] rounded-xl p-5 w-full max-w-xs text-white space-y-4">
-      {/* Header Row: Title and Settings */}
-      <div className="flex justify-between items-center">
-        <span className="font-bold text-lg">UI magician Agent</span>
-        <FiSettings className="text-gray-400" size={20} />
+    <div id="testElem" className="bg-[#121212] p-8 w-full max-w-sm text-[#E1E1E1] font-sans">
+      {/* Header Row */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-white tracking-tight">UI magician Agent</h1>
+        <FiSettings className="text-[#A1A1A1] cursor-pointer" size={24} />
       </div>
 
-      {/* Collapsible Hint Row: Indicates context/status */}
-      <div className="flex items-center gap-2">
-        <FiChevronUp className="text-white" size={20} />
-        <span className="text-[#c2753f]">From entire frame to a singl...</span>
+      {/* From frame hint */}
+      <div className="flex items-center gap-3 mb-16">
+        <FiChevronUp className="text-[#A1A1A1]" size={20} />
+        <span className="text-[#A1A1A1] text-lg">From entire frame to a singl...</span>
       </div>
 
-      {/* Section Header: Main action area */}
-      <div className="flex items-center gap-2 mt-4">
-        <FiChevronUp className="text-white" size={20} />
-        <span className="font-bold text-lg text-white">Add New Design</span>
+      {/* Add New Design section */}
+      <div className="flex items-center gap-3 mb-8 cursor-pointer">
+        <FiChevronUp className="text-white" size={22} />
+        <span className="text-xl font-bold text-[#E1E1E1]">Add New Design</span>
       </div>
 
-      {/* Form Area: Configuration inputs */}
-      <div className="space-y-3 mt-4">
+      {/* Form Fields */}
+      <div className="space-y-10">
         <FormField 
           label="Personal Access Token" 
           placeholder="figd_xxxxxxxxxxxxxxxxxx" 
@@ -41,15 +41,15 @@ export const TestCard = () => {
         />
       </div>
 
-      {/* Action Buttons: Burnt orange primary actions */}
-      <div className="flex gap-3 mt-4">
+      {/* Buttons */}
+      <div className="flex gap-4 mt-12 mb-20">
         <ActionButton label="Awesome" />
         <ActionButton label="Prepare" />
       </div>
 
-      {/* Footer: List of previous activity */}
-      <div className="mt-6">
-        <p className="font-bold text-lg text-white">Recent Breakdowns</p>
+      {/* Footer */}
+      <div>
+        <h2 className="text-xl font-bold text-[#E1E1E1]">Recent Breakdowns</h2>
       </div>
     </div>
   );
@@ -60,17 +60,19 @@ export const TestCard = () => {
  * Uses hardcoded brand colors for the dark theme.
  */
 const FormField = ({ label, placeholder }: { label: string; placeholder: string }) => (
-  <div>
-    <div className="flex items-center gap-1 mb-1">
-      <p className="text-white text-sm">{label}</p>
-      <FiInfo className="text-gray-400" size={16} />
+  <div className="flex flex-col gap-3">
+    <div className="flex items-center justify-between pr-2">
+      <span className="text-[#A1A1A1] text-lg font-medium">{label}</span>
+      <FiInfo className="text-white" size={22} />
     </div>
-    <input
-      type="text"
-      readOnly // Static display component
-      placeholder={placeholder}
-      className="bg-[#333] border border-[#444] text-gray-400 rounded-md px-3 py-2 w-full text-sm placeholder:text-gray-500 focus:outline-none"
-    />
+    <div className="border border-[#3A3A3A] rounded-sm p-[1px]">
+      <input
+        type="text"
+        readOnly
+        placeholder={placeholder}
+        className="bg-transparent text-[#6F6F6F] px-4 py-4 w-full text-lg placeholder:text-[#6F6F6F] focus:outline-none"
+      />
+    </div>
   </div>
 );
 
@@ -78,7 +80,7 @@ const FormField = ({ label, placeholder }: { label: string; placeholder: string 
  * Action Button component with brand-specific burnt orange color.
  */
 const ActionButton = ({ label }: { label: string }) => (
-  <button className="bg-[#b5522a] hover:bg-[#9e4724] text-white rounded-xl px-5 py-3 flex-1 font-medium transition-colors">
+  <button className="bg-[#8E4122] hover:bg-[#7a371c] text-white rounded-md px-4 py-4 flex-1 text-lg font-bold transition-colors">
     {label}
   </button>
 );
