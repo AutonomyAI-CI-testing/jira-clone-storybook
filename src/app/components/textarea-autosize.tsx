@@ -1,26 +1,44 @@
 import { useLayoutEffect, useState, useRef } from "react";
 import cx from "classix";
 
-export const TextareaAutosize = (props: TitleProps): JSX.Element => {
-  const {
-    name,
-    value,
-    setValue,
-    placeholder,
-    readOnly,
-    autofocus,
-    textareaClassName,
-    onFocus,
-    onBlur,
-  } = props;
+export interface TextareaAutosizeProps extends Omit<
+  React.ComponentPropsWithoutRef<"textarea">,
+  "value" | "onBlur" | "onFocus" | "name"
+> {
+  name: string;
+  value: string;
+  setValue: (value: string) => void;
+  placeholder: string;
+  autofocus?: boolean;
+  readOnly?: boolean;
+  disabled?: boolean;
+  textareaClassName?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
+}
 
+export const TextareaAutosize = ({
+  name,
+  value,
+  setValue,
+  placeholder,
+  readOnly,
+  autofocus,
+  textareaClassName,
+  onFocus,
+  onBlur,
+  disabled,
+}: TextareaAutosizeProps): JSX.Element => {
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
+  /**
+   * Handles focus events to ensure the cursor is placed at the end of the text.
+   */
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
     const length = target.value.length;
-    // Place cursor at the end of the current text
+    // Place cursor at the end of the current text to improve UX when clicking into existing text
     target.setSelectionRange(length, length);
     if (onFocus) onFocus();
   };
@@ -30,10 +48,14 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     setValue(value);
   };
 
+  /**
+   * Prevents the auto-sizing logic from collapsing when the input is empty or only whitespace.
+   */
   const valueIsNotOnlySpaces = (): boolean => {
     return !/^( )\1*$/.test(value);
   };
 
+  // Sync the height of the textarea with the height of the hidden shadow paragraph
   useLayoutEffect(() => {
     if (!textareaRef.current) return;
 
@@ -56,6 +78,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         onBlur={onBlur}
         style={{ height: `${textareaHeight}px` }}
         autoFocus={autofocus}
+        disabled={disabled}
       />
       <p
         ref={textareaRef}
@@ -69,15 +92,3 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     </div>
   );
 };
-
-interface TitleProps {
-  name: string;
-  value: string;
-  setValue: (value: string) => void;
-  placeholder: string;
-  autofocus?: boolean;
-  readOnly?: boolean;
-  textareaClassName?: string;
-  onFocus?: () => void;
-  onBlur?: () => void;
-}
