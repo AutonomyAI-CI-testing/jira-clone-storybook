@@ -12,6 +12,7 @@ export const withMainContext = (Story: Story): JSX.Element => {
       <ThemeProvider
         specifiedTheme={Theme.LIGHT}
         specifiedPreference={Preference.SELECTED}
+        bypassFetcher={true}
       >
         <div className="w-full">
           <Story />

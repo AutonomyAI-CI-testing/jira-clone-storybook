@@ -31,7 +31,7 @@ type ThemeContextType = {
   setTheme: (theme: Theme, preference?: Preference) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 // Inspired from Kent C. Dodds repo https://github.com/kentcdodds/kentcdodds.com/blob/main/app/utils/theme-provider.tsx
 const prefersLightMQ = "(prefers-color-scheme: light)";
@@ -42,6 +42,7 @@ export const ThemeProvider = ({
   children,
   specifiedTheme,
   specifiedPreference,
+  bypassFetcher = false,
 }: ThemeProviderProps) => {
   const [theme, setThemeState] = useState<Theme | null>(() => {
     // On the server, if we don't have a specified theme then we should
@@ -65,7 +66,7 @@ export const ThemeProvider = ({
     return DEFAULT_PREFERENCE;
   });
 
-  const persistTheme = useFetcher();
+  const persistTheme = bypassFetcher ? ({} as any) : useFetcher();
   const persistThemeRef = useRef(persistTheme);
   useEffect(() => {
     persistThemeRef.current = persistTheme;
@@ -111,6 +112,7 @@ interface ThemeProviderProps {
   children: JSX.Element;
   specifiedTheme: Theme | undefined;
   specifiedPreference: Preference | undefined;
+  bypassFetcher?: boolean;
 }
 
 export const useTheme = () => {
