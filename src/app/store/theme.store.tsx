@@ -13,6 +13,7 @@ export enum Theme {
   DARK = "dark",
   LAVA = "lava",
   LIME = "lime",
+  // High-contrast pink theme for visual variety testing
   BARBIE = "barbie",
 }
 export const themes: Array<Theme> = Object.values(Theme);
@@ -31,7 +32,9 @@ type ThemeContextType = {
   setTheme: (theme: Theme, preference?: Preference) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+// Exported to allow Storybook decorators to provide a mock theme context
+// without wrapping every story in a full ThemeProvider (which requires Remix context)
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 // Inspired from Kent C. Dodds repo https://github.com/kentcdodds/kentcdodds.com/blob/main/app/utils/theme-provider.tsx
 const prefersLightMQ = "(prefers-color-scheme: light)";

@@ -7,7 +7,8 @@ import { ThemeProvider, Theme, Preference } from "@app/store/theme.store";
 type Story = PartialStoryFn<any, Record<string, never>>;
 
 export const withMainContext = (Story: Story): JSX.Element => {
-  return (
+  // Wrap with Remix stub first as ThemeProvider depends on useFetcher/useNavigation
+  return withRemixStub(
     <UserContextProvider user={userMock1}>
       <ThemeProvider
         specifiedTheme={Theme.LIGHT}
