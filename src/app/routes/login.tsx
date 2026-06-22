@@ -12,22 +12,21 @@ import { LoginView } from "@app/ui/login";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: V2_MetaFunction = () => {
-  const title = "Jira clone - Login";
-  const description =
-    "Select your user profile and login to see your projects.";
+  const title = "Jira Clone - Login";
+  const message = "Select your user profile and login to see your projects.";
   const image = "https://jira-clone.fly.dev/static/images/readme/projects.png";
   const url = "https://jira-clone.fly.dev/login";
 
   const tags = {
     charset: "utf-8",
     viewport: "width=device-width,initial-scale=1",
-    title: title,
-    description: description,
+    title,
+    description: message,
     "twitter:card": "summary_large_image",
     "twitter:site": url,
     "twitter:domain": "jira-clone.fly.dev",
     "twitter:title": title,
-    "twitter:description": description,
+    "twitter:description": message,
     "twitter:image": image,
     "twitter:image:width": "1297",
     "twitter:image:height": "635",
@@ -41,7 +40,7 @@ export const meta: V2_MetaFunction = () => {
     "og:type": "website",
     "og:site_name": title,
     "og:title": title,
-    "og:description": description,
+    "og:description": message,
     "og:image": image,
   };
 
@@ -70,7 +69,6 @@ export const action: ActionFunction = async ({ request }) => {
       headers: { "Set-Cookie": await userSession.commit() },
     });
   }
-  console.error("Unknown action", _action);
 };
 
 export default function LoginRoute() {
