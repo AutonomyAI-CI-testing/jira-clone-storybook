@@ -31,7 +31,7 @@ type ThemeContextType = {
   setTheme: (theme: Theme, preference?: Preference) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 // Inspired from Kent C. Dodds repo https://github.com/kentcdodds/kentcdodds.com/blob/main/app/utils/theme-provider.tsx
 const prefersLightMQ = "(prefers-color-scheme: light)";
@@ -42,7 +42,7 @@ export const ThemeProvider = ({
   children,
   specifiedTheme,
   specifiedPreference,
-}: ThemeProviderProps) => {
+}: ThemeProviderProps): JSX.Element => {
   const [theme, setThemeState] = useState<Theme | null>(() => {
     // On the server, if we don't have a specified theme then we should
     // return null and the clientThemeCode will set the theme for us

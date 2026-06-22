@@ -5,7 +5,7 @@ import { Button } from "@app/components/button";
 import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
-export const LoginView = ({ users }: Props) => {
+export const LoginView = ({ users }: Props): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
   const onValueChange = (userId: UserId) => {
