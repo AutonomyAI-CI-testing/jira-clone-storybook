@@ -8,6 +8,7 @@ import * as Select from "@app/components/select";
 export const LoginView = ({ users }: Props) => {
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
+  // Updates the selected user when the dropdown value changes
   const onValueChange = (userId: UserId) => {
     const foundUser = users.find((user) => user.id === userId);
 
@@ -46,8 +47,8 @@ export const LoginView = ({ users }: Props) => {
           <Select.Content>
             <Select.ScrollUpButton />
             <Select.Viewport>
-              {users.map((user, index) => (
-                <Select.Item key={index} value={user.id}>
+              {users.map((user) => (
+                <Select.Item key={user.id} value={user.id}>
                   <Select.ItemIndicator />
                   <UserAvatar {...user} />
                   <Select.ItemText>{user.name}</Select.ItemText>
