@@ -8,6 +8,9 @@ import {
 } from "react";
 import { useFetcher } from "@remix-run/react";
 
+/**
+ * Supported theme variants for the application.
+ */
 export enum Theme {
   LIGHT = "light",
   DARK = "dark",
@@ -15,11 +18,21 @@ export enum Theme {
   LIME = "lime",
   BARBIE = "barbie",
 }
+
+/**
+ * List of available themes for iteration or validation.
+ */
 export const themes: Array<Theme> = Object.values(Theme);
+
+/**
+ * User preference for theme selection.
+ * 'SYSTEM' follows OS settings, 'SELECTED' uses the manually chosen theme.
+ */
 export enum Preference {
   SELECTED = "selected",
   SYSTEM = "system",
 }
+
 const preferences: Array<Preference> = Object.values(Preference);
 
 export const DEFAULT_THEME: Theme = Theme.LIGHT;
@@ -31,30 +44,37 @@ type ThemeContextType = {
   setTheme: (theme: Theme, preference?: Preference) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+/**
+ * Context for managing and accessing the current theme and user preference.
+ */
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 // Inspired from Kent C. Dodds repo https://github.com/kentcdodds/kentcdodds.com/blob/main/app/utils/theme-provider.tsx
 const prefersLightMQ = "(prefers-color-scheme: light)";
+
+/**
+ * Returns the theme that matches the user's system preference.
+ */
 export const getSystemTheme = (): Theme =>
   window.matchMedia(prefersLightMQ).matches ? Theme.LIGHT : Theme.DARK;
 
+/**
+ * Provider component that handles theme state, system preference synchronization,
+ * and persistence via a side-effect (e.g., Remix fetcher).
+ */
 export const ThemeProvider = ({
   children,
   specifiedTheme,
   specifiedPreference,
 }: ThemeProviderProps) => {
   const [theme, setThemeState] = useState<Theme | null>(() => {
-    // On the server, if we don't have a specified theme then we should
-    // return null and the clientThemeCode will set the theme for us
-    // before hydration. Then (during hydration), this code will get the same
-    // value that clientThemeCode got so hydration is happy.
+    // If a theme was specified (e.g., from a cookie on the server), use it.
+    // Otherwise, fallback to system preference if on the client.
     if (specifiedTheme) {
       if (themes.includes(specifiedTheme)) return specifiedTheme;
       else return null;
     }
 
-    // there's no way for us to know what the theme should be in this context
-    // the client will have to figure it out before hydration.
     if (typeof window !== "object") return null;
 
     return getSystemTheme();
@@ -65,12 +85,14 @@ export const ThemeProvider = ({
     return DEFAULT_PREFERENCE;
   });
 
+  // Use a ref for the fetcher to avoid re-triggering effects if the fetcher instance changes
   const persistTheme = useFetcher();
   const persistThemeRef = useRef(persistTheme);
   useEffect(() => {
     persistThemeRef.current = persistTheme;
   }, [persistTheme]);
 
+  // Sync with system theme changes when preference is set to SYSTEM
   useEffect(() => {
     const mediaQuery = window.matchMedia(prefersLightMQ);
 
@@ -82,9 +104,11 @@ export const ThemeProvider = ({
     };
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preference]);
 
+  /**
+   * Updates the theme and preference state, and triggers persistence.
+   */
   const setTheme = useCallback(
     (newTheme: Theme, newPreference: Preference = Preference.SYSTEM) => {
       persistThemeRef.current.submit(
@@ -113,6 +137,10 @@ interface ThemeProviderProps {
   specifiedPreference: Preference | undefined;
 }
 
+/**
+ * Hook to access the theme context.
+ * Must be used within a ThemeProvider.
+ */
 export const useTheme = () => {
   const themeContext = useContext(ThemeContext);
   if (themeContext === null) {
@@ -121,10 +149,16 @@ export const useTheme = () => {
   return themeContext;
 };
 
+/**
+ * Validates if the given value is a valid Theme.
+ */
 export const isValidTheme = (theme: unknown): theme is Theme => {
   return themes.includes(theme as Theme);
 };
 
+/**
+ * Validates if the given value is a valid Preference.
+ */
 export const isValidPreference = (
   preference: unknown
 ): preference is Preference => {
