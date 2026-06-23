@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HiCog, HiChevronUp, HiInformationCircle } from 'react-icons/hi';
+import { HiOutlineCog, HiChevronUp, HiOutlineInformationCircle } from 'react-icons/hi';
 
 /**
  * TestCard component for the UI magician Agent.
@@ -10,31 +10,31 @@ import { HiCog, HiChevronUp, HiInformationCircle } from 'react-icons/hi';
 export const TestCard = (): JSX.Element => {
   // Theme constants - preserved exactly from design
   const COLORS = {
-    bgMain: '#2a2a2a',
-    bgInput: '#333',
-    borderInput: '#444',
-    textMain: '#b5b5b5',
+    bgMain: '#1c1c1a', // Refined dark background from reference
+    bgInput: '#2a2a28', // Refined input background
+    borderInput: '#555651', // Matching sharp border color
+    textMain: '#e2e2e0', // Brighter text for headers
     textMuted: '#8b9291',
-    textLabel: '#a4a4a3',
+    textLabel: '#969792', // Matching label color
     textInput: '#737470',
     textPlaceholder: '#737470',
-    accentBtn: '#b5501e',
-    textBtn: '#8c8078',
+    accentBtn: '#8e3f1e', // Darker earthy orange from reference
+    textBtn: '#969792', // Label color for button text
     textFooter: '#b0b0b0',
-    headerIcon: '#b5b5b5',
+    headerIcon: '#e2e2e0',
     sectionHeader: '#b2b2b1',
   };
 
   return (
     <div 
       id="testElem"
-      className="p-4 flex flex-col gap-4 min-w-[300px]"
+      className="p-8 flex flex-col gap-8 w-full max-w-[500px]"
       style={{ backgroundColor: COLORS.bgMain }}
     >
       {/* Header: Agent identity and settings access */}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mb-2">
         <span 
-          className="font-semibold text-sm"
+          className="font-bold text-xl"
           style={{ color: COLORS.textMain }}
         >
           UI magician Agent
@@ -43,21 +43,21 @@ export const TestCard = (): JSX.Element => {
           aria-label="Settings" 
           className="hover:opacity-80 transition-opacity"
         >
-          <HiCog 
-            className="text-lg"
+          <HiOutlineCog 
+            className="text-3xl"
             style={{ color: COLORS.headerIcon }} 
           />
         </button>
       </div>
 
       {/* Subtitle: Context indicator */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-3">
         <HiChevronUp 
-          className="text-lg"
+          className="text-2xl"
           style={{ color: COLORS.textMuted }} 
         />
         <span 
-          className="text-xs font-semibold"
+          className="text-base font-semibold"
           style={{ color: COLORS.textMuted }}
         >
           From entire frame to a singl...
@@ -65,13 +65,13 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       {/* Form Section Header: Expandable design section */}
-      <div className="flex items-center gap-1 mt-2">
+      <div className="flex items-center gap-3 mt-10">
         <HiChevronUp 
-          className="text-lg"
+          className="text-2xl"
           style={{ color: COLORS.sectionHeader }} 
         />
         <span 
-          className="font-semibold text-sm"
+          className="font-bold text-xl"
           style={{ color: COLORS.sectionHeader }}
         >
           Add New Design
@@ -79,45 +79,46 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       {/* Input Group: Personal Access Token */}
-      <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-1">
+      <div className="flex flex-col gap-4 mt-6">
+        <div className="flex items-center gap-4">
           <label 
             htmlFor="pat-input"
-            className="text-xs font-semibold"
+            className="text-base font-bold"
             style={{ color: COLORS.textLabel }}
           >
             Personal Access Token
           </label>
-          <HiInformationCircle 
-            className="text-sm cursor-help"
+          <HiOutlineInformationCircle 
+            className="text-2xl cursor-help"
             style={{ color: COLORS.textLabel }} 
           />
         </div>
         <input
           id="pat-input"
-          type="password" // Security best practice for tokens
+          type="password"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full rounded border text-xs px-3 py-2 outline-none focus:ring-1 focus:ring-opacity-50"
+          className="w-full border-2 text-base px-5 py-4 outline-none focus:ring-1 focus:ring-opacity-50"
           style={{ 
             backgroundColor: COLORS.bgInput, 
             borderColor: COLORS.borderInput,
-            color: COLORS.textInput 
+            color: COLORS.textInput,
+            borderRadius: '2px'
           }}
         />
       </div>
 
       {/* Input Group: Design URL */}
-      <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-1">
+      <div className="flex flex-col gap-4 mt-4">
+        <div className="flex items-center gap-4">
           <label 
             htmlFor="url-input"
-            className="text-xs font-semibold"
+            className="text-base font-bold"
             style={{ color: COLORS.textLabel }}
           >
             Design URL
           </label>
-          <HiInformationCircle 
-            className="text-sm cursor-help"
+          <HiOutlineInformationCircle 
+            className="text-2xl cursor-help"
             style={{ color: COLORS.textLabel }} 
           />
         </div>
@@ -125,35 +126,36 @@ export const TestCard = (): JSX.Element => {
           id="url-input"
           type="url"
           placeholder="https://www.figma.com/file/:"
-          className="w-full rounded border text-xs px-3 py-2 outline-none focus:ring-1 focus:ring-opacity-50"
+          className="w-full border-2 text-base px-5 py-4 outline-none focus:ring-1 focus:ring-opacity-50"
           style={{ 
             backgroundColor: COLORS.bgInput, 
             borderColor: COLORS.borderInput,
-            color: '#71726e' // Preserving unique color from design
+            color: '#71726e',
+            borderRadius: '2px'
           }}
         />
       </div>
 
       {/* Primary Actions */}
-      <div className="flex gap-3 mt-2">
+      <div className="flex gap-4 mt-8">
         <button 
-          className="rounded-lg px-4 py-2 font-semibold text-xs flex-1 hover:opacity-90 active:scale-95 transition-all"
-          style={{ backgroundColor: COLORS.accentBtn, color: COLORS.textBtn }}
+          className="px-8 py-5 font-bold text-base flex-1 hover:opacity-90 active:scale-95 transition-all"
+          style={{ backgroundColor: COLORS.accentBtn, color: COLORS.textBtn, borderRadius: '8px' }}
         >
           Awesome
         </button>
         <button 
-          className="rounded-lg px-4 py-2 font-semibold text-xs flex-1 hover:opacity-90 active:scale-95 transition-all"
-          style={{ backgroundColor: COLORS.accentBtn, color: COLORS.textBtn }}
+          className="px-8 py-5 font-bold text-base flex-1 hover:opacity-90 active:scale-95 transition-all"
+          style={{ backgroundColor: COLORS.accentBtn, color: COLORS.textBtn, borderRadius: '8px' }}
         >
           Prepare
         </button>
       </div>
 
       {/* Footer: Contextual history */}
-      <div className="mt-4">
+      <div className="mt-16">
         <p 
-          className="font-semibold text-sm"
+          className="font-bold text-xl"
           style={{ color: COLORS.textFooter }}
         >
           Recent Breakdowns
