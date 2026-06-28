@@ -60,7 +60,7 @@ export const TestCard = (): JSX.Element => {
       {/* Personal Access Token mapping to Figma's figd_ placeholder */}
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center gap-1">
-          <label style={{ color: COLORS.label, fontSize: "11.5px", fontWeight: "600" }}>
+          <label htmlFor="pat-input" style={{ color: COLORS.label, fontSize: "11.5px", fontWeight: "600" }}>
             Personal Access Token
           </label>
           <span role="img" aria-label="info" className="text-[10px]">
@@ -69,6 +69,7 @@ export const TestCard = (): JSX.Element => {
         </div>
         <input
           type="text"
+          id="pat-input"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
           style={{
             backgroundColor: COLORS.bg,
@@ -83,7 +84,7 @@ export const TestCard = (): JSX.Element => {
       {/* Design URL input section */}
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center gap-1">
-          <label style={{ color: COLORS.labelAlt, fontSize: "11.5px", fontWeight: "600" }}>
+          <label htmlFor="design-url-input" style={{ color: COLORS.labelAlt, fontSize: "11.5px", fontWeight: "600" }}>
             Design URL
           </label>
           <span role="img" aria-label="info" className="text-[10px]">
@@ -92,6 +93,7 @@ export const TestCard = (): JSX.Element => {
         </div>
         <input
           type="text"
+          id="design-url-input"
           placeholder="https://www.figma.com/file/:"
           style={{
             backgroundColor: COLORS.bg,
@@ -136,4 +138,6 @@ export const TestCard = (): JSX.Element => {
     </div>
   );
 };
+
+export default TestCard;
 
