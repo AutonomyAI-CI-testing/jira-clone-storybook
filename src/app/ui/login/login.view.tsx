@@ -6,6 +6,7 @@ import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
 export const LoginView = ({ users }: Props) => {
+  // Local state to manage the currently selected user specifically for the avatar preview in the trigger
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
   const onValueChange = (userId: UserId) => {
@@ -22,11 +23,13 @@ export const LoginView = ({ users }: Props) => {
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
+        {/* Explanation for users about the project's simplified "auth" model */}
         There is no authentication involved. You can login with any user you
         want! Keep in mind you can only access the projects the user is member
         of. Try to create issues and comments with different users to see how it
         reflects in the UI and database. You can logout on the user avatar.
       </h2>
+      {/* Form submitted to current route's action to set the user session */}
       <Form method="post" className="mx-auto w-[300px]">
         <Select.Root
           name="user"
