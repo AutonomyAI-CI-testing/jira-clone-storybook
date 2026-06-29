@@ -3,7 +3,10 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/app/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}", // Added to support smoke test components like TestCard
+  ],
   darkMode: "class",
   theme: {
     colors: {
