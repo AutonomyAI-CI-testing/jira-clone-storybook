@@ -11,9 +11,10 @@ const COLORS = {
   subtitleText: "#8b9291",
   sectionHeading: "#b2b2b1",
   label: "#a4a4a3",
-  inputBg: "#3a3a3a",
+  inputBg: "#3d3d3d",
+  inputBorder: "#5a5a5a",
   inputPlaceholder: "#737470",
-  buttonBg: "#7a4030",
+  buttonBg: "#8b4a32",
 };
 
 /**
@@ -23,20 +24,20 @@ const FormField: React.FC<{
   label: string;
   placeholder: string;
 }> = ({ label, placeholder }) => (
-  <div className="mb-4 last:mb-6">
+  <div className="mb-5 last:mb-7">
     <label
       className="flex items-center gap-2 text-sm font-medium mb-2"
       style={{ color: COLORS.label }}
     >
-      {label} <FiInfo size={14} style={{ color: COLORS.label }} />
+      {label} <FiInfo size={16} style={{ color: COLORS.label }} />
     </label>
     <input
       type="text"
       placeholder={placeholder}
-      className="w-full p-3 rounded-md border text-sm focus:outline-none"
+      className="w-full py-4 px-3 rounded border text-sm focus:outline-none"
       style={{
         backgroundColor: COLORS.inputBg,
-        borderColor: COLORS.inputBg,
+        borderColor: COLORS.inputBorder,
         color: COLORS.headerText,
       }}
     />
@@ -63,7 +64,7 @@ export const TestCard: React.FC = () => {
       </div>
 
       {/* Primary subtitle with collapsible chevron */}
-      <div className="flex items-center gap-2 mb-6">
+      <div className="flex items-center gap-2" style={{ marginBottom: "5rem" }}>
         <FiChevronUp size={18} style={{ color: COLORS.subtitleText }} />
         <p className="text-sm" style={{ color: COLORS.subtitleText }}>
           From entire frame to a singl...
@@ -71,7 +72,7 @@ export const TestCard: React.FC = () => {
       </div>
 
       {/* Form section header */}
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-2" style={{ marginBottom: "2rem" }}>
         <FiChevronUp size={18} style={{ color: COLORS.sectionHeading }} />
         <h3 className="text-base font-semibold" style={{ color: COLORS.sectionHeading }}>
           Add New Design
@@ -82,11 +83,11 @@ export const TestCard: React.FC = () => {
       <FormField label="Design URL" placeholder="https://www.figma.com/file/:" />
 
       {/* Shared action button pair */}
-      <div className="flex gap-4 mb-8">
+      <div className="flex gap-4" style={{ marginBottom: "6rem" }}>
         {["Awesome", "Prepare"].map((label) => (
           <button
             key={label}
-            className="flex-1 py-3 px-6 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="flex-1 py-4 px-6 rounded text-sm font-semibold hover:opacity-90 transition-opacity"
             style={{ backgroundColor: COLORS.buttonBg, color: COLORS.headerText }}
           >
             {label}
