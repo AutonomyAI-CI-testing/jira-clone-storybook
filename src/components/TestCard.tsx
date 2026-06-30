@@ -1,106 +1,102 @@
-import React from "react";
-import { FiSettings, FiChevronUp, FiInfo } from "react-icons/fi";
+import { FiSettings, FiChevronUp, FiInfo } from 'react-icons/fi'
 
-/**
- * Colors mapped from Figma design for use in inline styles.
- * Required because src/components/ is not scanned by Tailwind's JIT.
- */
-const COLORS = {
-  background: "#2a2a2a",
-  headerText: "#b5b5b5",
-  subtitleText: "#8b9291",
-  sectionHeading: "#b2b2b1",
-  label: "#a4a4a3",
-  inputBg: "#3d3d3d",
-  inputBorder: "#5a5a5a",
-  inputPlaceholder: "#737470",
-  buttonBg: "#8b4a32",
-};
-
-/**
- * Common input field component for local use.
- */
-const FormField: React.FC<{
-  label: string;
-  placeholder: string;
-}> = ({ label, placeholder }) => (
-  <div className="mb-5 last:mb-7">
-    <label
-      className="flex items-center gap-2 text-sm font-medium mb-2"
-      style={{ color: COLORS.label }}
-    >
-      {label} <FiInfo size={16} style={{ color: COLORS.label }} />
-    </label>
-    <input
-      type="text"
-      placeholder={placeholder}
-      className="w-full py-4 px-3 rounded border text-sm focus:outline-none"
-      style={{
-        backgroundColor: COLORS.inputBg,
-        borderColor: COLORS.inputBorder,
-        color: COLORS.headerText,
-      }}
-    />
-  </div>
-);
-
-/**
- * TestCard: A smoke-test component visually approximating the Figma design.
- * Render-only component with hardcoded values and root ID "testElem".
- */
-export const TestCard: React.FC = () => {
+export function TestCard() {
   return (
     <div
       id="testElem"
-      className="flex flex-col p-6 rounded-lg shadow-lg w-full max-w-md mx-auto"
-      style={{ backgroundColor: COLORS.background }}
+      style={{ backgroundColor: '#2a2a2a', color: '#d4d4d4', minHeight: '100vh' }}
+      className="p-6 flex flex-col gap-6 w-full max-w-sm"
     >
-      {/* Header section with title and settings icon */}
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold" style={{ color: COLORS.headerText }}>
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <span className="text-xl font-bold" style={{ color: '#e8e8e8' }}>
           UI magician Agent
-        </h2>
-        <FiSettings size={20} style={{ color: COLORS.headerText }} />
+        </span>
+        <FiSettings size={22} style={{ color: '#b5b5b5' }} />
       </div>
 
-      {/* Primary subtitle with collapsible chevron */}
-      <div className="flex items-center gap-2" style={{ marginBottom: "5rem" }}>
-        <FiChevronUp size={18} style={{ color: COLORS.subtitleText }} />
-        <p className="text-sm" style={{ color: COLORS.subtitleText }}>
+      {/* Subtitle */}
+      <div className="flex items-center gap-2">
+        <FiChevronUp size={16} style={{ color: '#8b9291' }} />
+        <span className="text-sm" style={{ color: '#8b9291' }}>
           From entire frame to a singl...
-        </p>
+        </span>
       </div>
 
-      {/* Form section header */}
-      <div className="flex items-center gap-2" style={{ marginBottom: "2rem" }}>
-        <FiChevronUp size={18} style={{ color: COLORS.sectionHeading }} />
-        <h3 className="text-base font-semibold" style={{ color: COLORS.sectionHeading }}>
-          Add New Design
-        </h3>
-      </div>
+      {/* Add New Design section */}
+      <div className="flex flex-col gap-4 mt-2">
+        <div className="flex items-center gap-2">
+          <FiChevronUp size={18} style={{ color: '#e8e8e8' }} />
+          <span className="text-lg font-bold" style={{ color: '#e8e8e8' }}>
+            Add New Design
+          </span>
+        </div>
 
-      <FormField label="Personal Access Token" placeholder="figd_xxxxxxxxxxxxxxxxxx" />
-      <FormField label="Design URL" placeholder="https://www.figma.com/file/:" />
+        {/* Personal Access Token */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium" style={{ color: '#a4a4a3' }}>
+              Personal Access Token
+            </span>
+            <FiInfo size={14} style={{ color: '#a4a4a3' }} />
+          </div>
+          <input
+            type="text"
+            placeholder="figd_xxxxxxxxxxxxxxxxxx"
+            className="w-full rounded px-3 py-2 text-sm outline-none"
+            style={{
+              backgroundColor: '#1e1e1e',
+              border: '1px solid #444',
+              color: '#d4d4d4',
+            }}
+          />
+        </div>
 
-      {/* Shared action button pair */}
-      <div className="flex gap-4" style={{ marginBottom: "6rem" }}>
-        {["Awesome", "Prepare"].map((label) => (
+        {/* Design URL */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium" style={{ color: '#a4a4a3' }}>
+              Design URL
+            </span>
+            <FiInfo size={14} style={{ color: '#a4a4a3' }} />
+          </div>
+          <input
+            type="text"
+            placeholder="https://www.figma.com/file/:"
+            className="w-full rounded px-3 py-2 text-sm outline-none"
+            style={{
+              backgroundColor: '#1e1e1e',
+              border: '1px solid #6b6b6b',
+              color: '#d4d4d4',
+            }}
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="flex gap-4 mt-2">
           <button
-            key={label}
-            className="flex-1 py-4 px-6 rounded text-sm font-semibold hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: COLORS.buttonBg, color: COLORS.headerText }}
+            className="flex-1 py-3 rounded-lg font-semibold text-white"
+            style={{ backgroundColor: '#7a4030' }}
           >
-            {label}
+            Awesome
           </button>
-        ))}
+          <button
+            className="flex-1 py-3 rounded-lg font-semibold text-white"
+            style={{ backgroundColor: '#7a4030' }}
+          >
+            Prepare
+          </button>
+        </div>
       </div>
 
-      {/* Footer section head */}
-      <div>
-        <h3 className="text-base font-semibold" style={{ color: COLORS.sectionHeading }}>
+      {/* Recent Breakdowns */}
+      <div className="mt-4">
+        <span className="text-lg font-bold" style={{ color: '#e8e8e8' }}>
           Recent Breakdowns
-        </h3>
+        </span>
       </div>
     </div>
-  );
-};
+  )
+}
+
+export default TestCard
