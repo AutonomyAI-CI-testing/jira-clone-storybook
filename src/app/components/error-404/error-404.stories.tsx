@@ -45,3 +45,15 @@ export const MessageLink: Story = {
     href: "/link-to-safe-place",
   },
 };
+
+/**
+ * The 404 error state as it appears to users in the app — the not-found
+ * illustration with a friendly message that links back to the home page
+ * (mirrors the index route's CatchBoundary).
+ */
+export const UserView: Story = {
+  args: {
+    message: "It seems that you have lost! Go to the main page",
+    href: "/",
+  },
+};
