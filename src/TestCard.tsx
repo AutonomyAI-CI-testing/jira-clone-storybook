@@ -1,141 +1,118 @@
-
 import React from 'react';
-import { AiOutlineSetting, AiOutlineInfoCircle } from 'react-icons/ai';
-import { FiChevronUp } from 'react-icons/fi';
+import './TestCard.css';
 
 /**
- * TestCard component - A smoke test UI following Figma designs for the "UI magician Agent" panel.
- * Uses hardcoded values as it serves as a visual verification component for the project setup.
+ * Icons used in the TestCard component.
+ * Extracted as internal components to keep the main JSX clean and readable.
  */
 
-// Design-matched colors and constants
-const COLORS = {
-  textSecondary: '#8b9291',
-  textMuted: '#b2b2b1',
-  label: '#a4a4a3',
-  placeholder: '#737470',
-  buttonBg: '#7a4a2a',
-  buttonText: '#8c8078',
-  headerTitle: '#b5b5b5',
-  inputBorder: '#3a3a3a',
-  sectionTitle: '#b0b0b0',
-};
+const GearIcon = () => (
+  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"
+    />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+);
 
-/**
- * Reusable Section Header with a chevron icon
- */
-const SectionHeader: React.FC<{
-  iconColor: string;
-  textColor: string;
-  text: string;
-  isHeading?: boolean;
-}> = ({ iconColor, textColor, text, isHeading = false }) => (
-  <div className="flex items-center mb-4">
-    <FiChevronUp className="mr-1" style={{ color: iconColor }} />
-    {isHeading ? (
-      <h3 className="font-semibold text-sm" style={{ color: textColor }}>
-        {text}
-      </h3>
-    ) : (
-      <p className="text-xs" style={{ color: textColor }}>
-        {text}
-      </p>
-    )}
-  </div>
+const ChevronUpIcon = () => (
+  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
+  </svg>
+);
+
+const InfoIcon = () => (
+  <svg className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+    />
+  </svg>
 );
 
 /**
- * Reusable Label with Info icon
+ * Common input field with label and info icon.
  */
-const LabelWithInfo: React.FC<{ htmlFor: string; text: string }> = ({ htmlFor, text }) => (
-  <div className="flex items-center mb-2">
-    <label
-      htmlFor={htmlFor}
-      className="text-xs font-semibold mr-1"
-      style={{ color: COLORS.label }}
-    >
-      {text}
+interface InputFieldProps {
+  id: string;
+  label: string;
+  placeholder: string;
+}
+
+const InputField: React.FC<InputFieldProps> = ({ id, label, placeholder }) => (
+  <div className="mb-4">
+    <label htmlFor={id} className="mb-1 flex items-center text-sm font-medium">
+      {label}
+      <InfoIcon />
     </label>
-    <AiOutlineInfoCircle className="text-xs" style={{ color: COLORS.label }} />
+    <input
+      type="text"
+      id={id}
+      placeholder={placeholder}
+      className="w-full rounded-md border border-zinc-600 bg-zinc-700 p-2 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+    />
   </div>
 );
 
+/**
+ * TestCard: A smoke test component that visually replicates a Figma design panel.
+ * Root element has id="testElem" as required by functional specs.
+ */
 const TestCard: React.FC = () => {
   return (
-    <div
-      id="testElem"
-      className="bg-[#2a2a2a] w-[254px] p-4 font-sans text-white rounded-lg shadow-xl"
-    >
-      {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="font-semibold text-sm" style={{ color: COLORS.headerTitle }}>
-          UI magician Agent
-        </h2>
-        <AiOutlineSetting className="text-white cursor-pointer hover:opacity-80 transition-opacity" />
+    <div id="testElem" className="mx-auto max-w-sm rounded-lg bg-zinc-800 p-6 text-white">
+      {/* 1. Header row */}
+      <div className="mb-4 flex items-center justify-between">
+        <h1 className="text-xl font-bold">UI magician Agent</h1>
+        <GearIcon />
       </div>
 
-      {/* Subtitle Section */}
-      <SectionHeader
-        iconColor={COLORS.textSecondary}
-        textColor={COLORS.textSecondary}
-        text="From entire frame to a singl..."
+      {/* 2. Collapsible-looking info row */}
+      <div className="mb-4 flex items-center space-x-2">
+        <ChevronUpIcon />
+        <p className="text-sm text-amber-600">From entire frame to a singl...</p>
+      </div>
+
+      {/* 3. Vertical spacer mirroring original layout */}
+      <div className="h-8" aria-hidden="true" />
+
+      {/* 4. Add New Design section header */}
+      <div className="mb-4 flex items-center space-x-2">
+        <ChevronUpIcon />
+        <h2 className="text-lg font-bold">Add New Design</h2>
+      </div>
+
+      {/* 5 & 6. Input fields */}
+      <InputField
+        id="personalAccessToken"
+        label="Personal Access Token"
+        placeholder="figd_xxxxxxxxxxxxxxxxxx"
+      />
+      <InputField
+        id="designURL"
+        label="Design URL"
+        placeholder="https://www.figma.com/file/:"
       />
 
-      {/* Spacer - maintaining the original layout spacing */}
-      <div className="my-4" />
-
-      {/* Add New Design Section */}
-      <SectionHeader
-        iconColor={COLORS.textMuted}
-        textColor={COLORS.textMuted}
-        text="Add New Design"
-        isHeading
-      />
-
-      {/* Personal Access Token Input */}
-      <div className="mb-3">
-        <LabelWithInfo htmlFor="personalAccessToken" text="Personal Access Token" />
-        <input
-          id="personalAccessToken"
-          type="text"
-          placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="bg-[#1a1a1a] border rounded-md text-xs w-full px-3 py-2 outline-none focus:ring-1 focus:ring-amber-900 transition-all"
-          style={{ borderColor: COLORS.inputBorder, color: COLORS.placeholder }}
-        />
-      </div>
-
-      {/* Design URL Input */}
-      <div className="mb-6">
-        <LabelWithInfo htmlFor="designURL" text="Design URL" />
-        <input
-          id="designURL"
-          type="text"
-          placeholder="https://www.figma.com/file:/"
-          className="bg-[#1a1a1a] border rounded-md text-xs w-full px-3 py-2 outline-none focus:ring-1 focus:ring-amber-900 transition-all"
-          style={{ borderColor: COLORS.inputBorder, color: COLORS.placeholder }}
-        />
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex justify-between gap-2">
-        <button
-          className="font-semibold text-xs rounded-lg px-6 py-2 flex-1 hover:brightness-110 active:brightness-90 transition-all"
-          style={{ backgroundColor: COLORS.buttonBg, color: COLORS.buttonText }}
-        >
+      {/* 7. Action Buttons */}
+      <div className="mb-8 flex justify-end space-x-4">
+        <button className="rounded-lg bg-amber-700 px-6 py-3 font-semibold text-white hover:bg-amber-600">
           Awesome
         </button>
-        <button
-          className="font-semibold text-xs rounded-lg px-6 py-2 flex-1 hover:brightness-110 active:brightness-90 transition-all"
-          style={{ backgroundColor: COLORS.buttonBg, color: COLORS.buttonText }}
-        >
+        <button className="rounded-lg bg-amber-700 px-6 py-3 font-semibold text-white hover:bg-amber-600">
           Prepare
         </button>
       </div>
 
-      {/* Footer Section */}
-      <h3 className="font-semibold text-sm mt-6" style={{ color: COLORS.sectionTitle }}>
-        Recent Breakdowns
-      </h3>
+      {/* 8. Recent Breakdowns footer header */}
+      <div>
+        <h2 className="text-lg font-bold">Recent Breakdowns</h2>
+      </div>
     </div>
   );
 };
