@@ -10,10 +10,7 @@ export const LoginView = ({ users }: Props) => {
 
   const onValueChange = (userId: UserId) => {
     const foundUser = users.find((user) => user.id === userId);
-
-    if (foundUser) {
-      setSelectedValue(foundUser);
-    }
+    if (foundUser) setSelectedValue(foundUser);
   };
 
   return (
@@ -22,6 +19,10 @@ export const LoginView = ({ users }: Props) => {
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
+        {/*
+          This application uses a simplified login mechanism for demonstration purposes.
+          Users can select any existing profile to explore the app's features and multi-user interactions.
+        */}
         There is no authentication involved. You can login with any user you
         want! Keep in mind you can only access the projects the user is member
         of. Try to create issues and comments with different users to see how it
@@ -46,8 +47,8 @@ export const LoginView = ({ users }: Props) => {
           <Select.Content>
             <Select.ScrollUpButton />
             <Select.Viewport>
-              {users.map((user, index) => (
-                <Select.Item key={index} value={user.id}>
+              {users.map((user) => (
+                <Select.Item key={user.id} value={user.id}>
                   <Select.ItemIndicator />
                   <UserAvatar {...user} />
                   <Select.ItemText>{user.name}</Select.ItemText>
