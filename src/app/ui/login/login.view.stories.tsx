@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import React from "react";
 import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
 import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
