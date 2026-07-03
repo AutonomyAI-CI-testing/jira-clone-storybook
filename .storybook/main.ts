@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import type { InlineConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -18,6 +19,19 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
+  },
+  async viteFinal(config): Promise<InlineConfig> {
+    const { mergeConfig } = await import("vite");
+    return mergeConfig(config, {
+      css: {
+        postcss: {
+          plugins: [
+            require("tailwindcss")(require("../tailwind.config.js")),
+            require("autoprefixer"),
+          ],
+        },
+      },
+    });
   },
 };
 export default config;
