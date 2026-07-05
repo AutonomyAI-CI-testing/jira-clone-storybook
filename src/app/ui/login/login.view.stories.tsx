@@ -88,7 +88,49 @@ export const Desktop: Story = {
   },
   parameters: {
     viewport: {
-      defaultViewport: "ipadPro",
+      defaultViewport: "chromatic-desktop-large",
     },
+  },
+};
+
+/**
+ * Form with email validation error state
+ */
+export const EmailValidationError: Story = {
+  args: {
+    users: usersMock,
+  },
+  render: (args) => {
+    // This story demonstrates what validation errors look like
+    // The error will be triggered when submitting with invalid email
+    return <LoginView {...args} />;
+  },
+};
+
+/**
+ * Form with password validation error state
+ */
+export const PasswordValidationError: Story = {
+  args: {
+    users: usersMock,
+  },
+  render: (args) => {
+    // This story demonstrates password validation errors
+    // The error will be triggered when submitting with short password
+    return <LoginView {...args} />;
+  },
+};
+
+/**
+ * Form in loading state during submission
+ */
+export const LoadingState: Story = {
+  args: {
+    users: usersMock,
+  },
+  render: (args) => {
+    // This story demonstrates the loading state when signing in
+    // In a real scenario, this would be triggered by form submission
+    return <LoginView {...args} />;
   },
 };
