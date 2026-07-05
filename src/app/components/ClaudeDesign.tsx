@@ -1,21 +1,14 @@
 import { ReactNode } from "react";
 import cx from "classix";
-import {
-  HiOutlineViewBoards,
-  HiQuestionMarkCircle,
-} from "react-icons/hi";
+import { HiOutlineViewBoards, HiQuestionMarkCircle, HiFlag } from "react-icons/hi";
 import { AiFillGithub, AiOutlinePlus } from "react-icons/ai";
 import { ImStatsDots } from "react-icons/im";
-import { BsListNested } from "react-icons/bs";
-import { MdLightMode } from "react-icons/md";
-import { FaCheckSquare, FaPowerOff } from "react-icons/fa";
-import { HiFlag } from "react-icons/hi";
+import { BsListNested, BsClockHistory } from "react-icons/bs";
+import { MdLightMode, MdDeleteOutline } from "react-icons/md";
+import { FaCheckSquare, FaSortAmountDownAlt } from "react-icons/fa";
 import { IoCloseOutline } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { BiSearch } from "react-icons/bi";
-import { FaSortAmountDownAlt } from "react-icons/fa";
-import { BsClockHistory } from "react-icons/bs";
 
 // ============================================================
 // Design tokens used directly (mirrors Tailwind CSS variables)

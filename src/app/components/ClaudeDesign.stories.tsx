@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ClaudeDesign } from "./ClaudeDesign";
 
 const meta: Meta<typeof ClaudeDesign> = {
@@ -11,7 +11,7 @@ const meta: Meta<typeof ClaudeDesign> = {
     },
   },
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <div style={{ minWidth: 1200, overflowX: "auto" }}>
         <Story />
       </div>

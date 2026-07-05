@@ -446,13 +446,20 @@ const aaiStyles = `
     justify-content: space-between;
   }
 
-  .aai-lbl-row a {
+  .aai-lbl-row a,
+  .aai-forgot-btn {
     font-size: 12.5px;
     color: var(--aai-orange);
     text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
   }
 
-  .aai-lbl-row a:hover {
+  .aai-lbl-row a:hover,
+  .aai-forgot-btn:hover {
     text-decoration: underline;
   }
 
@@ -590,13 +597,21 @@ const aaiStyles = `
     color: var(--fg-muted);
   }
 
-  .aai-footnote a {
+  .aai-footnote a,
+  .aai-request-btn {
     color: var(--aai-orange);
     text-decoration: none;
     font-weight: 500;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
   }
 
-  .aai-footnote a:hover {
+  .aai-footnote a:hover,
+  .aai-request-btn:hover {
     text-decoration: underline;
   }
 
@@ -716,7 +731,7 @@ export const LoginView = ({ users: _users, isLoading = false }: Props) => {
             {/* Auth head */}
             <div className="aai-auth-head">
               <p className="aai-ey">Sign in</p>
-              <h2>Welcome back</h2>
+              <h2 style={{ color: 'red' }}>Welcome back</h2>
               <p>Pick up where the agent left off.</p>
             </div>
 
@@ -763,7 +778,7 @@ export const LoginView = ({ users: _users, isLoading = false }: Props) => {
               <div className="aai-field">
                 <div className="aai-lbl-row">
                   <label htmlFor="aai-password">Password</label>
-                  <a href="#" tabIndex={0}>Forgot password?</a>
+                  <button type="button" className="aai-forgot-btn">Forgot password?</button>
                 </div>
                 <div className="aai-input-wrap">
                   <input
@@ -826,7 +841,7 @@ export const LoginView = ({ users: _users, isLoading = false }: Props) => {
 
             <p className="aai-footnote">
               New to the On-Call Agent?{" "}
-              <a href="#">Request access</a>
+              <button type="button" className="aai-request-btn">Request access</button>
             </p>
 
             <div className="aai-secure">
