@@ -26,7 +26,7 @@ export const BrandPanel = forwardRef<HTMLDivElement, Props>(
         {/* Top Section - Brand */}
         <div className="flex flex-col gap-6">
           <div>
-            <h1 className="text-4xl font-bold leading-tight">{title}</h1>
+            <h1 className="text-4xl font-bold leading-tight text-[#ef5c48]">{title}</h1>
             <p className="mt-3 text-lg text-font-inverse opacity-90">
               {subtitle}
             </p>
