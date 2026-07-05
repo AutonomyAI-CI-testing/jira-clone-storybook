@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form } from "@remix-run/react";
-import { validateEmail, validatePassword, getEmailError, getPasswordError } from "@utils/form-validation";
+import { getEmailError, getPasswordError } from "@utils/form-validation";
 import { User } from "@domain/user";
 
 interface LoginFormState {
@@ -151,7 +151,7 @@ export const LoginView = ({ users }: Props) => {
           <div className="w-full max-w-sm mx-auto">
             {/* Form Header */}
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-red-500">Welcome back</h1>
+              <h1 className="text-3xl font-bold text-[#ef5c48]">Welcome back</h1>
               <p className="mt-2 text-sm text-font-subtle">
                 Enter your credentials to continue
               </p>
@@ -314,15 +314,15 @@ export const LoginView = ({ users }: Props) => {
             {/* Footer Links */}
             <div className="mt-8 flex flex-col items-center gap-4 text-center text-sm">
               <a
-                href="#"
+                href="/forgot-password"
                 className="text-link hover:text-link-hovered transition-colors font-medium"
               >
                 Forgot password?
               </a>
               <div className="text-font-subtle">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <a
-                  href="#"
+                  href="/request-access"
                   className="text-link hover:text-link-hovered transition-colors font-medium"
                 >
                   Request access
