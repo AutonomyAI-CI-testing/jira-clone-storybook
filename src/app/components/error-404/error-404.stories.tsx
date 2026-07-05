@@ -27,21 +27,8 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
-  },
-};
-
-export const Link: Story = {
-  args: {
-    href: "/link-to-safe-place",
-  },
-};
-
-export const MessageLink: Story = {
-  args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "We couldn't find the page you were looking for.",
   },
 };

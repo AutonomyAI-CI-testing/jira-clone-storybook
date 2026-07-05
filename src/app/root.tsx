@@ -183,17 +183,15 @@ export function CatchBoundary() {
   return (
     <html>
       <head>
-        <title>Ooops! Not found</title>
+        <title>Oops! Page not found</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+      <body className="flex h-screen w-full items-center justify-center font-primary" style={{ backgroundColor: "#00a8d8" }}>
+        <Error404
+          message="Looks like this page got lost — even our cat can't find it."
+          href="/"
+        />
       </body>
     </html>
   );
