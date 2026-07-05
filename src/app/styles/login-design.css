@@ -1,0 +1,177 @@
+/* AutonomyAI Login Design Styles */
+
+:root {
+  --accent-orange: #f25730;
+  --accent-orange-dark: #d94a1f;
+  --bg-dark-primary: #0f172e;
+  --bg-dark-secondary: #1a2847;
+  --bg-input: #1e293b;
+  --border-input: #334155;
+}
+
+.dark {
+  --accent-orange: #f25730;
+  --accent-orange-dark: #d94a1f;
+  --bg-dark-primary: #0f172e;
+  --bg-dark-secondary: #1a2847;
+  --bg-input: #1e293b;
+  --border-input: #334155;
+}
+
+/* Login View Styles */
+.login-container {
+  @apply min-h-screen bg-slate-950 flex items-stretch;
+}
+
+.login-brand-panel {
+  @apply hidden w-1/2 flex-col justify-between bg-gradient-to-br from-slate-900 to-slate-950 p-12 lg:flex;
+}
+
+.login-auth-panel {
+  @apply flex w-full flex-col items-center justify-center p-6 lg:w-1/2;
+}
+
+.login-logo {
+  @apply flex items-center gap-2;
+}
+
+.login-logo-icon {
+  @apply w-8 h-8 rounded bg-orange-500 flex items-center justify-center text-white font-bold text-lg;
+}
+
+.login-logo-text {
+  @apply flex flex-col;
+}
+
+.login-logo-brand {
+  @apply text-sm font-semibold text-orange-500;
+}
+
+.login-logo-subtitle {
+  @apply text-xs text-font-subtlest;
+}
+
+.login-hero {
+  @apply space-y-6;
+}
+
+.login-eyebrow {
+  @apply text-xs uppercase tracking-wider text-font-subtlest font-semibold;
+}
+
+.login-headline {
+  @apply text-4xl font-bold text-font leading-tight;
+}
+
+.login-headline-gradient {
+  @apply bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent;
+}
+
+.login-description {
+  @apply text-font-subtle text-base leading-relaxed;
+}
+
+.login-pipeline {
+  @apply space-y-4;
+}
+
+.login-pipeline-item {
+  @apply flex items-center gap-3;
+}
+
+.login-pipeline-dot {
+  @apply w-2 h-2 rounded-full;
+}
+
+.login-form-section {
+  @apply rounded-lg border border-slate-700 bg-slate-900 p-6 shadow-lg;
+}
+
+.login-form-heading {
+  @apply text-2xl font-bold text-font;
+}
+
+.login-form-subheading {
+  @apply mt-2 text-sm text-font-subtle;
+}
+
+.login-form {
+  @apply space-y-6;
+}
+
+.login-form-field {
+  @apply space-y-2;
+}
+
+.login-form-label {
+  @apply text-sm font-medium text-font;
+}
+
+.login-select {
+  @apply flex w-full justify-between rounded px-4 py-3 bg-slate-800 border border-slate-700 hover:bg-slate-800/80 transition-colors;
+}
+
+.login-button {
+  @apply w-full;
+}
+
+.login-divider {
+  @apply relative;
+}
+
+.login-divider-line {
+  @apply absolute inset-0 flex items-center;
+}
+
+.login-divider-line::before {
+  @apply w-full border-t border-slate-700 content-[''];
+}
+
+.login-divider-text {
+  @apply relative flex justify-center text-sm;
+}
+
+.login-divider-label {
+  @apply bg-slate-900 px-2 text-font-subtlest;
+}
+
+.login-signup {
+  @apply text-center;
+}
+
+.login-signup-text {
+  @apply text-sm text-font-subtle;
+}
+
+.login-signup-link {
+  @apply text-orange-500 hover:text-orange-400 font-medium transition-colors;
+}
+
+.login-security {
+  @apply mt-8 flex items-center gap-2 text-xs text-font-subtlest;
+}
+
+.login-security-icon {
+  @apply w-4 h-4;
+}
+
+/* Focus Ring Enhancement */
+.focus-ring-orange {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900;
+}
+
+/* Button Glow Effect */
+.button-glow {
+  @apply hover:shadow-lg hover:shadow-orange-500/30;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .login-brand-panel {
+    @apply hidden;
+  }
+
+  .login-auth-panel {
+    @apply w-full;
+  }
+}
