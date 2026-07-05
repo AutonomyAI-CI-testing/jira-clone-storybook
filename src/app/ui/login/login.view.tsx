@@ -151,7 +151,7 @@ export const LoginView = ({ users }: Props) => {
           <div className="w-full max-w-sm mx-auto">
             {/* Form Header */}
             <div className="mb-8">
-              <h1 className="text-3xl font-bold">Welcome back</h1>
+              <h1 className="text-3xl font-bold text-red-500">Welcome back</h1>
               <p className="mt-2 text-sm text-font-subtle">
                 Enter your credentials to continue
               </p>
