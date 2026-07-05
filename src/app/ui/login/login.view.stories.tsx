@@ -7,7 +7,10 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
+    backgrounds: {
+      default: "dark",
+    },
   },
   argTypes: {
     users: {
@@ -39,8 +42,53 @@ const meta: Meta<typeof LoginView> = {
 export default meta;
 type Story = StoryObj<typeof LoginView>;
 
+/**
+ * Default login form in pristine state on desktop
+ */
 export const Default: Story = {
   args: {
     users: usersMock,
+  },
+};
+
+/**
+ * Mobile view with single column layout
+ */
+export const Mobile: Story = {
+  args: {
+    users: usersMock,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "iphone12",
+    },
+  },
+};
+
+/**
+ * Tablet view showing responsive transition
+ */
+export const Tablet: Story = {
+  args: {
+    users: usersMock,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "ipad",
+    },
+  },
+};
+
+/**
+ * Wide desktop view with full two-column layout
+ */
+export const Desktop: Story = {
+  args: {
+    users: usersMock,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "ipadPro",
+    },
   },
 };
