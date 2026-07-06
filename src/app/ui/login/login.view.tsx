@@ -48,7 +48,6 @@ export const LoginView = ({ users }: Props) => {
     <div
       style={AAI_TOKENS as React.CSSProperties}
       className="relative min-h-screen overflow-hidden"
-      css-bg="ink-900"
     >
       {/* Background color via style */}
       <div
@@ -307,7 +306,7 @@ export const LoginView = ({ users }: Props) => {
             <div className="mb-8">
               <h2
                 className="mb-1 text-2xl font-bold"
-                style={{ color: "var(--text-primary)", fontFamily: "'CircularStdBlack', sans-serif" }}
+                style={{ color: "#ef4444", fontFamily: "'CircularStdBlack', sans-serif" }}
               >
                 Welcome back
               </h2>
