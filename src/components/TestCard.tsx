@@ -1,123 +1,132 @@
-export const TestCard = () => {
+import { AiOutlineSetting } from "react-icons/ai";
+import { FiChevronUp } from "react-icons/fi";
+import { BsInfoCircle } from "react-icons/bs";
+
+export const TestCard = (): JSX.Element => {
+  const outerStyle: React.CSSProperties = {
+    background: "#2a2a2a",
+    padding: "20px",
+    minWidth: "320px",
+    maxWidth: "400px",
+  };
+
+  const primaryTextStyle: React.CSSProperties = { color: "#e8e0d8" };
+  const mutedTextStyle: React.CSSProperties = { color: "#a0856c" };
+  const labelStyle: React.CSSProperties = { color: "#cccccc" };
+
+  const inputStyle: React.CSSProperties = {
+    background: "#1e1e1e",
+    border: "1px solid #555555",
+    color: "#cccccc",
+    padding: "10px 12px",
+  };
+
+  const inputStyle2: React.CSSProperties = {
+    background: "#1e1e1e",
+    border: "2px solid #555555",
+    color: "#cccccc",
+    padding: "10px 12px",
+  };
+
+  const buttonStyle: React.CSSProperties = {
+    background: "#843a17",
+    color: "#f0e0d0",
+    padding: "10px 24px",
+  };
+
   return (
-    <div
-      id="testElem"
-      style={{
-        backgroundColor: "#272822",
-        padding: "20px",
-        width: "100%",
-        maxWidth: "384px",
-        fontFamily: "sans-serif",
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100%",
-      }}
-    >
-      {/* Header row */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span style={{ color: "#b5b5b5", fontWeight: 600, fontSize: "14px" }}>UI magician Agent</span>
-        <span style={{ color: "#b5b5b5", fontSize: "18px" }}>⚙</span>
+    <div id="testElem" style={outerStyle}>
+      {/* 1. Header row */}
+      <div className="flex items-center justify-between">
+        <h1 className="font-bold text-xl" style={primaryTextStyle}>
+          UI magician Agent
+        </h1>
+        <AiOutlineSetting size={24} style={primaryTextStyle} />
       </div>
 
-      {/* Subtitle row */}
-      <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "8px" }}>
-        <span style={{ color: "#b5b5b5", fontSize: "12px" }}>^</span>
-        <span style={{ color: "#8b6f5e", fontSize: "12px" }}>From entire frame to a singl...</span>
+      {/* 2. Chevron-up + subtitle */}
+      <div className="flex items-center gap-2 mt-2">
+        <FiChevronUp style={mutedTextStyle} />
+        <span className="text-sm" style={mutedTextStyle}>
+          From entire frame to a singl...
+        </span>
       </div>
 
-      {/* Spacer */}
+      {/* 3. Spacer */}
       <div style={{ height: "32px" }} />
 
-      {/* Add New Design heading row */}
-      <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "8px" }}>
-        <span style={{ color: "#b2b2b1", fontSize: "12px" }}>^</span>
-        <span style={{ color: "#b2b2b1", fontWeight: 600, fontSize: "14px" }}>Add New Design</span>
+      {/* 4. "Add New Design" section heading */}
+      <div className="flex items-center gap-2 mb-4">
+        <FiChevronUp style={primaryTextStyle} />
+        <h2 className="font-bold text-lg" style={primaryTextStyle}>
+          Add New Design
+        </h2>
       </div>
 
-      {/* Personal Access Token field */}
-      <div style={{ marginTop: "16px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span style={{ color: "#a4a4a3", fontSize: "12px", fontWeight: 600 }}>Personal Access Token</span>
-          <span style={{ color: "#a4a4a3", fontSize: "12px" }}>ⓘ</span>
-        </div>
-        <input
-          style={{
-            border: "1px solid #a5adad",
-            backgroundColor: "#272822",
-            color: "#a4a4a3",
-            fontSize: "12px",
-            padding: "8px",
-            borderRadius: "4px",
-            marginTop: "4px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-          placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          readOnly
-        />
+      {/* 5. Spacer */}
+      <div style={{ height: "16px" }} />
+
+      {/* 6. Personal Access Token label */}
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-sm" style={labelStyle}>
+          Personal Access Token
+        </span>
+        <BsInfoCircle size={14} style={labelStyle} />
       </div>
 
-      {/* Design URL field */}
-      <div style={{ marginTop: "16px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span style={{ color: "#a4a4a3", fontSize: "12px", fontWeight: 600 }}>Design URL</span>
-          <span style={{ color: "#a4a4a3", fontSize: "12px" }}>ⓘ</span>
-        </div>
-        <input
-          style={{
-            border: "2px solid #929291",
-            backgroundColor: "#272822",
-            color: "#a4a4a3",
-            fontSize: "12px",
-            padding: "8px",
-            borderRadius: "4px",
-            marginTop: "4px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-          placeholder="https://www.figma.com/file/:"
-          readOnly
-        />
+      {/* 7. Token input */}
+      <input
+        className="w-full rounded outline-none box-border"
+        style={inputStyle}
+        placeholder="figd_xxxxxxxxxxxxxxxxxx"
+        readOnly
+      />
+
+      {/* 8. Spacer */}
+      <div style={{ height: "16px" }} />
+
+      {/* 9. Design URL label */}
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-sm" style={labelStyle}>
+          Design URL
+        </span>
+        <BsInfoCircle size={14} style={labelStyle} />
       </div>
 
-      {/* Button row */}
-      <div style={{ display: "flex", gap: "16px", marginTop: "24px", justifyContent: "center" }}>
+      {/* 10. URL input */}
+      <input
+        className="w-full rounded outline-none box-border"
+        style={inputStyle2}
+        placeholder="https://www.figma.com/file/:"
+        readOnly
+      />
+
+      {/* 11. Spacer */}
+      <div style={{ height: "24px" }} />
+
+      {/* 12. Two buttons */}
+      <div className="flex gap-3">
         <button
-          style={{
-            backgroundColor: "#843a17",
-            color: "#c8a090",
-            fontWeight: 600,
-            fontSize: "14px",
-            padding: "12px 24px",
-            borderRadius: "8px",
-            flex: 1,
-            border: "none",
-            cursor: "pointer",
-          }}
+          className="flex-1 rounded cursor-pointer font-bold text-sm"
+          style={buttonStyle}
         >
           Awesome
         </button>
         <button
-          style={{
-            backgroundColor: "#843a17",
-            color: "#c8a090",
-            fontWeight: 600,
-            fontSize: "14px",
-            padding: "12px 24px",
-            borderRadius: "8px",
-            flex: 1,
-            border: "none",
-            cursor: "pointer",
-          }}
+          className="flex-1 rounded cursor-pointer font-bold text-sm"
+          style={buttonStyle}
         >
           Prepare
         </button>
       </div>
 
-      {/* Recent Breakdowns */}
-      <div style={{ marginTop: "32px" }}>
-        <span style={{ color: "#b0b0b0", fontWeight: 600, fontSize: "14px" }}>Recent Breakdowns</span>
-      </div>
+      {/* 13. Spacer */}
+      <div style={{ height: "40px" }} />
+
+      {/* 14. Recent Breakdowns */}
+      <h3 className="font-bold text-lg" style={primaryTextStyle}>
+        Recent Breakdowns
+      </h3>
     </div>
   );
 };
