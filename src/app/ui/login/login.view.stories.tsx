@@ -5,30 +5,30 @@ import { LoginView } from "./login.view";
 import { LoginBrandPanel } from "./login-brand-panel";
 import { LoginFormPanel } from "./login-form-panel";
 
-const withRemixStub = (Story: React.ComponentType) => {
-  const RemixStub = createRemixStub([
-    {
-      path: "/",
-      element: <Story />,
-      action: async () => ({ status: 200 }),
-    },
-  ]);
-  return <RemixStub />;
-};
-
 const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
     layout: "fullscreen",
   },
-  decorators: [withRemixStub],
 };
 
 export default meta;
 type Story = StoryObj<typeof LoginView>;
 
 export const Default: Story = {
+  decorators: [
+    (Story) => {
+      const RemixStub = createRemixStub([
+        {
+          path: "/",
+          element: <Story />,
+          action: async () => ({ status: 200 }),
+        },
+      ]);
+      return <RemixStub />;
+    },
+  ],
   args: {
     users: usersMock,
   },
@@ -64,5 +64,8 @@ export const FormPanel: Story = {
       },
     ]);
     return <RemixStub />;
+  },
+  parameters: {
+    layout: "fullscreen",
   },
 };
