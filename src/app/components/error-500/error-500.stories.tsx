@@ -45,3 +45,28 @@ export const MessageLink: Story = {
     href: "/link-to-safe-place",
   },
 };
+
+export const BothVariants: Story = {
+  parameters: {
+    layout: "fullscreen",
+  },
+  render: () => (
+    <div className="flex origin-top scale-[0.62] transform flex-row items-start justify-center gap-8">
+      <div className="flex flex-col items-center gap-2">
+        <span className="text-sm font-bold text-font-subtle">
+          Default message
+        </span>
+        <Error500 message="Error 500: Server error" href="" />
+      </div>
+      <div className="flex flex-col items-center gap-2">
+        <span className="text-sm font-bold text-font-subtle">
+          Linked message
+        </span>
+        <Error500
+          message="Error 500: Server error"
+          href="/link-to-safe-place"
+        />
+      </div>
+    </div>
+  ),
+};

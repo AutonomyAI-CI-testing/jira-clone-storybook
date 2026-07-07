@@ -45,3 +45,15 @@ export const MessageLink: Story = {
     href: "/link-to-safe-place",
   },
 };
+
+export const BothVariants: Story = {
+  parameters: {
+    layout: "fullscreen",
+  },
+  render: () => (
+    <div className="flex origin-top scale-[0.62] transform flex-row items-start justify-center gap-8">
+      <Error404 message="Error 404: Not Found" href="" />
+      <Error404 message="Go back to the home page" href="/" />
+    </div>
+  ),
+};
