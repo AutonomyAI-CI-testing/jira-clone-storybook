@@ -146,7 +146,8 @@ export const SignupView = () => {
           name="_action"
           value="signup"
           aria-label="Create account"
-          className="mt-2 w-full"
+          color="neutral"
+          className="mt-2 w-full !bg-[#7c3aed] hover:!bg-[#6d28d9] active:!bg-[#5b21b6] !text-white"
         >
           Create account
         </Button>

@@ -6,8 +6,15 @@ const meta: Meta<typeof SignupView> = {
   title: "Auth/SignupView",
   component: SignupView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
+  decorators: [
+    (Story) => (
+      <div className="flex flex-col items-center overflow-y-auto bg-background">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
