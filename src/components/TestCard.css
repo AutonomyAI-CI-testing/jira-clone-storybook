@@ -1,0 +1,12 @@
+/* TestCard component styles — provides the Tailwind arbitrary-value classes
+   that are excluded from the main compiled CSS due to the custom color palette override */
+.w-\[320px\] { width: 320px; }
+.bg-\[\#2a2a2a\] { background-color: #2a2a2a; }
+.bg-\[\#383838\] { background-color: #383838; }
+.bg-\[\#9b4e23\] { background-color: #9b4e23; }
+.text-\[\#b0b0b0\] { color: #b0b0b0; }
+.text-\[\#c8956c\] { color: #c8956c; }
+.text-\[\#d0d0d0\] { color: #d0d0d0; }
+.text-\[\#888\] { color: #888; }
+.border-\[\#555\] { border-color: #555; }
+.placeholder-\[\#888\]::placeholder { color: #888; }
