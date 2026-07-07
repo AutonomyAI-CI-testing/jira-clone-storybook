@@ -1,64 +1,74 @@
 export const TestCard = () => {
   return (
-    <div id="testElem" className="bg-[#1e1e1e] text-white min-h-screen p-6 max-w-sm mx-auto">
-      {/* Header */}
+    <div id="testElem" className="bg-[#282828] p-5 max-w-xs font-sans">
+      {/* 1. Header row */}
       <div className="flex items-center justify-between mb-3">
-        <h1 className="text-xl font-bold text-white">UI magician Agent</h1>
-        <span className="text-gray-400 text-2xl">⚙</span>
+        <span className="text-[#b5b5b5] text-sm font-semibold">
+          UI magician Agent
+        </span>
+        <span className="text-[#b5b5b5] text-base">⚙</span>
       </div>
 
-      {/* Subtitle */}
-      <div className="flex items-center gap-2 mb-10">
-        <span className="text-gray-400 text-sm">^</span>
-        <span className="text-amber-600 text-sm">From entire frame to a singl...</span>
+      {/* 2. Collapsed row */}
+      <div className="flex items-center gap-2 mb-8">
+        <span className="text-[#8b9291] text-xs">^</span>
+        <span className="text-[#8b9291] text-xs font-semibold">
+          From entire frame to a singl...
+        </span>
       </div>
 
-      {/* Add New Design Section */}
-      <div className="flex items-center gap-2 mb-6">
-        <span className="text-white text-sm font-semibold">^</span>
-        <h2 className="text-lg font-bold text-white">Add New Design</h2>
+      {/* 3. Section heading */}
+      <div className="flex items-center gap-2 mb-4">
+        <span className="text-[#b2b2b1] text-sm">^</span>
+        <span className="text-[#b2b2b1] text-sm font-semibold">
+          Add New Design
+        </span>
       </div>
 
-      {/* Personal Access Token */}
-      <div className="mb-4">
-        <div className="flex items-center gap-2 mb-2">
-          <label className="text-sm text-gray-200 font-medium">Personal Access Token</label>
-          <span className="text-gray-400 text-sm">ⓘ</span>
-        </div>
-        <input
-          type="text"
-          placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full bg-[#2a2a2a] border border-gray-600 rounded px-3 py-3 text-gray-400 placeholder-gray-500 text-sm focus:outline-none"
-          readOnly
-        />
+      {/* 4. Personal Access Token label */}
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-[#a4a4a3] text-xs font-semibold">
+          Personal Access Token
+        </span>
+        <span className="text-[#a4a4a3] text-xs">ⓘ</span>
       </div>
 
-      {/* Design URL */}
-      <div className="mb-6">
-        <div className="flex items-center gap-2 mb-2">
-          <label className="text-sm text-gray-200 font-medium">Design URL</label>
-          <span className="text-gray-400 text-sm">ⓘ</span>
-        </div>
-        <input
-          type="text"
-          placeholder="https://www.figma.com/file/:"
-          className="w-full bg-[#2a2a2a] border border-gray-600 rounded px-3 py-3 text-gray-400 placeholder-gray-500 text-sm focus:outline-none"
-          readOnly
-        />
+      {/* 5. PAT Input */}
+      <input
+        type="text"
+        placeholder="figd_xxxxxxxxxxxxxxxxxx"
+        readOnly
+        className="w-full bg-[#1e1e1e] border border-[#444] text-[#737470] placeholder-[#737470] text-xs font-semibold rounded px-3 py-3 mb-3 outline-none"
+      />
+
+      {/* 6. Design URL label */}
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-[#a3a3a2] text-xs font-semibold">Design URL</span>
+        <span className="text-[#a3a3a2] text-xs">ⓘ</span>
       </div>
 
-      {/* Buttons */}
-      <div className="flex gap-4 mb-10">
-        <button className="flex-1 bg-amber-700 hover:bg-amber-600 text-white font-semibold py-3 rounded-lg transition-colors">
+      {/* 7. Design URL input */}
+      <input
+        type="text"
+        placeholder="https://www.figma.com/file/:"
+        readOnly
+        className="w-full bg-[#1e1e1e] border border-[#444] text-[#71726e] placeholder-[#71726e] text-xs font-semibold rounded px-3 py-3 mb-4 outline-none"
+      />
+
+      {/* 8. Buttons */}
+      <div className="flex gap-3 justify-center mb-8">
+        <button className="bg-[#B5522B] text-[#e8d5c8] text-xs font-semibold rounded-xl px-6 py-3">
           Awesome
         </button>
-        <button className="flex-1 bg-amber-700 hover:bg-amber-600 text-white font-semibold py-3 rounded-lg transition-colors">
+        <button className="bg-[#B5522B] text-[#e8d5c8] text-xs font-semibold rounded-xl px-6 py-3">
           Prepare
         </button>
       </div>
 
-      {/* Recent Breakdowns */}
-      <h2 className="text-lg font-bold text-white">Recent Breakdowns</h2>
+      {/* 9. Footer heading */}
+      <span className="text-[#b0b0b0] text-sm font-semibold">
+        Recent Breakdowns
+      </span>
     </div>
   );
 };
