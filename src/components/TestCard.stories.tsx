@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { TestCard } from "./TestCard";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { TestCard } from './TestCard';
 
 const meta: Meta<typeof TestCard> = {
-  title: "Components/TestCard",
+  title: 'Components/TestCard',
   component: TestCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 };
 
