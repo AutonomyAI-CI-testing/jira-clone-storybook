@@ -6,7 +6,7 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
@@ -30,5 +30,12 @@ export const Default: Story = {};
 export const CustomMessage: Story = {
   args: {
     message: "We couldn't find the page you were looking for.",
+  },
+};
+
+export const WithCustomMessage: Story = {
+  args: {
+    message: "Looks like this page went on a quest... without you.",
+    href: "/projects",
   },
 };
