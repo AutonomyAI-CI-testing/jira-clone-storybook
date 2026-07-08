@@ -1,7 +1,7 @@
 import { AiOutlineSetting, AiOutlineInfoCircle } from "react-icons/ai";
 import { FaChevronUp } from "react-icons/fa";
 
-export function TestCard() {
+export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
@@ -9,69 +9,62 @@ export function TestCard() {
     >
       {/* Header row */}
       <div className="flex items-center justify-between">
-        <span className="text-xl font-bold text-white">UI magician Agent</span>
-        <AiOutlineSetting className="text-gray-300" size={24} />
+        <h1 className="text-xl font-bold text-white">UI magician Agent</h1>
+        <AiOutlineSetting size={24} className="text-gray-300" />
       </div>
 
       {/* Subtitle / collapsed row */}
       <div className="mt-3 flex items-center gap-2">
-        <FaChevronUp className="text-gray-300" size={12} />
-        <span className="text-sm text-[#c17b4e]">
-          From entire frame to a singl...
-        </span>
+        <FaChevronUp size={12} className="text-[#c17b4e]" />
+        <span className="text-sm text-[#c17b4e]">From entire frame to a singl...</span>
       </div>
 
-      {/* Spacer */}
-      <div className="mt-10" />
-
-      {/* Add New Design section */}
-      <div className="flex items-center gap-2">
-        <FaChevronUp className="text-white" size={14} />
-        <span className="text-xl font-bold text-white">Add New Design</span>
+      {/* Add New Design section heading */}
+      <div className="mt-10 flex items-center gap-2">
+        <FaChevronUp size={14} className="text-white" />
+        <h2 className="text-lg font-bold text-white">Add New Design</h2>
       </div>
 
-      {/* Personal Access Token */}
-      <div className="mt-5 flex flex-col gap-2">
-        <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-200">Personal Access Token</label>
-          <AiOutlineInfoCircle className="text-gray-400" size={16} />
+      {/* Personal Access Token field */}
+      <div className="mt-5">
+        <div className="mb-2 flex items-center gap-2">
+          <span className="text-sm text-gray-300">Personal Access Token</span>
+          <AiOutlineInfoCircle size={16} className="text-gray-400" />
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full rounded border border-[#555] bg-[#383838] px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none focus:border-[#777]"
+          className="w-full rounded border border-[#555] bg-[#383838] px-3 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none focus:border-[#777]"
         />
       </div>
 
-      {/* Design URL */}
-      <div className="mt-4 flex flex-col gap-2">
-        <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-200">Design URL</label>
-          <AiOutlineInfoCircle className="text-gray-400" size={16} />
+      {/* Design URL field */}
+      <div className="mt-4">
+        <div className="mb-2 flex items-center gap-2">
+          <span className="text-sm text-gray-300">Design URL</span>
+          <AiOutlineInfoCircle size={16} className="text-gray-400" />
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
-          className="w-full rounded border border-[#666] bg-[#383838] px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none focus:border-[#777]"
+          className="w-full rounded border border-[#555] bg-[#383838] px-3 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none focus:border-[#777]"
         />
       </div>
 
-      {/* Buttons */}
+      {/* Action buttons */}
       <div className="mt-6 flex gap-4">
-        <button className="flex-1 rounded-lg bg-[#b85c2a] py-3 text-sm font-semibold text-white hover:bg-[#a04e22]">
+        <button className="flex-1 rounded-lg bg-[#b85c2a] py-3 text-sm font-semibold text-white hover:bg-[#a05024]">
           Awesome
         </button>
-        <button className="flex-1 rounded-lg bg-[#b85c2a] py-3 text-sm font-semibold text-white hover:bg-[#a04e22]">
+        <button className="flex-1 rounded-lg bg-[#b85c2a] py-3 text-sm font-semibold text-white hover:bg-[#a05024]">
           Prepare
         </button>
       </div>
 
-      {/* Recent Breakdowns */}
-      <div className="mt-12">
-        <span className="text-xl font-bold text-white">Recent Breakdowns</span>
+      {/* Recent Breakdowns heading */}
+      <div className="mt-10">
+        <h2 className="text-lg font-bold text-white">Recent Breakdowns</h2>
       </div>
     </div>
   );
-}
-
-export default TestCard;
+};
