@@ -2,19 +2,21 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
 import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
+// Import CSS directly — Remix links() doesn't run in Storybook
+import "./login.view.css";
 
 const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
-      defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
+      control: { type: "object" },
+    },
+    isLoading: {
+      control: { type: "boolean" },
     },
   },
   decorators: [
@@ -23,14 +25,9 @@ const meta: Meta<typeof LoginView> = {
         {
           path: "/",
           element: <Story />,
-          action: async () => {
-            return {
-              status: 200,
-            };
-          },
+          action: async () => ({ status: 200 }),
         },
       ]);
-
       return <RemixStub />;
     },
   ],
@@ -39,8 +36,31 @@ const meta: Meta<typeof LoginView> = {
 export default meta;
 type Story = StoryObj<typeof LoginView>;
 
+/** Default desktop two-panel layout */
 export const Default: Story = {
   args: {
     users: usersMock,
+    isLoading: false,
+  },
+};
+
+/** Mobile view — brand panel hidden, compact wordmark shown */
+export const MobileView: Story = {
+  args: {
+    users: usersMock,
+    isLoading: false,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+};
+
+/** Loading state — spinner active, button disabled */
+export const LoadingState: Story = {
+  args: {
+    users: usersMock,
+    isLoading: true,
   },
 };

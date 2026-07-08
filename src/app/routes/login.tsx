@@ -2,7 +2,9 @@ import type {
   LoaderFunction,
   ActionFunction,
   V2_MetaFunction,
+  LinksFunction,
 } from "@remix-run/node";
+import loginStyles from "@app/ui/login/login.view.css";
 import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { User } from "@domain/user";
@@ -10,6 +12,10 @@ import { getUsers } from "@infrastructure/db/user";
 import { getUserSession } from "@app/session-storage";
 import { LoginView } from "@app/ui/login";
 import { formatTags, formatProperties } from "@utils/meta";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: loginStyles },
+];
 
 export const meta: V2_MetaFunction = () => {
   const title = "Jira clone - Login";
