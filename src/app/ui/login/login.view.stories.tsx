@@ -9,17 +9,6 @@ const meta: Meta<typeof LoginView> = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {
-    users: {
-      defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
-    },
-    isLoading: {
-      control: { type: "boolean" },
-    },
-  },
   decorators: [
     (Story) => {
       const RemixStub = createRemixStub([
@@ -27,9 +16,7 @@ const meta: Meta<typeof LoginView> = {
           path: "/",
           element: <Story />,
           action: async () => {
-            return {
-              status: 200,
-            };
+            return { status: 200 };
           },
         },
       ]);
@@ -42,28 +29,21 @@ const meta: Meta<typeof LoginView> = {
 export default meta;
 type Story = StoryObj<typeof LoginView>;
 
+/** Full two-panel desktop layout */
 export const Default: Story = {
   args: {
     users: usersMock,
-    isLoading: false,
   },
 };
 
-export const Mobile: Story = {
+/** Simulates a mobile viewport — brand panel hidden, single-column form */
+export const MobileView: Story = {
   args: {
     users: usersMock,
-    isLoading: false,
   },
   parameters: {
     viewport: {
       defaultViewport: "mobile1",
     },
-  },
-};
-
-export const LoadingState: Story = {
-  args: {
-    users: usersMock,
-    isLoading: true,
   },
 };
