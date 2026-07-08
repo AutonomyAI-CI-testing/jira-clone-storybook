@@ -7,11 +7,10 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
-      defaultValue: usersMock,
       control: {
         type: "object",
       },
@@ -24,9 +23,7 @@ const meta: Meta<typeof LoginView> = {
           path: "/",
           element: <Story />,
           action: async () => {
-            return {
-              status: 200,
-            };
+            return { status: 200 };
           },
         },
       ]);
@@ -42,5 +39,16 @@ type Story = StoryObj<typeof LoginView>;
 export const Default: Story = {
   args: {
     users: usersMock,
+  },
+};
+
+export const MobileView: Story = {
+  args: {
+    users: usersMock,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
   },
 };

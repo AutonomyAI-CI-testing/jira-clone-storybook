@@ -1,0 +1,605 @@
+/* ============================================================
+   Login page — scoped dark-theme styles
+   Palette mirrors the AutonomyAI brand reference.
+   All rules are scoped to .login-shell so they don't leak.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ---- Reset within the login shell ---- */
+.login-shell *,
+.login-shell *::before,
+.login-shell *::after {
+  box-sizing: border-box;
+}
+
+/* ---- Shell — two-column grid ---- */
+.login-shell {
+  /* Brand color tokens (scoped) */
+  --ls-orange:        #F25730;
+  --ls-orange-bright: #FC816F;
+  --ls-orange-deep:   #ED5339;
+  --ls-orange-peach:  #F69874;
+  --ls-blue:          #9FD2ED;
+  --ls-ok:            #4FB477;
+  --ls-warn:          #E8A13C;
+
+  --ls-ink-950: #0B0B0A;
+  --ls-ink-900: #121211;
+  --ls-ink-800: #1A1A18;
+  --ls-ink-700: #212120;
+  --ls-ink-600: #2A2A28;
+  --ls-ink-500: #333333;
+  --ls-ink-400: #3C3B39;
+  --ls-ink-300: #4A4946;
+
+  --ls-fg:       #e8e4dc;
+  --ls-fg-muted: #B4B1AC;
+  --ls-fg-faint: #7C7A75;
+
+  --ls-ring: rgba(242, 87, 48, 0.55);
+  --ls-glow-orange: 0 0 0 1px rgba(242,87,48,.35), 0 8px 30px rgba(242,87,48,.22);
+
+  --ls-ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ls-font-display: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --ls-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 100vh;
+  background: var(--ls-ink-900);
+  color: var(--ls-fg);
+  font-family: var(--ls-font-display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Film-grain texture overlay */
+.login-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 920px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+  .login-shell .ls-brand {
+    display: none;
+  }
+}
+
+/* ============================================================
+   LEFT / BRAND PANEL
+   ============================================================ */
+.ls-brand {
+  position: relative;
+  overflow: hidden;
+  background: var(--ls-ink-900);
+  border-right: 1px solid var(--ls-ink-400);
+  padding: clamp(36px, 4.5vw, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Warm off-axis glow */
+.ls-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 18% 8%, rgba(94, 84, 82, 0.45), transparent 60%),
+    radial-gradient(50% 50% at 92% 100%, rgba(242, 87, 48, 0.10), transparent 62%);
+}
+
+.ls-brand > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Wordmark */
+.ls-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--ls-font-display);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--ls-fg);
+  text-decoration: none;
+}
+
+.ls-wordmark__glyph {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  flex: none;
+  background: linear-gradient(150deg, var(--ls-orange), var(--ls-orange-peach));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 1px rgba(242,87,48,.35), 0 6px 18px rgba(242,87,48,.25);
+}
+
+.ls-wordmark__glyph svg {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Brand mid-section */
+.ls-brand__mid {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 48px 0;
+  max-width: 480px;
+}
+
+.ls-eyebrow {
+  font-family: var(--ls-font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ls-orange);
+  margin: 0 0 22px;
+  display: block;
+}
+
+.ls-brand__headline {
+  font-family: var(--ls-font-display);
+  font-weight: 800;
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ls-fg);
+  text-wrap: balance;
+}
+
+.ls-brand__headline .ls-grad {
+  background: linear-gradient(95deg, var(--ls-orange), var(--ls-orange-peach));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ls-brand__lede {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ls-fg-muted);
+  margin: 22px 0 0;
+  max-width: 420px;
+}
+
+/* Pipeline / timeline */
+.ls-pipeline {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.ls-pl-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  padding: 11px 0;
+}
+
+/* Vertical connector between pipeline rows */
+.ls-pl-row:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: calc(50% + 6px);
+  width: 1px;
+  height: calc(100% - 4px);
+  background: var(--ls-ink-400);
+}
+
+.ls-pl-row__node {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex: none;
+  position: relative;
+  z-index: 1;
+}
+
+.ls-pl-row__node--blue  { background: var(--ls-blue); box-shadow: 0 0 0 4px rgba(159,210,237,.12); }
+.ls-pl-row__node--amber { background: var(--ls-warn); box-shadow: 0 0 0 4px rgba(232,161,60,.12); }
+.ls-pl-row__node--ok    { background: var(--ls-ok);   box-shadow: 0 0 0 4px rgba(79,180,119,.14); }
+
+.ls-pl-row__label {
+  font-family: var(--ls-font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--ls-fg-muted);
+  flex: 1;
+}
+
+.ls-pl-row__label strong {
+  color: var(--ls-fg);
+  font-weight: 600;
+  font-family: var(--ls-font-display);
+}
+
+.ls-pl-row__time {
+  margin-left: auto;
+  font-family: var(--ls-font-mono);
+  font-size: 11px;
+  color: var(--ls-fg-faint);
+}
+
+/* Brand footer */
+.ls-brand__foot {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--ls-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ls-fg-faint);
+  flex-wrap: wrap;
+}
+
+.ls-brand__foot__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ls-ink-300);
+}
+
+/* ============================================================
+   RIGHT / AUTH PANEL
+   ============================================================ */
+.ls-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 64px);
+  background: var(--ls-ink-900);
+}
+
+.ls-card {
+  width: 100%;
+  max-width: 392px;
+}
+
+/* Mobile wordmark (only visible on small screens) */
+.ls-mobile-mark {
+  display: none;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--ls-font-display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--ls-fg);
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
+@media (max-width: 920px) {
+  .ls-mobile-mark {
+    display: flex;
+  }
+}
+
+/* Auth header */
+.ls-auth__head {
+  margin-bottom: 30px;
+}
+
+.ls-auth__ey {
+  font-family: var(--ls-font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ls-fg-faint);
+  margin: 0 0 14px;
+  display: block;
+}
+
+.ls-auth__h2 {
+  font-family: var(--ls-font-display);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ls-fg);
+}
+
+.ls-auth__sub {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ls-fg-muted);
+  margin: 9px 0 0;
+}
+
+/* SSO buttons */
+.ls-sso {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.ls-sso__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--ls-font-display);
+  font-weight: 600;
+  font-size: 14px;
+  background: var(--ls-ink-700);
+  color: var(--ls-fg);
+  border: 1px solid var(--ls-ink-400);
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: border-color 0.18s var(--ls-ease-out), background 0.18s var(--ls-ease-out);
+}
+
+.ls-sso__btn:hover {
+  border-color: var(--ls-ink-300);
+  background: var(--ls-ink-600);
+}
+
+.ls-sso__btn svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
+/* Divider */
+.ls-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  color: var(--ls-fg-faint);
+}
+
+.ls-divider::before,
+.ls-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--ls-ink-400);
+}
+
+.ls-divider__text {
+  font-family: var(--ls-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Form fields */
+.ls-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ls-field__label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ls-fg-muted);
+  margin-bottom: 7px;
+}
+
+.ls-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ls-input {
+  width: 100%;
+  font-family: var(--ls-font-display);
+  font-size: 15px;
+  color: var(--ls-fg);
+  background: var(--ls-ink-500);
+  border: 1px solid var(--ls-ink-400);
+  border-radius: 8px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.15s var(--ls-ease-out), box-shadow 0.15s var(--ls-ease-out);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.ls-input::placeholder {
+  color: var(--ls-fg-faint);
+}
+
+.ls-input:focus {
+  border-color: var(--ls-orange);
+  box-shadow: 0 0 0 3px var(--ls-ring);
+}
+
+/* User select dropdown (overrides default styles) */
+.ls-input--select {
+  padding-right: 36px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237C7A75' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* Custom checkbox */
+.ls-remember {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  color: var(--ls-fg-muted);
+  cursor: pointer;
+  user-select: none;
+  margin-top: 2px;
+}
+
+.ls-remember__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ls-remember__box {
+  width: 17px;
+  height: 17px;
+  border-radius: 5px;
+  border: 1px solid var(--ls-ink-300);
+  background: var(--ls-ink-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  transition: all 0.15s var(--ls-ease-out);
+}
+
+.ls-remember__box svg {
+  width: 11px;
+  height: 11px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2.6;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.ls-remember__input:checked + .ls-remember__box {
+  background: var(--ls-orange);
+  border-color: var(--ls-orange);
+}
+
+.ls-remember__input:checked + .ls-remember__box svg {
+  opacity: 1;
+}
+
+.ls-remember__input:focus-visible + .ls-remember__box {
+  box-shadow: 0 0 0 3px var(--ls-ring);
+}
+
+/* Submit button */
+.ls-submit {
+  margin-top: 4px;
+  width: 100%;
+  font-family: var(--ls-font-display);
+  font-weight: 600;
+  font-size: 15px;
+  background: var(--ls-orange);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 13px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: var(--ls-glow-orange);
+  transition: background 0.15s var(--ls-ease-out), transform 0.12s var(--ls-ease-out);
+}
+
+.ls-submit:hover {
+  background: var(--ls-orange-bright);
+  transform: translateY(-1px);
+}
+
+.ls-submit:active {
+  background: var(--ls-orange-deep);
+  transform: translateY(0);
+}
+
+.ls-submit:disabled {
+  cursor: wait;
+  background: var(--ls-orange-deep);
+}
+
+/* Spinner */
+.ls-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-right-color: #fff;
+  border-radius: 50%;
+  animation: ls-spin 0.65s linear infinite;
+  display: none;
+  flex: none;
+}
+
+.ls-submit--loading .ls-spinner {
+  display: block;
+}
+
+.ls-submit--loading .ls-submit__label {
+  opacity: 0.85;
+}
+
+@keyframes ls-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Footnote */
+.ls-footnote {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--ls-fg-muted);
+}
+
+.ls-footnote a {
+  color: var(--ls-orange);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ls-footnote a:hover {
+  text-decoration: underline;
+}
+
+/* Secure badge */
+.ls-secure {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--ls-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ls-fg-faint);
+}
+
+.ls-secure svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}

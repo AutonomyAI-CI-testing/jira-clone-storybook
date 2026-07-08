@@ -1,4 +1,5 @@
 import type {
+  LinksFunction,
   LoaderFunction,
   ActionFunction,
   V2_MetaFunction,
@@ -10,6 +11,22 @@ import { getUsers } from "@infrastructure/db/user";
 import { getUserSession } from "@app/session-storage";
 import { LoginView } from "@app/ui/login";
 import { formatTags, formatProperties } from "@utils/meta";
+
+export const links: LinksFunction = () => [
+  {
+    rel: "preconnect",
+    href: "https://fonts.googleapis.com",
+  },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap",
+  },
+];
 
 export const meta: V2_MetaFunction = () => {
   const title = "Jira clone - Login";
