@@ -4,6 +4,8 @@ import { withThemeByClassName } from "@storybook/addon-styling";
 
 /* TODO: update import to your tailwind styles file. If you're using Angular, inject this through your angular.json config instead */
 import "../src/app/styles/app-compiled.css";
+/* Import Tailwind source so Vite+PostCSS can generate arbitrary utility classes (e.g. bg-[#2a2a2a]) */
+import "../src/app/styles/app.css";
 
 const preview: Preview = {
   parameters: {
