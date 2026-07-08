@@ -31,7 +31,7 @@ export function TestCard() {
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-300">Personal Access Token</span>
-          <AiOutlineInfoCircle className="text-gray-400 text-base" />
+          <AiOutlineInfoCircle className="text-gray-400 text-sm" />
         </div>
         <input
           type="text"
@@ -44,7 +44,7 @@ export function TestCard() {
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-300">Design URL</span>
-          <AiOutlineInfoCircle className="text-gray-400 text-base" />
+          <AiOutlineInfoCircle className="text-gray-400 text-sm" />
         </div>
         <input
           type="text"
