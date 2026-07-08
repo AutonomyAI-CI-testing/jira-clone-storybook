@@ -39,8 +39,7 @@ export function TestCard() {
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full rounded border border-[#666] bg-[#383838] px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none focus:border-[#777]"
-          readOnly
+          className="w-full rounded border border-[#555] bg-[#383838] px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none focus:border-[#777]"
         />
       </div>
 
@@ -54,7 +53,6 @@ export function TestCard() {
           type="text"
           placeholder="https://www.figma.com/file/:"
           className="w-full rounded border border-[#666] bg-[#383838] px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none focus:border-[#777]"
-          readOnly
         />
       </div>
 
