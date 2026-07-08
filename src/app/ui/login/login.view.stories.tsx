@@ -7,7 +7,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
@@ -15,6 +15,9 @@ const meta: Meta<typeof LoginView> = {
       control: {
         type: "object",
       },
+    },
+    isLoading: {
+      control: { type: "boolean" },
     },
   },
   decorators: [
@@ -42,5 +45,25 @@ type Story = StoryObj<typeof LoginView>;
 export const Default: Story = {
   args: {
     users: usersMock,
+    isLoading: false,
+  },
+};
+
+export const Mobile: Story = {
+  args: {
+    users: usersMock,
+    isLoading: false,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+};
+
+export const LoadingState: Story = {
+  args: {
+    users: usersMock,
+    isLoading: true,
   },
 };

@@ -839,3 +839,217 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/* ============================================================
+   Login Page — AutonomyAI Design Tokens
+   Scoped to .login-page to avoid polluting global theme
+   ============================================================ */
+.login-page {
+  --lp-ink-950: #0B0B0A;
+  --lp-ink-900: #121211;
+  --lp-ink-800: #1A1A18;
+  --lp-ink-700: #212120;
+  --lp-ink-600: #2A2A28;
+  --lp-ink-500: #333333;
+  --lp-ink-400: #3C3B39;
+  --lp-ink-300: #4A4946;
+  --lp-warm-glow: #5E5452;
+  --lp-orange: #F25730;
+  --lp-orange-bright: #FC816F;
+  --lp-orange-deep: #ED5339;
+  --lp-orange-peach: #F69874;
+  --lp-blue: #9FD2ED;
+  --lp-ok: #4FB477;
+  --lp-warn: #E8A13C;
+  --lp-err: #E5533C;
+  --lp-fg: #FFFFFF;
+  --lp-fg-muted: #B4B1AC;
+  --lp-fg-faint: #7C7A75;
+  --lp-ring: rgba(242,87,48,.55);
+  --lp-glow-orange: 0 0 0 1px rgba(242,87,48,.35), 0 8px 30px rgba(242,87,48,.22);
+  --lp-ease-out: cubic-bezier(.2,.7,.2,1);
+
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.login-page .lp-pipeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.login-page .lp-pipeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--lp-blue),
+    var(--lp-warn),
+    var(--lp-ok)
+  );
+  opacity: 0.35;
+}
+
+.login-page .lp-pl-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  padding: 11px 0;
+}
+
+.login-page .lp-node {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex: none;
+  position: relative;
+  z-index: 1;
+}
+
+.login-page .lp-n-blue {
+  background: var(--lp-blue);
+  box-shadow: 0 0 0 4px rgba(159,210,237,.12);
+}
+
+.login-page .lp-n-amber {
+  background: var(--lp-warn);
+  box-shadow: 0 0 0 4px rgba(232,161,60,.12);
+}
+
+.login-page .lp-n-ok {
+  background: var(--lp-ok);
+  box-shadow: 0 0 0 4px rgba(79,180,119,.14);
+}
+
+.login-page .lp-submit {
+  margin-top: 4px;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  background: var(--lp-orange);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 13px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: var(--lp-glow-orange);
+  transition: background .15s var(--lp-ease-out), transform .12s var(--lp-ease-out);
+}
+
+.login-page .lp-submit:hover {
+  background: var(--lp-orange-bright);
+  transform: translateY(-1px);
+}
+
+.login-page .lp-submit:active {
+  background: var(--lp-orange-deep);
+  transform: translateY(0);
+}
+
+.login-page .lp-submit:disabled {
+  cursor: wait;
+  background: var(--lp-orange-deep);
+}
+
+.login-page .lp-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-right-color: #fff;
+  border-radius: 50%;
+  animation: lp-spin .65s linear infinite;
+  display: none;
+}
+
+.login-page .lp-submit.loading .lp-spinner {
+  display: block;
+}
+
+.login-page .lp-submit.loading .lp-btn-label {
+  opacity: .85;
+}
+
+@keyframes lp-spin {
+  to { transform: rotate(360deg); }
+}
+
+.login-page .lp-input {
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #FFFFFF;
+  background: #333333;
+  border: 1px solid #3C3B39;
+  border-radius: 8px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color .15s var(--lp-ease-out), box-shadow .15s var(--lp-ease-out);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.login-page .lp-input::placeholder {
+  color: var(--lp-fg-faint);
+}
+
+.login-page .lp-input:focus {
+  border-color: var(--lp-orange);
+  box-shadow: 0 0 0 3px var(--lp-ring);
+}
+
+.login-page .lp-sso-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  background: #212120;
+  color: #FFFFFF;
+  border: 1px solid #3C3B39;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: border-color .18s var(--lp-ease-out), background .18s var(--lp-ease-out);
+}
+
+.login-page .lp-sso-btn:hover {
+  border-color: #4A4946;
+  background: #2A2A28;
+}
+
+.login-page .lp-checkbox-box {
+  width: 17px;
+  height: 17px;
+  border-radius: 5px;
+  border: 1px solid #4A4946;
+  background: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .15s var(--lp-ease-out);
+  flex-shrink: 0;
+}
+
+@media (max-width: 920px) {
+  .login-page .lp-brand-panel {
+    display: none;
+  }
+  .login-page .lp-mobile-mark {
+    display: flex !important;
+  }
+}
