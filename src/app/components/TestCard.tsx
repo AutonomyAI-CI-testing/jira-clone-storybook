@@ -1,7 +1,7 @@
 import { AiOutlineSetting, AiOutlineInfoCircle } from "react-icons/ai";
 import { FaChevronUp } from "react-icons/fa";
 
-export const TestCard = (): JSX.Element => {
+export function TestCard() {
   return (
     <div
       id="testElem"
@@ -31,23 +31,23 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       {/* Personal Access Token */}
-      <div className="mt-5">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="text-sm text-gray-200">Personal Access Token</span>
+      <div className="mt-5 flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <label className="text-sm text-gray-200">Personal Access Token</label>
           <AiOutlineInfoCircle className="text-gray-400" size={16} />
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full rounded border border-[#555] bg-[#383838] px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none focus:border-[#777]"
+          className="w-full rounded border border-[#666] bg-[#383838] px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none focus:border-[#777]"
           readOnly
         />
       </div>
 
       {/* Design URL */}
-      <div className="mt-4">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="text-sm text-gray-200">Design URL</span>
+      <div className="mt-4 flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <label className="text-sm text-gray-200">Design URL</label>
           <AiOutlineInfoCircle className="text-gray-400" size={16} />
         </div>
         <input
@@ -74,6 +74,6 @@ export const TestCard = (): JSX.Element => {
       </div>
     </div>
   );
-};
+}
 
 export default TestCard;
