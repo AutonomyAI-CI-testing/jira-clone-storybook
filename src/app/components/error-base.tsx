@@ -1,5 +1,5 @@
 export const ErrorBase = ({ variant, message, href }: Props) => {
-  const imgPath = `/images/error-${variant}.svg`;
+  const imgPath = `/images/error-${variant}-anime.png`;
 
   return (
     <div className="max-w-[500px] text-center">
@@ -16,7 +16,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className="max-w-[100px] text-lg text-[#00ff05]">{message}</span>
       )}
     </div>
   );
