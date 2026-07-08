@@ -412,7 +412,7 @@ export const LoginView = ({ users, isLoading = false }: Props) => {
 
             <div className="aai-auth-head">
               <p className="aai-auth-ey">Sign in</p>
-              <h2 className="aai-auth-h2">Welcome back</h2>
+              <h2 className="aai-auth-h2" style={{ color: "#ef4444" }}>Welcome back</h2>
               <p className="aai-auth-sub">Pick up where the agent left off.</p>
             </div>
 
