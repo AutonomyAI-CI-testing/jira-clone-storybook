@@ -256,6 +256,13 @@ const css = `
   .aai-lbl-row a { font-size: 12.5px; color: var(--aai-orange); text-decoration: none; }
   .aai-lbl-row a:hover { text-decoration: underline; }
 
+  .aai-link-btn {
+    background: none; border: none; padding: 0; cursor: pointer;
+    font-size: 12.5px; color: var(--aai-orange); text-decoration: none;
+    font-family: var(--font-sans); font-weight: 500;
+  }
+  .aai-link-btn:hover { text-decoration: underline; }
+
   /* remember checkbox */
   .aai-remember {
     display: flex; align-items: center; gap: 9px; font-size: 13.5px;
@@ -523,9 +530,7 @@ export const LoginView = ({ users, isLoading = false }: Props) => {
               <div className="aai-field">
                 <div className="aai-lbl-row">
                   <label htmlFor="aai-password">Password</label>
-                  <a href="#" tabIndex={0}>
-                    Forgot password?
-                  </a>
+                  <button type="button" className="aai-link-btn">Forgot password?</button>
                 </div>
                 <div className="aai-input-wrap">
                   <input
@@ -595,7 +600,7 @@ export const LoginView = ({ users, isLoading = false }: Props) => {
 
             <p className="aai-footnote">
               New to the On-Call Agent?{" "}
-              <a href="#">Request access</a>
+              <button type="button" className="aai-link-btn">Request access</button>
             </p>
 
             <div className="aai-secure">
