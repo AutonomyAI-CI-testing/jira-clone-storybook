@@ -30,7 +30,7 @@ export const LoginForm = ({
     <div className="autonomy-login-form-panel">
       <div className="max-w-md mx-auto w-full">
         {/* Welcome Message */}
-        <h2 className="autonomy-login-heading mb-2">Welcome back</h2>
+        <h2 className="autonomy-login-heading mb-2 text-red-500">Welcome back</h2>
         <p className="autonomy-login-subheading mb-8">
           Sign in to access your incident management dashboard
         </p>
