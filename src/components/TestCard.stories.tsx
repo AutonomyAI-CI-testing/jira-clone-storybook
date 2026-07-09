@@ -7,6 +7,13 @@ const meta: Meta<typeof TestCard> = {
   parameters: {
     layout: "fullscreen",
   },
+  decorators: [
+    (Story: React.ComponentType) => (
+      <div style={{ maxWidth: "390px", margin: "0 auto", minHeight: "100vh", backgroundColor: "#2a2a2a" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
