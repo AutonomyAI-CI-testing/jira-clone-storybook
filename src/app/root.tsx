@@ -26,11 +26,13 @@ import { Error500 } from "./components/error-500";
 import styles from "./styles/app-compiled.css";
 import fonts from "./styles/fonts.css";
 import fuck from "react-toastify/dist/ReactToastify.css";
+import autonomyStyles from "./styles/autonomy-login.css";
 
 export const links = () => {
   return [
     { rel: "stylesheet", href: fonts },
     { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: autonomyStyles },
     { rel: "stylesheet", href: fuck },
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   ];
