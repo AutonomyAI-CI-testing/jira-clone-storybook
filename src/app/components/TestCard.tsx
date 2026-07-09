@@ -1,0 +1,76 @@
+import { AiOutlineSetting, AiOutlineInfoCircle } from "react-icons/ai";
+import { FaChevronUp } from "react-icons/fa";
+
+export const TestCard = (): JSX.Element => {
+  return (
+    <div
+      id="testElem"
+      className="bg-[#2a2a2a] min-h-screen w-full max-w-[400px] px-5 py-6 font-sans"
+    >
+      {/* Header row */}
+      <div className="flex items-center justify-between">
+        <h1 className="text-lg font-bold text-white">UI magician Agent</h1>
+        <AiOutlineSetting className="text-gray-400" size={24} />
+      </div>
+
+      {/* Subtitle row */}
+      <div className="mt-3 flex items-center gap-2">
+        <FaChevronUp className="text-gray-400" size={12} />
+        <span className="text-sm text-[#c17b4e]">
+          From entire frame to a singl...
+        </span>
+      </div>
+
+      {/* Add New Design heading */}
+      <div className="mt-10 flex items-center gap-3">
+        <FaChevronUp className="text-white" size={14} />
+        <h2 className="text-xl font-bold text-white">Add New Design</h2>
+      </div>
+
+      {/* Personal Access Token field */}
+      <div className="mt-5">
+        <div className="mb-2 flex items-center gap-2">
+          <label className="text-sm font-medium text-gray-300">
+            Personal Access Token
+          </label>
+          <AiOutlineInfoCircle className="text-gray-400" size={18} />
+        </div>
+        <input
+          type="text"
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          className="w-full rounded border border-[#555555] bg-[#383838] px-3 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none focus:border-[#7a7a7a]"
+        />
+      </div>
+
+      {/* Design URL field */}
+      <div className="mt-4">
+        <div className="mb-2 flex items-center gap-2">
+          <label className="text-sm font-medium text-gray-300">
+            Design URL
+          </label>
+          <AiOutlineInfoCircle className="text-gray-400" size={18} />
+        </div>
+        <input
+          type="text"
+          placeholder="https://www.figma.com/file/:"
+          className="w-full rounded border border-[#7a7a7a] bg-[#383838] px-3 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none focus:border-[#7a7a7a]"
+        />
+      </div>
+
+      {/* Buttons row */}
+      <div className="mt-6 flex gap-4">
+        <button className="flex-1 rounded-lg bg-[#b85c2a] py-3 text-sm font-semibold text-white hover:bg-[#a04e22]">
+          Awesome
+        </button>
+        <button className="flex-1 rounded-lg bg-[#b85c2a] py-3 text-sm font-semibold text-white hover:bg-[#a04e22]">
+          Prepare
+        </button>
+      </div>
+
+      {/* Recent Breakdowns heading */}
+      <div className="mt-10">
+        <h2 className="text-xl font-bold text-white">Recent Breakdowns</h2>
+      </div>
+    </div>
+  );
+};
