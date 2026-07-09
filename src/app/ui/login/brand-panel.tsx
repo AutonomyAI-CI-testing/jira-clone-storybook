@@ -78,7 +78,7 @@ export const BrandPanel = () => {
               textWrap: "balance",
             } as React.CSSProperties}
           >
-            Your team's issues,{" "}
+            Your team&apos;s issues,{" "}
             <span
               style={{
                 background: "linear-gradient(95deg, #F25730, #F69874)",

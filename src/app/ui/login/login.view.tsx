@@ -585,3 +585,37 @@ const AuthPanel = ({
         </details>
       </div>
     </section>
+  );
+};
+
+// ─── LoginView (exported) ─────────────────────────────────────────────────────
+
+export interface LoginViewProps {
+  users: User[];
+  /** Story: force submit loading state */
+  forceLoading?: boolean;
+  /** Story: force password field revealed */
+  forcePasswordRevealed?: boolean;
+  /** Story: show field error state */
+  showError?: boolean;
+}
+
+export const LoginView = ({
+  users,
+  forceLoading,
+  forcePasswordRevealed,
+  showError,
+}: LoginViewProps) => (
+  <>
+    <style>{CSS}</style>
+    <div className="aai-login-shell">
+      <BrandPanel />
+      <AuthPanel
+        users={users}
+        forceLoading={forceLoading}
+        forcePasswordRevealed={forcePasswordRevealed}
+        showError={showError}
+      />
+    </div>
+  </>
+);
