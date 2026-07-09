@@ -27,12 +27,7 @@ const config: StorybookConfig = {
       css: {
         postcss: {
           plugins: [
-            tailwindcss({
-              content: [
-                "./src/**/*.{js,ts,jsx,tsx}",
-              ],
-              darkMode: "class",
-            }),
+            tailwindcss("./tailwind.config.js"),
             autoprefixer(),
           ],
         },
