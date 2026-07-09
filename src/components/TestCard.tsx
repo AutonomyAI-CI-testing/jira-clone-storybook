@@ -2,21 +2,18 @@ export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      style={{ backgroundColor: "#1c1d17", minHeight: "100vh" }}
-      className="p-5 font-sans"
+      className="bg-[#2a2a2a] text-white font-sans min-h-screen p-5 w-[320px]"
     >
       {/* Header row */}
-      <div className="flex items-center justify-between">
-        <span className="text-lg font-bold" style={{ color: "#e8e8e8" }}>
-          UI magician Agent
-        </span>
-        {/* Gear icon */}
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-lg font-bold">UI magician Agent</span>
         <svg
+          xmlns="http://www.w3.org/2000/svg"
           width="22"
           height="22"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#929291"
+          stroke="#aaaaaa"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -27,134 +24,86 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       {/* Chevron subtitle row */}
-      <div className="mt-3 flex items-center gap-2">
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          stroke="#b5703a"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="2 8 6 4 10 8" />
-        </svg>
-        <span className="text-sm" style={{ color: "#b5703a" }}>
-          From entire frame to a singl...
-        </span>
+      <div className="flex items-center gap-2 mb-8">
+        <span className="text-[#b5703a] text-sm">^</span>
+        <span className="text-[#b5703a] text-sm">From entire frame to a singl...</span>
       </div>
 
       {/* Add New Design section */}
-      <div className="mt-10 flex items-center gap-2">
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          stroke="#e8e8e8"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="2 8 6 4 10 8" />
-        </svg>
-        <span className="text-base font-bold" style={{ color: "#e8e8e8" }}>
-          Add New Design
-        </span>
+      <div className="flex items-center gap-2 mb-5">
+        <span className="text-white font-bold text-base">^</span>
+        <span className="text-white font-bold text-base">Add New Design</span>
       </div>
 
-      {/* Personal Access Token field */}
-      <div className="mt-5">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="text-sm" style={{ color: "#c8c8c8" }}>
-            Personal Access Token
-          </span>
+      {/* Personal Access Token */}
+      <div className="mb-4">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-gray-300 text-sm">Personal Access Token</span>
           <svg
-            width="16"
-            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#929291"
+            stroke="#888888"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
             <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="8" />
-            <line x1="12" y1="12" x2="12" y2="16" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
           </svg>
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          className="w-full bg-[#383838] border border-[#555555] rounded-md px-3 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none"
           readOnly
-          className="w-full rounded px-3 py-2 text-sm"
-          style={{
-            backgroundColor: "#272822",
-            border: "1px solid #929291",
-            color: "#929291",
-          }}
         />
       </div>
 
-      {/* Design URL field */}
-      <div className="mt-4">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="text-sm" style={{ color: "#c8c8c8" }}>
-            Design URL
-          </span>
+      {/* Design URL */}
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-gray-300 text-sm">Design URL</span>
           <svg
-            width="16"
-            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#929291"
+            stroke="#888888"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
             <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="8" />
-            <line x1="12" y1="12" x2="12" y2="16" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
           </svg>
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
+          className="w-full bg-[#383838] border border-[#555555] rounded-md px-3 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none"
           readOnly
-          className="w-full rounded px-3 py-2 text-sm"
-          style={{
-            backgroundColor: "#272822",
-            border: "1px solid #929291",
-            color: "#929291",
-          }}
         />
       </div>
 
       {/* Buttons row */}
-      <div className="mt-6 flex gap-4">
-        <button
-          type="button"
-          className="flex-1 rounded-xl py-3 text-sm font-semibold"
-          style={{ backgroundColor: "#843a17", color: "#e8e8e8" }}
-        >
+      <div className="flex gap-4 mb-10 justify-center">
+        <button className="bg-[#c1541a] text-white font-semibold px-8 py-3 rounded-xl">
           Awesome
         </button>
-        <button
-          type="button"
-          className="flex-1 rounded-xl py-3 text-sm font-semibold"
-          style={{ backgroundColor: "#843a17", color: "#e8e8e8" }}
-        >
+        <button className="bg-[#c1541a] text-white font-semibold px-8 py-3 rounded-xl">
           Prepare
         </button>
       </div>
 
-      {/* Recent Breakdowns heading */}
-      <div className="mt-10">
-        <span className="text-base font-bold" style={{ color: "#e8e8e8" }}>
-          Recent Breakdowns
-        </span>
+      {/* Recent Breakdowns */}
+      <div>
+        <span className="text-white font-bold text-base">Recent Breakdowns</span>
       </div>
     </div>
   );
