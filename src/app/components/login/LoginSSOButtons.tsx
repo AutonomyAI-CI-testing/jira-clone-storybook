@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 export const LoginSSOButtons = () => {
   return (

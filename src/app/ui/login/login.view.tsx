@@ -23,8 +23,6 @@ export const LoginView = ({ users }: Props) => {
       return;
     }
 
-    console.log("Login attempt:", { email, rememberMe });
-
     setTimeout(() => {
       const defaultUser = users[0];
       if (defaultUser) {

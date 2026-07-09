@@ -132,7 +132,7 @@ export const LoginForm = ({
             Forgot password?
           </a>
           <a href="#request-access" className="autonomy-link text-sm">
-            Don't have an account? Request access
+            Don&apos;t have an account? Request access
           </a>
         </div>
 
