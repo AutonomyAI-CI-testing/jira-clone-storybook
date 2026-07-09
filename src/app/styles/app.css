@@ -20,6 +20,28 @@
   }
 
   :root {
+    /* AutonomyAI design tokens */
+    --aai-orange: #F25730;
+    --aai-orange-bright: #FC816F;
+    --aai-orange-deep: #ED5339;
+    --aai-orange-peach: #F69874;
+    --aai-ink-950: #0B0B0A;
+    --aai-ink-900: #121211;
+    --aai-ink-800: #1A1A18;
+    --aai-ink-700: #212120;
+    --aai-ink-600: #2A2A28;
+    --aai-ink-500: #333333;
+    --aai-ink-400: #3C3B39;
+    --aai-ink-300: #4A4946;
+    --aai-status-blue: #9FD2ED;
+    --aai-status-amber: #E8A13C;
+    --aai-status-green: #4FB477;
+    --aai-glow: rgba(242, 87, 48, 0.15);
+    --aai-ring: rgba(242, 87, 48, 0.55);
+    --aai-fg: #FFFFFF;
+    --aai-fg-muted: #B4B1AC;
+    --aai-fg-faint: #7C7A75;
+    --aai-glow-orange: 0 0 0 1px rgba(242,87,48,.35), 0 8px 30px rgba(242,87,48,.22);
     --Neutral0: #ffffff;
     --Neutral100: #f7f8f9;
     --Neutral200: #f1f2f4;

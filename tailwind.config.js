@@ -197,6 +197,8 @@ module.exports = {
       primary: ["CircularStdMedium", "sans-serif"],
       "primary-bold": ["CircularStdBold", "sans-serif"],
       "primary-black": ["CircularStdBlack", "sans-serif"],
+      display: ["Poppins", "system-ui", "sans-serif"],
+      mono: ["JetBrains Mono", "ui-monospace", "monospace"],
     },
     boxShadow: {
       xs: "rgba(0,0,0, 0.2) 0px 1px 1px, rgba(0,0,0, 0.2) 0px 0px 1px",

@@ -9,13 +9,6 @@ const meta: Meta<typeof LoginView> = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {
-    users: {
-      control: {
-        type: "object",
-      },
-    },
-  },
   decorators: [
     (Story) => {
       const RemixStub = createRemixStub([
@@ -47,8 +40,6 @@ export const MobileView: Story = {
     users: usersMock,
   },
   parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
+    viewport: { defaultViewport: "mobile1" },
   },
 };
