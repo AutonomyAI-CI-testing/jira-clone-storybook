@@ -7,7 +7,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     users: {
@@ -42,5 +42,11 @@ type Story = StoryObj<typeof LoginView>;
 export const Default: Story = {
   args: {
     users: usersMock,
+  },
+};
+
+export const NoUsers: Story = {
+  args: {
+    users: [],
   },
 };
