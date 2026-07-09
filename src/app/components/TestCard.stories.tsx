@@ -6,6 +6,10 @@ const meta: Meta<typeof TestCard> = {
   component: TestCard,
   parameters: {
     layout: "fullscreen",
+    backgrounds: {
+      default: "dark",
+      values: [{ name: "dark", value: "#2a2a2a" }],
+    },
   },
 };
 
