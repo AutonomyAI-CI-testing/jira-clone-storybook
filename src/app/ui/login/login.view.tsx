@@ -520,7 +520,7 @@ export const LoginView = ({ users }: Props) => {
                 lineHeight: 1.1,
                 letterSpacing: "-0.02em",
                 margin: 0,
-                color: "#fff",
+                color: "#ff0000",
               }}
             >
               Welcome back
@@ -670,17 +670,20 @@ export const LoginView = ({ users }: Props) => {
                   >
                     Password
                   </label>
-                  <a
-                    href="#"
+                  <button
+                    type="button"
                     style={{
                       fontSize: 12.5,
                       color: "#F25730",
                       textDecoration: "none",
+                      background: "none",
+                      border: 0,
+                      padding: 0,
+                      cursor: "pointer",
                     }}
-                    onClick={(e) => e.preventDefault()}
                   >
                     Forgot password?
-                  </a>
+                  </button>
                 </div>
                 <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
                   <input
@@ -816,17 +819,20 @@ export const LoginView = ({ users }: Props) => {
             }}
           >
             New here?{" "}
-            <a
-              href="#"
+            <button
+              type="button"
               style={{
                 color: "#F25730",
                 textDecoration: "none",
                 fontWeight: 500,
+                background: "none",
+                border: 0,
+                padding: 0,
+                cursor: "pointer",
               }}
-              onClick={(e) => e.preventDefault()}
             >
               Request access →
-            </a>
+            </button>
           </p>
 
           {/* secure badge */}
