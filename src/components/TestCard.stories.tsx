@@ -6,6 +6,9 @@ const meta: Meta<typeof TestCard> = {
   component: TestCard,
   parameters: {
     layout: "fullscreen",
+    viewport: {
+      defaultViewport: "mobile1",
+    },
   },
 };
 
