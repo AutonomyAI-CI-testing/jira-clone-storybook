@@ -46,11 +46,11 @@ export function TestCard() {
       />
 
       {/* Buttons */}
-      <div className="flex gap-4 justify-center mb-10">
-        <button className="bg-[#b85c2c] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#a04f25] transition-colors">
+      <div className="flex gap-4 mb-8">
+        <button className="flex-1 bg-[#b85c2c] text-white font-semibold rounded-lg py-3 text-base">
           Awesome
         </button>
-        <button className="bg-[#b85c2c] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#a04f25] transition-colors">
+        <button className="flex-1 bg-[#b85c2c] text-white font-semibold rounded-lg py-3 text-base">
           Prepare
         </button>
       </div>
