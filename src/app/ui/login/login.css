@@ -429,14 +429,25 @@
   letter-spacing: 0.01em;
 }
 
-.login-field a.forgot {
+.login-field .forgot {
   font-size: 12px;
   color: var(--lp-orange);
   text-decoration: none;
   margin-left: auto;
+  cursor: pointer;
 }
 
-.login-field a.forgot:hover {
+.login-field .forgot:hover {
+  text-decoration: underline;
+}
+
+.login-link {
+  color: var(--lp-orange);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login-link:hover {
   text-decoration: underline;
 }
 

@@ -164,9 +164,9 @@ export const LoginView = ({ users }: Props) => {
             <div className="login-field">
               <div className="login-field-row">
                 <label htmlFor="lp-password">Password</label>
-                <a href="#" className="forgot" tabIndex={-1}>
+                <span className="forgot" role="button" tabIndex={-1} aria-disabled="true">
                   Forgot password?
-                </a>
+                </span>
               </div>
               <div className="login-input-wrap">
                 <input
@@ -221,7 +221,7 @@ export const LoginView = ({ users }: Props) => {
 
           <p className="login-footnote">
             New to Jira Clone?{" "}
-            <a href="#">Create an account</a>
+            <span className="login-link" role="button" aria-disabled="true">Create an account</span>
           </p>
 
           <div className="login-secure">
