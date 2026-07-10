@@ -8,7 +8,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "fullscreen",
+    layout: "padded",
   },
   argTypes: {
     users: {
