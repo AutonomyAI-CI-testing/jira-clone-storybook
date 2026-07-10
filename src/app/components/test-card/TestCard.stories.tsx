@@ -7,13 +7,6 @@ const meta: Meta<typeof TestCard> = {
   parameters: {
     layout: "fullscreen",
   },
-  decorators: [
-    (Story: () => JSX.Element) => (
-      <div style={{ background: "#1e1e1c", minHeight: "100vh", display: "flex", justifyContent: "center", padding: "20px" }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;
