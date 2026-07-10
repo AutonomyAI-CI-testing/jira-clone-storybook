@@ -1,81 +1,78 @@
-export const TestCard = () => {
+import { AiOutlineInfoCircle, AiOutlineSetting } from "react-icons/ai";
+import { BiChevronUp } from "react-icons/bi";
+
+export const TestCard = (): JSX.Element => {
   return (
-    <div id="testElem" className="bg-[#2b2b2b] text-white min-h-screen p-5 w-full max-w-sm font-sans">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <h1 className="text-xl font-semibold">UI magician Agent</h1>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 text-gray-400"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
+    <div
+      id="testElem"
+      className="flex w-full flex-col bg-[#222] px-5 py-6 text-white"
+    >
+      {/* Header row */}
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-bold text-white">UI magician Agent</h1>
+        <AiOutlineSetting className="text-2xl text-white" />
       </div>
 
-      {/* Subtitle */}
-      <div className="flex items-center gap-2 text-[#b87a55] text-sm mb-8">
-        <span className="text-gray-400">^</span>
-        <span>From entire frame to a singl...</span>
+      {/* Subtitle row */}
+      <div className="mt-2 flex items-center gap-1">
+        <BiChevronUp className="text-lg text-[#b87a50]" />
+        <span className="text-sm text-[#b87a50]">
+          From entire frame to a singl...
+        </span>
       </div>
 
-      {/* Add New Design Section */}
-      <div className="mb-6">
-        <div className="flex items-center gap-2 text-lg font-semibold mb-5">
-          <span className="text-gray-400">^</span>
-          <span>Add New Design</span>
-        </div>
+      {/* Spacer */}
+      <div className="mt-10" />
 
-        {/* Personal Access Token */}
-        <div className="mb-4">
-          <div className="flex items-center gap-1 mb-2 text-sm text-gray-200">
-            <span>Personal Access Token</span>
-            <span className="text-gray-400 text-xs border border-gray-400 rounded-full w-4 h-4 flex items-center justify-center leading-none">i</span>
-          </div>
-          <input
-            type="text"
-            placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            readOnly
-            className="w-full bg-[#3a3a3a] border border-[#555] text-gray-400 placeholder-gray-500 text-sm rounded px-3 py-3 outline-none"
-          />
-        </div>
-
-        {/* Design URL */}
-        <div className="mb-6">
-          <div className="flex items-center gap-1 mb-2 text-sm text-gray-200">
-            <span>Design URL</span>
-            <span className="text-gray-400 text-xs border border-gray-400 rounded-full w-4 h-4 flex items-center justify-center leading-none">i</span>
-          </div>
-          <input
-            type="text"
-            placeholder="https://www.figma.com/file/:"
-            readOnly
-            className="w-full bg-[#3a3a3a] border border-[#555] text-gray-400 placeholder-gray-500 text-sm rounded px-3 py-3 outline-none"
-          />
-        </div>
-
-        {/* Buttons */}
-        <div className="flex gap-4">
-          <button className="bg-[#b85c38] text-white text-sm font-medium px-6 py-3 rounded-lg flex-1">
-            Awesome
-          </button>
-          <button className="bg-[#b85c38] text-white text-sm font-medium px-6 py-3 rounded-lg flex-1">
-            Prepare
-          </button>
-        </div>
+      {/* Add New Design section */}
+      <div className="flex items-center gap-2">
+        <BiChevronUp className="text-xl text-white" />
+        <h2 className="text-lg font-bold text-white">Add New Design</h2>
       </div>
 
-      {/* Recent Breakdowns */}
-      <div className="mt-4">
-        <h2 className="text-lg font-semibold">Recent Breakdowns</h2>
+      {/* Personal Access Token field */}
+      <div className="mt-5 flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-semibold text-[#ccc]">
+            Personal Access Token
+          </label>
+          <AiOutlineInfoCircle className="text-base text-[#aaa]" />
+        </div>
+        <input
+          type="text"
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          className="w-full rounded border border-[#555] bg-[#2a2a2a] px-3 py-2 text-sm text-[#888] placeholder-[#666] outline-none focus:border-[#777]"
+        />
+      </div>
+
+      {/* Design URL field */}
+      <div className="mt-4 flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-semibold text-[#ccc]">
+            Design URL
+          </label>
+          <AiOutlineInfoCircle className="text-base text-[#aaa]" />
+        </div>
+        <input
+          type="text"
+          placeholder="https://www.figma.com/file/:"
+          className="w-full rounded border border-[#555] bg-[#2a2a2a] px-3 py-2 text-sm text-[#888] placeholder-[#666] outline-none focus:border-[#777]"
+        />
+      </div>
+
+      {/* Action buttons */}
+      <div className="mt-6 flex gap-4">
+        <button className="flex-1 rounded-lg bg-[#b85c30] px-4 py-3 text-sm font-semibold text-white hover:bg-[#a04f28]">
+          Awesome
+        </button>
+        <button className="flex-1 rounded-lg bg-[#b85c30] px-4 py-3 text-sm font-semibold text-white hover:bg-[#a04f28]">
+          Prepare
+        </button>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-12">
+        <h2 className="text-xl font-bold text-white">Recent Breakdowns</h2>
       </div>
     </div>
   );
