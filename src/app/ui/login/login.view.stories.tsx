@@ -7,7 +7,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     users: {
@@ -18,6 +18,11 @@ const meta: Meta<typeof LoginView> = {
     },
   },
   decorators: [
+    (Story) => (
+      <div style={{ paddingTop: "1rem" }}>
+        <Story />
+      </div>
+    ),
     (Story) => {
       const RemixStub = createRemixStub([
         {
