@@ -6,7 +6,6 @@ const meta: Meta<typeof TestCard> = {
   component: TestCard,
   parameters: {
     layout: "fullscreen",
-    backgrounds: { default: "dark" },
   },
 };
 
@@ -14,4 +13,3 @@ export default meta;
 type Story = StoryObj<typeof TestCard>;
 
 export const Default: Story = {};
-
