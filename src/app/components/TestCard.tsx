@@ -1,67 +1,72 @@
-import { HiCog, HiChevronUp, HiInformationCircle } from "react-icons/hi";
+import { HiOutlineCog, HiChevronUp, HiInformationCircle } from "react-icons/hi";
 
 export function TestCard() {
   return (
-    <div id="testElem" className="bg-[#1e1e1e] text-white p-5 w-full max-w-sm font-sans min-h-screen">
-      {/* Header row */}
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-lg font-bold">UI magician Agent</span>
-        <HiCog className="text-2xl text-[#9ca3af]" />
+    <div
+      id="testElem"
+      className="bg-[#282828] text-white w-[320px] min-h-screen p-5 flex flex-col gap-6"
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between pt-2">
+        <h1 className="text-xl font-bold">UI magician Agent</h1>
+        <HiOutlineCog className="text-white text-2xl" />
       </div>
 
-      {/* Sub-row */}
-      <div className="flex items-center gap-1 mb-8">
-        <HiChevronUp className="text-[#9ca3af]" />
-        <span className="text-[#9ca3af] text-sm">From entire frame to a singl...</span>
+      {/* Subtitle */}
+      <div className="flex items-center gap-2">
+        <HiChevronUp className="text-[#c4813f] text-lg" />
+        <span className="text-[#c4813f] text-sm">From entire frame to a singl...</span>
       </div>
 
-      {/* Add New Design section */}
-      <div className="flex items-center gap-2 mb-5">
-        <HiChevronUp className="text-white text-lg" />
-        <span className="text-xl font-bold">Add New Design</span>
-      </div>
-
-      {/* Personal Access Token */}
-      <div className="mb-2">
-        <div className="flex items-center gap-1 mb-2">
-          <span className="text-sm text-white">Personal Access Token</span>
-          <HiInformationCircle className="text-[#9ca3af] text-base" />
+      {/* Add New Design Section */}
+      <div className="flex flex-col gap-4 mt-4">
+        <div className="flex items-center gap-2">
+          <HiChevronUp className="text-white text-lg" />
+          <h2 className="text-lg font-bold">Add New Design</h2>
         </div>
-        <input
-          type="text"
-          placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full bg-[#2a2a2a] border border-[#4a4a4a] rounded text-[#9ca3af] text-sm px-3 py-3 outline-none placeholder:text-[#6b7280]"
-          readOnly
-        />
-      </div>
 
-      {/* Design URL */}
-      <div className="mb-6">
-        <div className="flex items-center gap-1 mb-2">
-          <span className="text-sm text-white">Design URL</span>
-          <HiInformationCircle className="text-[#9ca3af] text-base" />
+        {/* Personal Access Token */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <label className="text-sm text-gray-300">Personal Access Token</label>
+            <HiInformationCircle className="text-gray-400 text-base" />
+          </div>
+          <input
+            type="text"
+            placeholder="figd_xxxxxxxxxxxxxxxxxx"
+            className="bg-[#1e1e1e] border border-[#555] rounded px-3 py-2 text-gray-400 placeholder-gray-600 text-sm w-full outline-none"
+            readOnly
+          />
         </div>
-        <input
-          type="text"
-          placeholder="https://www.figma.com/file/:"
-          className="w-full bg-[#2a2a2a] border border-[#4a4a4a] rounded text-[#9ca3af] text-sm px-3 py-3 outline-none placeholder:text-[#6b7280]"
-          readOnly
-        />
-      </div>
 
-      {/* Buttons */}
-      <div className="flex gap-3 mb-10">
-        <button className="flex-1 bg-[#c1541a] text-white font-semibold py-3 rounded-lg hover:bg-[#a84515]">
-          Awesome
-        </button>
-        <button className="flex-1 bg-[#c1541a] text-white font-semibold py-3 rounded-lg hover:bg-[#a84515]">
-          Prepare
-        </button>
+        {/* Design URL */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <label className="text-sm text-gray-300">Design URL</label>
+            <HiInformationCircle className="text-gray-400 text-base" />
+          </div>
+          <input
+            type="text"
+            placeholder="https://www.figma.com/file/:"
+            className="bg-[#1e1e1e] border border-[#555] rounded px-3 py-2 text-gray-400 placeholder-gray-600 text-sm w-full outline-none"
+            readOnly
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="flex gap-4 mt-2">
+          <button className="flex-1 bg-[#b85c2a] text-white font-semibold py-3 rounded-lg">
+            Awesome
+          </button>
+          <button className="flex-1 bg-[#b85c2a] text-white font-semibold py-3 rounded-lg">
+            Prepare
+          </button>
+        </div>
       </div>
 
       {/* Recent Breakdowns */}
-      <div>
-        <span className="text-xl font-bold">Recent Breakdowns</span>
+      <div className="mt-4">
+        <h2 className="text-lg font-bold">Recent Breakdowns</h2>
       </div>
     </div>
   );
