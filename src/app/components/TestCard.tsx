@@ -1,77 +1,89 @@
-import { HiCog6Tooth, HiChevronUp, HiInformationCircle } from "react-icons/hi2";
+import { IoSettingsOutline } from "react-icons/io5";
+import { BsChevronUp } from "react-icons/bs";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
-export function TestCard() {
+export function TestCard(): JSX.Element {
   return (
     <div
       id="testElem"
-      className="flex flex-col bg-[#2a2a2a] p-6"
-      style={{ maxWidth: 360 }}
+      className="bg-[#1d2125] text-[#dee4ea] p-5 w-[320px] flex flex-col gap-4"
     >
       {/* Header row */}
       <div className="flex items-center justify-between">
-        <span className="text-lg font-bold text-white">UI magician Agent</span>
-        <HiCog6Tooth className="text-white" size={22} />
+        <span className="text-xl font-bold text-[#dee4ea]">
+          UI magician Agent
+        </span>
+        <IoSettingsOutline className="text-[#dee4ea] text-2xl" />
       </div>
 
-      {/* Collapsed section row */}
-      <div className="mt-3 flex items-center gap-2">
-        <HiChevronUp className="text-[#c8733a]" size={16} />
-        <span className="text-sm text-[#c8733a]">From entire frame to a singl...</span>
+      {/* Subtitle row */}
+      <div className="flex items-center gap-2">
+        <BsChevronUp className="text-[#579dff] text-sm" />
+        <span className="text-[#579dff] text-sm">
+          From entire frame to a singl...
+        </span>
       </div>
 
       {/* Spacer */}
-      <div className="mt-10" />
+      <div className="h-2" />
 
-      {/* Add New Design section */}
+      {/* Add New Design section header */}
       <div className="flex items-center gap-2">
-        <HiChevronUp className="text-white" size={18} />
-        <span className="text-base font-bold text-white">Add New Design</span>
+        <BsChevronUp className="text-[#dee4ea] text-base" />
+        <span className="text-lg font-bold text-[#dee4ea]">Add New Design</span>
       </div>
 
-      {/* Form area */}
-      <div className="mt-5 flex flex-col gap-4">
-        {/* Personal Access Token */}
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-white">Personal Access Token</span>
-            <HiInformationCircle className="text-[#888888]" size={16} />
-          </div>
-          <input
-            type="text"
-            placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            readOnly
-            className="rounded border border-[#555555] bg-[#333333] px-3 py-2 text-sm text-[#aaaaaa] placeholder:text-[#777777] outline-none"
-          />
+      {/* Personal Access Token field */}
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <label className="text-sm text-[#c7d1db]">
+            Personal Access Token
+          </label>
+          <AiOutlineInfoCircle className="text-[#c7d1db] text-base" />
         </div>
-
-        {/* Design URL */}
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-white">Design URL</span>
-            <HiInformationCircle className="text-[#888888]" size={16} />
-          </div>
-          <input
-            type="text"
-            placeholder="https://www.figma.com/file/:"
-            readOnly
-            className="rounded border border-[#555555] bg-[#333333] px-3 py-2 text-sm text-[#aaaaaa] placeholder:text-[#777777] outline-none"
-          />
-        </div>
+        <input
+          type="text"
+          readOnly
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          className="bg-[#2c333a] border border-[#454f59] rounded text-sm text-[#dee4ea] placeholder:text-[#596773] px-3 py-2 w-full outline-none"
+        />
       </div>
 
-      {/* Buttons */}
-      <div className="mt-6 flex gap-4">
-        <button className="flex-1 rounded-lg bg-[#b85c2a] px-4 py-3 text-sm font-bold text-white">
+      {/* Design URL field */}
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <label className="text-sm text-[#c7d1db]">Design URL</label>
+          <AiOutlineInfoCircle className="text-[#c7d1db] text-base" />
+        </div>
+        <input
+          type="text"
+          readOnly
+          placeholder="https://www.figma.com/file/:"
+          className="bg-[#2c333a] border border-[#454f59] rounded text-sm text-[#dee4ea] placeholder:text-[#596773] px-3 py-2 w-full outline-none"
+        />
+      </div>
+
+      {/* Button row */}
+      <div className="flex gap-3">
+        <button
+          type="button"
+          className="flex-1 bg-[#b65c02] text-[#dee4ea] font-medium rounded-lg py-3 text-sm"
+        >
           Awesome
         </button>
-        <button className="flex-1 rounded-lg bg-[#b85c2a] px-4 py-3 text-sm font-bold text-white">
+        <button
+          type="button"
+          className="flex-1 bg-[#b65c02] text-[#dee4ea] font-medium rounded-lg py-3 text-sm"
+        >
           Prepare
         </button>
       </div>
 
       {/* Recent Breakdowns */}
-      <div className="mt-10">
-        <span className="text-lg font-bold text-white">Recent Breakdowns</span>
+      <div className="mt-2">
+        <span className="text-lg font-bold text-[#dee4ea]">
+          Recent Breakdowns
+        </span>
       </div>
     </div>
   );
