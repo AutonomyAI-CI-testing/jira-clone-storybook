@@ -4,6 +4,7 @@ import invariant from "tiny-invariant";
 import { Project, ProjectId } from "@domain/project";
 import { getProject } from "@infrastructure/db/project";
 import { AnalyticsView } from "@app/ui/main/project/analytics";
+import { useLoaderData } from "@remix-run/react";
 import { Error500 } from "@app/components/error-500";
 import { formatTags, formatProperties } from "@utils/meta";
 
@@ -82,5 +83,6 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export default function AnalyticsRoute() {
-  return <AnalyticsView />;
+  const { project } = useLoaderData() as LoaderData;
+  return <AnalyticsView project={project} />;
 }
