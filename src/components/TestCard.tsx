@@ -1,81 +1,70 @@
-import {
-  HiChevronUp,
-  HiOutlineCog,
-  HiOutlineInformationCircle,
-} from "react-icons/hi";
+import { FiSettings, FiChevronUp, FiInfo } from "react-icons/fi";
 
-export function TestCard() {
+export const TestCard = (): JSX.Element => {
   return (
-    <div id="testElem" className="bg-[#2a2a2a] min-h-screen p-6 font-sans">
-      {/* 1. Header row */}
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-white font-bold text-lg">UI magician Agent</span>
-        <HiOutlineCog className="text-gray-400" size={24} />
+    <div id="testElem" className="min-h-screen bg-[#1e1e1e] p-6 font-sans">
+      {/* Header */}
+      <div className="mb-3 flex items-center justify-between">
+        <h1 className="text-xl font-bold text-white">UI magician Agent</h1>
+        <FiSettings className="text-gray-400" size={22} />
       </div>
 
-      {/* 2. Collapsed row */}
-      <div className="flex items-center gap-2 mb-1">
-        <HiChevronUp className="text-gray-400" size={16} />
-        <span className="text-[#c1622a] text-sm">
-          From entire frame to a singl...
-        </span>
+      {/* Subtitle row */}
+      <div className="mb-10 flex items-center gap-2">
+        <FiChevronUp className="text-gray-400" size={16} />
+        <span className="text-sm text-[#b45309]">From entire frame to a singl...</span>
       </div>
 
-      {/* 3. Spacer */}
-      <div className="h-10" />
-
-      {/* 4. Add New Design section header */}
-      <div className="flex items-center gap-2 mb-5">
-        <HiChevronUp className="text-gray-400" size={20} />
-        <span className="text-white font-bold text-xl">Add New Design</span>
+      {/* Add New Design section */}
+      <div className="mb-6 flex items-center gap-2">
+        <FiChevronUp className="text-white" size={20} />
+        <h2 className="text-2xl font-bold text-white">Add New Design</h2>
       </div>
 
-      {/* 5. Personal Access Token label */}
-      <div className="flex items-center gap-1 mb-2">
-        <label className="text-white text-sm">Personal Access Token</label>
-        <HiOutlineInformationCircle className="text-gray-400" size={16} />
+      {/* Personal Access Token field */}
+      <div className="mb-4">
+        <div className="mb-2 flex items-center gap-2">
+          <label className="text-sm font-semibold text-gray-300">
+            Personal Access Token
+          </label>
+          <FiInfo className="text-gray-400" size={16} />
+        </div>
+        <input
+          type="text"
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          readOnly
+          className="w-full rounded-sm border border-gray-600 bg-[#2a2a2a] px-3 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none"
+        />
       </div>
 
-      {/* 6. Personal Access Token input */}
-      <input
-        type="text"
-        readOnly
-        placeholder="figd_xxxxxxxxxxxxxxxxxx"
-        className="w-full bg-[#1e1e1e] border border-gray-600 rounded px-3 py-2 text-gray-400 text-sm placeholder-gray-500 outline-none mb-4"
-      />
-
-      {/* 7. Design URL label */}
-      <div className="flex items-center gap-1 mb-2">
-        <label className="text-white text-sm">Design URL</label>
-        <HiOutlineInformationCircle className="text-gray-400" size={16} />
+      {/* Design URL field */}
+      <div className="mb-6">
+        <div className="mb-2 flex items-center gap-2">
+          <label className="text-sm font-semibold text-gray-300">Design URL</label>
+          <FiInfo className="text-gray-400" size={16} />
+        </div>
+        <input
+          type="text"
+          placeholder="https://www.figma.com/file/:"
+          readOnly
+          className="w-full rounded-sm border border-gray-600 bg-[#2a2a2a] px-3 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none"
+        />
       </div>
 
-      {/* 8. Design URL input */}
-      <input
-        type="text"
-        readOnly
-        placeholder="https://www.figma.com/file/:"
-        className="w-full bg-[#1e1e1e] border border-gray-600 rounded px-3 py-2 text-gray-400 text-sm placeholder-gray-500 outline-none mb-6"
-      />
-
-      {/* 9. Action buttons */}
-      <div className="flex gap-4">
-        <button
-          type="button"
-          className="flex-1 bg-[#c1622a] text-white font-semibold py-3 rounded-xl"
-        >
+      {/* Buttons */}
+      <div className="mb-12 flex gap-4">
+        <button className="flex-1 rounded-lg bg-[#b45309] px-6 py-3 text-base font-semibold text-white">
           Awesome
         </button>
-        <button
-          type="button"
-          className="flex-1 bg-[#c1622a] text-white font-semibold py-3 rounded-xl"
-        >
+        <button className="flex-1 rounded-lg bg-[#92400e] px-6 py-3 text-base font-semibold text-white">
           Prepare
         </button>
       </div>
 
-      {/* 10. Recent Breakdowns heading */}
-      <h2 className="text-white font-bold text-xl mt-10">Recent Breakdowns</h2>
+      {/* Recent Breakdowns */}
+      <div>
+        <h2 className="text-xl font-bold text-white">Recent Breakdowns</h2>
+      </div>
     </div>
   );
-}
+};
