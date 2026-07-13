@@ -1,68 +1,76 @@
 export const TestCard = (): JSX.Element => {
   return (
-    <div id="testElem" className="bg-[#232323] w-[320px] p-5 flex flex-col gap-4">
+    <div
+      id="testElem"
+      className="bg-[#2a2a2a] min-h-screen w-full max-w-sm p-6 flex flex-col gap-6"
+    >
       {/* Header row */}
       <div className="flex items-center justify-between">
-        <span className="text-white font-bold text-lg">UI magician Agent</span>
+        <span className="text-white text-xl font-bold">UI magician Agent</span>
         <span className="text-white text-xl">⚙</span>
       </div>
 
       {/* Subtitle row */}
       <div className="flex items-center gap-2">
-        <span className="text-[#aaa] text-xs">∧</span>
-        <span className="text-[#c8764a] text-sm">From entire frame to a singl...</span>
+        <span className="text-[#c8753a] text-sm">∧</span>
+        <span className="text-[#c8753a] text-sm">From entire frame to a singl...</span>
       </div>
-
-      {/* Spacer */}
-      <div className="h-4" />
 
       {/* Add New Design section */}
-      <div className="flex items-center gap-2">
-        <span className="text-white text-sm">∧</span>
-        <span className="text-white font-bold text-xl">Add New Design</span>
-      </div>
-
-      {/* Personal Access Token */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4 mt-4">
+        {/* Section heading */}
         <div className="flex items-center gap-2">
-          <span className="text-[#ccc] text-sm font-semibold">Personal Access Token</span>
-          <span className="text-[#999] text-sm">ⓘ</span>
+          <span className="text-white text-base">∧</span>
+          <span className="text-white text-xl font-bold">Add New Design</span>
         </div>
-        <input
-          className="w-full bg-[#2e2e2e] border border-[#555] rounded px-3 py-2 text-[#888] text-sm placeholder-[#777] outline-none"
-          placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          readOnly
-        />
-      </div>
 
-      {/* Design URL */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
-          <span className="text-[#ccc] text-sm font-semibold">Design URL</span>
-          <span className="text-[#999] text-sm">ⓘ</span>
+        {/* Personal Access Token field */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <label className="text-white text-sm font-semibold">
+              Personal Access Token
+            </label>
+            <span className="text-white text-sm">ⓘ</span>
+          </div>
+          <input
+            type="text"
+            placeholder="figd_xxxxxxxxxxxxxxxxxx"
+            readOnly
+            className="w-full bg-[#3a3a3a] border border-[#555555] rounded px-3 py-3 text-gray-400 placeholder-gray-500 text-sm outline-none"
+          />
         </div>
-        <input
-          className="w-full bg-[#2e2e2e] border border-[#666] rounded px-3 py-2 text-[#888] text-sm placeholder-[#777] outline-none"
-          placeholder="https://www.figma.com/file/:"
-          readOnly
-        />
+
+        {/* Design URL field */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <label className="text-white text-sm font-semibold">
+              Design URL
+            </label>
+            <span className="text-white text-sm">ⓘ</span>
+          </div>
+          <input
+            type="text"
+            placeholder="https://www.figma.com/file/:"
+            readOnly
+            className="w-full bg-[#3a3a3a] border border-[#555555] rounded px-3 py-3 text-gray-400 placeholder-gray-500 text-sm outline-none"
+          />
+        </div>
+
+        {/* Action buttons */}
+        <div className="flex items-center gap-4 mt-2">
+          <button className="flex-1 bg-[#b85c2a] hover:bg-[#a04e22] text-white font-semibold py-3 px-4 rounded-lg transition-colors">
+            Awesome
+          </button>
+          <button className="flex-1 bg-[#b85c2a] hover:bg-[#a04e22] text-white font-semibold py-3 px-4 rounded-lg transition-colors">
+            Prepare
+          </button>
+        </div>
       </div>
 
-      {/* Button row */}
-      <div className="flex gap-3 justify-center mt-1">
-        <button className="bg-[#c0622a] text-white font-semibold px-8 py-3 rounded-lg">
-          Awesome
-        </button>
-        <button className="bg-[#a85528] text-white font-semibold px-8 py-3 rounded-lg">
-          Prepare
-        </button>
+      {/* Recent Breakdowns heading */}
+      <div className="mt-4">
+        <span className="text-white text-xl font-bold">Recent Breakdowns</span>
       </div>
-
-      {/* Spacer */}
-      <div className="h-4" />
-
-      {/* Recent Breakdowns */}
-      <span className="text-white font-bold text-xl">Recent Breakdowns</span>
     </div>
   );
 };
