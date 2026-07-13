@@ -61,10 +61,24 @@ export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const _action = formData.get("_action") as string;
 
-  if (_action === "setUser") {
-    const userId = formData.get("user") as string;
+  if (_action === "login") {
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    // keepSignedIn functionality would be implemented in a real auth system
+    // const keepSignedIn = formData.get("keepSignedIn") === "on";
+
+    // Client-side validation should have caught this, but validate on server too
+    if (!email || !password || password.length < 8) {
+      return json({ error: "Invalid email or password" }, { status: 400 });
+    }
+
+    // In a real app, verify credentials against database
+    // For demo mode, just use the first user or allow custom user selection
+    const users = await getUsers();
+    const defaultUser = users[0];
+
     const userSession = await getUserSession(request);
-    userSession.setUser(userId);
+    userSession.setUser(defaultUser.id);
 
     return redirect("/projects", {
       headers: { "Set-Cookie": await userSession.commit() },
