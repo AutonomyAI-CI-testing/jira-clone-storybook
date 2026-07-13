@@ -1,0 +1,28 @@
+/* Utility classes needed by TestCard that aren't in the project's custom Tailwind theme */
+
+/* bg-neutral-900 */
+.bg-neutral-900 { background-color: #171717; }
+
+/* bg-zinc-800 */
+.bg-zinc-800 { background-color: #27272a; }
+
+/* border-zinc-600 */
+.border-zinc-600 { border-color: #52525b; }
+
+/* text-zinc-400 */
+.text-zinc-400 { color: #a1a1aa; }
+
+/* text-zinc-200 */
+.text-zinc-200 { color: #e4e4e7; }
+
+/* placeholder-zinc-500 */
+.placeholder-zinc-500::placeholder { color: #71717a; }
+
+/* bg-orange-700 */
+.bg-orange-700 { background-color: #c2410c; }
+
+/* text-amber-700 */
+.text-amber-700 { color: #b45309; }
+
+/* rounded-xl */
+.rounded-xl { border-radius: 0.75rem; }

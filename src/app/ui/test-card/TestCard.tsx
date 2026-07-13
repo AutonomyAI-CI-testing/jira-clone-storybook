@@ -1,69 +1,108 @@
-import { IoSettingsOutline } from "react-icons/io5";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-
-export function TestCard() {
+export function TestCard(): JSX.Element {
   return (
-    <div id="testElem" className="w-full max-w-[320px] bg-[#2a2a2a] p-5 font-sans">
-      {/* 1. Header row */}
-      <div className="flex items-center justify-between">
+    <div id="testElem" className="min-h-screen bg-neutral-900 p-6 text-white">
+      {/* Header row */}
+      <div className="mb-3 flex items-center justify-between">
         <span className="text-lg font-bold text-white">UI magician Agent</span>
-        <IoSettingsOutline size={22} className="text-[#a1a1aa]" />
+        {/* Gear icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 text-zinc-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
       </div>
 
-      {/* 2. Subtitle row */}
-      <div className="mt-3 flex items-center gap-2">
-        <span className="text-sm font-bold text-[#b45309]">^</span>
-        <span className="text-sm text-[#b45309]">From entire frame to a singl...</span>
+      {/* Subtitle row */}
+      <div className="flex items-center gap-2">
+        <span className="text-sm text-zinc-400">^</span>
+        <span className="text-sm text-amber-700">From entire frame to a singl...</span>
       </div>
 
-      {/* 3. Section header */}
-      <div className="mt-10 flex items-center gap-2">
-        <span className="text-base font-bold text-white">^</span>
-        <span className="text-lg font-bold text-white">Add New Design</span>
+      {/* Spacer */}
+      <div className="my-8" />
+
+      {/* Section header: Add New Design */}
+      <div className="mb-5 flex items-center gap-2">
+        <span className="text-base font-bold text-zinc-400">^</span>
+        <span className="text-xl font-bold text-white">Add New Design</span>
       </div>
 
-      {/* 4. Label: Personal Access Token */}
-      <div className="mt-5 flex items-center gap-2">
-        <span className="text-sm font-semibold text-white">Personal Access Token</span>
-        <AiOutlineInfoCircle size={16} className="text-[#a1a1aa]" />
+      {/* Personal Access Token label */}
+      <div className="mb-2 flex items-center gap-2">
+        <span className="text-sm font-medium text-zinc-200">Personal Access Token</span>
+        {/* Info circle icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4 text-zinc-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <circle cx="12" cy="12" r="10" strokeLinecap="round" strokeLinejoin="round" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 16v-4m0-4h.01" />
+        </svg>
       </div>
 
-      {/* 5. Input: Personal Access Token */}
+      {/* Personal Access Token input */}
       <input
         type="text"
+        readOnly
         placeholder="figd_xxxxxxxxxxxxxxxxxx"
-        className="mt-2 w-full rounded border border-[#52525b] bg-[#27272a] px-3 py-2 text-sm text-[#a1a1aa] placeholder-[#71717a] outline-none"
-        readOnly
+        className="mb-4 w-full rounded border border-zinc-600 bg-zinc-800 px-3 py-2 text-zinc-400 placeholder-zinc-500 outline-none"
       />
 
-      {/* 6. Label: Design URL */}
-      <div className="mt-4 flex items-center gap-2">
-        <span className="text-sm font-semibold text-white">Design URL</span>
-        <AiOutlineInfoCircle size={16} className="text-[#a1a1aa]" />
+      {/* Design URL label */}
+      <div className="mb-2 flex items-center gap-2">
+        <span className="text-sm font-medium text-zinc-200">Design URL</span>
+        {/* Info circle icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4 text-zinc-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <circle cx="12" cy="12" r="10" strokeLinecap="round" strokeLinejoin="round" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 16v-4m0-4h.01" />
+        </svg>
       </div>
 
-      {/* 7. Input: Design URL */}
+      {/* Design URL input */}
       <input
         type="text"
-        placeholder="https://www.figma.com/file/:"
-        className="mt-2 w-full rounded border border-[#a1a1aa] bg-[#27272a] px-3 py-2 text-sm text-[#a1a1aa] placeholder-[#71717a] outline-none"
         readOnly
+        placeholder="https://www.figma.com/file/:"
+        className="mb-6 w-full rounded border border-zinc-600 bg-zinc-800 px-3 py-2 text-zinc-400 placeholder-zinc-500 outline-none"
       />
 
-      {/* 8. Two buttons */}
-      <div className="mt-6 flex gap-4">
-        <button className="flex-1 rounded-xl bg-[#c2410c] py-3 text-sm font-semibold text-white">
+      {/* Button row */}
+      <div className="mb-10 flex justify-center gap-4">
+        <button className="rounded-xl bg-orange-700 px-6 py-3 font-medium text-white">
           Awesome
         </button>
-        <button className="flex-1 rounded-xl bg-[#c2410c] py-3 text-sm font-semibold text-white">
+        <button className="rounded-xl bg-orange-700 px-6 py-3 font-medium text-white">
           Prepare
         </button>
       </div>
 
-      {/* 9. Footer */}
-      <div className="mt-10">
-        <span className="text-lg font-bold text-white">Recent Breakdowns</span>
-      </div>
+      {/* Footer */}
+      <div className="text-xl font-bold text-white">Recent Breakdowns</div>
     </div>
   );
 }
