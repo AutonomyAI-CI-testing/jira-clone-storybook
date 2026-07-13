@@ -2,134 +2,127 @@ export function TestCard() {
   return (
     <div
       id="testElem"
-      className="flex flex-col px-6 py-6"
-      style={{ backgroundColor: "#2a2a2a", minWidth: "300px", maxWidth: "480px" }}
+      className="min-h-screen w-full bg-neutral-900 px-6 py-8 font-sans"
     >
-      {/* Header */}
-      <div className="flex justify-between items-center mb-3">
-        <span className="font-bold text-white text-xl">UI magician Agent</span>
+      {/* 1. Header row */}
+      <div className="flex items-center justify-between">
+        <span className="text-xl font-bold text-white">UI magician Agent</span>
+        {/* Gear / settings icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
+          fill="none"
           stroke="currentColor"
-          width="24"
-          height="24"
-          style={{ color: "#9ca3af" }}
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-zinc-400"
+          aria-hidden="true"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
         </svg>
       </div>
 
-      {/* Subtitle */}
-      <div className="flex items-center gap-2 mb-10">
-        <span className="text-white text-sm">^</span>
-        <span className="text-sm" style={{ color: "#92400e" }}>
-          From entire frame to a singl...
-        </span>
+      {/* 2. Subtitle row */}
+      <div className="mt-3 flex items-center gap-2">
+        <span className="text-sm font-semibold text-amber-700">^</span>
+        <span className="text-sm text-amber-700">From entire frame to a singl...</span>
       </div>
 
-      {/* Section header */}
-      <div className="flex items-center gap-2 mb-5">
-        <span className="text-white font-bold text-lg">^</span>
-        <span className="text-white font-bold text-2xl">Add New Design</span>
+      {/* 3. Spacer */}
+      <div className="mt-10" />
+
+      {/* 4. Section header */}
+      <div className="flex items-center gap-3">
+        <span className="text-base font-bold text-white">^</span>
+        <span className="text-xl font-bold text-white">Add New Design</span>
       </div>
 
-      {/* Personal Access Token label */}
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-white text-sm font-medium">Personal Access Token</span>
+      {/* 5. Label: Personal Access Token */}
+      <div className="mt-6 flex items-center gap-2">
+        <span className="text-sm font-semibold text-zinc-200">Personal Access Token</span>
+        {/* Info circle icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
           width="16"
           height="16"
-          style={{ color: "#9ca3af" }}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-zinc-400"
+          aria-hidden="true"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
         </svg>
       </div>
 
-      {/* Token Input */}
+      {/* Input: Personal Access Token */}
       <input
         type="text"
-        className="w-full rounded-lg px-3 py-3 mb-5 text-white outline-none"
-        style={{
-          backgroundColor: "#3f3f46",
-          border: "1px solid #52525b",
-          color: "#ffffff",
-        }}
+        readOnly
         placeholder="figd_xxxxxxxxxxxxxxxxxx"
+        className="mt-2 w-full rounded border border-zinc-600 bg-zinc-800 px-4 py-3 text-sm text-zinc-400 placeholder-zinc-500 outline-none"
       />
 
-      {/* Design URL label */}
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-white text-sm font-medium">Design URL</span>
+      {/* 6. Label: Design URL */}
+      <div className="mt-5 flex items-center gap-2">
+        <span className="text-sm font-semibold text-zinc-200">Design URL</span>
+        {/* Info circle icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
           width="16"
           height="16"
-          style={{ color: "#9ca3af" }}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-zinc-400"
+          aria-hidden="true"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
         </svg>
       </div>
 
-      {/* Design URL Input */}
+      {/* Input: Design URL */}
       <input
         type="text"
-        className="w-full rounded-lg px-3 py-3 mb-6 text-white outline-none"
-        style={{
-          backgroundColor: "#3f3f46",
-          border: "1px solid #52525b",
-          color: "#ffffff",
-        }}
+        readOnly
         placeholder="https://www.figma.com/file/:"
+        className="mt-2 w-full rounded border border-zinc-600 bg-zinc-800 px-4 py-3 text-sm text-zinc-400 placeholder-zinc-500 outline-none"
       />
 
-      {/* Buttons */}
-      <div className="flex gap-4 justify-center mb-10">
+      {/* 7. Button row */}
+      <div className="mt-8 flex items-center justify-center gap-4">
         <button
-          className="text-white rounded-xl px-8 py-3 font-semibold"
-          style={{ backgroundColor: "#b45309" }}
+          type="button"
+          className="rounded-xl bg-orange-700 px-6 py-3 text-sm font-semibold text-white hover:bg-orange-600 active:bg-orange-800"
         >
           Awesome
         </button>
         <button
-          className="text-white rounded-xl px-8 py-3 font-semibold"
-          style={{ backgroundColor: "#b45309" }}
+          type="button"
+          className="rounded-xl bg-orange-700 px-6 py-3 text-sm font-semibold text-white hover:bg-orange-600 active:bg-orange-800"
         >
           Prepare
         </button>
       </div>
 
-      {/* Footer */}
-      <div className="text-white font-bold text-2xl">Recent Breakdowns</div>
+      {/* 8. Footer */}
+      <div className="mt-12">
+        <span className="text-xl font-bold text-white">Recent Breakdowns</span>
+      </div>
     </div>
   );
 }
