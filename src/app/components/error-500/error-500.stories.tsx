@@ -6,7 +6,7 @@ const meta: Meta<typeof Error500> = {
   title: "Components/Error500",
   component: Error500,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
@@ -27,21 +27,15 @@ type Story = StoryObj<typeof Error500>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    message: "Something went wrong on our end.",
   },
 };
 
-export const Link: Story = {
+export const MessageWithLink: Story = {
   args: {
-    href: "/link-to-safe-place",
-  },
-};
-
-export const MessageLink: Story = {
-  args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Something went wrong on our end.",
+    href: "/",
   },
 };
