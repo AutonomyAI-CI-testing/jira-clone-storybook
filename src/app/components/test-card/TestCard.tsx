@@ -4,7 +4,7 @@ export function TestCard() {
   return (
     <div
       id="testElem"
-      className="bg-[#282420] min-h-screen text-white p-6 flex flex-col gap-6 max-w-sm mx-auto"
+      className="bg-[#282420] text-white min-h-screen p-6 flex flex-col gap-6 max-w-sm mx-auto"
     >
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -15,9 +15,7 @@ export function TestCard() {
       {/* Subtext */}
       <div className="flex items-center gap-2">
         <FiChevronUp className="text-gray-400" size={16} />
-        <span className="text-[#c4742a] text-sm">
-          From entire frame to a singl...
-        </span>
+        <span className="text-[#c4742a] text-sm">From entire frame to a singl...</span>
       </div>
 
       {/* Spacer */}
@@ -38,8 +36,7 @@ export function TestCard() {
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="bg-[#1e1a17] border border-[#3a3028] rounded px-3 py-2 text-sm text-gray-400 placeholder-gray-600 focus:outline-none"
-          readOnly
+          className="bg-[#1e1a17] border border-[#3a3028] rounded px-3 py-2 text-sm text-gray-400 placeholder-gray-600 focus:outline-none w-full"
         />
       </div>
 
@@ -52,17 +49,16 @@ export function TestCard() {
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
-          className="bg-[#1e1a17] border border-[#3a3028] rounded px-3 py-2 text-sm text-gray-400 placeholder-gray-600 focus:outline-none"
-          readOnly
+          className="bg-[#1e1a17] border border-[#3a3028] rounded px-3 py-2 text-sm text-gray-400 placeholder-gray-600 focus:outline-none w-full"
         />
       </div>
 
       {/* Buttons */}
       <div className="flex gap-4 justify-center">
-        <button className="bg-[#b05a2a] text-white font-semibold rounded-xl px-8 py-3 hover:bg-[#c4641e] transition-colors">
+        <button className="flex-1 bg-[#b05a2a] text-white font-semibold rounded-xl px-8 py-3 hover:bg-[#c4641e] transition-colors">
           Awesome
         </button>
-        <button className="bg-[#b05a2a] text-white font-semibold rounded-xl px-8 py-3 hover:bg-[#c4641e] transition-colors">
+        <button className="flex-1 bg-[#b05a2a] text-white font-semibold rounded-xl px-8 py-3 hover:bg-[#c4641e] transition-colors">
           Prepare
         </button>
       </div>
