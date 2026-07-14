@@ -1,4 +1,5 @@
-const GearIcon = (): JSX.Element => (
+/* ── inline SVG icons ──────────────────────────────────────────── */
+const GearIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="22"
@@ -16,7 +17,7 @@ const GearIcon = (): JSX.Element => (
   </svg>
 );
 
-const CaretUpIcon = (): JSX.Element => (
+const CaretUpIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -33,7 +34,7 @@ const CaretUpIcon = (): JSX.Element => (
   </svg>
 );
 
-const InfoIcon = (): JSX.Element => (
+const InfoIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -41,7 +42,7 @@ const InfoIcon = (): JSX.Element => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.8"
+    strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
     aria-hidden="true"
@@ -52,90 +53,84 @@ const InfoIcon = (): JSX.Element => (
   </svg>
 );
 
+/* ── component ─────────────────────────────────────────────────── */
 export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="flex min-h-screen w-full max-w-[380px] flex-col bg-[#222222] px-5 py-6 text-white"
+      className="flex min-h-screen w-full flex-col bg-[#272727] px-4 py-5 text-white"
     >
-      {/* Header row */}
+      {/* 1 ── Header row */}
       <div className="flex items-center justify-between">
         <span className="text-xl font-bold text-white">UI magician Agent</span>
-        <span className="text-[#9a9a9a]">
+        <span className="text-[#b0b0b0]">
           <GearIcon />
         </span>
       </div>
 
-      {/* Collapsed section row */}
-      <div className="mt-4 flex items-center gap-2 text-[#b87a55]">
+      {/* 2 ── Collapsed row */}
+      <div className="mt-3 flex items-center gap-2 text-[#c47f5a]">
         <CaretUpIcon />
         <span className="text-sm">From entire frame to a singl...</span>
       </div>
 
-      {/* Spacer */}
-      <div className="my-8" />
+      {/* 3 ── Spacer */}
+      <div className="mt-10" />
 
-      {/* Add New Design section heading */}
-      <div className="flex items-center gap-3">
-        <span className="text-white">
+      {/* 4 ── "Add New Design" section heading */}
+      <div className="flex items-center gap-2">
+        <span className="text-[#c47f5a]">
           <CaretUpIcon />
         </span>
         <span className="text-xl font-bold text-white">Add New Design</span>
       </div>
 
-      {/* Personal Access Token */}
-      <div className="mt-6">
-        <div className="mb-2 flex items-center gap-2">
-          <label className="text-sm text-[#d4d4d4]">Personal Access Token</label>
-          <span className="text-[#9a9a9a]">
+      {/* 5 ── Personal Access Token */}
+      <div className="mt-5">
+        <div className="mb-1 flex items-center gap-2">
+          <label className="text-sm font-medium text-[#d4d4d4]">
+            Personal Access Token
+          </label>
+          <span className="text-[#888]">
             <InfoIcon />
           </span>
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          readOnly
-          className="w-full rounded border border-[#555555] bg-[#333333] px-4 py-3 text-sm text-[#888888] placeholder-[#888888] outline-none"
+          className="w-full rounded border border-[#444] bg-[#333] px-3 py-2.5 text-sm text-[#aaa] placeholder-[#666] outline-none focus:border-[#666]"
         />
       </div>
 
-      {/* Design URL */}
-      <div className="mt-5">
-        <div className="mb-2 flex items-center gap-2">
-          <label className="text-sm text-[#d4d4d4]">Design URL</label>
-          <span className="text-[#9a9a9a]">
+      {/* 6 ── Design URL */}
+      <div className="mt-4">
+        <div className="mb-1 flex items-center gap-2">
+          <label className="text-sm font-medium text-[#d4d4d4]">
+            Design URL
+          </label>
+          <span className="text-[#888]">
             <InfoIcon />
           </span>
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
-          readOnly
-          className="w-full rounded border border-[#888888] bg-[#333333] px-4 py-3 text-sm text-[#888888] placeholder-[#888888] outline-none"
+          className="w-full rounded border border-[#555] bg-[#333] px-3 py-2.5 text-sm text-[#aaa] placeholder-[#666] outline-none focus:border-[#666]"
         />
       </div>
 
-      {/* Buttons */}
-      <div className="mt-7 flex gap-4">
-        <button
-          type="button"
-          className="flex-1 rounded-lg bg-[#c1612a] py-4 text-sm font-semibold text-white"
-        >
+      {/* 7 ── Buttons */}
+      <div className="mt-6 flex gap-4 px-2">
+        <button className="flex-1 rounded-lg bg-[#c1612a] px-4 py-3 text-sm font-semibold text-white hover:bg-[#d4733a] active:bg-[#a8521f]">
           Awesome
         </button>
-        <button
-          type="button"
-          className="flex-1 rounded-lg bg-[#b05526] py-4 text-sm font-semibold text-white"
-        >
+        <button className="flex-1 rounded-lg bg-[#b05526] px-4 py-3 text-sm font-semibold text-white hover:bg-[#c46635] active:bg-[#9a4920]">
           Prepare
         </button>
       </div>
 
-      {/* Spacer */}
-      <div className="my-8" />
-
-      {/* Recent Breakdowns */}
-      <div>
+      {/* 8 ── Recent Breakdowns */}
+      <div className="mt-10">
         <span className="text-xl font-bold text-white">Recent Breakdowns</span>
       </div>
     </div>

@@ -5,7 +5,7 @@ const meta: Meta<typeof TestCard> = {
   title: "Components/TestCard",
   component: TestCard,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
 };
 
