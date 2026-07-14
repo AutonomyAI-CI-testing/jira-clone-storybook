@@ -5,8 +5,16 @@ const meta: Meta<typeof TestCard> = {
   title: "Components/TestCard",
   component: TestCard,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
+    backgrounds: { disable: true },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ background: "#2a2a2a", minHeight: "100vh" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
