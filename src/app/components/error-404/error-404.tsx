@@ -8,12 +8,6 @@ export const Error404 = ({
     <div className="flex min-h-screen flex-col items-center justify-center bg-elevation-surface px-6 py-16">
       {/* Circular character image with gradient ring */}
       <div className="relative mb-10">
-        {/*
-          Gradient border trick:
-          - Outer div is slightly larger, has the gradient background and no overflow
-          - Inner div clips the image to a circle exactly 6px inset from the edge
-          - This creates a single solid gradient ring with no white gap
-        */}
         <div
           style={{
             width: 300,
@@ -44,7 +38,7 @@ export const Error404 = ({
 
       {/* 404 large text */}
       <h1
-        className="mb-3 font-primary-black leading-none tracking-tight text-font"
+        className="mb-3 font-primary-black leading-none tracking-tight text-font-danger"
         style={{ fontSize: "clamp(5rem, 15vw, 9rem)" }}
       >
         404
