@@ -1,0 +1,8 @@
+/* Missing default Tailwind color utilities for TestCard component */
+.text-zinc-400 { color: rgb(161 161 170); }
+.text-zinc-300 { color: rgb(212 212 216); }
+.text-zinc-500 { color: rgb(113 113 122); }
+.bg-zinc-800 { background-color: rgb(39 39 42); }
+.border-zinc-600 { border-color: rgb(82 82 91); }
+.text-amber-600 { color: rgb(217 119 6); }
+.placeholder-zinc-500::placeholder { color: rgb(113 113 122); }
