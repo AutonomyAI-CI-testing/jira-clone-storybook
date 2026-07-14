@@ -4,6 +4,20 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
+  safelist: [
+    "bg-[#1e1e1e]",
+    "bg-[#2a2a2a]",
+    "bg-[#b5451b]",
+    "hover:bg-[#c4622d]",
+    "border-[#444]",
+    "border-[#c4622d]",
+    "focus:border-[#c4622d]",
+    "text-[#c4622d]",
+    "placeholder-gray-500",
+    "text-gray-200",
+    "text-gray-300",
+    "text-gray-400",
+  ],
   darkMode: "class",
   theme: {
     colors: {
@@ -191,6 +205,12 @@ module.exports = {
       white: "white",
       black: "black",
       transparent: "transparent",
+      gray: {
+        200: "#e5e7eb",
+        300: "#d1d5db",
+        400: "#9ca3af",
+        500: "#6b7280",
+      },
     },
     fontFamily: {
       "primary-light": ["CircularStdLight", "sans-serif"],
