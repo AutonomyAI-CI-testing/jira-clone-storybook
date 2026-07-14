@@ -15,7 +15,7 @@ export function TestCard() {
       </div>
 
       {/* Subtitle row */}
-      <div className="mt-3 flex items-center gap-1">
+      <div className="mt-3 flex items-center gap-2">
         <HiChevronUp className="text-gray-400" size={18} />
         <span className="text-sm text-[#c2673a]">
           From entire frame to a singl...
@@ -34,9 +34,9 @@ export function TestCard() {
       {/* Personal Access Token */}
       <div className="mt-5">
         <div className="mb-2 flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-300">
+          <label className="text-sm font-medium text-gray-300">
             Personal Access Token
-          </span>
+          </label>
           <AiOutlineInfoCircle className="text-gray-400" size={16} />
         </div>
         <input
@@ -49,22 +49,22 @@ export function TestCard() {
       {/* Design URL */}
       <div className="mt-4">
         <div className="mb-2 flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-300">Design URL</span>
+          <label className="text-sm font-medium text-gray-300">Design URL</label>
           <AiOutlineInfoCircle className="text-gray-400" size={16} />
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
-          className="w-full rounded border border-[#444] bg-[#2a2a2a] px-3 py-2 text-sm text-gray-300 placeholder-gray-500 outline-none"
+          className="w-full rounded border border-[#888] bg-[#2a2a2a] px-3 py-2 text-sm text-gray-300 placeholder-gray-500 outline-none"
         />
       </div>
 
       {/* Buttons */}
-      <div className="mt-6 flex justify-center gap-4">
-        <button className="rounded-xl bg-[#b5451b] px-8 py-3 text-sm font-semibold text-white">
+      <div className="mt-6 flex gap-4">
+        <button className="flex-1 rounded-xl bg-[#b5451b] py-3 text-sm font-semibold text-white">
           Awesome
         </button>
-        <button className="rounded-xl bg-[#b5451b] px-8 py-3 text-sm font-semibold text-white">
+        <button className="flex-1 rounded-xl bg-[#9e3d17] py-3 text-sm font-semibold text-white">
           Prepare
         </button>
       </div>
