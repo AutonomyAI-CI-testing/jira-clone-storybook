@@ -4,6 +4,16 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
+  safelist: [
+    "bg-amber-700",
+    "bg-amber-600",
+    "text-amber-700",
+    "text-gray-300",
+    "text-gray-200",
+    "text-gray-400",
+    "text-gray-500",
+    "border-gray-600",
+  ],
   darkMode: "class",
   theme: {
     colors: {
@@ -208,6 +218,19 @@ module.exports = {
       "dialog-overlay": "rgba(0,0,0,0.45)",
     },
     extend: {
+      colors: {
+        amber: {
+          600: "#d97706",
+          700: "#b45309",
+        },
+        gray: {
+          200: "#e5e7eb",
+          300: "#d1d5db",
+          400: "#9ca3af",
+          500: "#6b7280",
+          600: "#4b5563",
+        },
+      },
       fontSize: {
         "2xs": ["0.75rem", "1rem"],
         xs: ["0.8125rem", "1rem"],
