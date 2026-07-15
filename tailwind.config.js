@@ -262,6 +262,11 @@ module.exports = {
             transform: `translateX(calc(100% + 1rem))`,
           },
         },
+        // Avatar float
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-14px)" },
+        },
       },
       animation: {
         // Dropdown menu
@@ -273,6 +278,8 @@ module.exports = {
         "slide-right-fade": "slide-right-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-down-fade": "slide-down-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-left-fade": "slide-left-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        // Avatar
+        "float": "float 3.5s ease-in-out infinite",
         // Toast
         "toast-hide": "toast-hide 100ms ease-in forwards",
         "toast-slide-in-right": "toast-slide-in-right 150ms cubic-bezier(0.16, 1, 0.3, 1)",
