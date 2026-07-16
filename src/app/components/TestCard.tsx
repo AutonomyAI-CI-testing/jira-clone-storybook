@@ -40,46 +40,40 @@ export const TestCard = (): JSX.Element => {
         <span className="text-gray-300 text-sm font-medium">
           Personal Access Token
         </span>
-        <AiOutlineInfoCircle className="text-gray-300" size={16} />
+        <AiOutlineInfoCircle className="text-gray-400" size={15} />
       </div>
 
-      {/* 6. Dark input — PAT */}
+      {/* 6. Personal Access Token input */}
       <input
-        type="text"
+        className="w-full rounded border border-[#555] bg-[#1c1c1c] px-3 py-2 text-sm text-gray-400 outline-none mb-4"
         placeholder="figd_xxxxxxxxxxxxxxxxxx"
         readOnly
-        style={{ backgroundColor: "#363636" }}
-        className="w-full rounded border border-zinc-600 px-3 py-3 text-gray-400 text-sm placeholder-gray-500 outline-none mb-4"
       />
 
       {/* 7. Design URL label + info icon */}
       <div className="flex items-center gap-2 mb-2">
         <span className="text-gray-300 text-sm font-medium">Design URL</span>
-        <AiOutlineInfoCircle className="text-gray-300" size={16} />
+        <AiOutlineInfoCircle className="text-gray-400" size={15} />
       </div>
 
-      {/* 8. Dark input — URL */}
+      {/* 8. Design URL input */}
       <input
-        type="text"
+        className="w-full rounded border border-[#555] bg-[#1c1c1c] px-3 py-2 text-sm text-gray-400 outline-none mb-6"
         placeholder="https://www.figma.com/file/:"
         readOnly
-        style={{ backgroundColor: "#363636" }}
-        className="w-full rounded border border-zinc-500 px-3 py-3 text-gray-400 text-sm placeholder-gray-500 outline-none mb-6"
       />
 
-      {/* 9. Two burnt-orange buttons */}
-      <div className="flex gap-4 justify-center mb-10">
+      {/* 9. Action buttons */}
+      <div className="flex gap-3 justify-center mb-8">
         <button
-          type="button"
-          style={{ backgroundColor: "#b5511a" }}
-          className="flex-1 max-w-[180px] rounded-lg px-6 py-3 text-white font-semibold text-base hover:opacity-90 active:opacity-80"
+          className="rounded-lg px-8 py-3 text-white font-semibold"
+          style={{ backgroundColor: "#c1622f" }}
         >
           Awesome
         </button>
         <button
-          type="button"
-          style={{ backgroundColor: "#b5511a" }}
-          className="flex-1 max-w-[180px] rounded-lg px-6 py-3 text-white font-semibold text-base hover:opacity-90 active:opacity-80"
+          className="rounded-lg px-8 py-3 text-white font-semibold"
+          style={{ backgroundColor: "#c1622f" }}
         >
           Prepare
         </button>
