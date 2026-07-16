@@ -11,6 +11,13 @@ const meta: Meta<typeof TestCard> = {
       values: [{ name: "dark", value: "#1e1e1e" }],
     },
   },
+  decorators: [
+    (Story: () => JSX.Element) => (
+      <div style={{ width: "390px", backgroundColor: "#1e1e1e" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
