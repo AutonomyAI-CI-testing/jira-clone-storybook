@@ -5,12 +5,15 @@ const meta: Meta<typeof TestCard> = {
   title: "Components/TestCard",
   component: TestCard,
   parameters: {
-    layout: "centered",
-    backgrounds: {
-      default: "dark",
-      values: [{ name: "dark", value: "#111110" }],
-    },
+    layout: "fullscreen",
   },
+  decorators: [
+    (Story) => (
+      <div className="dark" style={{ background: "#1a1a1a", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "32px" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
