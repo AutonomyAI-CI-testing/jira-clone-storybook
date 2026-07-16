@@ -10,91 +10,89 @@ export const TestCard = (): JSX.Element => {
     >
       {/* Header row */}
       <div className="flex items-center justify-between">
-        <span className="text-lg font-bold" style={{ color: "#ffffff" }}>
+        <span className="text-lg font-bold" style={{ color: "#e8e8e8" }}>
           UI magician Agent
         </span>
-        <IoSettingsOutline size={22} style={{ color: "#cccccc" }} />
+        <IoSettingsOutline size={24} style={{ color: "#e8e8e8" }} />
       </div>
 
       {/* Subtitle row */}
       <div className="mt-2 flex items-center gap-1">
-        <FiChevronUp size={14} style={{ color: "#b06030" }} />
+        <FiChevronUp size={16} style={{ color: "#b06030", flexShrink: 0 }} />
         <span className="truncate text-sm" style={{ color: "#b06030" }}>
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Spacer */}
-      <div className="my-8" />
+      <div className="mt-10" />
 
-      {/* "Add New Design" section heading */}
-      <div className="mb-5 flex items-center gap-2">
-        <FiChevronUp size={18} style={{ color: "#ffffff" }} />
-        <span className="text-xl font-bold" style={{ color: "#ffffff" }}>
+      {/* Add New Design heading */}
+      <div className="flex items-center gap-2">
+        <FiChevronUp size={18} style={{ color: "#e8e8e8" }} />
+        <span className="text-xl font-bold" style={{ color: "#e8e8e8" }}>
           Add New Design
         </span>
       </div>
 
-      {/* Personal Access Token label */}
-      <div className="mb-2 flex items-center gap-2">
-        <span className="text-sm font-bold" style={{ color: "#cccccc" }}>
-          Personal Access Token
-        </span>
-        <FiInfo size={16} style={{ color: "#999999" }} />
+      {/* Personal Access Token */}
+      <div className="mt-5">
+        <div className="mb-2 flex items-center gap-2">
+          <span className="text-sm font-semibold" style={{ color: "#c8c8c8" }}>
+            Personal Access Token
+          </span>
+          <FiInfo size={16} style={{ color: "#888" }} />
+        </div>
+        <input
+          type="text"
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          className="w-full rounded p-3 text-sm outline-none"
+          style={{
+            backgroundColor: "#2a2a2a",
+            border: "1px solid #444",
+            color: "#888",
+          }}
+        />
       </div>
 
-      {/* Personal Access Token input */}
-      <input
-        className="mb-4 w-full rounded p-3 text-sm"
-        placeholder="figd_xxxxxxxxxxxxxxxxxx"
-        style={{
-          backgroundColor: "#2a2a2a",
-          border: "1px solid #555",
-          color: "#aaaaaa",
-          outline: "none",
-        }}
-        readOnly
-      />
-
-      {/* Design URL label */}
-      <div className="mb-2 flex items-center gap-2">
-        <span className="text-sm font-bold" style={{ color: "#cccccc" }}>
-          Design URL
-        </span>
-        <FiInfo size={16} style={{ color: "#999999" }} />
+      {/* Design URL */}
+      <div className="mt-4">
+        <div className="mb-2 flex items-center gap-2">
+          <span className="text-sm font-semibold" style={{ color: "#c8c8c8" }}>
+            Design URL
+          </span>
+          <FiInfo size={16} style={{ color: "#888" }} />
+        </div>
+        <input
+          type="text"
+          placeholder="https://www.figma.com/file/:"
+          className="w-full rounded p-3 text-sm outline-none"
+          style={{
+            backgroundColor: "#2a2a2a",
+            border: "1px solid #888",
+            color: "#888",
+          }}
+        />
       </div>
 
-      {/* Design URL input */}
-      <input
-        className="mb-6 w-full rounded p-3 text-sm"
-        placeholder="https://www.figma.com/file/:"
-        style={{
-          backgroundColor: "#2a2a2a",
-          border: "1px solid #555",
-          color: "#aaaaaa",
-          outline: "none",
-        }}
-        readOnly
-      />
-
-      {/* Button row */}
-      <div className="flex justify-center gap-4">
+      {/* Action buttons */}
+      <div className="mt-6 flex gap-4">
         <button
-          className="rounded-lg px-8 py-3 font-bold"
+          className="flex-1 rounded-lg py-3 text-base font-bold"
           style={{ backgroundColor: "#b5541c", color: "#f0ddd0" }}
         >
           Awesome
         </button>
         <button
-          className="rounded-lg px-8 py-3 font-bold"
+          className="flex-1 rounded-lg py-3 text-base font-bold"
           style={{ backgroundColor: "#b5541c", color: "#f0ddd0" }}
         >
           Prepare
         </button>
       </div>
 
-      {/* Recent Breakdowns heading */}
-      <div className="mt-10 text-xl font-bold" style={{ color: "#ffffff" }}>
+      {/* Recent Breakdowns */}
+      <div className="mt-10 text-xl font-bold" style={{ color: "#e8e8e8" }}>
         Recent Breakdowns
       </div>
     </div>
