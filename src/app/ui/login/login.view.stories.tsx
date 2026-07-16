@@ -44,3 +44,9 @@ export const Default: Story = {
     users: usersMock,
   },
 };
+
+export const WithUserSelected: Story = {
+  args: {
+    users: usersMock,
+  },
+};
