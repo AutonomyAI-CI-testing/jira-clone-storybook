@@ -8,7 +8,7 @@ const meta: Meta<typeof TestCard> = {
     layout: "centered",
     backgrounds: {
       default: "dark",
-      values: [{ name: "dark", value: "#1e1e1e" }],
+      values: [{ name: "dark", value: "#111111" }],
     },
   },
 };
@@ -16,4 +16,6 @@ const meta: Meta<typeof TestCard> = {
 export default meta;
 type Story = StoryObj<typeof TestCard>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  render: () => <TestCard />,
+};
