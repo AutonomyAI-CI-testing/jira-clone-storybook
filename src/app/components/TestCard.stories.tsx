@@ -1,20 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TestCard } from './TestCard';
+import { TestCard } from "./TestCard";
 
 const meta: Meta<typeof TestCard> = {
-  title: 'Components/TestCard',
+  title: "Components/TestCard",
   component: TestCard,
   parameters: {
-    layout: 'centered',
-    backgrounds: { disable: true },
+    layout: "centered",
   },
-  decorators: [
-    (Story) => (
-      <div style={{ width: '390px', background: '#252525', minHeight: '100vh' }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;
