@@ -1,63 +1,71 @@
-import { IoSettingsOutline, IoChevronUp, IoInformationCircleOutline } from "react-icons/io5";
+import { FiChevronUp, FiInfo, FiSettings } from "react-icons/fi";
 
 export function TestCard(): JSX.Element {
   return (
-    <div id="testElem" className="min-h-screen w-full bg-[#2a2a2a] p-6">
+    <div id="testElem" className="min-h-screen bg-[#2a2a2a] p-5 font-sans">
       {/* Header row */}
       <div className="flex items-center justify-between">
-        <span className="text-xl font-bold text-white">UI magician Agent</span>
-        <IoSettingsOutline size={24} className="text-white" />
+        <span className="text-lg font-bold text-white">UI magician Agent</span>
+        <FiSettings className="text-white" size={22} />
       </div>
 
-      {/* Subline */}
+      {/* Subtitle row */}
       <div className="mt-3 flex items-center gap-2">
-        <IoChevronUp size={16} className="text-[#b85c30]" />
-        <span className="text-sm text-[#b85c30]">From entire frame to a singl...</span>
+        <FiChevronUp className="text-white" size={16} />
+        <span className="text-sm text-[#c97a4a]">
+          From entire frame to a singl...
+        </span>
       </div>
 
       {/* Spacer */}
-      <div className="mt-12" />
+      <div className="mt-10" />
 
       {/* Add New Design section */}
       <div className="flex items-center gap-2">
-        <IoChevronUp size={20} className="text-white" />
+        <FiChevronUp className="text-white" size={18} />
         <span className="text-xl font-bold text-white">Add New Design</span>
       </div>
 
       {/* Personal Access Token */}
-      <div className="mt-6">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="text-sm font-semibold text-white">Personal Access Token</span>
-          <IoInformationCircleOutline size={18} className="text-white opacity-70" />
-        </div>
+      <div className="mt-5">
+        <label className="mb-1 flex items-center gap-2 text-sm text-white">
+          Personal Access Token
+          <FiInfo className="text-white opacity-70" size={16} />
+        </label>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
           readOnly
-          className="w-full rounded border border-[#444] bg-[#1e1e1e] px-4 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none"
+          className="w-full rounded border border-[#444] bg-[#1e1e1e] px-3 py-2.5 text-sm text-gray-400 placeholder-gray-500 outline-none"
         />
       </div>
 
       {/* Design URL */}
       <div className="mt-4">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="text-sm font-semibold text-white">Design URL</span>
-          <IoInformationCircleOutline size={18} className="text-white opacity-70" />
-        </div>
+        <label className="mb-1 flex items-center gap-2 text-sm text-white">
+          Design URL
+          <FiInfo className="text-white opacity-70" size={16} />
+        </label>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
           readOnly
-          className="w-full rounded border border-[#555] bg-[#1e1e1e] px-4 py-3 text-sm text-gray-400 placeholder-gray-500 outline-none"
+          className="w-full rounded border border-[#555] bg-[#1e1e1e] px-3 py-2.5 text-sm text-gray-400 placeholder-gray-500 outline-none"
         />
       </div>
 
-      {/* Buttons */}
-      <div className="mt-6 flex gap-4">
-        <button className="flex-1 rounded-xl bg-[#b85c30] py-4 text-base font-semibold text-white">
+      {/* Action buttons */}
+      <div className="mt-6 flex justify-center gap-4">
+        <button
+          type="button"
+          className="rounded-xl bg-[#b85c30] px-8 py-3 text-sm font-semibold text-white hover:bg-[#a04f28]"
+        >
           Awesome
         </button>
-        <button className="flex-1 rounded-xl bg-[#b85c30] py-4 text-base font-semibold text-white">
+        <button
+          type="button"
+          className="rounded-xl bg-[#b85c30] px-8 py-3 text-sm font-semibold text-white hover:bg-[#a04f28]"
+        >
           Prepare
         </button>
       </div>
