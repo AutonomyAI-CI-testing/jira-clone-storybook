@@ -1,166 +1,197 @@
+import React from "react";
+
 export function TestCard() {
+  const inputStyle: React.CSSProperties = {
+    background: "#333",
+    border: "1px solid #555",
+    color: "#ccc",
+    padding: "10px 12px",
+    borderRadius: "6px",
+    width: "100%",
+    fontSize: "13px",
+    outline: "none",
+    boxSizing: "border-box",
+  };
+
+  const buttonStyle: React.CSSProperties = {
+    background: "#b85c2a",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    padding: "12px 28px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    fontSize: "14px",
+  };
+
+  const labelRowStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: "6px",
+    marginBottom: "6px",
+  };
+
+  const GearIcon = () => (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#888"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  );
+
+  const ChevronUp = ({
+    color = "#888",
+    size = 14,
+  }: {
+    color?: string;
+    size?: number;
+  }) => (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  );
+
+  const InfoIcon = () => (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#888"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="8" x2="12" y2="8" strokeWidth="3" />
+      <line x1="12" y1="12" x2="12" y2="16" />
+    </svg>
+  );
+
   return (
     <div
       id="testElem"
-      style={{ backgroundColor: "#1a1a1a", color: "#ffffff", minHeight: "100vh" }}
-      className="p-5 flex flex-col"
+      style={{
+        background: "#252525",
+        color: "white",
+        padding: "24px",
+        width: "320px",
+        fontFamily: "sans-serif",
+        boxSizing: "border-box",
+      }}
     >
       {/* 1. Header row */}
-      <div className="flex items-center justify-between">
-        <span className="text-xl font-bold" style={{ color: "#ffffff" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ fontWeight: "bold", fontSize: "18px" }}>
           UI magician Agent
         </span>
-        {/* Gear icon */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#9ca3af"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-        </svg>
+        <GearIcon />
       </div>
 
       {/* 2. Subtitle row */}
-      <div className="flex items-center gap-2 mt-3">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#c07040"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="18 15 12 9 6 15" />
-        </svg>
-        <span className="text-sm" style={{ color: "#c07040" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          marginTop: "10px",
+        }}
+      >
+        <ChevronUp color="#b87a5c" size={13} />
+        <span style={{ color: "#b87a5c", fontSize: "13px" }}>
           From entire frame to a singl...
         </span>
       </div>
 
       {/* 3. Spacer */}
-      <div className="mt-8" />
+      <div style={{ height: "40px" }} />
 
-      {/* 4. "Add New Design" section header */}
-      <div className="flex items-center gap-3">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#ffffff"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="18 15 12 9 6 15" />
-        </svg>
-        <span className="text-2xl font-bold" style={{ color: "#ffffff" }}>
+      {/* 4. Add New Design section header */}
+      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <ChevronUp color="white" size={14} />
+        <span style={{ fontWeight: "bold", fontSize: "16px" }}>
           Add New Design
         </span>
       </div>
 
-      {/* 5. Personal Access Token label */}
-      <div className="flex items-center gap-2 mt-5">
-        <span className="text-sm font-medium" style={{ color: "#d1d5db" }}>
-          Personal Access Token
-        </span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="15"
-          height="15"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#9ca3af"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <line x1="12" y1="16" x2="12" y2="12" />
-          <line x1="12" y1="8" x2="12.01" y2="8" />
-        </svg>
+      {/* 5. Gap */}
+      <div style={{ height: "16px" }} />
+
+      {/* 6. Personal Access Token label */}
+      <div style={labelRowStyle}>
+        <span style={{ fontSize: "13px" }}>Personal Access Token</span>
+        <InfoIcon />
       </div>
 
-      {/* 6. Personal Access Token input */}
+      {/* 7. Token input */}
       <input
+        style={inputStyle}
         type="text"
         placeholder="figd_xxxxxxxxxxxxxxxxxx"
-        className="mt-2 w-full rounded p-3 text-sm outline-none"
-        style={{
-          backgroundColor: "#2a2a2a",
-          border: "1px solid #444444",
-          color: "#ffffff",
-        }}
+        readOnly
       />
 
-      {/* 7. Design URL label */}
-      <div className="flex items-center gap-2 mt-4">
-        <span className="text-sm font-medium" style={{ color: "#d1d5db" }}>
-          Design URL
-        </span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="15"
-          height="15"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#9ca3af"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <line x1="12" y1="16" x2="12" y2="12" />
-          <line x1="12" y1="8" x2="12.01" y2="8" />
-        </svg>
+      {/* 8. Gap */}
+      <div style={{ height: "12px" }} />
+
+      {/* 9. Design URL label */}
+      <div style={labelRowStyle}>
+        <span style={{ fontSize: "13px" }}>Design URL</span>
+        <InfoIcon />
       </div>
 
-      {/* 8. Design URL input */}
+      {/* 10. URL input */}
       <input
+        style={inputStyle}
         type="text"
         placeholder="https://www.figma.com/file/:"
-        className="mt-2 w-full rounded p-3 text-sm outline-none"
-        style={{
-          backgroundColor: "#2a2a2a",
-          border: "1px solid #444444",
-          color: "#ffffff",
-        }}
+        readOnly
       />
 
-      {/* 9. Action buttons */}
-      <div className="mt-6 flex gap-4">
-        <button
-          type="button"
-          className="rounded-lg px-6 py-3 text-sm font-semibold"
-          style={{ backgroundColor: "#b45309", color: "#ffffff" }}
-        >
-          Awesome
-        </button>
-        <button
-          type="button"
-          className="rounded-lg px-6 py-3 text-sm font-semibold"
-          style={{ backgroundColor: "#b45309", color: "#ffffff" }}
-        >
-          Prepare
-        </button>
+      {/* 11. Gap */}
+      <div style={{ height: "16px" }} />
+
+      {/* 12. Action buttons */}
+      <div
+        style={{
+          display: "flex",
+          gap: "12px",
+          justifyContent: "center",
+        }}
+      >
+        <button style={buttonStyle}>Awesome</button>
+        <button style={buttonStyle}>Prepare</button>
       </div>
 
-      {/* 10. Recent Breakdowns heading */}
-      <div className="mt-10">
-        <span className="text-2xl font-bold" style={{ color: "#ffffff" }}>
-          Recent Breakdowns
-        </span>
+      {/* 13. Spacer */}
+      <div style={{ height: "32px" }} />
+
+      {/* 14. Recent Breakdowns heading */}
+      <div style={{ fontWeight: "bold", fontSize: "16px" }}>
+        Recent Breakdowns
       </div>
     </div>
   );
