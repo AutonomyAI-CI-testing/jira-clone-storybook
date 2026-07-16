@@ -1,70 +1,73 @@
-export const TestCard = () => {
+export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="bg-[#2a2a2a] text-white p-5 w-full max-w-sm font-sans min-h-screen"
+      className="w-full max-w-sm bg-[#2a2a2a] p-5 text-white"
     >
       {/* Header row */}
-      <div className="flex justify-between items-center mb-3">
-        <span className="text-lg font-bold text-white">UI magician Agent</span>
-        <span className="text-xl text-[#aaa]">⚙</span>
+      <div className="mb-2 flex items-center justify-between">
+        <h1 className="text-lg font-bold text-white">UI magician Agent</h1>
+        <span className="text-xl text-white">⚙</span>
       </div>
 
-      {/* Collapsed section indicator */}
-      <div className="flex items-center gap-2 text-sm text-[#c0622a]">
-        <span className="text-xs">∧</span>
-        <span>From entire frame to a singl...</span>
+      {/* Subtitle row */}
+      <div className="mb-8 flex items-center gap-2">
+        <span className="text-sm text-[#b85c2a]">∧</span>
+        <span className="text-sm text-[#b85c2a]">From entire frame to a singl...</span>
       </div>
 
-      {/* Spacer */}
-      <div className="my-6" />
-
-      {/* Add New Design section heading */}
-      <div className="flex items-center gap-2 mb-4">
-        <span className="text-xs text-white font-bold">∧</span>
-        <span className="text-lg font-bold text-white">Add New Design</span>
+      {/* Add New Design section */}
+      <div className="mb-5 flex items-center gap-2">
+        <span className="text-base font-bold text-white">∧</span>
+        <h2 className="text-base font-bold text-white">Add New Design</h2>
       </div>
 
-      {/* Personal Access Token label + input */}
-      <div className="mb-3">
-        <div className="flex items-center gap-2 mb-1">
-          <label className="text-sm text-[#ccc]">Personal Access Token</label>
-          <span className="text-sm text-[#aaa]">ℹ</span>
+      {/* Personal Access Token field */}
+      <div className="mb-4">
+        <div className="mb-1 flex items-center gap-2">
+          <label className="text-sm text-white">Personal Access Token</label>
+          <span className="text-sm text-white opacity-70">ⓘ</span>
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
           readOnly
-          className="w-full bg-[#1a1a1a] border border-[#555] rounded px-3 py-2 text-sm text-[#aaa] placeholder:text-[#666] outline-none"
+          className="w-full rounded border border-[#555] bg-[#1e1e1e] px-3 py-2.5 text-sm text-[#999] placeholder:text-[#999] outline-none"
         />
       </div>
 
-      {/* Design URL label + input */}
-      <div className="mb-5">
-        <div className="flex items-center gap-2 mb-1">
-          <label className="text-sm text-[#ccc]">Design URL</label>
-          <span className="text-sm text-[#aaa]">ℹ</span>
+      {/* Design URL field */}
+      <div className="mb-6">
+        <div className="mb-1 flex items-center gap-2">
+          <label className="text-sm text-white">Design URL</label>
+          <span className="text-sm text-white opacity-70">ⓘ</span>
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
           readOnly
-          className="w-full bg-[#1a1a1a] border border-[#555] rounded px-3 py-2 text-sm text-[#aaa] placeholder:text-[#666] outline-none"
+          className="w-full rounded border border-[#555] bg-[#1e1e1e] px-3 py-2.5 text-sm text-[#999] placeholder:text-[#999] outline-none"
         />
       </div>
 
-      {/* Action buttons */}
-      <div className="flex gap-3 mb-8 justify-center">
-        <button className="bg-[#c0622a] text-white font-semibold rounded-lg px-6 py-2 text-sm">
+      {/* Buttons row */}
+      <div className="mb-10 flex gap-3">
+        <button
+          type="button"
+          className="flex-1 rounded-lg bg-[#b85c2a] py-3 text-sm font-bold text-white"
+        >
           Awesome
         </button>
-        <button className="bg-[#c0622a] text-white font-semibold rounded-lg px-6 py-2 text-sm">
+        <button
+          type="button"
+          className="flex-1 rounded-lg bg-[#b85c2a] py-3 text-sm font-bold text-white"
+        >
           Prepare
         </button>
       </div>
 
       {/* Recent Breakdowns heading */}
-      <div className="text-xl font-bold text-white mt-6">Recent Breakdowns</div>
+      <h2 className="text-lg font-bold text-white">Recent Breakdowns</h2>
     </div>
   );
 };
