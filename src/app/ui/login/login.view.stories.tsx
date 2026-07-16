@@ -7,11 +7,10 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
-      defaultValue: usersMock,
       control: {
         type: "object",
       },
@@ -43,4 +42,11 @@ export const Default: Story = {
   args: {
     users: usersMock,
   },
+};
+
+export const SelectedUser: Story = {
+  args: {
+    users: usersMock,
+  },
+  name: "Selected User (Ready to Login)",
 };
