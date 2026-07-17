@@ -1,105 +1,148 @@
 import { LuSettings, LuChevronUp, LuInfo } from "react-icons/lu";
 
 export const TestCard = (): JSX.Element => {
+  const bg = { backgroundColor: "#2a2a2a" };
   const inputStyle: React.CSSProperties = {
-    backgroundColor: "#333333",
+    backgroundColor: "#3a3a3a",
     border: "1px solid #555555",
-    borderRadius: "6px",
     color: "#e8e8e8",
+    borderRadius: "6px",
     padding: "10px 14px",
     width: "100%",
     outline: "none",
     fontSize: "14px",
   };
-
   const buttonStyle: React.CSSProperties = {
-    backgroundColor: "#9a4a1a",
-    color: "#ffffff",
+    backgroundColor: "#a84b20",
+    color: "#f5ede8",
     border: "none",
-    borderRadius: "8px",
+    borderRadius: "10px",
     padding: "12px 24px",
     fontSize: "15px",
     fontWeight: 600,
     cursor: "pointer",
     flex: 1,
   };
+  const amberText = { color: "#c87941" };
+  const whiteText = { color: "#e8e8e8" };
+  const sectionGap: React.CSSProperties = { marginBottom: "24px" };
 
   return (
     <div
       id="testElem"
-      style={{ backgroundColor: "#2a2a2a", color: "#e8e8e8", minHeight: "100vh" }}
-      className="p-6"
+      style={{
+        ...bg,
+        minHeight: "100vh",
+        padding: "28px 20px",
+        maxWidth: "420px",
+        fontFamily: "sans-serif",
+      }}
     >
       {/* Header row */}
-      <div className="flex items-center justify-between">
-        <span className="text-xl font-bold" style={{ color: "#e8e8e8" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: "12px",
+        }}
+      >
+        <span style={{ ...whiteText, fontSize: "22px", fontWeight: 700 }}>
           UI magician Agent
         </span>
-        <LuSettings size={22} style={{ color: "#e8e8e8" }} />
+        <LuSettings size={22} style={{ color: "#a8a8a8" }} />
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 mt-3">
-        <LuChevronUp size={16} style={{ color: "#c87941" }} />
-        <span className="text-sm" style={{ color: "#c87941" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          ...sectionGap,
+        }}
+      >
+        <LuChevronUp size={16} style={{ color: "#c87941", flexShrink: 0 }} />
+        <span style={{ ...amberText, fontSize: "14px" }}>
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Add New Design + form */}
-      <div className="mt-10">
-        {/* Section heading */}
-        <div className="flex items-center gap-2 mb-6">
-          <LuChevronUp size={18} style={{ color: "#e8e8e8" }} />
-          <span className="text-lg font-bold" style={{ color: "#e8e8e8" }}>
-            Add New Design
+      {/* Spacer */}
+      <div style={{ height: "32px" }} />
+
+      {/* Add New Design section */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          marginBottom: "24px",
+        }}
+      >
+        <LuChevronUp size={18} style={{ ...whiteText }} />
+        <span style={{ ...whiteText, fontSize: "18px", fontWeight: 700 }}>
+          Add New Design
+        </span>
+      </div>
+
+      {/* Personal Access Token */}
+      <div style={{ marginBottom: "16px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "8px",
+          }}
+        >
+          <span style={{ ...whiteText, fontSize: "14px", fontWeight: 500 }}>
+            Personal Access Token
           </span>
+          <LuInfo size={16} style={{ color: "#a8a8a8" }} />
         </div>
+        <input
+          type="text"
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          readOnly
+          style={{ ...inputStyle, color: "#888" }}
+        />
+      </div>
 
-        {/* Personal Access Token */}
-        <div className="mb-3">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-sm font-semibold" style={{ color: "#e8e8e8" }}>
-              Personal Access Token
-            </span>
-            <LuInfo size={16} style={{ color: "#aaaaaa" }} />
-          </div>
-          <input
-            type="text"
-            placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            style={inputStyle}
-            readOnly
-          />
-        </div>
-
-        {/* Design URL */}
-        <div className="mb-6">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-sm font-semibold" style={{ color: "#e8e8e8" }}>
-              Design URL
-            </span>
-            <LuInfo size={16} style={{ color: "#aaaaaa" }} />
-          </div>
-          <input
-            type="text"
-            placeholder="https://www.figma.com/file/:"
-            style={inputStyle}
-            readOnly
-          />
-        </div>
-
-        {/* Buttons */}
-        <div className="flex gap-4 mb-10">
-          <button style={buttonStyle}>Awesome</button>
-          <button style={buttonStyle}>Prepare</button>
-        </div>
-
-        {/* Recent Breakdowns */}
-        <div>
-          <span className="text-lg font-bold" style={{ color: "#e8e8e8" }}>
-            Recent Breakdowns
+      {/* Design URL */}
+      <div style={{ marginBottom: "24px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "8px",
+          }}
+        >
+          <span style={{ ...whiteText, fontSize: "14px", fontWeight: 500 }}>
+            Design URL
           </span>
+          <LuInfo size={16} style={{ color: "#a8a8a8" }} />
         </div>
+        <input
+          type="text"
+          placeholder="https://www.figma.com/file/:"
+          readOnly
+          style={{ ...inputStyle, color: "#888" }}
+        />
+      </div>
+
+      {/* Buttons */}
+      <div style={{ display: "flex", gap: "16px", marginBottom: "40px" }}>
+        <button style={buttonStyle}>Awesome</button>
+        <button style={buttonStyle}>Prepare</button>
+      </div>
+
+      {/* Recent Breakdowns */}
+      <div>
+        <span style={{ ...whiteText, fontSize: "18px", fontWeight: 700 }}>
+          Recent Breakdowns
+        </span>
       </div>
     </div>
   );
