@@ -1,0 +1,6 @@
+/* Storybook-only utility classes needed by TestCard (gray scale not in app tailwind config) */
+.text-gray-300 { color: rgb(209, 213, 219); }
+.text-gray-400 { color: rgb(156, 163, 175); }
+.text-gray-500 { color: rgb(107, 114, 128); }
+.border-gray-600 { border-color: rgb(75, 85, 99); }
+.placeholder-gray-500::placeholder { color: rgb(107, 114, 128); }
