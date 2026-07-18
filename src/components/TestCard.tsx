@@ -4,6 +4,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 export const TestCard = (): JSX.Element => {
   const inputStyle = {
     backgroundColor: "#3a3a3a",
+    borderColor: "#555555",
   };
 
   const buttonStyle = {
@@ -38,33 +39,43 @@ export const TestCard = (): JSX.Element => {
 
       {/* 4. Personal Access Token field */}
       <div className="mt-5">
-        <div className="mb-1 flex items-center gap-2">
-          <label className="text-sm font-medium text-gray-300">
+        <div className="mb-2 flex items-center gap-2">
+          <label
+            htmlFor="pat-input"
+            className="text-sm font-medium"
+            style={{ color: "#d4c4b4" }}
+          >
             Personal Access Token
           </label>
-          <FiInfo className="text-gray-400" size={15} />
+          <FiInfo size={15} className="text-gray-500" />
         </div>
         <input
+          id="pat-input"
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
           style={inputStyle}
-          className="w-full rounded border border-gray-600 px-3 py-2 text-sm text-gray-400 placeholder-gray-500 outline-none"
+          className="w-full rounded border px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none"
         />
       </div>
 
       {/* 5. Design URL field */}
       <div className="mt-4">
-        <div className="mb-1 flex items-center gap-2">
-          <label className="text-sm font-medium text-gray-300">
+        <div className="mb-2 flex items-center gap-2">
+          <label
+            htmlFor="url-input"
+            className="text-sm font-medium"
+            style={{ color: "#d4c4b4" }}
+          >
             Design URL
           </label>
-          <FiInfo className="text-gray-400" size={15} />
+          <FiInfo size={15} className="text-gray-500" />
         </div>
         <input
+          id="url-input"
           type="text"
           placeholder="https://www.figma.com/file/:"
           style={inputStyle}
-          className="w-full rounded border border-gray-600 px-3 py-2 text-sm text-gray-400 placeholder-gray-500 outline-none"
+          className="w-full rounded border px-3 py-3 text-sm text-gray-300 placeholder-gray-500 outline-none"
         />
       </div>
 

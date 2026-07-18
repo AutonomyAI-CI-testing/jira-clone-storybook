@@ -1,7 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import "./testcard-storybook.css";
-
 import { TestCard } from "./TestCard";
 
 const meta: Meta<typeof TestCard> = {
