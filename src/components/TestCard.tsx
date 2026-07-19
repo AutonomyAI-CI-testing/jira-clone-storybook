@@ -1,180 +1,155 @@
-import { AiOutlineSetting, AiOutlineUp, AiOutlineInfoCircle } from "react-icons/ai";
+export function TestCard() {
+  const orangeBtn: React.CSSProperties = {
+    backgroundColor: "#b85c38",
+  };
 
-export function TestCard(): JSX.Element {
-  const styles = {
-    root: {
-      backgroundColor: "#282420",
-      color: "#f5f0eb",
-      fontFamily: "sans-serif",
-      padding: "24px 20px",
-      minHeight: "100vh",
-      boxSizing: "border-box" as const,
-      maxWidth: "320px",
-    },
-    headerRow: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginBottom: "12px",
-    },
-    headerTitle: {
-      fontSize: "20px",
-      fontWeight: "700",
-      color: "#f5f0eb",
-      margin: 0,
-    },
-    gearIcon: {
-      color: "#f5f0eb",
-      fontSize: "22px",
-      opacity: 0.85,
-    },
-    subheadingRow: {
-      display: "flex",
-      alignItems: "center",
-      gap: "6px",
-      marginBottom: "4px",
-    },
-    subheadingText: {
-      fontSize: "13px",
-      color: "#c8956a",
-      margin: 0,
-    },
-    chevronMuted: {
-      color: "#c8956a",
-      fontSize: "14px",
-    },
-    spacer: {
-      height: "32px",
-    },
-    sectionRow: {
-      display: "flex",
-      alignItems: "center",
-      gap: "8px",
-      marginBottom: "20px",
-    },
-    sectionTitle: {
-      fontSize: "18px",
-      fontWeight: "700",
-      color: "#f5f0eb",
-      margin: 0,
-    },
-    chevronWhite: {
-      color: "#f5f0eb",
-      fontSize: "18px",
-    },
-    fieldGroup: {
-      marginBottom: "16px",
-    },
-    labelRow: {
-      display: "flex",
-      alignItems: "center",
-      gap: "6px",
-      marginBottom: "8px",
-    },
-    label: {
-      fontSize: "13px",
-      fontWeight: "600",
-      color: "#f5f0eb",
-    },
-    infoIcon: {
-      color: "#a8988a",
-      fontSize: "15px",
-    },
-    input: {
-      width: "100%",
-      backgroundColor: "#2e2a27",
-      border: "1px solid #3a3532",
-      borderRadius: "4px",
-      padding: "10px 12px",
-      color: "#a8988a",
-      fontSize: "13px",
-      outline: "none",
-      boxSizing: "border-box" as const,
-    },
-    buttonRow: {
-      display: "flex",
-      gap: "12px",
-      marginTop: "24px",
-      marginBottom: "40px",
-    },
-    button: {
-      flex: 1,
-      backgroundColor: "#b35a2a",
-      color: "#ffffff",
-      border: "none",
-      borderRadius: "8px",
-      padding: "12px 16px",
-      fontSize: "15px",
-      fontWeight: "600",
-      cursor: "pointer",
-    },
-    recentHeading: {
-      fontSize: "18px",
-      fontWeight: "700",
-      color: "#f5f0eb",
-      margin: 0,
-    },
+  const inputStyle: React.CSSProperties = {
+    backgroundColor: "#2a2a2a",
   };
 
   return (
-    <div id="testElem" style={styles.root}>
-      {/* Header Row */}
-      <div style={styles.headerRow}>
-        <h1 style={styles.headerTitle}>UI magician Agent</h1>
-        <AiOutlineSetting style={styles.gearIcon} />
+    <div
+      id="testElem"
+      style={{ backgroundColor: "#1e1e1e" }}
+      className="w-full max-w-sm min-h-screen p-5 font-sans"
+    >
+      {/* ── Header ─────────────────────────────────────────── */}
+      <div className="flex items-center justify-between mb-3">
+        <h1 className="text-white text-lg font-bold">UI magician Agent</h1>
+
+        {/* Gear icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
       </div>
 
-      {/* Subheading Row */}
-      <div style={styles.subheadingRow}>
-        <AiOutlineUp style={styles.chevronMuted} />
-        <p style={styles.subheadingText}>From entire frame to a singl...</p>
+      {/* ── Collapsible hint row ────────────────────────────── */}
+      <div className="flex items-center gap-2 mb-8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-4 h-4 text-gray-400 flex-shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+        <span className="text-sm" style={{ color: "#c07848" }}>
+          From entire frame to a singl...
+        </span>
       </div>
 
-      {/* Spacer */}
-      <div style={styles.spacer} />
-
-      {/* Add New Design Section */}
-      <div style={styles.sectionRow}>
-        <AiOutlineUp style={styles.chevronWhite} />
-        <h2 style={styles.sectionTitle}>Add New Design</h2>
+      {/* ── Add New Design section ──────────────────────────── */}
+      <div className="flex items-center gap-2 mb-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-5 h-5 text-gray-300 flex-shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+        <h2 className="text-white text-xl font-bold">Add New Design</h2>
       </div>
 
-      {/* Personal Access Token Field */}
-      <div style={styles.fieldGroup}>
-        <div style={styles.labelRow}>
-          <span style={styles.label}>Personal Access Token</span>
-          <AiOutlineInfoCircle style={styles.infoIcon} />
-        </div>
-        <input
-          style={styles.input}
-          type="text"
-          placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          readOnly
-        />
+      {/* ── Personal Access Token ───────────────────────────── */}
+      <div className="mb-1 flex items-center gap-2">
+        <label className="text-gray-300 text-sm font-medium">
+          Personal Access Token
+        </label>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-4 h-4 text-gray-400 flex-shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+      <input
+        type="text"
+        placeholder="figd_xxxxxxxxxxxxxxxxxx"
+        readOnly
+        style={inputStyle}
+        className="w-full rounded border border-gray-600 px-3 py-2 text-sm text-gray-400 placeholder-gray-500 mb-4 outline-none"
+      />
+
+      {/* ── Design URL ─────────────────────────────────────── */}
+      <div className="mb-1 flex items-center gap-2">
+        <label className="text-gray-300 text-sm font-medium">Design URL</label>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-4 h-4 text-gray-400 flex-shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+      <input
+        type="text"
+        placeholder="https://www.figma.com/file/:"
+        readOnly
+        style={inputStyle}
+        className="w-full rounded border border-gray-600 px-3 py-2 text-sm text-gray-400 placeholder-gray-500 mb-6 outline-none"
+      />
+
+      {/* ── Buttons ────────────────────────────────────────── */}
+      <div className="flex gap-4 mb-10 justify-center">
+        <button
+          type="button"
+          style={orangeBtn}
+          className="flex-1 rounded-lg py-3 px-6 text-white font-semibold text-sm"
+        >
+          Awesome
+        </button>
+        <button
+          type="button"
+          style={orangeBtn}
+          className="flex-1 rounded-lg py-3 px-6 text-white font-semibold text-sm"
+        >
+          Prepare
+        </button>
       </div>
 
-      {/* Design URL Field */}
-      <div style={styles.fieldGroup}>
-        <div style={styles.labelRow}>
-          <span style={styles.label}>Design URL</span>
-          <AiOutlineInfoCircle style={styles.infoIcon} />
-        </div>
-        <input
-          style={styles.input}
-          type="text"
-          placeholder="https://www.figma.com/file/:"
-          readOnly
-        />
-      </div>
-
-      {/* Action Buttons */}
-      <div style={styles.buttonRow}>
-        <button style={styles.button}>Awesome</button>
-        <button style={styles.button}>Prepare</button>
-      </div>
-
-      {/* Recent Breakdowns */}
-      <h2 style={styles.recentHeading}>Recent Breakdowns</h2>
+      {/* ── Recent Breakdowns ──────────────────────────────── */}
+      <h2 className="text-white text-lg font-bold">Recent Breakdowns</h2>
     </div>
   );
 }
