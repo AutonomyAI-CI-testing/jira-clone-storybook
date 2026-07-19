@@ -1,79 +1,197 @@
-import { HiCog, HiChevronUp, HiInformationCircle } from "react-icons/hi";
+import { FiSettings, FiChevronUp, FiInfo } from "react-icons/fi";
 
-export const TestCard = (): JSX.Element => (
-  <div
-    id="testElem"
-    style={{ backgroundColor: "#2a2a2a" }}
-    className="w-full max-w-sm p-6 flex flex-col"
-  >
-    {/* Header row */}
-    <div className="flex items-center justify-between mb-2">
-      <span className="text-lg font-bold text-white">UI magician Agent</span>
-      <HiCog size={24} className="text-white" />
-    </div>
-
-    {/* Subtext row */}
-    <div className="flex items-center gap-1" style={{ color: "#b5651d" }}>
-      <HiChevronUp size={16} />
-      <span className="text-sm">From entire frame to a singl...</span>
-    </div>
-
-    {/* Spacer */}
-    <div className="h-10" />
-
-    {/* Add New Design section header */}
-    <div className="flex items-center gap-2 mb-5">
-      <HiChevronUp size={18} className="text-white" />
-      <span className="text-lg font-bold text-white">Add New Design</span>
-    </div>
-
-    {/* Personal Access Token */}
-    <div className="flex items-center gap-2 mb-2">
-      <span className="text-sm font-medium text-white">Personal Access Token</span>
-      <HiInformationCircle size={16} className="text-gray-400" />
-    </div>
-    <input
-      type="text"
-      readOnly
-      placeholder="figd_xxxxxxxxxxxxxxxxxx"
-      className="w-full rounded px-3 py-2 text-sm text-gray-300 placeholder-gray-500 outline-none"
-      style={{ backgroundColor: "#333", border: "1px solid #4a4a4a" }}
-    />
-
-    {/* Design URL */}
-    <div className="flex items-center gap-2 mt-4 mb-2">
-      <span className="text-sm font-medium text-white">Design URL</span>
-      <HiInformationCircle size={16} className="text-gray-400" />
-    </div>
-    <input
-      type="text"
-      readOnly
-      placeholder="https://www.figma.com/file/:"
-      className="w-full rounded px-3 py-2 text-sm text-gray-300 placeholder-gray-500 outline-none"
-      style={{ backgroundColor: "#333", border: "1px solid #4a4a4a" }}
-    />
-
-    {/* Two side-by-side buttons */}
-    <div className="flex gap-4 mt-6">
-      <button
-        type="button"
-        className="flex-1 rounded-lg py-3 text-sm font-bold text-white"
-        style={{ backgroundColor: "#b5651d" }}
+export function TestCard(): JSX.Element {
+  return (
+    <div
+      id="testElem"
+      style={{
+        backgroundColor: "#2a2a2a",
+        width: "100%",
+        maxWidth: "320px",
+        padding: "24px 20px",
+        fontFamily: "sans-serif",
+        boxSizing: "border-box",
+      }}
+    >
+      {/* Header row */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "12px",
+        }}
       >
-        Awesome
-      </button>
-      <button
-        type="button"
-        className="flex-1 rounded-lg py-3 text-sm font-bold text-white"
-        style={{ backgroundColor: "#b5651d" }}
-      >
-        Prepare
-      </button>
-    </div>
+        <span
+          style={{
+            color: "#ffffff",
+            fontWeight: 700,
+            fontSize: "18px",
+          }}
+        >
+          UI magician Agent
+        </span>
+        <FiSettings style={{ color: "#ffffff", fontSize: "20px" }} />
+      </div>
 
-    {/* Recent Breakdowns */}
-    <div className="mt-10">
-      <span className="text-lg font-bold text-white">Recent Breakdowns</span>
+      {/* Subtitle row */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          marginBottom: "8px",
+        }}
+      >
+        <FiChevronUp style={{ color: "#c47a3a", fontSize: "16px" }} />
+        <span style={{ color: "#c47a3a", fontSize: "14px" }}>
+          From entire frame to a singl...
+        </span>
+      </div>
+
+      {/* Spacer */}
+      <div style={{ height: "32px" }} />
+
+      {/* Section header: Add New Design */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          marginBottom: "20px",
+        }}
+      >
+        <FiChevronUp style={{ color: "#ffffff", fontSize: "18px" }} />
+        <span
+          style={{
+            color: "#ffffff",
+            fontWeight: 700,
+            fontSize: "17px",
+          }}
+        >
+          Add New Design
+        </span>
+      </div>
+
+      {/* Field: Personal Access Token */}
+      <div style={{ marginBottom: "16px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            marginBottom: "8px",
+          }}
+        >
+          <label style={{ color: "#e0e0e0", fontSize: "13px" }}>
+            Personal Access Token
+          </label>
+          <FiInfo style={{ color: "#9a9a9a", fontSize: "14px" }} />
+        </div>
+        <input
+          type="text"
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          readOnly
+          style={{
+            width: "100%",
+            backgroundColor: "#3a3a3a",
+            border: "1px solid #555555",
+            borderRadius: "4px",
+            padding: "10px 12px",
+            color: "#9a9a9a",
+            fontSize: "13px",
+            outline: "none",
+            boxSizing: "border-box",
+          }}
+        />
+      </div>
+
+      {/* Field: Design URL */}
+      <div style={{ marginBottom: "24px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            marginBottom: "8px",
+          }}
+        >
+          <label style={{ color: "#e0e0e0", fontSize: "13px" }}>
+            Design URL
+          </label>
+          <FiInfo style={{ color: "#9a9a9a", fontSize: "14px" }} />
+        </div>
+        <input
+          type="text"
+          placeholder="https://www.figma.com/file/:"
+          readOnly
+          style={{
+            width: "100%",
+            backgroundColor: "#3a3a3a",
+            border: "1px solid #777777",
+            borderRadius: "4px",
+            padding: "10px 12px",
+            color: "#9a9a9a",
+            fontSize: "13px",
+            outline: "none",
+            boxSizing: "border-box",
+          }}
+        />
+      </div>
+
+      {/* Buttons row */}
+      <div
+        style={{
+          display: "flex",
+          gap: "16px",
+          marginBottom: "40px",
+          justifyContent: "center",
+        }}
+      >
+        <button
+          style={{
+            backgroundColor: "#8B3A1A",
+            color: "#ffffff",
+            border: "none",
+            borderRadius: "10px",
+            padding: "12px 24px",
+            fontSize: "14px",
+            fontWeight: 600,
+            cursor: "pointer",
+            flex: 1,
+          }}
+        >
+          Awesome
+        </button>
+        <button
+          style={{
+            backgroundColor: "#8B3A1A",
+            color: "#ffffff",
+            border: "none",
+            borderRadius: "10px",
+            padding: "12px 24px",
+            fontSize: "14px",
+            fontWeight: 600,
+            cursor: "pointer",
+            flex: 1,
+          }}
+        >
+          Prepare
+        </button>
+      </div>
+
+      {/* Footer */}
+      <div>
+        <span
+          style={{
+            color: "#ffffff",
+            fontWeight: 700,
+            fontSize: "17px",
+          }}
+        >
+          Recent Breakdowns
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+}

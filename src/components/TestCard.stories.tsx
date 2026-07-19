@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TestCard } from "./TestCard";
 
 const meta: Meta<typeof TestCard> = {
@@ -6,10 +6,6 @@ const meta: Meta<typeof TestCard> = {
   component: TestCard,
   parameters: {
     layout: "centered",
-    backgrounds: {
-      default: "dark",
-      values: [{ name: "dark", value: "#1a1a1a" }],
-    },
   },
 };
 
