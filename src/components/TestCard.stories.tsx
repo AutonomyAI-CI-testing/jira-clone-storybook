@@ -8,7 +8,6 @@ const meta: Meta<typeof TestCard> = {
     layout: "centered",
     backgrounds: {
       default: "dark",
-      values: [{ name: "dark", value: "#1a1714" }],
     },
   },
 };
