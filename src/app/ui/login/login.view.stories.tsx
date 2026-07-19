@@ -4,25 +4,21 @@ import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
 
 const meta: Meta<typeof LoginView> = {
-  title: "Pages/Login",
+  title: "Views/LoginView",
   component: LoginView,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    users: {
-      defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
-    },
+    layout: "fullscreen",
   },
   decorators: [
     (Story) => {
       const RemixStub = createRemixStub([
         {
           path: "/",
-          element: <Story />,
+          element: (
+            <div className="flex min-h-screen items-start justify-center bg-surface px-6">
+              <Story />
+            </div>
+          ),
           action: async () => {
             return {
               status: 200,
