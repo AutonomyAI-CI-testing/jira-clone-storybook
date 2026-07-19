@@ -7,22 +7,18 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    users: {
-      defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
-    },
+    layout: "fullscreen",
   },
   decorators: [
-    (Story) => {
+    (Story: React.ComponentType) => {
       const RemixStub = createRemixStub([
         {
           path: "/",
-          element: <Story />,
+          element: (
+            <div className="p-8">
+              <Story />
+            </div>
+          ),
           action: async () => {
             return {
               status: 200,
@@ -34,6 +30,14 @@ const meta: Meta<typeof LoginView> = {
       return <RemixStub />;
     },
   ],
+  argTypes: {
+    users: {
+      defaultValue: usersMock,
+      control: {
+        type: "object",
+      },
+    },
+  },
 };
 
 export default meta;
