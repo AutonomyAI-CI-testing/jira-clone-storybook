@@ -1,75 +1,68 @@
-import { FiChevronUp, FiInfo, FiSettings } from "react-icons/fi";
+import { FiSettings, FiChevronUp, FiInfo } from "react-icons/fi";
 
-export const TestCard = (): JSX.Element => {
+export function TestCard() {
   return (
-    <div
-      id="testElem"
-      className="min-h-screen w-full bg-[#1e1e1e] px-5 py-6 font-sans"
-    >
-      {/* Header row */}
-      <div className="mb-3 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-[#e8e8e8]">UI magician Agent</h1>
-        <FiSettings className="text-[#e8e8e8]" size={22} />
+    <div id="testElem" className="bg-[#1e1e1e] text-white min-h-screen p-5 font-sans max-w-sm mx-auto">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-3">
+        <h1 className="text-xl font-bold text-white">UI magician Agent</h1>
+        <FiSettings className="text-gray-300 text-2xl" />
       </div>
 
-      {/* Collapsed sub-row */}
-      <div className="mb-10 flex items-center gap-2">
-        <FiChevronUp className="shrink-0 text-[#a07060]" size={16} />
-        <span className="text-sm text-[#a07060]">
-          From entire frame to a singl...
-        </span>
+      {/* Sub-row */}
+      <div className="flex items-center gap-2 mb-8">
+        <FiChevronUp className="text-[#a07050] text-base" />
+        <span className="text-[#a07050] text-sm">From entire frame to a singl...</span>
       </div>
 
       {/* Add New Design section */}
-      <div className="mb-6 flex items-center gap-2">
-        <FiChevronUp className="shrink-0 text-[#e8e8e8]" size={18} />
-        <h2 className="text-base font-bold text-[#e8e8e8]">Add New Design</h2>
+      <div className="flex items-center gap-2 mb-5">
+        <FiChevronUp className="text-white text-lg" />
+        <h2 className="text-lg font-bold text-white">Add New Design</h2>
       </div>
 
       {/* Personal Access Token */}
-      <div className="mb-2 flex items-center gap-2">
-        <span className="text-sm font-semibold text-[#c0c0c0]">
-          Personal Access Token
-        </span>
-        <FiInfo className="text-[#c0c0c0]" size={16} />
+      <div className="mb-4">
+        <div className="flex items-center gap-2 mb-2">
+          <label className="text-sm font-medium text-gray-200">Personal Access Token</label>
+          <FiInfo className="text-gray-400 text-base" />
+        </div>
+        <input
+          type="text"
+          placeholder="figd_xxxxxxxxxxxxxxxxx"
+          className="w-full bg-[#2a2a2a] border border-[#4a4a4a] rounded px-3 py-2 text-gray-300 placeholder-gray-500 text-sm outline-none focus:border-[#b5451b]"
+          readOnly
+        />
       </div>
-      <input
-        type="text"
-        placeholder="figd_xxxxxxxxxxxxxxxxx"
-        className="mb-4 w-full rounded-sm border border-[#4a4a4a] bg-[#2a2a2a] px-3 py-3 text-sm text-[#c0c0c0] placeholder-[#7a7a7a] outline-none focus:border-[#7a7a7a]"
-      />
 
       {/* Design URL */}
-      <div className="mb-2 flex items-center gap-2">
-        <span className="text-sm font-semibold text-[#c0c0c0]">Design URL</span>
-        <FiInfo className="text-[#c0c0c0]" size={16} />
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-2">
+          <label className="text-sm font-medium text-gray-200">Design URL</label>
+          <FiInfo className="text-gray-400 text-base" />
+        </div>
+        <input
+          type="text"
+          placeholder="https://www.figma.com/file/:"
+          className="w-full bg-[#2a2a2a] border border-[#4a4a4a] rounded px-3 py-2 text-gray-300 placeholder-gray-500 text-sm outline-none focus:border-[#b5451b]"
+          readOnly
+        />
       </div>
-      <input
-        type="text"
-        placeholder="https://www.figma.com/file/:"
-        className="mb-6 w-full rounded-sm border border-[#5a5a5a] bg-[#2a2a2a] px-3 py-3 text-sm text-[#c0c0c0] placeholder-[#7a7a7a] outline-none focus:border-[#7a7a7a]"
-      />
 
-      {/* Action buttons */}
-      <div className="mb-10 flex items-center justify-center gap-4">
-        <button
-          type="button"
-          className="flex-1 rounded-lg bg-[#b5451b] px-6 py-3 text-sm font-semibold text-[#f0d0c0] hover:bg-[#c54e20] active:bg-[#9e3d18]"
-        >
+      {/* Buttons */}
+      <div className="flex gap-4 mb-10">
+        <button className="flex-1 bg-[#b5451b] hover:bg-[#c0531f] text-white font-semibold py-3 rounded-lg transition-colors">
           Awesome
         </button>
-        <button
-          type="button"
-          className="flex-1 rounded-lg bg-[#a03d17] px-6 py-3 text-sm font-semibold text-[#e0c0a8] hover:bg-[#b5451b] active:bg-[#8c3514]"
-        >
+        <button className="flex-1 bg-[#b5451b] hover:bg-[#c0531f] text-white font-semibold py-3 rounded-lg transition-colors">
           Prepare
         </button>
       </div>
 
       {/* Recent Breakdowns */}
-      <h2 className="text-xl font-bold text-[#e8e8e8]">Recent Breakdowns</h2>
+      <h2 className="text-lg font-bold text-white">Recent Breakdowns</h2>
     </div>
   );
-};
+}
 
 export default TestCard;
