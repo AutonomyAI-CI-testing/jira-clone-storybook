@@ -1,75 +1,71 @@
-import { FiSettings, FiChevronUp, FiInfo } from "react-icons/fi";
+import { HiOutlineCog, HiChevronUp, HiInformationCircle } from "react-icons/hi";
 
-export const TestCard = (): JSX.Element => {
+export function TestCard() {
   return (
-    <div
-      id="testElem"
-      className="bg-[#1e1e1e] min-h-screen w-full max-w-sm p-5 font-sans"
-    >
+    <div id="testElem" className="bg-[#1e1e1e] text-white p-5 rounded-lg w-80 flex flex-col gap-4">
       {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <h1 className="text-white font-bold text-lg">UI magician Agent</h1>
-        <FiSettings className="text-gray-400" size={22} />
+      <div className="flex items-center justify-between">
+        <span className="text-xl font-bold">UI magician Agent</span>
+        <HiOutlineCog className="text-white text-2xl" />
       </div>
 
       {/* Collapsible row */}
-      <div className="flex items-center gap-2 mb-8">
-        <FiChevronUp className="text-gray-400" size={16} />
-        <span className="text-[#b07a60] text-sm">
-          From entire frame to a singl...
-        </span>
+      <div className="flex items-center gap-2">
+        <HiChevronUp className="text-[#a07858] text-lg flex-shrink-0" />
+        <span className="text-[#a07858] text-sm">From entire frame to a singl...</span>
       </div>
 
-      {/* Section Header: Add New Design */}
-      <div className="flex items-center gap-2 mb-5">
-        <FiChevronUp className="text-white" size={18} />
-        <h2 className="text-white font-bold text-xl">Add New Design</h2>
+      {/* Spacer */}
+      <div className="h-4" />
+
+      {/* Section header */}
+      <div className="flex items-center gap-2">
+        <HiChevronUp className="text-white text-lg flex-shrink-0" />
+        <span className="text-lg font-bold">Add New Design</span>
       </div>
 
-      {/* Personal Access Token field */}
-      <div className="mb-4">
-        <div className="flex items-center gap-2 mb-2">
-          <label className="text-white text-sm font-medium">
-            Personal Access Token
-          </label>
-          <FiInfo className="text-gray-400" size={16} />
+      {/* Personal Access Token */}
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-medium text-gray-200">Personal Access Token</label>
+          <HiInformationCircle className="text-gray-400 text-base" />
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full bg-[#2a2a2a] border border-gray-500 rounded text-gray-400 placeholder-gray-500 text-sm px-3 py-3 outline-none focus:border-gray-400"
+          className="bg-[#2a2a2a] border border-[#444] text-gray-300 placeholder-gray-500 text-sm rounded px-3 py-2 focus:outline-none"
         />
       </div>
 
-      {/* Design URL field */}
-      <div className="mb-7">
-        <div className="flex items-center gap-2 mb-2">
-          <label className="text-white text-sm font-medium">Design URL</label>
-          <FiInfo className="text-gray-400" size={16} />
+      {/* Design URL */}
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-medium text-gray-200">Design URL</label>
+          <HiInformationCircle className="text-gray-400 text-base" />
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
-          className="w-full bg-[#2a2a2a] border border-gray-500 rounded text-gray-400 placeholder-gray-500 text-sm px-3 py-3 outline-none focus:border-gray-400"
+          className="bg-[#2a2a2a] border border-[#444] text-gray-300 placeholder-gray-500 text-sm rounded px-3 py-2 focus:outline-none"
         />
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex gap-4 mb-10 justify-center">
-        <button className="bg-[#b5451b] hover:bg-[#c94f1f] text-white font-semibold text-sm px-8 py-3 rounded-lg transition-colors">
+      {/* Buttons */}
+      <div className="flex gap-3 justify-center">
+        <button className="bg-[#b5451b] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#9e3c17] transition-colors">
           Awesome
         </button>
-        <button className="bg-[#b5451b] hover:bg-[#c94f1f] text-white font-semibold text-sm px-8 py-3 rounded-lg transition-colors">
+        <button className="bg-[#b5451b] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#9e3c17] transition-colors">
           Prepare
         </button>
       </div>
 
       {/* Recent Breakdowns */}
       <div>
-        <h2 className="text-white font-bold text-xl">Recent Breakdowns</h2>
+        <span className="text-lg font-bold">Recent Breakdowns</span>
       </div>
     </div>
   );
-};
+}
 
 export default TestCard;
