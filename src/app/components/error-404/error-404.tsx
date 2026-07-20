@@ -38,7 +38,7 @@ export const Error404 = forwardRef<HTMLDivElement, Props>(
           />
         )}
 
-        <h1 className="font-primary-black text-4xl text-font sm:text-5xl">
+        <h1 className="font-primary-black text-4xl sm:text-5xl" style={{ color: "#ae2a19" }}>
           {title}
         </h1>
 
