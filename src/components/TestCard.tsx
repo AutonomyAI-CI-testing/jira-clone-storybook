@@ -1,205 +1,69 @@
-import React from "react";
-import { FiSettings, FiChevronUp, FiInfo } from "react-icons/fi";
+import { FiChevronUp, FiInfo, FiSettings } from "react-icons/fi";
 
-export function TestCard(): JSX.Element {
+export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      style={{
-        backgroundColor: "#1e1e1e",
-        minHeight: "100vh",
-        padding: "24px 20px",
-        fontFamily: "sans-serif",
-        boxSizing: "border-box",
-      }}
+      className="min-h-screen w-full bg-[#1e1e1e] px-5 py-6 font-sans"
     >
       {/* Header row */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginBottom: "12px",
-        }}
-      >
-        <span
-          style={{
-            color: "#e8e8e8",
-            fontSize: "20px",
-            fontWeight: "bold",
-          }}
-        >
-          UI magician Agent
-        </span>
-        <FiSettings size={22} style={{ color: "#b0b0b0", flexShrink: 0 }} />
+      <div className="mb-3 flex items-center justify-between">
+        <h1 className="text-xl font-bold text-[#e8e8e8]">UI magician Agent</h1>
+        <FiSettings className="text-[#e8e8e8]" size={22} />
       </div>
 
       {/* Collapsed sub-row */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          marginBottom: "32px",
-        }}
-      >
-        <FiChevronUp size={16} style={{ color: "#9a7a5a", flexShrink: 0 }} />
-        <span style={{ color: "#a07055", fontSize: "14px" }}>
+      <div className="mb-10 flex items-center gap-2">
+        <FiChevronUp className="shrink-0 text-[#a07060]" size={16} />
+        <span className="text-sm text-[#a07060]">
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Spacer */}
-      <div style={{ height: "12px" }} />
+      {/* Add New Design section */}
+      <div className="mb-6 flex items-center gap-2">
+        <FiChevronUp className="shrink-0 text-[#e8e8e8]" size={18} />
+        <h2 className="text-lg font-bold text-[#e8e8e8]">Add New Design</h2>
+      </div>
 
-      {/* Add New Design heading row */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          marginBottom: "24px",
-        }}
-      >
-        <FiChevronUp size={18} style={{ color: "#e8e8e8", flexShrink: 0 }} />
-        <span
-          style={{
-            color: "#e8e8e8",
-            fontSize: "18px",
-            fontWeight: "bold",
-          }}
-        >
-          Add New Design
+      {/* Personal Access Token */}
+      <div className="mb-1 flex items-center gap-2">
+        <span className="text-sm font-semibold text-[#d0d0d0]">
+          Personal Access Token
         </span>
+        <FiInfo className="text-[#d0d0d0]" size={16} />
       </div>
+      <input
+        type="text"
+        placeholder="figd_xxxxxxxxxxxxxxxxx"
+        className="mb-4 w-full rounded-sm border border-[#5a5a5a] bg-[#2a2a2a] px-3 py-3 text-sm text-[#c0c0c0] placeholder-[#7a7a7a] outline-none focus:border-[#7a7a7a]"
+      />
 
-      {/* Personal Access Token label + input */}
-      <div style={{ marginBottom: "16px" }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "8px",
-          }}
-        >
-          <span
-            style={{ color: "#c8c8c8", fontSize: "14px", fontWeight: "500" }}
-          >
-            Personal Access Token
-          </span>
-          <FiInfo size={16} style={{ color: "#9a9a9a" }} />
-        </div>
-        <input
-          type="text"
-          placeholder="figd_xxxxxxxxxxxxxxxxx"
-          readOnly
-          style={{
-            width: "100%",
-            backgroundColor: "#2a2a2a",
-            border: "1px solid #4a4a4a",
-            borderRadius: "6px",
-            padding: "12px 14px",
-            color: "#888888",
-            fontSize: "14px",
-            boxSizing: "border-box",
-            outline: "none",
-          }}
-        />
+      {/* Design URL */}
+      <div className="mb-1 flex items-center gap-2">
+        <span className="text-sm font-semibold text-[#d0d0d0]">Design URL</span>
+        <FiInfo className="text-[#d0d0d0]" size={16} />
       </div>
+      <input
+        type="text"
+        placeholder="https://www.figma.com/file/:"
+        className="mb-6 w-full rounded-sm border border-[#5a5a5a] bg-[#2a2a2a] px-3 py-3 text-sm text-[#c0c0c0] placeholder-[#7a7a7a] outline-none focus:border-[#7a7a7a]"
+      />
 
-      {/* Design URL label + input */}
-      <div style={{ marginBottom: "24px" }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "8px",
-          }}
-        >
-          <span
-            style={{ color: "#c8c8c8", fontSize: "14px", fontWeight: "500" }}
-          >
-            Design URL
-          </span>
-          <FiInfo size={16} style={{ color: "#9a9a9a" }} />
-        </div>
-        <input
-          type="text"
-          placeholder="https://www.figma.com/file/:"
-          readOnly
-          style={{
-            width: "100%",
-            backgroundColor: "#2a2a2a",
-            border: "1px solid #6a6a6a",
-            borderRadius: "6px",
-            padding: "12px 14px",
-            color: "#888888",
-            fontSize: "14px",
-            boxSizing: "border-box",
-            outline: "none",
-          }}
-        />
-      </div>
-
-      {/* Buttons row */}
-      <div
-        style={{
-          display: "flex",
-          gap: "16px",
-          marginBottom: "40px",
-          justifyContent: "center",
-        }}
-      >
-        <button
-          type="button"
-          style={{
-            flex: 1,
-            backgroundColor: "#b5451b",
-            color: "#f0e0d0",
-            fontWeight: "600",
-            fontSize: "15px",
-            padding: "14px 20px",
-            borderRadius: "10px",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
+      {/* Action buttons */}
+      <div className="mb-10 flex items-center justify-center gap-4">
+        <button className="flex-1 rounded-lg bg-[#b5451b] px-6 py-3 text-sm font-semibold text-[#f0d0c0] hover:bg-[#c54e20] active:bg-[#9e3d18]">
           Awesome
         </button>
-        <button
-          type="button"
-          style={{
-            flex: 1,
-            backgroundColor: "#a03d18",
-            color: "#f0e0d0",
-            fontWeight: "600",
-            fontSize: "15px",
-            padding: "14px 20px",
-            borderRadius: "10px",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
+        <button className="flex-1 rounded-lg bg-[#a03d17] px-6 py-3 text-sm font-semibold text-[#e0c0a8] hover:bg-[#b5451b] active:bg-[#8c3514]">
           Prepare
         </button>
       </div>
 
       {/* Recent Breakdowns */}
-      <div>
-        <span
-          style={{
-            color: "#e8e8e8",
-            fontSize: "18px",
-            fontWeight: "bold",
-          }}
-        >
-          Recent Breakdowns
-        </span>
-      </div>
+      <h2 className="text-xl font-bold text-[#e8e8e8]">Recent Breakdowns</h2>
     </div>
   );
-}
+};
 
 export default TestCard;
