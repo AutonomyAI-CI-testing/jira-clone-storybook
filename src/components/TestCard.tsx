@@ -5,118 +5,159 @@ export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="flex flex-col p-5"
       style={{
         backgroundColor: "#2a2a2a",
-        minHeight: "600px",
-        maxWidth: "400px",
+        color: "#e0e0e0",
         fontFamily: "sans-serif",
+        padding: "24px 20px",
+        maxWidth: "360px",
+        minHeight: "600px",
+        boxSizing: "border-box",
       }}
     >
       {/* Header row */}
       <div className="flex items-center justify-between mb-4">
-        <span
-          className="text-lg font-bold"
-          style={{ color: "#e8e8e8" }}
+        <h1
+          style={{
+            fontSize: "1.25rem",
+            fontWeight: 700,
+            color: "#e8e8e8",
+            margin: 0,
+          }}
         >
           UI magician Agent
-        </span>
-        <IoSettingsOutline size={22} style={{ color: "#aaaaaa" }} />
+        </h1>
+        <IoSettingsOutline
+          size={22}
+          style={{ color: "#b0b0b0", flexShrink: 0 }}
+        />
       </div>
 
-      {/* Collapsible row */}
-      <div className="flex items-center gap-2 mb-4">
-        <FiChevronUp size={16} style={{ color: "#a07855" }} />
-        <span className="text-sm" style={{ color: "#a07855" }}>
+      {/* Collapsible-looking row */}
+      <div
+        className="flex items-center gap-2 mb-8"
+        style={{ paddingLeft: "4px" }}
+      >
+        <FiChevronUp size={14} style={{ color: "#a07858", flexShrink: 0 }} />
+        <span style={{ color: "#a07858", fontSize: "0.875rem" }}>
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Spacer */}
-      <div style={{ height: "40px" }} />
-
       {/* Add New Design section */}
-      <div className="flex items-center gap-2 mb-4">
-        <FiChevronUp size={18} style={{ color: "#e8e8e8" }} />
-        <span
-          className="text-lg font-bold"
-          style={{ color: "#e8e8e8" }}
+      <div className="flex items-center gap-2 mb-6">
+        <FiChevronUp size={16} style={{ color: "#e8e8e8", flexShrink: 0 }} />
+        <h2
+          style={{
+            fontSize: "1.125rem",
+            fontWeight: 700,
+            color: "#e8e8e8",
+            margin: 0,
+          }}
         >
           Add New Design
-        </span>
+        </h2>
       </div>
 
-      {/* Personal Access Token */}
-      <div className="flex flex-col gap-2 mb-4">
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium" style={{ color: "#cccccc" }}>
+      {/* Personal Access Token field */}
+      <div className="mb-4">
+        <div className="flex items-center gap-2 mb-2">
+          <span style={{ fontSize: "0.875rem", color: "#c8c8c8", fontWeight: 500 }}>
             Personal Access Token
           </span>
-          <FiInfo size={15} style={{ color: "#888888" }} />
+          <FiInfo size={15} style={{ color: "#a0a0a0" }} />
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full rounded px-3 py-2 text-sm outline-none border border-solid"
+          readOnly
           style={{
-            backgroundColor: "#383838",
-            borderColor: "#555555",
-            color: "#cccccc",
+            width: "100%",
+            backgroundColor: "#3a3a3a",
+            border: "1px solid #555555",
+            borderRadius: "4px",
+            padding: "10px 12px",
+            color: "#888888",
+            fontSize: "0.875rem",
+            outline: "none",
+            boxSizing: "border-box",
           }}
         />
       </div>
 
-      {/* Design URL */}
-      <div className="flex flex-col gap-2 mb-4">
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium" style={{ color: "#cccccc" }}>
+      {/* Design URL field */}
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-2">
+          <span style={{ fontSize: "0.875rem", color: "#c8c8c8", fontWeight: 500 }}>
             Design URL
           </span>
-          <FiInfo size={15} style={{ color: "#888888" }} />
+          <FiInfo size={15} style={{ color: "#a0a0a0" }} />
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
-          className="w-full rounded px-3 py-2 text-sm outline-none border border-solid"
+          readOnly
           style={{
-            backgroundColor: "#383838",
-            borderColor: "#555555",
-            color: "#cccccc",
+            width: "100%",
+            backgroundColor: "#3a3a3a",
+            border: "1px solid #777777",
+            borderRadius: "4px",
+            padding: "10px 12px",
+            color: "#888888",
+            fontSize: "0.875rem",
+            outline: "none",
+            boxSizing: "border-box",
           }}
         />
       </div>
 
       {/* Buttons row */}
-      <div className="flex gap-3 mb-4">
+      <div className="flex items-center justify-center gap-4 mb-8">
         <button
-          className="flex-1 rounded-lg py-3 font-bold cursor-pointer"
+          type="button"
           style={{
             backgroundColor: "#b5541e",
-            color: "#f0dfd0",
+            color: "#f0d0b8",
             border: "none",
+            borderRadius: "8px",
+            padding: "12px 28px",
+            fontSize: "1rem",
+            fontWeight: 600,
+            cursor: "pointer",
+            flex: 1,
           }}
         >
           Awesome
         </button>
         <button
-          className="flex-1 rounded-lg py-3 font-bold cursor-pointer"
+          type="button"
           style={{
-            backgroundColor: "#b5541e",
-            color: "#f0dfd0",
+            backgroundColor: "#9e4a18",
+            color: "#e8c8a8",
             border: "none",
+            borderRadius: "8px",
+            padding: "12px 28px",
+            fontSize: "1rem",
+            fontWeight: 600,
+            cursor: "pointer",
+            flex: 1,
           }}
         >
           Prepare
         </button>
       </div>
 
-      {/* Spacer */}
-      <div style={{ height: "40px" }} />
-
-      {/* Recent Breakdowns */}
-      <span className="text-lg font-bold" style={{ color: "#e8e8e8" }}>
+      {/* Recent Breakdowns heading */}
+      <h2
+        style={{
+          fontSize: "1.25rem",
+          fontWeight: 700,
+          color: "#d8d8d8",
+          margin: 0,
+        }}
+      >
         Recent Breakdowns
-      </span>
+      </h2>
     </div>
   );
 };
