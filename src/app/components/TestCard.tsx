@@ -4,7 +4,7 @@ export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="bg-[#1e1e1e] min-h-screen w-full p-5 font-sans"
+      className="bg-[#1e1e1e] min-h-screen w-full max-w-sm p-5 font-sans"
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
@@ -37,12 +37,12 @@ export const TestCard = (): JSX.Element => {
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full bg-[#2a2a2a] border border-gray-600 rounded text-gray-400 placeholder-gray-500 text-sm px-3 py-3 outline-none focus:border-gray-400"
+          className="w-full bg-[#2a2a2a] border border-gray-500 rounded text-gray-400 placeholder-gray-500 text-sm px-3 py-3 outline-none focus:border-gray-400"
         />
       </div>
 
       {/* Design URL field */}
-      <div className="mb-6">
+      <div className="mb-7">
         <div className="flex items-center gap-2 mb-2">
           <label className="text-white text-sm font-medium">Design URL</label>
           <FiInfo className="text-gray-400" size={16} />
