@@ -1,83 +1,101 @@
 import { AiOutlineSetting, AiOutlineInfoCircle } from "react-icons/ai";
 import { BsChevronUp } from "react-icons/bs";
 
-export function TestCard() {
+export const TestCard = (): JSX.Element => {
   return (
-    <div id="testElem" style={{ backgroundColor: "#2a2a2a" }} className="w-[375px] min-h-screen p-5 text-white font-sans">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <h1 className="text-xl font-bold">UI magician Agent</h1>
-        <AiOutlineSetting size={24} className="text-gray-300" />
-      </div>
-
-      {/* Subtitle row */}
-      <div className="flex items-center gap-2 mb-8">
-        <BsChevronUp size={14} className="text-gray-400" />
-        <span className="text-sm" style={{ color: "#a08060" }}>
-          From entire frame to a singl...
-        </span>
-      </div>
-
-      {/* Add New Design section */}
-      <div className="mb-6">
-        <div className="flex items-center gap-2 mb-4">
-          <BsChevronUp size={16} className="text-white" />
-          <h2 className="text-lg font-bold">Add New Design</h2>
+    <div id="testElem">
+      <div
+        className="flex w-full max-w-sm flex-col rounded-lg p-5 font-sans text-white"
+        style={{ backgroundColor: "#2a2a2a" }}
+      >
+        {/* Header */}
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-xl font-bold">UI magician Agent</span>
+          <AiOutlineSetting size={24} className="text-gray-300" />
         </div>
 
-        {/* Personal Access Token */}
+        {/* Subtitle row */}
+        <div className="mb-6 flex items-center gap-2">
+          <BsChevronUp size={14} className="text-gray-400" />
+          <span className="truncate text-sm" style={{ color: "#a07850" }}>
+            From entire frame to a singl...
+          </span>
+        </div>
+
+        {/* Add New Design section */}
+        <div
+          className="mb-5 flex items-center gap-2 rounded-md p-3"
+          style={{ backgroundColor: "#333333" }}
+        >
+          <BsChevronUp size={16} className="text-white" />
+          <span className="text-lg font-bold text-white">Add New Design</span>
+        </div>
+
+        {/* Personal Access Token field */}
         <div className="mb-4">
-          <div className="flex items-center gap-2 mb-2">
-            <label className="text-sm text-gray-200">Personal Access Token</label>
+          <div className="mb-1 flex items-center gap-2">
+            <span className="text-sm font-medium text-gray-200">
+              Personal Access Token
+            </span>
             <AiOutlineInfoCircle size={16} className="text-gray-400" />
           </div>
           <input
             type="text"
             placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            className="w-full px-3 py-3 rounded border border-gray-600 text-gray-400 placeholder-gray-500 text-sm outline-none"
-            style={{ backgroundColor: "#333" }}
             readOnly
+            className="w-full rounded border px-3 py-2 text-sm text-gray-400 outline-none"
+            style={{
+              backgroundColor: "#2a2a2a",
+              borderColor: "#555",
+            }}
           />
         </div>
 
-        {/* Design URL */}
+        {/* Design URL field */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 mb-2">
-            <label className="text-sm text-gray-200">Design URL</label>
+          <div className="mb-1 flex items-center gap-2">
+            <span className="text-sm font-medium text-gray-200">
+              Design URL
+            </span>
             <AiOutlineInfoCircle size={16} className="text-gray-400" />
           </div>
           <input
             type="text"
             placeholder="https://www.figma.com/file/:"
-            className="w-full px-3 py-3 rounded border border-gray-600 text-gray-400 placeholder-gray-500 text-sm outline-none"
-            style={{ backgroundColor: "#333" }}
             readOnly
+            className="w-full rounded border px-3 py-2 text-sm text-gray-400 outline-none"
+            style={{
+              backgroundColor: "#2a2a2a",
+              borderColor: "#777",
+            }}
           />
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-4">
+        <div className="mb-8 flex gap-3">
           <button
-            className="flex-1 py-3 rounded-lg text-white font-semibold text-base"
+            type="button"
+            className="flex-1 rounded-lg py-3 text-sm font-semibold text-white"
             style={{ backgroundColor: "#c0622a" }}
           >
             Awesome
           </button>
           <button
-            className="flex-1 py-3 rounded-lg text-white font-semibold text-base"
+            type="button"
+            className="flex-1 rounded-lg py-3 text-sm font-semibold text-white"
             style={{ backgroundColor: "#c0622a" }}
           >
             Prepare
           </button>
         </div>
-      </div>
 
-      {/* Recent Breakdowns */}
-      <div className="mt-8">
-        <h2 className="text-lg font-bold">Recent Breakdowns</h2>
+        {/* Recent Breakdowns */}
+        <div>
+          <span className="text-lg font-bold text-white">
+            Recent Breakdowns
+          </span>
+        </div>
       </div>
     </div>
   );
-}
-
-export default TestCard;
+};
