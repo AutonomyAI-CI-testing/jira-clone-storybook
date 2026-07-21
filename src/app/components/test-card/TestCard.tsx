@@ -38,7 +38,7 @@ export const TestCard = (): JSX.Element => {
             type="text"
             placeholder="figd_xxxxxxxxxxxxxxxxxx"
             readOnly
-            className="w-full rounded border border-[#555] bg-[#333] px-3 py-2.5 text-sm text-gray-400 placeholder-gray-500 outline-none"
+            className="w-full rounded border border-[#444] bg-[#3a3a3a] px-3 py-2 text-sm text-gray-400 placeholder-gray-600 outline-none"
           />
         </div>
 
@@ -52,22 +52,16 @@ export const TestCard = (): JSX.Element => {
             type="text"
             placeholder="https://www.figma.com/file/:"
             readOnly
-            className="w-full rounded border border-[#666] bg-[#2e2e2e] px-3 py-2.5 text-sm text-gray-400 placeholder-gray-500 outline-none"
+            className="w-full rounded border border-[#444] bg-[#3a3a3a] px-3 py-2 text-sm text-gray-400 placeholder-gray-600 outline-none"
           />
         </div>
 
-        {/* Buttons */}
+        {/* Action buttons */}
         <div className="flex gap-3">
-          <button
-            type="button"
-            className="flex-1 rounded-lg bg-[#b5511a] py-3 text-sm font-semibold text-white"
-          >
+          <button className="flex-1 rounded-lg bg-[#b5510e] py-2.5 font-semibold text-white">
             Awesome
           </button>
-          <button
-            type="button"
-            className="flex-1 rounded-lg bg-[#b5511a] py-3 text-sm font-semibold text-white"
-          >
+          <button className="flex-1 rounded-lg bg-[#b5510e] py-2.5 font-semibold text-white">
             Prepare
           </button>
         </div>
@@ -75,7 +69,7 @@ export const TestCard = (): JSX.Element => {
 
       {/* Recent Breakdowns */}
       <div className="mt-8">
-        <span className="text-xl font-bold text-gray-100">Recent Breakdowns</span>
+        <span className="text-lg font-bold text-gray-100">Recent Breakdowns</span>
       </div>
     </div>
   );
