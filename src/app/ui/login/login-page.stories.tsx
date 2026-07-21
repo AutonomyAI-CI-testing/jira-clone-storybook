@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
 import { LoginPage } from "./login-page";
 
 const meta: Meta<typeof LoginPage> = {
@@ -17,6 +18,23 @@ const meta: Meta<typeof LoginPage> = {
       description: "Called when form is submitted",
     },
   },
+  decorators: [
+    (Story) => {
+      const RemixStub = createRemixStub([
+        {
+          path: "/",
+          element: <Story />,
+          action: async () => {
+            return {
+              status: 200,
+            };
+          },
+        },
+      ]);
+
+      return <RemixStub />;
+    },
+  ],
 };
 
 export default meta;
