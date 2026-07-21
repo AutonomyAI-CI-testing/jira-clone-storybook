@@ -5,13 +5,11 @@ const meta: Meta<typeof TestCard> = {
   title: "Components/TestCard",
   component: TestCard,
   parameters: {
-    layout: "fullscreen",
+    layout: "centered",
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof TestCard>;
 
-export const Default: Story = {
-  render: () => <TestCard />,
-};
+export const Default: Story = {};
