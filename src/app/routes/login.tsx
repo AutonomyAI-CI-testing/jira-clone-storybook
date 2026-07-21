@@ -8,7 +8,7 @@ import { useLoaderData } from "@remix-run/react";
 import { User } from "@domain/user";
 import { getUsers } from "@infrastructure/db/user";
 import { getUserSession } from "@app/session-storage";
-import { LoginView } from "@app/ui/login";
+import { LoginPage } from "@app/ui/login";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: V2_MetaFunction = () => {
@@ -75,5 +75,7 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function LoginRoute() {
   const { users } = useLoaderData<LoaderData>();
-  return <LoginView users={users} />;
+  // TODO: For now, LoginPage is a pure UI component. In future, we can integrate
+  // real email/password authentication. For demo, users can still use LoginView.
+  return <LoginPage />;
 }
