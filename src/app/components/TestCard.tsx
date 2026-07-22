@@ -52,51 +52,84 @@ const InfoIcon = () => (
 export function TestCard() {
   return (
     <div id="testElem">
-      <div className="w-[360px] rounded-md bg-[#1a1a1a] px-6 py-6 text-[#c8c8c8]">
+      <div
+        className="w-[360px] rounded-md px-6 py-6"
+        style={{ backgroundColor: "#1a1a1a", color: "#c8c8c8" }}
+      >
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-lg font-medium tracking-wide text-[#c8c8c8]">
+          <h1
+            className="text-lg font-medium tracking-wide"
+            style={{ color: "#c8c8c8" }}
+          >
             UI magician Agent
           </h1>
           <button
             type="button"
-            className="text-[#a0a0a0] hover:text-[#c8c8c8]"
+            className="hover:opacity-80"
+            style={{ color: "#a0a0a0" }}
             aria-label="Settings"
           >
             <GearIcon />
           </button>
         </div>
 
-        <div className="mb-10 flex items-center gap-2 text-sm text-[#a8a8a8]">
+        <div
+          className="mb-10 flex items-center gap-2 text-sm"
+          style={{ color: "#a8a8a8" }}
+        >
           <ChevronUpIcon />
           <span className="truncate">From entire frame to a singl...</span>
         </div>
 
         <div className="mb-10">
-          <div className="mb-6 flex items-center gap-2 text-base font-medium text-[#bdbdbd]">
+          <div
+            className="mb-6 flex items-center gap-2 text-base font-medium"
+            style={{ color: "#bdbdbd" }}
+          >
             <ChevronUpIcon />
             <span>Add New Design</span>
           </div>
 
           <div className="mb-5">
-            <div className="mb-2 flex items-center gap-2 text-sm text-[#b0b0b0]">
+            <div
+              className="mb-2 flex items-center gap-2 text-sm"
+              style={{ color: "#b0b0b0" }}
+            >
               <span>Personal Access Token</span>
-              <span className="text-[#888888]">
+              <span style={{ color: "#888888" }}>
                 <InfoIcon />
               </span>
             </div>
-            <div className="rounded border border-[#555555] bg-[#272822] px-3 py-2.5 text-sm text-[#888888]">
+            <div
+              className="rounded border px-3 py-2.5 text-sm"
+              style={{
+                borderColor: "#555555",
+                backgroundColor: "#272822",
+                color: "#888888",
+              }}
+            >
               figd_xxxxxxxxxxxxxxx
             </div>
           </div>
 
           <div className="mb-6">
-            <div className="mb-2 flex items-center gap-2 text-sm text-[#b0b0b0]">
+            <div
+              className="mb-2 flex items-center gap-2 text-sm"
+              style={{ color: "#b0b0b0" }}
+            >
               <span>Design URL</span>
-              <span className="text-[#888888]">
+              <span style={{ color: "#888888" }}>
                 <InfoIcon />
               </span>
             </div>
-            <div className="rounded border border-[#A5ADAD] bg-[#272822] px-3 py-2.5 text-sm text-[#888888]">
+            <div
+              className="rounded border px-3 py-2.5 text-sm"
+              style={{
+                borderColor: "#A5ADAD",
+                backgroundColor: "#272822",
+                color: "#888888",
+              }}
+            >
               https://www.figma.com/file/:
             </div>
           </div>
@@ -104,20 +137,25 @@ export function TestCard() {
           <div className="flex justify-center gap-3">
             <button
               type="button"
-              className="rounded-md bg-[#b54a2a] px-8 py-2.5 text-sm font-medium text-[#c9a090]"
+              className="rounded-md px-8 py-2.5 text-sm font-medium"
+              style={{ backgroundColor: "#b54a2a", color: "#c9a090" }}
             >
               Awesome
             </button>
             <button
               type="button"
-              className="rounded-md bg-[#b54a2a] px-8 py-2.5 text-sm font-medium text-[#c9a090]"
+              className="rounded-md px-8 py-2.5 text-sm font-medium"
+              style={{ backgroundColor: "#b54a2a", color: "#c9a090" }}
             >
               Prepare
             </button>
           </div>
         </div>
 
-        <div className="mt-8 text-base font-medium text-[#c8c8c8]">
+        <div
+          className="mt-8 text-base font-medium"
+          style={{ color: "#c8c8c8" }}
+        >
           Recent Breakdowns
         </div>
       </div>
