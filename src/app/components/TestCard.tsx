@@ -28,6 +28,7 @@ export function TestCard() {
 
       {/* Subtitle row */}
       <div className="flex items-center gap-2">
+        {/* Chevron up */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -38,39 +39,37 @@ export function TestCard() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-amber-600 flex-shrink-0"
+          className="text-gray-400"
         >
           <polyline points="18 15 12 9 6 15" />
         </svg>
-        <span className="text-amber-600 text-sm">From entire frame to a singl...</span>
+        <span className="text-gray-400 text-sm">From entire frame to a singl...</span>
       </div>
 
-      {/* Spacer */}
-      <div className="h-4" />
-
-      {/* Add New Design section heading */}
-      <div className="flex items-center gap-3">
+      {/* Add New Design section */}
+      <div className="flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-white flex-shrink-0"
+          className="text-white"
         >
           <polyline points="18 15 12 9 6 15" />
         </svg>
-        <span className="text-white font-bold text-2xl">Add New Design</span>
+        <h2 className="text-xl font-bold text-white">Add New Design</h2>
       </div>
 
-      {/* Personal Access Token field */}
-      <div className="flex flex-col gap-2">
+      {/* Personal Access Token */}
+      <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2">
-          <label className="text-white text-sm font-medium">Personal Access Token</label>
+          <label className="text-sm text-gray-200">Personal Access Token</label>
+          {/* Info icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -95,10 +94,10 @@ export function TestCard() {
         />
       </div>
 
-      {/* Design URL field */}
-      <div className="flex flex-col gap-2">
+      {/* Design URL */}
+      <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2">
-          <label className="text-white text-sm font-medium">Design URL</label>
+          <label className="text-sm text-gray-200">Design URL</label>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -146,3 +145,5 @@ export function TestCard() {
     </div>
   );
 }
+
+export default TestCard;
