@@ -40,7 +40,7 @@ export function TestCard() {
 
       {/* Design URL */}
       <div className="mb-6">
-        <div className="flex items-center gap-2 mb-2 mt-4">
+        <div className="flex items-center gap-2 mb-2">
           <span className="text-sm font-medium">Design URL</span>
           <HiInformationCircle className="text-[#e8e0d5] text-base opacity-70" />
         </div>
