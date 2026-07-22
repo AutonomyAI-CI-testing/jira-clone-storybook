@@ -208,6 +208,20 @@ module.exports = {
       "dialog-overlay": "rgba(0,0,0,0.45)",
     },
     extend: {
+      colors: {
+        red: {
+          100: "var(--Red100)",
+          200: "var(--Red200)",
+          300: "var(--Red300)",
+          400: "var(--Red400)",
+          500: "var(--Red500)",
+          600: "var(--Red600)",
+          700: "var(--Red700)",
+          800: "var(--Red800)",
+          900: "var(--Red900)",
+          1000: "var(--Red1000)",
+        },
+      },
       fontSize: {
         "2xs": ["0.75rem", "1rem"],
         xs: ["0.8125rem", "1rem"],
@@ -243,6 +257,15 @@ module.exports = {
           "0%": { opacity: 0, transform: "translateX(2px)" },
           "100%": { opacity: 1, transform: "translateX(0)" },
         },
+        // Welcome page mascot
+        "mascot-float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+        "fade-in-up": {
+          "0%": { opacity: 0, transform: "translateY(24px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
         // Toast
         "toast-hide": {
           "0%": { opacity: 1 },
@@ -273,6 +296,9 @@ module.exports = {
         "slide-right-fade": "slide-right-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-down-fade": "slide-down-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-left-fade": "slide-left-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        // Welcome page mascot
+        "mascot-float": "mascot-float 3.5s ease-in-out infinite",
+        "fade-in-up": "fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both",
         // Toast
         "toast-hide": "toast-hide 100ms ease-in forwards",
         "toast-slide-in-right": "toast-slide-in-right 150ms cubic-bezier(0.16, 1, 0.3, 1)",
