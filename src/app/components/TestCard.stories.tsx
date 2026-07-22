@@ -6,6 +6,7 @@ const meta: Meta<typeof TestCard> = {
   component: TestCard,
   parameters: {
     layout: "centered",
+    backgrounds: { default: "dark" },
   },
 };
 
