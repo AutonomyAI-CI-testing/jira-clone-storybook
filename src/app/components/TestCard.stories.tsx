@@ -3,6 +3,7 @@ import TestCard from "./TestCard";
 
 const meta: Meta<typeof TestCard> = {
   title: "Components/TestCard",
+  // UI magician Agent panel
   component: TestCard,
   parameters: {
     layout: "centered",
