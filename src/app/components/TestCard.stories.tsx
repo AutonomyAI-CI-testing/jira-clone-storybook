@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TestCard } from "./TestCard";
+
+import TestCard from "./TestCard";
 
 const meta: Meta<typeof TestCard> = {
   title: "Components/TestCard",
@@ -8,7 +9,7 @@ const meta: Meta<typeof TestCard> = {
     layout: "centered",
     backgrounds: {
       default: "dark",
-      values: [{ name: "dark", value: "#111" }],
+      values: [{ name: "dark", value: "#1a1a1a" }],
     },
   },
 };
