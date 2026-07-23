@@ -1,10 +1,33 @@
-import { ErrorBase } from "../error-base";
-
-export const Error404 = ({ message = "Error 404: Not Found", href }: Props) => {
-  return <ErrorBase variant="404" message={message} href={href} />;
+export const Error404 = ({
+  message = "Looks like this page got lost in the void.",
+  href,
+}: Props) => {
+  return (
+    <div className="flex flex-col items-center text-center max-w-[480px] gap-6">
+      <img
+        src="/images/error-404-wizard.png"
+        alt="404 wizard robot"
+        className="w-[260px] h-auto"
+      />
+      <div className="flex flex-col gap-2">
+        <h1 className="font-primary-black text-[3rem] leading-[1.2] text-font">
+          404
+        </h1>
+        <p className="font-primary text-lg text-font-subtle">{message}</p>
+      </div>
+      {href && (
+        <a
+          href={href}
+          className="font-primary-bold text-font-brand hover:underline active:text-[color:var(--Blue800)] transition-colors duration-200"
+        >
+          ← Go back home
+        </a>
+      )}
+    </div>
+  );
 };
 
 interface Props {
-  message: string;
-  href: string;
+  message?: string;
+  href?: string;
 }
