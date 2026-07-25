@@ -1,7 +1,3 @@
-/**
- * TestCard — smoke-test recreation of the Figma "UI magician Agent" panel.
- * Self-contained, no props. Approximate Tailwind styling only.
- */
 export const TestCard = () => {
   return (
     <div
