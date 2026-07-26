@@ -1,130 +1,124 @@
 export function TestCard() {
   return (
-    <div id="testElem">
-      <div className="w-[320px] bg-[#1a1c18] text-[#c8c8c8] px-5 py-5 font-sans">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-[18px] font-medium tracking-tight text-[#d0d0d0]">
-            UI magician Agent
-          </h1>
-          <button
-            type="button"
-            aria-label="Settings"
-            className="text-[#9a9a9a] hover:text-[#c8c8c8]"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="3" />
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-            </svg>
-          </button>
-        </div>
+    <div
+      id="testElem"
+      className="w-full max-w-[360px] bg-[#1a1a1a] px-6 py-8 text-[#c8c8c8] font-sans"
+    >
+      {/* Header */}
+      <div className="mb-8 flex items-center justify-between">
+        <h1 className="text-lg font-medium text-[#d4d4d4]">UI magician Agent</h1>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#9a9a9a"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+        </svg>
+      </div>
 
-        {/* Collapsed row */}
+      {/* Collapsed section row */}
+      <div className="mb-10 flex items-center gap-2 text-sm text-[#a3a3a3]">
+        <ChevronUp />
+        <span>From entire frame to a singl...</span>
+      </div>
+
+      {/* Add New Design */}
+      <div className="mb-5 flex items-center gap-2 text-base text-[#c8c8c8]">
+        <ChevronUp />
+        <span className="font-medium">Add New Design</span>
+      </div>
+
+      {/* Personal Access Token */}
+      <div className="mb-4">
+        <label className="mb-2 flex items-center gap-2 text-sm text-[#b0b0b0]">
+          Personal Access Token
+          <InfoIcon />
+        </label>
+        <input
+          readOnly
+          value="figd_xxxxxxxxxxxxxxxx"
+          className="w-full rounded border border-[#4a4a4a] bg-[#2a2a2a] px-3 py-2.5 text-sm text-[#9a9a9a] outline-none"
+        />
+      </div>
+
+      {/* Design URL */}
+      <div className="mb-6">
+        <label className="mb-2 flex items-center gap-2 text-sm text-[#b0b0b0]">
+          Design URL
+          <InfoIcon />
+        </label>
+        <input
+          readOnly
+          value="https://www.figma.com/file/:"
+          className="w-full rounded border border-[#8a8a8a] bg-[#2a2a2a] px-3 py-2.5 text-sm text-[#b0b0b0] outline-none"
+        />
+      </div>
+
+      {/* Action buttons */}
+      <div className="mb-12 flex justify-center gap-3">
         <button
           type="button"
-          className="flex items-center gap-2 text-[14px] text-[#9a9a9a] mb-8"
+          className="rounded-md bg-[#a54a2a] px-8 py-2.5 text-sm font-medium text-[#e8c4b0]"
         >
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M3 7.5L6 4.5L9 7.5" />
-          </svg>
-          <span className="truncate">From entire frame to a singl...</span>
+          Awesome
         </button>
-
-        {/* Add New Design */}
-        <div className="mb-10">
-          <button
-            type="button"
-            className="flex items-center gap-2 text-[15px] text-[#c8c8c8] mb-5"
-          >
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M3 7.5L6 4.5L9 7.5" />
-            </svg>
-            <span>Add New Design</span>
-          </button>
-
-          {/* Personal Access Token */}
-          <div className="mb-4">
-            <div className="flex items-center gap-2 mb-2">
-              <label className="text-[14px] text-[#b0b0b0]">
-                Personal Access Token
-              </label>
-              <span className="inline-flex items-center justify-center w-[16px] h-[16px] rounded-full border border-[#6b6b6b] text-[10px] text-[#8a8a8a] leading-none">
-                i
-              </span>
-            </div>
-            <input
-              type="text"
-              defaultValue="figd_xxxxxxxxxxxxxxx"
-              readOnly
-              className="w-full bg-[#2a2a28] border border-[#5a5a5a] rounded-sm px-3 py-2.5 text-[13px] text-[#8a8a8a] outline-none"
-            />
-          </div>
-
-          {/* Design URL */}
-          <div className="mb-5">
-            <div className="flex items-center gap-2 mb-2">
-              <label className="text-[14px] text-[#b0b0b0]">Design URL</label>
-              <span className="inline-flex items-center justify-center w-[16px] h-[16px] rounded-full border border-[#6b6b6b] text-[10px] text-[#8a8a8a] leading-none">
-                i
-              </span>
-            </div>
-            <input
-              type="text"
-              defaultValue="https://www.figma.com/file/:"
-              readOnly
-              className="w-full bg-[#2a2a28] border border-[#7a7a7a] rounded-sm px-3 py-2.5 text-[13px] text-[#9a9a9a] outline-none"
-            />
-          </div>
-
-          {/* Actions */}
-          <div className="flex items-center gap-3 pl-1">
-            <button
-              type="button"
-              className="flex-1 bg-[#843A17] text-[#c4a882] rounded-md py-2.5 text-[14px] font-medium"
-            >
-              Awesome
-            </button>
-            <button
-              type="button"
-              className="flex-1 bg-[#843A17] text-[#c4a882] rounded-md py-2.5 text-[14px] font-medium"
-            >
-              Prepare
-            </button>
-          </div>
-        </div>
-
-        {/* Recent Breakdowns */}
-        <div>
-          <h2 className="text-[15px] text-[#c8c8c8]">Recent Breakdowns</h2>
-        </div>
+        <button
+          type="button"
+          className="rounded-md bg-[#a54a2a] px-8 py-2.5 text-sm font-medium text-[#e8c4b0]"
+        >
+          Prepare
+        </button>
       </div>
+
+      {/* Recent Breakdowns */}
+      <h2 className="text-base font-medium text-[#d4d4d4]">Recent Breakdowns</h2>
     </div>
   );
 }
+
+function ChevronUp() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  );
+}
+
+function InfoIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#7a7a7a"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="16" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12.01" y2="8" />
+    </svg>
+  );
+}
+
+export default TestCard;
