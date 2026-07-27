@@ -49,36 +49,36 @@ export const TestCard = () => {
       {/* Spacer */}
       <div className="mt-4" />
 
-      {/* Add New Design section */}
+      {/* Add New Design header */}
       <div className="flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#e8e0d8"
-          strokeWidth="2.5"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
           <polyline points="18 15 12 9 6 15" />
         </svg>
-        <span className="text-lg font-bold" style={{ color: "#e8e0d8" }}>
+        <span className="text-base font-bold" style={{ color: "#e8e0d8" }}>
           Add New Design
         </span>
       </div>
 
-      {/* Personal Access Token input */}
+      {/* Personal Access Token */}
       <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium" style={{ color: "#e8e0d8" }}>
+        <div className="flex items-center gap-1">
+          <label className="text-sm" style={{ color: "#e8e0d8" }}>
             Personal Access Token
-          </span>
+          </label>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="14"
+            height="14"
             viewBox="0 0 24 24"
             fill="none"
             stroke="#a07060"
@@ -87,8 +87,8 @@ export const TestCard = () => {
             strokeLinejoin="round"
           >
             <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="16" x2="12" y2="12" />
-            <line x1="12" y1="8" x2="12.01" y2="8" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
           </svg>
         </div>
         <input
@@ -104,16 +104,16 @@ export const TestCard = () => {
         />
       </div>
 
-      {/* Design URL input */}
+      {/* Design URL */}
       <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium" style={{ color: "#e8e0d8" }}>
+        <div className="flex items-center gap-1">
+          <label className="text-sm" style={{ color: "#e8e0d8" }}>
             Design URL
-          </span>
+          </label>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="14"
+            height="14"
             viewBox="0 0 24 24"
             fill="none"
             stroke="#a07060"
@@ -122,8 +122,8 @@ export const TestCard = () => {
             strokeLinejoin="round"
           >
             <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="16" x2="12" y2="12" />
-            <line x1="12" y1="8" x2="12.01" y2="8" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
           </svg>
         </div>
         <input
