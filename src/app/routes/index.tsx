@@ -1,21 +1,24 @@
-import { LoaderFunction, redirect } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { getUserSession } from "@app/session-storage/user-storage.server";
 import { Error404 } from "@app/components/error-404";
+import { WelcomeView } from "@app/ui/welcome";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    return redirect("projects");
-  }
-  return null;
+type LoaderData = {
+  isAuthenticated: boolean;
 };
 
-// Currently there is no landing. Just redirecting to /projects
+export const loader: LoaderFunction = async ({ request }) => {
+  const userSession = await getUserSession(request);
+  const userId = userSession.getUser();
+  return json<LoaderData>({ isAuthenticated: Boolean(userId) });
+};
+
+// Landing / welcome page
 export default function IndexRoute() {
-  return (
-    <div>
-      <h1>LANDING</h1>
-    </div>
-  );
+  const { isAuthenticated } = useLoaderData<LoaderData>();
+  return <WelcomeView isAuthenticated={isAuthenticated} />;
 }
 
 export function CatchBoundary() {
