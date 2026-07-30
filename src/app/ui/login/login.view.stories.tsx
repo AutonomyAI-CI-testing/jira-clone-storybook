@@ -7,18 +7,10 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    users: {
-      defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
-    },
+    layout: "padded",
   },
   decorators: [
-    (Story) => {
+    (Story: () => JSX.Element) => {
       const RemixStub = createRemixStub([
         {
           path: "/",
@@ -31,7 +23,11 @@ const meta: Meta<typeof LoginView> = {
         },
       ]);
 
-      return <RemixStub />;
+      return (
+        <div style={{ background: "#f4f5f7", minHeight: "100vh", padding: "24px" }}>
+          <RemixStub />
+        </div>
+      );
     },
   ],
 };
