@@ -191,6 +191,7 @@ module.exports = {
       white: "white",
       black: "black",
       transparent: "transparent",
+      gray: require("tailwindcss/colors").gray,
     },
     fontFamily: {
       "primary-light": ["CircularStdLight", "sans-serif"],
