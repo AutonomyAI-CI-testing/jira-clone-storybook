@@ -1,71 +1,75 @@
-import { HiCog, HiChevronUp, HiInformationCircle } from "react-icons/hi";
+import { FiSettings, FiChevronUp, FiInfo } from "react-icons/fi";
 
-export function TestCard() {
+export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="bg-[#282420] min-h-screen w-full max-w-[390px] mx-auto text-white px-5 py-6 font-sans"
+      className="bg-[#282420] rounded-xl p-5 w-[320px] flex flex-col gap-4 text-white"
     >
       {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <h1 className="text-2xl font-bold text-white">UI magician Agent</h1>
-        <HiCog className="text-gray-400 w-7 h-7" />
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-bold">UI magician Agent</h1>
+        <FiSettings className="text-gray-400 w-6 h-6" />
       </div>
 
-      {/* Sub-row */}
-      <div className="flex items-center gap-1 text-[#c17a4a] text-sm mb-10">
-        <HiChevronUp className="w-4 h-4" />
+      {/* Subtitle */}
+      <div className="flex items-center gap-1 text-[#c17a4a] text-sm">
+        <FiChevronUp className="w-4 h-4" />
         <span>From entire frame to a singl...</span>
       </div>
 
+      {/* Spacer */}
+      <div className="h-2" />
+
       {/* Add New Design section */}
-      <div className="flex items-center gap-2 mb-5">
-        <HiChevronUp className="text-white w-5 h-5" />
-        <h2 className="text-xl font-bold text-white">Add New Design</h2>
+      <div className="flex items-center gap-2">
+        <FiChevronUp className="w-5 h-5 text-white" />
+        <h2 className="text-lg font-bold">Add New Design</h2>
       </div>
 
       {/* Personal Access Token */}
-      <div className="mb-4">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-sm font-medium text-white">Personal Access Token</span>
-          <HiInformationCircle className="text-gray-400 w-4 h-4" />
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-1.5">
+          <label className="text-sm font-medium text-white">Personal Access Token</label>
+          <FiInfo className="w-4 h-4 text-gray-400" />
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="w-full bg-transparent border border-gray-600 rounded-md px-4 py-3 text-gray-400 placeholder-gray-600 text-sm focus:outline-none"
+          className="bg-transparent border border-gray-600 rounded-md px-3 py-2.5 text-sm text-gray-400 placeholder-gray-600 focus:outline-none focus:border-gray-400 w-full"
         />
       </div>
 
       {/* Design URL */}
-      <div className="mb-7">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-sm font-medium text-white">Design URL</span>
-          <HiInformationCircle className="text-gray-400 w-4 h-4" />
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-1.5">
+          <label className="text-sm font-medium text-white">Design URL</label>
+          <FiInfo className="w-4 h-4 text-gray-400" />
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/:"
-          className="w-full bg-transparent border border-gray-600 rounded-md px-4 py-3 text-gray-400 placeholder-gray-600 text-sm focus:outline-none"
+          className="bg-transparent border border-gray-600 rounded-md px-3 py-2.5 text-sm text-gray-400 placeholder-gray-600 focus:outline-none focus:border-gray-400 w-full"
         />
       </div>
 
-      {/* Buttons */}
-      <div className="flex gap-4 mb-10">
-        <button className="flex-1 bg-[#b85c2a] text-white font-semibold py-3 rounded-xl text-base">
+      {/* Action Buttons */}
+      <div className="flex gap-3 mt-1">
+        <button className="flex-1 bg-[#b85c2a] hover:bg-[#c96633] text-white font-semibold py-2.5 rounded-xl text-sm transition-colors">
           Awesome
         </button>
-        <button className="flex-1 bg-[#b85c2a] text-white font-semibold py-3 rounded-xl text-base">
+        <button className="flex-1 bg-[#b85c2a] hover:bg-[#c96633] text-white font-semibold py-2.5 rounded-xl text-sm transition-colors">
           Prepare
         </button>
       </div>
 
+      {/* Spacer */}
+      <div className="h-2" />
+
       {/* Recent Breakdowns */}
-      <div>
-        <h2 className="text-xl font-bold text-white">Recent Breakdowns</h2>
-      </div>
+      <h2 className="text-lg font-bold">Recent Breakdowns</h2>
     </div>
   );
-}
+};
 
 export default TestCard;
