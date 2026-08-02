@@ -12,6 +12,4 @@ const meta: Meta<typeof TestCard> = {
 export default meta;
 type Story = StoryObj<typeof TestCard>;
 
-export const Default: Story = {
-  render: () => <TestCard />,
-};
+export const Default: Story = {};
