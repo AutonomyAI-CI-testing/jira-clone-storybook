@@ -41,7 +41,7 @@ export const Link: Story = {
 
 export const MessageLink: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Error 404: Not Found",
+    href: "/",
   },
 };
