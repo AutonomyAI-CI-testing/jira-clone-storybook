@@ -7,6 +7,13 @@ const meta: Meta<typeof TestCard> = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <div className="dark" style={{ background: "#1a1a1a", padding: "24px", display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
