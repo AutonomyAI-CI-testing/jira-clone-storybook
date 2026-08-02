@@ -1,71 +1,74 @@
-import { IoSettingsOutline, IoChevronUp, IoInformationCircleOutline } from "react-icons/io5";
+import { FiSettings, FiChevronUp, FiInfo } from "react-icons/fi";
 
-export const TestCard = () => (
-  <div id="testElem" className="bg-[#2a2a2a] max-w-sm w-full min-h-screen p-6 flex flex-col gap-6 text-white font-sans">
-    {/* Header row */}
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl font-bold text-white">UI magician Agent</h1>
-      <IoSettingsOutline className="w-6 h-6 text-gray-400" />
-    </div>
-
-    {/* Subtitle row */}
-    <div className="flex items-center gap-2 text-[#c17a4a] text-sm -mt-4">
-      <IoChevronUp className="w-4 h-4 flex-shrink-0" />
-      <span>From entire frame to a singl...</span>
-    </div>
-
-    {/* Add New Design section */}
-    <div className="flex flex-col gap-5">
-      {/* Section heading */}
-      <div className="flex items-center gap-2">
-        <IoChevronUp className="w-4 h-4 text-white" />
-        <h2 className="text-lg font-bold text-white">Add New Design</h2>
-      </div>
-
-      {/* Personal Access Token */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-1.5">
-          <label className="text-sm text-gray-300">Personal Access Token</label>
-          <IoInformationCircleOutline className="w-4 h-4 text-gray-400" />
+export function TestCard() {
+  return (
+    <div id="testElem">
+      <div className="bg-[#282828] text-white w-[320px] min-h-screen p-5 flex flex-col gap-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <span className="text-lg font-bold">UI magician Agent</span>
+          <FiSettings className="text-gray-400 text-xl" />
         </div>
-        <input
-          type="text"
-          placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          readOnly
-          className="w-full bg-transparent border border-gray-600 rounded px-3 py-3 text-gray-400 placeholder-gray-600 text-sm focus:outline-none"
-        />
-      </div>
 
-      {/* Design URL */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-1.5">
-          <label className="text-sm text-gray-300">Design URL</label>
-          <IoInformationCircleOutline className="w-4 h-4 text-gray-400" />
+        {/* Collapse row */}
+        <div className="flex items-center gap-2">
+          <FiChevronUp className="text-gray-400 text-sm" />
+          <span className="text-[#c97a4a] text-sm">From entire frame to a singl...</span>
         </div>
-        <input
-          type="text"
-          placeholder="https://www.figma.com/file/:"
-          readOnly
-          className="w-full bg-transparent border border-gray-600 rounded px-3 py-3 text-gray-400 placeholder-gray-600 text-sm focus:outline-none"
-        />
-      </div>
 
-      {/* Buttons */}
-      <div className="flex gap-4">
-        <button className="flex-1 bg-[#b35a2a] hover:bg-[#c96830] text-white font-semibold py-3 rounded-lg">
-          Awesome
-        </button>
-        <button className="flex-1 bg-[#b35a2a] hover:bg-[#c96830] text-white font-semibold py-3 rounded-lg">
-          Prepare
-        </button>
+        {/* Add New Design section */}
+        <div className="flex flex-col gap-5 mt-4">
+          <div className="flex items-center gap-2">
+            <FiChevronUp className="text-white text-base" />
+            <span className="text-lg font-bold">Add New Design</span>
+          </div>
+
+          {/* Personal Access Token */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <label className="text-sm text-gray-300 font-medium">Personal Access Token</label>
+              <FiInfo className="text-gray-400 text-sm" />
+            </div>
+            <input
+              type="text"
+              placeholder="figd_xxxxxxxxxxxxxxxxx"
+              readOnly
+              className="bg-[#1e1e1e] border border-zinc-600 rounded px-3 py-2.5 text-sm text-gray-400 placeholder-gray-500 w-full outline-none"
+            />
+          </div>
+
+          {/* Design URL */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <label className="text-sm text-gray-300 font-medium">Design URL</label>
+              <FiInfo className="text-gray-400 text-sm" />
+            </div>
+            <input
+              type="text"
+              placeholder="https://www.figma.com/file/:"
+              readOnly
+              className="bg-[#1e1e1e] border border-zinc-600 rounded px-3 py-2.5 text-sm text-gray-400 placeholder-gray-500 w-full outline-none"
+            />
+          </div>
+
+          {/* Buttons */}
+          <div className="flex items-center gap-3 mt-1">
+            <button className="bg-[#b5521b] text-white text-sm font-semibold rounded-lg px-6 py-3 flex-1">
+              Awesome
+            </button>
+            <button className="bg-[#b5521b] text-white text-sm font-semibold rounded-lg px-6 py-3 flex-1">
+              Prepare
+            </button>
+          </div>
+        </div>
+
+        {/* Recent Breakdowns */}
+        <div className="mt-4">
+          <span className="text-lg font-bold">Recent Breakdowns</span>
+        </div>
       </div>
     </div>
-
-    {/* Recent Breakdowns */}
-    <div>
-      <h2 className="text-lg font-bold text-white">Recent Breakdowns</h2>
-    </div>
-  </div>
-);
+  );
+}
 
 export default TestCard;
