@@ -51,7 +51,7 @@ export const TestCard = (): JSX.Element => {
             type="text"
             placeholder="https://www.figma.com/file/:"
             readOnly
-            className="w-full bg-transparent border border-gray-600 rounded px-3 py-2.5 text-sm text-gray-400 placeholder-gray-600 outline-none"
+            className="w-full bg-transparent border border-gray-500 rounded px-3 py-2.5 text-sm text-gray-400 placeholder-gray-600 outline-none"
           />
         </div>
 
