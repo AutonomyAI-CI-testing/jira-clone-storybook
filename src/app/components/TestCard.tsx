@@ -32,7 +32,7 @@ export const TestCard = () => {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <label className="text-sm font-medium text-gray-300">Personal Access Token</label>
-            <FiInfo className="w-4 h-4 text-gray-400 flex-shrink-0" />
+            <FiInfo className="w-4 h-4 text-gray-400" />
           </div>
           <input
             type="text"
@@ -46,7 +46,7 @@ export const TestCard = () => {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <label className="text-sm font-medium text-gray-300">Design URL</label>
-            <FiInfo className="w-4 h-4 text-gray-400 flex-shrink-0" />
+            <FiInfo className="w-4 h-4 text-gray-400" />
           </div>
           <input
             type="text"
