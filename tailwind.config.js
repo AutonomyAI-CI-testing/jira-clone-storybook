@@ -4,6 +4,13 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
+  safelist: [
+    "bg-[#1e1e1e]", "bg-[#2c2c2c]", "bg-[#b55a2a]",
+    "text-[#e8e8e8]", "text-[#888]", "text-[#c07040]",
+    "border-[#3a3a3a]",
+    "placeholder-[#888]",
+    "w-[320px]",
+  ],
   darkMode: "class",
   theme: {
     colors: {
