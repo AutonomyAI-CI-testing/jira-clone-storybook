@@ -1,141 +1,206 @@
-export const TestCard = () => {
+export function TestCard() {
   return (
     <div
       id="testElem"
-      className="w-[253px] min-h-screen bg-[#2a2a2a] text-white p-4 font-sans"
+      style={{
+        backgroundColor: "#272822",
+        fontFamily: "Inter, sans-serif",
+        width: "254px",
+        minHeight: "508px",
+      }}
+      className="flex flex-col"
     >
-      {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <h1 className="text-xl font-bold text-white">UI magician Agent</h1>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 text-gray-400"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
+      {/* Header row */}
+      <div className="flex items-center justify-between px-4 pt-5 pb-3">
+        <span
+          className="font-semibold"
+          style={{ color: "#b5b5b5", fontSize: "13.5px" }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
+          UI magician Agent
+        </span>
+        {/* Gear / settings icon */}
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#b5b5b5"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
         </svg>
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-1 mb-8">
+      <div className="flex items-center gap-2 px-4 pb-2">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-4 h-4 text-[#c17a45] flex-shrink-0"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+          width="10"
+          height="7"
+          viewBox="0 0 10 7"
+          fill="none"
+          stroke="#8b9291"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          <path
-            fillRule="evenodd"
-            d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-            clipRule="evenodd"
-          />
+          <polyline points="1 6 5 1 9 6" />
         </svg>
-        <span className="text-sm text-[#c17a45] truncate">
+        <span
+          className="font-semibold"
+          style={{ color: "#8b9291", fontSize: "11.5px" }}
+        >
           From entire frame to a singl...
         </span>
       </div>
 
+      {/* Spacer */}
+      <div className="h-12" />
+
       {/* Add New Design section */}
-      <div className="mb-6">
+      <div className="px-4">
+        {/* Section heading */}
         <div className="flex items-center gap-2 mb-4">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-4 h-4 text-white flex-shrink-0"
-            viewBox="0 0 20 20"
-            fill="currentColor"
+            width="12"
+            height="8"
+            viewBox="0 0 12 8"
+            fill="none"
+            stroke="#b2b2b1"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <path
-              fillRule="evenodd"
-              d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-              clipRule="evenodd"
-            />
+            <polyline points="1 7 6 1 11 7" />
           </svg>
-          <h2 className="text-lg font-semibold text-white">Add New Design</h2>
+          <span
+            className="font-semibold"
+            style={{ color: "#b2b2b1", fontSize: "13.5px" }}
+          >
+            Add New Design
+          </span>
         </div>
 
         {/* Personal Access Token */}
         <div className="mb-3">
           <div className="flex items-center gap-1 mb-1">
-            <span className="text-sm text-gray-300">Personal Access Token</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
+            <span
+              className="font-semibold"
+              style={{ color: "#a4a4a3", fontSize: "11.5px" }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
+              Personal Access Token
+            </span>
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#a4a4a3"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
           </div>
-          <input
-            type="text"
-            placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            readOnly
-            className="w-full bg-transparent border border-gray-600 rounded px-3 py-2 text-sm text-gray-400 placeholder-gray-500 outline-none"
-          />
+          <div
+            className="w-full px-3 py-2"
+            style={{
+              backgroundColor: "#272822",
+              border: "1px solid #a5adad",
+            }}
+          >
+            <span
+              className="font-semibold"
+              style={{ color: "#737470", fontSize: "11.5px" }}
+            >
+              figd_xxxxxxxxxxxxxxxxxx
+            </span>
+          </div>
         </div>
 
         {/* Design URL */}
-        <div className="mb-5">
+        <div className="mb-4">
           <div className="flex items-center gap-1 mb-1">
-            <span className="text-sm text-gray-300">Design URL</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
+            <span
+              className="font-semibold"
+              style={{ color: "#a3a3a2", fontSize: "11.5px" }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
+              Design URL
+            </span>
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#a3a3a2"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
           </div>
-          <input
-            type="text"
-            placeholder="https://www.figma.com/file/:"
-            readOnly
-            className="w-full bg-transparent border border-gray-600 rounded px-3 py-2 text-sm text-gray-400 placeholder-gray-500 outline-none"
-          />
+          <div
+            className="w-full px-3 py-2"
+            style={{
+              backgroundColor: "#272822",
+              border: "2px solid #929291",
+            }}
+          >
+            <span
+              className="font-semibold"
+              style={{ color: "#71726e", fontSize: "10.5px" }}
+            >
+              https://www.figma.com/file/:
+            </span>
+          </div>
         </div>
 
         {/* Buttons */}
         <div className="flex gap-3">
-          <button className="flex-1 bg-[#b5521e] hover:bg-[#9e4519] text-white text-sm font-semibold rounded-lg py-3 transition-colors">
+          <button
+            className="flex-1 py-2 font-semibold"
+            style={{
+              backgroundColor: "#843a17",
+              borderRadius: "4px",
+              color: "#8c8078",
+              fontSize: "11.5px",
+            }}
+          >
             Awesome
           </button>
-          <button className="flex-1 bg-[#b5521e] hover:bg-[#9e4519] text-white text-sm font-semibold rounded-lg py-3 transition-colors">
+          <button
+            className="flex-1 py-2 font-semibold"
+            style={{
+              backgroundColor: "#843a17",
+              borderRadius: "4px",
+              color: "#8c8078",
+              fontSize: "11.5px",
+            }}
+          >
             Prepare
           </button>
         </div>
       </div>
 
       {/* Recent Breakdowns */}
-      <div className="mt-8">
-        <h2 className="text-lg font-semibold text-white">Recent Breakdowns</h2>
+      <div className="px-4 pt-8">
+        <span
+          className="font-semibold"
+          style={{ color: "#b0b0b0", fontSize: "13.5px" }}
+        >
+          Recent Breakdowns
+        </span>
       </div>
     </div>
   );
-};
+}
 
 export default TestCard;
