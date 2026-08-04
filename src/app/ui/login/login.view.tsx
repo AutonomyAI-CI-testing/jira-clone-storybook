@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Form } from "@remix-run/react";
-import { User, UserId, userMock1 } from "@domain/user";
+import { User, UserId } from "@domain/user";
 import { Button } from "@app/components/button";
 import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
 export const LoginView = ({ users }: Props) => {
-  const [selectedValue, setSelectedValue] = useState<User>(userMock1);
+  const [selectedValue, setSelectedValue] = useState<User>(users[0]);
 
   const onValueChange = (userId: UserId) => {
     const foundUser = users.find((user) => user.id === userId);
@@ -30,7 +30,7 @@ export const LoginView = ({ users }: Props) => {
       <Form method="post" className="mx-auto w-[300px]">
         <Select.Root
           name="user"
-          defaultValue={userMock1.id}
+          defaultValue={users[0]?.id}
           onValueChange={onValueChange}
         >
           <Select.Trigger
