@@ -4,9 +4,7 @@ import { TestCard } from "./TestCard";
 const meta: Meta<typeof TestCard> = {
   title: "Components/TestCard",
   component: TestCard,
-  parameters: {
-    layout: "centered",
-  },
+  parameters: { layout: "centered" },
 };
 
 export default meta;
