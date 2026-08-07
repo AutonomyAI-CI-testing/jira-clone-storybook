@@ -3,37 +3,24 @@ import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing"
 import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
 
+const withRemixStub = (Story: React.ComponentType) => {
+  const RemixStub = createRemixStub([
+    {
+      path: "/",
+      element: <Story />,
+      action: async () => ({ status: 200 }),
+    },
+  ]);
+  return <RemixStub />;
+};
+
 const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
-  argTypes: {
-    users: {
-      defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
-    },
-  },
-  decorators: [
-    (Story) => {
-      const RemixStub = createRemixStub([
-        {
-          path: "/",
-          element: <Story />,
-          action: async () => {
-            return {
-              status: 200,
-            };
-          },
-        },
-      ]);
-
-      return <RemixStub />;
-    },
-  ],
+  decorators: [withRemixStub],
 };
 
 export default meta;
@@ -42,5 +29,8 @@ type Story = StoryObj<typeof LoginView>;
 export const Default: Story = {
   args: {
     users: usersMock,
+  },
+  parameters: {
+    layout: "padded",
   },
 };
