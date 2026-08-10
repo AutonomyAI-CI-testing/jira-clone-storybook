@@ -166,6 +166,7 @@
   --color-font-accent-blue: var(--Blue800);
   --color-font-accent-green: var(--Green800);
   --color-font-accent-grey: var(--Neutral800);
+  --color-font-accent-red: var(--Red800);
   --color-font-link: var(--Blue700);
   --color-font-link-hovered: var(--Blue800);
   --color-font-link-pressed: var(--Blue800);
@@ -303,6 +304,7 @@
   --color-font-accent-blue: var(--Blue300);
   --color-font-accent-green: var(--Green300);
   --color-font-accent-grey: var(--DarkNeutral800);
+  --color-font-accent-red: var(--Red300);
   --color-font-link: var(--Blue400);
   --color-font-link-hovered: var(--Blue300);
   --color-font-link-pressed: var(--Blue300);
@@ -441,6 +443,7 @@
   --color-font-accent-blue: var(--Blue300);
   --color-font-accent-green: var(--Green300);
   --color-font-accent-grey: var(--DarkNeutral800);
+  --color-font-accent-red: var(--Red300);
   --color-font-link: var(--Blue400);
   --color-font-link-hovered: var(--Blue300);
   --color-font-link-pressed: var(--Blue300);
@@ -579,6 +582,7 @@
   --color-font-accent-blue: var(--Blue300);
   --color-font-accent-green: var(--Green300);
   --color-font-accent-grey: var(--DarkNeutral800);
+  --color-font-accent-red: var(--Red300);
   --color-font-link: var(--Blue400);
   --color-font-link-hovered: var(--Blue300);
   --color-font-link-pressed: var(--Blue300);
@@ -719,6 +723,7 @@
   --color-font-accent-blue: var(--Blue800);
   --color-font-accent-green: var(--Green800);
   --color-font-accent-grey: var(--Neutral800);
+  --color-font-accent-red: var(--Red800);
   --color-font-disabled: var(--Neutral400A);
   --color-font-inverse: var(--Neutral0);
 

@@ -23,6 +23,7 @@ module.exports = {
           green: "var(--color-font-accent-green)",
           blue: "var(--color-font-accent-blue)",
           grey: "var(--color-font-accent-grey)",
+          red: "var(--color-font-accent-red)",
         },
       },
       link: {
