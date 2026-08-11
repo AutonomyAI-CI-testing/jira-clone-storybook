@@ -2,14 +2,18 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="flex flex-col gap-4 p-5 w-[254px]"
-      style={{ backgroundColor: "#272822", fontFamily: "Inter, sans-serif" }}
+      style={{
+        backgroundColor: "#272822",
+        width: "254px",
+        fontFamily: "Inter, sans-serif",
+        padding: "20px",
+        boxSizing: "border-box",
+      }}
     >
       {/* Header row */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-3">
         <span
-          className="text-[13.5px] font-semibold leading-[16.34px]"
-          style={{ color: "#b5b5b5" }}
+          style={{ color: "#b5b5b5", fontSize: "13.5px", fontWeight: 600 }}
         >
           UI magician Agent
         </span>
@@ -29,56 +33,25 @@ export const TestCard = () => {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2">
-        <svg
-          width="8"
-          height="5"
-          viewBox="0 0 10 6"
-          fill="none"
-          stroke="#8b9291"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="1 5 5 1 9 5" />
-        </svg>
-        <span
-          className="text-[11.5px] font-semibold leading-[13.92px] truncate"
-          style={{ color: "#8b9291" }}
-        >
+      <div className="flex items-center gap-2 mb-8">
+        <span style={{ color: "#8b9291", fontSize: "11.5px" }}>^</span>
+        <span style={{ color: "#8b9291", fontSize: "11.5px", fontWeight: 600 }}>
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Add New Design section */}
-      <div className="flex items-center gap-2 mt-4">
-        <svg
-          width="12"
-          height="8"
-          viewBox="0 0 10 6"
-          fill="none"
-          stroke="#b2b2b1"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="1 5 5 1 9 5" />
-        </svg>
-        <span
-          className="text-[13.5px] font-semibold leading-[16.34px]"
-          style={{ color: "#b2b2b1" }}
-        >
+      <div className="flex items-center gap-2 mb-4">
+        <span style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600 }}>^</span>
+        <span style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600 }}>
           Add New Design
         </span>
       </div>
 
       {/* Personal Access Token field */}
-      <div className="flex flex-col gap-1.5">
-        <div className="flex items-center gap-1.5">
-          <span
-            className="text-[11.5px] font-semibold leading-[13.92px]"
-            style={{ color: "#a4a4a3" }}
-          >
+      <div className="mb-3">
+        <div className="flex items-center gap-1 mb-1">
+          <span style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600 }}>
             Personal Access Token
           </span>
           <svg
@@ -88,8 +61,6 @@ export const TestCard = () => {
             fill="none"
             stroke="#a4a4a3"
             strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
           >
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
@@ -100,23 +71,25 @@ export const TestCard = () => {
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
           readOnly
-          className="w-full px-2.5 py-2 text-[11.5px] font-semibold rounded outline-none"
           style={{
             backgroundColor: "#272822",
             border: "1px solid #a5adad",
             color: "#737470",
+            fontSize: "11.5px",
             fontFamily: "Inter, sans-serif",
+            fontWeight: 600,
+            width: "100%",
+            padding: "8px 10px",
+            boxSizing: "border-box",
+            outline: "none",
           }}
         />
       </div>
 
       {/* Design URL field */}
-      <div className="flex flex-col gap-1.5">
-        <div className="flex items-center gap-1.5">
-          <span
-            className="text-[11.5px] font-semibold leading-[13.92px]"
-            style={{ color: "#a3a3a2" }}
-          >
+      <div className="mb-4">
+        <div className="flex items-center gap-1 mb-1">
+          <span style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600 }}>
             Design URL
           </span>
           <svg
@@ -126,8 +99,6 @@ export const TestCard = () => {
             fill="none"
             stroke="#a3a3a2"
             strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
           >
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
@@ -138,38 +109,60 @@ export const TestCard = () => {
           type="text"
           placeholder="https://www.figma.com/file/:"
           readOnly
-          className="w-full px-2.5 py-2 text-[10.5px] font-semibold rounded outline-none"
           style={{
             backgroundColor: "#272822",
             border: "2px solid #929291",
             color: "#71726e",
+            fontSize: "10.5px",
             fontFamily: "Inter, sans-serif",
+            fontWeight: 600,
+            width: "100%",
+            padding: "8px 10px",
+            boxSizing: "border-box",
+            outline: "none",
           }}
         />
       </div>
 
       {/* Buttons row */}
-      <div className="flex gap-3 justify-center mt-1">
+      <div className="flex gap-3 mb-8">
         <button
-          className="flex-1 py-2.5 px-4 text-[11.5px] font-semibold rounded-md"
-          style={{ backgroundColor: "#843a17", color: "#8c8078" }}
+          style={{
+            backgroundColor: "#843a17",
+            color: "#8c8078",
+            fontSize: "11.5px",
+            fontWeight: 600,
+            fontFamily: "Inter, sans-serif",
+            border: "none",
+            borderRadius: "4px",
+            padding: "10px 20px",
+            cursor: "pointer",
+            flex: 1,
+          }}
         >
           Awesome
         </button>
         <button
-          className="flex-1 py-2.5 px-4 text-[11.5px] font-semibold rounded-md"
-          style={{ backgroundColor: "#843a17", color: "#8c8078" }}
+          style={{
+            backgroundColor: "#843a17",
+            color: "#8c8078",
+            fontSize: "11.5px",
+            fontWeight: 600,
+            fontFamily: "Inter, sans-serif",
+            border: "none",
+            borderRadius: "4px",
+            padding: "10px 20px",
+            cursor: "pointer",
+            flex: 1,
+          }}
         >
           Prepare
         </button>
       </div>
 
       {/* Footer */}
-      <div className="mt-4">
-        <span
-          className="text-[13.5px] font-semibold leading-[16.34px]"
-          style={{ color: "#b0b0b0" }}
-        >
+      <div>
+        <span style={{ color: "#b0b0b0", fontSize: "13.5px", fontWeight: 600 }}>
           Recent Breakdowns
         </span>
       </div>
