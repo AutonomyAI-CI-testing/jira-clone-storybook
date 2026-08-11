@@ -9,11 +9,10 @@ export const loader: LoaderFunction = async ({ request }) => {
   return null;
 };
 
-// Currently there is no landing. Just redirecting to /projects
 export default function IndexRoute() {
   return (
-    <div>
-      <h1>LANDING</h1>
+    <div className="flex items-center justify-center w-screen h-screen">
+      <h1 className="text-4xl font-bold">Fei</h1>
     </div>
   );
 }
