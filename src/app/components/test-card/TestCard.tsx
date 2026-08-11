@@ -33,7 +33,7 @@ export const TestCard = () => {
       </div>
 
       {/* Add New Design section */}
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-1 mb-4">
         <HiChevronUp style={{ color: "#b2b2b1", fontSize: "14px" }} />
         <span style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600 }}>
           Add New Design
@@ -43,7 +43,9 @@ export const TestCard = () => {
       {/* Personal Access Token field */}
       <div className="mb-3">
         <div className="flex items-center gap-1 mb-1">
-          <span style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600 }}>
+          <span
+            style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600 }}
+          >
             Personal Access Token
           </span>
           <AiOutlineInfoCircle style={{ color: "#a4a4a3", fontSize: "13px" }} />
@@ -70,7 +72,9 @@ export const TestCard = () => {
       {/* Design URL field */}
       <div className="mb-5">
         <div className="flex items-center gap-1 mb-1">
-          <span style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600 }}>
+          <span
+            style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600 }}
+          >
             Design URL
           </span>
           <AiOutlineInfoCircle style={{ color: "#a3a3a2", fontSize: "13px" }} />
