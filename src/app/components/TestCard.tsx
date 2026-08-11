@@ -7,7 +7,7 @@ export const TestCard = () => {
     >
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-5 pb-2">
-        <span style={{ color: "#b5b5b5", fontWeight: 600, fontSize: "13.5px", lineHeight: "16.34px" }}>
+        <span style={{ color: "#b5b5b5", fontWeight: 600, fontSize: "13.5px" }}>
           UI magician Agent
         </span>
         {/* Gear icon */}
@@ -17,25 +17,25 @@ export const TestCard = () => {
         </svg>
       </div>
 
-      {/* Subtitle row */}
+      {/* Subtitle */}
       <div className="flex items-center gap-1 px-5 pb-6">
         <svg width="8" height="5" viewBox="0 0 10 6" fill="none">
           <path d="M1 5L5 1L9 5" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ color: "#8b9291", fontWeight: 600, fontSize: "11.5px", lineHeight: "13.92px" }}>
+        <span style={{ color: "#8b9291", fontWeight: 600, fontSize: "11.5px" }}>
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Spacer */}
-      <div className="h-6" />
+      <div className="h-10" />
 
       {/* Add New Design section header */}
       <div className="flex items-center gap-2 px-5 mb-4">
         <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
           <path d="M1 7L6 2L11 7" stroke="#b2b2b1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ color: "#b2b2b1", fontWeight: 600, fontSize: "13.5px", lineHeight: "16.34px" }}>
+        <span style={{ color: "#b2b2b1", fontWeight: 600, fontSize: "13.5px" }}>
           Add New Design
         </span>
       </div>
@@ -43,13 +43,13 @@ export const TestCard = () => {
       {/* Personal Access Token */}
       <div className="px-5 mb-3">
         <div className="flex items-center gap-1 mb-1">
-          <span style={{ color: "#a4a4a3", fontWeight: 600, fontSize: "11.5px", lineHeight: "13.92px" }}>
+          <span style={{ color: "#a4a4a3", fontWeight: 600, fontSize: "11.5px" }}>
             Personal Access Token
           </span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="1.5">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="16" x2="12" y2="12" />
-            <line x1="12" y1="8" x2="12.01" y2="8" strokeWidth="2" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
           </svg>
         </div>
         <div
@@ -70,13 +70,13 @@ export const TestCard = () => {
       {/* Design URL */}
       <div className="px-5 mb-4">
         <div className="flex items-center gap-1 mb-1">
-          <span style={{ color: "#a3a3a2", fontWeight: 600, fontSize: "11.5px", lineHeight: "13.92px" }}>
+          <span style={{ color: "#a3a3a2", fontWeight: 600, fontSize: "11.5px" }}>
             Design URL
           </span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="1.5">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="16" x2="12" y2="12" />
-            <line x1="12" y1="8" x2="12.01" y2="8" strokeWidth="2" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
           </svg>
         </div>
         <div
@@ -95,7 +95,7 @@ export const TestCard = () => {
       </div>
 
       {/* Buttons */}
-      <div className="px-5 flex gap-3 mb-8">
+      <div className="flex gap-3 px-5 mb-6">
         <button
           style={{
             backgroundColor: "#843a17",
@@ -107,7 +107,6 @@ export const TestCard = () => {
             fontSize: "11.5px",
             border: "none",
             cursor: "pointer",
-            fontFamily: "Inter, sans-serif",
           }}
         >
           Awesome
@@ -123,19 +122,18 @@ export const TestCard = () => {
             fontSize: "11.5px",
             border: "none",
             cursor: "pointer",
-            fontFamily: "Inter, sans-serif",
           }}
         >
           Prepare
         </button>
       </div>
 
-      {/* Divider */}
-      <div className="mx-5 mb-4" style={{ height: "1px", backgroundColor: "#2a2a27" }} />
+      {/* Spacer */}
+      <div className="h-8" />
 
       {/* Recent Breakdowns */}
       <div className="px-5 pb-5">
-        <span style={{ color: "#b0b0b0", fontWeight: 600, fontSize: "13.5px", lineHeight: "16.34px" }}>
+        <span style={{ color: "#b0b0b0", fontWeight: 600, fontSize: "13.5px" }}>
           Recent Breakdowns
         </span>
       </div>
