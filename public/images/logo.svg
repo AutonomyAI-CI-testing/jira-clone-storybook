@@ -1,0 +1,7 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="24" height="24" fill="white" rx="2"/>
+  
+  <!-- Black text 'Fei' -->
+  <text x="12" y="17" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="black" text-anchor="middle">Fei</text>
+</svg>
