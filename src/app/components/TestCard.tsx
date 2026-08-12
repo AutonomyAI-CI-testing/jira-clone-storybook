@@ -17,8 +17,8 @@ export function TestCard() {
         </svg>
       </div>
 
-      {/* Subtitle */}
-      <div className="flex items-center gap-2 mb-8">
+      {/* Subtitle row */}
+      <div className="flex items-center gap-2 mb-10">
         <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
           <path d="M1 4L4 1L7 4" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
@@ -27,7 +27,7 @@ export function TestCard() {
         </span>
       </div>
 
-      {/* Add New Design */}
+      {/* Add New Design heading */}
       <div className="flex items-center gap-2 mb-4">
         <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
           <path d="M1 6L6 1L11 6" stroke="#b2b2b1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -39,19 +39,23 @@ export function TestCard() {
 
       {/* Personal Access Token */}
       <div className="mb-3">
-        <div className="flex items-center gap-1 mb-1">
+        <div className="flex items-center gap-1.5 mb-1.5">
           <span className="font-semibold" style={{ color: "#a4a4a3", fontSize: "11.5px" }}>
             Personal Access Token
           </span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="1.5">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="16" x2="12" y2="12" />
-            <circle cx="12" cy="8" r="0.5" fill="#a4a4a3" />
+            <line x1="12" y1="8" x2="12.01" y2="8" strokeWidth="2" />
           </svg>
         </div>
         <div
-          className="w-full flex items-center px-3"
-          style={{ backgroundColor: "#272822", border: "1px solid #a5adad", height: "36px" }}
+          className="w-full px-3 flex items-center"
+          style={{
+            backgroundColor: "#272822",
+            border: "1px solid #a5adad",
+            height: "36px",
+          }}
         >
           <span className="font-semibold" style={{ color: "#737470", fontSize: "11.5px" }}>
             figd_xxxxxxxxxxxxxxxxxx
@@ -60,20 +64,24 @@ export function TestCard() {
       </div>
 
       {/* Design URL */}
-      <div className="mb-4">
-        <div className="flex items-center gap-1 mb-1">
+      <div className="mb-5">
+        <div className="flex items-center gap-1.5 mb-1.5">
           <span className="font-semibold" style={{ color: "#a3a3a2", fontSize: "11.5px" }}>
             Design URL
           </span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="1.5">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="16" x2="12" y2="12" />
-            <circle cx="12" cy="8" r="0.5" fill="#a3a3a2" />
+            <line x1="12" y1="8" x2="12.01" y2="8" strokeWidth="2" />
           </svg>
         </div>
         <div
-          className="w-full flex items-center px-3"
-          style={{ backgroundColor: "#272822", border: "2px solid #929291", height: "37px" }}
+          className="w-full px-3 flex items-center"
+          style={{
+            backgroundColor: "#272822",
+            border: "2px solid #929291",
+            height: "37px",
+          }}
         >
           <span className="font-semibold" style={{ color: "#71726e", fontSize: "10.5px" }}>
             https://www.figma.com/file/:
@@ -82,16 +90,32 @@ export function TestCard() {
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-3 mb-8">
+      <div className="flex gap-3 mb-10">
         <button
           className="flex items-center justify-center font-semibold"
-          style={{ backgroundColor: "#843a17", color: "#8c8078", fontSize: "11.5px", width: "85px", height: "37px", borderRadius: "4px", border: "none" }}
+          style={{
+            backgroundColor: "#843a17",
+            color: "#8c8078",
+            fontSize: "11.5px",
+            width: "85px",
+            height: "37px",
+            borderRadius: "4px",
+            border: "none",
+          }}
         >
           Awesome
         </button>
         <button
           className="flex items-center justify-center font-semibold"
-          style={{ backgroundColor: "#843a17", color: "#8c8078", fontSize: "11.5px", width: "85px", height: "37px", borderRadius: "4px", border: "none" }}
+          style={{
+            backgroundColor: "#843a17",
+            color: "#8c8078",
+            fontSize: "11.5px",
+            width: "85px",
+            height: "37px",
+            borderRadius: "4px",
+            border: "none",
+          }}
         >
           Prepare
         </button>
