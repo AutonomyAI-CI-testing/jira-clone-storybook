@@ -6,7 +6,7 @@ export function TestCard() {
       style={{ fontFamily: "Inter, sans-serif" }}
     >
       {/* Header row */}
-      <div className="flex items-center justify-between px-5 pt-5 pb-2">
+      <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
@@ -17,7 +17,7 @@ export function TestCard() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="#b5b5b5"
-          strokeWidth="2"
+          strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -28,7 +28,6 @@ export function TestCard() {
 
       {/* Subtitle row */}
       <div className="flex items-center gap-2 px-5 pb-4">
-        {/* Chevron up */}
         <svg
           width="10"
           height="7"
@@ -39,7 +38,7 @@ export function TestCard() {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="1 6 5 1.5 9 6" />
+          <polyline points="1 6 5 2 9 6" />
         </svg>
         <span className="text-[11.5px] font-semibold text-[#8b9291] truncate">
           From entire frame to a singl...
@@ -50,7 +49,7 @@ export function TestCard() {
       <div className="w-full h-px bg-[#2e2e2b]" />
 
       {/* Add New Design section */}
-      <div className="px-5 pt-5 pb-4">
+      <div className="px-5 pt-5">
         {/* Section heading */}
         <div className="flex items-center gap-2 mb-4">
           <svg
@@ -76,7 +75,6 @@ export function TestCard() {
             <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
               Personal Access Token
             </span>
-            {/* Info icon */}
             <svg
               width="13"
               height="13"
@@ -89,7 +87,7 @@ export function TestCard() {
             >
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
+              <circle cx="12" cy="16" r="0.5" fill="#a4a4a3" />
             </svg>
           </div>
           <div className="w-full rounded px-3 py-2 bg-[#272822] border border-[#a5adad]">
@@ -105,7 +103,6 @@ export function TestCard() {
             <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
               Design URL
             </span>
-            {/* Info icon */}
             <svg
               width="13"
               height="13"
@@ -118,7 +115,7 @@ export function TestCard() {
             >
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
+              <circle cx="12" cy="16" r="0.5" fill="#a3a3a2" />
             </svg>
           </div>
           <div className="w-full rounded px-3 py-2 bg-[#272822] border-2 border-[#929291]">
@@ -128,18 +125,12 @@ export function TestCard() {
           </div>
         </div>
 
-        {/* Action buttons */}
-        <div className="flex gap-3">
-          <button
-            type="button"
-            className="flex-1 py-2 rounded text-[11.5px] font-semibold text-[#8c8078] bg-[#843a17]"
-          >
+        {/* Buttons */}
+        <div className="flex gap-3 mb-5">
+          <button className="flex-1 py-2 rounded bg-[#843a17] text-[11.5px] font-semibold text-[#8c8078]">
             Awesome
           </button>
-          <button
-            type="button"
-            className="flex-1 py-2 rounded text-[11.5px] font-semibold text-[#8c8078] bg-[#843a17]"
-          >
+          <button className="flex-1 py-2 rounded bg-[#843a17] text-[11.5px] font-semibold text-[#8c8078]">
             Prepare
           </button>
         </div>
@@ -149,7 +140,7 @@ export function TestCard() {
       <div className="w-full h-px bg-[#2e2e2b]" />
 
       {/* Recent Breakdowns */}
-      <div className="px-5 py-4">
+      <div className="px-5 pt-4 pb-5">
         <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
           Recent Breakdowns
         </span>
