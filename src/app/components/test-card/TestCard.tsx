@@ -1,195 +1,102 @@
-// Gear icon SVG (14x16) from Figma assets
-const GearIcon = () => (
-  <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="7" cy="8" r="2.5" stroke="#b5b5b5" strokeWidth="1.5" />
-    <path
-      d="M7 1.5 L7.9 3.2 L9.8 2.7 L10.5 4.5 L12.3 5 L12 7 L13.5 8 L12 9 L12.3 11 L10.5 11.5 L9.8 13.3 L7.9 12.8 L7 14.5 L6.1 12.8 L4.2 13.3 L3.5 11.5 L1.7 11 L2 9 L0.5 8 L2 7 L1.7 5 L3.5 4.5 L4.2 2.7 L6.1 3.2 Z"
-      stroke="#b5b5b5"
-      strokeWidth="1.2"
-      fill="none"
-    />
-  </svg>
-);
-
-// Small chevron icon (8x5) for subtitle row
-const ChevronSmall = () => (
-  <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1 4L4 1L7 4" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-// Larger chevron (12x8) for "Add New Design" row
-const ChevronLarge = () => (
-  <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1.5 6L6 1.5L10.5 6" stroke="#b2b2b1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-// Info circle icon (15x15)
-const InfoIcon = ({ color = "#a4a4a3" }: { color?: string }) => (
-  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="7.5" cy="7.5" r="6.5" stroke={color} strokeWidth="1.2" />
-    <line x1="7.5" y1="6.5" x2="7.5" y2="10.5" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
-    <circle cx="7.5" cy="4.5" r="0.75" fill={color} />
-  </svg>
-);
+import { HiChevronUp, HiCog, HiInformationCircle } from "react-icons/hi";
 
 export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="flex flex-col overflow-auto"
-      style={{
-        backgroundColor: "#1e1e1b",
-        width: "254px",
-        minHeight: "508px",
-        fontFamily: "Inter, sans-serif",
-      }}
+      className="w-[254px] min-h-[508px] bg-[#1c1c1a] flex flex-col gap-3 p-5"
+      style={{ fontFamily: "Inter, sans-serif" }}
     >
       {/* Header row */}
-      <div className="flex items-center justify-between px-5 pt-5 pb-2">
-        <span
-          className="font-semibold"
-          style={{ color: "#b5b5b5", fontSize: "13.5px", lineHeight: "16.34px" }}
-        >
+      <div className="flex items-center justify-between">
+        <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
-        <GearIcon />
+        <HiCog className="text-[#b5b5b5]" size={16} />
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 pb-4">
-        <ChevronSmall />
-        <span
-          className="font-semibold truncate"
-          style={{ color: "#8b9291", fontSize: "11.5px", lineHeight: "13.92px" }}
-        >
+      <div className="flex items-center gap-1">
+        <HiChevronUp className="text-[#8b9291]" size={12} />
+        <span className="text-[11.5px] font-semibold text-[#8b9291]">
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Spacer */}
-      <div style={{ height: "40px" }} />
+      <div className="h-6" />
 
-      {/* Add New Design section */}
-      <div className="px-4">
-        {/* Section header */}
-        <div className="flex items-center gap-2 mb-4">
-          <ChevronLarge />
-          <span
-            className="font-semibold"
-            style={{ color: "#b2b2b1", fontSize: "13.5px", lineHeight: "16.34px" }}
-          >
-            Add New Design
+      {/* Add New Design section header */}
+      <div className="flex items-center gap-2">
+        <HiChevronUp className="text-[#b2b2b1]" size={14} />
+        <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
+          Add New Design
+        </span>
+      </div>
+
+      {/* Personal Access Token */}
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
+            Personal Access Token
           </span>
+          <HiInformationCircle className="text-[#a4a4a3]" size={15} />
         </div>
-
-        {/* Personal Access Token field */}
-        <div className="mb-3">
-          <div className="flex items-center gap-2 mb-1">
-            <span
-              className="font-semibold"
-              style={{ color: "#a4a4a3", fontSize: "11.5px", lineHeight: "13.92px" }}
-            >
-              Personal Access Token
-            </span>
-            <InfoIcon color="#a4a4a3" />
-          </div>
-          <div
-            className="w-full flex items-center px-3"
-            style={{
-              backgroundColor: "#272822",
-              border: "1px solid #a5adad",
-              height: "37px",
-            }}
-          >
-            <span
-              className="font-semibold truncate"
-              style={{ color: "#737470", fontSize: "11.5px", lineHeight: "13.92px" }}
-            >
-              figd_xxxxxxxxxxxxxxxxxx
-            </span>
-          </div>
-        </div>
-
-        {/* Design URL field */}
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-1">
-            <span
-              className="font-semibold"
-              style={{ color: "#a3a3a2", fontSize: "11.5px", lineHeight: "13.92px" }}
-            >
-              Design URL
-            </span>
-            <InfoIcon color="#a3a3a2" />
-          </div>
-          <div
-            className="w-full flex items-center px-3"
-            style={{
-              backgroundColor: "#272822",
-              border: "2px solid #929291",
-              height: "37px",
-            }}
-          >
-            <span
-              className="font-semibold truncate"
-              style={{ color: "#71726e", fontSize: "10.5px", lineHeight: "12.71px" }}
-            >
-              https://www.figma.com/file/:
-            </span>
-          </div>
-        </div>
-
-        {/* Action buttons */}
-        <div className="flex gap-3 justify-center mb-6">
-          <button
-            type="button"
-            className="flex items-center justify-center font-semibold"
-            style={{
-              backgroundColor: "#843a17",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              lineHeight: "13.92px",
-              width: "85px",
-              height: "37px",
-              borderRadius: "4px",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Awesome
-          </button>
-          <button
-            type="button"
-            className="flex items-center justify-center font-semibold"
-            style={{
-              backgroundColor: "#843a17",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              lineHeight: "13.92px",
-              width: "85px",
-              height: "37px",
-              borderRadius: "4px",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Prepare
-          </button>
+        <div
+          className="bg-[#272822] rounded px-3 py-2"
+          style={{ border: "1px solid #a5adad" }}
+        >
+          <span className="text-[11.5px] font-semibold text-[#737470]">
+            figd_xxxxxxxxxxxxxxxxxx
+          </span>
         </div>
       </div>
 
-      {/* Recent Breakdowns */}
-      <div className="px-5 py-4">
-        <span
-          className="font-semibold"
-          style={{ color: "#b0b0b0", fontSize: "13.5px", lineHeight: "16.34px" }}
+      {/* Design URL */}
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
+            Design URL
+          </span>
+          <HiInformationCircle className="text-[#a3a3a2]" size={15} />
+        </div>
+        <div
+          className="bg-[#272822] rounded px-3 py-2"
+          style={{ border: "2px solid #929291" }}
         >
+          <span className="text-[10.5px] font-semibold text-[#71726e]">
+            https://www.figma.com/file/:
+          </span>
+        </div>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex gap-3 justify-center mt-1">
+        <button
+          type="button"
+          className="bg-[#843a17] text-[#8c8078] text-[11.5px] font-semibold px-6 py-2"
+          style={{ borderRadius: "4px" }}
+        >
+          Awesome
+        </button>
+        <button
+          type="button"
+          className="bg-[#843a17] text-[#8c8078] text-[11.5px] font-semibold px-6 py-2"
+          style={{ borderRadius: "4px" }}
+        >
+          Prepare
+        </button>
+      </div>
+
+      {/* Spacer */}
+      <div className="h-6" />
+
+      {/* Recent Breakdowns */}
+      <div>
+        <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
           Recent Breakdowns
         </span>
       </div>
     </div>
   );
 };
-
-export default TestCard;
