@@ -112,7 +112,7 @@ export const TestCard = () => {
             style={{
               backgroundColor: "#272822",
               border: "1px solid #a5adad",
-              minHeight: "37px",
+              minHeight: "36px",
             }}
           >
             <span
@@ -168,24 +168,26 @@ export const TestCard = () => {
         {/* Buttons */}
         <div className="flex gap-3 mb-6">
           <button
-            className="flex-1 py-2 font-semibold"
+            className="flex-1 flex items-center justify-center py-2 font-semibold"
             style={{
               backgroundColor: "#843a17",
               color: "#8c8078",
               fontSize: "11.5px",
               borderRadius: "4px",
+              minHeight: "37px",
               border: "none",
             }}
           >
             Awesome
           </button>
           <button
-            className="flex-1 py-2 font-semibold"
+            className="flex-1 flex items-center justify-center py-2 font-semibold"
             style={{
               backgroundColor: "#843a17",
               color: "#8c8078",
               fontSize: "11.5px",
               borderRadius: "4px",
+              minHeight: "37px",
               border: "none",
             }}
           >
