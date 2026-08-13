@@ -31,8 +31,7 @@ export const TestCard = () => {
       <hr style={{ borderColor: "#2e2e2a", borderTopWidth: 1, margin: 0 }} />
 
       {/* Add New Design section */}
-      <div className="px-5 pt-5 pb-4">
-        {/* Section header */}
+      <div className="px-5 pt-5 pb-3">
         <div className="flex items-center gap-2 mb-4">
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
             <path d="M1 7L6 1L11 7" stroke="#b2b2b1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -48,10 +47,10 @@ export const TestCard = () => {
             <span style={{ color: "#a4a4a3", fontSize: 11.5, fontWeight: 600 }}>
               Personal Access Token
             </span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="1.5">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="1.5">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="16" x2="12" y2="12" />
-              <circle cx="12" cy="8" r="0.5" fill="#a4a4a3" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
           </div>
           <div
@@ -70,10 +69,10 @@ export const TestCard = () => {
             <span style={{ color: "#a3a3a2", fontSize: 11.5, fontWeight: 600 }}>
               Design URL
             </span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="1.5">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="1.5">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="16" x2="12" y2="12" />
-              <circle cx="12" cy="8" r="0.5" fill="#a3a3a2" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
           </div>
           <div
