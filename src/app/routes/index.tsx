@@ -1,19 +1,23 @@
-import { LoaderFunction, redirect } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import { Error404 } from "@app/components/error-404";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    return redirect("projects");
-  }
-  return null;
-};
+if (typeof window === "undefined") {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { redirect } = require("@remix-run/node");
+  exports.loader = async ({ request }: Parameters<LoaderFunction>[0]) => {
+    const url = new URL(request.url);
+    if (url.pathname === "/") {
+      return redirect("projects");
+    }
+    return null;
+  };
+}
 
-// Currently there is no landing. Just redirecting to /projects
+// Landing page with white background and Fei text
 export default function IndexRoute() {
   return (
-    <div>
-      <h1>LANDING</h1>
+    <div className="w-full h-screen bg-white flex items-center justify-center">
+      <h1 className="text-6xl font-primary-black text-black">Fei</h1>
     </div>
   );
 }
