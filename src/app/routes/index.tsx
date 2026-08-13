@@ -17,7 +17,7 @@ if (typeof window === "undefined") {
 export default function IndexRoute() {
   return (
     <div className="w-full h-screen bg-white flex items-center justify-center">
-      <h1 className="text-6xl font-primary-black text-black">Fei</h1>
+      <h1 className="text-6xl font-primary-black text-font-danger">Fei</h1>
     </div>
   );
 }
