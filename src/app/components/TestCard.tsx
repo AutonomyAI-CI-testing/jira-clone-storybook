@@ -2,7 +2,7 @@ export function TestCard() {
   return (
     <div
       id="testElem"
-      className="w-[254px] overflow-auto pb-6"
+      className="w-[254px] overflow-auto"
       style={{ background: "#272822", fontFamily: "Inter, sans-serif" }}
     >
       {/* Header row */}
@@ -31,18 +31,19 @@ export function TestCard() {
 
       {/* Subtitle row */}
       <div className="flex items-center gap-2 px-5 pb-4">
-        {/* Chevron up */}
         <svg
           width="8"
           height="5"
           viewBox="0 0 8 5"
           fill="none"
-          stroke="#8b9291"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
         >
-          <path d="M1 4L4 1L7 4" />
+          <path
+            d="M1 4L4 1L7 4"
+            stroke="#8b9291"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
         <span
           className="text-[11.5px] font-semibold"
@@ -59,17 +60,14 @@ export function TestCard() {
       <div className="px-5">
         {/* Section header */}
         <div className="flex items-center gap-2 mb-4">
-          <svg
-            width="12"
-            height="8"
-            viewBox="0 0 12 8"
-            fill="none"
-            stroke="#b2b2b1"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M1 1L6 6L11 1" />
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+            <path
+              d="M1 1L6 6L11 1"
+              stroke="#b2b2b1"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
           <span
             className="text-[13.5px] font-semibold"
@@ -81,7 +79,7 @@ export function TestCard() {
 
         {/* Personal Access Token */}
         <div className="mb-3">
-          <div className="flex items-center gap-1.5 mb-1">
+          <div className="flex items-center gap-2 mb-1">
             <span
               className="text-[11.5px] font-semibold"
               style={{ color: "#a4a4a3" }}
@@ -121,7 +119,7 @@ export function TestCard() {
 
         {/* Design URL */}
         <div className="mb-4">
-          <div className="flex items-center gap-1.5 mb-1">
+          <div className="flex items-center gap-2 mb-1">
             <span
               className="text-[11.5px] font-semibold"
               style={{ color: "#a3a3a2" }}
@@ -162,13 +160,13 @@ export function TestCard() {
         {/* Buttons */}
         <div className="flex gap-3">
           <button
-            className="flex-1 h-[37px] text-[11.5px] font-semibold rounded"
+            className="flex-1 h-[37px] rounded text-[11.5px] font-semibold"
             style={{ background: "#843a17", color: "#8c8078", borderRadius: "4px" }}
           >
             Awesome
           </button>
           <button
-            className="flex-1 h-[37px] text-[11.5px] font-semibold rounded"
+            className="flex-1 h-[37px] rounded text-[11.5px] font-semibold"
             style={{ background: "#843a17", color: "#8c8078", borderRadius: "4px" }}
           >
             Prepare
@@ -180,7 +178,7 @@ export function TestCard() {
       <div className="h-10" />
 
       {/* Recent Breakdowns */}
-      <div className="px-5">
+      <div className="px-5 pb-5">
         <span
           className="text-[13.5px] font-semibold"
           style={{ color: "#b0b0b0" }}
