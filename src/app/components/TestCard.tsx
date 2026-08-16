@@ -30,7 +30,7 @@ export const TestCard = () => {
 
       {/* Add New Design section label */}
       <div className="flex items-center gap-2 px-5 mb-4">
-        <HiChevronUp className="text-[#b2b2b1] flex-shrink-0" size={14} />
+        <HiChevronDown className="text-[#b2b2b1] flex-shrink-0" size={12} />
         <span className="text-[#b2b2b1] text-[13.5px] font-semibold leading-[16px]">
           Add New Design
         </span>
