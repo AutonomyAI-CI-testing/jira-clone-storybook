@@ -90,3 +90,5 @@ export function TestCard() {
     </div>
   );
 }
+
+export default TestCard;
