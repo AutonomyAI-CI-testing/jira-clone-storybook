@@ -12,17 +12,10 @@ export const TestCard = () => {
     >
       {/* Header row */}
       <div className="flex items-center justify-between px-4 pt-5 pb-3">
-        <span
-          style={{
-            color: "#b5b5b5",
-            fontWeight: 600,
-            fontSize: "13.5px",
-            lineHeight: "16.34px",
-          }}
-        >
+        <span style={{ color: "#b5b5b5", fontWeight: 600, fontSize: "13.5px" }}>
           UI magician Agent
         </span>
-        {/* Gear / settings icon */}
+        {/* Gear icon */}
         <svg
           width="16"
           height="16"
@@ -39,7 +32,8 @@ export const TestCard = () => {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-4 pb-3">
+      <div className="flex items-center gap-2 px-4 pb-2">
+        {/* Chevron up */}
         <svg
           width="10"
           height="7"
@@ -50,63 +44,45 @@ export const TestCard = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="1 6 5 2 9 6" />
+          <polyline points="1 6 5 1 9 6" />
         </svg>
-        <span
-          style={{
-            color: "#8b9291",
-            fontWeight: 600,
-            fontSize: "11.5px",
-            lineHeight: "13.92px",
-          }}
-        >
+        <span style={{ color: "#8b9291", fontWeight: 600, fontSize: "11.5px" }}>
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Spacer */}
-      <div style={{ minHeight: "32px" }} />
+      <div className="h-8" />
 
-      {/* Add New Design section */}
-      <div className="px-4">
-        <div className="flex items-center gap-2 mb-4">
-          <svg
-            width="12"
-            height="8"
-            viewBox="0 0 12 8"
-            fill="none"
-            stroke="#b2b2b1"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="1 1 6 6 11 1" />
-          </svg>
-          <span
-            style={{
-              color: "#b2b2b1",
-              fontWeight: 600,
-              fontSize: "13.5px",
-              lineHeight: "16.34px",
-            }}
-          >
-            Add New Design
-          </span>
-        </div>
+      {/* Add New Design header */}
+      <div className="flex items-center gap-2 px-4 pb-4">
+        {/* Chevron down */}
+        <svg
+          width="10"
+          height="7"
+          viewBox="0 0 10 7"
+          fill="none"
+          stroke="#b2b2b1"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="1 1 5 6 9 1" />
+        </svg>
+        <span style={{ color: "#b2b2b1", fontWeight: 600, fontSize: "13.5px" }}>
+          Add New Design
+        </span>
+      </div>
 
+      {/* Form area */}
+      <div className="px-4 flex flex-col gap-3">
         {/* Personal Access Token */}
-        <div className="mb-3">
-          <div className="flex items-center gap-2 mb-1">
-            <span
-              style={{
-                color: "#a4a4a3",
-                fontWeight: 600,
-                fontSize: "11.5px",
-                lineHeight: "13.92px",
-              }}
-            >
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-1">
+            <span style={{ color: "#a4a4a3", fontWeight: 600, fontSize: "11.5px" }}>
               Personal Access Token
             </span>
+            {/* Info icon */}
             <svg
               width="15"
               height="15"
@@ -126,35 +102,23 @@ export const TestCard = () => {
             style={{
               backgroundColor: "#272822",
               border: "1px solid #a5adad",
+              borderRadius: "2px",
             }}
             className="w-full px-3 py-2"
           >
-            <span
-              style={{
-                color: "#737470",
-                fontWeight: 600,
-                fontSize: "11.5px",
-                lineHeight: "13.92px",
-              }}
-            >
+            <span style={{ color: "#737470", fontWeight: 600, fontSize: "11.5px" }}>
               figd_xxxxxxxxxxxxxxxxxx
             </span>
           </div>
         </div>
 
         {/* Design URL */}
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-1">
-            <span
-              style={{
-                color: "#a3a3a2",
-                fontWeight: 600,
-                fontSize: "11.5px",
-                lineHeight: "13.92px",
-              }}
-            >
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-1">
+            <span style={{ color: "#a3a3a2", fontWeight: 600, fontSize: "11.5px" }}>
               Design URL
             </span>
+            {/* Info icon */}
             <svg
               width="15"
               height="15"
@@ -174,24 +138,18 @@ export const TestCard = () => {
             style={{
               backgroundColor: "#272822",
               border: "2px solid #929291",
+              borderRadius: "2px",
             }}
             className="w-full px-3 py-2"
           >
-            <span
-              style={{
-                color: "#71726e",
-                fontWeight: 600,
-                fontSize: "10.5px",
-                lineHeight: "12.71px",
-              }}
-            >
+            <span style={{ color: "#71726e", fontWeight: 600, fontSize: "10.5px" }}>
               https://www.figma.com/file/:
             </span>
           </div>
         </div>
 
-        {/* Action buttons */}
-        <div className="flex gap-3">
+        {/* Buttons */}
+        <div className="flex gap-3 mt-1">
           <button
             style={{
               backgroundColor: "#843a17",
@@ -199,10 +157,11 @@ export const TestCard = () => {
               color: "#8c8078",
               fontWeight: 600,
               fontSize: "11.5px",
-              lineHeight: "13.92px",
               fontFamily: "Inter, sans-serif",
+              border: "none",
+              cursor: "pointer",
             }}
-            className="flex-1 py-2 px-4"
+            className="flex-1 py-2"
           >
             Awesome
           </button>
@@ -213,10 +172,11 @@ export const TestCard = () => {
               color: "#8c8078",
               fontWeight: 600,
               fontSize: "11.5px",
-              lineHeight: "13.92px",
               fontFamily: "Inter, sans-serif",
+              border: "none",
+              cursor: "pointer",
             }}
-            className="flex-1 py-2 px-4"
+            className="flex-1 py-2"
           >
             Prepare
           </button>
@@ -224,18 +184,11 @@ export const TestCard = () => {
       </div>
 
       {/* Spacer */}
-      <div className="flex-1" style={{ minHeight: "24px" }} />
+      <div className="flex-1" />
 
       {/* Recent Breakdowns */}
       <div className="px-4 pb-6">
-        <span
-          style={{
-            color: "#b0b0b0",
-            fontWeight: 600,
-            fontSize: "13.5px",
-            lineHeight: "16.34px",
-          }}
-        >
+        <span style={{ color: "#b0b0b0", fontWeight: 600, fontSize: "13.5px" }}>
           Recent Breakdowns
         </span>
       </div>
