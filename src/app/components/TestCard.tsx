@@ -19,8 +19,8 @@ export const TestCard = () => {
 
       {/* Subtitle */}
       <div className="flex items-center gap-2 px-5 pb-5">
-        <svg width="8" height="6" viewBox="0 0 10 7" fill="none">
-          <path d="M1 6L5 2L9 6" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <svg width="9" height="6" viewBox="0 0 9 6" fill="none">
+          <path d="M1 5L4.5 1.5L8 5" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
         <span className="text-[11.5px] font-semibold text-[#8b9291]">
           From entire frame to a singl...
@@ -28,14 +28,14 @@ export const TestCard = () => {
       </div>
 
       {/* Spacer */}
-      <div className="h-8" />
+      <div className="h-6" />
 
       {/* Add New Design section */}
       <div className="px-5">
         {/* Section header */}
-        <div className="flex items-center gap-2 mb-5">
-          <svg width="10" height="7" viewBox="0 0 10 7" fill="none">
-            <path d="M1 6L5 2L9 6" stroke="#b2b2b1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <div className="flex items-center gap-2 mb-4">
+          <svg width="11" height="8" viewBox="0 0 11 8" fill="none">
+            <path d="M1 7L5.5 2L10 7" stroke="#b2b2b1" strokeWidth="1.8" strokeLinecap="round" />
           </svg>
           <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
             Add New Design
@@ -44,15 +44,14 @@ export const TestCard = () => {
 
         {/* Personal Access Token */}
         <div className="mb-3">
-          <div className="flex items-center gap-1 mb-[6px]">
+          <div className="flex items-center gap-1 mb-1">
             <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
               Personal Access Token
             </span>
-            {/* Info icon */}
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#a4a4a3" strokeWidth="1">
-              <circle cx="7" cy="7" r="6.5" />
-              <line x1="7" y1="6" x2="7" y2="10" strokeLinecap="round" />
-              <circle cx="7" cy="4.5" r="0.6" fill="#a4a4a3" stroke="none" />
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#a4a4a3" strokeWidth="1">
+              <circle cx="6.5" cy="6.5" r="6" />
+              <line x1="6.5" y1="5.5" x2="6.5" y2="9.5" strokeLinecap="round" />
+              <circle cx="6.5" cy="3.8" r="0.7" fill="#a4a4a3" stroke="none" />
             </svg>
           </div>
           <div className="flex items-center bg-[#272822] border border-[#a5adad] rounded px-3 h-[37px]">
@@ -63,16 +62,15 @@ export const TestCard = () => {
         </div>
 
         {/* Design URL */}
-        <div className="mb-5">
-          <div className="flex items-center gap-1 mb-[6px]">
+        <div className="mb-4">
+          <div className="flex items-center gap-1 mb-1">
             <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
               Design URL
             </span>
-            {/* Info icon */}
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#a3a3a2" strokeWidth="1">
-              <circle cx="7" cy="7" r="6.5" />
-              <line x1="7" y1="6" x2="7" y2="10" strokeLinecap="round" />
-              <circle cx="7" cy="4.5" r="0.6" fill="#a3a3a2" stroke="none" />
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#a3a3a2" strokeWidth="1">
+              <circle cx="6.5" cy="6.5" r="6" />
+              <line x1="6.5" y1="5.5" x2="6.5" y2="9.5" strokeLinecap="round" />
+              <circle cx="6.5" cy="3.8" r="0.7" fill="#a3a3a2" stroke="none" />
             </svg>
           </div>
           <div className="flex items-center bg-[#272822] border-2 border-[#929291] rounded px-3 h-[37px]">
@@ -93,7 +91,7 @@ export const TestCard = () => {
         </div>
       </div>
 
-      {/* Flexible spacer */}
+      {/* Flex spacer */}
       <div className="flex-1" />
 
       {/* Recent Breakdowns */}
