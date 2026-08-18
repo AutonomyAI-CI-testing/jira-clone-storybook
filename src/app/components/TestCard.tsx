@@ -3,11 +3,14 @@ export const TestCard = () => {
     <div
       id="testElem"
       style={{ fontFamily: "Inter, sans-serif", backgroundColor: "#1a1a18" }}
-      className="w-[254px] min-h-[508px] text-sm overflow-auto"
+      className="w-[254px] min-h-[508px] overflow-auto"
     >
       {/* Header row */}
       <div className="flex items-center justify-between px-5 pt-5">
-        <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
+        <span
+          className="text-[13.5px] font-semibold"
+          style={{ color: "#b5b5b5" }}
+        >
           UI magician Agent
         </span>
         {/* Gear / settings icon */}
@@ -27,8 +30,7 @@ export const TestCard = () => {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 mt-2">
-        {/* Chevron up */}
+      <div className="flex items-center gap-2 px-5 mt-3">
         <svg
           width="8"
           height="5"
@@ -41,17 +43,19 @@ export const TestCard = () => {
         >
           <polyline points="1 5 5 1 9 5" />
         </svg>
-        <span className="text-[11.5px] font-semibold text-[#8b9291]">
+        <span
+          className="text-[11.5px] font-semibold"
+          style={{ color: "#8b9291" }}
+        >
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Spacer */}
-      <div className="mt-8" />
+      <div className="mt-10" />
 
-      {/* Add New Design heading */}
+      {/* Add New Design */}
       <div className="flex items-center gap-2 px-5">
-        {/* Chevron up */}
         <svg
           width="12"
           height="8"
@@ -64,18 +68,23 @@ export const TestCard = () => {
         >
           <polyline points="1 7 6 1 11 7" />
         </svg>
-        <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
+        <span
+          className="text-[13.5px] font-semibold"
+          style={{ color: "#b2b2b1" }}
+        >
           Add New Design
         </span>
       </div>
 
       {/* Personal Access Token */}
-      <div className="px-5 mt-5">
+      <div className="px-5 mt-6">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
+          <span
+            className="text-[11.5px] font-semibold"
+            style={{ color: "#a4a4a3" }}
+          >
             Personal Access Token
           </span>
-          {/* Info icon */}
           <svg
             width="15"
             height="15"
@@ -92,25 +101,30 @@ export const TestCard = () => {
           </svg>
         </div>
         <div
-          className="w-full h-[36px] flex items-center px-3"
+          className="w-full h-[37px] rounded flex items-center px-3"
           style={{
             backgroundColor: "#272822",
             border: "1px solid #a5adad",
           }}
         >
-          <span className="text-[11.5px] font-semibold text-[#737470]">
+          <span
+            className="text-[11.5px] font-semibold"
+            style={{ color: "#737470" }}
+          >
             figd_xxxxxxxxxxxxxxxxxx
           </span>
         </div>
       </div>
 
       {/* Design URL */}
-      <div className="px-5 mt-4">
+      <div className="px-5 mt-5">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
+          <span
+            className="text-[11.5px] font-semibold"
+            style={{ color: "#a3a3a2" }}
+          >
             Design URL
           </span>
-          {/* Info icon */}
           <svg
             width="15"
             height="15"
@@ -127,20 +141,23 @@ export const TestCard = () => {
           </svg>
         </div>
         <div
-          className="w-full h-[37px] flex items-center px-3"
+          className="w-full h-[37px] rounded flex items-center px-3"
           style={{
             backgroundColor: "#272822",
             border: "2px solid #929291",
           }}
         >
-          <span className="text-[10.5px] font-semibold text-[#71726e]">
+          <span
+            className="text-[10.5px] font-semibold"
+            style={{ color: "#71726e" }}
+          >
             https://www.figma.com/file/:
           </span>
         </div>
       </div>
 
       {/* Buttons */}
-      <div className="px-5 mt-5 flex gap-3">
+      <div className="px-5 mt-6 flex gap-3">
         <button
           className="flex-1 h-[37px] rounded text-[11.5px] font-semibold flex items-center justify-center"
           style={{ backgroundColor: "#843a17", color: "#8c8078" }}
@@ -156,8 +173,11 @@ export const TestCard = () => {
       </div>
 
       {/* Recent Breakdowns */}
-      <div className="px-5 mt-10">
-        <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
+      <div className="px-5 mt-12">
+        <span
+          className="text-[13.5px] font-semibold"
+          style={{ color: "#b0b0b0" }}
+        >
           Recent Breakdowns
         </span>
       </div>
