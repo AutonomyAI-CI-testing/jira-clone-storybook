@@ -8,14 +8,14 @@ export const TestCard = () => {
         width: "254px",
         minHeight: "508px",
       }}
-      className="flex flex-col px-5 py-5"
+      className="flex flex-col"
     >
       {/* Header row */}
-      <div className="flex items-center justify-between">
-        <span className="font-semibold" style={{ color: "#b5b5b5", fontSize: "13.5px" }}>
+      <div className="flex items-center justify-between px-5 pt-5">
+        <span style={{ color: "#b5b5b5", fontSize: "13.5px", fontWeight: 600 }}>
           UI magician Agent
         </span>
-        {/* Gear icon */}
+        {/* Gear / settings icon */}
         <svg
           width="16"
           height="16"
@@ -32,21 +32,20 @@ export const TestCard = () => {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 mt-3">
-        {/* Chevron up */}
+      <div className="flex items-center gap-2 px-5 mt-3">
         <svg
-          width="9"
-          height="6"
-          viewBox="0 0 9 6"
+          width="10"
+          height="7"
+          viewBox="0 0 10 7"
           fill="none"
           stroke="#8b9291"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="1 5 4.5 1.5 8 5" />
+          <polyline points="1 6 5 2 9 6" />
         </svg>
-        <span className="font-semibold" style={{ color: "#8b9291", fontSize: "11.5px" }}>
+        <span style={{ color: "#8b9291", fontSize: "11.5px", fontWeight: 600 }}>
           From entire frame to a singl...
         </span>
       </div>
@@ -55,125 +54,132 @@ export const TestCard = () => {
       <div className="mt-14" />
 
       {/* Add New Design section */}
-      <div className="flex items-center gap-2 mb-5">
-        <svg
-          width="9"
-          height="6"
-          viewBox="0 0 9 6"
-          fill="none"
-          stroke="#b2b2b1"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="1 5 4.5 1.5 8 5" />
-        </svg>
-        <span className="font-semibold" style={{ color: "#b2b2b1", fontSize: "13.5px" }}>
-          Add New Design
-        </span>
-      </div>
-
-      {/* Personal Access Token */}
-      <div className="mb-4">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="font-semibold" style={{ color: "#a4a4a3", fontSize: "11.5px" }}>
-            Personal Access Token
-          </span>
-          {/* Info icon */}
+      <div className="px-5">
+        {/* Section heading */}
+        <div className="flex items-center gap-2 mb-5">
           <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
+            width="10"
+            height="7"
+            viewBox="0 0 10 7"
             fill="none"
-            stroke="#a4a4a3"
-            strokeWidth="2"
+            stroke="#b2b2b1"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="16" x2="12" y2="12" />
-            <line x1="12" y1="8" x2="12.01" y2="8" />
+            <polyline points="1 6 5 2 9 6" />
           </svg>
-        </div>
-        <div
-          className="w-full px-3 py-2 rounded"
-          style={{
-            backgroundColor: "#272822",
-            border: "1px solid #a5adad",
-            color: "#737470",
-            fontSize: "11.5px",
-            fontWeight: 600,
-          }}
-        >
-          figd_xxxxxxxxxxxxxxxxxx
-        </div>
-      </div>
-
-      {/* Design URL */}
-      <div className="mb-5">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="font-semibold" style={{ color: "#a3a3a2", fontSize: "11.5px" }}>
-            Design URL
+          <span style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600 }}>
+            Add New Design
           </span>
-          {/* Info icon */}
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#a3a3a2"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="16" x2="12" y2="12" />
-            <line x1="12" y1="8" x2="12.01" y2="8" />
-          </svg>
         </div>
-        <div
-          className="w-full px-3 py-2 rounded"
-          style={{
-            backgroundColor: "#272822",
-            border: "2px solid #929291",
-            color: "#71726e",
-            fontSize: "11.5px",
-            fontWeight: 600,
-          }}
-        >
-          https://www.figma.com/file/:
-        </div>
-      </div>
 
-      {/* Buttons */}
-      <div className="flex gap-3">
-        <button
-          className="flex-1 py-2 rounded font-semibold"
-          style={{
-            backgroundColor: "#843a17",
-            color: "#8c8078",
-            fontSize: "11.5px",
-            borderRadius: "4px",
-          }}
-        >
-          Awesome
-        </button>
-        <button
-          className="flex-1 py-2 rounded font-semibold"
-          style={{
-            backgroundColor: "#843a17",
-            color: "#8c8078",
-            fontSize: "11.5px",
-            borderRadius: "4px",
-          }}
-        >
-          Prepare
-        </button>
+        {/* Personal Access Token */}
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-2">
+            <span style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600 }}>
+              Personal Access Token
+            </span>
+            {/* Info icon */}
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#a4a4a3"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg>
+          </div>
+          <div
+            className="w-full px-3 py-2 rounded"
+            style={{
+              backgroundColor: "#272822",
+              border: "1px solid #a5adad",
+              color: "#737470",
+              fontSize: "11.5px",
+              fontWeight: 600,
+            }}
+          >
+            figd_xxxxxxxxxxxxxxxxxx
+          </div>
+        </div>
+
+        {/* Design URL */}
+        <div className="mb-5">
+          <div className="flex items-center gap-2 mb-2">
+            <span style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600 }}>
+              Design URL
+            </span>
+            {/* Info icon */}
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#a3a3a2"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg>
+          </div>
+          <div
+            className="w-full px-3 py-2 rounded"
+            style={{
+              backgroundColor: "#272822",
+              border: "2px solid #929291",
+              color: "#71726e",
+              fontSize: "11.5px",
+              fontWeight: 600,
+            }}
+          >
+            https://www.figma.com/file/:
+          </div>
+        </div>
+
+        {/* Action buttons */}
+        <div className="flex gap-3">
+          <button
+            className="flex-1 py-2 rounded"
+            style={{
+              backgroundColor: "#843a17",
+              color: "#8c8078",
+              fontSize: "11.5px",
+              fontWeight: 600,
+              borderRadius: "4px",
+              border: "none",
+            }}
+          >
+            Awesome
+          </button>
+          <button
+            className="flex-1 py-2 rounded"
+            style={{
+              backgroundColor: "#843a17",
+              color: "#8c8078",
+              fontSize: "11.5px",
+              fontWeight: 600,
+              borderRadius: "4px",
+              border: "none",
+            }}
+          >
+            Prepare
+          </button>
+        </div>
       </div>
 
       {/* Recent Breakdowns */}
-      <div className="mt-8">
-        <span className="font-semibold" style={{ color: "#b0b0b0", fontSize: "13.5px" }}>
+      <div className="px-5 mt-8">
+        <span style={{ color: "#b0b0b0", fontSize: "13.5px", fontWeight: 600 }}>
           Recent Breakdowns
         </span>
       </div>
