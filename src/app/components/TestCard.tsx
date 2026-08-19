@@ -1,153 +1,125 @@
-export const TestCard = () => {
+export function TestCard() {
   return (
     <div
       id="testElem"
-      style={{ backgroundColor: "#272822", width: "254px", minHeight: "508px", overflow: "auto" }}
+      style={{ backgroundColor: "#272822", fontFamily: "Inter, sans-serif" }}
+      className="w-64 min-h-screen text-white p-5 flex flex-col"
     >
-      {/* Thin top bar */}
-      <div style={{ backgroundColor: "#1a1a1a", height: "9px" }} />
-
       {/* Header row */}
-      <div className="flex items-center justify-between px-5 pt-4 pb-2">
-        <span
-          className="font-semibold text-[13.5px] leading-[16px]"
-          style={{ color: "#b5b5b5", fontFamily: "Inter, sans-serif" }}
-        >
+      <div className="flex items-center justify-between mb-3">
+        <span style={{ color: "#b5b5b5", fontSize: "13.5px", fontWeight: 600 }}>
           UI magician Agent
         </span>
         {/* Gear icon */}
-        <svg width="14" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="3.5" stroke="#b5b5b5" strokeWidth="1.8" />
-          <path
-            d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-            stroke="#b5b5b5"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#b5b5b5"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
         </svg>
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 pb-5">
-        <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
-          <path d="M1 4L4 1L7 4" stroke="#8b9291" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+      <div className="flex items-center gap-2 mb-8">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 5L5 1L9 5" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span
-          className="font-semibold text-[11.5px] leading-[14px] truncate"
-          style={{ color: "#8b9291", fontFamily: "Inter, sans-serif" }}
-        >
+        <span style={{ color: "#8b9291", fontSize: "11.5px", fontWeight: 600 }}>
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Add New Design panel */}
-      <div style={{ backgroundColor: "#1a1a1a" }}>
-        {/* Section header */}
-        <div className="flex items-center gap-2 px-5 py-4">
+      {/* Add New Design section */}
+      <div>
+        <div className="flex items-center gap-2 mb-4">
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-            <path d="M1 1.5L6 6.5L11 1.5" stroke="#b2b2b1" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M1 6L6 1L11 6" stroke="#b2b2b1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span
-            className="font-semibold text-[13.5px] leading-[16px]"
-            style={{ color: "#b2b2b1", fontFamily: "Inter, sans-serif" }}
-          >
+          <span style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600 }}>
             Add New Design
           </span>
         </div>
 
         {/* Personal Access Token */}
-        <div className="px-5 pb-3">
-          <div className="flex items-center gap-2 mb-2">
-            <span
-              className="font-semibold text-[11.5px] leading-[14px]"
-              style={{ color: "#a4a4a3", fontFamily: "Inter, sans-serif" }}
-            >
+        <div className="mb-3">
+          <div className="flex items-center gap-2 mb-1">
+            <span style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600 }}>
               Personal Access Token
             </span>
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-              <circle cx="6.5" cy="6.5" r="5.5" stroke="#a4a4a3" strokeWidth="1" />
-              <text x="6.5" y="10" textAnchor="middle" fill="#a4a4a3" fontSize="7" fontWeight="600" fontFamily="Inter, sans-serif">i</text>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <circle cx="12" cy="8" r="0.5" fill="#a4a4a3" />
             </svg>
           </div>
           <div
-            className="flex items-center px-3"
             style={{
               backgroundColor: "#272822",
               border: "1px solid #a5adad",
-              height: "37px",
             }}
+            className="px-3 py-2"
           >
-            <span
-              className="font-semibold text-[11.5px] leading-[14px] truncate"
-              style={{ color: "#737470", fontFamily: "Inter, sans-serif" }}
-            >
+            <span style={{ color: "#737470", fontSize: "11.5px", fontWeight: 600 }}>
               figd_xxxxxxxxxxxxxxxxxx
             </span>
           </div>
         </div>
 
         {/* Design URL */}
-        <div className="px-5 pb-4">
-          <div className="flex items-center gap-2 mb-2">
-            <span
-              className="font-semibold text-[11.5px] leading-[14px]"
-              style={{ color: "#a3a3a2", fontFamily: "Inter, sans-serif" }}
-            >
+        <div className="mb-5">
+          <div className="flex items-center gap-2 mb-1">
+            <span style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600 }}>
               Design URL
             </span>
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-              <circle cx="6.5" cy="6.5" r="5.5" stroke="#a3a3a2" strokeWidth="1" />
-              <text x="6.5" y="10" textAnchor="middle" fill="#a3a3a2" fontSize="7" fontWeight="600" fontFamily="Inter, sans-serif">i</text>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <circle cx="12" cy="8" r="0.5" fill="#a3a3a2" />
             </svg>
           </div>
           <div
-            className="flex items-center px-3"
             style={{
               backgroundColor: "#272822",
               border: "2px solid #929291",
-              height: "37px",
             }}
+            className="px-3 py-2"
           >
-            <span
-              className="font-semibold text-[10.5px] leading-[13px] truncate"
-              style={{ color: "#71726e", fontFamily: "Inter, sans-serif" }}
-            >
+            <span style={{ color: "#71726e", fontSize: "10.5px", fontWeight: 600 }}>
               https://www.figma.com/file/:
             </span>
           </div>
         </div>
 
         {/* Buttons */}
-        <div className="flex items-center gap-3 px-5 pb-5">
+        <div className="flex gap-3">
           <button
             style={{
               backgroundColor: "#843a17",
-              color: "#8c8078",
-              width: "85px",
-              height: "37px",
               borderRadius: "4px",
-              fontFamily: "Inter, sans-serif",
+              color: "#8c8078",
               fontSize: "11.5px",
               fontWeight: 600,
-              border: "none",
-              cursor: "default",
             }}
+            className="flex-1 py-2"
           >
             Awesome
           </button>
           <button
             style={{
               backgroundColor: "#843a17",
-              color: "#8c8078",
-              width: "85px",
-              height: "37px",
               borderRadius: "4px",
-              fontFamily: "Inter, sans-serif",
+              color: "#8c8078",
               fontSize: "11.5px",
               fontWeight: 600,
-              border: "none",
-              cursor: "default",
             }}
+            className="flex-1 py-2"
           >
             Prepare
           </button>
@@ -155,16 +127,13 @@ export const TestCard = () => {
       </div>
 
       {/* Recent Breakdowns */}
-      <div className="px-5 pt-6">
-        <span
-          className="font-semibold text-[13.5px] leading-[16px]"
-          style={{ color: "#b0b0b0", fontFamily: "Inter, sans-serif" }}
-        >
+      <div className="mt-10">
+        <span style={{ color: "#b0b0b0", fontSize: "13.5px", fontWeight: 600 }}>
           Recent Breakdowns
         </span>
       </div>
     </div>
   );
-};
+}
 
 export default TestCard;
