@@ -1,154 +1,95 @@
-import { HiOutlineCog, HiChevronUp } from "react-icons/hi";
-import { BiInfoCircle } from "react-icons/bi";
+import {
+  IoSettingsOutline,
+  IoChevronUp,
+  IoChevronDown,
+  IoInformationCircleOutline,
+} from "react-icons/io5";
 
-export const TestCard = () => {
+export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      style={{
-        width: "254px",
-        minHeight: "508px",
-        backgroundColor: "#272822",
-        fontFamily: "Inter, sans-serif",
-        overflow: "auto",
-      }}
+      className="w-[254px] bg-[#1e1e1a] px-5 py-5"
+      style={{ fontFamily: "Inter, sans-serif" }}
     >
-      {/* Top bar */}
-      <div style={{ height: "9px", backgroundColor: "#1e1e1b", width: "100%" }} />
-
-      {/* Header */}
-      <div className="flex items-center justify-between px-5 pt-4 pb-2">
-        <span
-          className="font-semibold"
-          style={{ color: "#b5b5b5", fontSize: "13.5px" }}
-        >
+      {/* Section 1: Header row */}
+      <div className="flex items-center justify-between">
+        <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
-        <HiOutlineCog style={{ color: "#b5b5b5", width: "14px", height: "16px" }} />
+        <IoSettingsOutline className="text-[#b5b5b5]" size={16} />
       </div>
 
-      {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 pb-4">
-        <HiChevronUp style={{ color: "#8b9291", width: "8px", height: "5px", flexShrink: 0 }} />
-        <span
-          className="font-semibold"
-          style={{ color: "#8b9291", fontSize: "11.5px" }}
-        >
+      {/* Section 2: Subtitle row */}
+      <div className="mt-4 flex items-center gap-2">
+        <IoChevronUp className="shrink-0 text-[#8b9291]" size={10} />
+        <span className="text-[11.5px] font-semibold text-[#8b9291]">
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Spacer */}
-      <div className="h-10" />
-
-      {/* Add New Design section */}
-      <div className="px-5">
-        <div className="flex items-center gap-2 mb-4">
-          <HiChevronUp style={{ color: "#b2b2b1", width: "12px", height: "8px", flexShrink: 0 }} />
-          <span
-            className="font-semibold"
-            style={{ color: "#b2b2b1", fontSize: "13.5px" }}
-          >
+      {/* Section 3: Add New Design */}
+      <div className="mt-[77px]">
+        {/* Section heading */}
+        <div className="flex items-center gap-2">
+          <IoChevronDown className="shrink-0 text-[#b2b2b1]" size={13} />
+          <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
             Add New Design
           </span>
         </div>
 
         {/* Personal Access Token */}
-        <div className="mb-3">
-          <div className="flex items-center gap-1 mb-1">
-            <span
-              className="font-semibold"
-              style={{ color: "#a4a4a3", fontSize: "11.5px" }}
-            >
-              Personal Access Token
-            </span>
-            <BiInfoCircle style={{ color: "#a4a4a3", width: "15px", height: "15px" }} />
-          </div>
-          <div
-            className="w-full px-3 py-2"
-            style={{
-              backgroundColor: "#272822",
-              border: "1px solid #a5adad",
-              minHeight: "36px",
-            }}
-          >
-            <span
-              className="font-semibold"
-              style={{ color: "#737470", fontSize: "11.5px" }}
-            >
-              figd_xxxxxxxxxxxxxxxxxx
-            </span>
-          </div>
+        <div className="mt-[44px] flex items-center gap-2">
+          <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
+            Personal Access Token
+          </span>
+          <IoInformationCircleOutline
+            className="shrink-0 text-[#a4a4a3]"
+            size={15}
+          />
+        </div>
+        <div className="mt-3 border border-[#a5adad] bg-[#272822] px-3 py-[9px]">
+          <span className="text-[11.5px] font-semibold text-[#737470]">
+            figd_xxxxxxxxxxxxxxxxxx
+          </span>
         </div>
 
         {/* Design URL */}
-        <div className="mb-5">
-          <div className="flex items-center gap-1 mb-1">
-            <span
-              className="font-semibold"
-              style={{ color: "#a3a3a2", fontSize: "11.5px" }}
-            >
-              Design URL
-            </span>
-            <BiInfoCircle style={{ color: "#a3a3a2", width: "15px", height: "15px" }} />
-          </div>
-          <div
-            className="w-full px-3 py-2"
-            style={{
-              backgroundColor: "#272822",
-              border: "2px solid #929291",
-              minHeight: "37px",
-            }}
-          >
-            <span
-              className="font-semibold"
-              style={{ color: "#71726e", fontSize: "10.5px" }}
-            >
-              https://www.figma.com/file/:
-            </span>
-          </div>
+        <div className="mt-[11px] flex items-center gap-2">
+          <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
+            Design URL
+          </span>
+          <IoInformationCircleOutline
+            className="shrink-0 text-[#a3a3a2]"
+            size={15}
+          />
+        </div>
+        <div className="mt-3 border-2 border-[#929291] bg-[#272822] px-3 py-[9px]">
+          <span className="text-[11.5px] font-semibold text-[#71726e]">
+            https://www.figma.com/file/:
+          </span>
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-3">
+        <div className="mt-5 flex gap-[13px]">
           <button
-            className="flex-1 font-semibold py-2"
-            style={{
-              backgroundColor: "#843a17",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              borderRadius: "4px",
-              border: "none",
-              cursor: "pointer",
-            }}
+            type="button"
+            className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] font-semibold text-[#8c8078]"
           >
             Awesome
           </button>
           <button
-            className="flex-1 font-semibold py-2"
-            style={{
-              backgroundColor: "#843a17",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              borderRadius: "4px",
-              border: "none",
-              cursor: "pointer",
-            }}
+            type="button"
+            className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] font-semibold text-[#8c8078]"
           >
             Prepare
           </button>
         </div>
       </div>
 
-      {/* Spacer */}
-      <div className="h-10" />
-
-      {/* Recent Breakdowns */}
-      <div className="px-5">
-        <span
-          className="font-semibold"
-          style={{ color: "#b0b0b0", fontSize: "13.5px" }}
-        >
+      {/* Section 4: Recent Breakdowns */}
+      <div className="mt-[46px]">
+        <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
           Recent Breakdowns
         </span>
       </div>
