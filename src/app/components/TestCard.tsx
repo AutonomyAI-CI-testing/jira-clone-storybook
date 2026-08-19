@@ -2,27 +2,26 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      style={{ backgroundColor: "#272822", width: "254px", minHeight: "508px", fontFamily: "Inter, sans-serif" }}
-      className="overflow-auto"
+      style={{ backgroundColor: "#272822", width: "254px", minHeight: "508px", overflow: "auto" }}
     >
-      {/* Top thin bar */}
+      {/* Thin top bar */}
       <div style={{ backgroundColor: "#1a1a1a", height: "9px" }} />
 
-      {/* Header */}
+      {/* Header row */}
       <div className="flex items-center justify-between px-5 pt-4 pb-2">
         <span
-          className="font-semibold"
-          style={{ color: "#b5b5b5", fontSize: "13.5px", lineHeight: "16px" }}
+          className="font-semibold text-[13.5px] leading-[16px]"
+          style={{ color: "#b5b5b5", fontFamily: "Inter, sans-serif" }}
         >
           UI magician Agent
         </span>
         {/* Gear icon */}
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="8" cy="8" r="2.5" stroke="#b5b5b5" strokeWidth="1.3" />
+        <svg width="14" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="3.5" stroke="#b5b5b5" strokeWidth="1.8" />
           <path
-            d="M8 1.5V3M8 13v1.5M1.5 8H3M13 8h1.5M3.2 3.2l1.06 1.06M11.74 11.74l1.06 1.06M3.2 12.8l1.06-1.06M11.74 4.26l1.06-1.06"
+            d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
             stroke="#b5b5b5"
-            strokeWidth="1.3"
+            strokeWidth="1.8"
             strokeLinecap="round"
           />
         </svg>
@@ -34,23 +33,23 @@ export const TestCard = () => {
           <path d="M1 4L4 1L7 4" stroke="#8b9291" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <span
-          className="font-semibold truncate"
-          style={{ color: "#8b9291", fontSize: "11.5px", lineHeight: "14px" }}
+          className="font-semibold text-[11.5px] leading-[14px] truncate"
+          style={{ color: "#8b9291", fontFamily: "Inter, sans-serif" }}
         >
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Add New Design panel */}
-      <div className="mx-1" style={{ backgroundColor: "#000000" }}>
-        {/* Panel header */}
+      <div style={{ backgroundColor: "#1a1a1a" }}>
+        {/* Section header */}
         <div className="flex items-center gap-2 px-5 py-4">
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
             <path d="M1 1.5L6 6.5L11 1.5" stroke="#b2b2b1" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <span
-            className="font-semibold"
-            style={{ color: "#b2b2b1", fontSize: "13.5px", lineHeight: "16px" }}
+            className="font-semibold text-[13.5px] leading-[16px]"
+            style={{ color: "#b2b2b1", fontFamily: "Inter, sans-serif" }}
           >
             Add New Design
           </span>
@@ -60,16 +59,14 @@ export const TestCard = () => {
         <div className="px-5 pb-3">
           <div className="flex items-center gap-2 mb-2">
             <span
-              className="font-semibold"
-              style={{ color: "#a4a4a3", fontSize: "11.5px", lineHeight: "14px" }}
+              className="font-semibold text-[11.5px] leading-[14px]"
+              style={{ color: "#a4a4a3", fontFamily: "Inter, sans-serif" }}
             >
               Personal Access Token
             </span>
-            {/* Info icon */}
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-              <circle cx="7.5" cy="7.5" r="6.5" stroke="#a4a4a3" strokeWidth="1" />
-              <line x1="7.5" y1="6.5" x2="7.5" y2="10.5" stroke="#a4a4a3" strokeWidth="1.2" strokeLinecap="round" />
-              <circle cx="7.5" cy="4.5" r="0.7" fill="#a4a4a3" />
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <circle cx="6.5" cy="6.5" r="5.5" stroke="#a4a4a3" strokeWidth="1" />
+              <text x="6.5" y="10" textAnchor="middle" fill="#a4a4a3" fontSize="7" fontWeight="600" fontFamily="Inter, sans-serif">i</text>
             </svg>
           </div>
           <div
@@ -78,12 +75,11 @@ export const TestCard = () => {
               backgroundColor: "#272822",
               border: "1px solid #a5adad",
               height: "37px",
-              borderRadius: "3px",
             }}
           >
             <span
-              className="font-semibold truncate"
-              style={{ color: "#737470", fontSize: "11.5px", lineHeight: "14px" }}
+              className="font-semibold text-[11.5px] leading-[14px] truncate"
+              style={{ color: "#737470", fontFamily: "Inter, sans-serif" }}
             >
               figd_xxxxxxxxxxxxxxxxxx
             </span>
@@ -94,16 +90,14 @@ export const TestCard = () => {
         <div className="px-5 pb-4">
           <div className="flex items-center gap-2 mb-2">
             <span
-              className="font-semibold"
-              style={{ color: "#a3a3a2", fontSize: "11.5px", lineHeight: "14px" }}
+              className="font-semibold text-[11.5px] leading-[14px]"
+              style={{ color: "#a3a3a2", fontFamily: "Inter, sans-serif" }}
             >
               Design URL
             </span>
-            {/* Info icon */}
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-              <circle cx="7.5" cy="7.5" r="6.5" stroke="#a3a3a2" strokeWidth="1" />
-              <line x1="7.5" y1="6.5" x2="7.5" y2="10.5" stroke="#a3a3a2" strokeWidth="1.2" strokeLinecap="round" />
-              <circle cx="7.5" cy="4.5" r="0.7" fill="#a3a3a2" />
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <circle cx="6.5" cy="6.5" r="5.5" stroke="#a3a3a2" strokeWidth="1" />
+              <text x="6.5" y="10" textAnchor="middle" fill="#a3a3a2" fontSize="7" fontWeight="600" fontFamily="Inter, sans-serif">i</text>
             </svg>
           </div>
           <div
@@ -112,12 +106,11 @@ export const TestCard = () => {
               backgroundColor: "#272822",
               border: "2px solid #929291",
               height: "37px",
-              borderRadius: "3px",
             }}
           >
             <span
-              className="font-semibold truncate"
-              style={{ color: "#71726e", fontSize: "10.5px", lineHeight: "13px" }}
+              className="font-semibold text-[10.5px] leading-[13px] truncate"
+              style={{ color: "#71726e", fontFamily: "Inter, sans-serif" }}
             >
               https://www.figma.com/file/:
             </span>
@@ -127,31 +120,33 @@ export const TestCard = () => {
         {/* Buttons */}
         <div className="flex items-center gap-3 px-5 pb-5">
           <button
-            className="flex items-center justify-center font-semibold"
             style={{
               backgroundColor: "#843a17",
               color: "#8c8078",
               width: "85px",
               height: "37px",
-              fontSize: "11.5px",
-              lineHeight: "14px",
               borderRadius: "4px",
+              fontFamily: "Inter, sans-serif",
+              fontSize: "11.5px",
+              fontWeight: 600,
               border: "none",
+              cursor: "default",
             }}
           >
             Awesome
           </button>
           <button
-            className="flex items-center justify-center font-semibold"
             style={{
               backgroundColor: "#843a17",
               color: "#8c8078",
               width: "85px",
               height: "37px",
-              fontSize: "11.5px",
-              lineHeight: "14px",
               borderRadius: "4px",
+              fontFamily: "Inter, sans-serif",
+              fontSize: "11.5px",
+              fontWeight: 600,
               border: "none",
+              cursor: "default",
             }}
           >
             Prepare
@@ -162,8 +157,8 @@ export const TestCard = () => {
       {/* Recent Breakdowns */}
       <div className="px-5 pt-6">
         <span
-          className="font-semibold"
-          style={{ color: "#b0b0b0", fontSize: "13.5px", lineHeight: "16px" }}
+          className="font-semibold text-[13.5px] leading-[16px]"
+          style={{ color: "#b0b0b0", fontFamily: "Inter, sans-serif" }}
         >
           Recent Breakdowns
         </span>
