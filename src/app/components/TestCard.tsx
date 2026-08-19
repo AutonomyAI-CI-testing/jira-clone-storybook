@@ -1,149 +1,91 @@
-export const TestCard = () => {
+import { AiOutlineSetting, AiOutlineInfoCircle } from "react-icons/ai";
+import { BiChevronUp } from "react-icons/bi";
+
+export function TestCard() {
   return (
     <div
       id="testElem"
-      className="w-[254px] bg-[#1a1a18] flex flex-col py-5 font-sans"
-      style={{ fontFamily: "Inter, sans-serif" }}
+      style={{ fontFamily: "'Inter', sans-serif" }}
+      className="w-[254px] bg-[#272822] flex flex-col px-5 py-5 min-h-[508px]"
     >
-      {/* Header row */}
-      <div className="flex items-center justify-between px-5 mb-3">
-        <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-[#b5b5b5] text-[13.5px] font-semibold leading-[16px]">
           UI magician Agent
         </span>
-        {/* Gear / settings icon */}
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#b5b5b5"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-        </svg>
+        <AiOutlineSetting className="text-[#b5b5b5]" size={16} />
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 mb-10">
-        <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
-          <path
-            d="M7 4L4 1L1 4"
-            stroke="#8b9291"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <span className="text-[11.5px] font-semibold text-[#8b9291]">
+      <div className="flex items-center gap-1 mb-10">
+        <BiChevronUp className="text-[#8b9291] shrink-0" size={14} />
+        <span className="text-[#8b9291] text-[11.5px] font-semibold leading-[14px]">
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Add New Design */}
-      <div className="flex items-center gap-2 px-5 mb-5">
-        <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-          <path
-            d="M11 7L6 2L1 7"
-            stroke="#b2b2b1"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
+      <div className="flex items-center gap-2 mb-5">
+        <BiChevronUp className="text-[#b2b2b1] shrink-0" size={14} />
+        <span className="text-[#b2b2b1] text-[13.5px] font-semibold leading-[16px]">
           Add New Design
         </span>
       </div>
 
-      {/* Personal Access Token */}
-      <div className="px-5 mb-3">
-        <div className="flex items-center gap-2 mb-1">
-          <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
-            Personal Access Token
-          </span>
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-            <circle cx="6.5" cy="6.5" r="5.5" stroke="#a4a4a3" strokeWidth="1" />
-            <text
-              x="6.5"
-              y="10"
-              textAnchor="middle"
-              fontSize="7"
-              fill="#a4a4a3"
-              fontWeight="700"
-              fontFamily="Inter, sans-serif"
-            >
-              i
-            </text>
-          </svg>
-        </div>
-        <div
-          className="w-full h-[37px] rounded px-3 flex items-center"
-          style={{ background: "#272822", border: "1px solid #a5adad" }}
-        >
-          <span className="text-[11.5px] font-semibold text-[#737470]">
-            figd_xxxxxxxxxxxxxxxxxx
-          </span>
-        </div>
+      {/* Personal Access Token label */}
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-[#a4a4a3] text-[11.5px] font-semibold leading-[14px]">
+          Personal Access Token
+        </span>
+        <AiOutlineInfoCircle className="text-[#a4a4a3] shrink-0" size={15} />
       </div>
 
-      {/* Design URL */}
-      <div className="px-5 mb-5">
-        <div className="flex items-center gap-2 mb-1">
-          <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
-            Design URL
-          </span>
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-            <circle cx="6.5" cy="6.5" r="5.5" stroke="#a3a3a2" strokeWidth="1" />
-            <text
-              x="6.5"
-              y="10"
-              textAnchor="middle"
-              fontSize="7"
-              fill="#a3a3a2"
-              fontWeight="700"
-              fontFamily="Inter, sans-serif"
-            >
-              i
-            </text>
-          </svg>
-        </div>
-        <div
-          className="w-full h-[37px] rounded px-3 flex items-center"
-          style={{ background: "#272822", border: "2px solid #929291" }}
-        >
-          <span className="text-[10.5px] font-semibold text-[#71726e]">
-            https://www.figma.com/file/:
-          </span>
-        </div>
+      {/* Token input */}
+      <input
+        readOnly
+        placeholder="figd_xxxxxxxxxxxxxxxxxx"
+        className="w-full bg-[#272822] border border-[#a5adad] px-3 py-2 text-[11.5px] font-semibold text-[#737470] placeholder:text-[#737470] outline-none mb-4"
+      />
+
+      {/* Design URL label */}
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-[#a3a3a2] text-[11.5px] font-semibold leading-[14px]">
+          Design URL
+        </span>
+        <AiOutlineInfoCircle className="text-[#a3a3a2] shrink-0" size={15} />
       </div>
+
+      {/* URL input */}
+      <input
+        readOnly
+        placeholder="https://www.figma.com/file/:"
+        className="w-full bg-[#272822] border-2 border-[#929291] px-3 py-2 text-[10.5px] font-semibold text-[#71726e] placeholder:text-[#71726e] outline-none mb-6"
+      />
 
       {/* Buttons */}
-      <div className="flex gap-3 px-5 mb-10">
+      <div className="flex gap-3 mb-10">
         <button
-          className="flex-1 h-[37px] flex items-center justify-center text-[11.5px] font-semibold text-[#8c8078]"
-          style={{ background: "#843a17", borderRadius: "4px" }}
+          type="button"
+          className="flex-1 bg-[#843a17] rounded px-4 py-2 text-[#8c8078] text-[11.5px] font-semibold"
         >
           Awesome
         </button>
         <button
-          className="flex-1 h-[37px] flex items-center justify-center text-[11.5px] font-semibold text-[#8c8078]"
-          style={{ background: "#843a17", borderRadius: "4px" }}
+          type="button"
+          className="flex-1 bg-[#843a17] rounded px-4 py-2 text-[#8c8078] text-[11.5px] font-semibold"
         >
           Prepare
         </button>
       </div>
 
       {/* Recent Breakdowns */}
-      <div className="px-5">
-        <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
+      <div>
+        <span className="text-[#b0b0b0] text-[13.5px] font-semibold leading-[16px]">
           Recent Breakdowns
         </span>
       </div>
     </div>
   );
-};
+}
 
 export default TestCard;
