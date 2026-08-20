@@ -30,43 +30,39 @@ export const TestCard = () => {
       {/* Add New Design section */}
       <div className="px-5 pt-5 pb-5">
         {/* Section title */}
-        <div className="mb-4 flex items-center gap-3">
+        <div className="flex items-center gap-3 mb-4">
           <IoChevronUp size={12} color="#b2b2b1" />
           <span className="text-[13.5px] text-[#b2b2b1]">Add New Design</span>
         </div>
 
         {/* Personal Access Token */}
         <div className="mb-3">
-          <div className="mb-1 flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 mb-1.5">
             <span className="text-[11.5px] text-[#a4a4a3]">Personal Access Token</span>
             <IoInformationCircleOutline size={15} color="#a4a4a3" />
           </div>
-          <div className="flex h-[37px] w-full items-center rounded border border-[#a5adad] bg-[#272822] px-3">
+          <div className="h-[37px] w-full flex items-center rounded px-3 bg-[#272822] border border-[#a5adad]">
             <span className="text-[11.5px] text-[#737470]">figd_xxxxxxxxxxxxxxxxxx</span>
           </div>
         </div>
 
         {/* Design URL */}
         <div className="mb-5">
-          <div className="mb-1 flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 mb-1.5">
             <span className="text-[11.5px] text-[#a3a3a2]">Design URL</span>
             <IoInformationCircleOutline size={15} color="#a3a3a2" />
           </div>
-          <div className="flex h-[37px] w-full items-center rounded border-2 border-[#929291] bg-[#272822] px-3">
+          <div className="h-[37px] w-full flex items-center rounded px-3 bg-[#272822] border-2 border-[#929291]">
             <span className="text-[10.5px] text-[#71726e]">https://www.figma.com/file/:</span>
           </div>
         </div>
 
         {/* Buttons */}
         <div className="flex gap-3">
-          <button
-            className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] text-[#8c8078] hover:opacity-90"
-          >
+          <button className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] text-[#8c8078] hover:opacity-90">
             Awesome
           </button>
-          <button
-            className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] text-[#8c8078] hover:opacity-90"
-          >
+          <button className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] text-[#8c8078] hover:opacity-90">
             Prepare
           </button>
         </div>
