@@ -37,7 +37,7 @@ export const links = () => {
 };
 
 export const meta: V2_MetaFunction = () => {
-  const title = "Jira clone";
+  const title = "Fei";
   const description =
     "Task manager application inspired in Jira. Side project made with Remix, React, Tailwind, TypeScript and more.";
   const image =
