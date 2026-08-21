@@ -1,4 +1,4 @@
-export const TestCard = () => {
+export function TestCard(): JSX.Element {
   return (
     <div
       id="testElem"
@@ -31,14 +31,14 @@ export const TestCard = () => {
       </div>
 
       {/* Spacer */}
-      <div className="h-10" />
+      <div className="h-8" />
 
       {/* Add New Design section */}
-      <div className="px-5 pb-5">
+      <div className="px-5">
         {/* Section header */}
         <div className="flex items-center gap-2 mb-4">
-          <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-            <path d="M1 6L6 1L11 6" stroke="#b2b2b1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <svg width="8" height="5" viewBox="0 0 12 8" fill="none">
+            <path d="M1 1L6 7L11 1" stroke="#b2b2b1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <span style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600, lineHeight: "16.34px" }}>
             Add New Design
@@ -47,11 +47,11 @@ export const TestCard = () => {
 
         {/* Personal Access Token */}
         <div className="mb-3">
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex items-center gap-1 mb-1">
             <span style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" }}>
               Personal Access Token
             </span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="1.5">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="16" x2="12" y2="12" />
               <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -61,7 +61,7 @@ export const TestCard = () => {
             style={{
               backgroundColor: "#272822",
               border: "1px solid #a5adad",
-              height: "36px",
+              height: "39px",
               display: "flex",
               alignItems: "center",
               padding: "0 10px",
@@ -74,12 +74,12 @@ export const TestCard = () => {
         </div>
 
         {/* Design URL */}
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-1">
+        <div className="mb-5">
+          <div className="flex items-center gap-1 mb-1">
             <span style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" }}>
               Design URL
             </span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="1.5">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="16" x2="12" y2="12" />
               <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -104,10 +104,11 @@ export const TestCard = () => {
         {/* Buttons */}
         <div className="flex gap-3 mb-8">
           <button
+            type="button"
             style={{
               backgroundColor: "#843a17",
               borderRadius: "4px",
-              width: "85px",
+              minWidth: "85px",
               height: "37px",
               color: "#8c8078",
               fontSize: "11.5px",
@@ -115,15 +116,17 @@ export const TestCard = () => {
               lineHeight: "13.92px",
               border: "none",
               cursor: "pointer",
+              padding: "0 16px",
             }}
           >
             Awesome
           </button>
           <button
+            type="button"
             style={{
               backgroundColor: "#843a17",
               borderRadius: "4px",
-              width: "85px",
+              minWidth: "85px",
               height: "37px",
               color: "#8c8078",
               fontSize: "11.5px",
@@ -131,6 +134,7 @@ export const TestCard = () => {
               lineHeight: "13.92px",
               border: "none",
               cursor: "pointer",
+              padding: "0 16px",
             }}
           >
             Prepare
@@ -146,6 +150,6 @@ export const TestCard = () => {
       </div>
     </div>
   );
-};
+}
 
 export default TestCard;
