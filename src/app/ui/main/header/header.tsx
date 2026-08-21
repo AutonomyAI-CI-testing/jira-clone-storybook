@@ -12,7 +12,7 @@ export const Header = (): JSX.Element => {
 
   return (
     <header className="relative z-10 flex w-full items-center justify-between bg-elevation-surface-raised px-5 py-2 shadow-[0_1px_5px_-1px_rgba(0,0,0,0.3)]">
-      <section>
+      <section className="flex items-center gap-4">
         <Link
           to="/"
           className="flex cursor-pointer items-center rounded px-3 py-2 text-font hover:bg-background-brand-subtlest hover:text-font-brand"
@@ -20,6 +20,12 @@ export const Header = (): JSX.Element => {
           <img src="/images/logo.png" width={24} height={24} alt="Logo" />
           <span className="ml-2">Jira Clone</span>
         </Link>
+        <span
+          className="font-primary-black text-2xl"
+          style={{ color: "#000000" }}
+        >
+          Fei
+        </span>
       </section>
       <section className="flex items-center gap-4">
         <Tooltip title="About">

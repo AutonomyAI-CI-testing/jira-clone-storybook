@@ -215,7 +215,7 @@
   --color-elevation-surface-raised: var(--Neutral0);
   --color-elevation-surface-raised-hovered: var(--Neutral200);
   --color-elevation-surface-raised-pressed: var(--Neutral300);
-  --color-elevation-surface-sunken: var(--Neutral100);
+  --color-elevation-surface-sunken: var(--Neutral0);
 
   --color-shadow-overflow: 0px 0px 8px rgba(9, 30, 66, 0.16), 0px 0px 1px rgba(9, 30, 66, 0.12);
   --color-shadow-overlay: 0px 8px 12px rgba(9, 30, 66, 0.15), 0px 0px 1px rgba(9, 30, 66, 0.31);
