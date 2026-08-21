@@ -17,16 +17,20 @@ export const LoginView = ({ users }: Props) => {
   };
 
   return (
+    <div className="min-h-screen w-full bg-white">
     <div className="mx-auto max-w-[400px] pt-[10vh]">
-      <h1 className="font-primary-black text-5xl text-font">
-        Select login user
+      <h1 className="font-primary-black text-5xl text-red-600">
+        Fei
       </h1>
-      <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
+      <h2 className="font-primary-black text-3xl text-font mb-6">
+        Select login user
+      </h2>
+      <p className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
         There is no authentication involved. You can login with any user you
         want! Keep in mind you can only access the projects the user is member
         of. Try to create issues and comments with different users to see how it
         reflects in the UI and database. You can logout on the user avatar.
-      </h2>
+      </p>
       <Form method="post" className="mx-auto w-[300px]">
         <Select.Root
           name="user"
@@ -68,6 +72,7 @@ export const LoginView = ({ users }: Props) => {
           Login
         </Button>
       </Form>
+    </div>
     </div>
   );
 };
