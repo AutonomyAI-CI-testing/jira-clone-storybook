@@ -4,11 +4,11 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      style={{ background: "#272823", width: "254px", fontFamily: "Inter, sans-serif" }}
       className="p-5"
+      style={{ backgroundColor: "#272823", width: "254px", fontFamily: "Inter, sans-serif" }}
     >
       {/* Header row */}
-      <div className="flex items-center justify-between mb-1">
+      <div className="flex items-center justify-between mb-2">
         <span
           className="text-[13.5px] font-semibold leading-[16.34px]"
           style={{ color: "#b5b5b5" }}
@@ -49,11 +49,11 @@ export const TestCard = () => {
           >
             Personal Access Token
           </span>
-          <HiInformationCircle size={14} color="#a4a4a3" />
+          <HiInformationCircle size={15} color="#a4a4a3" />
         </div>
         <div
-          className="w-full rounded px-3 py-2.5"
-          style={{ background: "#272822", border: "1px solid #a5adad" }}
+          className="w-full rounded px-3 py-2"
+          style={{ backgroundColor: "#272822", border: "1px solid #a5adad" }}
         >
           <span
             className="text-[11.5px] font-semibold leading-[13.92px]"
@@ -73,11 +73,11 @@ export const TestCard = () => {
           >
             Design URL
           </span>
-          <HiInformationCircle size={14} color="#a3a3a2" />
+          <HiInformationCircle size={15} color="#a3a3a2" />
         </div>
         <div
-          className="w-full rounded px-3 py-2.5"
-          style={{ background: "#272822", border: "2px solid #929291" }}
+          className="w-full rounded px-3 py-2"
+          style={{ backgroundColor: "#272822", border: "2px solid #929291" }}
         >
           <span
             className="text-[11.5px] font-semibold leading-[13.92px]"
@@ -89,16 +89,16 @@ export const TestCard = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-3 mb-8">
+      <div className="flex gap-3 mb-6">
         <button
           className="flex-1 rounded py-2.5 text-[11.5px] font-semibold leading-[13.92px] text-center"
-          style={{ background: "#843a17", color: "#8c8078" }}
+          style={{ backgroundColor: "#843a17", color: "#8c8078" }}
         >
           Awesome
         </button>
         <button
           className="flex-1 rounded py-2.5 text-[11.5px] font-semibold leading-[13.92px] text-center"
-          style={{ background: "#843a17", color: "#8c8078" }}
+          style={{ backgroundColor: "#843a17", color: "#8c8078" }}
         >
           Prepare
         </button>
