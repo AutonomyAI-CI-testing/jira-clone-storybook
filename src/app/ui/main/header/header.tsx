@@ -22,7 +22,7 @@ export const Header = (): JSX.Element => {
         </Link>
         <span
           className="font-primary-black text-2xl"
-          style={{ color: "#000000" }}
+          style={{ color: "#ff0000" }}
         >
           Fei
         </span>
