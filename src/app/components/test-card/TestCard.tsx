@@ -2,15 +2,15 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="w-[254px] bg-[#1e1e1b] flex flex-col overflow-auto"
+      className="w-[254px] min-h-[508px] bg-[#1e1e1a] font-sans overflow-auto flex flex-col"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-5 pt-5 pb-3">
-        <span className="text-[13.5px] font-semibold text-[#b5b5b5] leading-[16px]">
+      <div className="flex items-center justify-between px-5 pt-5">
+        <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
-        {/* Gear / Settings icon */}
+        {/* Gear icon */}
         <svg
           width="16"
           height="16"
@@ -27,79 +27,113 @@ export const TestCard = () => {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 pb-8">
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-          <path d="M9 5L5 1L1 5" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <div className="flex items-center gap-2 px-5 mt-3">
+        <svg
+          width="10"
+          height="6"
+          viewBox="0 0 10 6"
+          fill="none"
+          stroke="#8b9291"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="1 5 5 1 9 5" />
         </svg>
-        <span className="text-[11.5px] font-semibold text-[#8b9291] leading-[14px] truncate">
+        <span className="text-[11.5px] font-semibold text-[#8b9291]">
           From entire frame to a singl...
         </span>
       </div>
 
+      {/* Spacer */}
+      <div className="flex-1 min-h-[48px]" />
+
       {/* Add New Design section */}
       <div className="px-5">
-        {/* Section header */}
-        <div className="flex items-center gap-2 mb-5">
-          <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-            <path d="M11 7L6 1L1 7" stroke="#b2b2b1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Section heading */}
+        <div className="flex items-center gap-2 mb-4">
+          <svg
+            width="12"
+            height="8"
+            viewBox="0 0 12 8"
+            fill="none"
+            stroke="#b2b2b1"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="1 7 6 1 11 7" />
           </svg>
-          <span className="text-[13.5px] font-semibold text-[#b2b2b1] leading-[16px]">
+          <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
             Add New Design
           </span>
         </div>
 
-        {/* Personal Access Token */}
-        <div className="mb-3">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="text-[11.5px] font-semibold text-[#a4a4a3] leading-[14px]">
-              Personal Access Token
-            </span>
-            {/* Info icon */}
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-              <circle cx="7.5" cy="7.5" r="6.5" stroke="#a4a4a3" strokeWidth="1" />
-              <line x1="7.5" y1="6.5" x2="7.5" y2="11" stroke="#a4a4a3" strokeWidth="1" strokeLinecap="round" />
-              <circle cx="7.5" cy="4.5" r="0.75" fill="#a4a4a3" />
-            </svg>
-          </div>
-          <div className="w-full h-[37px] bg-[#272822] border border-[#929291] rounded flex items-center px-3">
-            <span className="text-[11.5px] font-semibold text-[#737470] leading-[14px]">
-              figd_xxxxxxxxxxxxxxxxxx
-            </span>
-          </div>
+        {/* Personal Access Token label */}
+        <div className="flex items-center gap-1 mb-1">
+          <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
+            Personal Access Token
+          </span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#a4a4a3"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
         </div>
 
-        {/* Design URL */}
-        <div className="mb-5">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="text-[11.5px] font-semibold text-[#a3a3a2] leading-[14px]">
-              Design URL
-            </span>
-            {/* Info icon */}
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-              <circle cx="7.5" cy="7.5" r="6.5" stroke="#a3a3a2" strokeWidth="1" />
-              <line x1="7.5" y1="6.5" x2="7.5" y2="11" stroke="#a3a3a2" strokeWidth="1" strokeLinecap="round" />
-              <circle cx="7.5" cy="4.5" r="0.75" fill="#a3a3a2" />
-            </svg>
-          </div>
-          <div className="w-full h-[37px] bg-[#272822] border-2 border-[#929291] rounded flex items-center px-3">
-            <span className="text-[10.5px] font-semibold text-[#71726e] leading-[13px]">
-              https://www.figma.com/file/:
-            </span>
-          </div>
+        {/* PAT input */}
+        <div className="w-full h-[37px] bg-[#272822] border border-[#a5adad] flex items-center px-3 mb-3">
+          <span className="text-[11.5px] font-semibold text-[#737470]">
+            figd_xxxxxxxxxxxxxxxxxx
+          </span>
+        </div>
+
+        {/* Design URL label */}
+        <div className="flex items-center gap-1 mb-1">
+          <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
+            Design URL
+          </span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#a3a3a2"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+        </div>
+
+        {/* Design URL input */}
+        <div
+          className="w-full h-[37px] bg-[#272822] flex items-center px-3 mb-4"
+          style={{ border: "2px solid #929291" }}
+        >
+          <span className="text-[10.5px] font-semibold text-[#71726e]">
+            https://www.figma.com/file/:
+          </span>
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-3 mb-8">
-          <button
-            className="flex-1 h-[37px] bg-[#843a17] rounded text-[11.5px] font-semibold text-[#8c8078] leading-[14px] flex items-center justify-center"
-            style={{ borderRadius: "4px" }}
-          >
+        <div className="flex gap-3 mb-6">
+          <button className="flex-1 h-[37px] bg-[#843a17] rounded text-[11.5px] font-semibold text-[#8c8078] flex items-center justify-center">
             Awesome
           </button>
-          <button
-            className="flex-1 h-[37px] bg-[#843a17] rounded text-[11.5px] font-semibold text-[#8c8078] leading-[14px] flex items-center justify-center"
-            style={{ borderRadius: "4px" }}
-          >
+          <button className="flex-1 h-[37px] bg-[#843a17] rounded text-[11.5px] font-semibold text-[#8c8078] flex items-center justify-center">
             Prepare
           </button>
         </div>
@@ -107,7 +141,7 @@ export const TestCard = () => {
 
       {/* Recent Breakdowns */}
       <div className="px-5 pb-5">
-        <span className="text-[13.5px] font-semibold text-[#b0b0b0] leading-[16px]">
+        <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
           Recent Breakdowns
         </span>
       </div>
