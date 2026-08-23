@@ -1,76 +1,48 @@
+import { IoSettingsOutline } from "react-icons/io5";
+import { FiChevronUp } from "react-icons/fi";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+
 export const TestCard = () => {
   return (
     <div
       id="testElem"
-      style={{
-        backgroundColor: "#2a2825",
-        fontFamily: "Inter, sans-serif",
-        width: "254px",
-        minHeight: "508px",
-      }}
-      className="flex flex-col overflow-auto"
+      className="w-64 p-4 font-sans"
+      style={{ backgroundColor: "#2a2926" }}
     >
+      <style>{`
+        #testElem input::placeholder { color: #737470; opacity: 1; }
+      `}</style>
+
       {/* Header */}
-      <div className="flex items-center justify-between px-5 pt-5">
-        <span style={{ color: "#b5b5b5", fontSize: "13.5px", fontWeight: 600 }}>
+      <div className="flex items-start justify-between">
+        <span
+          className="text-sm font-semibold"
+          style={{ color: "#b5b5b5" }}
+        >
           UI magician Agent
         </span>
-        {/* Gear icon */}
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#b5b5b5"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-        </svg>
+        <IoSettingsOutline
+          size={16}
+          style={{ color: "#b5b5b5" }}
+        />
       </div>
-
-      {/* Subtitle */}
-      <div className="flex items-center gap-2 px-5 mt-3">
-        <svg
-          width="10"
-          height="6"
-          viewBox="0 0 10 6"
-          fill="none"
-          stroke="#8b9291"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M1 5L5 1L9 5" />
-        </svg>
-        <span style={{ color: "#8b9291", fontSize: "11.5px", fontWeight: 600 }}>
+      <div className="mt-1 flex items-center gap-1">
+        <FiChevronUp size={12} style={{ color: "#8b9291" }} />
+        <span className="text-xs font-semibold" style={{ color: "#8b9291" }}>
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Spacer */}
-      <div className="mt-10" />
+      <div className="mt-8" />
 
-      {/* Add New Design section */}
-      <div className="px-5">
-        {/* Section heading */}
-        <div className="flex items-center gap-2 mb-4">
-          <svg
-            width="12"
-            height="8"
-            viewBox="0 0 12 8"
-            fill="none"
-            stroke="#b2b2b1"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M1 7L6 1L11 7" />
-          </svg>
+      {/* Add New Design Section */}
+      <div>
+        <div className="mb-4 flex items-center gap-2">
+          <FiChevronUp size={14} style={{ color: "#b2b2b1" }} />
           <span
-            style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600 }}
+            className="text-sm font-semibold"
+            style={{ color: "#b2b2b1" }}
           >
             Add New Design
           </span>
@@ -78,131 +50,70 @@ export const TestCard = () => {
 
         {/* Personal Access Token */}
         <div className="mb-3">
-          <div className="flex items-center gap-1.5 mb-1.5">
-            <span
-              style={{
-                color: "#a4a4a3",
-                fontSize: "11.5px",
-                fontWeight: 600,
-              }}
-            >
+          <div className="mb-1 flex items-center gap-1">
+            <span className="text-xs font-semibold" style={{ color: "#a4a4a3" }}>
               Personal Access Token
             </span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              stroke="#a4a4a3"
-              strokeWidth="1.2"
-            >
-              <circle cx="7" cy="7" r="6" />
-              <line x1="7" y1="6" x2="7" y2="10" strokeLinecap="round" />
-              <circle cx="7" cy="4" r="0.6" fill="#a4a4a3" stroke="none" />
-            </svg>
+            <AiOutlineInfoCircle size={13} style={{ color: "#a4a4a3" }} />
           </div>
-          <div
+          <input
+            type="text"
+            placeholder="figd_xxxxxxxxxxxxxxxxxx"
+            className="w-full rounded px-2 py-1.5 text-xs font-semibold outline-none"
             style={{
               backgroundColor: "#272822",
               border: "1px solid #a5adad",
+              color: "#737470",
             }}
-            className="w-full h-[37px] flex items-center px-3"
-          >
-            <span
-              style={{
-                color: "#737470",
-                fontSize: "11.5px",
-                fontWeight: 600,
-              }}
-            >
-              figd_xxxxxxxxxxxxxxxxxx
-            </span>
-          </div>
+          />
         </div>
 
         {/* Design URL */}
-        <div className="mb-5">
-          <div className="flex items-center gap-1.5 mb-1.5">
-            <span
-              style={{
-                color: "#a3a3a2",
-                fontSize: "11.5px",
-                fontWeight: 600,
-              }}
-            >
+        <div className="mb-4">
+          <div className="mb-1 flex items-center gap-1">
+            <span className="text-xs font-semibold" style={{ color: "#a3a3a2" }}>
               Design URL
             </span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              stroke="#a3a3a2"
-              strokeWidth="1.2"
-            >
-              <circle cx="7" cy="7" r="6" />
-              <line x1="7" y1="6" x2="7" y2="10" strokeLinecap="round" />
-              <circle cx="7" cy="4" r="0.6" fill="#a3a3a2" stroke="none" />
-            </svg>
+            <AiOutlineInfoCircle size={13} style={{ color: "#a3a3a2" }} />
           </div>
-          <div
+          <input
+            type="text"
+            placeholder="https://www.figma.com/file/:"
+            className="w-full rounded px-2 py-1.5 text-xs font-semibold outline-none"
             style={{
               backgroundColor: "#272822",
               border: "2px solid #929291",
+              color: "#737470",
             }}
-            className="w-full h-[37px] flex items-center px-3"
-          >
-            <span
-              style={{
-                color: "#71726e",
-                fontSize: "10.5px",
-                fontWeight: 600,
-              }}
-            >
-              https://www.figma.com/file/:
-            </span>
-          </div>
+          />
         </div>
 
         {/* Buttons */}
         <div className="flex gap-3">
           <button
-            style={{
-              backgroundColor: "#843a17",
-              borderRadius: "4px",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              fontWeight: 600,
-              height: "37px",
-            }}
-            className="flex-1 flex items-center justify-center cursor-pointer border-0"
+            className="flex-1 rounded py-2 text-xs font-semibold"
+            style={{ backgroundColor: "#843a17", color: "#8c8078" }}
           >
             Awesome
           </button>
           <button
-            style={{
-              backgroundColor: "#843a17",
-              borderRadius: "4px",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              fontWeight: 600,
-              height: "37px",
-            }}
-            className="flex-1 flex items-center justify-center cursor-pointer border-0"
+            className="flex-1 rounded py-2 text-xs font-semibold"
+            style={{ backgroundColor: "#843a17", color: "#8c8078" }}
           >
             Prepare
           </button>
         </div>
       </div>
 
-      {/* Recent Breakdowns */}
-      <div className="px-5 mt-10">
-        <span style={{ color: "#b0b0b0", fontSize: "13.5px", fontWeight: 600 }}>
+      {/* Spacer */}
+      <div className="mt-8" />
+
+      {/* Footer */}
+      <div>
+        <span className="text-sm font-semibold" style={{ color: "#b0b0b0" }}>
           Recent Breakdowns
         </span>
       </div>
     </div>
   );
 };
-
-export default TestCard;
