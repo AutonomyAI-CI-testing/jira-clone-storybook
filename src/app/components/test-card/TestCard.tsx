@@ -2,10 +2,11 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="w-[254px] min-h-[508px] bg-[#1e1e1a] overflow-auto font-sans flex flex-col p-5 gap-3"
+      className="w-[254px] min-h-[508px] bg-[#1e1e1a] flex flex-col overflow-auto"
+      style={{ fontFamily: "Inter, sans-serif" }}
     >
       {/* Header row */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <span className="text-[#b5b5b5] text-[13.5px] font-semibold leading-[16.34px]">
           UI magician Agent
         </span>
@@ -26,84 +27,134 @@ export const TestCard = () => {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2">
-        <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
-          <path d="M1 4L4 1L7 4" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <div className="flex items-center gap-2 px-5 pb-8">
+        {/* Chevron up (small) */}
+        <svg
+          width="8"
+          height="5"
+          viewBox="0 0 8 5"
+          fill="none"
+        >
+          <path
+            d="M1 4L4 1L7 4"
+            stroke="#8b9291"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
         <span className="text-[#8b9291] text-[11.5px] font-semibold leading-[13.92px]">
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Spacer */}
-      <div className="h-4" />
-
       {/* Add New Design section */}
-      <div className="flex flex-col gap-4">
+      <div className="px-5 flex-1">
         {/* Section heading */}
-        <div className="flex items-center gap-2">
-          <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-            <path d="M1 6L6 1L11 6" stroke="#b2b2b1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <div className="flex items-center gap-2 mb-5">
+          {/* Chevron up (larger) */}
+          <svg
+            width="12"
+            height="8"
+            viewBox="0 0 12 8"
+            fill="none"
+          >
+            <path
+              d="M1 6L6 1L11 6"
+              stroke="#b2b2b1"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
           <span className="text-[#b2b2b1] text-[13.5px] font-semibold leading-[16.34px]">
             Add New Design
           </span>
         </div>
 
-        {/* Personal Access Token */}
-        <div className="flex flex-col gap-1.5">
-          <div className="flex items-center gap-1">
+        {/* Personal Access Token field */}
+        <div className="mb-4">
+          <div className="flex items-center gap-1 mb-2">
             <span className="text-[#a4a4a3] text-[11.5px] font-semibold leading-[13.92px]">
               Personal Access Token
             </span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            {/* Info icon */}
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#a4a4a3"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" strokeWidth="3" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
           </div>
-          <div className="bg-[#272822] border border-[#a5adad] rounded px-3 py-2">
+          <div
+            className="bg-[#272822] rounded px-3 py-[10px]"
+            style={{ border: "1px solid #a5adad" }}
+          >
             <span className="text-[#737470] text-[11.5px] font-semibold leading-[13.92px]">
               figd_xxxxxxxxxxxxxxxxxx
             </span>
           </div>
         </div>
 
-        {/* Design URL */}
-        <div className="flex flex-col gap-1.5">
-          <div className="flex items-center gap-1">
+        {/* Design URL field */}
+        <div className="mb-6">
+          <div className="flex items-center gap-1 mb-2">
             <span className="text-[#a3a3a2] text-[11.5px] font-semibold leading-[13.92px]">
               Design URL
             </span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            {/* Info icon */}
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#a3a3a2"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" strokeWidth="3" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
           </div>
-          <div className="bg-[#272822] border-2 border-[#929291] rounded px-3 py-2">
+          <div
+            className="bg-[#272822] rounded px-3 py-[10px]"
+            style={{ border: "2px solid #929291" }}
+          >
             <span className="text-[#71726e] text-[10.5px] font-semibold leading-[12.71px]">
               https://www.figma.com/file/:
             </span>
           </div>
         </div>
 
-        {/* Action buttons */}
-        <div className="flex gap-3">
-          <button className="flex-1 bg-[#843a17] rounded text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px] py-2.5 px-4">
+        {/* Buttons */}
+        <div className="flex gap-3 mb-8">
+          <button
+            className="flex-1 bg-[#843a17] text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px] py-[10px] px-4 rounded"
+            style={{ borderRadius: "4px" }}
+          >
             Awesome
           </button>
-          <button className="flex-1 bg-[#843a17] rounded text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px] py-2.5 px-4">
+          <button
+            className="flex-1 bg-[#843a17] text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px] py-[10px] px-4 rounded"
+            style={{ borderRadius: "4px" }}
+          >
             Prepare
           </button>
         </div>
       </div>
 
-      {/* Spacer */}
-      <div className="h-4" />
-
       {/* Recent Breakdowns */}
-      <div>
+      <div className="px-5 pt-2 pb-6">
         <span className="text-[#b0b0b0] text-[13.5px] font-semibold leading-[16.34px]">
           Recent Breakdowns
         </span>
