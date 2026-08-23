@@ -124,7 +124,7 @@ const App = (): JSX.Element => {
         <Meta />
         <Links />
       </head>
-      <body className="h-full bg-elevation-surface font-primary text-font">
+      <body className="h-full bg-white font-primary text-black">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

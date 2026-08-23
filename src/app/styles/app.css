@@ -343,7 +343,7 @@
   --color-border-accent-grey: var(--DarkNeutral600);
 
   /* Elevation */
-  --color-elevation-surface: var(--DarkNeutral100);
+  --color-elevation-surface: #ffffff;
   --color-elevation-surface-hovered: var(--DarkNeutral200);
   --color-elevation-surface-pressed: var(--DarkNeutral250);
   --color-elevation-surface-overlay: var(--DarkNeutral250);
@@ -481,7 +481,7 @@
   --color-border-accent-grey: var(--DarkNeutral600);
 
   /* Elevation */
-  --color-elevation-surface: var(--DarkNeutral100);
+  --color-elevation-surface: #ffffff;
   --color-elevation-surface-hovered: var(--DarkNeutral200);
   --color-elevation-surface-pressed: var(--DarkNeutral250);
   --color-elevation-surface-overlay: var(--DarkNeutral250);
@@ -619,7 +619,7 @@
   --color-border-accent-grey: var(--DarkNeutral600);
 
   /* Elevation */
-  --color-elevation-surface: var(--DarkNeutral100);
+  --color-elevation-surface: #ffffff;
   --color-elevation-surface-hovered: var(--DarkNeutral200);
   --color-elevation-surface-pressed: var(--DarkNeutral250);
   --color-elevation-surface-overlay: var(--DarkNeutral250);
