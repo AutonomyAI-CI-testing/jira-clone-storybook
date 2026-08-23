@@ -32,7 +32,7 @@ export const TestCard = () => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="10"
-          height="6"
+          height="7"
           viewBox="0 0 10 6"
           fill="none"
           stroke="#8b9291"
@@ -73,8 +73,8 @@ export const TestCard = () => {
           </span>
         </div>
 
-        {/* Personal Access Token field */}
-        <div className="mb-3">
+        {/* Personal Access Token */}
+        <div className="mb-4">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[#a4a4a3] text-[11.5px] font-semibold leading-[14px]">
               Personal Access Token
@@ -103,7 +103,7 @@ export const TestCard = () => {
           </div>
         </div>
 
-        {/* Design URL field */}
+        {/* Design URL */}
         <div className="mb-5">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[#a3a3a2] text-[11.5px] font-semibold leading-[14px]">
