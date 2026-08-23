@@ -5,12 +5,12 @@ export const TestCard = () => {
       className="w-[254px] min-h-[508px] bg-[#1e1e1a] overflow-auto"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
-      {/* Header row */}
+      {/* Header */}
       <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <span className="text-[#b5b5b5] text-[13.5px] font-semibold leading-[16.34px]">
           UI magician Agent
         </span>
-        {/* Gear / settings icon */}
+        {/* Gear / Settings icon */}
         <svg
           width="14"
           height="16"
@@ -43,7 +43,7 @@ export const TestCard = () => {
       </div>
 
       {/* Add New Design section */}
-      <div className="px-5 mb-5">
+      <div className="px-5">
         {/* Section heading */}
         <div className="flex items-center gap-2 mb-5">
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
@@ -77,8 +77,8 @@ export const TestCard = () => {
               strokeLinejoin="round"
             >
               <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
           </div>
           <div className="bg-[#272822] border border-[#a5adad] rounded px-3 py-2">
@@ -105,30 +105,39 @@ export const TestCard = () => {
               strokeLinejoin="round"
             >
               <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
           </div>
-          <div className="bg-[#272822] border-2 border-[#929291] rounded px-3 py-2">
+          <div
+            className="bg-[#272822] rounded px-3 py-2"
+            style={{ border: "2px solid #929291" }}
+          >
             <span className="text-[#71726e] text-[10.5px] font-semibold leading-[12.71px]">
               https://www.figma.com/file/:
             </span>
           </div>
         </div>
 
-        {/* Buttons */}
+        {/* Action buttons */}
         <div className="flex gap-3">
-          <button className="flex-1 bg-[#843a17] rounded text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px] py-2 px-4">
+          <button
+            className="flex-1 bg-[#843a17] rounded text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px] py-2 px-4"
+            style={{ borderRadius: "4px" }}
+          >
             Awesome
           </button>
-          <button className="flex-1 bg-[#843a17] rounded text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px] py-2 px-4">
+          <button
+            className="flex-1 bg-[#843a17] rounded text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px] py-2 px-4"
+            style={{ borderRadius: "4px" }}
+          >
             Prepare
           </button>
         </div>
       </div>
 
       {/* Recent Breakdowns */}
-      <div className="px-5 pt-6">
+      <div className="px-5 pt-8">
         <span className="text-[#b0b0b0] text-[13.5px] font-semibold leading-[16.34px]">
           Recent Breakdowns
         </span>
