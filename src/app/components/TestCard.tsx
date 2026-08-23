@@ -1,163 +1,254 @@
-export const TestCard = () => {
+export function TestCard() {
   return (
     <div
       id="testElem"
-      className="bg-[#272822] w-[254px] min-h-[508px] overflow-auto font-sans"
+      style={{
+        backgroundColor: "#1e1e1a",
+        fontFamily: "Inter, sans-serif",
+        width: "254px",
+        minHeight: "508px",
+        overflow: "auto",
+      }}
     >
       {/* Header row */}
-      <div className="flex items-center justify-between px-5 pt-5 pb-3">
-        <span className="text-[#b5b5b5] text-[13.5px] font-semibold leading-[16px]">
+      <div
+        style={{ padding: "20px 20px 8px 20px" }}
+        className="flex items-center justify-between"
+      >
+        <span
+          style={{
+            color: "#b5b5b5",
+            fontSize: "13.5px",
+            fontWeight: 600,
+            lineHeight: "16.34px",
+          }}
+        >
           UI magician Agent
         </span>
-        {/* Gear / settings icon */}
+        {/* Settings gear icon */}
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
+          width="14"
           height="16"
-          viewBox="0 0 24 24"
+          viewBox="0 0 14 16"
           fill="none"
-          stroke="#b5b5b5"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          <circle cx="7" cy="8" r="2.2" stroke="#b5b5b5" strokeWidth="1.2" />
+          <path
+            d="M7 0.5V2M7 14V15.5M0.5 8H2M12 8H13.5M1.98 2.48L3.04 3.54M10.96 12.46L12.02 13.52M1.98 13.52L3.04 12.46M10.96 3.54L12.02 2.48"
+            stroke="#b5b5b5"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          />
         </svg>
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 pb-8">
-        {/* Chevron up */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="10"
-          height="7"
-          viewBox="0 0 10 6"
-          fill="none"
-          stroke="#8b9291"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="1 5 5 1 9 5" />
+      <div
+        style={{ padding: "0 20px 8px 20px" }}
+        className="flex items-center gap-2"
+      >
+        {/* Small up-chevron */}
+        <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
+          <path
+            d="M7 4L4 1L1 4"
+            stroke="#8b9291"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
-        <span className="text-[#8b9291] text-[11.5px] font-semibold leading-[14px]">
+        <span
+          style={{
+            color: "#8b9291",
+            fontSize: "11.5px",
+            fontWeight: 600,
+            lineHeight: "13.92px",
+          }}
+        >
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Spacer */}
-      <div className="h-8" />
+      <div style={{ height: "32px" }} />
 
       {/* Add New Design section */}
-      <div className="px-5">
-        {/* Section header */}
-        <div className="flex items-center gap-2 mb-5">
-          {/* Chevron down */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="8"
-            viewBox="0 0 12 8"
-            fill="none"
-            stroke="#b2b2b1"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="1 1 6 7 11 1" />
+      <div style={{ padding: "0 20px" }}>
+        {/* Section heading */}
+        <div className="flex items-center gap-2" style={{ marginBottom: "16px" }}>
+          {/* Larger up-chevron */}
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+            <path
+              d="M11 7L6 2L1 7"
+              stroke="#b2b2b1"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
-          <span className="text-[#b2b2b1] text-[13.5px] font-semibold leading-[16px]">
+          <span
+            style={{
+              color: "#b2b2b1",
+              fontSize: "13.5px",
+              fontWeight: 600,
+              lineHeight: "16.34px",
+            }}
+          >
             Add New Design
           </span>
         </div>
 
         {/* Personal Access Token */}
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[#a4a4a3] text-[11.5px] font-semibold leading-[14px]">
+        <div style={{ marginBottom: "12px" }}>
+          <div className="flex items-center gap-1.5" style={{ marginBottom: "6px" }}>
+            <span
+              style={{
+                color: "#a4a4a3",
+                fontSize: "11.5px",
+                fontWeight: 600,
+                lineHeight: "13.92px",
+              }}
+            >
               Personal Access Token
             </span>
             {/* Info icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#a4a4a3"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <circle cx="7.5" cy="7.5" r="6.5" stroke="#a4a4a3" strokeWidth="1" />
+              <path
+                d="M7.5 6.5V10.5"
+                stroke="#a4a4a3"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+              />
+              <circle cx="7.5" cy="4.5" r="0.75" fill="#a4a4a3" />
             </svg>
           </div>
-          <div className="bg-[#272822] border border-[#a5adad] rounded px-3 py-2.5">
-            <span className="text-[#737470] text-[11.5px] font-semibold leading-[14px]">
+          {/* Token input box */}
+          <div
+            style={{
+              backgroundColor: "#272822",
+              border: "1px solid #a5adad",
+              height: "36px",
+              display: "flex",
+              alignItems: "center",
+              padding: "0 12px",
+            }}
+          >
+            <span
+              style={{
+                color: "#737470",
+                fontSize: "11.5px",
+                fontWeight: 600,
+                lineHeight: "13.92px",
+              }}
+            >
               figd_xxxxxxxxxxxxxxxxxx
             </span>
           </div>
         </div>
 
         {/* Design URL */}
-        <div className="mb-5">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[#a3a3a2] text-[11.5px] font-semibold leading-[14px]">
+        <div style={{ marginBottom: "16px" }}>
+          <div className="flex items-center gap-1.5" style={{ marginBottom: "6px" }}>
+            <span
+              style={{
+                color: "#a3a3a2",
+                fontSize: "11.5px",
+                fontWeight: 600,
+                lineHeight: "13.92px",
+              }}
+            >
               Design URL
             </span>
             {/* Info icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#a3a3a2"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <circle cx="7.5" cy="7.5" r="6.5" stroke="#a3a3a2" strokeWidth="1" />
+              <path
+                d="M7.5 6.5V10.5"
+                stroke="#a3a3a2"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+              />
+              <circle cx="7.5" cy="4.5" r="0.75" fill="#a3a3a2" />
             </svg>
           </div>
-          <div className="bg-[#272822] border-2 border-[#929291] rounded px-3 py-2.5">
-            <span className="text-[#71726e] text-[10.5px] font-semibold leading-[13px]">
+          {/* URL input box */}
+          <div
+            style={{
+              backgroundColor: "#272822",
+              border: "2px solid #929291",
+              height: "37px",
+              display: "flex",
+              alignItems: "center",
+              padding: "0 12px",
+            }}
+          >
+            <span
+              style={{
+                color: "#71726e",
+                fontSize: "10.5px",
+                fontWeight: 600,
+                lineHeight: "12.71px",
+              }}
+            >
               https://www.figma.com/file/:
             </span>
           </div>
         </div>
 
-        {/* Action buttons */}
-        <div className="flex gap-3 mb-10">
+        {/* Buttons */}
+        <div className="flex gap-2" style={{ marginBottom: "32px" }}>
           <button
-            className="flex-1 bg-[#843a17] rounded-[4px] text-[#8c8078] text-[11.5px] font-semibold leading-[14px] py-2.5 px-4"
-            type="button"
+            style={{
+              backgroundColor: "#843a17",
+              borderRadius: "4px",
+              color: "#8c8078",
+              fontSize: "11.5px",
+              fontWeight: 600,
+              lineHeight: "13.92px",
+              border: "none",
+              cursor: "pointer",
+              height: "37px",
+              flex: 1,
+            }}
           >
             Awesome
           </button>
           <button
-            className="flex-1 bg-[#843a17] rounded-[4px] text-[#8c8078] text-[11.5px] font-semibold leading-[14px] py-2.5 px-4"
-            type="button"
+            style={{
+              backgroundColor: "#843a17",
+              borderRadius: "4px",
+              color: "#8c8078",
+              fontSize: "11.5px",
+              fontWeight: 600,
+              lineHeight: "13.92px",
+              border: "none",
+              cursor: "pointer",
+              height: "37px",
+              flex: 1,
+            }}
           >
             Prepare
           </button>
         </div>
       </div>
 
-      {/* Recent Breakdowns section */}
-      <div className="px-5">
-        <span className="text-[#b0b0b0] text-[13.5px] font-semibold leading-[16px]">
+      {/* Recent Breakdowns */}
+      <div style={{ padding: "0 20px" }}>
+        <span
+          style={{
+            color: "#b0b0b0",
+            fontSize: "13.5px",
+            fontWeight: 600,
+            lineHeight: "16.34px",
+          }}
+        >
           Recent Breakdowns
         </span>
       </div>
     </div>
   );
-};
+}
 
 export default TestCard;
