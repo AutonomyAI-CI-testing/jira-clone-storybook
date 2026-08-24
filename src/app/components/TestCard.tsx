@@ -146,9 +146,9 @@ export const TestCard = (): JSX.Element => {
       {/* Spacer */}
       <div className="h-8" />
 
-      {/* Recent Breakdowns */}
+      {/* Recent Breakdowns footer */}
       <div>
-        <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
+        <span className="text-[13.5px] font-semibold text-[#b0b0b0] font-sans">
           Recent Breakdowns
         </span>
       </div>
