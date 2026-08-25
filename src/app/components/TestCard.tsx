@@ -2,7 +2,7 @@ export function TestCard() {
   return (
     <div
       id="testElem"
-      className="w-64 bg-[#272822] font-sans flex flex-col gap-4 p-5"
+      className="w-64 min-h-screen bg-[#272822] font-sans p-5 flex flex-col gap-4"
     >
       {/* Header row */}
       <div className="flex items-center justify-between">
@@ -29,16 +29,16 @@ export function TestCard() {
       <div className="flex items-center gap-2">
         {/* Chevron up */}
         <svg
-          width="8"
+          width="9"
           height="6"
-          viewBox="0 0 10 6"
+          viewBox="0 0 9 6"
           fill="none"
           stroke="#8b9291"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="1 5 5 1 9 5" />
+          <polyline points="1 5 4.5 1 8 5" />
         </svg>
         <span className="text-[#8b9291] text-[11.5px] font-semibold leading-[13.92px]">
           From entire frame to a singl...
@@ -46,7 +46,7 @@ export function TestCard() {
       </div>
 
       {/* Spacer */}
-      <div className="h-8" />
+      <div className="h-6" />
 
       {/* Add New Design section */}
       <div className="flex flex-col gap-3">
@@ -130,10 +130,16 @@ export function TestCard() {
 
         {/* Action buttons */}
         <div className="flex gap-3 mt-1">
-          <button className="bg-[#843a17] rounded px-6 py-2 text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px]">
+          <button
+            type="button"
+            className="bg-[#843a17] rounded px-5 py-2 text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px]"
+          >
             Awesome
           </button>
-          <button className="bg-[#843a17] rounded px-6 py-2 text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px]">
+          <button
+            type="button"
+            className="bg-[#843a17] rounded px-5 py-2 text-[#8c8078] text-[11.5px] font-semibold leading-[13.92px]"
+          >
             Prepare
           </button>
         </div>
