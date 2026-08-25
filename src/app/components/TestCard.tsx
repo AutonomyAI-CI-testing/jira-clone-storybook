@@ -2,7 +2,7 @@ export function TestCard() {
   return (
     <div
       id="testElem"
-      className="w-64 min-h-screen bg-[#272822] font-sans p-5 flex flex-col gap-4"
+      className="w-64 bg-[#272822] font-sans flex flex-col gap-4 p-5"
     >
       {/* Header row */}
       <div className="flex items-center justify-between">
@@ -29,16 +29,16 @@ export function TestCard() {
       <div className="flex items-center gap-2">
         {/* Chevron up */}
         <svg
-          width="9"
+          width="8"
           height="6"
-          viewBox="0 0 9 6"
+          viewBox="0 0 10 7"
           fill="none"
           stroke="#8b9291"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="1 5 4.5 1 8 5" />
+          <polyline points="1 6 5 1 9 6" />
         </svg>
         <span className="text-[#8b9291] text-[11.5px] font-semibold leading-[13.92px]">
           From entire frame to a singl...
@@ -78,18 +78,17 @@ export function TestCard() {
             </span>
             {/* Info icon */}
             <svg
-              width="15"
-              height="15"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#a4a4a3"
               strokeWidth="1.5"
               strokeLinecap="round"
-              strokeLinejoin="round"
             >
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
+              <circle cx="12" cy="8" r="0.5" fill="#a4a4a3" />
             </svg>
           </div>
           <div className="bg-[#272822] border border-[#a5adad] rounded px-3 py-2">
@@ -107,18 +106,17 @@ export function TestCard() {
             </span>
             {/* Info icon */}
             <svg
-              width="15"
-              height="15"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#a3a3a2"
               strokeWidth="1.5"
               strokeLinecap="round"
-              strokeLinejoin="round"
             >
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
+              <circle cx="12" cy="8" r="0.5" fill="#a3a3a2" />
             </svg>
           </div>
           <div className="bg-[#272822] border-2 border-[#929291] rounded px-3 py-2">
@@ -146,7 +144,7 @@ export function TestCard() {
       </div>
 
       {/* Spacer */}
-      <div className="h-6" />
+      <div className="h-4" />
 
       {/* Recent Breakdowns */}
       <span className="text-[#b0b0b0] text-[13.5px] font-semibold leading-[16.34px]">
