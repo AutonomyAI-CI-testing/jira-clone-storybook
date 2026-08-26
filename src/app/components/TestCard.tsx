@@ -1,113 +1,152 @@
-import { IoSettingsOutline } from "react-icons/io5";
-import { FiChevronUp, FiChevronDown } from "react-icons/fi";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-
 export const TestCard = () => {
   return (
-    <>
-      <style>{`
-        #testElem input[data-pat]::placeholder { color: #737470; font-size: 11.5px; font-weight: 600; }
-        #testElem input[data-url]::placeholder { color: #71726e; font-size: 10.5px; font-weight: 600; }
-      `}</style>
-      <div
-        id="testElem"
-        style={{
-          backgroundColor: "#272822",
-          fontFamily: "Inter, sans-serif",
-          minHeight: "100vh",
-          maxWidth: "320px",
-          padding: "20px",
-        }}
-      >
-        {/* Section 1 — Header row */}
-        <div className="flex items-center justify-between">
-          <span style={{ color: "#b5b5b5", fontSize: "13.5px", fontWeight: 600 }}>
-            UI magician Agent
-          </span>
-          <IoSettingsOutline size={16} color="#b5b5b5" />
-        </div>
+    <div
+      id="testElem"
+      style={{
+        backgroundColor: "#272822",
+        width: "254px",
+        minHeight: "508px",
+        fontFamily: "Inter, sans-serif",
+        fontWeight: 600,
+        display: "flex",
+        flexDirection: "column",
+        padding: "0 0 20px 0",
+      }}
+    >
+      {/* Header row */}
+      <div className="flex items-center justify-between px-5 pt-5 pb-3">
+        <span style={{ color: "#b5b5b5", fontSize: "13.5px" }}>
+          UI magician Agent
+        </span>
+        {/* Gear icon */}
+        <svg
+          width="14"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#b5b5b5"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        </svg>
+      </div>
 
-        {/* Section 2 — Subtitle row */}
-        <div className="flex items-center gap-2 mt-2">
-          <FiChevronUp size={12} color="#8b9291" />
-          <span style={{ color: "#8b9291", fontSize: "11.5px", fontWeight: 600 }}>
-            From entire frame to a singl...
-          </span>
-        </div>
+      {/* Subtitle row */}
+      <div className="flex items-center gap-2 px-5 pb-6">
+        {/* Up caret */}
+        <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
+          <path d="M4 0L8 5H0L4 0Z" fill="#8b9291" />
+        </svg>
+        <span style={{ color: "#8b9291", fontSize: "11.5px" }}>
+          From entire frame to a singl...
+        </span>
+      </div>
 
-        {/* Spacer ~60px */}
-        <div style={{ marginTop: "60px" }} />
+      {/* Spacer */}
+      <div style={{ flex: 1, minHeight: "32px" }} />
 
-        {/* Section 3 — Add New Design */}
-        <div className="flex items-center gap-2">
-          <FiChevronDown size={12} color="#b2b2b1" />
-          <span style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600 }}>
+      {/* Add New Design section */}
+      <div className="px-5">
+        {/* Section header */}
+        <div className="flex items-center gap-2 mb-4">
+          {/* Down caret */}
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+            <path d="M0 0L6 8L12 0H0Z" fill="#b2b2b1" />
+          </svg>
+          <span style={{ color: "#b2b2b1", fontSize: "13.5px" }}>
             Add New Design
           </span>
         </div>
 
-        {/* Section 4 — Personal Access Token */}
-        <div className="mt-4">
-          <div className="flex items-center gap-2">
-            <span style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600 }}>
-              Personal Access Token
-            </span>
-            <AiOutlineInfoCircle size={15} color="#a4a4a3" />
-          </div>
-          <input
-            data-pat
-            type="text"
-            placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            className="w-full mt-2 outline-none"
-            style={{
-              backgroundColor: "#272822",
-              border: "1px solid #a5adad",
-              borderRadius: "2px",
-              padding: "10px 12px",
-              color: "#737470",
-              fontSize: "11.5px",
-              fontWeight: 600,
-            }}
-          />
+        {/* Personal Access Token label */}
+        <div className="flex items-center gap-1 mb-1">
+          <span style={{ color: "#a4a4a3", fontSize: "11.5px" }}>
+            Personal Access Token
+          </span>
+          {/* Info icon */}
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#a4a4a3"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
         </div>
 
-        {/* Section 5 — Design URL */}
-        <div className="mt-4">
-          <div className="flex items-center gap-2">
-            <span style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600 }}>
-              Design URL
-            </span>
-            <AiOutlineInfoCircle size={15} color="#a3a3a2" />
-          </div>
-          <input
-            data-url
-            type="text"
-            placeholder="https://www.figma.com/file/:"
-            className="w-full mt-2 outline-none"
-            style={{
-              backgroundColor: "#272822",
-              border: "2px solid #929291",
-              borderRadius: "2px",
-              padding: "10px 12px",
-              color: "#71726e",
-              fontSize: "10.5px",
-              fontWeight: 600,
-            }}
-          />
+        {/* Token input */}
+        <div
+          className="w-full mb-3 px-3 flex items-center"
+          style={{
+            backgroundColor: "#272822",
+            border: "1px solid #a5adad",
+            height: "36px",
+          }}
+        >
+          <span style={{ color: "#737470", fontSize: "11.5px" }}>
+            figd_xxxxxxxxxxxxxxxxxx
+          </span>
         </div>
 
-        {/* Section 6 — Buttons */}
-        <div className="flex gap-3 mt-6">
+        {/* Design URL label */}
+        <div className="flex items-center gap-1 mb-1">
+          <span style={{ color: "#a3a3a2", fontSize: "11.5px" }}>
+            Design URL
+          </span>
+          {/* Info icon */}
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#a3a3a2"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
+        </div>
+
+        {/* URL input */}
+        <div
+          className="w-full mb-5 px-3 flex items-center"
+          style={{
+            backgroundColor: "#272822",
+            border: "2px solid #929291",
+            height: "37px",
+          }}
+        >
+          <span style={{ color: "#71726e", fontSize: "10.5px" }}>
+            https://www.figma.com/file/:
+          </span>
+        </div>
+
+        {/* Buttons row */}
+        <div className="flex gap-3 mb-8">
           <button
             style={{
               backgroundColor: "#843a17",
-              borderRadius: "4px",
-              padding: "10px 20px",
               color: "#8c8078",
               fontSize: "11.5px",
-              fontWeight: 600,
+              borderRadius: "4px",
+              width: "85px",
+              height: "37px",
               border: "none",
-              cursor: "pointer",
+              fontWeight: 600,
+              fontFamily: "Inter, sans-serif",
+              cursor: "default",
             }}
           >
             Awesome
@@ -115,26 +154,30 @@ export const TestCard = () => {
           <button
             style={{
               backgroundColor: "#843a17",
-              borderRadius: "4px",
-              padding: "10px 20px",
               color: "#8c8078",
               fontSize: "11.5px",
-              fontWeight: 600,
+              borderRadius: "4px",
+              width: "85px",
+              height: "37px",
               border: "none",
-              cursor: "pointer",
+              fontWeight: 600,
+              fontFamily: "Inter, sans-serif",
+              cursor: "default",
             }}
           >
             Prepare
           </button>
         </div>
 
-        {/* Section 7 — Recent Breakdowns */}
-        <div className="mt-10">
-          <span style={{ color: "#b0b0b0", fontSize: "13.5px", fontWeight: 600 }}>
+        {/* Recent Breakdowns */}
+        <div>
+          <span style={{ color: "#b0b0b0", fontSize: "13.5px" }}>
             Recent Breakdowns
           </span>
         </div>
       </div>
-    </>
+    </div>
   );
 };
+
+export default TestCard;
