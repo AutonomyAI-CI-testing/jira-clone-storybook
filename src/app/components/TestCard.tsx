@@ -14,14 +14,14 @@ const GearIcon = () => (
   </svg>
 );
 
-const ChevronUpSmall = () => (
+const ChevronUpSmall = ({ color }: { color: string }) => (
   <svg
     width="8"
     height="5"
     viewBox="0 0 8 5"
     fill="none"
-    stroke="#8b9291"
-    strokeWidth="1.8"
+    stroke={color}
+    strokeWidth="1.5"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
@@ -51,13 +51,13 @@ const InfoCircle = ({ color }: { color: string }) => (
     viewBox="0 0 15 15"
     fill="none"
     stroke={color}
-    strokeWidth="1.3"
+    strokeWidth="1.5"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
     <circle cx="7.5" cy="7.5" r="6.5" />
-    <line x1="7.5" y1="6.8" x2="7.5" y2="10.5" />
-    <circle cx="7.5" cy="4.8" r="0.6" fill={color} stroke="none" />
+    <line x1="7.5" y1="6.5" x2="7.5" y2="10.5" />
+    <circle cx="7.5" cy="4.5" r="0.75" fill={color} stroke="none" />
   </svg>
 );
 
@@ -65,32 +65,33 @@ export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="w-64 flex flex-col"
+      className="w-64 min-h-screen"
       style={{ backgroundColor: "#272822", fontFamily: "Inter, sans-serif" }}
     >
       {/* ── Section 1: Header ── */}
-      <div className="flex items-center justify-between px-5 pt-5 pb-3">
-        <span
-          className="font-semibold"
-          style={{ fontSize: "13.5px", color: "#b5b5b5" }}
-        >
-          UI magician Agent
-        </span>
-        <GearIcon />
-      </div>
+      <div className="px-5 pt-5">
+        {/* Top row: title + gear */}
+        <div className="flex items-center justify-between mb-3">
+          <span
+            className="font-semibold"
+            style={{ color: "#b5b5b5", fontSize: "13.5px" }}
+          >
+            UI magician Agent
+          </span>
+          <GearIcon />
+        </div>
 
-      <div className="flex items-center gap-2 px-5 pb-6">
-        <ChevronUpSmall />
-        <span
-          className="font-semibold"
-          style={{ fontSize: "11.5px", color: "#8b9291" }}
-        >
-          From entire frame to a singl...
-        </span>
+        {/* Sub-row: chevron + subtitle */}
+        <div className="flex items-center gap-2 mb-8">
+          <ChevronUpSmall color="#8b9291" />
+          <span
+            className="font-semibold"
+            style={{ color: "#8b9291", fontSize: "11.5px" }}
+          >
+            From entire frame to a singl...
+          </span>
+        </div>
       </div>
-
-      {/* ── Spacer ── */}
-      <div className="h-12" />
 
       {/* ── Section 2: Add New Design ── */}
       <div className="px-5">
@@ -99,7 +100,7 @@ export const TestCard = (): JSX.Element => {
           <ChevronUpLarge />
           <span
             className="font-semibold"
-            style={{ fontSize: "13.5px", color: "#b2b2b1" }}
+            style={{ color: "#b2b2b1", fontSize: "13.5px" }}
           >
             Add New Design
           </span>
@@ -109,7 +110,7 @@ export const TestCard = (): JSX.Element => {
         <div className="flex items-center gap-2 mb-2">
           <span
             className="font-semibold"
-            style={{ fontSize: "11.5px", color: "#a4a4a3" }}
+            style={{ color: "#a4a4a3", fontSize: "11.5px" }}
           >
             Personal Access Token
           </span>
@@ -127,7 +128,7 @@ export const TestCard = (): JSX.Element => {
         >
           <span
             className="font-semibold"
-            style={{ fontSize: "11.5px", color: "#737470" }}
+            style={{ color: "#737470", fontSize: "11.5px" }}
           >
             figd_xxxxxxxxxxxxxxxxxx
           </span>
@@ -137,7 +138,7 @@ export const TestCard = (): JSX.Element => {
         <div className="flex items-center gap-2 mb-2">
           <span
             className="font-semibold"
-            style={{ fontSize: "11.5px", color: "#a3a3a2" }}
+            style={{ color: "#a3a3a2", fontSize: "11.5px" }}
           >
             Design URL
           </span>
@@ -155,23 +156,23 @@ export const TestCard = (): JSX.Element => {
         >
           <span
             className="font-semibold"
-            style={{ fontSize: "10.5px", color: "#71726e" }}
+            style={{ color: "#71726e", fontSize: "10.5px" }}
           >
             https://www.figma.com/file/:
           </span>
         </div>
 
         {/* Buttons */}
-        <div className="flex items-center gap-3 mb-10">
+        <div className="flex items-center gap-3 mb-12">
           <button
             className="flex items-center justify-center font-semibold"
             style={{
-              width: "85px",
-              height: "37px",
               backgroundColor: "#843a17",
               borderRadius: "4px",
-              fontSize: "11.5px",
+              height: "37px",
+              width: "85px",
               color: "#8c8078",
+              fontSize: "11.5px",
               border: "none",
               cursor: "pointer",
             }}
@@ -181,12 +182,12 @@ export const TestCard = (): JSX.Element => {
           <button
             className="flex items-center justify-center font-semibold"
             style={{
-              width: "85px",
-              height: "37px",
               backgroundColor: "#843a17",
               borderRadius: "4px",
-              fontSize: "11.5px",
+              height: "37px",
+              width: "85px",
               color: "#8c8078",
+              fontSize: "11.5px",
               border: "none",
               cursor: "pointer",
             }}
@@ -194,16 +195,16 @@ export const TestCard = (): JSX.Element => {
             Prepare
           </button>
         </div>
-      </div>
 
-      {/* ── Section 3: Recent Breakdowns ── */}
-      <div className="px-5 pb-8">
-        <span
-          className="font-semibold"
-          style={{ fontSize: "13.5px", color: "#b0b0b0" }}
-        >
-          Recent Breakdowns
-        </span>
+        {/* ── Section 3: Recent Breakdowns ── */}
+        <div>
+          <span
+            className="font-semibold"
+            style={{ color: "#b0b0b0", fontSize: "13.5px" }}
+          >
+            Recent Breakdowns
+          </span>
+        </div>
       </div>
     </div>
   );
