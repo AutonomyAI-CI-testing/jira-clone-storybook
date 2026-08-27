@@ -1,5 +1,3 @@
-// Inline SVG helpers — local to this file, no external deps
-
 const GearIcon = () => (
   <svg
     width="14"
@@ -23,7 +21,7 @@ const ChevronUpSmall = () => (
     viewBox="0 0 8 5"
     fill="none"
     stroke="#8b9291"
-    strokeWidth="1.5"
+    strokeWidth="1.8"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
@@ -53,12 +51,12 @@ const InfoCircle = ({ color }: { color: string }) => (
     viewBox="0 0 15 15"
     fill="none"
     stroke={color}
-    strokeWidth="1.5"
+    strokeWidth="1.3"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
     <circle cx="7.5" cy="7.5" r="6.5" />
-    <line x1="7.5" y1="6.5" x2="7.5" y2="10.5" />
+    <line x1="7.5" y1="6.8" x2="7.5" y2="10.5" />
     <circle cx="7.5" cy="4.8" r="0.6" fill={color} stroke="none" />
   </svg>
 );
@@ -67,36 +65,32 @@ export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="w-64 min-h-screen"
+      className="w-64 flex flex-col"
       style={{ backgroundColor: "#272822", fontFamily: "Inter, sans-serif" }}
     >
       {/* ── Section 1: Header ── */}
-      <div className="px-5 pt-5">
-        {/* Title row */}
-        <div className="flex items-center justify-between mb-3">
-          <span
-            className="font-semibold"
-            style={{ color: "#b5b5b5", fontSize: "13.5px" }}
-          >
-            UI magician Agent
-          </span>
-          <GearIcon />
-        </div>
-
-        {/* Subtitle row */}
-        <div className="flex items-center gap-2">
-          <ChevronUpSmall />
-          <span
-            className="font-semibold"
-            style={{ color: "#8b9291", fontSize: "11.5px" }}
-          >
-            From entire frame to a singl...
-          </span>
-        </div>
+      <div className="flex items-center justify-between px-5 pt-5 pb-3">
+        <span
+          className="font-semibold"
+          style={{ fontSize: "13.5px", color: "#b5b5b5" }}
+        >
+          UI magician Agent
+        </span>
+        <GearIcon />
       </div>
 
-      {/* Spacer */}
-      <div className="h-14" />
+      <div className="flex items-center gap-2 px-5 pb-6">
+        <ChevronUpSmall />
+        <span
+          className="font-semibold"
+          style={{ fontSize: "11.5px", color: "#8b9291" }}
+        >
+          From entire frame to a singl...
+        </span>
+      </div>
+
+      {/* ── Spacer ── */}
+      <div className="h-12" />
 
       {/* ── Section 2: Add New Design ── */}
       <div className="px-5">
@@ -105,17 +99,17 @@ export const TestCard = (): JSX.Element => {
           <ChevronUpLarge />
           <span
             className="font-semibold"
-            style={{ color: "#b2b2b1", fontSize: "13.5px" }}
+            style={{ fontSize: "13.5px", color: "#b2b2b1" }}
           >
             Add New Design
           </span>
         </div>
 
         {/* Personal Access Token label */}
-        <div className="flex items-center gap-1.5 mb-2">
+        <div className="flex items-center gap-2 mb-2">
           <span
             className="font-semibold"
-            style={{ color: "#a4a4a3", fontSize: "11.5px" }}
+            style={{ fontSize: "11.5px", color: "#a4a4a3" }}
           >
             Personal Access Token
           </span>
@@ -133,17 +127,17 @@ export const TestCard = (): JSX.Element => {
         >
           <span
             className="font-semibold"
-            style={{ color: "#737470", fontSize: "11.5px" }}
+            style={{ fontSize: "11.5px", color: "#737470" }}
           >
             figd_xxxxxxxxxxxxxxxxxx
           </span>
         </div>
 
         {/* Design URL label */}
-        <div className="flex items-center gap-1.5 mb-2">
+        <div className="flex items-center gap-2 mb-2">
           <span
             className="font-semibold"
-            style={{ color: "#a3a3a2", fontSize: "11.5px" }}
+            style={{ fontSize: "11.5px", color: "#a3a3a2" }}
           >
             Design URL
           </span>
@@ -161,53 +155,55 @@ export const TestCard = (): JSX.Element => {
         >
           <span
             className="font-semibold"
-            style={{ color: "#71726e", fontSize: "10.5px" }}
+            style={{ fontSize: "10.5px", color: "#71726e" }}
           >
             https://www.figma.com/file/:
           </span>
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-3 mb-12">
+        <div className="flex items-center gap-3 mb-10">
           <button
-            className="flex flex-1 items-center justify-center font-semibold"
+            className="flex items-center justify-center font-semibold"
             style={{
+              width: "85px",
+              height: "37px",
               backgroundColor: "#843a17",
               borderRadius: "4px",
-              height: "37px",
-              color: "#8c8078",
               fontSize: "11.5px",
+              color: "#8c8078",
               border: "none",
-              cursor: "default",
+              cursor: "pointer",
             }}
           >
             Awesome
           </button>
           <button
-            className="flex flex-1 items-center justify-center font-semibold"
+            className="flex items-center justify-center font-semibold"
             style={{
+              width: "85px",
+              height: "37px",
               backgroundColor: "#843a17",
               borderRadius: "4px",
-              height: "37px",
-              color: "#8c8078",
               fontSize: "11.5px",
+              color: "#8c8078",
               border: "none",
-              cursor: "default",
+              cursor: "pointer",
             }}
           >
             Prepare
           </button>
         </div>
+      </div>
 
-        {/* ── Section 3: Recent Breakdowns ── */}
-        <div>
-          <span
-            className="font-semibold"
-            style={{ color: "#b0b0b0", fontSize: "13.5px" }}
-          >
-            Recent Breakdowns
-          </span>
-        </div>
+      {/* ── Section 3: Recent Breakdowns ── */}
+      <div className="px-5 pb-8">
+        <span
+          className="font-semibold"
+          style={{ fontSize: "13.5px", color: "#b0b0b0" }}
+        >
+          Recent Breakdowns
+        </span>
       </div>
     </div>
   );
