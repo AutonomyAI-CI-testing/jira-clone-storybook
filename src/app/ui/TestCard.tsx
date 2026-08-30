@@ -1,7 +1,8 @@
 export const TestCard = () => (
   <div
     id="testElem"
-    className="bg-[#272822] p-5 w-[254px] min-h-[508px] flex flex-col font-sans"
+    className="bg-[#272822] p-5 w-[254px] min-h-[508px] flex flex-col"
+    style={{ fontFamily: "Inter, sans-serif" }}
   >
     {/* 1. Header row */}
     <div className="flex items-center justify-between mb-3">
@@ -26,8 +27,7 @@ export const TestCard = () => (
     </div>
 
     {/* 2. Subtitle row */}
-    <div className="flex items-center gap-2 mb-3">
-      {/* Small chevron-up */}
+    <div className="flex items-center gap-1 mb-1">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="8"
@@ -51,7 +51,6 @@ export const TestCard = () => (
 
     {/* 4. Add New Design section header */}
     <div className="flex items-center gap-2 mb-4">
-      {/* Larger chevron-up */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="12"
@@ -65,16 +64,12 @@ export const TestCard = () => (
       >
         <polyline points="1 5 5 1 9 5" />
       </svg>
-      <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
-        Add New Design
-      </span>
+      <span className="text-[13.5px] font-semibold text-[#b2b2b1]">Add New Design</span>
     </div>
 
     {/* 5. Personal Access Token */}
     <div className="flex items-center gap-2 mb-2">
-      <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
-        Personal Access Token
-      </span>
+      <span className="text-[11.5px] font-semibold text-[#a4a4a3]">Personal Access Token</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="15"
@@ -96,14 +91,12 @@ export const TestCard = () => (
       readOnly
       defaultValue=""
       placeholder="figd_xxxxxxxxxxxxxxxxxx"
-      className="w-full border border-[#a5adad] bg-[#272822] rounded px-3 py-2 mb-3 text-[11.5px] font-semibold text-[#737470] placeholder:text-[#737470] outline-none"
+      className="w-full border border-[#a5adad] bg-[#272822] rounded px-3 py-2 mb-3 text-[11.5px] font-semibold text-[#737470] placeholder:text-[#737470] placeholder:font-semibold outline-none"
     />
 
     {/* 6. Design URL */}
     <div className="flex items-center gap-2 mb-2">
-      <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
-        Design URL
-      </span>
+      <span className="text-[11.5px] font-semibold text-[#a3a3a2]">Design URL</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="15"
@@ -125,7 +118,7 @@ export const TestCard = () => (
       readOnly
       defaultValue=""
       placeholder="https://www.figma.com/file/:"
-      className="w-full border-2 border-[#929291] bg-[#272822] rounded px-3 py-2 mb-4 text-[10.5px] font-semibold text-[#71726e] placeholder:text-[#71726e] outline-none"
+      className="w-full border-2 border-[#929291] bg-[#272822] rounded px-3 py-2 mb-4 text-[10.5px] font-semibold text-[#71726e] placeholder:text-[#71726e] placeholder:font-semibold outline-none"
     />
 
     {/* 7. Buttons */}
