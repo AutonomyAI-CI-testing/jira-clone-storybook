@@ -17,7 +17,9 @@ export const LoginView = ({ users }: Props) => {
   };
 
   return (
+    <div className="min-h-screen w-full bg-white">
     <div className="mx-auto max-w-[400px] pt-[10vh]">
+      <p className="font-primary-black text-5xl text-red-600">Fei</p>
       <h1 className="font-primary-black text-5xl text-font">
         Select login user
       </h1>
@@ -68,6 +70,7 @@ export const LoginView = ({ users }: Props) => {
           Login
         </Button>
       </Form>
+    </div>
     </div>
   );
 };
