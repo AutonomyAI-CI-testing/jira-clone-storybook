@@ -8,22 +8,11 @@ export function TestCard() {
         minHeight: "508px",
         fontFamily: "Inter, sans-serif",
         fontWeight: 600,
-        paddingLeft: "20px",
-        paddingRight: "20px",
-        display: "flex",
-        flexDirection: "column",
       }}
+      className="flex flex-col"
     >
       {/* Header row */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingTop: "20px",
-          paddingBottom: "12px",
-        }}
-      >
+      <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <span style={{ color: "#b5b5b5", fontSize: "13.5px" }}>
           UI magician Agent
         </span>
@@ -39,31 +28,23 @@ export function TestCard() {
           strokeLinejoin="round"
         >
           <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
         </svg>
       </div>
 
       {/* Collapsed row */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          paddingBottom: "12px",
-        }}
-      >
-        {/* Chevron up */}
+      <div className="flex items-center gap-2 px-5 pb-3">
         <svg
           width="10"
-          height="7"
-          viewBox="0 0 10 7"
+          height="6"
+          viewBox="0 0 10 6"
           fill="none"
           stroke="#8b9291"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="1 6 5 1 9 6" />
+          <polyline points="1 5 5 1 9 5" />
         </svg>
         <span style={{ color: "#8b9291", fontSize: "11.5px" }}>
           From entire frame to a singl...
@@ -74,17 +55,9 @@ export function TestCard() {
       <div style={{ height: "60px" }} />
 
       {/* Add New Design section */}
-      <div>
-        {/* Section header */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "20px",
-          }}
-        >
-          {/* Chevron up (expanded state) */}
+      <div className="flex flex-col px-5 gap-3">
+        {/* Section heading */}
+        <div className="flex items-center gap-2">
           <svg
             width="12"
             height="8"
@@ -95,7 +68,7 @@ export function TestCard() {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <polyline points="1 7 6 1 11 7" />
+            <polyline points="1 1 6 7 11 1" />
           </svg>
           <span style={{ color: "#b2b2b1", fontSize: "13.5px" }}>
             Add New Design
@@ -103,22 +76,14 @@ export function TestCard() {
         </div>
 
         {/* Personal Access Token */}
-        <div style={{ marginBottom: "14px" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              marginBottom: "8px",
-            }}
-          >
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
             <span style={{ color: "#a4a4a3", fontSize: "11.5px" }}>
               Personal Access Token
             </span>
-            {/* Info circle */}
             <svg
-              width="14"
-              height="14"
+              width="13"
+              height="13"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#a4a4a3"
@@ -132,16 +97,11 @@ export function TestCard() {
             </svg>
           </div>
           <div
+            className="flex items-center px-3 w-full"
             style={{
               backgroundColor: "#272822",
               border: "1px solid #a5adad",
               height: "37px",
-              display: "flex",
-              alignItems: "center",
-              paddingLeft: "12px",
-              paddingRight: "12px",
-              boxSizing: "border-box",
-              width: "100%",
             }}
           >
             <span style={{ color: "#737470", fontSize: "11.5px" }}>
@@ -151,22 +111,14 @@ export function TestCard() {
         </div>
 
         {/* Design URL */}
-        <div style={{ marginBottom: "20px" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              marginBottom: "8px",
-            }}
-          >
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
             <span style={{ color: "#a3a3a2", fontSize: "11.5px" }}>
               Design URL
             </span>
-            {/* Info circle */}
             <svg
-              width="14"
-              height="14"
+              width="13"
+              height="13"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#a3a3a2"
@@ -180,16 +132,11 @@ export function TestCard() {
             </svg>
           </div>
           <div
+            className="flex items-center px-3 w-full"
             style={{
               backgroundColor: "#272822",
               border: "2px solid #929291",
               height: "37px",
-              display: "flex",
-              alignItems: "center",
-              paddingLeft: "12px",
-              paddingRight: "12px",
-              boxSizing: "border-box",
-              width: "100%",
             }}
           >
             <span style={{ color: "#71726e", fontSize: "10.5px" }}>
@@ -199,17 +146,16 @@ export function TestCard() {
         </div>
 
         {/* Buttons */}
-        <div style={{ display: "flex", gap: "12px" }}>
+        <div className="flex gap-3 pt-1">
           <button
+            className="flex-1 flex items-center justify-center"
             style={{
-              flex: 1,
               backgroundColor: "#843a17",
               color: "#8c8078",
               fontSize: "11.5px",
               fontWeight: 600,
-              fontFamily: "Inter, sans-serif",
-              height: "37px",
               borderRadius: "4px",
+              height: "37px",
               border: "none",
               cursor: "pointer",
             }}
@@ -217,15 +163,14 @@ export function TestCard() {
             Awesome
           </button>
           <button
+            className="flex-1 flex items-center justify-center"
             style={{
-              flex: 1,
               backgroundColor: "#843a17",
               color: "#8c8078",
               fontSize: "11.5px",
               fontWeight: 600,
-              fontFamily: "Inter, sans-serif",
-              height: "37px",
               borderRadius: "4px",
+              height: "37px",
               border: "none",
               cursor: "pointer",
             }}
@@ -239,7 +184,7 @@ export function TestCard() {
       <div style={{ height: "40px" }} />
 
       {/* Footer */}
-      <div style={{ paddingBottom: "24px" }}>
+      <div className="px-5 pb-6">
         <span style={{ color: "#b0b0b0", fontSize: "13.5px" }}>
           Recent Breakdowns
         </span>
