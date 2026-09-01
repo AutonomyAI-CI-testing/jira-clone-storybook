@@ -2,15 +2,15 @@ export function TestCard() {
   return (
     <div
       id="testElem"
-      className="flex flex-col w-64"
-      style={{ backgroundColor: "#272822", minHeight: "508px", fontFamily: "Inter, sans-serif" }}
+      className="flex flex-col"
+      style={{ backgroundColor: "#272822", width: "254px", minHeight: "508px", fontFamily: "Inter, sans-serif" }}
     >
-      {/* Top thin bar */}
-      <div className="w-full h-2" style={{ backgroundColor: "#1a1a18" }} />
+      {/* Thin top bar */}
+      <div style={{ backgroundColor: "#1a1a18", height: "9px", width: "100%" }} />
 
       {/* Header row */}
       <div className="flex items-center justify-between px-5 pt-4 pb-2">
-        <span className="font-semibold" style={{ color: "#b5b5b5", fontSize: "13.5px" }}>
+        <span style={{ color: "#b5b5b5", fontSize: "13.5px", fontWeight: 600, lineHeight: "16.34px" }}>
           UI magician Agent
         </span>
         {/* Gear icon */}
@@ -30,18 +30,18 @@ export function TestCard() {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 pb-5">
+      <div className="flex items-center gap-2 px-5 pb-6">
         {/* Chevron up */}
         <svg width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="#8b9291" strokeWidth="1.5">
           <polyline points="0,5 4,0 8,5" />
         </svg>
-        <span className="font-semibold truncate" style={{ color: "#8b9291", fontSize: "11.5px" }}>
+        <span style={{ color: "#8b9291", fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" }}>
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Spacer */}
-      <div className="flex-1" style={{ minHeight: "40px" }} />
+      <div className="flex-1" />
 
       {/* Add New Design section */}
       <div className="px-5 pb-4">
@@ -50,47 +50,61 @@ export function TestCard() {
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="#b2b2b1" strokeWidth="1.5">
             <polyline points="0,0 6,8 12,0" />
           </svg>
-          <span className="font-semibold" style={{ color: "#b2b2b1", fontSize: "13.5px" }}>
+          <span style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600, lineHeight: "16.34px" }}>
             Add New Design
           </span>
         </div>
 
-        {/* Personal Access Token */}
+        {/* Personal Access Token label */}
         <div className="flex items-center gap-1 mb-1">
-          <span className="font-semibold" style={{ color: "#a4a4a3", fontSize: "11.5px" }}>
+          <span style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" }}>
             Personal Access Token
           </span>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a4a4a3" strokeWidth="2">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
+            <circle cx="12" cy="16" r="0.5" fill="#a4a4a3" />
           </svg>
         </div>
+
+        {/* Token input */}
         <div
-          className="w-full rounded px-3 py-2 mb-3"
-          style={{ backgroundColor: "#272822", border: "1px solid #a5adad", minHeight: "36px" }}
+          className="w-full mb-3 px-3 flex items-center"
+          style={{
+            backgroundColor: "#272822",
+            border: "1px solid #a5adad",
+            borderRadius: "2px",
+            height: "37px",
+          }}
         >
-          <span className="font-semibold" style={{ color: "#737470", fontSize: "11.5px" }}>
+          <span style={{ color: "#737470", fontSize: "11.5px", fontWeight: 600 }}>
             figd_xxxxxxxxxxxxxxxxxx
           </span>
         </div>
 
-        {/* Design URL */}
+        {/* Design URL label */}
         <div className="flex items-center gap-1 mb-1">
-          <span className="font-semibold" style={{ color: "#a3a3a2", fontSize: "11.5px" }}>
+          <span style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600, lineHeight: "13.92px" }}>
             Design URL
           </span>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a3a3a2" strokeWidth="2">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
+            <circle cx="12" cy="16" r="0.5" fill="#a3a3a2" />
           </svg>
         </div>
+
+        {/* URL input */}
         <div
-          className="w-full rounded px-3 py-2 mb-4"
-          style={{ backgroundColor: "#272822", border: "2px solid #929291", minHeight: "36px" }}
+          className="w-full mb-4 px-3 flex items-center"
+          style={{
+            backgroundColor: "#272822",
+            border: "2px solid #929291",
+            borderRadius: "2px",
+            height: "37px",
+          }}
         >
-          <span className="font-semibold" style={{ color: "#71726e", fontSize: "10.5px" }}>
+          <span style={{ color: "#71726e", fontSize: "10.5px", fontWeight: 600 }}>
             https://www.figma.com/file/:
           </span>
         </div>
@@ -98,14 +112,32 @@ export function TestCard() {
         {/* Buttons */}
         <div className="flex gap-3">
           <button
-            className="flex-1 font-semibold py-2"
-            style={{ backgroundColor: "#843a17", color: "#8c8078", fontSize: "11.5px", borderRadius: "4px" }}
+            className="flex-1 flex items-center justify-center font-semibold"
+            style={{
+              backgroundColor: "#843a17",
+              color: "#8c8078",
+              fontSize: "11.5px",
+              fontWeight: 600,
+              borderRadius: "4px",
+              height: "37px",
+              border: "none",
+              cursor: "pointer",
+            }}
           >
             Awesome
           </button>
           <button
-            className="flex-1 font-semibold py-2"
-            style={{ backgroundColor: "#843a17", color: "#8c8078", fontSize: "11.5px", borderRadius: "4px" }}
+            className="flex-1 flex items-center justify-center font-semibold"
+            style={{
+              backgroundColor: "#843a17",
+              color: "#8c8078",
+              fontSize: "11.5px",
+              fontWeight: 600,
+              borderRadius: "4px",
+              height: "37px",
+              border: "none",
+              cursor: "pointer",
+            }}
           >
             Prepare
           </button>
@@ -113,11 +145,11 @@ export function TestCard() {
       </div>
 
       {/* Spacer */}
-      <div className="flex-1" style={{ minHeight: "32px" }} />
+      <div className="flex-1" />
 
       {/* Recent Breakdowns */}
       <div className="px-5 pb-6">
-        <span className="font-semibold" style={{ color: "#b0b0b0", fontSize: "13.5px" }}>
+        <span style={{ color: "#b0b0b0", fontSize: "13.5px", fontWeight: 600, lineHeight: "16.34px" }}>
           Recent Breakdowns
         </span>
       </div>
