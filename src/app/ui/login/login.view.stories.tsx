@@ -7,7 +7,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     users: {
@@ -18,7 +18,7 @@ const meta: Meta<typeof LoginView> = {
     },
   },
   decorators: [
-    (Story) => {
+    (Story: () => JSX.Element) => {
       const RemixStub = createRemixStub([
         {
           path: "/",
