@@ -5,19 +5,22 @@ export const TestCard = (): JSX.Element => {
       style={{
         backgroundColor: "#272822",
         width: "254px",
+        minHeight: "508px",
         fontFamily: "Inter, sans-serif",
         fontWeight: 600,
         display: "flex",
         flexDirection: "column",
-        minHeight: "508px",
       }}
     >
-      {/* Top bar */}
+      {/* Thin top bar */}
       <div style={{ backgroundColor: "#1a1a18", height: "9px", flexShrink: 0 }} />
 
       {/* Header row */}
       <div className="flex items-center justify-between px-5 pt-4 pb-2">
-        <span style={{ fontSize: "13.5px", color: "#b5b5b5" }}>UI magician Agent</span>
+        <span style={{ fontSize: "13.5px", color: "#b5b5b5", lineHeight: "16.34px" }}>
+          UI magician Agent
+        </span>
+        {/* Gear icon */}
         <svg
           width="16"
           height="16"
@@ -34,114 +37,102 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-1 px-5 pb-3">
-        <svg
-          width="8"
-          height="5"
-          viewBox="0 0 9 6"
-          fill="none"
-          stroke="#8b9291"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M1 5L4.5 1.5L8 5" />
+      <div className="flex items-center gap-2 px-5 pb-4">
+        <svg width="10" height="7" viewBox="0 0 10 7" fill="none">
+          <path d="M1 6L5 2L9 6" stroke="#8b9291" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ fontSize: "11.5px", color: "#8b9291" }}>
+        <span style={{ fontSize: "11.5px", color: "#8b9291", lineHeight: "13.92px" }}>
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Horizontal divider */}
-      <hr style={{ borderColor: "#3a3a38", margin: "0 0 12px 0" }} />
+      {/* Divider */}
+      <div className="mx-5" style={{ borderTop: "1px solid #3a3a38", marginBottom: "20px" }} />
 
       {/* Add New Design row */}
-      <div className="flex items-center gap-2 px-5 pb-4">
-        <svg
-          width="12"
-          height="8"
-          viewBox="0 0 12 8"
-          fill="none"
-          stroke="#b2b2b1"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M1 6.5L6 1.5L11 6.5" />
+      <div className="flex items-center gap-2 px-5 mb-4">
+        <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <path d="M1 7L6 2L11 7" stroke="#b2b2b1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ fontSize: "13.5px", color: "#b2b2b1" }}>Add New Design</span>
+        <span style={{ fontSize: "13.5px", color: "#b2b2b1", lineHeight: "16.34px" }}>
+          Add New Design
+        </span>
       </div>
 
       {/* Personal Access Token */}
-      <div className="px-5 pb-2">
-        <div className="flex items-center gap-1 mb-1">
-          <span style={{ fontSize: "11.5px", color: "#a4a4a3" }}>
+      <div className="px-5 mb-3">
+        <div className="flex items-center gap-2 mb-1">
+          <span style={{ fontSize: "11.5px", color: "#a4a4a3", lineHeight: "13.92px" }}>
             Personal Access Token
           </span>
+          {/* Info icon */}
           <svg
-            width="15"
-            height="15"
-            viewBox="0 0 15 15"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
             fill="none"
             stroke="#a4a4a3"
-            strokeWidth="1.2"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <circle cx="7.5" cy="7.5" r="6.5" />
-            <line x1="7.5" y1="6.5" x2="7.5" y2="10.5" strokeLinecap="round" />
-            <circle cx="7.5" cy="4.5" r="0.5" fill="#a4a4a3" />
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
           </svg>
         </div>
         <div
+          className="flex items-center px-3"
           style={{
-            height: "37px",
-            border: "1px solid #a5adad",
             backgroundColor: "#272822",
-            display: "flex",
-            alignItems: "center",
-            padding: "0 10px",
+            border: "1px solid #a5adad",
+            height: "37px",
           }}
         >
-          <span style={{ fontSize: "11.5px", color: "#737470" }}>
+          <span style={{ fontSize: "11.5px", color: "#737470", lineHeight: "13.92px" }}>
             figd_xxxxxxxxxxxxxxxxxx
           </span>
         </div>
       </div>
 
       {/* Design URL */}
-      <div className="px-5 pb-4">
-        <div className="flex items-center gap-1 mb-1">
-          <span style={{ fontSize: "11.5px", color: "#a3a3a2" }}>Design URL</span>
+      <div className="px-5 mb-5">
+        <div className="flex items-center gap-2 mb-1">
+          <span style={{ fontSize: "11.5px", color: "#a3a3a2", lineHeight: "13.92px" }}>
+            Design URL
+          </span>
+          {/* Info icon */}
           <svg
-            width="15"
-            height="15"
-            viewBox="0 0 15 15"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
             fill="none"
             stroke="#a3a3a2"
-            strokeWidth="1.2"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <circle cx="7.5" cy="7.5" r="6.5" />
-            <line x1="7.5" y1="6.5" x2="7.5" y2="10.5" strokeLinecap="round" />
-            <circle cx="7.5" cy="4.5" r="0.5" fill="#a3a3a2" />
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
           </svg>
         </div>
         <div
+          className="flex items-center px-3"
           style={{
-            height: "37px",
-            border: "2px solid #929291",
             backgroundColor: "#272822",
-            display: "flex",
-            alignItems: "center",
-            padding: "0 10px",
+            border: "2px solid #929291",
+            height: "37px",
           }}
         >
-          <span style={{ fontSize: "10.5px", color: "#71726e" }}>
+          <span style={{ fontSize: "10.5px", color: "#71726e", lineHeight: "12.71px" }}>
             https://www.figma.com/file/:
           </span>
         </div>
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-3 px-5 pb-4 justify-center">
+      <div className="flex gap-3 px-5">
         <button
           style={{
             width: "85px",
@@ -150,6 +141,7 @@ export const TestCard = (): JSX.Element => {
             borderRadius: "4px",
             fontSize: "11.5px",
             color: "#8c8078",
+            lineHeight: "13.92px",
             fontWeight: 600,
             fontFamily: "Inter, sans-serif",
             border: "none",
@@ -166,6 +158,7 @@ export const TestCard = (): JSX.Element => {
             borderRadius: "4px",
             fontSize: "11.5px",
             color: "#8c8078",
+            lineHeight: "13.92px",
             fontWeight: 600,
             fontFamily: "Inter, sans-serif",
             border: "none",
@@ -180,8 +173,8 @@ export const TestCard = (): JSX.Element => {
       <div className="flex-grow" />
 
       {/* Recent Breakdowns */}
-      <div className="px-5 pb-4">
-        <span style={{ fontSize: "13.5px", color: "#b0b0b0" }}>
+      <div className="px-5 pb-6">
+        <span style={{ fontSize: "13.5px", color: "#b0b0b0", lineHeight: "16.34px" }}>
           Recent Breakdowns
         </span>
       </div>
