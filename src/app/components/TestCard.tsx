@@ -2,25 +2,25 @@ export function TestCard() {
   return (
     <div
       id="testElem"
-      className="flex flex-col w-64 min-h-screen font-['Inter']"
-      style={{ backgroundColor: "#2b2b27" }}
+      className="flex flex-col w-64 min-h-screen font-sans"
+      style={{ backgroundColor: "#272822" }}
     >
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <span
-          className="font-semibold"
+          className="text-sm font-semibold"
           style={{ color: "#b5b5b5", fontSize: "13.5px" }}
         >
           UI magician Agent
         </span>
-        {/* Settings / Gear icon */}
+        {/* Settings gear icon */}
         <svg
           width="16"
           height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#b5b5b5"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -30,19 +30,18 @@ export function TestCard() {
       </div>
 
       {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 pb-4">
-        {/* Chevron up */}
+      <div className="flex items-center gap-2 px-5 pb-2">
         <svg
           width="10"
           height="7"
           viewBox="0 0 10 7"
           fill="none"
           stroke="#8b9291"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="1 6 5 2 9 6" />
+          <polyline points="1,6 5,1 9,6" />
         </svg>
         <span
           className="font-semibold"
@@ -53,23 +52,23 @@ export function TestCard() {
       </div>
 
       {/* Spacer */}
-      <div className="h-16" />
+      <div className="h-10" />
 
       {/* Add New Design section */}
       <div className="px-5">
         {/* Section heading */}
         <div className="flex items-center gap-2 mb-4">
           <svg
-            width="12"
-            height="8"
-            viewBox="0 0 12 8"
+            width="10"
+            height="7"
+            viewBox="0 0 10 7"
             fill="none"
             stroke="#b2b2b1"
-            strokeWidth="2"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <polyline points="1 2 6 6 11 2" />
+            <polyline points="1,6 5,1 9,6" />
           </svg>
           <span
             className="font-semibold"
@@ -81,20 +80,21 @@ export function TestCard() {
 
         {/* Personal Access Token */}
         <div className="mb-3">
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex items-center gap-1.5 mb-1.5">
             <span
               className="font-semibold"
               style={{ color: "#a4a4a3", fontSize: "11.5px" }}
             >
               Personal Access Token
             </span>
+            {/* Info icon */}
             <svg
               width="13"
               height="13"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#a4a4a3"
-              strokeWidth="2"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
@@ -104,7 +104,7 @@ export function TestCard() {
             </svg>
           </div>
           <div
-            className="w-full px-3 py-2.5 rounded"
+            className="rounded px-3 py-2"
             style={{
               backgroundColor: "#272822",
               border: "1px solid #a5adad",
@@ -121,20 +121,21 @@ export function TestCard() {
 
         {/* Design URL */}
         <div className="mb-5">
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex items-center gap-1.5 mb-1.5">
             <span
               className="font-semibold"
               style={{ color: "#a3a3a2", fontSize: "11.5px" }}
             >
               Design URL
             </span>
+            {/* Info icon */}
             <svg
               width="13"
               height="13"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#a3a3a2"
-              strokeWidth="2"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
@@ -144,7 +145,7 @@ export function TestCard() {
             </svg>
           </div>
           <div
-            className="w-full px-3 py-2.5 rounded"
+            className="rounded px-3 py-2"
             style={{
               backgroundColor: "#272822",
               border: "2px solid #929291",
@@ -152,7 +153,7 @@ export function TestCard() {
           >
             <span
               className="font-semibold"
-              style={{ color: "#71726e", fontSize: "11.5px" }}
+              style={{ color: "#71726e", fontSize: "10.5px" }}
             >
               https://www.figma.com/file/:
             </span>
@@ -160,23 +161,25 @@ export function TestCard() {
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-3 mb-8">
+        <div className="flex gap-3">
           <button
-            className="flex-1 py-2.5 rounded font-semibold"
+            className="flex-1 py-2.5 font-semibold rounded"
             style={{
               backgroundColor: "#843a17",
               color: "#8c8078",
               fontSize: "11.5px",
+              borderRadius: "4px",
             }}
           >
             Awesome
           </button>
           <button
-            className="flex-1 py-2.5 rounded font-semibold"
+            className="flex-1 py-2.5 font-semibold rounded"
             style={{
               backgroundColor: "#843a17",
               color: "#8c8078",
               fontSize: "11.5px",
+              borderRadius: "4px",
             }}
           >
             Prepare
@@ -184,8 +187,11 @@ export function TestCard() {
         </div>
       </div>
 
+      {/* Spacer */}
+      <div className="h-10" />
+
       {/* Recent Breakdowns */}
-      <div className="px-5 pb-8">
+      <div className="px-5">
         <span
           className="font-semibold"
           style={{ color: "#b0b0b0", fontSize: "13.5px" }}
