@@ -1,26 +1,29 @@
-export function TestCard() {
+export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="flex flex-col w-64 min-h-screen font-sans"
-      style={{ backgroundColor: "#272822" }}
+      style={{
+        backgroundColor: "#272822",
+        width: "254px",
+        minHeight: "508px",
+        fontFamily: "Inter, sans-serif",
+        fontWeight: 600,
+      }}
+      className="flex flex-col"
     >
-      {/* Header */}
-      <div className="flex items-center justify-between px-5 pt-5 pb-3">
-        <span
-          className="text-sm font-semibold"
-          style={{ color: "#b5b5b5", fontSize: "13.5px" }}
-        >
+      {/* Header row */}
+      <div className="flex items-center justify-between px-5 pt-5">
+        <span style={{ color: "#b5b5b5", fontSize: "13.5px" }}>
           UI magician Agent
         </span>
-        {/* Settings gear icon */}
+        {/* Gear icon */}
         <svg
           width="16"
           height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#b5b5b5"
-          strokeWidth="1.5"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -29,178 +32,182 @@ export function TestCard() {
         </svg>
       </div>
 
-      {/* Subtitle row */}
-      <div className="flex items-center gap-2 px-5 pb-2">
+      {/* Collapsed row */}
+      <div className="mt-2 flex items-center gap-1 px-5">
         <svg
           width="10"
-          height="7"
-          viewBox="0 0 10 7"
+          height="10"
+          viewBox="0 0 24 24"
           fill="none"
           stroke="#8b9291"
-          strokeWidth="1.5"
+          strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="1,6 5,1 9,6" />
+          <polyline points="18 15 12 9 6 15" />
         </svg>
-        <span
-          className="font-semibold"
-          style={{ color: "#8b9291", fontSize: "11.5px" }}
-        >
+        <span style={{ color: "#8b9291", fontSize: "11.5px" }}>
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Spacer */}
-      <div className="h-10" />
+      {/* Flex spacer */}
+      <div className="flex-1" />
 
-      {/* Add New Design section */}
-      <div className="px-5">
-        {/* Section heading */}
-        <div className="flex items-center gap-2 mb-4">
-          <svg
-            width="10"
-            height="7"
-            viewBox="0 0 10 7"
-            fill="none"
-            stroke="#b2b2b1"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="1,6 5,1 9,6" />
-          </svg>
-          <span
-            className="font-semibold"
-            style={{ color: "#b2b2b1", fontSize: "13.5px" }}
-          >
-            Add New Design
-          </span>
-        </div>
+      {/* Add New Design row */}
+      <div className="flex items-center gap-2 px-5 pb-3">
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#b2b2b1"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+        <span style={{ color: "#b2b2b1", fontSize: "13.5px" }}>
+          Add New Design
+        </span>
+      </div>
 
-        {/* Personal Access Token */}
-        <div className="mb-3">
-          <div className="flex items-center gap-1.5 mb-1.5">
-            <span
-              className="font-semibold"
-              style={{ color: "#a4a4a3", fontSize: "11.5px" }}
-            >
-              Personal Access Token
-            </span>
-            {/* Info icon */}
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#a4a4a3"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
-            </svg>
-          </div>
-          <div
-            className="rounded px-3 py-2"
-            style={{
-              backgroundColor: "#272822",
-              border: "1px solid #a5adad",
-            }}
-          >
-            <span
-              className="font-semibold"
-              style={{ color: "#737470", fontSize: "11.5px" }}
-            >
-              figd_xxxxxxxxxxxxxxxxxx
-            </span>
-          </div>
-        </div>
+      {/* Personal Access Token label */}
+      <div className="flex items-center gap-1 px-5 pb-1">
+        <span style={{ color: "#a4a4a3", fontSize: "11.5px" }}>
+          Personal Access Token
+        </span>
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#a4a4a3"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg>
+      </div>
 
-        {/* Design URL */}
-        <div className="mb-5">
-          <div className="flex items-center gap-1.5 mb-1.5">
-            <span
-              className="font-semibold"
-              style={{ color: "#a3a3a2", fontSize: "11.5px" }}
-            >
-              Design URL
-            </span>
-            {/* Info icon */}
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#a3a3a2"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
-            </svg>
-          </div>
-          <div
-            className="rounded px-3 py-2"
-            style={{
-              backgroundColor: "#272822",
-              border: "2px solid #929291",
-            }}
-          >
-            <span
-              className="font-semibold"
-              style={{ color: "#71726e", fontSize: "10.5px" }}
-            >
-              https://www.figma.com/file/:
-            </span>
-          </div>
-        </div>
+      {/* Token input */}
+      <div className="px-5 pb-3">
+        <input
+          type="text"
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          readOnly
+          style={{
+            backgroundColor: "#272822",
+            border: "1px solid #a5adad",
+            color: "#737470",
+            fontSize: "11.5px",
+            fontWeight: 600,
+            fontFamily: "Inter, sans-serif",
+            width: "100%",
+            padding: "8px 10px",
+            outline: "none",
+            borderRadius: "2px",
+            boxSizing: "border-box",
+          }}
+        />
+      </div>
 
-        {/* Buttons */}
-        <div className="flex gap-3">
-          <button
-            className="flex-1 py-2.5 font-semibold rounded"
-            style={{
-              backgroundColor: "#843a17",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              borderRadius: "4px",
-            }}
-          >
-            Awesome
-          </button>
-          <button
-            className="flex-1 py-2.5 font-semibold rounded"
-            style={{
-              backgroundColor: "#843a17",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              borderRadius: "4px",
-            }}
-          >
-            Prepare
-          </button>
-        </div>
+      {/* Design URL label */}
+      <div className="flex items-center gap-1 px-5 pb-1">
+        <span style={{ color: "#a3a3a2", fontSize: "11.5px" }}>
+          Design URL
+        </span>
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#a3a3a2"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg>
+      </div>
+
+      {/* URL input */}
+      <div className="px-5 pb-4">
+        <input
+          type="text"
+          placeholder="https://www.figma.com/file/:"
+          readOnly
+          style={{
+            backgroundColor: "#272822",
+            border: "2px solid #929291",
+            color: "#71726e",
+            fontSize: "10.5px",
+            fontWeight: 600,
+            fontFamily: "Inter, sans-serif",
+            width: "100%",
+            padding: "8px 10px",
+            outline: "none",
+            borderRadius: "2px",
+            boxSizing: "border-box",
+          }}
+        />
+      </div>
+
+      {/* Buttons row */}
+      <div className="flex gap-3 px-5 pb-4">
+        <button
+          type="button"
+          style={{
+            backgroundColor: "#843a17",
+            borderRadius: "4px",
+            height: "37px",
+            color: "#8c8078",
+            fontSize: "11.5px",
+            fontWeight: 600,
+            fontFamily: "Inter, sans-serif",
+            flex: 1,
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Awesome
+        </button>
+        <button
+          type="button"
+          style={{
+            backgroundColor: "#843a17",
+            borderRadius: "4px",
+            height: "37px",
+            color: "#8c8078",
+            fontSize: "11.5px",
+            fontWeight: 600,
+            fontFamily: "Inter, sans-serif",
+            flex: 1,
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Prepare
+        </button>
       </div>
 
       {/* Spacer */}
-      <div className="h-10" />
+      <div className="h-8" />
 
       {/* Recent Breakdowns */}
-      <div className="px-5">
-        <span
-          className="font-semibold"
-          style={{ color: "#b0b0b0", fontSize: "13.5px" }}
-        >
+      <div className="px-5 pb-5">
+        <span style={{ color: "#b0b0b0", fontSize: "13.5px" }}>
           Recent Breakdowns
         </span>
       </div>
     </div>
   );
-}
+};
 
 export default TestCard;
