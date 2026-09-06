@@ -18,7 +18,7 @@ const meta: Meta<typeof LoginView> = {
     },
   },
   decorators: [
-    (Story) => {
+    (Story: () => JSX.Element) => {
       const RemixStub = createRemixStub([
         {
           path: "/",
