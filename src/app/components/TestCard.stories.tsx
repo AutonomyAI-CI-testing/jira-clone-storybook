@@ -5,8 +5,19 @@ const meta: Meta<typeof TestCard> = {
   title: "Components/TestCard",
   component: TestCard,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
+    backgrounds: {
+      default: "dark",
+      values: [{ name: "dark", value: "#272822" }],
+    },
   },
+  decorators: [
+    (Story: React.ComponentType) => (
+      <div style={{ padding: "16px", backgroundColor: "#272822", minHeight: "100vh" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
