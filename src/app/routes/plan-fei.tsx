@@ -26,6 +26,7 @@ export default function PlanFeiRoute() {
         alt="Plan Fei wizard mascot"
         width={300}
       />
+      <p className="text-3xl font-bold text-white">HEEEYYYyyy</p>
     </div>
   );
 }
