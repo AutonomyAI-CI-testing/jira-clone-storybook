@@ -1,6 +1,7 @@
 import type { V2_MetaFunction } from "@remix-run/node";
 
 const CRIMSON = "#A32020";
+const HEADING_GREEN = "#1F8A3B";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -16,7 +17,7 @@ export default function PlanFeiRoute() {
       style={{ backgroundColor: CRIMSON }}
     >
       <div className="rounded-2xl bg-white px-10 py-6 shadow-xl">
-        <h1 className="text-4xl font-bold" style={{ color: CRIMSON }}>
+        <h1 className="text-4xl font-bold" style={{ color: HEADING_GREEN }}>
           Plan Fei
         </h1>
       </div>
