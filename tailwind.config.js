@@ -3,7 +3,13 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/app/**/*.{js,ts,jsx,tsx}", "./src/components/**/*.{ts,tsx}"],
+  safelist: [
+    { pattern: /bg-\[.*\]/ },
+    { pattern: /text-\[.*\]/ },
+    { pattern: /border-\[.*\]/ },
+    { pattern: /placeholder-\[.*\]/ },
+  ],
   darkMode: "class",
   theme: {
     colors: {
