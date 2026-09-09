@@ -1,135 +1,145 @@
-import { LuSettings2 } from "react-icons/lu";
-import { FaChevronUp } from "react-icons/fa";
-import { FiInfo } from "react-icons/fi";
+const GearIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#b5b5b5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="8" cy="8" r="2.5" />
+    <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" />
+  </svg>
+);
+
+const ChevronUpIcon = ({ color = "#8b9291" }: { color?: string }) => (
+  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M1 6L5 2L9 6" />
+  </svg>
+);
+
+const InfoIcon = ({ color = "#a4a4a3" }: { color?: string }) => (
+  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="7.5" cy="7.5" r="6.5" />
+    <line x1="7.5" y1="6.5" x2="7.5" y2="10.5" />
+    <circle cx="7.5" cy="4.5" r="0.5" fill={color} stroke="none" />
+  </svg>
+);
 
 export const TestCard = () => {
-  const cardStyle: React.CSSProperties = {
-    fontFamily: "'Inter', sans-serif",
-    backgroundColor: "#272822",
-  };
-
   return (
-    <div id="testElem" style={{ backgroundColor: "#000000" }} className="p-4">
-      <div style={cardStyle} className="max-w-[254px] p-5">
-        {/* Header row */}
-        <div className="flex items-center justify-between">
-          <span
-            style={{ color: "#b5b5b5", fontSize: "13.5px", fontWeight: 600 }}
-          >
-            UI magician Agent
-          </span>
-          <LuSettings2 style={{ color: "#b5b5b5" }} size={14} />
-        </div>
-
-        {/* Subtitle row */}
-        <div className="mt-2 flex items-center gap-1.5">
-          <FaChevronUp style={{ color: "#8b9291" }} size={8} />
-          <span
-            style={{ color: "#8b9291", fontSize: "11.5px", fontWeight: 600 }}
-          >
-            From entire frame to a singl...
-          </span>
-        </div>
-
-        {/* Add New Design section heading */}
-        <div className="mt-8 flex items-center gap-1.5">
-          <FaChevronUp style={{ color: "#b2b2b1" }} size={12} />
-          <span
-            style={{ color: "#b2b2b1", fontSize: "13.5px", fontWeight: 600 }}
-          >
-            Add New Design
-          </span>
-        </div>
-
-        {/* Personal Access Token field */}
-        <div className="mt-4">
-          <div className="mb-1.5 flex items-center gap-1.5">
-            <span
-              style={{ color: "#a4a4a3", fontSize: "11.5px", fontWeight: 600 }}
-            >
-              Personal Access Token
-            </span>
-            <FiInfo style={{ color: "#a4a4a3" }} size={15} />
-          </div>
-          <input
-            readOnly
-            placeholder="figd_xxxxxxxxxxxxxxxxxx"
-            className="w-full px-3 py-2 outline-none"
-            style={{
-              backgroundColor: "#272822",
-              border: "1px solid #a5adad",
-              color: "#737470",
-              fontSize: "11.5px",
-              fontWeight: 600,
-              fontFamily: "'Inter', sans-serif",
-            }}
-          />
-        </div>
-
-        {/* Design URL field */}
-        <div className="mt-3">
-          <div className="mb-1.5 flex items-center gap-1.5">
-            <span
-              style={{ color: "#a3a3a2", fontSize: "11.5px", fontWeight: 600 }}
-            >
-              Design URL
-            </span>
-            <FiInfo style={{ color: "#a3a3a2" }} size={15} />
-          </div>
-          <input
-            readOnly
-            placeholder="https://www.figma.com/file/:"
-            className="w-full px-3 py-2 outline-none"
-            style={{
-              backgroundColor: "#272822",
-              border: "2px solid #929291",
-              color: "#71726e",
-              fontSize: "10.5px",
-              fontWeight: 600,
-              fontFamily: "'Inter', sans-serif",
-            }}
-          />
-        </div>
-
-        {/* Action buttons */}
-        <div className="mt-4 flex gap-2">
-          <button
-            style={{
-              backgroundColor: "#843a17",
-              borderRadius: "4px",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              fontWeight: 600,
-              fontFamily: "'Inter', sans-serif",
-            }}
-            className="flex-1 py-2.5"
-          >
-            Awesome
-          </button>
-          <button
-            style={{
-              backgroundColor: "#843a17",
-              borderRadius: "4px",
-              color: "#8c8078",
-              fontSize: "11.5px",
-              fontWeight: 600,
-              fontFamily: "'Inter', sans-serif",
-            }}
-            className="flex-1 py-2.5"
-          >
-            Prepare
-          </button>
-        </div>
-
-        {/* Recent Breakdowns footer */}
-        <div className="mt-8">
-          <span
-            style={{ color: "#b0b0b0", fontSize: "13.5px", fontWeight: 600 }}
-          >
-            Recent Breakdowns
-          </span>
-        </div>
+    <div
+      id="testElem"
+      style={{ background: "#2b2b27", fontFamily: "Inter, sans-serif" }}
+      className="p-5 w-64"
+    >
+      {/* Header row */}
+      <div className="flex items-center justify-between mb-2">
+        <span style={{ color: "#b5b5b5", fontSize: 13.5, fontWeight: 600 }}>
+          UI magician Agent
+        </span>
+        <GearIcon />
       </div>
+
+      {/* Subtitle row */}
+      <div className="flex items-center gap-1 mb-8">
+        <ChevronUpIcon color="#8b9291" />
+        <span style={{ color: "#8b9291", fontSize: 11.5, fontWeight: 600 }}>
+          From entire frame to a singl...
+        </span>
+      </div>
+
+      {/* Add New Design section */}
+      <div className="flex items-center gap-2 mb-4">
+        <ChevronUpIcon color="#b2b2b1" />
+        <span style={{ color: "#b2b2b1", fontSize: 13.5, fontWeight: 600 }}>
+          Add New Design
+        </span>
+      </div>
+
+      {/* Personal Access Token field */}
+      <div className="mb-3">
+        <div className="flex items-center gap-1 mb-1">
+          <span style={{ color: "#a4a4a3", fontSize: 11.5, fontWeight: 600 }}>
+            Personal Access Token
+          </span>
+          <InfoIcon color="#a4a4a3" />
+        </div>
+        <input
+          readOnly
+          placeholder="figd_xxxxxxxxxxxxxxxxxx"
+          style={{
+            background: "#272822",
+            border: "2px solid #929291",
+            color: "#737470",
+            fontSize: 11.5,
+            fontWeight: 600,
+            width: "100%",
+            padding: "6px 8px",
+            outline: "none",
+            boxSizing: "border-box",
+          }}
+        />
+      </div>
+
+      {/* Design URL field */}
+      <div className="mb-4">
+        <div className="flex items-center gap-1 mb-1">
+          <span style={{ color: "#a3a3a2", fontSize: 11.5, fontWeight: 600 }}>
+            Design URL
+          </span>
+          <InfoIcon color="#a3a3a2" />
+        </div>
+        <input
+          readOnly
+          placeholder="https://www.figma.com/file/:"
+          style={{
+            background: "#272822",
+            border: "1px solid #a5adad",
+            color: "#71726e",
+            fontSize: 10.5,
+            fontWeight: 600,
+            width: "100%",
+            padding: "6px 8px",
+            outline: "none",
+            boxSizing: "border-box",
+          }}
+        />
+      </div>
+
+      {/* Buttons */}
+      <div className="flex gap-3 mb-8">
+        <button
+          style={{
+            background: "#843a17",
+            borderRadius: 4,
+            color: "#8c8078",
+            fontSize: 11.5,
+            fontWeight: 600,
+            flex: 1,
+            padding: "8px 0",
+            border: "none",
+            cursor: "default",
+          }}
+        >
+          Awesome
+        </button>
+        <button
+          style={{
+            background: "#843a17",
+            borderRadius: 4,
+            color: "#8c8078",
+            fontSize: 11.5,
+            fontWeight: 600,
+            flex: 1,
+            padding: "8px 0",
+            border: "none",
+            cursor: "default",
+          }}
+        >
+          Prepare
+        </button>
+      </div>
+
+      {/* Recent Breakdowns */}
+      <span style={{ color: "#b0b0b0", fontSize: 13.5, fontWeight: 600 }}>
+        Recent Breakdowns
+      </span>
     </div>
   );
 };
+
+export default TestCard;
