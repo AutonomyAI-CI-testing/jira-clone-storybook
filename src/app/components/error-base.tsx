@@ -1,5 +1,18 @@
+const renderMessage = (message: string) => {
+  const parts = message.split(/(Error)/g);
+  return parts.map((part, i) =>
+    part === "Error" ? (
+      <span key={i} className="text-font-danger">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+};
+
 export const ErrorBase = ({ variant, message, href }: Props) => {
-  const imgPath = `/images/error-${variant}.svg`;
+  const imgPath = variant === "404" ? "/images/error-404-wizard.png" : `/images/error-${variant}.svg`;
 
   return (
     <div className="max-w-[500px] text-center">
@@ -13,10 +26,10 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
           href={href}
           className="max-w-[100px] text-lg text-link hover:underline active:text-link-pressed"
         >
-          {message}
+          {renderMessage(message)}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className="max-w-[100px] text-lg text-font">{renderMessage(message)}</span>
       )}
     </div>
   );
