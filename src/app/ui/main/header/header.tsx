@@ -22,6 +22,12 @@ export const Header = (): JSX.Element => {
         </Link>
       </section>
       <section className="flex items-center gap-4">
+        <Link
+          to="/plan-fei"
+          className="flex cursor-pointer items-center rounded px-3 py-2 text-font hover:bg-background-brand-subtlest hover:text-font-brand"
+        >
+          <span>Plan Fei</span>
+        </Link>
         <Tooltip title="About">
           <button
             aria-label="About this website"
