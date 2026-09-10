@@ -18,7 +18,10 @@ export const PlanFeiView = (): JSX.Element => {
         >
           Plan Fei
         </h1>
-        <p className="mt-4 font-primary-light text-lg text-font-subtle">
+        <p
+          className="mt-4 font-primary-light text-lg"
+          style={{ color: "#0c66e4" }}
+        >
           Your planning wizard is ready to help you organize what's next.
         </p>
       </div>
