@@ -33,7 +33,7 @@ export const BuildFeiView = (): JSX.Element => {
           <HiSparkles size={22} />
         </div>
         <h1 className="font-primary-black text-4xl text-font-inverse sm:text-5xl">
-          Build Fei
+          <span className="text-[#e11d1d]">Build</span> Fei
         </h1>
         <p className="max-w-[440px] font-primary-light text-lg text-[color:var(--Blue200)]">
           Fei is ready to wave the wand. Tell it what to build next and watch
