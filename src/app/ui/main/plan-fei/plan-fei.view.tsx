@@ -5,7 +5,7 @@ export const PlanFeiView = (): JSX.Element => {
         src="/images/plan-fei-mascot.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-[38%] h-[55%] w-auto -translate-x-1/2 -translate-y-1/2 object-contain opacity-25 md:h-[65%]"
+        className="pointer-events-none absolute left-1/2 top-[42%] h-[85%] w-auto -translate-x-1/2 -translate-y-1/2 object-contain opacity-40 md:h-[100%]"
       />
       <div
         aria-hidden="true"
