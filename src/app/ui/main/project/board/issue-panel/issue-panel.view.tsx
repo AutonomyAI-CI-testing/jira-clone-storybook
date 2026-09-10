@@ -10,6 +10,7 @@ import {
 } from "@remix-run/react";
 import * as Dialog from "@app/components/dialog";
 import { toast } from "react-toastify";
+import { BsChatSquareText } from "react-icons/bs";
 import { CategoryType } from "@domain/category";
 import { Issue, defaultIssuesIds } from "@domain/issue";
 import { Comment, CommentId } from "@domain/comment";
@@ -162,16 +163,20 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       <div>
                         <CreateComment addComment={addComment} />
                       </div>
-                      <ul className="mt-8 space-y-6">
-                        {comments.map((comment) => (
-                          <li key={comment.id}>
-                            <ViewComment
-                              comment={comment}
-                              removeComment={removeComment}
-                            />
-                          </li>
-                        ))}
-                      </ul>
+                      {comments.length === 0 ? (
+                        <EmptyComments />
+                      ) : (
+                        <ul className="mt-8 space-y-6">
+                          {comments.map((comment) => (
+                            <li key={comment.id}>
+                              <ViewComment
+                                comment={comment}
+                                removeComment={removeComment}
+                              />
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </section>
                   <section className="col-span-2 space-y-10">
@@ -247,6 +252,15 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
     </>
   );
 };
+
+const EmptyComments = (): JSX.Element => (
+  <div className="mt-8 flex flex-col items-center text-font-subtlest">
+    <BsChatSquareText size={32} />
+    <p className="mt-3 font-primary-light text-xs uppercase">
+      No comments yet
+    </p>
+  </div>
+);
 
 interface Props {
   issue?: Issue;
