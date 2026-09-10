@@ -23,7 +23,7 @@ export const BuildFeiView = (): JSX.Element => {
           alt="Fei the wizard robot"
           width={220}
           height={258}
-          className="w-[180px] drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)] sm:w-[220px]"
+          className="w-[180px] rounded-full outline outline-4 outline-[color:var(--Green400)] drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)] sm:w-[220px]"
         />
         <div className="flex items-center gap-2 text-[color:var(--Yellow300)]">
           <HiSparkles size={22} />
