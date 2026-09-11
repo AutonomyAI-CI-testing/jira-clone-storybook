@@ -6,7 +6,7 @@ const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="flex w-[320px] flex-col gap-3 bg-[#0a0a0a] p-5 font-sans"
+      className="font-sans flex w-[320px] flex-col gap-3 bg-[#0a0a0a] p-5"
     >
       {/* Header */}
       <div className="flex items-center justify-between">
