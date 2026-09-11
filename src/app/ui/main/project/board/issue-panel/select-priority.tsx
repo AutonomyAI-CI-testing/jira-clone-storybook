@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { PriorityId, prioritiesMock } from "@domain/priority";
+import {
+  PriorityId,
+  prioritiesMock,
+  priorityLabelDict,
+} from "@domain/priority";
 import { PriorityIcon } from "@app/components/priority-icon";
 import * as Select from "@app/components/select";
 
@@ -38,7 +42,9 @@ export const SelectPriority = ({ initPriority }: Props): JSX.Element => {
             >
               <Select.ItemIndicator />
               <PriorityIcon priority={priority.id} />
-              <Select.ItemText>{priority.id}</Select.ItemText>
+              <Select.ItemText>
+                {priorityLabelDict[priority.id]}
+              </Select.ItemText>
             </Select.Item>
           ))}
           <Select.Separator />

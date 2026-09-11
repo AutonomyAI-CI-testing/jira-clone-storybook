@@ -90,7 +90,7 @@ export const IssueCardContent = ({
               {idPrefix}
             </span>
           </span>
-          <PriorityIcon priority={priorityId} />
+          <PriorityIcon priority={priorityId} tooltip />
         </div>
       </>
     </Link>
