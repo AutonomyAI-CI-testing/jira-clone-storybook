@@ -8,6 +8,7 @@ import {
   useLocation,
   useNavigate,
 } from "@remix-run/react";
+import { RxChatBubble } from "react-icons/rx";
 import * as Dialog from "@app/components/dialog";
 import { toast } from "react-toastify";
 import { CategoryType } from "@domain/category";
@@ -162,16 +163,20 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       <div>
                         <CreateComment addComment={addComment} />
                       </div>
-                      <ul className="mt-8 space-y-6">
-                        {comments.map((comment) => (
-                          <li key={comment.id}>
-                            <ViewComment
-                              comment={comment}
-                              removeComment={removeComment}
-                            />
-                          </li>
-                        ))}
-                      </ul>
+                      {comments.length === 0 ? (
+                        <EmptyComments />
+                      ) : (
+                        <ul className="mt-8 space-y-6">
+                          {comments.map((comment) => (
+                            <li key={comment.id}>
+                              <ViewComment
+                                comment={comment}
+                                removeComment={removeComment}
+                              />
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </section>
                   <section className="col-span-2 space-y-10">
@@ -251,3 +256,12 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
 interface Props {
   issue?: Issue;
 }
+
+const EmptyComments = (): JSX.Element => (
+  <div className="mt-8 flex flex-col items-center text-font-subtlest">
+    <RxChatBubble size={32} />
+    <p className="mt-3 font-primary-light text-xs uppercase">
+      No comments yet
+    </p>
+  </div>
+);
