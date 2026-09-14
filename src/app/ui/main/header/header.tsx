@@ -2,6 +2,7 @@ import { Link } from "@remix-run/react";
 import cx from "classix";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
+import { GiWizardStaff } from "react-icons/gi";
 import { Tooltip } from "@app/components/tooltip";
 import { SelctTheme } from "./select-theme";
 import { UserProfile } from "./user-profile";
@@ -22,6 +23,15 @@ export const Header = (): JSX.Element => {
         </Link>
       </section>
       <section className="flex items-center gap-4">
+        <Tooltip title="Build Fei">
+          <Link
+            to="/build-fei"
+            aria-label="Go to Build Fei page"
+            className={cx(iconBaseClass, "w-auto px-2")}
+          >
+            <GiWizardStaff size={22} />
+          </Link>
+        </Tooltip>
         <Tooltip title="About">
           <button
             aria-label="About this website"
