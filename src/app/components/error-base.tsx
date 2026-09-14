@@ -1,3 +1,5 @@
+import cx from "classix";
+
 export const ErrorBase = ({ variant, message, href }: Props) => {
   const imgPath = variant === "404" ? "/images/error-404-wizard.png" : `/images/error-${variant}.svg`;
 
@@ -21,12 +23,22 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
       {href ? (
         <a
           href={href}
-          className="max-w-[100px] text-lg text-link hover:underline active:text-link-pressed"
+          className={cx(
+            "max-w-[100px] text-lg hover:underline active:text-link-pressed",
+            variant === "500" ? "text-font-danger" : "text-link"
+          )}
         >
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span
+          className={cx(
+            "max-w-[100px] text-lg",
+            variant === "500" ? "text-font-danger" : "text-font"
+          )}
+        >
+          {message}
+        </span>
       )}
     </div>
   );
