@@ -12,7 +12,7 @@ export const BuildFeiView = (): JSX.Element => {
           alt="Fei the wizard robot"
           className="h-[280px] w-auto drop-shadow-lg"
         />
-        <h1 className="font-primary-black text-6xl text-font-danger">
+        <h1 className="font-primary-black text-6xl text-font-accent-green">
           Build Fei
         </h1>
         <p className="max-w-md font-primary-light text-lg text-[#dee4ea]">
