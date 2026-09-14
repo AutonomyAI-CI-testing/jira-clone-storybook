@@ -4,7 +4,7 @@ import { Button } from "@app/components/button";
 
 export const BuildFeiView = (): JSX.Element => {
   return (
-    <div className="relative flex h-full min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#092957]">
+    <div className="relative flex h-full min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#092957] outline outline-4 -outline-offset-4 outline-border-danger">
       <BackgroundStars />
       <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center">
         <img
