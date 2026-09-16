@@ -1,5 +1,5 @@
 export const ErrorBase = ({ variant, message, href }: Props) => {
-  const imgPath = `/images/error-${variant}.svg`;
+  const imgPath = variant === "404" ? "/images/error-404-wizard.png" : `/images/error-${variant}.svg`;
 
   return (
     <div className="max-w-[500px] text-center">
