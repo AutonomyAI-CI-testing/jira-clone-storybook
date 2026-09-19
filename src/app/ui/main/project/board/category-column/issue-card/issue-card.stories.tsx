@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { usersMock } from "@domain/user";
 import { withRemixStub } from "@app/stories/utils";
 import { IssueCardContent } from "./issue-card";
 
@@ -56,16 +57,20 @@ type Story = StoryObj<typeof IssueCardContent>;
 export const Default: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      {[Standard, LongName, Submitting].map(({ args }, index) => (
-        <IssueCardContent
-          key={index}
-          link={args?.link || "https://google.com"}
-          name={args?.name || "Issue name"}
-          priorityId={args?.priorityId || "low"}
-          idPrefix={args?.idPrefix || "1234"}
-          isSubmitting={args?.isSubmitting || false}
-        />
-      ))}
+      {[Standard, LongName, Submitting, WithAssigneeAndComments].map(
+        ({ args }, index) => (
+          <IssueCardContent
+            key={index}
+            link={args?.link || "https://google.com"}
+            name={args?.name || "Issue name"}
+            priorityId={args?.priorityId || "low"}
+            idPrefix={args?.idPrefix || "1234"}
+            isSubmitting={args?.isSubmitting || false}
+            assignee={args?.assignee}
+            commentCount={args?.commentCount || 0}
+          />
+        )
+      )}
     </div>
   ),
 };
@@ -97,5 +102,28 @@ export const Submitting: Story = {
     priorityId: "low",
     idPrefix: "1234",
     isSubmitting: true,
+  },
+};
+
+export const WithAssigneeAndComments: Story = {
+  args: {
+    link: "https://google.com",
+    name: "Add and display issue timestamps",
+    priorityId: "medium",
+    idPrefix: "f3efefcf",
+    isSubmitting: false,
+    assignee: usersMock[1],
+    commentCount: 3,
+  },
+};
+
+export const WithoutAssigneeOrComments: Story = {
+  args: {
+    link: "https://google.com",
+    name: "Add dark mode",
+    priorityId: "high",
+    idPrefix: "812664aa",
+    isSubmitting: false,
+    commentCount: 0,
   },
 };

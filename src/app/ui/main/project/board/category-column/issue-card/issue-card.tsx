@@ -2,11 +2,14 @@ import { useEffect } from "react";
 import { Link } from "@remix-run/react";
 import cx from "classix";
 import { useDrag } from "react-dnd";
+import { BsChatDots } from "react-icons/bs";
 import { CategoryId } from "@domain/category";
 import { Issue, IssueId } from "@domain/issue";
 import { PriorityId } from "@domain/priority";
+import { User } from "@domain/user";
 import { TaskIcon } from "@app/components/icons";
 import { PriorityIcon } from "@app/components/priority-icon";
+import { UserAvatar } from "@app/components/user-avatar";
 import { useSortBy } from "@app/hooks/useSortBy";
 
 export interface DropItem {
@@ -54,6 +57,8 @@ export const IssueCard = ({
         priorityId={issue.priority.id}
         idPrefix={issueIdPrefix}
         isSubmitting={isSubmitting}
+        assignee={issue.asignee}
+        commentCount={issue.comments.length}
       />
     </div>
   );
@@ -72,6 +77,8 @@ export const IssueCardContent = ({
   priorityId,
   idPrefix,
   isSubmitting,
+  assignee,
+  commentCount = 0,
 }: IssueCardContentProps): JSX.Element => (
   <div
     style={{ minWidth: "200px" }}
@@ -89,8 +96,23 @@ export const IssueCardContent = ({
             <span className="ml-1.5 text-2xs text-font-subtlest">
               {idPrefix}
             </span>
+            {commentCount > 0 && (
+              <span
+                className="ml-2.5 flex items-center text-icon-subtle"
+                aria-label={`${commentCount} comment${commentCount === 1 ? "" : "s"}`}
+                title={`${commentCount} comment${commentCount === 1 ? "" : "s"}`}
+              >
+                <BsChatDots size={13} />
+                <span className="ml-1 text-2xs text-font-subtlest">
+                  {commentCount}
+                </span>
+              </span>
+            )}
           </span>
-          <PriorityIcon priority={priorityId} />
+          <span className="flex items-center gap-2">
+            {assignee && <UserAvatar {...assignee} size={24} tooltip />}
+            <PriorityIcon priority={priorityId} />
+          </span>
         </div>
       </>
     </Link>
@@ -103,6 +125,8 @@ interface IssueCardContentProps {
   priorityId: PriorityId;
   idPrefix: string;
   isSubmitting: boolean;
+  assignee?: User;
+  commentCount?: number;
 }
 
 export const DRAG_ISSUE_CARD = "ISSUE_CARD";
