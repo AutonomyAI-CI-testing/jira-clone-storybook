@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
 import { Link, useFetcher } from "@remix-run/react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxValueNone } from "react-icons/rx";
+import { MdSearchOff } from "react-icons/md";
 import cx from "classix";
 import { useDrop } from "react-dnd";
 import { Category } from "@domain/category";
@@ -63,8 +64,10 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
 
   const filteredIssues = (): Issue[] =>
     category.issues.filter((issue) => {
-      return issue.name.toLowerCase().includes(search);
+      return issue.name.toLowerCase().includes(search.toLowerCase());
     });
+
+  const noSearchMatches = !emptyCategory && filteredIssues().length === 0;
 
   useEffect(() => {
     if (fetcher.data && fetcher.data.issueId) {
@@ -127,6 +130,8 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
             <ul className="mt-1 max-w-[260px] px-3 pb-1">
               {emptyCategory ? (
                 <EmptyCategory />
+              ) : noSearchMatches ? (
+                <NoSearchMatches />
               ) : (
                 filteredIssues().map((issue, index) => (
                   <li key={index} className="mb-2">
@@ -159,5 +164,14 @@ const EmptyCategory = (): JSX.Element => (
   <li className="mt-4 flex flex-col items-center text-font-subtlest">
     <RxValueNone size={36} />
     <p className="mt-4 font-primary-light text-xs uppercase">No issues found</p>
+  </li>
+);
+
+const NoSearchMatches = (): JSX.Element => (
+  <li className="mt-4 flex flex-col items-center text-font-subtlest">
+    <MdSearchOff size={36} />
+    <p className="mt-4 text-center font-primary-light text-xs uppercase">
+      No issues match your search
+    </p>
   </li>
 );
