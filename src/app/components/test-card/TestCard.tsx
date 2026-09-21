@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { IoSettingsOutline, IoChevronUpOutline } from "react-icons/io5";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 export const TestCard = (): JSX.Element => {
   const [isInfoOpen, setIsInfoOpen] = useState(true);
@@ -47,8 +48,9 @@ export const TestCard = (): JSX.Element => {
         {isAddDesignOpen && (
           <div className="mt-4 flex flex-col gap-4">
             <div>
-              <label className="text-[11.5px] font-semibold text-[#a4a4a3]">
+              <label className="flex items-center gap-1 text-[11.5px] font-semibold text-[#a4a4a3]">
                 Personal Access Token
+                <AiOutlineInfoCircle className="h-3 w-3" />
               </label>
               <input
                 type="text"
@@ -58,8 +60,9 @@ export const TestCard = (): JSX.Element => {
             </div>
 
             <div>
-              <label className="text-[11.5px] font-semibold text-[#a3a3a2]">
+              <label className="flex items-center gap-1 text-[11.5px] font-semibold text-[#a3a3a2]">
                 Design URL
+                <AiOutlineInfoCircle className="h-3 w-3" />
               </label>
               <input
                 type="text"
