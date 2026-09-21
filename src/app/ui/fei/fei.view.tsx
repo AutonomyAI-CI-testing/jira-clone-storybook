@@ -4,7 +4,7 @@ export const FeiView = () => {
       className="flex h-full w-full items-center justify-center"
       style={{ backgroundColor: "#ffffff" }}
     >
-      <span className="font-primary-black text-8xl" style={{ color: "#000000" }}>
+      <span className="font-primary-black text-8xl" style={{ color: "#ca3521" }}>
         Fei
       </span>
     </div>
