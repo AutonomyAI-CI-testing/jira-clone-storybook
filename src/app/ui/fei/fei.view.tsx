@@ -1,7 +1,12 @@
 export const FeiView = (): JSX.Element => {
   return (
     <div className="flex h-full min-h-screen w-full items-center justify-center bg-white">
-      <span className="font-primary-black text-6xl text-black">Fei</span>
+      <span
+        className="font-primary-black text-6xl"
+        style={{ color: "#e60000" }}
+      >
+        Fei
+      </span>
     </div>
   );
 };
