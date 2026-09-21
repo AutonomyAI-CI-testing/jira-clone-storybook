@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
 import { PriorityId } from "@domain/priority";
 import { PriorityIcon } from "./priority-icon";
 
 const meta: Meta<typeof PriorityIcon> = {
   title: "Components/PriorityIcon",
+  component: PriorityIcon,
   parameters: {
     layout: "centered",
   },
@@ -18,6 +20,12 @@ const meta: Meta<typeof PriorityIcon> = {
     size: {
       control: {
         type: "number",
+      },
+    },
+    showTooltip: {
+      defaultValue: false,
+      control: {
+        type: "boolean",
       },
     },
   },
@@ -88,5 +96,27 @@ export const Size48: Story = {
   args: {
     priority: "low",
     size: 48,
+  },
+};
+
+export const WithTooltip: Story = {
+  name: "With accessible tooltip",
+  args: {
+    priority: "high",
+    size: 32,
+    showTooltip: true,
+  },
+  render: (args) => (
+    <div className="p-8" data-testid="priority-icon-tooltip">
+      <PriorityIcon {...args} />
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const target = await canvas.findByTestId("priority-icon-tooltip");
+    const trigger = target.querySelector(
+      ".text-icon-accent-red"
+    ) as HTMLElement | null;
+    if (trigger) await userEvent.hover(trigger);
   },
 };

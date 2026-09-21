@@ -17,10 +17,7 @@ export const SelectPriority = ({ initPriority }: Props): JSX.Element => {
       defaultValue={initPriority}
       onValueChange={onValueChange}
     >
-      <Select.Trigger
-        aria-label="Open priority select"
-        className="text-xs uppercase"
-      >
+      <Select.Trigger aria-label="Open priority select" className="text-xs">
         <div className="mr-2">
           <PriorityIcon priority={selectValue} />
         </div>
@@ -31,14 +28,10 @@ export const SelectPriority = ({ initPriority }: Props): JSX.Element => {
         <Select.ScrollUpButton />
         <Select.Viewport>
           {prioritiesMock.map((priority, index) => (
-            <Select.Item
-              key={index}
-              value={priority.id}
-              className="text-xs uppercase"
-            >
+            <Select.Item key={index} value={priority.id} className="text-xs">
               <Select.ItemIndicator />
               <PriorityIcon priority={priority.id} />
-              <Select.ItemText>{priority.id}</Select.ItemText>
+              <Select.ItemText>{priority.name}</Select.ItemText>
             </Select.Item>
           ))}
           <Select.Separator />

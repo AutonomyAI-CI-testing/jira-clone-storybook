@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
 import { withRemixStub } from "@app/stories/utils";
 import { IssueCardContent } from "./issue-card";
 
@@ -97,5 +98,28 @@ export const Submitting: Story = {
     priorityId: "low",
     idPrefix: "1234",
     isSubmitting: true,
+  },
+};
+
+export const PriorityTooltip: Story = {
+  name: "Priority flag tooltip",
+  render: () => (
+    <div className="pb-16" data-testid="issue-card">
+      <IssueCardContent
+        link="https://google.com"
+        name="Fix login redirect after session expires"
+        priorityId="high"
+        idPrefix="1234"
+        isSubmitting={false}
+      />
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const card = await canvas.findByTestId("issue-card");
+    const flag = card.querySelector(
+      ".text-icon-accent-red"
+    ) as HTMLElement | null;
+    if (flag) await userEvent.hover(flag);
   },
 };
