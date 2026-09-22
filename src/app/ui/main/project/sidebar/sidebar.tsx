@@ -107,27 +107,40 @@ const navItems: NavItemProps[] = [
 ];
 
 const NavItem = ({ href, icon, name, disabled }: NavItemProps): JSX.Element => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (disabled) e.preventDefault();
+  };
+
   return (
     <NavLink
       to={disabled ? "#" : href}
+      onClick={handleClick}
+      aria-disabled={disabled}
+      title={disabled ? `${name} is not implemented yet` : undefined}
       className={({ isActive }) =>
         cx(
-          "group flex w-full cursor-pointer items-center gap-4 rounded border-none p-2 text-sm",
+          "group flex w-full items-center gap-4 rounded border-none p-2 text-sm",
           isActive && !disabled
             ? "bg-background-neutral text-font-brand"
             : "text-font-subtlest",
           disabled
-            ? "!cursor-not-allowed hover:bg-transparent"
-            : "hover:bg-background-neutral"
+            ? "!cursor-not-allowed hover:bg-transparent focus-visible:bg-transparent"
+            : "cursor-pointer hover:bg-background-neutral"
         )
       }
     >
       {icon}
-      <span className={cx(disabled && "group-hover:hidden")}>{name}</span>
       <span
         className={cx(
-          "itmes-center bg-grey-300 -ml-2 hidden rounded px-2 py-1 text-2xs uppercase disabled:hover:flex",
-          disabled && "group-hover:block"
+          disabled && "group-hover:hidden group-focus-visible:hidden"
+        )}
+      >
+        {name}
+      </span>
+      <span
+        className={cx(
+          "items-center -ml-2 hidden rounded bg-background-accent-grey-subtler px-2 py-1 text-2xs uppercase text-font-accent-grey",
+          disabled && "group-hover:flex group-focus-visible:flex"
         )}
       >
         Not implemented
