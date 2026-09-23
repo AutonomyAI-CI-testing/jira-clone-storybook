@@ -16,7 +16,7 @@ export const ProjectsView = ({
             <span>
               <AiOutlinePlus size={22} />
             </span>
-            <span className="leading-4">Add Project</span>
+            <span className="leading-4">Create project via fei-git</span>
           </Button>
         </Link>
       </div>
