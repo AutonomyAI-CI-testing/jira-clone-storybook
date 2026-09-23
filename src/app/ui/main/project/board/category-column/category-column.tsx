@@ -2,10 +2,11 @@ import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
 import { Link, useFetcher } from "@remix-run/react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxValueNone } from "react-icons/rx";
+import { BiSearchAlt2 } from "react-icons/bi";
 import cx from "classix";
 import { useDrop } from "react-dnd";
 import { Category } from "@domain/category";
-import { Issue, IssueId } from "@domain/issue";
+import { IssueId } from "@domain/issue";
 import { ScrollArea } from "@app/components/scroll-area";
 import { useProjectStore } from "@app/ui/main/project";
 import { useSortBy } from "@app/hooks/useSortBy";
@@ -23,8 +24,12 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
   const columnRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const fetcher = useFetcher();
   const sortBy = useSortBy();
-  const { search } = useProjectStore();
+  const { search, setSearch } = useProjectStore();
   const emptyCategory = category.issues.length === 0;
+  const issues = category.issues.filter((issue) =>
+    issue.name.toLowerCase().includes(search.toLowerCase())
+  );
+  const hasNoSearchMatches = !emptyCategory && issues.length === 0;
   const issueLink = sortBy
     ? `issue/new?category=${category.type}&sortBy=${sortBy}`
     : `issue/new?category=${category.type}`;
@@ -60,11 +65,6 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
       setSubmittingIssues((prev) => [...prev, item.issueId]);
     }
   };
-
-  const filteredIssues = (): Issue[] =>
-    category.issues.filter((issue) => {
-      return issue.name.toLowerCase().includes(search);
-    });
 
   useEffect(() => {
     if (fetcher.data && fetcher.data.issueId) {
@@ -110,7 +110,7 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
       <div className="sticky left-0 top-0 flex justify-between px-3 py-2.5 font-primary-light text-xs uppercase text-font-subtlest duration-200 ease-in-out">
         <span className="flex gap-2">
           <span>{category.name}</span>
-          {!emptyCategory && <span>( {category.issues.length} )</span>}
+          {!emptyCategory && <span>( {issues.length} )</span>}
         </span>
         <Link
           to={issueLink}
@@ -127,8 +127,10 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
             <ul className="mt-1 max-w-[260px] px-3 pb-1">
               {emptyCategory ? (
                 <EmptyCategory />
+              ) : hasNoSearchMatches ? (
+                <NoSearchMatches onClearSearch={() => setSearch("")} />
               ) : (
-                filteredIssues().map((issue, index) => (
+                issues.map((issue, index) => (
                   <li key={index} className="mb-2">
                     <IssueCard
                       issue={issue}
@@ -161,3 +163,24 @@ const EmptyCategory = (): JSX.Element => (
     <p className="mt-4 font-primary-light text-xs uppercase">No issues found</p>
   </li>
 );
+
+const NoSearchMatches = ({ onClearSearch }: NoSearchMatchesProps): JSX.Element => (
+  <li className="mt-4 flex flex-col items-center text-center text-font-subtlest">
+    <BiSearchAlt2 size={32} />
+    <p className="mt-4 font-primary-light text-xs uppercase">
+      No matching issues
+    </p>
+    <button
+      type="button"
+      onClick={onClearSearch}
+      className="mt-2 font-primary-light text-xs text-font-brand hover:underline"
+      aria-label="Clear search"
+    >
+      Clear search
+    </button>
+  </li>
+);
+
+interface NoSearchMatchesProps {
+  onClearSearch: () => void;
+}
