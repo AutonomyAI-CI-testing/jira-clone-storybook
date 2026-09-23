@@ -10,6 +10,9 @@ export const ProjectsView = ({
   return (
     <div className="p-6">
       <h1 className="font-primary-black text-2xl">Hello from fei-git</h1>
+      <p className="mt-1 font-primary-light text-sm text-font-subtle">
+        Proxied through fei-git
+      </p>
       <div className="mt-8">
         <Link to="new" className="flex w-fit">
           <Button color="neutral" variant="subtlest" className="py-3 pl-3 pr-4">
