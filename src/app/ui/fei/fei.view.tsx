@@ -6,7 +6,7 @@ export const FeiView = (): JSX.Element => {
     >
       <span
         className="font-primary-black text-8xl"
-        style={{ color: "#000000" }}
+        style={{ color: "#E34935" }}
       >
         Fei
       </span>
