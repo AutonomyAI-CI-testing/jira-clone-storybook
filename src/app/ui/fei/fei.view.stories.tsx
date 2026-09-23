@@ -1,0 +1,22 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { FeiView } from "./fei.view";
+
+const meta: Meta<typeof FeiView> = {
+  title: "Pages/Fei",
+  component: FeiView,
+  parameters: {
+    layout: "fullscreen",
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ position: "fixed", inset: 0 }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export default meta;
+type Story = StoryObj<typeof FeiView>;
+
+export const Default: Story = {};
