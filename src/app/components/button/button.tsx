@@ -120,6 +120,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
           color === "danger" && dangerStyle(),
           color === "warning" && warningStyle(),
           color === "info" && infoStyle(),
+          size === "sm" && "gap-1.5 px-2 py-1 text-sm",
           size === "lg" && "gap-3 px-8 py-2 text-lg",
           className
         )}
@@ -137,5 +138,5 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   color?: "primary" | "neutral" | "success" | "danger" | "warning" | "info";
   variant?: "contained" | "subtlest" | "text";
-  size?: "md" | "lg";
+  size?: "sm" | "md" | "lg";
 }

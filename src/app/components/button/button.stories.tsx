@@ -6,7 +6,7 @@ const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     children: {
@@ -30,7 +30,7 @@ const meta: Meta<typeof Button> = {
     size: {
       control: {
         type: "select",
-        options: ["md", "lg"],
+        options: ["sm", "md", "lg"],
       },
     },
   },
@@ -78,6 +78,30 @@ export const Default: Story = {
         )}
       </div>
     </>
+  ),
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <div className="grid gap-4 p-4">
+      {(["sm", "md", "lg"] as const).map((size) => (
+        <div className="flex items-center gap-4" key={size}>
+          <span className="w-6 font-primary-light text-xs text-font-subtlest">
+            {size}
+          </span>
+          {[Primary, PrimarySubtle, PrimaryText].map((ButtonStory, index) => (
+            <Button
+              {...ButtonStory.args}
+              size={size}
+              className="w-fit"
+              key={index}
+            >
+              {ButtonStory.args?.children}
+            </Button>
+          ))}
+        </div>
+      ))}
+    </div>
   ),
 };
 
