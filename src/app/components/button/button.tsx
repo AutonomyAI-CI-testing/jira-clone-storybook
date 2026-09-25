@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import cx from "classix";
 
-const Spinner = ({ className }: { className?: string }): JSX.Element => (
+const Spinner = (): JSX.Element => (
   <svg
-    className={cx("shrink-0 animate-spin", className)}
+    className="h-[1em] w-[1em] shrink-0 animate-spin"
     viewBox="0 0 24 24"
     fill="none"
     aria-hidden="true"
@@ -135,12 +135,6 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
       return "";
     };
 
-    const spinnerSize = {
-      sm: "h-3.5 w-3.5",
-      md: "h-4 w-4",
-      lg: "h-5 w-5",
-    }[size];
-
     return (
       <button
         ref={forwardedRef}
@@ -155,12 +149,12 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
           color === "danger" && dangerStyle(),
           color === "warning" && warningStyle(),
           color === "info" && infoStyle(),
-          size === "sm" && "gap-1.5 px-2 py-1 text-sm",
+          size === "sm" && "gap-1.5 px-1.5 py-0.5 text-sm",
           size === "lg" && "gap-3 px-8 py-2 text-lg",
           className
         )}
       >
-        {loading && <Spinner className={spinnerSize} />}
+        {loading && <Spinner />}
         {children}
       </button>
     );
