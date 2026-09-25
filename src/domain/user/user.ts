@@ -14,6 +14,28 @@ export const getRandomPastelColor = () => {
   return hslToHex(h, s, l);
 };
 
+// Deterministic alternative to getRandomPastelColor: given the same seed (e.g. a
+// user's id or name), it always returns the same pastel color. Use this to pick a
+// fallback avatar color for a user with no assigned `color`, so the color stays
+// stable across re-renders instead of changing randomly every time.
+export const getSeededPastelColor = (seed: string) => {
+  const hash = hashString(seed);
+  const h = hash % 360;
+  const s = 25 + (hash % 70);
+  const l = 85 + (hash % 10);
+
+  return hslToHex(h, s, l);
+};
+
+const hashString = (value: string): number => {
+  let hash = 0;
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash << 5) - hash + value.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+  return Math.abs(hash);
+};
+
 const hslToHex = (h: number, s: number, l: number) => {
   l /= 100;
   const a = (s * Math.min(l, 1 - l)) / 100;

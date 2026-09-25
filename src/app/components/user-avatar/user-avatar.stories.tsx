@@ -1,5 +1,7 @@
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { usersMock } from "@domain/user";
+import { Button } from "@app/components/button";
 import { UserAvatar } from "./user-avatar";
 
 const meta: Meta<typeof UserAvatar> = {
@@ -86,5 +88,29 @@ export const LargeSize: Story = {
   args: {
     image: userImage,
     size: 82,
+  },
+};
+
+// T-Rex has no assigned `color` and no `image` in the mock data, so it always
+// renders through the fallback path. Click "Re-render" to confirm the fallback
+// color now stays put across re-renders instead of flickering to a new random
+// color every time.
+const userWithNoColor = usersMock.find((user) => user.name === "T-Rex")!;
+
+export const StableFallbackColor: Story = {
+  render: () => {
+    const [renderCount, setRenderCount] = useState(0);
+
+    return (
+      <div className="flex flex-col items-center gap-4">
+        <UserAvatar {...userWithNoColor} size={64} tooltip />
+        <Button
+          type="button"
+          onClick={() => setRenderCount((count) => count + 1)}
+        >
+          Re-render ({renderCount})
+        </Button>
+      </div>
+    );
   },
 };

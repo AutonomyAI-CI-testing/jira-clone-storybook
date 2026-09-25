@@ -1,14 +1,19 @@
 import * as Avatar from "@radix-ui/react-avatar";
-import { User, getRandomPastelColor } from "@domain/user";
+import { User, getSeededPastelColor } from "@domain/user";
 import { Tooltip } from "@app/components/tooltip";
 
 export const UserAvatar = ({
+  id,
   name,
   image,
   color,
   size = 36,
   tooltip = false,
 }: UserAvatarProps): JSX.Element => {
+  // Fall back to a color derived from the user's identity (instead of a fresh
+  // random one) so a user with no assigned color keeps the same avatar color
+  // across re-renders rather than flickering to a new one every time.
+  const fallbackColor = color || getSeededPastelColor(id || name);
   const imageMinName = image?.replace(".webp", "-min.webp");
   const imageSrc = size > 80 ? `/avatars/${image}` : `/avatars/${imageMinName}`;
   const imageSize = {
@@ -36,7 +41,7 @@ export const UserAvatar = ({
           className="flex items-center justify-center rounded-full text-[var(--Neutral1000)]"
           style={{
             ...imageSize,
-            backgroundColor: color || getRandomPastelColor(),
+            backgroundColor: fallbackColor,
             fontSize: `${size / 2}px`,
           }}
         >
@@ -47,7 +52,7 @@ export const UserAvatar = ({
   );
 };
 
-interface UserAvatarProps extends Omit<User, "id"> {
+interface UserAvatarProps extends Partial<Pick<User, "id">>, Omit<User, "id"> {
   size?: number;
   tooltip?: boolean;
 }
