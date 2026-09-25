@@ -1,6 +1,30 @@
 import { forwardRef } from "react";
 import cx from "classix";
 
+const Spinner = ({ className }: { className?: string }): JSX.Element => (
+  <svg
+    className={cx("shrink-0 animate-spin", className)}
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle
+      className="opacity-25"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      strokeWidth="4"
+    />
+    <path
+      d="M22 12a10 10 0 0 0-10-10"
+      stroke="currentColor"
+      strokeWidth="4"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 export const Button = forwardRef<HTMLButtonElement, Props>(
   (
     {
@@ -8,7 +32,9 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
       color = "primary",
       variant = "contained",
       size = "md",
+      loading = false,
       className,
+      disabled,
       ...rest
     },
     forwardedRef
@@ -109,9 +135,18 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
       return "";
     };
 
+    const spinnerSize = {
+      sm: "h-3.5 w-3.5",
+      md: "h-4 w-4",
+      lg: "h-5 w-5",
+    }[size];
+
     return (
       <button
         ref={forwardedRef}
+        {...rest}
+        aria-busy={loading || undefined}
+        disabled={loading || disabled}
         className={cx(
           "flex cursor-pointer items-center justify-center gap-2 rounded p-2 text-font disabled:cursor-not-allowed disabled:opacity-60",
           color === "primary" && primaryStyle(),
@@ -124,8 +159,8 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
           size === "lg" && "gap-3 px-8 py-2 text-lg",
           className
         )}
-        {...rest}
       >
+        {loading && <Spinner className={spinnerSize} />}
         {children}
       </button>
     );
@@ -139,4 +174,5 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: "primary" | "neutral" | "success" | "danger" | "warning" | "info";
   variant?: "contained" | "subtlest" | "text";
   size?: "sm" | "md" | "lg";
+  loading?: boolean;
 }

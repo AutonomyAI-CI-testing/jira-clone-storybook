@@ -33,6 +33,13 @@ const meta: Meta<typeof Button> = {
         options: ["sm", "md", "lg"],
       },
     },
+    loading: {
+      description:
+        "Shows a spinner and blocks interaction while an action is in flight",
+      control: {
+        type: "boolean",
+      },
+    },
   },
 };
 
@@ -100,6 +107,21 @@ export const Sizes: Story = {
             </Button>
           ))}
         </div>
+      ))}
+    </div>
+  ),
+};
+
+export const Loading: Story = {
+  args: {
+    loading: true,
+  },
+  render: (args) => (
+    <div className="flex items-center gap-4 p-4">
+      {[Primary, PrimarySubtle, PrimaryText].map((ButtonStory, index) => (
+        <Button {...args} {...ButtonStory.args} className="w-fit" key={index}>
+          {ButtonStory.args?.children}
+        </Button>
       ))}
     </div>
   ),
