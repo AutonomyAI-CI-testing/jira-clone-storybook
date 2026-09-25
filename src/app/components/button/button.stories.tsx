@@ -130,7 +130,7 @@ export const Loading: Story = {
     <div className="flex items-center gap-4 p-4">
       {[Primary, PrimarySubtle, PrimaryText].map((ButtonStory, index) => (
         <Button {...args} {...ButtonStory.args} className="w-fit" key={index}>
-          {ButtonStory.args?.children}
+          Saving
         </Button>
       ))}
     </div>
