@@ -128,9 +128,13 @@ export const Loading: Story = {
   },
   render: (args) => (
     <div className="flex items-center gap-4 p-4">
-      {[Primary, PrimarySubtle, PrimaryText].map((ButtonStory, index) => (
-        <Button {...args} {...ButtonStory.args} className="w-fit" key={index}>
-          Saving
+      {[
+        { story: Primary, label: "Saving" },
+        { story: PrimarySubtle, label: "Uploading" },
+        { story: PrimaryText, label: "Saving" },
+      ].map(({ story, label }, index) => (
+        <Button {...args} {...story.args} className="w-fit" key={index}>
+          {label}
         </Button>
       ))}
     </div>
