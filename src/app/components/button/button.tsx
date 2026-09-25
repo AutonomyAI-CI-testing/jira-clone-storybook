@@ -33,6 +33,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
       variant = "contained",
       size = "md",
       loading = false,
+      icon,
       className,
       disabled,
       ...rest
@@ -154,7 +155,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
           className
         )}
       >
-        {loading && <Spinner />}
+        {loading ? <Spinner /> : icon}
         {children}
       </button>
     );
@@ -169,4 +170,5 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "contained" | "subtlest" | "text";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
+  icon?: React.ReactNode;
 }

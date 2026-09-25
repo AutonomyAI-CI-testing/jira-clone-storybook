@@ -1,6 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { AiOutlinePlus } from "react-icons/ai";
+import { MdDeleteOutline } from "react-icons/md";
 
 import { Button } from "./button";
+
+const PlusIcon = (): JSX.Element => (
+  <AiOutlinePlus className="h-[1em] w-[1em] shrink-0" aria-hidden="true" />
+);
+
+const TrashIcon = (): JSX.Element => (
+  <MdDeleteOutline className="h-[1em] w-[1em] shrink-0" aria-hidden="true" />
+);
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -123,6 +133,31 @@ export const Loading: Story = {
           {ButtonStory.args?.children}
         </Button>
       ))}
+    </div>
+  ),
+};
+
+export const WithIcon: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-4 p-4">
+      {[Primary, Neutral, Success, Danger, Warning, Info].map(
+        (ButtonStory, index) => {
+          const isDanger = ButtonStory.args?.color === "danger";
+
+          return (
+            <Button
+              {...ButtonStory.args}
+              icon={isDanger ? <TrashIcon /> : <PlusIcon />}
+              className={
+                isDanger ? "w-fit rounded-full font-primary-bold" : "w-fit"
+              }
+              key={index}
+            >
+              {isDanger ? "Delete item" : ButtonStory.args?.children}
+            </Button>
+          );
+        }
+      )}
     </div>
   ),
 };
