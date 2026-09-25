@@ -17,14 +17,14 @@ const meta: Meta<typeof Button> = {
     color: {
       control: {
         type: "select",
-        options: ["primary", "neutral", "danger"],
+        options: ["primary", "neutral", "success", "danger", "warning", "info"],
       },
     },
     variant: {
       description: "The variant of the button",
       control: {
         type: "select",
-        options: ["contained", "text"],
+        options: ["contained", "subtlest", "text"],
       },
     },
     size: {
