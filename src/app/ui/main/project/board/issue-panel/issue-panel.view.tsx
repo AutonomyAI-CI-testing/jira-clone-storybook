@@ -20,6 +20,7 @@ import { Button } from "@app/components/button";
 import { Title } from "@app/components/title";
 import { Description } from "@app/components/description";
 import { Kbd } from "@app/components/kbd-placeholder";
+import { Spinner } from "@app/components/spinner";
 import { PanelHeaderIssue } from "./panel-header-issue";
 import { CreateComment } from "./comment/create-comment";
 import { ViewComment } from "./comment/view-comment";
@@ -27,7 +28,6 @@ import { SelectStatus } from "./select-status";
 import { SelectPriority } from "./select-priority";
 import { SelectAsignee } from "./select-asignee";
 import { CreatedUpdatedAt } from "./created-updated-at";
-import { Spinner } from "./spinner";
 
 export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState(true);
@@ -222,7 +222,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                     >
                       {transition.state !== "idle" ? (
                         <>
-                          Submmiting
+                          Submitting
                           <Spinner />
                         </>
                       ) : (
