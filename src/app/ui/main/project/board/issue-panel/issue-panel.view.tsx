@@ -27,7 +27,7 @@ import { SelectStatus } from "./select-status";
 import { SelectPriority } from "./select-priority";
 import { SelectAsignee } from "./select-asignee";
 import { CreatedUpdatedAt } from "./created-updated-at";
-import { Spinner } from "./spinner";
+import { Spinner } from "@app/components/spinner";
 
 export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState(true);
@@ -222,8 +222,8 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                     >
                       {transition.state !== "idle" ? (
                         <>
-                          Submmiting
-                          <Spinner />
+                          Submitting
+                          <Spinner className="ml-2" />
                         </>
                       ) : (
                         "Accept"
