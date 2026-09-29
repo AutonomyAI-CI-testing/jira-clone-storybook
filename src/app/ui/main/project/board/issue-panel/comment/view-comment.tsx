@@ -4,6 +4,7 @@ import cx from "classix";
 import { Comment, CommentId } from "@domain/comment";
 import { useUserStore } from "@app/store/user.store";
 import { UserAvatar } from "@app/components/user-avatar";
+import * as AlertDialog from "@app/components/alert-dialog";
 import { EditBox } from "./edit-box";
 import { formatDateTime } from "@utils/formatDateTime";
 
@@ -54,14 +55,36 @@ export const ViewComment = ({
           Edit
         </button>
         <span className="mx-2">{"·"}</span>
-        <button
-          onClick={remove}
-          disabled={isNotSelfComment}
-          className="font-primary-light text-xs hover:underline"
-          aria-label="Delete comment"
-        >
-          Delete
-        </button>
+        <AlertDialog.Root>
+          <AlertDialog.Trigger
+            disabled={isNotSelfComment}
+            className="font-primary-light text-xs hover:underline"
+            aria-label="Open delete comment dialog"
+          >
+            Delete
+          </AlertDialog.Trigger>
+          <AlertDialog.Portal>
+            <AlertDialog.Overlay />
+            <AlertDialog.Content>
+              <AlertDialog.Title>Delete comment?</AlertDialog.Title>
+              <AlertDialog.Description>
+                This action is permanent and cannot be undone. Are you sure
+                you want to remove this comment completely?
+              </AlertDialog.Description>
+              <div className="mt-8 flex w-full justify-end gap-4">
+                <AlertDialog.Cancel aria-label="Cancel">
+                  Cancel
+                </AlertDialog.Cancel>
+                <AlertDialog.Action
+                  onClick={remove}
+                  aria-label="Delete comment"
+                >
+                  Delete
+                </AlertDialog.Action>
+              </div>
+            </AlertDialog.Content>
+          </AlertDialog.Portal>
+        </AlertDialog.Root>
       </div>
     </div>
   );
