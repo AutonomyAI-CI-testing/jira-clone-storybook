@@ -190,6 +190,7 @@ module.exports = {
       },
       white: "white",
       black: "black",
+      red: "#e34935",
       transparent: "transparent",
     },
     fontFamily: {
