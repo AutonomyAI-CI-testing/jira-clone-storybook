@@ -1,7 +1,6 @@
 import { Form, useSubmit } from "@remix-run/react";
 import * as Select from "@radix-ui/react-select";
 import { FaSortAmountDownAlt, FaSortAlphaDown } from "react-icons/fa";
-import { HiFlag } from "react-icons/hi";
 import { BsClockHistory } from "react-icons/bs";
 import { Sort, sortList, DEFAULT_SORT } from "@domain/filter";
 import { useSortBy } from "@app/hooks/useSortBy";
@@ -12,8 +11,7 @@ export const SelectSort = (): JSX.Element => {
 
   const SortIcon = ({ sort }: { sort: Sort }): JSX.Element =>
     // prettier-ignore
-    sort === "priority" ? <HiFlag size={16} />
-    : sort === "title" ? <FaSortAlphaDown size={16} />
+    sort === "title" ? <FaSortAlphaDown size={16} />
     : <BsClockHistory size={16} />;
 
   const handleSubmit = (value: string): void => {

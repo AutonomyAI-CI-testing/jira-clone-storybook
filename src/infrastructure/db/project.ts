@@ -31,7 +31,6 @@ export const getProject = async (
   // prettier-ignore
   const orderBy: PrismaSortType =
     sortIssuesBy === "date" ? [sortByDate, sortByPriority]
-    : sortIssuesBy === "priority" ? [sortByPriority, sortByDate]
     : [sortByDate];
 
   const projectDb = await db.project.findUnique({
