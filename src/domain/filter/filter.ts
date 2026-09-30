@@ -1,5 +1,5 @@
 export const sorts = ["date", "priority", "title"] as const;
-export const DEFAULT_SORT: Sort = "date";
+export const DEFAULT_SORT: Sort = "title";
 
 export type Sort = (typeof sorts)[number];
 type SortDict = Record<Sort, string>;
