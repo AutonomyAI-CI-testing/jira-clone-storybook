@@ -7,15 +7,14 @@ describe("filter", () => {
       expect(sorts).toContain(DEFAULT_SORT);
     });
 
-    it("should be 'title'", () => {
-      expect(DEFAULT_SORT).toBe("title");
+    it("should be 'date'", () => {
+      expect(DEFAULT_SORT).toBe("date");
     });
   });
 
   describe("isValidSort", () => {
     it("should return true for valid sort values", () => {
       expect(isValidSort("date")).toBe(true);
-      expect(isValidSort("priority")).toBe(true);
       expect(isValidSort("title")).toBe(true);
     });
 
@@ -28,17 +27,15 @@ describe("filter", () => {
   describe("sortDict", () => {
     it("should map all sort values to labels", () => {
       expect(sortDict.date).toBe("Date");
-      expect(sortDict.priority).toBe("Importance");
       expect(sortDict.title).toBe("Name");
     });
   });
 
   describe("sortList", () => {
     it("should contain all sort options with id and label", () => {
-      expect(sortList).toHaveLength(3);
+      expect(sortList).toHaveLength(2);
       expect(sortList).toEqual([
         { id: "date", label: "Date" },
-        { id: "priority", label: "Importance" },
         { id: "title", label: "Name" },
       ]);
     });
