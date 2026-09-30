@@ -11,7 +11,7 @@ export type SortList = SortItem[];
 
 export const sortDict: SortDict = {
   date: "Date",
-  priority: "Priority",
+  priority: "Importance",
   title: "Title",
 };
 
