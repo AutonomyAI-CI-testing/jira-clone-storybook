@@ -5,6 +5,7 @@ import { Project, ProjectSummary, ProjectId } from "@domain/project";
 import { Category, CategoryType } from "@domain/category";
 import { Priority } from "@domain/priority";
 import { Sort } from "@domain/filter";
+import { Issue } from "@domain/issue";
 import { db } from "./db.server";
 import { dnull } from "src/utils/dnull";
 
@@ -24,10 +25,14 @@ export const getProject = async (
     },
   };
 
+  // Sorting by title ignores case, which the database collation cannot do, so
+  // the query only breaks ties there and the alphabetical order is applied to
+  // the fetched issues (see sortIssuesAlphabetically).
   // prettier-ignore
-  const orderBy: PrismaSortType = sortIssuesBy === "date" 
-    ? [sortByDate, sortByPriority] 
-    : [sortByPriority, sortByDate];
+  const orderBy: PrismaSortType =
+    sortIssuesBy === "date" ? [sortByDate, sortByPriority]
+    : sortIssuesBy === "priority" ? [sortByPriority, sortByDate]
+    : [sortByDate];
 
   const projectDb = await db.project.findUnique({
     where: {
@@ -72,16 +77,19 @@ export const getProject = async (
       name: category.name,
       type: category.type as CategoryType,
       order: category.order,
-      issues: category.issues.map((issue) => ({
-        id: issue.id,
-        name: issue.name,
-        priority: issue.priority as Priority,
-        reporter: dnull(issue.reporter),
-        asignee: dnull(issue.asignee),
-        comments: [],
-        createdAt: issue.createdAt.getDate(),
-        updatedAt: issue.createdAt.getDate(),
-      })),
+      issues: sortIssuesAlphabetically(
+        category.issues.map((issue) => ({
+          id: issue.id,
+          name: issue.name,
+          priority: issue.priority as Priority,
+          reporter: dnull(issue.reporter),
+          asignee: dnull(issue.asignee),
+          comments: [],
+          createdAt: issue.createdAt.getDate(),
+          updatedAt: issue.createdAt.getDate(),
+        })),
+        sortIssuesBy
+      ),
     })),
     createdAt: projectDb.createdAt.getDate(),
     updatedAt: projectDb.updatedAt.getDate(),
@@ -93,6 +101,16 @@ export const getProject = async (
 interface GetProjectOptions {
   sortIssuesBy: Sort;
 }
+
+// Sorting by title ignores case, which the database collation cannot do, so it is
+// applied to the fetched issues instead of the query. The sort is stable, so
+// issues sharing a title keep the order the query returned them in.
+const sortIssuesAlphabetically = (issues: Issue[], sortIssuesBy?: Sort): Issue[] =>
+  sortIssuesBy !== "title"
+    ? issues
+    : [...issues].sort((a, b) =>
+        a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+      );
 
 export const getProjectSummary = async (projectId: ProjectId): Promise<ProjectSummary | null> => {
   const projectSummaryDb = await db.project.findUnique({
