@@ -46,7 +46,7 @@ const SelectUserComponent = () => {
         <Select.TriggerIcon />
       </Select.Trigger>
       <Select.Content>
-        <Select.ScrollDownButton />
+        <Select.ScrollUpButton />
         <Select.Viewport>
           {usersMock.map((user, index) => (
             <Select.Item key={index} value={user.id}>
@@ -75,7 +75,7 @@ export const SelectText: Story = {
           <Select.TriggerIcon />
         </Select.Trigger>
         <Select.Content>
-          <Select.ScrollDownButton />
+          <Select.ScrollUpButton />
           <Select.Viewport>
             {items.map((item, index) => (
               <Select.Item key={index} value={item}>
