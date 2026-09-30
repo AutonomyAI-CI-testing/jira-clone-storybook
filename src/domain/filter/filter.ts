@@ -12,7 +12,7 @@ export type SortList = SortItem[];
 export const sortDict: SortDict = {
   date: "Date",
   priority: "Importance",
-  title: "Title",
+  title: "Name",
 };
 
 export const sortList: SortList = (Object.entries(sortDict) as [Sort, string][]).map(
