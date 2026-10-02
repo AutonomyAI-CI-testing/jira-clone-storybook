@@ -1,129 +1,87 @@
-// Static replica of the attached Figma frame, built as a smoke test for the
-// design-to-component pipeline. Self-contained by design: no props, no state.
-//
-// The frame is an unrelated dark tool panel rather than this app's design
-// system, so the colours below are literal approximations read off the frame.
-// The app's semantic colour tokens are deliberately not used here: they are
-// theme-scoped, so this card would change with the active theme instead of
-// staying the dark panel the frame shows.
+import type { ReactNode } from "react";
+import cx from "classix";
+import { FiChevronUp, FiInfo, FiSettings } from "react-icons/fi";
 
-export const TestCard = () => (
+// Smoke-test replica of the "UI magician Agent" reference frame. That frame is
+// an external dark panel rather than this app's design system, so the colours
+// below are literal approximations read off the frame instead of the app's
+// semantic colour tokens (bg-elevation-*, text-font-*, ...).
+const HEADING = "font-primary-bold text-[22px] text-[#c9cccf]";
+
+export const TestCard = (): JSX.Element => (
   <div
     id="testElem"
-    className="w-[508px] max-w-full bg-[#0e0e0e] px-10 pt-12 pb-28 font-primary text-[#c9c9c9]"
+    className="w-[508px] max-w-full rounded-[4px] bg-[#1a1a1a] px-[42px] pb-[60px] pt-[44px] font-primary text-[#c9cccf]"
   >
-    <div className="flex items-center justify-between">
-      <span className="font-primary-bold text-[28px] leading-none">
+    <div className="flex items-start justify-between gap-4">
+      <h2 className="font-primary-bold text-[28px] leading-none text-[#c9cccf]">
         UI magician Agent
-      </span>
-      <SettingsIcon />
+      </h2>
+      <FiSettings className="h-9 w-9 shrink-0 text-[#c9cccf]" aria-hidden />
     </div>
 
-    <div className="mt-9 flex items-center gap-3">
-      <ChevronUpIcon className="shrink-0 text-[#8f8f8f]" />
-      <span className="min-w-0 truncate font-primary-bold text-[20px] text-[#8f8f8f]">
+    <div className="mt-8 flex items-center gap-3">
+      <FiChevronUp className="h-5 w-5 shrink-0 text-[#9ea1a4]" aria-hidden />
+      <span className="min-w-0 truncate text-[19px] text-[#9ea1a4]">
         From entire frame to a singl...
       </span>
     </div>
 
-    <div className="mt-[168px] flex items-center gap-3">
-      <ChevronUpIcon className="shrink-0 text-[#c9c9c9]" />
-      <span className="font-primary-bold text-[26px]">Add New Design</span>
-    </div>
+    <h3 className={cx("mt-[128px] flex items-center gap-3", HEADING)}>
+      <FiChevronUp className="h-6 w-6 shrink-0" strokeWidth={3} aria-hidden />
+      Add New Design
+    </h3>
 
-    <div className="mt-14 flex items-center gap-3">
-      <span className="font-primary-bold text-[22px]">
-        Personal Access Token
-      </span>
-      <InfoIcon />
-    </div>
-    <input
-      type="text"
-      aria-label="Personal Access Token"
+    <FormField
+      className="mt-[64px]"
+      label="Personal Access Token"
       placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
-      className="mt-4 h-[72px] w-full rounded-[3px] border border-[#5f5f5f] bg-[#191919] px-5 font-primary-bold text-[22px] text-[#9a9a9a] outline-none placeholder:text-[#9a9a9a]"
+    />
+    <FormField
+      className="mt-7"
+      label="Design URL"
+      placeholder="https://www.figma.com/file/"
     />
 
-    <div className="mt-8 flex items-center gap-3">
-      <span className="font-primary-bold text-[22px]">Design URL</span>
-      <InfoIcon />
-    </div>
-    <input
-      type="text"
-      aria-label="Design URL"
-      placeholder="https://www.figma.com/file/:"
-      className="mt-4 h-[72px] w-full rounded-[3px] border border-[#5f5f5f] bg-[#191919] px-5 font-primary-bold text-[22px] text-[#9a9a9a] outline-none placeholder:text-[#9a9a9a]"
-    />
-
-    <div className="mt-12 flex justify-center gap-9">
-      <button
-        type="button"
-        className="h-[70px] w-[166px] rounded-lg bg-[#9d3c14] font-primary-bold text-[22px] text-[#a08e86]"
-      >
-        Awesome
-      </button>
-      <button
-        type="button"
-        className="h-[70px] w-[166px] rounded-lg bg-[#9d3c14] font-primary-bold text-[22px] text-[#a08e86]"
-      >
-        Prepare
-      </button>
+    <div className="mt-12 flex gap-8 pl-[46px]">
+      <ActionButton>Awesome</ActionButton>
+      <ActionButton>Prepare</ActionButton>
     </div>
 
-    <h2 className="mt-24 font-primary-bold text-[28px] leading-none">
-      Recent Breakdowns
-    </h2>
+    <h3 className={cx("mt-[100px]", HEADING)}>Recent Breakdowns</h3>
   </div>
 );
 
-const SettingsIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="30"
-    height="30"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-    <circle cx="12" cy="12" r="3" />
-  </svg>
+interface FormFieldProps {
+  label: string;
+  placeholder: string;
+  className?: string;
+}
+
+const FormField = ({
+  label,
+  placeholder,
+  className,
+}: FormFieldProps): JSX.Element => (
+  <div className={className}>
+    <div className="flex items-center gap-4">
+      <span className="text-[19px] text-[#c9cccf]">{label}</span>
+      <FiInfo className="h-7 w-7 shrink-0 text-[#c9cccf]" aria-hidden />
+    </div>
+    <input
+      type="text"
+      readOnly
+      placeholder={placeholder}
+      className="mt-8 h-[64px] w-full rounded-[2px] border border-[#8a8d90] bg-[#212121] px-5 text-[18px] text-[#c9cccf] outline-none placeholder:text-[#6f7275]"
+    />
+  </div>
 );
 
-const ChevronUpIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    aria-hidden="true"
+const ActionButton = ({ children }: { children: ReactNode }): JSX.Element => (
+  <button
+    type="button"
+    className="flex h-[72px] w-[172px] items-center justify-center rounded-[4px] bg-[#a04a20] text-[19px] text-[#cdc5c0]"
   >
-    <path d="m18 15-6-6-6 6" />
-  </svg>
-);
-
-const InfoIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 16v-4" />
-    <path d="M12 8h.01" />
-  </svg>
+    {children}
+  </button>
 );
