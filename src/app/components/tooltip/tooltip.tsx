@@ -18,7 +18,12 @@ export const Tooltip = ({
   return (
     // Don't know why h-fit (and other h-*) doesn't work here
     <div className="relative w-fit" style={{ height: "fit-content" }}>
-      <div onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
+      <div
+        onMouseEnter={showTooltip}
+        onMouseLeave={hideTooltip}
+        onFocus={showTooltip}
+        onBlur={hideTooltip}
+      >
         {children}
       </div>
       <div
