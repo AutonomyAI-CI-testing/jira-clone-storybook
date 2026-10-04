@@ -22,6 +22,7 @@ export const CharacterCounter = ({
 
   return (
     <p
+      role={isOverLimit ? "alert" : "status"}
       className={twMerge(
         "font-primary-light text-xs text-font-danger",
         className
