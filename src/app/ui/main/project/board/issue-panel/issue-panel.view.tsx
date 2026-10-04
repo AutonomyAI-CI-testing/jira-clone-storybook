@@ -19,7 +19,12 @@ import { UserAvatar } from "@app/components/user-avatar";
 import { Button } from "@app/components/button";
 import { Title } from "@app/components/title";
 import { Description } from "@app/components/description";
+import { CharacterCounter } from "@app/components/character-counter";
 import { Kbd } from "@app/components/kbd-placeholder";
+import {
+  DESCRIPTION_MAX_LENGTH,
+  remainingCharacters,
+} from "@utils/character-limit";
 import { PanelHeaderIssue } from "./panel-header-issue";
 import { CreateComment } from "./comment/create-comment";
 import { ViewComment } from "./comment/view-comment";
@@ -32,6 +37,9 @@ import { Spinner } from "./spinner";
 export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState(true);
   const [comments, setComments] = useState<Comment[]>(issue?.comments || []);
+  const [description, setDescription] = useState<string>(
+    issue?.description || ""
+  );
   const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(
     null
   );
@@ -46,9 +54,13 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const navigate = useNavigate();
   const initStatus = (params[0].get("category") as CategoryType) || "TODO";
   const userIsNotReporter = user.id !== reporter.id;
+  const isDescriptionOverLimit =
+    remainingCharacters(description, DESCRIPTION_MAX_LENGTH) < 0;
 
   const postData = useCallback(
     (formTarget: HTMLFormElement) => {
+      if (isDescriptionOverLimit) return;
+
       const isExistingIssue = Boolean(issue?.id);
       const formData = new FormData(formTarget);
       const action = isExistingIssue ? "update" : "create";
@@ -59,7 +71,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
         method: "post",
       });
     },
-    [comments, fetcher, issue?.id]
+    [comments, fetcher, isDescriptionOverLimit, issue?.id]
   );
 
   const handleProgrammaticSubmit = useCallback((): void => {
@@ -155,7 +167,15 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       <Description
                         initDescription={issue?.description || ""}
                         readOnly={userIsNotReporter}
+                        onDescriptionChange={setDescription}
                       />
+                      {!userIsNotReporter && (
+                        <CharacterCounter
+                          text={description}
+                          max={DESCRIPTION_MAX_LENGTH}
+                          className="mt-1"
+                        />
+                      )}
                     </div>
                     <div>
                       <p className="font-primary-black text-font">Comments</p>
@@ -217,7 +237,9 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       type="submit"
                       size="lg"
                       className="w-fit"
-                      disabled={transition.state !== "idle"}
+                      disabled={
+                        transition.state !== "idle" || isDescriptionOverLimit
+                      }
                       aria-label="Accept changes"
                     >
                       {transition.state !== "idle" ? (

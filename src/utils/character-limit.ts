@@ -1,4 +1,5 @@
 export const COMMENT_MAX_LENGTH = 1000;
+export const DESCRIPTION_MAX_LENGTH = 5000;
 
 // How many characters are still available in a text field. Goes negative once
 // the text is over the limit, so callers can tell "exactly full" from "over".

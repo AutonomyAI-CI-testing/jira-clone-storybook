@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { remainingCharacters } from "@utils/comment-length";
+import { remainingCharacters } from "@utils/character-limit";
 
 const LOW_REMAINING_CHARACTERS = 50;
 

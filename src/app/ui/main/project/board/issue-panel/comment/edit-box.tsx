@@ -4,7 +4,10 @@ import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { Button } from "@app/components/button";
 import { CharacterCounter } from "@app/components/character-counter";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
-import { COMMENT_MAX_LENGTH, remainingCharacters } from "@utils/comment-length";
+import {
+  COMMENT_MAX_LENGTH,
+  remainingCharacters,
+} from "@utils/character-limit";
 
 export const EditBox = ({
   defaultMessage,

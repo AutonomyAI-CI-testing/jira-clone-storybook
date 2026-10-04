@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { COMMENT_MAX_LENGTH } from "@utils/comment-length";
+import { COMMENT_MAX_LENGTH } from "@utils/character-limit";
 
 import { CharacterCounter } from "./character-counter";
 
