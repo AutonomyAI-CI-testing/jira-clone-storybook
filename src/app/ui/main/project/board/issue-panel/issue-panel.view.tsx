@@ -17,7 +17,7 @@ import { useUserStore } from "@app/store/user.store";
 import { ActionData as IssueActionData } from "@app/routes/__main/projects.$projectId/board/issue/$issueId";
 import { UserAvatar } from "@app/components/user-avatar";
 import { Button } from "@app/components/button";
-import { Title } from "@app/components/title";
+import { Title, DEFAULT_MAX_LENGTH } from "@app/components/title";
 import { Description } from "@app/components/description";
 import { CharacterCounter } from "@app/components/character-counter";
 import { Tooltip } from "@app/components/tooltip";
@@ -38,6 +38,7 @@ import { Spinner } from "./spinner";
 export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState(true);
   const [comments, setComments] = useState<Comment[]>(issue?.comments || []);
+  const [title, setTitle] = useState<string>(issue?.name || "");
   const [description, setDescription] = useState<string>(
     issue?.description || ""
   );
@@ -160,8 +161,16 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                           initTitle={issue?.name || ""}
                           readOnly={userIsNotReporter}
                           error={actionData?.errors?.name}
+                          onTitleChange={setTitle}
                         />
                       </Dialog.Title>
+                      {!userIsNotReporter && (
+                        <CharacterCounter
+                          text={title}
+                          max={DEFAULT_MAX_LENGTH}
+                          className="mt-6 block"
+                        />
+                      )}
                     </div>
                     <p className="font-primary-black text-font">Description</p>
                     <div className="-ml-3 mb-6">
