@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
 import * as AlertDialog from "./alert-dialog";
 import { Button } from "../button";
 
@@ -36,4 +37,28 @@ export const Default: Story = {
       </AlertDialog.Portal>
     </AlertDialog.Root>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = await canvas.findByRole("button", { name: "Trigger" });
+    await userEvent.click(trigger);
+  },
+};
+
+/**
+ * Clicking the danger `Action` button closes the dialog, because `Action` is
+ * wrapped in Radix's `<AlertDialog.Action asChild>` (which renders a
+ * `DialogPrimitive.Close` under the hood) just like `Cancel` is.
+ * After the play function runs, no element with role="alertdialog" remains.
+ */
+export const ActionClosesDialog: Story = {
+  ...Default,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = await canvas.findByRole("button", { name: "Trigger" });
+    await userEvent.click(trigger);
+
+    const body = within(canvasElement.ownerDocument.body);
+    const action = await body.findByRole("button", { name: "Action" });
+    await userEvent.click(action);
+  },
 };
