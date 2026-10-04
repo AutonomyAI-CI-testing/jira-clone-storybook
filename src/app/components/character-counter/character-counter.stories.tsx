@@ -27,6 +27,7 @@ export default meta;
 type Story = StoryObj<typeof CharacterCounter>;
 
 export const Default: Story = {
+  name: "Plenty of room left (renders nothing)",
   args: {
     text: "A short comment",
     max: COMMENT_MAX_LENGTH,
