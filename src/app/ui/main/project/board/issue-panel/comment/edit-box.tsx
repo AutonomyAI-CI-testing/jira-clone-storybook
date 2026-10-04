@@ -3,6 +3,7 @@ import cx from "classix";
 import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { Button } from "@app/components/button";
 import { CharacterCounter } from "@app/components/character-counter";
+import { Tooltip } from "@app/components/tooltip";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 import {
   COMMENT_MAX_LENGTH,
@@ -73,15 +74,20 @@ export const EditBox = ({
           isEditing ? "visible" : "hidden"
         )}
       >
-        <Button
-          type="button"
-          className="px-4 py-2.5"
-          onClick={onSave}
-          disabled={isOverCharacterLimit}
-          aria-label="Save comment"
+        <Tooltip
+          title={`Comment is over the ${COMMENT_MAX_LENGTH} character limit`}
+          show={isOverCharacterLimit}
         >
-          Save
-        </Button>
+          <Button
+            type="button"
+            className="px-4 py-2.5"
+            onClick={onSave}
+            disabled={isOverCharacterLimit}
+            aria-label="Save comment"
+          >
+            Save
+          </Button>
+        </Tooltip>
         <Button
           color="neutral"
           variant="text"

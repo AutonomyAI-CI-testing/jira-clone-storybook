@@ -20,6 +20,7 @@ import { Button } from "@app/components/button";
 import { Title } from "@app/components/title";
 import { Description } from "@app/components/description";
 import { CharacterCounter } from "@app/components/character-counter";
+import { Tooltip } from "@app/components/tooltip";
 import { Kbd } from "@app/components/kbd-placeholder";
 import {
   DESCRIPTION_MAX_LENGTH,
@@ -233,24 +234,29 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                     Press <Kbd>Shift</Kbd> + <Kbd>S</Kbd> to accept
                   </span>
                   <div className="flex justify-center">
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-fit"
-                      disabled={
-                        transition.state !== "idle" || isDescriptionOverLimit
-                      }
-                      aria-label="Accept changes"
+                    <Tooltip
+                      title={`Description is over the ${DESCRIPTION_MAX_LENGTH} character limit`}
+                      show={isDescriptionOverLimit}
                     >
-                      {transition.state !== "idle" ? (
-                        <>
-                          Submmiting
-                          <Spinner />
-                        </>
-                      ) : (
-                        "Accept"
-                      )}
-                    </Button>
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-fit"
+                        disabled={
+                          transition.state !== "idle" || isDescriptionOverLimit
+                        }
+                        aria-label="Accept changes"
+                      >
+                        {transition.state !== "idle" ? (
+                          <>
+                            Submmiting
+                            <Spinner />
+                          </>
+                        ) : (
+                          "Accept"
+                        )}
+                      </Button>
+                    </Tooltip>
                   </div>
                   <span className="justify-self-end font-primary-light text-2xs text-font-subtlest text-opacity-80">
                     Press <Kbd>Esc</Kbd> to close
