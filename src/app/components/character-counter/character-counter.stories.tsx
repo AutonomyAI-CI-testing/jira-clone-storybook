@@ -42,6 +42,7 @@ export const RunningOut: Story = {
 };
 
 export const OverTheLimit: Story = {
+  name: "Over the limit (shows how many characters over)",
   args: {
     text: "a".repeat(COMMENT_MAX_LENGTH + 13),
     max: COMMENT_MAX_LENGTH,

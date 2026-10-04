@@ -15,6 +15,11 @@ export const CharacterCounter = ({
 
   if (!isLow) return null;
 
+  const isOverLimit = remaining < 0;
+  const label = isOverLimit
+    ? `${Math.abs(remaining)} characters over`
+    : `${remaining} characters left`;
+
   return (
     <p
       className={twMerge(
@@ -22,7 +27,7 @@ export const CharacterCounter = ({
         className
       )}
     >
-      {remaining} characters left
+      {label}
     </p>
   );
 };
