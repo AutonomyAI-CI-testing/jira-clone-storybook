@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
 import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
     layout: "centered",
   },
@@ -75,5 +77,21 @@ export const CustomMaxLength: Story = {
   args: {
     placeholder: "Custom max length",
     maxLength: 10,
+  },
+};
+
+// The character counter below the title should only show while the field
+// is focused. Previously `onBlur` was a leftover `console.log` instead of
+// hiding the counter, so it stayed visible forever after the first focus.
+export const CounterHidesOnBlur: Story = {
+  args: {
+    initTitle: "My issue title",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textarea = await canvas.findByPlaceholderText("Write the title");
+
+    await userEvent.click(textarea);
+    await userEvent.tab();
   },
 };
