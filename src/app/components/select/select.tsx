@@ -7,7 +7,7 @@ export const Root = Select.Root;
 export const Value = Select.Value;
 export const ItemText = Select.ItemText;
 export const ScrollUpButton = Select.ScrollUpButton;
-export const ScrollDownButton = Select.ScrollUpButton;
+export const ScrollDownButton = Select.ScrollDownButton;
 export const Viewport = Select.Viewport;
 export const Separator = Select.Separator;
 
