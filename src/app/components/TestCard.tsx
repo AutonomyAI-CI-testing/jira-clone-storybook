@@ -37,32 +37,36 @@ export const TestCard = (): JSX.Element => (
     </div>
 
     {/* Field: Personal Access Token */}
-    <label className="mt-6 flex items-center gap-2">
-      <span className="text-base">Personal Access Token</span>
-      <MdInfoOutline
-        size={16}
-        className="shrink-0 text-icon-subtle"
-        aria-hidden="true"
+    <label className="mt-6 flex flex-col">
+      <span className="flex items-center gap-2">
+        <span className="text-base">Personal Access Token</span>
+        <MdInfoOutline
+          size={16}
+          className="shrink-0 text-icon-subtle"
+          aria-hidden="true"
+        />
+      </span>
+      <input
+        className="mt-3 w-full rounded border border-border-input bg-background-input px-3 py-3 text-base placeholder:text-font-subtlest"
+        placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
       />
     </label>
-    <input
-      className="mt-3 w-full rounded border border-border-input bg-background-input px-3 py-3 text-base placeholder:text-font-subtlest"
-      placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
-    />
 
     {/* Field: Design URL */}
-    <label className="mt-5 flex items-center gap-2">
-      <span className="text-base">Design URL</span>
-      <MdInfoOutline
-        size={16}
-        className="shrink-0 text-icon-subtle"
-        aria-hidden="true"
+    <label className="mt-5 flex flex-col">
+      <span className="flex items-center gap-2">
+        <span className="text-base">Design URL</span>
+        <MdInfoOutline
+          size={16}
+          className="shrink-0 text-icon-subtle"
+          aria-hidden="true"
+        />
+      </span>
+      <input
+        className="mt-3 w-full rounded border border-border-input bg-background-input px-3 py-3 text-base placeholder:text-font-subtlest"
+        placeholder="https://www.figma.com/file/"
       />
     </label>
-    <input
-      className="mt-3 w-full rounded border border-border-input bg-background-input px-3 py-3 text-base placeholder:text-font-subtlest"
-      placeholder="https://www.figma.com/file/"
-    />
 
     {/* Action row */}
     <div className="mt-7 flex gap-8">
