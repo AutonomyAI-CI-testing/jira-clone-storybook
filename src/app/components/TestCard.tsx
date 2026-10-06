@@ -1,33 +1,47 @@
 const GearIcon = (): JSX.Element => (
   <svg
-    viewBox="0 0 24 24"
-    className="h-[16px] w-[16px] shrink-0"
-    fill="currentColor"
+    width="15"
+    height="15"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.2"
     aria-hidden="true"
   >
-    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
+    <circle cx="8" cy="8" r="2.4" />
+    <path d="M8 1.4v1.8M8 12.8v1.8M14.6 8h-1.8M3.2 8H1.4M12.7 3.3l-1.3 1.3M4.6 11.4l-1.3 1.3M12.7 12.7l-1.3-1.3M4.6 4.6L3.3 3.3" />
   </svg>
 );
 
-const ChevronUpIcon = ({ className }: { className?: string }): JSX.Element => (
+const ChevronUpIcon = (): JSX.Element => (
   <svg
-    viewBox="0 0 24 24"
-    className={`h-[16px] w-[16px] shrink-0 ${className ?? ""}`}
-    fill="currentColor"
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     aria-hidden="true"
   >
-    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
+    <path d="M2.5 7.5 6 4l3.5 3.5" />
   </svg>
 );
 
-const InfoCircleIcon = (): JSX.Element => (
+const InfoIcon = (): JSX.Element => (
   <svg
-    viewBox="0 0 24 24"
-    className="h-[16px] w-[16px] shrink-0"
-    fill="currentColor"
+    width="13"
+    height="13"
+    viewBox="0 0 14 14"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.1"
     aria-hidden="true"
   >
-    <path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+    <circle cx="7" cy="7" r="6" />
+    <path d="M7 6.3v3.2" strokeLinecap="round" />
+    <circle cx="7" cy="4.3" r="0.7" fill="currentColor" stroke="none" />
   </svg>
 );
 
@@ -37,84 +51,69 @@ export const TestCard = (): JSX.Element => {
       id="testElem"
       className="flex min-h-[508px] w-[254px] flex-col bg-[#000000] p-5 font-[Inter] text-[#b5b5b5]"
     >
-      {/* Header */}
       <div className="flex items-center justify-between">
         <span className="text-[13.5px] font-semibold text-[#b5b5b5]">
           UI magician Agent
         </span>
-        <GearIcon />
+        <span className="text-[#b5b5b5]">
+          <GearIcon />
+        </span>
       </div>
 
-      {/* Collapsed summary row */}
-      <div className="mt-3 flex items-center gap-2">
-        <ChevronUpIcon className="text-[#8b9291]" />
-        <span className="truncate text-[11.5px] font-semibold text-[#8b9291]">
+      <div className="mt-3 flex items-center gap-2 text-[#8b9291]">
+        <ChevronUpIcon />
+        <span className="truncate text-[11.5px]">
           From entire frame to a singl...
         </span>
       </div>
 
-      <div className="mt-[60px]" />
-
-      {/* Add New Design */}
-      <div className="flex items-center gap-2">
-        <ChevronUpIcon className="text-[#b2b2b1]" />
-        <span className="text-[13.5px] font-semibold text-[#b2b2b1]">
-          Add New Design
-        </span>
+      <div className="mt-[90px] flex items-center gap-2 text-[#b2b2b1]">
+        <ChevronUpIcon />
+        <span className="text-[13.5px] font-semibold">Add New Design</span>
       </div>
 
-      {/* Personal Access Token */}
       <div className="mt-6">
-        <div className="flex items-center gap-2">
-          <span className="text-[11.5px] font-semibold text-[#a4a4a3]">
-            Personal Access Token
-          </span>
-          <InfoCircleIcon />
+        <div className="flex items-center gap-2 text-[#a4a4a3]">
+          <span className="text-[11.5px]">Personal Access Token</span>
+          <InfoIcon />
         </div>
         <input
           type="text"
           placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
-          className="mt-2 h-[36px] w-full rounded-[2px] border border-[#a5adad] bg-[#272822] px-2 text-[11.5px] text-[#b5b5b5] placeholder:text-[#737470]"
+          className="mt-2 h-9 w-full rounded-[2px] border border-[#a5adad] bg-[#272822] px-2 font-mono text-[11.5px] text-[#b5b5b5] placeholder-[#737470] outline-none"
         />
       </div>
 
-      {/* Design URL */}
       <div className="mt-5">
-        <div className="flex items-center gap-2">
-          <span className="text-[11.5px] font-semibold text-[#a3a3a2]">
-            Design URL
-          </span>
-          <InfoCircleIcon />
+        <div className="flex items-center gap-2 text-[#a3a3a2]">
+          <span className="text-[11.5px]">Design URL</span>
+          <InfoIcon />
         </div>
         <input
           type="text"
           placeholder="https://www.figma.com/file/"
-          className="mt-2 h-[36px] w-full rounded-[2px] border-2 border-[#929291] bg-[#272822] px-2 text-[11.5px] text-[#b5b5b5] placeholder:text-[#71726e]"
+          className="mt-2 h-9 w-full rounded-[2px] border-2 border-[#929291] bg-[#272822] px-2 font-mono text-[11.5px] text-[#b5b5b5] placeholder-[#71726e] outline-none"
         />
       </div>
 
-      {/* Actions */}
-      <div className="mt-7 flex gap-[17px]">
+      <div className="mt-6 flex gap-[17px]">
         <button
           type="button"
-          className="h-[37px] w-[85px] rounded-[4px] bg-[#843a17] text-[13.5px] font-semibold text-[#c8c8c8]"
+          className="h-[37px] w-[85px] rounded-[4px] bg-[#843a17] text-[13.5px] text-[#c9c4c0]"
         >
           Awesome
         </button>
         <button
           type="button"
-          className="h-[37px] w-[85px] rounded-[4px] bg-[#843a17] text-[13.5px] font-semibold text-[#c8c8c8]"
+          className="h-[37px] w-[85px] rounded-[4px] bg-[#843a17] text-[13.5px] text-[#c9c4c0]"
         >
           Prepare
         </button>
       </div>
 
-      <div className="mt-[70px]" />
-
-      {/* Recent Breakdowns */}
-      <span className="text-[13.5px] font-semibold text-[#b0b0b0]">
+      <div className="mt-[70px] text-[13.5px] font-semibold text-[#b0b0b0]">
         Recent Breakdowns
-      </span>
+      </div>
     </div>
   );
 };
