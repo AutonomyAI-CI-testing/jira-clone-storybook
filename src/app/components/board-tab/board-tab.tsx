@@ -1,3 +1,5 @@
+import cx from "classix";
+
 type Props = { label: string; active: boolean; onSelect: () => void };
 
 export const BoardTab = ({ label, active, onSelect }: Props) => (
@@ -5,7 +7,10 @@ export const BoardTab = ({ label, active, onSelect }: Props) => (
     role="tab"
     aria-selected={active}
     onClick={onSelect}
-    className={`cursor-pointer px-2 py-1 text-sm ${active ? "font-bold text-font-brand" : "text-font-subtle"}`}
+    className={cx(
+      "cursor-pointer px-2 py-1 text-sm",
+      active ? "font-bold text-font-brand" : "text-font-subtle"
+    )}
   >
     {label}
   </span>
