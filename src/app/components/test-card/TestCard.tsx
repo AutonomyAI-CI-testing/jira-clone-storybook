@@ -1,65 +1,79 @@
-import { MdExpandLess, MdInfoOutline, MdSettings } from "react-icons/md";
+import { MdInfoOutline, MdKeyboardArrowUp, MdSettings } from "react-icons/md";
 
-const ACTION_LABELS = ["Awesome", "Prepare"];
-
-export const TestCard = (): JSX.Element => {
-  return (
-    <div
-      id="testElem"
-      className="min-h-[508px] w-[254px] bg-black px-5 pt-5 font-[Inter,sans-serif] text-[13.5px] font-semibold"
-    >
-      <div className="flex items-start justify-between">
-        <h1 className="text-[#b5b5b5]">UI magician Agent</h1>
-        <MdSettings size={16} className="text-[#b5b5b5]" aria-hidden />
+/**
+ * Smoke-test card reproduced from a Figma frame.
+ *
+ * Self-contained by design: no props, no state, nothing interactive. The
+ * colours below are arbitrary values read off the frame image rather than
+ * theme tokens, because the frame is a fixed dark UI that is not part of the
+ * app's themable token set — every token in `app.css` resolves through a theme
+ * class, so a token here would change with the theme and stop matching the
+ * frame. Spacing and type sizes are approximations.
+ */
+export const TestCard = (): JSX.Element => (
+  <div
+    id="testElem"
+    className="flex w-full max-w-[508px] flex-col gap-12 bg-[#1c1c1c] p-6 font-primary text-[#f5f5f5]"
+  >
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center justify-between">
+        <h1 className="font-primary-bold text-lg">UI magician Agent</h1>
+        <MdSettings aria-hidden className="h-5 w-5 shrink-0 text-[#e0e0e0]" />
       </div>
-
-      <div className="mt-4 flex items-center gap-3">
-        <MdExpandLess size={14} className="text-[#8b9291]" aria-hidden />
-        <span className="truncate text-[#8b9291]">
-          From entire frame to a singl...
-        </span>
+      <div className="flex items-center gap-2 text-sm">
+        <MdKeyboardArrowUp aria-hidden className="h-4 w-4 shrink-0" />
+        <span className="truncate">From entire frame to a singl...</span>
       </div>
-
-      <div className="mt-[70px] flex items-center gap-3">
-        <MdExpandLess size={16} className="text-[#b2b2b1]" aria-hidden />
-        <h2 className="text-[#b2b2b1]">Add New Design</h2>
-      </div>
-
-      <div className="mt-6 flex items-center gap-2">
-        <span className="text-[11.5px] text-[#a4a4a3]">
-          Personal Access Token
-        </span>
-        <MdInfoOutline size={15} className="text-[#a4a4a3]" aria-hidden />
-      </div>
-      <input
-        type="text"
-        placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
-        className="mt-2 h-9 w-[211px] border border-[#a5adad] bg-[#272822] px-3 text-[11.5px] text-[#737470] outline-none placeholder:text-[#737470]"
-      />
-
-      <div className="mt-3 flex items-center gap-2">
-        <span className="text-[11.5px] text-[#a3a3a2]">Design URL</span>
-        <MdInfoOutline size={15} className="text-[#a3a3a2]" aria-hidden />
-      </div>
-      <input
-        type="text"
-        placeholder="https://www.figma.com/file/"
-        className="mt-2 h-[37px] w-[211px] border-2 border-[#929291] bg-[#272822] px-3 text-[11.5px] text-[#71726e] outline-none placeholder:text-[10.5px] placeholder:text-[#71726e]"
-      />
-
-      <div className="mt-6 flex gap-[18px] pl-[22px]">
-        {ACTION_LABELS.map((label) => (
-          <button
-            key={label}
-            type="button"
-            className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] text-[#8c8078]"
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      <h2 className="mt-8 text-[#b0b0b0]">Recent Breakdowns</h2>
     </div>
-  );
-};
+
+    <div className="flex flex-col gap-4">
+      <h2 className="flex items-center gap-2 font-primary-bold text-base">
+        <MdKeyboardArrowUp aria-hidden className="h-4 w-4 shrink-0" />
+        Add New Design
+      </h2>
+      <Field
+        id="testElem-token"
+        label="Personal Access Token"
+        placeholder="figd_xxxxxxxxxxxxxxxxxxxxxxx"
+      />
+      <Field
+        id="testElem-url"
+        label="Design URL"
+        placeholder="https://www.figma.com/file/"
+      />
+      <div className="flex gap-4">
+        <button type="button" className={BUTTON_CLASSES}>
+          Awesome
+        </button>
+        <button type="button" className={BUTTON_CLASSES}>
+          Prepare
+        </button>
+      </div>
+    </div>
+
+    <h2 className="font-primary-bold text-base">Recent Breakdowns</h2>
+  </div>
+);
+
+const INPUT_CLASSES =
+  "w-full rounded border border-[#5a5a5a] bg-[#242424] px-3 py-2.5 text-sm text-[#f5f5f5] outline-none placeholder:text-[#8a8a8a]";
+
+const BUTTON_CLASSES = "rounded bg-[#a33f0f] px-6 py-3 text-sm text-[#c98a5f]";
+
+const Field = ({ id, label, placeholder }: FieldProps): JSX.Element => (
+  <div className="flex flex-col gap-2">
+    <div className="flex items-center gap-2">
+      <label htmlFor={id} className="font-primary-bold text-sm">
+        {label}
+      </label>
+      <MdInfoOutline aria-hidden className="h-4 w-4 shrink-0 text-[#e0e0e0]" />
+    </div>
+    <input id={id} readOnly placeholder={placeholder} className={INPUT_CLASSES} />
+  </div>
+);
+
+interface FieldProps {
+  id: string;
+  label: string;
+  placeholder: string;
+}
