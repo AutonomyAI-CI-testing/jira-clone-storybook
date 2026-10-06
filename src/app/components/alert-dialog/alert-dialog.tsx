@@ -29,7 +29,9 @@ export const Cancel = ({ children, ...rest }: ButtonProps): JSX.Element => (
   </AlertDialog.Cancel>
 );
 export const Action = ({ children, ...rest }: ButtonProps): JSX.Element => (
-  <Button {...rest} color="danger">
-    {children}
-  </Button>
+  <AlertDialog.Action asChild>
+    <Button {...rest} color="danger">
+      {children}
+    </Button>
+  </AlertDialog.Action>
 );
