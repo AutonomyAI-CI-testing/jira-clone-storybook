@@ -1,1 +1,1 @@
-export const label = "Board";
+export const label = "Board" as const;
