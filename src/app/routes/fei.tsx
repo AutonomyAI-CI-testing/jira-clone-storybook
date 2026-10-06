@@ -1,11 +1,7 @@
-// Standalone page: a plain white canvas with "Fei" centered in large red type.
-// Deliberately independent of the app shell and the theme system — the request
-// calls for a fixed white background and a fixed red headline in every theme.
-//
-// The colour is the design system's Danger Red (Red600, #e34935), written as a
-// literal on purpose: the semantic class `text-font-danger` re-maps per theme
-// (Red800 in the light themes, Red300 in the dark ones), and Red300 on this
-// page's fixed white canvas would read as pale salmon, not red.
+// Standalone /fei page: a fixed white canvas with a large red "Fei" centered.
+// Colors are deliberately literal rather than theme tokens — the page has to
+// stay white with red text in every theme, and the dark themes' red (#e34935
+// re-mapped to Red300) would read as pale salmon on a white background.
 export default function FeiRoute() {
   return (
     <div className="flex h-full w-full items-center justify-center bg-white">
