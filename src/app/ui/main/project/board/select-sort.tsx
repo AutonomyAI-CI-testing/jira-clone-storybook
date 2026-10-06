@@ -11,7 +11,7 @@ export const SelectSort = (): JSX.Element => {
 
   const SortIcon = ({ sort }: { sort: Sort }): JSX.Element =>
     // prettier-ignore
-    sort === "title" ? <FaSortAlphaDown size={16} />
+    sort === "name" ? <FaSortAlphaDown size={16} />
     : <BsClockHistory size={16} />;
 
   const handleSubmit = (value: string): void => {

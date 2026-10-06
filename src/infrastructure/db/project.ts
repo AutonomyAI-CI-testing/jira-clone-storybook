@@ -25,7 +25,7 @@ export const getProject = async (
     },
   };
 
-  // Sorting by title ignores case, which the database collation cannot do, so
+  // Sorting by name ignores case, which the database collation cannot do, so
   // the query only breaks ties there and the alphabetical order is applied to
   // the fetched issues (see sortIssuesAlphabetically).
   // prettier-ignore
@@ -101,15 +101,13 @@ interface GetProjectOptions {
   sortIssuesBy: Sort;
 }
 
-// Sorting by title ignores case, which the database collation cannot do, so it is
+// Sorting by name ignores case, which the database collation cannot do, so it is
 // applied to the fetched issues instead of the query. The sort is stable, so
-// issues sharing a title keep the order the query returned them in.
+// issues sharing a name keep the order the query returned them in.
 const sortIssuesAlphabetically = (issues: Issue[], sortIssuesBy?: Sort): Issue[] =>
-  sortIssuesBy !== "title"
+  sortIssuesBy !== "name"
     ? issues
-    : [...issues].sort((a, b) =>
-        a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-      );
+    : [...issues].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
 export const getProjectSummary = async (projectId: ProjectId): Promise<ProjectSummary | null> => {
   const projectSummaryDb = await db.project.findUnique({
