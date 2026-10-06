@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 const GearIcon = (): JSX.Element => (
   <svg
     width="16"
@@ -49,6 +51,15 @@ const InfoCircleIcon = (): JSX.Element => (
     <circle cx="12" cy="12" r="10" />
     <path d="M12 16v-4M12 8h.01" />
   </svg>
+);
+
+const ActionButton = ({ children }: ActionButtonProps): JSX.Element => (
+  <button
+    type="button"
+    className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] font-semibold text-[#c3bcb6]"
+  >
+    {children}
+  </button>
 );
 
 export const TestCard = (): JSX.Element => {
@@ -115,18 +126,8 @@ export const TestCard = (): JSX.Element => {
       </div>
 
       <div className="mt-6 flex justify-end gap-[17px]">
-        <button
-          type="button"
-          className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] font-semibold text-[#c3bcb6]"
-        >
-          Awesome
-        </button>
-        <button
-          type="button"
-          className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] font-semibold text-[#c3bcb6]"
-        >
-          Prepare
-        </button>
+        <ActionButton>Awesome</ActionButton>
+        <ActionButton>Prepare</ActionButton>
       </div>
 
       <div className="mt-14">
@@ -137,3 +138,7 @@ export const TestCard = (): JSX.Element => {
     </div>
   );
 };
+
+interface ActionButtonProps {
+  children: ReactNode;
+}
