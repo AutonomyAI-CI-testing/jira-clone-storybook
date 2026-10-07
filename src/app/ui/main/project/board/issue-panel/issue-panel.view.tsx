@@ -21,6 +21,7 @@ import { Title } from "@app/components/title";
 import { Description } from "@app/components/description";
 import { Kbd } from "@app/components/kbd-placeholder";
 import { PanelHeaderIssue } from "./panel-header-issue";
+import { CopyLinkButton } from "./copy-link-button";
 import { CreateComment } from "./comment/create-comment";
 import { ViewComment } from "./comment/view-comment";
 import { SelectStatus } from "./select-status";
@@ -141,14 +142,17 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
               <Form method="post" onSubmit={handleFormSumbit} ref={formRef}>
                 <div className="grid grid-cols-5 gap-16">
                   <section className="col-span-3">
-                    <div className="my-5 -ml-3 mb-6">
-                      <Dialog.Title asChild>
-                        <Title
-                          initTitle={issue?.name || ""}
-                          readOnly={userIsNotReporter}
-                          error={actionData?.errors?.name}
-                        />
-                      </Dialog.Title>
+                    <div className="my-5 -ml-3 mb-6 flex items-start gap-2">
+                      <div className="min-w-0 flex-1">
+                        <Dialog.Title asChild>
+                          <Title
+                            initTitle={issue?.name || ""}
+                            readOnly={userIsNotReporter}
+                            error={actionData?.errors?.name}
+                          />
+                        </Dialog.Title>
+                      </div>
+                      {issue && <CopyLinkButton />}
                     </div>
                     <p className="font-primary-black text-font">Description</p>
                     <div className="-ml-3 mb-6">
