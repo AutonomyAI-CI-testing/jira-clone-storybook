@@ -5,12 +5,18 @@ import { Button } from "@app/components/button";
 export const CopyLinkButton = (): JSX.Element => {
   const handleCopyClick = (): void => {
     if (!("clipboard" in navigator)) {
-      toast.error("Could not copy the link");
+      toast.error("Your browser doesn't allow copying here");
       return;
     }
 
+    // The board's sort/filter live in the query string, so drop it: the path
+    // alone is the issue's own URL.
+    const issueUrl = new URL(window.location.href);
+    issueUrl.search = "";
+    issueUrl.hash = "";
+
     navigator.clipboard
-      .writeText(window.location.href)
+      .writeText(issueUrl.href)
       .then(() => toast.success("Link copied"))
       .catch(() => toast.error("Could not copy the link"));
   };
