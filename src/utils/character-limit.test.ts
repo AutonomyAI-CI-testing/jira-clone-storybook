@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { COMMENT_MAX_LENGTH, DESCRIPTION_MAX_LENGTH, remainingCharacters } from "./character-limit";
 
 describe("COMMENT_MAX_LENGTH", () => {
-  it("limits a comment to 1000 characters", () => {
-    expect(COMMENT_MAX_LENGTH).toBe(1000);
+  it("limits a comment to 2000 characters", () => {
+    expect(COMMENT_MAX_LENGTH).toBe(2000);
   });
 });
 
@@ -15,7 +15,7 @@ describe("DESCRIPTION_MAX_LENGTH", () => {
 
 describe("remainingCharacters", () => {
   it("returns the whole limit for an empty text", () => {
-    expect(remainingCharacters("", COMMENT_MAX_LENGTH)).toBe(1000);
+    expect(remainingCharacters("", COMMENT_MAX_LENGTH)).toBe(2000);
     expect(remainingCharacters("", DESCRIPTION_MAX_LENGTH)).toBe(5000);
   });
 

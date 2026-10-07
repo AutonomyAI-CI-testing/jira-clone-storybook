@@ -1,4 +1,4 @@
-export const COMMENT_MAX_LENGTH = 1000;
+export const COMMENT_MAX_LENGTH = 2000;
 export const DESCRIPTION_MAX_LENGTH = 5000;
 
 // How many characters are still available in a text field. Goes negative once
