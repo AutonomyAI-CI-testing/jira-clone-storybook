@@ -28,6 +28,7 @@ export const CopyLinkButton = (): JSX.Element => {
       variant="text"
       onClick={handleCopyClick}
       className="mt-2 shrink-0 text-sm"
+      aria-label="Copy link to this issue"
     >
       <MdLink size={18} />
       Copy link
