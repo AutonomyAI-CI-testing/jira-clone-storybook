@@ -2,7 +2,13 @@ import { useState } from "react";
 import cx from "classix";
 import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { Button } from "@app/components/button";
+import { CharacterCounter } from "@app/components/character-counter";
+import { Tooltip } from "@app/components/tooltip";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
+import {
+  COMMENT_MAX_LENGTH,
+  remainingCharacters,
+} from "@utils/character-limit";
 
 export const EditBox = ({
   defaultMessage,
@@ -17,6 +23,9 @@ export const EditBox = ({
   const messageIsValid = (): boolean => {
     return message.length > 0 && !textAreOnlySpaces(message);
   };
+
+  const isOverCharacterLimit =
+    remainingCharacters(message, COMMENT_MAX_LENGTH) < 0;
 
   const resetValues = () => {
     setMessage(defaultMessage);
@@ -65,14 +74,20 @@ export const EditBox = ({
           isEditing ? "visible" : "hidden"
         )}
       >
-        <Button
-          type="button"
-          className="px-4 py-2.5"
-          onClick={onSave}
-          aria-label="Save comment"
+        <Tooltip
+          title={`Comment is over the ${COMMENT_MAX_LENGTH} character limit`}
+          show={isOverCharacterLimit}
         >
-          Save
-        </Button>
+          <Button
+            type="button"
+            className="px-4 py-2.5"
+            onClick={onSave}
+            disabled={isOverCharacterLimit}
+            aria-label="Save comment"
+          >
+            Save
+          </Button>
+        </Tooltip>
         <Button
           color="neutral"
           variant="text"
@@ -82,6 +97,11 @@ export const EditBox = ({
         >
           Cancel
         </Button>
+        <CharacterCounter
+          text={message}
+          max={COMMENT_MAX_LENGTH}
+          className="ml-auto self-center"
+        />
       </div>
     </div>
   );

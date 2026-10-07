@@ -4,11 +4,13 @@ import { TextareaAutosize } from "@app/components/textarea-autosize";
 export const Description = ({
   initDescription = "",
   readOnly,
+  onDescriptionChange,
 }: DescriptionProps): JSX.Element => {
   const [description, setDescription] = useState<string>(initDescription);
 
   const updateDescription = (newDescription: string) => {
     setDescription(newDescription);
+    if (onDescriptionChange) onDescriptionChange(newDescription);
   };
 
   return (
@@ -27,4 +29,5 @@ export const Description = ({
 interface DescriptionProps {
   initDescription?: string;
   readOnly?: boolean;
+  onDescriptionChange?: (description: string) => void;
 }
