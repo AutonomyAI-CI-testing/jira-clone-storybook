@@ -18,9 +18,10 @@ export const BoardView = ({ project }: Props): JSX.Element => {
   return (
     <ProjectContextProvider project={project}>
       <div className="box-border flex h-full flex-col">
-        <section className="flex flex-wrap items-center gap-y-2">
+        <section className="flex items-center gap-x-4">
           <Search />
-          <div className="mx-4 my-0 inline">
+          {/* Hidden on narrow screens so the sort control stays on one row */}
+          <div className="hidden min-[900px]:block">
             <UserAvatarList users={project.users} />
           </div>
           <div className="inline">
