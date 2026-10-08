@@ -7,7 +7,9 @@ export const meta: V2_MetaFunction = () => {
 export default function FeiRoute() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-white">
-      <span className="font-primary-black text-9xl text-black">Fei</span>
+      <span className="font-primary-black text-9xl text-[color:var(--Red600)]">
+        Fei
+      </span>
     </div>
   );
 }
