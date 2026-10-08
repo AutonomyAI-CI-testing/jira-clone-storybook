@@ -1,86 +1,94 @@
 import { FiChevronUp, FiInfo, FiSettings } from "react-icons/fi";
 
 /**
- * Smoke-test component — a static reproduction of the attached Figma panel.
- * Self-contained: no props, no state, no behaviour.
+ * Smoke-test component: a self-contained reproduction of the attached Figma
+ * panel. No props, no state, no behaviour — inputs and buttons are
+ * presentational only. Colors are approximated (this repo's Tailwind config
+ * replaces the default palette, so arbitrary values are used deliberately).
  */
-export const TestCard = () => {
+export default function TestCard(): JSX.Element {
   return (
     <div
       id="testElem"
-      className="flex w-full max-w-[508px] flex-col bg-[#1a1a1a] px-10 py-8 font-primary text-[#c9c9c9]"
+      className="flex w-full max-w-[508px] flex-col bg-[#1b1b1b] px-6 py-8 font-primary text-[#c9c9c9]"
     >
-      {/* Header */}
-      <div className="flex items-start justify-between">
-        <span className="text-xl font-bold text-[#e8e8e8]">
+      <div className="flex items-center justify-between">
+        <span className="font-primary-bold text-lg text-[#e6e6e6]">
           UI magician Agent
         </span>
-        <FiSettings className="mt-0.5 shrink-0 text-[26px] text-[#b4b4b4]" />
+        <FiSettings aria-hidden className="h-6 w-6 text-[#e6e6e6]" />
       </div>
 
-      {/* Collapsed frame row */}
-      <div className="mt-8 flex items-center gap-2">
-        <FiChevronUp className="shrink-0 text-[20px] text-[#a8a8a8]" />
-        <span className="truncate text-[17px] text-[#a8a8a8]">
+      <div className="mt-8 flex items-center gap-3">
+        <FiChevronUp aria-hidden className="h-5 w-5 shrink-0" />
+        <span className="truncate text-base">
           From entire frame to a singl...
         </span>
       </div>
 
-      {/* Section heading */}
-      <div className="mt-32 flex items-center gap-2">
-        <FiChevronUp className="shrink-0 text-[22px] text-[#d4d4d4]" />
-        <span className="text-2xl font-bold text-[#e8e8e8]">
+      <div className="h-20" />
+
+      <div className="flex items-center gap-3">
+        <FiChevronUp aria-hidden className="h-6 w-6 shrink-0" />
+        <h2 className="font-primary-black text-2xl text-[#e6e6e6]">
           Add New Design
-        </span>
+        </h2>
       </div>
 
-      <Field label="Personal Access Token" placeholder="figd_xxxxxxxxxxxxxxxxx" />
-      <Field label="Design URL" placeholder="https://www.figma.com/file/" />
+      <div className="mt-8">
+        <div className="flex items-center gap-2">
+          <label htmlFor="personal-access-token" className="text-base">
+            Personal Access Token
+          </label>
+          <FiInfo aria-hidden className="h-4 w-4" />
+        </div>
+        <input
+          id="personal-access-token"
+          type="text"
+          readOnly
+          placeholder="figd_xxxxxxxxxxxxxxxxx"
+          className="mt-2 w-full rounded border border-[#4d4d4d] bg-[#262626] px-3 py-3 text-base text-[#8c8c8c] outline-none placeholder:text-[#8c8c8c]"
+        />
+      </div>
 
-      {/* Actions */}
-      <div className="mt-8 flex gap-8">
+      <div className="mt-4">
+        <div className="flex items-center gap-2">
+          <label htmlFor="design-url" className="text-base">
+            Design URL
+          </label>
+          <FiInfo aria-hidden className="h-4 w-4" />
+        </div>
+        <input
+          id="design-url"
+          type="text"
+          readOnly
+          placeholder="https://www.figma.com/file/"
+          className="mt-2 w-full rounded border border-[#4d4d4d] bg-[#262626] px-3 py-3 text-base text-[#8c8c8c] outline-none placeholder:text-[#8c8c8c]"
+        />
+      </div>
+
+      <div className="mt-6 flex gap-4">
         <button
           type="button"
-          className="flex-1 rounded-[10px] bg-[#9c3d14] py-5 text-[20px] text-[#b9aea6]"
+          className="flex-1 rounded bg-[#a2451e] px-4 py-3 font-primary-bold text-base text-[#e6ded9]"
         >
           Awesome
         </button>
         <button
           type="button"
-          className="flex-1 rounded-[10px] bg-[#9c3d14] py-5 text-[20px] text-[#b9aea6]"
+          className="flex-1 rounded bg-[#a2451e] px-4 py-3 font-primary-bold text-base text-[#e6ded9]"
         >
           Prepare
         </button>
       </div>
 
-      {/* Section heading */}
-      <div className="mt-20 text-2xl font-bold text-[#dcdcdc]">
+      <div className="h-16" />
+
+      <h2 className="font-primary-black text-2xl text-[#e6e6e6]">
         Recent Breakdowns
-      </div>
+      </h2>
     </div>
   );
-};
-
-const Field = ({ label, placeholder }: FieldProps) => {
-  return (
-    <label className="mt-8 block">
-      <span className="flex items-center gap-3">
-        <span className="text-[17px] text-[#d0d0d0]">{label}</span>
-        <FiInfo className="text-[20px] text-[#c0c0c0]" />
-      </span>
-      <input
-        type="text"
-        aria-label={label}
-        placeholder={placeholder}
-        className="mt-3 w-full rounded-sm border border-[#8f8f8f] bg-[#2b2b2b] px-5 py-5 text-[17px] text-[#9a9a9a] outline-none placeholder:text-[#8f8f8f]"
-      />
-    </label>
-  );
-};
-
-interface FieldProps {
-  label: string;
-  placeholder: string;
 }
 
-export default TestCard;
+export { TestCard };
