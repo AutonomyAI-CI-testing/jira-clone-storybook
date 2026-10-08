@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classix";
 import { BiSearch } from "react-icons/bi";
 import { IoCloseOutline } from "react-icons/io5";
-import { useProjectStore } from "@app/ui/main/project";
+import { useProjectStore } from "@app/ui/main/project/project.store";
 
 export const Search = (): JSX.Element => {
   const { search, setSearch } = useProjectStore();
@@ -44,7 +44,7 @@ export const Search = (): JSX.Element => {
 };
 
 const iconBaseClass = cx(
-  "flex border-none justify-center items-center font-icon z-10"
+  "font-icon z-10 flex items-center justify-center border-none"
 );
 
 const SearchIcon = (): JSX.Element => (

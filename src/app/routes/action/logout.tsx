@@ -1,6 +1,6 @@
-import type { ActionFunction } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
-import { getUserSession } from "@app/session-storage";
+import type { ActionFunction } from "react-router";
+import { redirect } from "react-router";
+import { getUserSession } from "@app/session-storage/user-storage.server";
 
 export const loader = () => redirect("/", { status: 404 });
 

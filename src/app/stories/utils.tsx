@@ -1,12 +1,12 @@
-import type { PartialStoryFn } from "@storybook/csf";
-import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
-import { userMock1 } from "@domain/user";
+import type { ReactElement } from "react";
+import { createRoutesStub } from "react-router";
+import { userMock1 } from "@domain/user/user.mock";
 import { UserContextProvider } from "@app/store/user.store";
 import { ThemeProvider, Theme, Preference } from "@app/store/theme.store";
 
-type Story = PartialStoryFn<any, Record<string, never>>;
+type Story = (props: Record<string, never>) => ReactElement;
 
-export const withMainContext = (Story: Story): JSX.Element => {
+export const withMainContext = (Story: Story): ReactElement => {
   return (
     <UserContextProvider user={userMock1}>
       <ThemeProvider
@@ -14,18 +14,18 @@ export const withMainContext = (Story: Story): JSX.Element => {
         specifiedPreference={Preference.SELECTED}
       >
         <div className="w-full">
-          <Story />
+          <Story {...({} as Record<string, never>)} />
         </div>
       </ThemeProvider>
     </UserContextProvider>
   );
 };
 
-export const withRemixStub = (children: JSX.Element) => {
-  const RemixStub = createRemixStub([
+export const withRemixStub = (children: ReactElement) => {
+  const RemixStub = createRoutesStub([
     {
       path: "/",
-      element: children,
+      Component: () => children,
       action: async () => {
         return {
           status: 200,

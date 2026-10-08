@@ -3,23 +3,24 @@ import {
   Form,
   useActionData,
   useSearchParams,
-  useTransition,
+  useNavigation,
   useFetcher,
   useLocation,
   useNavigate,
-} from "@remix-run/react";
-import * as Dialog from "@app/components/dialog";
+} from "react-router";
+import * as Dialog from "@app/components/dialog/dialog";
 import { toast } from "react-toastify";
-import { CategoryType } from "@domain/category";
-import { Issue, defaultIssuesIds } from "@domain/issue";
-import { Comment, CommentId } from "@domain/comment";
+import { CategoryType } from "@domain/category/category";
+import { Issue } from "@domain/issue/issue";
+import { defaultIssuesIds } from "@domain/issue/issue.mock";
+import { Comment, CommentId } from "@domain/comment/comment";
 import { useUserStore } from "@app/store/user.store";
 import { ActionData as IssueActionData } from "@app/routes/__main/projects.$projectId/board/issue/$issueId";
-import { UserAvatar } from "@app/components/user-avatar";
-import { Button } from "@app/components/button";
-import { Title } from "@app/components/title";
-import { Description } from "@app/components/description";
-import { Kbd } from "@app/components/kbd-placeholder";
+import { UserAvatar } from "@app/components/user-avatar/user-avatar";
+import { Button } from "@app/components/button/button";
+import { Title } from "@app/components/title/title";
+import { Description } from "@app/components/description/description";
+import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
 import { PanelHeaderIssue } from "./panel-header-issue";
 import { CreateComment } from "./comment/create-comment";
 import { ViewComment } from "./comment/view-comment";
@@ -41,7 +42,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const actionData = useActionData() as IssueActionData;
   const fetcher = useFetcher();
   const params = useSearchParams();
-  const transition = useTransition();
+  const transition = useNavigation();
   const location = useLocation();
   const navigate = useNavigate();
   const initStatus = (params[0].get("category") as CategoryType) || "TODO";
@@ -113,13 +114,23 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
     }
   }, [isOpen, navigate, location.pathname]);
 
+  const wasSubmitting = useRef(false);
   useEffect(() => {
-    const formAction = fetcher.formData?.get("_action");
-
-    if (fetcher.type === "actionRedirect" && formAction === "create") {
-      toast.success("Issue created successfully");
+    const submitting = fetcher.state !== "idle";
+    if (submitting) {
+      wasSubmitting.current = true;
+      return;
     }
-  }, [fetcher.type, fetcher.formData]);
+    if (wasSubmitting.current && fetcher.data) {
+      const formAction = (fetcher.formData as FormData | undefined)?.get(
+        "_action"
+      );
+      if (formAction === "create") {
+        toast.success("Issue created successfully");
+      }
+      wasSubmitting.current = false;
+    }
+  }, [fetcher.state, fetcher.data, fetcher.formData]);
 
   return (
     <>

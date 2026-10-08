@@ -1,17 +1,17 @@
 import type {
   LoaderFunction,
   ActionFunction,
-  V2_MetaFunction,
-} from "@remix-run/node";
-import { json, redirect } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { User } from "@domain/user";
+  MetaFunction,
+} from "react-router";
+import { data as json, redirect } from "react-router";
+import { useLoaderData } from "react-router";
+import { User } from "@domain/user/user";
 import { getUsers } from "@infrastructure/db/user";
-import { getUserSession } from "@app/session-storage";
-import { LoginView } from "@app/ui/login";
+import { getUserSession } from "@app/session-storage/user-storage.server";
+import { LoginView } from "@app/ui/login/login.view";
 import { formatTags, formatProperties } from "@utils/meta";
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   const title = "Jira clone - Login";
   const description =
     "Select your user profile and login to see your projects.";

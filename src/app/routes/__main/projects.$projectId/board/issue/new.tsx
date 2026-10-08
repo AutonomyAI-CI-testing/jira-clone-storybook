@@ -1,24 +1,26 @@
 import type {
   ActionFunction,
   LoaderFunction,
-  V2_MetaFunction,
-} from "@remix-run/node";
-import { json, redirect } from "@remix-run/node";
+  MetaFunction,
+} from "react-router";
+import { data as json, redirect } from "react-router";
 import invariant from "tiny-invariant";
-import { UserId } from "@domain/user";
-import { ProjectId } from "@domain/project";
-import { CategoryId } from "@domain/category";
-import { Comment } from "@domain/comment";
-import { PriorityId } from "@domain/priority";
-import { isValidSort } from "@domain/filter";
+import { UserId } from "@domain/user/user";
+import { ProjectId } from "@domain/project/project";
+import { CategoryId } from "@domain/category/category";
+import { Comment } from "@domain/comment/comment";
+import { PriorityId } from "@domain/priority/priority";
+import { isValidSort } from "@domain/filter/filter";
 import { createIssue, CreateIssueInputData } from "@infrastructure/db/issue";
-import { IssuePanel } from "@app/ui/main/project/board/issue-panel";
-import { emitter, EVENTS } from "@app/events";
+import { IssuePanel } from "@app/ui/main/project/board/issue-panel/issue-panel.view";
+import { EVENTS } from "@app/events/events";
+import { emitter } from "@app/events/emitter.server";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 import { formatTags, formatProperties } from "@utils/meta";
 
-export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
-  const { projectId } = data as LoaderData;
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) return [];
+  const { projectId } = data as unknown as LoaderData;
   const title = `Jira clone - Create issue`;
   const description = "Create new issue, edit it and and assigne team members.";
   const image =

@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { Link } from "@remix-run/react";
+import { Link } from "react-router";
 import cx from "classix";
 import { useDrag } from "react-dnd";
-import { CategoryId } from "@domain/category";
-import { Issue, IssueId } from "@domain/issue";
-import { PriorityId } from "@domain/priority";
+import { CategoryId } from "@domain/category/category";
+import { Issue, IssueId } from "@domain/issue/issue";
+import { PriorityId } from "@domain/priority/priority";
 import { TaskIcon } from "@app/components/icons";
-import { PriorityIcon } from "@app/components/priority-icon";
+import { PriorityIcon } from "@app/components/priority-icon/priority-icon";
 import { useSortBy } from "@app/hooks/useSortBy";
 
 export interface DropItem {
@@ -47,7 +47,13 @@ export const IssueCard = ({
   }, [isDragging, handleDragging]);
 
   return (
-    <div ref={isSubmitting ? undefined : dragRef}>
+    <div
+      ref={
+        isSubmitting
+          ? undefined
+          : (dragRef as unknown as React.Ref<HTMLDivElement>)
+      }
+    >
       <IssueCardContent
         link={issueLink}
         name={issue.name}

@@ -1,18 +1,18 @@
 import { useState, useCallback, useEffect } from "react";
-import { Outlet, useNavigate, useRevalidator } from "@remix-run/react";
-import { useEventSource } from "remix-utils";
+import { Outlet, useNavigate, useRevalidator } from "react-router";
+import { useEventSource } from "remix-utils/sse/react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Project } from "@domain/project";
-import { Category } from "@domain/category";
-import { IssueId } from "@domain/issue";
+import { Project } from "@domain/project/project";
+import { Category } from "@domain/category/category";
+import { IssueId } from "@domain/issue/issue";
 import { Search } from "@app/ui/main/project/board/search";
-import { Kbd } from "@app/components/kbd-placeholder";
+import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
 import { UserAvatarList } from "./avatar-list";
 import { SelectSort } from "./select-sort";
-import { CategoryColumn } from "./category-column";
+import { CategoryColumn } from "./category-column/category-column";
 import { ProjectContextProvider } from "../project.store";
-import { EVENTS } from "@app/events";
+import { EVENTS } from "@app/events/events";
 
 export const BoardView = ({ project }: Props): JSX.Element => {
   return (
@@ -43,8 +43,15 @@ interface Props {
 const Categories = ({ categories }: CategoriesProps): JSX.Element => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [submittingIssues, setSubmittingIssues] = useState<IssueId[]>([]);
+  const [prevCategories, setPrevCategories] = useState(categories);
   const { revalidate } = useRevalidator();
   const navigate = useNavigate();
+
+  // Reset optimistic submissions when the categories data changes
+  if (categories !== prevCategories) {
+    setPrevCategories(categories);
+    setSubmittingIssues([]);
+  }
 
   // Data created
   useEventSource("board/issue/issue-event", {
@@ -64,10 +71,6 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
     },
     [navigate]
   );
-
-  useEffect(() => {
-    setSubmittingIssues([]);
-  }, [categories]);
 
   // Revalidate to update category columns on event received
   useEffect(() => {
