@@ -1,5 +1,4 @@
 import {
-  PrismaClient,
   Project as ProjectDB,
   User as UserDB,
   Category as CategoryDB,
@@ -11,8 +10,7 @@ import { Project, ProjectId, projectsMock } from "@domain/project";
 import { Category, CategoryId } from "@domain/category";
 import { Issue } from "@domain/issue";
 import { Priority, prioritiesMock } from "@domain/priority";
-
-const db = new PrismaClient();
+import { db } from "./db.server";
 
 // Leaving the update empty will not update the record if it already exists
 const createUserIfNotExists = async (user: User): Promise<UserDB> => {
@@ -99,18 +97,22 @@ const createIssueIfNotExists = async (issue: Issue, categoryId: CategoryId): Pro
 const seedUsers = async () => {
   for (const user of usersMock) {
     const userDb = await createUserIfNotExists(user);
-    recordAlreadyExists(userDb)
-      ? console.info(`User already exists: ${user.name}. Skipping...`)
-      : console.info(`Created USER: ${user.name}`);
+    if (recordAlreadyExists(userDb)) {
+      console.info(`User already exists: ${user.name}. Skipping...`);
+    } else {
+      console.info(`Created USER: ${user.name}`);
+    }
   }
 };
 
 const seedPriorities = async () => {
   for (const priority of prioritiesMock) {
     const priorityDb = await createPriorityIfNotExists(priority);
-    recordAlreadyExists(priorityDb)
-      ? console.info(`Priority already exists: ${priority.name}. Skipping...`)
-      : console.info(`Created PRIORITY: ${priority.name}`);
+    if (recordAlreadyExists(priorityDb)) {
+      console.info(`Priority already exists: ${priority.name}. Skipping...`);
+    } else {
+      console.info(`Created PRIORITY: ${priority.name}`);
+    }
   }
 };
 

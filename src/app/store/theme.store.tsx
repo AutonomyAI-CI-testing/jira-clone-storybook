@@ -6,7 +6,7 @@ import {
   useRef,
   useCallback,
 } from "react";
-import { useFetcher } from "@remix-run/react";
+import { useFetcher } from "react-router";
 
 export enum Theme {
   LIGHT = "light",
@@ -82,7 +82,6 @@ export const ThemeProvider = ({
     };
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preference]);
 
   const setTheme = useCallback(

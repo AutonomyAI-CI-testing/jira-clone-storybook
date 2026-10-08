@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
@@ -38,7 +38,7 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
+  render: () => (
     <div className="grid grid-cols-1 gap-6">
       {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
         (TitleStory, index) => (

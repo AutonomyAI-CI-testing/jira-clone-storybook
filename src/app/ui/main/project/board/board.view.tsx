@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
-import { Outlet, useNavigate, useRevalidator } from "@remix-run/react";
-import { useEventSource } from "remix-utils";
+import { Outlet, useNavigate, useRevalidator } from "react-router";
+import { useEventSource } from "remix-utils/sse/react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Project } from "@domain/project";
@@ -43,8 +43,15 @@ interface Props {
 const Categories = ({ categories }: CategoriesProps): JSX.Element => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [submittingIssues, setSubmittingIssues] = useState<IssueId[]>([]);
+  const [prevCategories, setPrevCategories] = useState(categories);
   const { revalidate } = useRevalidator();
   const navigate = useNavigate();
+
+  // Reset optimistic submissions when the categories data changes
+  if (categories !== prevCategories) {
+    setPrevCategories(categories);
+    setSubmittingIssues([]);
+  }
 
   // Data created
   useEventSource("board/issue/issue-event", {
@@ -64,10 +71,6 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
     },
     [navigate]
   );
-
-  useEffect(() => {
-    setSubmittingIssues([]);
-  }, [categories]);
 
   // Revalidate to update category columns on event received
   useEffect(() => {
