@@ -58,7 +58,7 @@ export const TestCard = (): JSX.Element => (
         id="test-card-personal-access-token"
         type="text"
         defaultValue="figd_xxxxxxxxxxxxxxxxxxxx"
-        className="mt-3 h-[37px] w-full border border-[#a5adad] bg-[#272822] px-3 font-primary-bold text-[11.5px] leading-[13.92px] text-[#737470] outline-none"
+        className="mt-3 h-[37px] w-full border border-[#a5adad] bg-[#272822] px-3 font-primary-bold text-[11.5px] leading-[13.92px] text-[#737470]"
       />
     </div>
 
@@ -77,7 +77,7 @@ export const TestCard = (): JSX.Element => (
         id="test-card-design-url"
         type="text"
         placeholder="https://www.figma.com/file/"
-        className="mt-3 h-[41px] w-full border-2 border-[#929291] bg-[#272822] px-3 font-primary-bold text-[11.5px] leading-[13.92px] text-[#71726e] outline-none placeholder:text-[#71726e]"
+        className="mt-3 h-[41px] w-full border-2 border-[#929291] bg-[#272822] px-3 font-primary-bold text-[11.5px] leading-[13.92px] text-[#71726e] placeholder:text-[#71726e]"
       />
     </div>
 
