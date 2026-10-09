@@ -209,7 +209,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                   </section>
                 </div>
                 <div className="mt-6 grid grid-cols-3 items-end">
-                  <span className="font-primary-light text-2xs text-font-subtlest text-opacity-80">
+                  <span className="font-primary-light text-2xs text-font-subtlest opacity-80">
                     Press <Kbd>Shift</Kbd> + <Kbd>S</Kbd> to accept
                   </span>
                   <div className="flex justify-center">
@@ -230,7 +230,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       )}
                     </Button>
                   </div>
-                  <span className="justify-self-end font-primary-light text-2xs text-font-subtlest text-opacity-80">
+                  <span className="justify-self-end font-primary-light text-2xs text-font-subtlest opacity-80">
                     Press <Kbd>Esc</Kbd> to close
                   </span>
                 </div>

@@ -19,7 +19,7 @@ export const PanelHeaderIssue = ({
         <span className="flex items-center">
           <TaskIcon size={20} />
         </span>
-        <span className="ml-1 text-font-subtlest text-opacity-80">{id}</span>
+        <span className="ml-1 text-font-subtlest opacity-80">{id}</span>
       </span>
       <DeleteIssueModalDialog disabled={deleteDisabled} />
       <Link

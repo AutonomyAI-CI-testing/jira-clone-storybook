@@ -84,7 +84,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
   return (
     <div className="h-full w-full text-center">
       <h1 className="mb-6 mt-[200px] text-lg">/projects ERROR</h1>
-      <a href="/" className="text-primary-main hover:underline">
+      <a href="/" className="text-link hover:underline">
         Navigate to home
       </a>
     </div>

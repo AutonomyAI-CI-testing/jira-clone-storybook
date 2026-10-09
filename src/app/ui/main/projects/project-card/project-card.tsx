@@ -29,7 +29,7 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
         />
         <div className="flex flex-col gap-1 px-3 pb-4 pt-2">
           <h2 className="text-lg">{project.name}</h2>
-          <h3 className="line-clamp-2 min-h-[40px] font-primary-light text-sm text-font-subtle text-opacity-100">
+          <h3 className="line-clamp-2 min-h-[40px] font-primary-light text-sm text-font-subtle">
             {project.description}
           </h3>
         </div>
@@ -39,7 +39,7 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
           className={cx(
             "mt-1 flex items-center gap-1 border-none text-sm",
             isDefaultProject
-              ? "cursor-not-allowed text-font-disabled text-opacity-50"
+              ? "cursor-not-allowed text-font-disabled opacity-50"
               : "text-icon hover:text-font-danger"
           )}
           aria-label="Open delete issue dialog"
