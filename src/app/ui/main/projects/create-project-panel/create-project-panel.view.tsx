@@ -27,6 +27,7 @@ export const CreateProjectPanelView = ({
   const fetcher = useFetcher();
   const navigate = useNavigate();
   const actionData = useActionData() as ProjectActionData;
+  const usersError = actionData?.errors?.users;
   const { user: loggedUser } = useUserStore();
 
   const postData = useCallback(
@@ -116,7 +117,16 @@ export const CreateProjectPanelView = ({
                   <div className="-ml-3 mb-5">
                     <Description initDescription={project?.description || ""} />
                   </div>
-                  <ul className="space-y-1.5">
+                  <p className="font-primary-black">Team members</p>
+                  {usersError && (
+                    <p
+                      role="alert"
+                      className="mt-1 font-primary-light text-sm text-font-danger"
+                    >
+                      {usersError}
+                    </p>
+                  )}
+                  <ul className="mt-3 space-y-1.5">
                     {users.map((user) => (
                       <li
                         key={user.id}
@@ -132,7 +142,7 @@ export const CreateProjectPanelView = ({
                           </span>
                           <Checkbox.Root
                             id={`checkbox-${user.id}`}
-                            className="h-[36px] w-[36px] rounded-md bg-background-input"
+                            className="h-[36px] w-[36px] rounded-md bg-background-input outline outline-2 outline-border-bold"
                             name="user"
                             value={user.id}
                             defaultChecked={user.id === loggedUser?.id}
