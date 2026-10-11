@@ -72,21 +72,29 @@ export default function TestCard() {
         </h2>
       </div>
 
-      <label className="mt-8 flex items-center gap-3 text-[11.5px] font-semibold text-[#a4a4a3]">
+      <label
+        htmlFor="personal-access-token"
+        className="mt-8 flex items-center gap-3 text-[11.5px] font-semibold text-[#a4a4a3]"
+      >
         Personal Access Token
         <InfoIcon className="h-[15px] w-[15px]" />
       </label>
       <input
+        id="personal-access-token"
         type="text"
         placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
         className="mt-1 h-[36px] w-full border border-[#a5adad] bg-[#272822] px-3 text-[11.5px] font-semibold text-[#737470] outline-none placeholder:text-[#737470]"
       />
 
-      <label className="mt-5 flex items-center gap-3 text-[11.5px] font-semibold text-[#a3a3a2]">
+      <label
+        htmlFor="design-url"
+        className="mt-5 flex items-center gap-3 text-[11.5px] font-semibold text-[#a3a3a2]"
+      >
         Design URL
         <InfoIcon className="h-[15px] w-[15px]" />
       </label>
       <input
+        id="design-url"
         type="text"
         placeholder="https://www.figma.com/file/"
         className="mt-1 h-[37px] w-full border-2 border-[#929291] bg-[#272822] px-3 text-[11.5px] font-semibold text-[#71726e] outline-none placeholder:text-[#71726e]"
