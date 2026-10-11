@@ -3,7 +3,7 @@ import * as AlertDialog from "@app/components/alert-dialog/alert-dialog";
 import cx from "classix";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoCloseOutline } from "react-icons/io5";
-import { IssueId } from "@domain/issue/issue";
+import { getIssueShortId, IssueId } from "@domain/issue/issue";
 import { TaskIcon } from "@app/components/icons";
 
 export const PanelHeaderIssue = ({
@@ -19,9 +19,12 @@ export const PanelHeaderIssue = ({
         <span className="flex items-center">
           <TaskIcon size={20} />
         </span>
-        <span className="ml-1 text-font-subtlest text-opacity-80">{id}</span>
+        <span className="ml-1 text-font-subtlest text-opacity-80">
+          {id ? getIssueShortId(id) : "Create new issue"}
+        </span>
       </span>
-      <DeleteIssueModalDialog disabled={deleteDisabled} />
+      {/* There is nothing to delete while a new issue is being created */}
+      {id ? <DeleteIssueModalDialog disabled={deleteDisabled} /> : null}
       <Link
         to={previousUrl}
         className="ml-3 flex cursor-pointer rounded border-none p-0.5 text-icon flex-center hover:bg-background-neutral"
@@ -34,7 +37,8 @@ export const PanelHeaderIssue = ({
 };
 
 interface PanelHeaderIssueProps {
-  id: IssueId;
+  /** The issue being edited, or undefined while a new issue is being created */
+  id?: IssueId;
   deleteDisabled?: boolean;
 }
 

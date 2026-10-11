@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import cx from "classix";
 import { useDrag } from "react-dnd";
 import { CategoryId } from "@domain/category/category";
-import { Issue, IssueId } from "@domain/issue/issue";
+import { getIssueShortId, Issue, IssueId } from "@domain/issue/issue";
 import { PriorityId } from "@domain/priority/priority";
 import { TaskIcon } from "@app/components/icons";
 import { PriorityIcon } from "@app/components/priority-icon/priority-icon";
@@ -20,7 +20,7 @@ export const IssueCard = ({
   isSubmitting,
   handleDragging,
 }: Props): JSX.Element => {
-  const issueIdPrefix = issue.id.split("-")[0];
+  const issueIdPrefix = getIssueShortId(issue.id);
   const sortBy = useSortBy();
   const issueLink = sortBy
     ? `issue/${issue.id}?sortBy=${sortBy}`
