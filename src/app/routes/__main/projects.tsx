@@ -9,6 +9,7 @@ import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { ProjectsView } from "@app/ui/main/projects/projects.view";
+import { Error500 } from "@app/components/error-500/error-500";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: MetaFunction = () => {
@@ -83,12 +84,11 @@ export const action: ActionFunction = async ({ request }) => {
 
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
+  const errorMessage = "The projects page failed. Navigate to the home page";
+
   return (
-    <div className="h-full w-full text-center">
-      <h1 className="mb-6 mt-[200px] text-lg">/projects ERROR</h1>
-      <a href="/" className="text-primary-main hover:underline">
-        Navigate to home
-      </a>
+    <div className="flex h-full items-center justify-center">
+      <Error500 message={errorMessage} href="/" />
     </div>
   );
 }
