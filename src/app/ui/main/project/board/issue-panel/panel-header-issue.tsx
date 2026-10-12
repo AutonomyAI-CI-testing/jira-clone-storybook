@@ -1,17 +1,27 @@
 import { Form, Link, useLocation } from "react-router";
+import { toast } from "react-toastify";
 import * as AlertDialog from "@app/components/alert-dialog/alert-dialog";
 import cx from "classix";
-import { MdDeleteOutline } from "react-icons/md";
+import { MdDeleteOutline, MdLink } from "react-icons/md";
 import { IoCloseOutline } from "react-icons/io5";
 import { IssueId } from "@domain/issue/issue";
 import { TaskIcon } from "@app/components/icons";
 
 export const PanelHeaderIssue = ({
   id,
+  showCopyLink,
   deleteDisabled,
 }: PanelHeaderIssueProps): JSX.Element => {
   const location = useLocation();
   const previousUrl = location.pathname.split("/issue")[0];
+
+  const handleCopyLink = (): void => {
+    const issueUrl = `${window.location.origin}${location.pathname}`;
+
+    copyTextToClipboard(issueUrl)
+      .then(() => toast.success("Link copied"))
+      .catch(() => toast.error("Could not copy the link"));
+  };
 
   return (
     <div className="flex">
@@ -20,6 +30,18 @@ export const PanelHeaderIssue = ({
           <TaskIcon size={20} />
         </span>
         <span className="ml-1 text-font-subtlest text-opacity-80">{id}</span>
+        {showCopyLink && (
+          <button
+            type="button"
+            onClick={handleCopyLink}
+            className="ml-2 flex cursor-pointer items-center gap-1 rounded border-none p-1 text-2xs text-font-subtlest hover:bg-background-neutral hover:text-font"
+            aria-label="Copy link"
+            title="Copy link"
+          >
+            <MdLink size={14} />
+            Copy link
+          </button>
+        )}
       </span>
       <DeleteIssueModalDialog disabled={deleteDisabled} />
       <Link
@@ -35,8 +57,34 @@ export const PanelHeaderIssue = ({
 
 interface PanelHeaderIssueProps {
   id: IssueId;
+  showCopyLink?: boolean;
   deleteDisabled?: boolean;
 }
+
+const copyTextToClipboard = async (text: string): Promise<void> => {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      // Fall through to the legacy path when the Clipboard API is blocked,
+      // for example inside a sandboxed iframe.
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  const copied = document.execCommand("copy");
+  document.body.removeChild(textarea);
+
+  if (!copied) throw new Error("Copy to clipboard was rejected");
+};
 
 const DeleteIssueModalDialog = ({
   disabled,

@@ -144,6 +144,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
             >
               <PanelHeaderIssue
                 id={issue?.id || "Create new issue"}
+                showCopyLink={Boolean(issue?.id)}
                 deleteDisabled={
                   userIsNotReporter ||
                   defaultIssuesIds.includes(issue?.id || "")
