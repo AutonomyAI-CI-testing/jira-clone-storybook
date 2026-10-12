@@ -1,6 +1,7 @@
 import { useLocation } from "react-router";
 import { toast } from "react-toastify";
 import { MdLink } from "react-icons/md";
+import { Tooltip } from "@app/components/tooltip/tooltip";
 
 export const CopyIssueLinkButton = (): JSX.Element => {
   const location = useLocation();
@@ -14,16 +15,17 @@ export const CopyIssueLinkButton = (): JSX.Element => {
   };
 
   return (
-    <button
-      type="button"
-      onClick={handleCopyLink}
-      className="ml-2 flex cursor-pointer items-center gap-1 rounded border-none p-1 text-2xs text-font-subtlest hover:bg-background-neutral hover:text-font"
-      aria-label="Copy link to this issue"
-      title="Copy link"
-    >
-      <MdLink size={14} />
-      Copy link
-    </button>
+    <Tooltip title="Copy link">
+      <button
+        type="button"
+        onClick={handleCopyLink}
+        className="ml-2 flex cursor-pointer items-center gap-1 rounded border-none p-1 text-2xs text-font-subtlest hover:bg-background-neutral hover:text-font"
+        aria-label="Copy link to this issue"
+      >
+        <MdLink size={14} />
+        Copy link
+      </button>
+    </Tooltip>
   );
 };
 
