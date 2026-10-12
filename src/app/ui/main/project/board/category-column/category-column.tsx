@@ -74,9 +74,20 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
   }, [fetcher, setSubmittingIssues]);
 
   useEffect(() => {
-    if (columnRef.current) {
-      setColumnHeight(columnRef.current.offsetHeight);
-    }
+    const column = columnRef.current;
+
+    if (!column) return;
+
+    // The column body is sized by the viewport, so its height changes when the
+    // window is resized. Track it instead of measuring once on mount, which
+    // left the issue list clipped at the height it had when the board loaded.
+    const resizeObserver = new ResizeObserver(() => {
+      setColumnHeight(column.offsetHeight);
+    });
+
+    resizeObserver.observe(column);
+
+    return () => resizeObserver.disconnect();
   }, []);
 
   return (
