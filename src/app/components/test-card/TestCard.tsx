@@ -4,85 +4,65 @@ export const TestCard = (): JSX.Element => {
   return (
     <div
       id="testElem"
-      className="w-[508px] bg-[var(--DarkNeutral0)] px-8 py-10 font-primary text-[var(--DarkNeutral1000)]"
+      className="w-[500px] bg-[#1b1b1b] px-8 py-9 text-[#c9c9c9]"
     >
-      <div className="flex items-start justify-between">
-        <h1 className="font-primary-bold text-[22px] leading-7">
-          UI magician Agent
-        </h1>
-        <button
-          type="button"
-          aria-label="Settings"
-          className="text-[var(--DarkNeutral1000)]"
-        >
-          <FiSettings size={24} />
-        </button>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-[#e6e6e6]">UI magician Agent</h1>
+        <FiSettings aria-hidden className="text-2xl text-[#e6e6e6]" />
       </div>
 
-      <div className="mt-7 flex items-center gap-2 text-[var(--Neutral500)]">
-        <FiChevronUp size={18} />
-        <span className="font-primary-light text-[15px]">
+      <div className="mt-7 flex items-center gap-3">
+        <FiChevronUp aria-hidden className="shrink-0 text-xl" />
+        <span className="truncate text-lg text-[#9b9b9b]">
           From entire frame to a singl...
         </span>
       </div>
 
-      <div className="mt-16 flex items-center gap-2">
-        <FiChevronUp size={20} />
-        <h2 className="font-primary-bold text-[22px] leading-7">
-          Add New Design
-        </h2>
+      <div className="mt-16 flex items-center gap-3">
+        <FiChevronUp aria-hidden className="shrink-0 text-xl" />
+        <h2 className="text-2xl font-bold">Add New Design</h2>
       </div>
 
-      <div className="mt-9">
+      <div className="mt-8">
         <div className="flex items-center gap-3">
-          <label htmlFor="testElem-token" className="text-base">
-            Personal Access Token
-          </label>
-          <FiInfo size={18} />
+          <span className="text-lg">Personal Access Token</span>
+          <FiInfo aria-hidden className="shrink-0 text-lg" />
         </div>
         <input
-          id="testElem-token"
-          type="text"
           readOnly
           placeholder="figd_xxxxxxxxxxxxxxxxxxxxx"
-          className="mt-4 w-full rounded border border-[var(--Neutral500)] bg-[var(--DarkNeutral200)] px-4 py-4 font-primary-light text-base text-[var(--DarkNeutral1000)] placeholder:text-[var(--Neutral500)]"
+          className="mt-3 w-full border border-[#8a8a8a] bg-[#232323] px-4 py-3 text-base placeholder:text-[#8f8f8f] focus:outline-none"
         />
       </div>
 
       <div className="mt-6">
         <div className="flex items-center gap-3">
-          <label htmlFor="testElem-url" className="text-base">
-            Design URL
-          </label>
-          <FiInfo size={18} />
+          <span className="text-lg">Design URL</span>
+          <FiInfo aria-hidden className="shrink-0 text-lg" />
         </div>
         <input
-          id="testElem-url"
-          type="text"
           readOnly
           placeholder="https://www.figma.com/file/:"
-          className="mt-4 w-full rounded border border-[var(--Neutral500)] bg-[var(--DarkNeutral200)] px-4 py-4 font-primary-light text-base text-[var(--DarkNeutral1000)] placeholder:text-[var(--Neutral500)]"
+          className="mt-3 w-full border border-[#8a8a8a] bg-[#232323] px-4 py-3 text-base placeholder:text-[#8f8f8f] focus:outline-none"
         />
       </div>
 
-      <div className="mt-8 flex gap-4">
+      <div className="mt-10 flex gap-8">
         <button
           type="button"
-          className="flex-1 rounded-md bg-[var(--Orange800)] px-4 py-4 text-base"
+          className="flex-1 rounded-md bg-[#9c4a1c] px-6 py-4 text-xl font-medium text-[#c9c9c9]"
         >
           Awesome
         </button>
         <button
           type="button"
-          className="flex-1 rounded-md bg-[var(--Orange800)] px-4 py-4 text-base"
+          className="flex-1 rounded-md bg-[#9c4a1c] px-6 py-4 text-xl font-medium text-[#c9c9c9]"
         >
           Prepare
         </button>
       </div>
 
-      <h2 className="mt-16 font-primary-bold text-[22px] leading-7">
-        Recent Breakdowns
-      </h2>
+      <h3 className="mt-24 text-2xl font-bold">Recent Breakdowns</h3>
     </div>
   );
 };
