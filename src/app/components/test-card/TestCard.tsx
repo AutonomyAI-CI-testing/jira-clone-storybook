@@ -1,100 +1,86 @@
-import { FiChevronUp, FiInfo, FiSettings } from "react-icons/fi";
+import {
+  RiArrowUpSLine,
+  RiInformationLine,
+  RiSettings3Line,
+} from "react-icons/ri";
 
-/**
- * Smoke-test component built from an unrelated dark Figma frame.
- *
- * Deliberately self-contained: no props, no state, no repo design tokens and no
- * shared components. The design it reproduces is not part of this app's design
- * system, and values are approximate by design.
- */
+const BUTTONS = ["Awesome", "Prepare"];
+
 export const TestCard = (): JSX.Element => (
   <div
     id="testElem"
-    className="flex w-[254px] flex-col bg-black p-5 font-[family-name:Inter,sans-serif] text-[13.5px] font-semibold text-[#b5b5b5]"
+    className="min-h-[508px] w-[254px] bg-black font-primary-bold"
   >
-    {/* Header */}
-    <div className="flex items-center justify-between">
-      <h1 className="text-[13.5px] font-semibold text-[#b5b5b5]">
+    {/* Title + settings */}
+    <div className="flex items-center justify-between px-5 pt-5">
+      <h1 className="text-[13.5px] leading-[16.34px] text-[#b5b5b5]">
         UI magician Agent
       </h1>
-      <button
-        type="button"
-        aria-label="Settings"
-        className="text-[#b5b5b5] hover:text-white"
-      >
-        <FiSettings size={16} />
-      </button>
+      <RiSettings3Line size={16} className="shrink-0 text-[#b5b5b5]" />
     </div>
 
-    {/* Collapsed summary row */}
-    <div className="mt-4 flex items-center gap-2">
-      <FiChevronUp size={14} className="shrink-0 text-[#8b9291]" />
-      <span className="truncate text-[11.5px] font-semibold text-[#8b9291]">
+    {/* Collapsed section */}
+    <div className="mt-[18px] flex items-center gap-2 px-5">
+      <RiArrowUpSLine size={14} className="shrink-0 text-[#8b9291]" />
+      <span className="truncate text-[11.5px] leading-[13.92px] text-[#8b9291]">
         From entire frame to a singl...
       </span>
     </div>
 
-    {/* Add New Design */}
-    <div className="mt-12 flex items-center gap-2">
-      <FiChevronUp size={14} className="shrink-0 text-[#b2b2b1]" />
-      <h2 className="text-[13.5px] font-semibold text-[#b2b2b1]">
+    {/* Section heading */}
+    <div className="mt-[88px] flex items-center gap-2 px-5">
+      <RiArrowUpSLine size={16} className="shrink-0 text-[#b2b2b1]" />
+      <span className="text-[13.5px] leading-[16.34px] text-[#b2b2b1]">
         Add New Design
-      </h2>
+      </span>
     </div>
 
     {/* Personal Access Token */}
-    <div className="mt-6 flex items-center gap-2">
-      <label
-        htmlFor="test-card-personal-access-token"
-        className="text-[11.5px] font-semibold text-[#a4a4a3]"
-      >
-        Personal Access Token
-      </label>
-      <FiInfo size={15} aria-hidden="true" className="text-[#a4a4a3]" />
+    <div className="mt-7 px-5">
+      <div className="flex items-center gap-2">
+        <span className="text-[11.5px] leading-[13.92px] text-[#a4a4a3]">
+          Personal Access Token
+        </span>
+        <RiInformationLine size={15} className="shrink-0 text-[#a4a4a3]" />
+      </div>
+      <input
+        readOnly
+        placeholder="figd_xxxxxxxxxxxxxxxxxx"
+        className="mt-3 h-9 w-[211px] border border-[#a5adad] bg-[#272822] px-4 text-[11.5px] leading-[13.92px] text-[#737470] placeholder:text-[#737470] focus:outline-none"
+      />
     </div>
-    <input
-      id="test-card-personal-access-token"
-      type="text"
-      placeholder="figd_xxxxxxxxxxxxxxxxxxxxx"
-      className="mt-2 w-full border border-[#a5adad] bg-[#272822] px-3 py-2 text-[11.5px] font-semibold text-[#b5b5b5] outline-none placeholder:text-[#737470]"
-    />
 
     {/* Design URL */}
-    <div className="mt-4 flex items-center gap-2">
-      <label
-        htmlFor="test-card-design-url"
-        className="text-[11.5px] font-semibold text-[#a3a3a2]"
-      >
-        Design URL
-      </label>
-      <FiInfo size={15} aria-hidden="true" className="text-[#a3a3a2]" />
+    <div className="mt-6 px-5">
+      <div className="flex items-center gap-2">
+        <span className="text-[11.5px] leading-[13.92px] text-[#a3a3a2]">
+          Design URL
+        </span>
+        <RiInformationLine size={15} className="shrink-0 text-[#a3a3a2]" />
+      </div>
+      <input
+        readOnly
+        placeholder="https://www.figma.com/file/:"
+        className="mt-3 h-[37px] w-[211px] border-2 border-[#929291] bg-[#272822] px-4 text-[10.5px] leading-[12.71px] text-[#71726e] placeholder:text-[#71726e] focus:outline-none"
+      />
     </div>
-    <input
-      id="test-card-design-url"
-      type="text"
-      placeholder="https://www.figma.com/file/"
-      className="mt-2 w-full border-2 border-[#929291] bg-[#272822] px-3 py-2 text-[11.5px] font-semibold text-[#b5b5b5] outline-none placeholder:text-[#71726e]"
-    />
 
     {/* Actions */}
-    <div className="mt-6 flex gap-4 pl-6">
-      <button
-        type="button"
-        className="w-[85px] rounded bg-[#843a17] py-2 text-[11.5px] font-semibold text-[#8c8078]"
-      >
-        Awesome
-      </button>
-      <button
-        type="button"
-        className="w-[85px] rounded bg-[#843a17] py-2 text-[11.5px] font-semibold text-[#8c8078]"
-      >
-        Prepare
-      </button>
+    <div className="mt-6 flex gap-4 pl-11">
+      {BUTTONS.map((label) => (
+        <button
+          key={label}
+          type="button"
+          className="h-[37px] w-[85px] rounded-[4px] bg-[#843a17] text-[11.5px] leading-[13.92px] text-[#8c8078]"
+        >
+          {label}
+        </button>
+      ))}
     </div>
 
     {/* Recent Breakdowns */}
-    <h2 className="mt-12 text-[13.5px] font-semibold text-[#b0b0b0]">
+    <div className="mt-[47px] px-5 text-[13.5px] leading-[16.34px] text-[#b0b0b0]">
       Recent Breakdowns
-    </h2>
+    </div>
   </div>
 );
