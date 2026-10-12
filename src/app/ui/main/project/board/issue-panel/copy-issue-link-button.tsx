@@ -18,7 +18,7 @@ export const CopyIssueLinkButton = (): JSX.Element => {
       type="button"
       onClick={handleCopyLink}
       className="ml-2 flex cursor-pointer items-center gap-1 rounded border-none p-1 text-2xs text-font-subtlest hover:bg-background-neutral hover:text-font"
-      aria-label="Copy link"
+      aria-label="Copy link to this issue"
       title="Copy link"
     >
       <MdLink size={14} />
