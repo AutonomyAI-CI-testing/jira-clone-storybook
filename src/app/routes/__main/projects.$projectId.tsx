@@ -1,6 +1,6 @@
 import type { LoaderFunction, MetaFunction } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
+import { isRouteErrorResponse, useLoaderData, useRouteError } from "react-router";
 import invariant from "tiny-invariant";
 import { ProjectSummary, ProjectId } from "@domain/project/project";
 import { getProjectSummary } from "@infrastructure/db/project";
@@ -73,22 +73,27 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return json<LoaderData>({ projectSummary: projectSummary });
 };
 
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  // The loader throws a 404 when the project does not exist; anything else is a
+  // real fault and keeps the server-error screen.
+  if (isRouteErrorResponse(error) && error.status === 404) {
+    const notFoundMessage = "Project not found. Navigate to the projects page";
+
+    return (
+      <div className="flex h-full items-center justify-center">
+        <Error404 message={notFoundMessage} href="/projects" />
+      </div>
+    );
+  }
+
   console.error(error);
   const errorMessage = "The Project page failed. Navigate to the projects page";
 
   return (
     <div className="flex h-full items-center justify-center">
       <Error500 message={errorMessage} href="/projects" />
-    </div>
-  );
-}
-
-export function CatchBoundary() {
-  const errorMessage = "Project not found. Navigate to the projects page";
-  return (
-    <div className="flex h-full items-center justify-center">
-      <Error404 message={errorMessage} href="/projects" />
     </div>
   );
 }

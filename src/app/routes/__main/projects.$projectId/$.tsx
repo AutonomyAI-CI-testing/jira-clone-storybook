@@ -11,7 +11,7 @@ export const loader: LoaderFunction = async () => {
   });
 };
 
-export function CatchBoundary() {
+export function ErrorBoundary() {
   useEffect(() => {
     toast.warning("Try to go back to the previous page.");
   }, []);

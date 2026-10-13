@@ -4,7 +4,13 @@ import type {
   MetaFunction,
 } from "react-router";
 import { redirect, data as json } from "react-router";
-import { useLoaderData, useLocation, useNavigate } from "react-router";
+import {
+  isRouteErrorResponse,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+  useRouteError,
+} from "react-router";
 import invariant from "tiny-invariant";
 import cx from "classix";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -24,6 +30,7 @@ import {
 import { deleteComment } from "@infrastructure/db/comment";
 import { IssuePanel } from "@app/ui/main/project/board/issue-panel/issue-panel.view";
 import { Error404 } from "@app/components/error-404/error-404";
+import { Error500 } from "@app/components/error-500/error-500";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 import { EVENTS } from "@app/events/events";
 import { emitter } from "@app/events/emitter.server";
@@ -158,10 +165,16 @@ export const action: ActionFunction = async ({ request, params }) => {
   return redirect(previousUrl);
 };
 
-export function CatchBoundary() {
+export function ErrorBoundary() {
+  const error = useRouteError();
   const location = useLocation();
   const navigate = useNavigate();
   const boardUrl = location.pathname.split("/issue")[0];
+
+  // A missing issue is the expected failure here; anything else is a real
+  // fault and gets the app's server-error screen instead.
+  const issueIsMissing = isRouteErrorResponse(error) && error.status === 404;
+  if (!issueIsMissing) console.error(error);
 
   const handleProgrammaticNavigation = () => {
     navigate(boardUrl);
@@ -179,14 +192,21 @@ export function CatchBoundary() {
           <Dialog.Content
             onPointerDownOutside={handleProgrammaticNavigation}
             className={cx(
-              "bg-background-surface relative z-50 flex rounded-md px-20 py-12 shadow-lg flex-center",
+              "relative z-50 flex rounded-md bg-elevation-surface px-20 py-12 shadow-lg flex-center",
               "duration-300 radix-state-open:animate-slide-up"
             )}
           >
-            <Error404
-              message="This issue does not exist. Go to the board page"
-              href={boardUrl}
-            />
+            {issueIsMissing ? (
+              <Error404
+                message="This issue does not exist. Go to the board page"
+                href={boardUrl}
+              />
+            ) : (
+              <Error500
+                message="The issue panel failed. Go to the board page"
+                href={boardUrl}
+              />
+            )}
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Portal>
