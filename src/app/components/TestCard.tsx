@@ -4,86 +4,79 @@ import {
   RiSettings3Line,
 } from "react-icons/ri";
 
-const FIELD_CLASS =
-  "mt-5 h-[72px] w-full border border-[#8b8b8b] bg-[#2a2a2a] px-9 text-[19px] text-[#c4c4c4] placeholder:text-[#8a8a8a]";
+export const TestCard = () => (
+  <div
+    id="testElem"
+    className="flex w-[508px] flex-col bg-[#1e1e1e] p-10 font-primary text-[#d0d0d0]"
+  >
+    <div className="flex items-center justify-between">
+      <h1 className="font-primary-bold text-2xl">UI magician Agent</h1>
+      <RiSettings3Line size={28} aria-hidden />
+    </div>
 
-const ACTION_CLASS =
-  "h-[74px] w-[171px] rounded-[8px] bg-[#9a4a18] text-[22px] text-[#e0e0e0]";
+    <div className="mt-6 flex items-center gap-2 text-[#8a8a8a]">
+      <RiArrowUpSLine size={24} aria-hidden />
+      <span className="truncate text-lg">From entire frame to a singl…</span>
+    </div>
 
-const Field = ({ id, label, placeholder, className }: FieldProps): JSX.Element => (
-  <div className={className}>
-    <div className="flex items-center gap-4">
-      <label htmlFor={id} className="text-[19px]">
+    <div className="h-40" />
+
+    <SectionHeading label="Add New Design" />
+
+    <div className="mt-6 flex flex-col gap-6">
+      <Field
+        id="test-card-access-token"
+        label="Personal Access Token"
+        placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
+      />
+      <Field
+        id="test-card-design-url"
+        label="Design URL"
+        placeholder="https://www.figma.com/file/"
+      />
+    </div>
+
+    <div className="mt-6 flex gap-10">
+      <button
+        type="button"
+        className="rounded-lg bg-[#8c3b1b] px-10 py-4 text-lg text-[#d0d0d0]"
+      >
+        Awesome
+      </button>
+      <button
+        type="button"
+        className="rounded-lg bg-[#8c3b1b] px-10 py-4 text-lg text-[#d0d0d0]"
+      >
+        Prepare
+      </button>
+    </div>
+
+    <h2 className="mt-16 font-primary-bold text-2xl">Recent Breakdowns</h2>
+  </div>
+);
+
+const SectionHeading = ({ label }: { label: string }) => (
+  <h2 className="flex items-center gap-2 font-primary-bold text-2xl">
+    <RiArrowUpSLine size={24} aria-hidden />
+    {label}
+  </h2>
+);
+
+const Field = ({ id, label, placeholder }: FieldProps) => (
+  <div className="flex flex-col gap-2">
+    <div className="flex items-center gap-3">
+      <label htmlFor={id} className="text-lg">
         {label}
       </label>
-      <RiInformationLine aria-hidden size={26} />
+      <RiInformationLine size={20} aria-hidden />
     </div>
     <input
       id={id}
       type="text"
+      readOnly
       placeholder={placeholder}
-      className={FIELD_CLASS}
+      className="w-full rounded-md border border-[#6b6b6b] bg-[#2b2b2b] px-4 py-4 text-lg placeholder:text-[#8a8a8a]"
     />
-  </div>
-);
-
-export const TestCard = (): JSX.Element => (
-  <div
-    id="testElem"
-    className="w-[508px] bg-[#131313] px-10 py-10 font-primary text-[#c4c4c4]"
-  >
-    <div className="flex items-center justify-between">
-      <h1 className="font-primary-bold text-[24px] text-[#cfcfcf]">
-        UI magician Agent
-      </h1>
-      <button type="button" aria-label="Settings" className="text-[#cfcfcf]">
-        <RiSettings3Line aria-hidden size={30} />
-      </button>
-    </div>
-
-    <div className="mt-6 flex items-center gap-3 text-[#a3a3a3]">
-      <RiArrowUpSLine aria-hidden size={22} className="shrink-0" />
-      <span className="min-w-0 truncate text-[19px]">
-        From entire frame to a singl...
-      </span>
-    </div>
-
-    <div className="mt-40" />
-
-    <section>
-      <div className="flex items-center gap-3">
-        <RiArrowUpSLine aria-hidden size={26} className="shrink-0" />
-        <h2 className="font-primary-bold text-[26px] text-[#d5d5d5]">
-          Add New Design
-        </h2>
-      </div>
-
-      <Field
-        id="personal-access-token"
-        label="Personal Access Token"
-        placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
-        className="mt-14"
-      />
-      <Field
-        id="design-url"
-        label="Design URL"
-        placeholder="https://www.figma.com/file/:"
-        className="mt-5"
-      />
-
-      <div className="mt-14 flex justify-end gap-[34px]">
-        <button type="button" className={ACTION_CLASS}>
-          Awesome
-        </button>
-        <button type="button" className={ACTION_CLASS}>
-          Prepare
-        </button>
-      </div>
-    </section>
-
-    <h2 className="mt-[74px] font-primary-bold text-[26px] text-[#c9c9c9]">
-      Recent Breakdowns
-    </h2>
   </div>
 );
 
@@ -91,5 +84,4 @@ interface FieldProps {
   id: string;
   label: string;
   placeholder: string;
-  className?: string;
 }

@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TestCard } from "./TestCard";
 
 const meta: Meta<typeof TestCard> = {
-  title: "Smoke/TestCard",
+  title: "Components/TestCard",
   component: TestCard,
   parameters: {
-    layout: "fullscreen",
+    layout: "centered",
   },
 };
 
