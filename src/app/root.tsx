@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect } from "react";
+import { useEffect } from "react";
 import type { LoaderFunction, MetaFunction } from "react-router";
 import {
   data as json,
@@ -157,57 +157,34 @@ const App = (): JSX.Element => {
   );
 };
 
-const errorComponentStyle: CSSProperties = {
-  maxWidth: "500px",
-  width: "80%",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  textAlign: "center",
-  color: "#0052cc",
-  fontFamily: "sans-serif",
-  fontWeight: "bold",
-};
-
 export function ErrorBoundary() {
   const error = useRouteError();
+  // The theme lives in the session cookie read by the root loader, so the
+  // error screen can keep the same theme as the page that failed instead of
+  // falling back to the light one.
+  const theme = useLoaderData<LoaderData>()?.theme;
 
-  if (isRouteErrorResponse(error) && error.status === 404) {
-    return (
-      <html>
-        <head>
-          <title>Ooops! Not found</title>
-          <Meta />
-          <Links />
-        </head>
-        <body>
-          <div style={errorComponentStyle}>
-            <Error404
-              message="It seems that you have lost! Go to the main page"
-              href="/"
-            />
-          </div>
-          <Scripts />
-        </body>
-      </html>
-    );
-  }
+  const isNotFound = isRouteErrorResponse(error) && error.status === 404;
+  if (!isNotFound) console.error(error);
 
-  console.error(error);
-  const errorMessage =
-    "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
+  const errorMessage = isNotFound
+    ? "It seems that you have lost! Go to the main page"
+    : "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
 
   return (
-    <html>
+    <html lang="en" className={cx("h-full", theme)}>
       <head>
-        <title>Error</title>
+        <title>{isNotFound ? "Ooops! Not found" : "Error"}</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error500 message={errorMessage} href="/" />
+      <body className="h-full bg-elevation-surface font-primary text-font">
+        <div className="flex h-full items-center justify-center">
+          {isNotFound ? (
+            <Error404 message={errorMessage} href="/" />
+          ) : (
+            <Error500 message={errorMessage} href="/" />
+          )}
         </div>
         <Scripts />
       </body>
