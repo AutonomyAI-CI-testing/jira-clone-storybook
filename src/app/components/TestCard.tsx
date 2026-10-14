@@ -1,9 +1,10 @@
 /**
- * Static reproduction of the "UI magician Agent" Figma frame.
+ * Static reproduction of the "UI magician Agent — Add New Design" Figma frame.
  *
  * Smoke-test component: no props, no state, nothing interactive. The frame's
  * own colours and type sizes are carried as literal values because the app's
- * semantic tokens have no close match for this palette.
+ * semantic tokens have no close match for this palette, and the frame's Inter
+ * face is not loaded here, so text uses the project's own bold face instead.
  */
 
 interface ChevronUpIconProps {
@@ -70,11 +71,11 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="relative h-[508px] w-[254px] bg-[#000000] px-5 pt-5"
+      className="min-h-[508px] w-[254px] overflow-hidden bg-[#000000] px-[20px] pt-[20px]"
     >
       {/* Title row */}
       <div className="flex items-start justify-between">
-        <span className="text-[13.5px] leading-[16.34px] text-[#b5b5b5]">
+        <span className="font-primary-bold text-[13.5px] leading-[16.34px] text-[#b5b5b5]">
           UI magician Agent
         </span>
         <GearIcon color="#b5b5b5" />
@@ -83,65 +84,65 @@ export const TestCard = () => {
       {/* Collapsed section row */}
       <div className="mt-[18px] flex items-center gap-[9px]">
         <ChevronUpIcon width={8} height={5} color="#8b9291" />
-        <span className="truncate text-[11.5px] leading-[13.92px] text-[#8b9291]">
+        <span className="min-w-0 flex-1 truncate font-primary-bold text-[11.5px] leading-[13.92px] text-[#8b9291]">
           From entire frame to a singl...
         </span>
       </div>
 
       {/* Section heading */}
-      <div className="mt-[77px] flex items-center gap-[5px]">
+      <div className="mt-[75px] flex items-center gap-[5px]">
         <ChevronUpIcon width={12} height={8} color="#b2b2b1" />
-        <span className="text-[13.5px] leading-[16.34px] text-[#b2b2b1]">
+        <span className="font-primary-bold text-[13.5px] leading-[16.34px] text-[#b2b2b1]">
           Add New Design
         </span>
       </div>
 
       {/* Personal Access Token field */}
-      <div className="mt-[28px] flex items-center gap-4">
-        <span className="text-[11.5px] leading-[13.92px] text-[#a4a4a3]">
+      <div className="mt-[28px] flex items-center gap-[10px]">
+        <span className="font-primary-bold text-[11.5px] leading-[13.92px] text-[#a4a4a3]">
           Personal Access Token
         </span>
         <InfoIcon color="#a4a4a3" />
       </div>
-      <div className="mt-3 flex h-9 w-[211px] items-center border border-[#a5adad] bg-[#272822] pl-[19px]">
-        <span className="text-[11.5px] leading-[13.92px] text-[#737470]">
+      <div className="mt-[12px] flex h-[36px] w-[211px] items-center border border-[#a5adad] bg-[#272822] pl-[19px]">
+        <span className="font-primary-bold text-[11.5px] leading-[13.92px] text-[#737470]">
           figd_xxxxxxxxxxxxxxxxxx
         </span>
       </div>
 
       {/* Design URL field */}
-      <div className="mt-[11px] flex items-center gap-4">
-        <span className="text-[11.5px] leading-[13.92px] text-[#a3a3a2]">
+      <div className="mt-[11px] flex items-center gap-[10px]">
+        <span className="font-primary-bold text-[11.5px] leading-[13.92px] text-[#a3a3a2]">
           Design URL
         </span>
         <InfoIcon color="#a3a3a2" />
       </div>
-      <div className="mt-[11px] flex h-[37px] w-[211px] items-center border-2 border-[#929291] bg-[#272822] pl-5">
-        <span className="text-[10.5px] leading-[12.71px] text-[#71726e]">
+      <div className="mt-[11px] flex h-[37px] w-[211px] items-center border-2 border-[#929291] bg-[#272822] pl-[20px]">
+        <span className="font-primary-bold text-[10.5px] leading-[12.71px] text-[#71726e]">
           https://www.figma.com/file/:
         </span>
       </div>
 
       {/* Actions */}
-      <div className="mt-[22px] flex gap-[17px] pl-6">
-        <div className="flex h-[37px] w-[85px] items-center justify-center rounded bg-[#843a17]">
-          <span className="text-[11.5px] leading-[13.92px] text-[#8c8078]">
-            Awesome
-          </span>
-        </div>
-        <div className="flex h-[37px] w-[85px] items-center justify-center rounded bg-[#843a17]">
-          <span className="text-[11.5px] leading-[13.92px] text-[#8c8078]">
-            Prepare
-          </span>
-        </div>
+      <div className="ml-[24px] mt-[22px] flex gap-[17px]">
+        <button
+          type="button"
+          className="h-[37px] w-[85px] rounded-[4px] bg-[#843a17] font-primary-bold text-[11.5px] leading-[13.92px] text-[#8c8078]"
+        >
+          Awesome
+        </button>
+        <button
+          type="button"
+          className="h-[37px] w-[85px] rounded-[4px] bg-[#843a17] font-primary-bold text-[11.5px] leading-[13.92px] text-[#8c8078]"
+        >
+          Prepare
+        </button>
       </div>
 
       {/* Recent breakdowns */}
-      <div className="mt-[46px]">
-        <span className="text-[13.5px] leading-[16.34px] text-[#b0b0b0]">
-          Recent Breakdowns
-        </span>
-      </div>
+      <h2 className="mt-[46px] font-primary-bold text-[13.5px] leading-[16.34px] text-[#b0b0b0]">
+        Recent Breakdowns
+      </h2>
     </div>
   );
 };
