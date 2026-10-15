@@ -7,7 +7,7 @@ import { formatTags } from "@utils/meta";
 export const meta: MetaFunction = () => {
   const title = "Jira clone - Error";
   const description =
-    "Manage your project. Create, edit, delete new issues and assigne them.";
+    "Manage your project. Create, edit, delete new issues and assign them.";
 
   const tags = {
     charset: "utf-8",

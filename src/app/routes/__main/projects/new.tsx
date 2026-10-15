@@ -20,7 +20,7 @@ import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: MetaFunction = () => {
   const title = "Jira clone - Create project";
-  const description = "Create new project and assigne team members.";
+  const description = "Create new project and assign team members.";
   const image =
     "https://jira-clone.fly.dev/static/images/readme/projects-new.png";
   const url = "https://jira-clone.fly.dev/projects/new";

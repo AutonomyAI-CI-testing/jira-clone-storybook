@@ -26,7 +26,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const { project } = data as unknown as LoaderData;
   const title = "Jira clone - Board";
   const description =
-    "Manage your project. Create, edit, delete new issues and assigne them.";
+    "Manage your project. Create, edit, delete new issues and assign them.";
   const image = "https://jira-clone.fly.dev/static/images/readme/project.png";
   const url = `https://jira-clone.fly.dev/projects/${project.id}/board`;
 
