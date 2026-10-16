@@ -8,7 +8,11 @@ import { UserProfile } from "./user-profile";
 
 export const Header = (): JSX.Element => {
   const iconBaseClass =
-    "w-[24px] h-[24px] text-icon rounded-full flex items-center justify-center hover:bg-background-brand-subtlest hover:text-icon-brand";
+    "w-[24px] h-[24px] rounded-full flex items-center justify-center";
+  // Colour and hover highlight belong to the icons that can be used. A disabled
+  // control uses the disabled icon token and must not react to hover.
+  const iconInteractiveClass =
+    "text-icon hover:bg-background-brand-subtlest hover:text-icon-brand";
 
   return (
     <header className="relative z-10 flex w-full items-center justify-between bg-elevation-surface-raised px-5 py-2 shadow-[0_1px_5px_-1px_rgba(0,0,0,0.3)]">
@@ -26,7 +30,10 @@ export const Header = (): JSX.Element => {
           <button
             aria-label="About this website"
             disabled
-            className={cx(iconBaseClass, "cursor-not-allowed")}
+            className={cx(
+              iconBaseClass,
+              "cursor-not-allowed text-icon-disabled"
+            )}
           >
             <HiQuestionMarkCircle size={24} />
           </button>
@@ -34,7 +41,7 @@ export const Header = (): JSX.Element => {
         <Tooltip title="Github">
           <a
             href="https://github.com/daniserrano7/jira-clone"
-            className={iconBaseClass}
+            className={cx(iconBaseClass, iconInteractiveClass)}
             aria-label="Go to my Github"
           >
             <AiFillGithub size={24} />
