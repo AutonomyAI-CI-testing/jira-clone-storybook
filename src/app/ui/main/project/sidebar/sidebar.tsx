@@ -77,7 +77,7 @@ interface Props {
   projectImage: string;
 }
 
-const navItems: NavItemProps[] = [
+export const navItems: NavItemProps[] = [
   {
     href: "board",
     icon: <HiOutlineViewBoards size={24} />,

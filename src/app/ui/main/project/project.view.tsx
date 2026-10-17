@@ -1,11 +1,11 @@
 import { Outlet, Link, useLocation } from "react-router";
-import { Sidebar } from "@app/ui/main/project/sidebar/sidebar";
+import { Sidebar, navItems } from "@app/ui/main/project/sidebar/sidebar";
 
-const sectionTitles: Record<string, string> = {
-  board: "Board",
-  analytics: "Analytics",
-  backlog: "Backlog",
-};
+// Derived from the sidebar's own nav list so the page heading can never drift
+// from the section the user actually clicked.
+const sectionTitles: Record<string, string> = Object.fromEntries(
+  navItems.map(({ href, name }) => [href, name] as const)
+);
 const defaultSection = "board";
 
 export const ProjectView = ({
