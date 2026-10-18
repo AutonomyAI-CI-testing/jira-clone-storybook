@@ -1,10 +1,6 @@
 import cx from "classix";
 
-const ChevronUp = ({
-  width,
-  height,
-  strokeWidth = 1.6,
-}: ChevronUpProps) => (
+const ChevronUp = ({ width, height, strokeWidth = 1.6 }: ChevronUpProps) => (
   <svg
     width={width}
     height={height}
