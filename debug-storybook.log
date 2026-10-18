@@ -1,0 +1,19 @@
+[15:58:47.315] [INFO] storybook v10.6.2
+[15:58:47.916] [DEBUG] Getting package.json info for /home/user/jira-clone-storybook/package.json...
+[15:58:48.193] [DEBUG] Could not determine @babel/preset-env version in use. In case of runtime errors with @babel/preset-env, you may need to set the babelRemoveBugfixes feature flag in your `main.ts` file.
+[15:58:48.439] [DEBUG] Serving static files from public/avatars at /
+[15:58:48.439] [DEBUG] Serving static files from public/fonts at /
+[15:58:48.439] [DEBUG] Serving static files from public/images at /
+[15:58:48.451] [INFO] Starting...
+[15:58:48.772] [DEBUG] Starting preview..
+[15:58:49.213] [DEBUG] Change detection enabled.
+[15:58:49.214] [DEBUG] Change detection: snapshotting Vite resolve config (restart required if vite.config.ts changes)
+[15:58:49.215] [DEBUG] Change detection: ignored 12 regex alias(es); related modules tracked as opaque-leaf.
+[15:58:49.215] [DEBUG] ChangeDetectionResolverFactory: skipped regex aliases [/^@storybook\/global$/, /^storybook\/test$/, /^storybook\/actions$/, /^storybook\/preview-api$/, /^storybook\/internal\/channels$/, /^storybook\/internal\/client-logger$/, /^storybook\/internal\/core-events$/, /^storybook\/internal\/preview-errors$/, /^storybook\/internal\/types$/, /^storybook\/internal\/preview-api$/, /^\/?@vite\/env/, /^\/?@vite\/client/]
+[15:58:49.277] [ERROR] [38;2;241;97;97mError: listen EADDRINUSE: address already in use 127.0.0.1:6006[39m
+    at Server.setupListenHandle [as _listen2] (node:net:1941:16)
+    at listenInCluster (node:net:1998:12)
+    at node:net:2207:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+[15:58:49.279] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
