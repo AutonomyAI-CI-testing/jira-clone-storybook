@@ -19,7 +19,11 @@ const Field = ({
   <div className={className}>
     <div className="flex items-center gap-3">
       <span className={fieldLabelClassName}>{label}</span>
-      <FiInfo size={15} className="shrink-0 text-[#a4a4a3]" />
+      <FiInfo
+        size={15}
+        aria-hidden="true"
+        className="shrink-0 text-[#a4a4a3]"
+      />
     </div>
     <input
       readOnly
@@ -45,18 +49,30 @@ export const TestCard = () => (
       <span className="font-primary-bold text-[13.5px] leading-[16.34px] text-[#b5b5b5]">
         UI magician Agent
       </span>
-      <FiSettings size={16} className="shrink-0 text-[#b5b5b5]" />
+      <FiSettings
+        size={16}
+        aria-hidden="true"
+        className="shrink-0 text-[#b5b5b5]"
+      />
     </div>
 
     <div className="mt-[18px] flex items-center gap-3">
-      <FiChevronUp size={14} className="shrink-0 text-[#8b9291]" />
+      <FiChevronUp
+        size={14}
+        aria-hidden="true"
+        className="shrink-0 text-[#8b9291]"
+      />
       <span className="truncate font-primary-bold text-[11.5px] leading-[13.92px] text-[#8b9291]">
         From entire frame to a singl...
       </span>
     </div>
 
     <div className="mt-[77px] flex items-center gap-3">
-      <FiChevronUp size={16} className="shrink-0 text-[#b2b2b1]" />
+      <FiChevronUp
+        size={16}
+        aria-hidden="true"
+        className="shrink-0 text-[#b2b2b1]"
+      />
       <span className="font-primary-bold text-[13.5px] leading-[16.34px] text-[#b2b2b1]">
         Add New Design
       </span>
