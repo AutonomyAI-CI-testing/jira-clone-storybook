@@ -64,7 +64,7 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.shiftKey && e.key.toLowerCase() === "n") {
+      if (isCreateIssueShortcut(e)) {
         e.preventDefault();
         navigate("issue/new");
       }
@@ -101,6 +101,28 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
         ))}
       </div>
     </section>
+  );
+};
+
+const isCreateIssueShortcut = (e: KeyboardEvent): boolean =>
+  e.shiftKey &&
+  !e.ctrlKey &&
+  !e.metaKey &&
+  !e.altKey &&
+  e.key.toLowerCase() === "n" &&
+  !isTypingTarget(e.target);
+
+// The shortcut is a board-level navigation, so it must stay quiet while the user
+// is typing - otherwise a capital "N" in the filter input (or in the issue
+// panel) throws the form away instead of being written.
+const isTypingTarget = (target: EventTarget | null): boolean => {
+  if (!(target instanceof HTMLElement)) return false;
+
+  return (
+    target.isContentEditable ||
+    target.tagName === "INPUT" ||
+    target.tagName === "TEXTAREA" ||
+    target.tagName === "SELECT"
   );
 };
 
