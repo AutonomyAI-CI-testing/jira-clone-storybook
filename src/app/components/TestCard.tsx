@@ -1,138 +1,148 @@
-const buttonClass =
-  "h-[72px] w-[168px] rounded-lg bg-[#8a3f16] text-lg text-[#9e9e9e]";
+/**
+ * Replica of the attached Figma frame: a dark "UI magician Agent" panel.
+ * Self-contained smoke test - no props, no state, no event handlers.
+ * Sizes and colours are the Figma style guide's values for the 254x508 frame.
+ */
 
-export const TestCard = (): JSX.Element => {
-  return (
-    <div id="testElem" className="min-h-screen w-full bg-[#1e1e1e] px-10 py-12">
-      <div className="flex items-center justify-between">
-        <span className="text-xl text-[#d4d4d4]">UI magician Agent</span>
-        <SettingsIcon />
-      </div>
+const SettingsIcon = () => (
+  <svg
+    width="14"
+    height="16"
+    viewBox="0 0 14 16"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle
+      cx="7"
+      cy="8"
+      r="5.4"
+      stroke="#b5b5b5"
+      strokeWidth="1.2"
+      strokeDasharray="2.2 1.6"
+    />
+    <circle cx="7" cy="8" r="2.2" stroke="#b5b5b5" strokeWidth="1.2" />
+  </svg>
+);
 
-      <div className="mt-8 flex items-center gap-3">
-        <ChevronUpIcon />
-        <span className="text-lg text-[#9a9a9a]">
-          From entire frame to a singl...
-        </span>
-      </div>
+const InfoIcon = () => (
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 15 15"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle cx="7.5" cy="7.5" r="6.5" stroke="#a4a4a3" strokeWidth="1" />
+    <path
+      d="M7.5 6.8v4.2"
+      stroke="#a4a4a3"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+    />
+    <circle cx="7.5" cy="4.4" r="0.75" fill="#a4a4a3" />
+  </svg>
+);
 
-      <section className="mt-44">
-        <div className="flex items-center gap-3">
-          <ChevronUpIcon />
-          <h2 className="text-xl text-[#d4d4d4]">Add New Design</h2>
-        </div>
+const ChevronUp = ({
+  width,
+  height,
+  stroke,
+}: {
+  width: number;
+  height: number;
+  stroke: string;
+}) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox={`0 0 ${width} ${height}`}
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      d={`M1 ${height - 1.5}L${width / 2} 1.5L${width - 1} ${height - 1.5}`}
+      stroke={stroke}
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
-        <div className="mt-14 space-y-8">
-          <Field
-            id="personal-access-token"
-            label="Personal Access Token"
-            placeholder="figd_xxxxxxxxxxxxxxxxxxxxxx"
-          />
-          <Field
-            id="design-url"
-            label="Design URL"
-            placeholder="https://www.figma.com/file/"
-          />
-        </div>
-
-        <div className="mt-12 flex gap-9 pl-12">
-          <button type="button" className={buttonClass}>
-            Awesome
-          </button>
-          <button type="button" className={buttonClass}>
-            Prepare
-          </button>
-        </div>
-      </section>
-
-      <h2 className="mt-28 text-2xl text-[#d4d4d4]">Recent Breakdowns</h2>
-    </div>
-  );
-};
-
-const Field = ({ id, label, placeholder }: FieldProps) => {
-  return (
-    <div>
-      <div className="flex items-center gap-3">
-        <label htmlFor={id} className="text-base text-[#9a9a9a]">
-          {label}
-        </label>
-        <InfoIcon />
-      </div>
-      <input
-        id={id}
-        type="text"
-        placeholder={placeholder}
-        className="mt-2 h-[72px] w-full rounded-sm border border-[#d4d4d4] bg-[#2a2a2a] px-5 text-lg text-[#d4d4d4] placeholder:text-[#9a9a9a] focus:outline-none"
-      />
-    </div>
-  );
-};
-
-interface FieldProps {
-  id: string;
+const Field = ({
+  label,
+  placeholder,
+}: {
   label: string;
   placeholder: string;
-}
+}) => (
+  <div>
+    <div className="flex items-center gap-2">
+      <span className="text-[11.5px] font-semibold leading-[13.92px] text-[#a4a4a3]">
+        {label}
+      </span>
+      <InfoIcon />
+    </div>
+    <input
+      aria-label={label}
+      placeholder={placeholder}
+      className="mt-3 h-9 w-full border border-[#a5adad] bg-[#272822] px-[19px] text-[11.5px] font-semibold leading-[13.92px] text-[#737470] outline-none placeholder:text-[#737470]"
+    />
+  </div>
+);
 
-const iconClass = "shrink-0 text-[#d4d4d4]";
+const PanelButton = ({ children }: { children: string }) => (
+  <button
+    type="button"
+    className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] font-semibold leading-[13.92px] text-[#8c8078]"
+  >
+    {children}
+  </button>
+);
 
-const ChevronUpIcon = () => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={iconClass}
-    >
-      <path d="m6 15 6-6 6 6" />
-    </svg>
-  );
-};
+export const TestCard = () => (
+  <div
+    id="testElem"
+    className="w-[254px] bg-[#000000] px-5 pb-[62px] pt-5 font-[Inter,sans-serif]"
+  >
+    <div className="flex items-center justify-between">
+      <span className="text-[13.5px] font-semibold leading-[16.34px] text-[#b5b5b5]">
+        UI magician Agent
+      </span>
+      <SettingsIcon />
+    </div>
 
-const SettingsIcon = () => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="26"
-      height="26"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={iconClass}
-    >
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-    </svg>
-  );
-};
+    <div className="mt-[18px] flex items-center gap-[9px]">
+      <ChevronUp width={8} height={5} stroke="#8b9291" />
+      <span className="truncate text-[11.5px] font-semibold leading-[13.92px] text-[#8b9291]">
+        From entire frame to a singl...
+      </span>
+    </div>
 
-const InfoIcon = () => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={iconClass}
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 16v-5" />
-      <path d="M12 8h.01" />
-    </svg>
-  );
-};
+    <div className="mt-[77px] flex items-center gap-[5px] pl-[6px]">
+      <ChevronUp width={12} height={8} stroke="#b2b2b1" />
+      <span className="text-[13.5px] font-semibold leading-[16.34px] text-[#b2b2b1]">
+        Add New Design
+      </span>
+    </div>
+
+    <div className="mt-[28px]">
+      <Field
+        label="Personal Access Token"
+        placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
+      />
+    </div>
+    <div className="mt-3">
+      <Field label="Design URL" placeholder="https://www.figma.com/file/:" />
+    </div>
+
+    <div className="ml-6 mt-[22px] flex gap-[17px]">
+      <PanelButton>Awesome</PanelButton>
+      <PanelButton>Prepare</PanelButton>
+    </div>
+
+    <h3 className="mt-[46px] text-[13.5px] font-semibold leading-[16.34px] text-[#b0b0b0]">
+      Recent Breakdowns
+    </h3>
+  </div>
+);
