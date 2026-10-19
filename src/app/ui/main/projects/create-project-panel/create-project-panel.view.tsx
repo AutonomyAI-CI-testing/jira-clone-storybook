@@ -13,6 +13,7 @@ import { Button } from "@app/components/button/button";
 import { Title } from "@app/components/title/title";
 import { Description } from "@app/components/description/description";
 import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
+import { isTypingTarget } from "@utils/is-typing-target";
 import { CreateProjectPanelHeader } from "./create-project-panel-header";
 
 export const CreateProjectPanelView = ({
@@ -53,7 +54,14 @@ export const CreateProjectPanelView = ({
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.shiftKey && e.key.toLowerCase() === "s") {
+      // "Shift + S" accepts the project from anywhere in the panel, but it has
+      // to stay quiet while the user is typing: a capital "S" in the title or
+      // the description would otherwise create the project mid-word.
+      if (
+        e.shiftKey &&
+        e.key.toLowerCase() === "s" &&
+        !isTypingTarget(e.target)
+      ) {
         e.preventDefault();
         handleProgrammaticSubmit();
       }

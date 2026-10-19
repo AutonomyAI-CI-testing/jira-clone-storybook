@@ -21,6 +21,7 @@ import { Button } from "@app/components/button/button";
 import { Title } from "@app/components/title/title";
 import { Description } from "@app/components/description/description";
 import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
+import { isTypingTarget } from "@utils/is-typing-target";
 import { PanelHeaderIssue } from "./panel-header-issue";
 import { CreateComment } from "./comment/create-comment";
 import { ViewComment } from "./comment/view-comment";
@@ -71,7 +72,14 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.shiftKey && e.key.toLowerCase() === "s") {
+      // "Shift + S" accepts the issue from anywhere in the panel, but it has to
+      // stay quiet while the user is typing: a capital "S" in the title, the
+      // description or a comment would otherwise submit the issue mid-word.
+      if (
+        e.shiftKey &&
+        e.key.toLowerCase() === "s" &&
+        !isTypingTarget(e.target)
+      ) {
         e.preventDefault();
         handleProgrammaticSubmit();
       }
