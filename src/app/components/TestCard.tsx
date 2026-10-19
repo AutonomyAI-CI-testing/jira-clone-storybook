@@ -1,148 +1,142 @@
-/**
- * TestCard — a self-contained smoke-test card built from the Figma design
- * "Test Page - Simple" (UI magician Agent panel).
- *
- * Takes no props and imports nothing: the whole card, including its icons, is
- * defined here so it can be rendered on its own.
- *
- * Colours use the raw dark-neutral custom properties declared on :root in
- * `src/app/styles/app.css` rather than the semantic layer, because the design is
- * a fixed dark panel that should look the same in every app theme.
- */
-export const TestCard = () => {
-  return (
-    <div
-      id="testElem"
-      className="min-h-screen w-full bg-[var(--DarkNeutral100)] px-10 py-8 font-primary-light text-[var(--DarkNeutral1100)]"
-    >
-      {/* Header */}
-      <div className="flex items-start justify-between">
-        <h1 className="font-primary text-xl text-[var(--DarkNeutral1100)]">
-          UI magician Agent
-        </h1>
-        <GearIcon />
-      </div>
+const PANEL_BG = "bg-[color:var(--DarkNeutral100)]";
+const TEXT_STRONG = "text-[color:var(--DarkNeutral1100)]";
+const TEXT_MUTED = "text-[color:var(--DarkNeutral900)]";
+const TEXT_FAINT = "text-[color:var(--DarkNeutral700)]";
+const TEXT_LABEL = "text-[color:var(--DarkNeutral1000)]";
+const ICON_FAINT = "text-[color:var(--DarkNeutral800)]";
 
-      {/* Collapsed summary row */}
-      <div className="mt-8 flex items-center gap-2">
-        <ChevronUpIcon className="h-4 w-4 shrink-0 text-[var(--DarkNeutral1100)]" />
-        <span className="truncate text-base text-[var(--DarkNeutral700)]">
-          From entire frame to a singl...
-        </span>
-      </div>
+const BUTTON_CLASS =
+  "h-16 flex-1 rounded-md bg-[color:var(--Orange800)] font-primary text-lg text-[color:var(--DarkNeutral900)] transition-colors hover:bg-[color:var(--Orange700)] active:bg-[color:var(--Orange900)]";
 
-      {/* Add New Design */}
-      <div className="mt-16 flex items-center gap-2">
-        <ChevronUpIcon className="h-5 w-5 shrink-0 text-[var(--DarkNeutral1100)]" />
-        <h2 className="font-primary-bold text-2xl text-[var(--DarkNeutral1100)]">
-          Add New Design
-        </h2>
-      </div>
+const ChevronUpIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    className={className}
+  >
+    <path d="m18 15-6-6-6 6" />
+  </svg>
+);
 
-      <div className="mt-12 space-y-6">
-        <Field
-          label="Personal Access Token"
-          placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
-        />
-        <Field label="Design URL" placeholder="https://www.figma.com/file/" />
-      </div>
+const InfoIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.5}
+    aria-hidden="true"
+    className={className}
+  >
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 11v5" strokeLinecap="round" />
+    <circle cx="12" cy="7.5" r="0.75" fill="currentColor" stroke="none" />
+  </svg>
+);
 
-      {/* Actions */}
-      <div className="mt-8 flex gap-5">
-        <button
-          type="button"
-          className="flex-1 rounded-md bg-[var(--Red800)] px-4 py-3 font-primary text-base text-white/70"
-        >
-          Awesome
-        </button>
-        <button
-          type="button"
-          className="flex-1 rounded-md bg-[var(--Red800)] px-4 py-3 font-primary text-base text-white/70"
-        >
-          Prepare
-        </button>
-      </div>
+const SettingsIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.5}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    className={className}
+  >
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+  </svg>
+);
 
-      {/* Recent Breakdowns */}
-      <h3 className="mt-16 font-primary-bold text-xl text-[var(--DarkNeutral800)]">
-        Recent Breakdowns
-      </h3>
+const Field = ({ id, label, placeholder }: FieldProps) => (
+  <div>
+    <div className="flex items-center gap-10">
+      <label htmlFor={id} className={`font-primary text-base ${TEXT_LABEL}`}>
+        {label}
+      </label>
+      <InfoIcon className={`h-[18px] w-[18px] ${ICON_FAINT}`} />
     </div>
-  );
-};
+    <input
+      id={id}
+      name={id}
+      placeholder={placeholder}
+      className={`mt-3 h-14 w-full rounded border border-[color:var(--DarkNeutral600)] bg-[color:var(--DarkNeutral200)] px-8 font-primary-light text-base ${TEXT_STRONG} placeholder:text-[color:var(--DarkNeutral700)]`}
+    />
+  </div>
+);
 
-const Field = ({ label, placeholder }: FieldProps) => {
-  return (
-    <div>
-      <div className="flex items-center gap-4">
-        <label className="text-base text-[var(--DarkNeutral1100)]">
-          {label}
-        </label>
-        <InfoIcon />
-      </div>
-      <input
-        type="text"
-        placeholder={placeholder}
-        className="mt-3 w-full rounded border border-[var(--DarkNeutral500)] bg-[var(--DarkNeutral0)] px-4 py-3 text-base text-[var(--DarkNeutral1100)] outline-none placeholder:text-[var(--DarkNeutral600)]"
+export const TestCard = () => (
+  <div
+    id="testElem"
+    className={`w-full max-w-[508px] ${PANEL_BG} p-10 font-primary-light`}
+  >
+    <div className="flex items-center justify-between">
+      <h1 className={`font-primary text-xl ${TEXT_STRONG}`}>
+        UI magician Agent
+      </h1>
+      <button
+        type="button"
+        aria-label="Settings"
+        className={`rounded ${TEXT_MUTED} transition-colors hover:text-[color:var(--DarkNeutral1100)]`}
+      >
+        <SettingsIcon className="h-6 w-6" />
+      </button>
+    </div>
+
+    <div className="mt-6 flex items-center gap-3">
+      <ChevronUpIcon className={`h-5 w-5 shrink-0 ${ICON_FAINT}`} />
+      <span className={`truncate text-base ${TEXT_FAINT}`}>
+        From entire frame to a single component
+      </span>
+    </div>
+
+    <div className="mt-28 flex items-center gap-3">
+      <ChevronUpIcon className={`h-6 w-6 shrink-0 ${TEXT_STRONG}`} />
+      <h2 className={`font-primary-bold text-2xl ${TEXT_STRONG}`}>
+        Add New Design
+      </h2>
+    </div>
+
+    <div className="mt-16 space-y-8">
+      <Field
+        id="personalAccessToken"
+        label="Personal Access Token"
+        placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
+      />
+      <Field
+        id="designUrl"
+        label="Design URL"
+        placeholder="https://www.figma.com/file/"
       />
     </div>
-  );
-};
 
-const GearIcon = () => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-6 w-6 shrink-0 text-[var(--DarkNeutral1100)]"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 10 3.09V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-    </svg>
-  );
-};
+    <div className="mt-12 flex gap-8">
+      <button type="button" className={BUTTON_CLASS}>
+        Awesome
+      </button>
+      <button type="button" className={BUTTON_CLASS}>
+        Prepare
+      </button>
+    </div>
 
-const ChevronUpIcon = ({ className }: { className: string }) => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m18 15-6-6-6 6" />
-    </svg>
-  );
-};
+    <h2 className={`mt-24 font-primary-bold text-xl ${TEXT_MUTED}`}>
+      Recent Breakdowns
+    </h2>
+  </div>
+);
 
-const InfoIcon = () => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="h-5 w-5 shrink-0 text-[var(--DarkNeutral800)]"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 11v5" />
-      <path d="M12 7.75h.01" strokeWidth="2" />
-    </svg>
-  );
-};
+interface IconProps {
+  className: string;
+}
 
 interface FieldProps {
+  id: string;
   label: string;
   placeholder: string;
 }
