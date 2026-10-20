@@ -2,8 +2,8 @@ const feiImage = "/images/build-fei/wizard.png";
 
 export const BuildFeiView = () => {
   return (
-    <main className="flex h-full w-full flex-col items-center justify-center overflow-hidden bg-elevation-surface px-6 pt-[7vh] pb-[4vh]">
-      <h1 className="shrink-0 font-primary-black text-5xl text-[#29FF00FF]">
+    <main className="flex h-full w-full flex-col items-center justify-center overflow-hidden bg-elevation-surface px-6 pb-[4vh] pt-[7vh]">
+      <h1 className="shrink-0 rounded-lg bg-[var(--Neutral1000)] px-8 py-3 font-primary-black text-5xl text-[#29FF00FF]">
         Build Fei
       </h1>
       <img
