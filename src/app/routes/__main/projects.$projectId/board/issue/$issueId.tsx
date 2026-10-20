@@ -8,6 +8,7 @@ import { useLoaderData, useLocation, useNavigate } from "react-router";
 import invariant from "tiny-invariant";
 import cx from "classix";
 import * as Dialog from "@radix-ui/react-dialog";
+import { ACTIVITY_KINDS } from "@domain/activity/activity";
 import { UserId } from "@domain/user/user";
 import { ProjectId } from "@domain/project/project";
 import { CategoryId } from "@domain/category/category";
@@ -22,6 +23,7 @@ import {
   UpdateIssueInputData,
 } from "@infrastructure/db/issue";
 import { deleteComment } from "@infrastructure/db/comment";
+import { recordUserActivity } from "@app/activity";
 import { IssuePanel } from "@app/ui/main/project/board/issue-panel/issue-panel.view";
 import { Error404 } from "@app/components/error-404/error-404";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
@@ -137,12 +139,13 @@ export const action: ActionFunction = async ({ request, params }) => {
     }
 
     await updateIssue(issueInputData);
+    await recordUserActivity(request, ACTIVITY_KINDS.WORKED);
     emitter.emit(EVENTS.ISSUE_CHANGED, Date.now());
   }
 
   if (_action === "delete") {
-    console.log("DELETING ISSUE");
     await deleteIssue(id);
+    await recordUserActivity(request, ACTIVITY_KINDS.WORKED);
     emitter.emit(EVENTS.ISSUE_DELETED, Date.now());
   }
 
@@ -152,6 +155,7 @@ export const action: ActionFunction = async ({ request, params }) => {
     if (!commentId) return null;
 
     await deleteComment(commentId);
+    await recordUserActivity(request, ACTIVITY_KINDS.WORKED);
     return redirect(`/projects/${projectId}/board/issue/${id}`, 202);
   }
 

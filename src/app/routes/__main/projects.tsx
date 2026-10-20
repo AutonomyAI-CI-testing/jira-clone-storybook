@@ -5,8 +5,10 @@ import type {
 } from "react-router";
 import { data as json, redirect } from "react-router";
 import { useLoaderData } from "react-router";
+import { ACTIVITY_KINDS } from "@domain/activity/activity";
 import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
+import { recordUserActivity } from "@app/activity";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { ProjectsView } from "@app/ui/main/projects/projects.view";
 import { formatTags, formatProperties } from "@utils/meta";
@@ -74,6 +76,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     if (projectId) {
       await deleteProject(projectId);
+      await recordUserActivity(request, ACTIVITY_KINDS.WORKED);
     } else {
       console.error("Project id not found: ", projectId);
     }

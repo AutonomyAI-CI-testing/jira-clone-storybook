@@ -6,6 +6,7 @@ import type {
 import { data as json, redirect } from "react-router";
 import { useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
+import { ACTIVITY_KINDS } from "@domain/activity/activity";
 import { Project, ProjectId } from "@domain/project/project";
 import { CategoryId } from "@domain/category/category";
 import { IssueId } from "@domain/issue/issue";
@@ -15,6 +16,7 @@ import {
   updateIssueCategory,
   UpdateIssueCategoryData,
 } from "@infrastructure/db/issue";
+import { recordUserActivity } from "@app/activity";
 import { Error500 } from "@app/components/error-500/error-500";
 import { BoardView } from "@app/ui/main/project/board/board.view";
 import { EVENTS } from "@app/events/events";
@@ -103,6 +105,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     try {
       await updateIssueCategory(inputData);
+      await recordUserActivity(request, ACTIVITY_KINDS.WORKED);
       emitter.emit(EVENTS.ISSUE_CHANGED, Date.now());
       return json(null, { status: 201 });
     } catch (error) {

@@ -1,7 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { withMainContext, withRemixStub } from "@app/stories/utils";
+import { getWeekStarts, WEEKS_READ } from "@domain/activity/activity";
 import { AnalyticsView } from "./analytics.view";
-import "react-toastify/dist/ReactToastify.css";
+
+const weekStarts = getWeekStarts(WEEKS_READ, Date.now());
+const counts = [
+  { signedIn: 4, active: 1 },
+  { signedIn: 6, active: 2 },
+  { signedIn: 5, active: 2 },
+  { signedIn: 7, active: 3 },
+  { signedIn: 9, active: 4 },
+  { signedIn: 8, active: 3 },
+];
 
 const meta: Meta<typeof AnalyticsView> = {
   title: "Pages/Main/Project/AnalyticsView",
@@ -19,4 +29,12 @@ const meta: Meta<typeof AnalyticsView> = {
 export default meta;
 type Story = StoryObj<typeof AnalyticsView>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    weeks: counts.map((weekCounts, index) => ({
+      weekStart: weekStarts[index],
+      ...weekCounts,
+    })),
+    recordingStartedAt: weekStarts[0],
+  },
+};

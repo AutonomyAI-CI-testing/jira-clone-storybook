@@ -5,8 +5,10 @@ import type {
 } from "react-router";
 import { data as json, redirect } from "react-router";
 import { useLoaderData } from "react-router";
+import { ACTIVITY_KINDS } from "@domain/activity/activity";
 import { User } from "@domain/user/user";
 import { getUsers } from "@infrastructure/db/user";
+import { recordUserActivity } from "@app/activity";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { LoginView } from "@app/ui/login/login.view";
 import { formatTags, formatProperties } from "@utils/meta";
@@ -65,6 +67,7 @@ export const action: ActionFunction = async ({ request }) => {
     const userId = formData.get("user") as string;
     const userSession = await getUserSession(request);
     userSession.setUser(userId);
+    await recordUserActivity(request, ACTIVITY_KINDS.SIGNED_IN, userId);
 
     return redirect("/projects", {
       headers: { "Set-Cookie": await userSession.commit() },

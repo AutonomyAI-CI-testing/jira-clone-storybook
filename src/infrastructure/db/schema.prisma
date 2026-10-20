@@ -17,6 +17,7 @@ model User {
   issueReporters Issue[]   @relation("issue_reporter")
   issueAssignees Issue[]   @relation("issue_assignee")
   issueComments  Comment[]
+  activityEvents ActivityEvent[]
 }
 
 model Project {
@@ -77,4 +78,15 @@ model Priority {
   issues    Issue[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// One row per thing a person did. Read back as the weekly active user count.
+model ActivityEvent {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  kind      String // "signedIn" | "worked"; SQLite has no enum type
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
 }
