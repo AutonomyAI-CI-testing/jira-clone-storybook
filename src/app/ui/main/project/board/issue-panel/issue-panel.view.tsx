@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import {
   Form,
-  useActionData,
   useSearchParams,
   useNavigation,
   useFetcher,
@@ -39,8 +38,9 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const { user } = useUserStore();
   const reporter = issue ? issue.reporter : user;
   const formRef = useRef<HTMLFormElement>(null);
-  const actionData = useActionData() as IssueActionData;
-  const fetcher = useFetcher();
+  // The panel submits through a fetcher, so the action's result lands on
+  // fetcher.data — useActionData() is always undefined here.
+  const fetcher = useFetcher<IssueActionData>();
   const params = useSearchParams();
   const transition = useNavigation();
   const location = useLocation();
@@ -157,7 +157,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                         <Title
                           initTitle={issue?.name || ""}
                           readOnly={userIsNotReporter}
-                          error={actionData?.errors?.name}
+                          error={fetcher.data?.errors?.name}
                         />
                       </Dialog.Title>
                     </div>
