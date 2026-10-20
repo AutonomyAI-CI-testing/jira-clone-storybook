@@ -16,8 +16,11 @@ export const LandingView = () => {
   );
 
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center bg-white px-6 text-center">
-      <h1 className="font-montserrat text-[64px] font-bold leading-[40px] text-black">
+    // The hero is a fixed light design, so pin the light theme: the red
+    // heading token resolves to a pale salmon under the dark theme while the
+    // background stays white.
+    <section className="light flex min-h-screen flex-col items-center justify-center bg-white px-6 text-center">
+      <h1 className="font-montserrat text-[64px] font-bold leading-[40px] text-font-danger">
         Let’s Find Your Ideal Space
       </h1>
       <p className="mt-[24px] font-montserrat text-[26px] font-normal leading-[40px] text-black">
