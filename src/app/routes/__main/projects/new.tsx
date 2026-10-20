@@ -5,6 +5,7 @@ import type {
 } from "react-router";
 import { data as json, redirect } from "react-router";
 import { useLoaderData } from "react-router";
+import { ACTIVITY_KINDS } from "@domain/activity/activity";
 import { User, UserId } from "@domain/user/user";
 import {
   Category,
@@ -13,6 +14,7 @@ import {
 } from "@domain/category/category";
 import { getUsers } from "@infrastructure/db/user";
 import { createProject } from "@infrastructure/db/project";
+import { recordUserActivity } from "@app/activity";
 import { CreateProjectPanelView } from "@app/ui/main/projects/create-project-panel/create-project-panel.view";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 import { getRandomProjectImage } from "@utils/random-project-image";
@@ -117,6 +119,8 @@ export const action: ActionFunction = async ({ request }) => {
       image: getRandomProjectImage(),
       categories,
     });
+
+    await recordUserActivity(request, ACTIVITY_KINDS.WORKED);
 
     return redirect("/projects");
   }
