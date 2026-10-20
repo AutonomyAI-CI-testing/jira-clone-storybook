@@ -41,3 +41,14 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* Montserrat ships as a single variable file covering every weight used by the
+   landing page, so one declaration serves the 400 / 500 / 700 instances. */
+@font-face {
+  font-family: "Montserrat";
+  src: url('../../../public/fonts/Montserrat-Variable.woff2') format('woff2');
+
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
