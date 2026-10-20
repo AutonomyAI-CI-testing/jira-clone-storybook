@@ -9,7 +9,7 @@ export const PlanFeiView = (): JSX.Element => {
         height={546}
         className="pointer-events-none absolute bottom-0 right-[2vw] h-[78vh] w-auto select-none"
       />
-      <h1 className="relative z-10 px-[8vw] font-primary-black text-6xl text-font">
+      <h1 className="relative z-10 px-[8vw] font-primary-black text-6xl text-font-danger">
         Plan Fei
       </h1>
     </div>
