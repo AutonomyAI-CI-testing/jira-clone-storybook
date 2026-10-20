@@ -24,7 +24,10 @@ export const UserAvatar = ({
 
   return (
     <Tooltip title={name} show={tooltip}>
-      <Avatar.Root className="flex items-center rounded-full" style={imageSize}>
+      <Avatar.Root
+        className="flex items-center rounded-full outline outline-2 outline-border-danger"
+        style={imageSize}
+      >
         <Avatar.Image
           className="rounded-full object-cover"
           src={image ? imageSrc : undefined}
@@ -33,7 +36,7 @@ export const UserAvatar = ({
         />
         <Avatar.Fallback
           delayMs={0}
-          className="flex items-center justify-center rounded-full text-[var(--Neutral1000)]"
+          className="flex items-center justify-center rounded-full bg-[url('/images/avatar-background.png')] bg-cover bg-center text-[var(--Neutral1000)]"
           style={{
             ...imageSize,
             backgroundColor: color || getRandomPastelColor(),

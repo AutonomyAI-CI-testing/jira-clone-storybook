@@ -2,14 +2,20 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { usersMock } from "@domain/user/user.mock";
 import { UserAvatar } from "./user-avatar";
 
+const userImage = usersMock[1].image;
+const userName = usersMock[1].name;
+
 const meta: Meta<typeof UserAvatar> = {
   title: "Components/UserAvatar",
+  component: UserAvatar,
   parameters: {
-    layout: "centered",
+    layout: "padded",
+  },
+  args: {
+    name: userName,
   },
   argTypes: {
     name: {
-      defaultValue: "John Doe",
       control: {
         type: "text",
       },
@@ -40,12 +46,9 @@ const meta: Meta<typeof UserAvatar> = {
 export default meta;
 type Story = StoryObj<typeof UserAvatar>;
 
-const userImage = usersMock[1].image;
-const userName = usersMock[1].name;
-
 export const Default: Story = {
   render: () => (
-    <div className="grid grid-cols-6 gap-4 p-4">
+    <div className="mx-auto grid w-fit grid-cols-6 gap-4 p-4">
       {[Image, Fallback, Tooltip, MediumSize, LargeSize].map(
         (UserAvatarStory, index) => (
           <UserAvatar name={userName} {...UserAvatarStory.args} key={index} />

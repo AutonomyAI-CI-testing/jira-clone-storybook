@@ -33,6 +33,18 @@ const meta: Meta<typeof Button> = {
         options: ["md", "lg"],
       },
     },
+    loading: {
+      description:
+        "Renders a spinner before the label, sets the native disabled attribute and aria-busy",
+      control: {
+        type: "boolean",
+      },
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
 };
 
@@ -237,4 +249,40 @@ export const PrimaryTextBig: Story = {
     size: "lg",
     children: "Primary",
   },
+};
+
+export const Loading: Story = {
+  args: {
+    loading: true,
+    children: "Loading",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    children: "Disabled",
+  },
+};
+
+export const LoadingAndDisabled: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-4 p-4">
+      {[Primary, Neutral, Danger].map((ButtonStory, index) => (
+        <Button {...ButtonStory.args} loading className="w-fit" key={index}>
+          {ButtonStory.args?.children}
+        </Button>
+      ))}
+      {[Primary, Neutral, Danger].map((ButtonStory, index) => (
+        <Button
+          {...ButtonStory.args}
+          disabled
+          className="w-fit"
+          key={`disabled-${index}`}
+        >
+          {ButtonStory.args?.children}
+        </Button>
+      ))}
+    </div>
+  ),
 };
