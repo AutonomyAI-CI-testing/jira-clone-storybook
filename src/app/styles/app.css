@@ -709,9 +709,9 @@
 .barbie {
   /* Text */
   --color-font: var(--Teal1000);
-  --color-font-brand: var(--Teal700);
-  --color-font-subtle: var(--Neutral600);
-  --color-font-subtlest: var(--Neutral700);
+  --color-font-brand: var(--Teal900);
+  --color-font-subtle: var(--Neutral900);
+  --color-font-subtlest: var(--Teal900);
   --color-font-success: var(--Green800);
   --color-font-danger: var(--Red800);
   --color-font-warning: var(--Orange800);
