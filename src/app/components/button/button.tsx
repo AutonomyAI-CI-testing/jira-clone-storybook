@@ -1,6 +1,8 @@
 import { forwardRef } from "react";
 import cx from "classix";
 
+import { Spinner } from "@app/components/spinner/spinner";
+
 export const Button = forwardRef<HTMLButtonElement, Props>(
   (
     {
@@ -8,6 +10,8 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
       color = "primary",
       variant = "contained",
       size = "md",
+      loading = false,
+      disabled = false,
       className,
       ...rest
     },
@@ -123,8 +127,11 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
           size === "lg" && "gap-3 px-8 py-2 text-lg",
           className
         )}
+        disabled={loading || disabled}
+        aria-busy={loading || undefined}
         {...rest}
       >
+        {loading && <Spinner />}
         {children}
       </button>
     );
@@ -138,4 +145,5 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: "primary" | "neutral" | "success" | "danger" | "warning" | "info";
   variant?: "contained" | "subtlest" | "text";
   size?: "md" | "lg";
+  loading?: boolean;
 }
