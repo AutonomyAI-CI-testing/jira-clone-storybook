@@ -14,6 +14,13 @@ export default [
       route("analytics", "routes/__main/projects.$projectId/analytics.tsx"),
       route("board", "routes/__main/projects.$projectId/board.tsx", [
         route("issue/new", "routes/__main/projects.$projectId/board/issue/new.tsx"),
+        // Resource route (no default export): the board's server-sent events stream.
+        // It has to sit above "issue/:issueId", which would otherwise match this path
+        // with :issueId = "issue-event" and answer 404.
+        route(
+          "issue/issue-event",
+          "routes/__main/projects.$projectId/board/issue/issue-event.ts"
+        ),
         route("issue/:issueId", "routes/__main/projects.$projectId/board/issue/$issueId.tsx"),
       ]),
       route("server-error", "routes/__main/projects.$projectId/server-error.tsx"),

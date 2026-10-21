@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { Outlet, useNavigate, useRevalidator } from "react-router";
+import { Outlet, useNavigate, useParams, useRevalidator } from "react-router";
 import { useEventSource } from "remix-utils/sse/react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -46,6 +46,11 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
   const [prevCategories, setPrevCategories] = useState(categories);
   const { revalidate } = useRevalidator();
   const navigate = useNavigate();
+  const { projectId } = useParams();
+  // Absolute, so the stream resolves to the same URL from the board and from the
+  // issue panel — the board stays mounted behind it, and a relative path would
+  // otherwise be resolved against the panel's deeper URL.
+  const issueEventsUrl = `/projects/${projectId}/board/issue/issue-event`;
 
   // Reset optimistic submissions when the categories data changes
   if (categories !== prevCategories) {
@@ -54,11 +59,11 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
   }
 
   // Data created
-  useEventSource("board/issue/issue-event", {
+  useEventSource(issueEventsUrl, {
     event: EVENTS.ISSUE_CREATED,
   });
 
-  const dataUpdated = useEventSource("board/issue/issue-event", {
+  const dataUpdated = useEventSource(issueEventsUrl, {
     event: EVENTS.ISSUE_CHANGED,
   });
 
