@@ -19,7 +19,7 @@ export const LoginView = ({ users }: Props) => {
 
   return (
     <div className="mx-auto max-w-[400px] pt-[10vh]">
-      <h1 className="font-primary-black text-5xl text-font">
+      <h1 className="font-primary-black text-5xl text-[#FF2600FF]">
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
@@ -60,6 +60,7 @@ export const LoginView = ({ users }: Props) => {
           </Select.Content>
         </Select.Root>
         <Button
+          color="success"
           type="submit"
           name="_action"
           value="setUser"
