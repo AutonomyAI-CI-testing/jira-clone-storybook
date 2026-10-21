@@ -839,3 +839,13 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/*
+ * Standalone screen (see projects.view.tsx). It is deliberately fixed: a black
+ * surface with green type in every theme, so its colors are declared here rather
+ * than in the semantic token contract above.
+ */
+:root {
+  --color-elevation-surface-splash: #000000;
+  --color-font-splash: var(--Green600);
+}
