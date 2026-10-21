@@ -155,7 +155,7 @@
     /* Standalone splash surface. Deliberately fixed instead of themed, so the
        page renders the same in every theme. */
     --color-splash-surface: #000000;
-    --color-splash-font: #ff0000;
+    --color-splash-font: var(--Green500);
   }
 }
 
