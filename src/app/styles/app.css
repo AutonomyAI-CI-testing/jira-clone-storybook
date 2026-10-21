@@ -151,6 +151,11 @@
     --Magenta800: #943d73;
     --Magenta900: #50253f;
     --Magenta1000: #421f34;
+
+    /* Standalone splash surface. Deliberately fixed instead of themed, so the
+       page renders the same in every theme. */
+    --color-splash-surface: #000000;
+    --color-splash-font: var(--Green500);
   }
 }
 
