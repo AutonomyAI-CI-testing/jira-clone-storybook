@@ -19,6 +19,7 @@ module.exports = {
         selected: "var(--color-font-selected)",
         inverse: "var(--color-font-inverse)",
         disabled: "var(--color-font-disabled)",
+        contrast: "var(--color-font-contrast)",
         accent: {
           green: "var(--color-font-accent-green)",
           blue: "var(--color-font-accent-blue)",
@@ -143,6 +144,7 @@ module.exports = {
           hovered: "var(--color-background-input-hovered)",
           pressed: "var(--color-background-input-pressed)",
         },
+        contrast: "var(--color-background-contrast)",
         interaction: "var(--color-background-interaction)",
         accent: {
           DEFAULT: "var(--color-background-accent)",

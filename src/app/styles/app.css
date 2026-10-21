@@ -156,6 +156,10 @@
 
 :root,
 .light {
+  /* Fixed-contrast surface: a black canvas with green type, identical in every theme */
+  --color-background-contrast: #000000;
+  --color-font-contrast: var(--Green600);
+
   /* Text */
   --color-font: var(--Neutral1000);
   --color-font-brand: var(--Blue700);
