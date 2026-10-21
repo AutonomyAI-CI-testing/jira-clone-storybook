@@ -3,10 +3,10 @@ export const ProjectsView = (): JSX.Element => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
       {/*
         The page is a fixed black surface, so it takes the palette's saturated
-        red (--color-icon-danger). The danger *text* token is a deep, muddy
-        shade against black, and a light one only in the dark theme.
+        green (--color-icon-accent-green). The success *text* token is a deep,
+        muddy shade against black, and a light one only in the dark theme.
       */}
-      <h1 className="font-primary-black text-8xl leading-none text-icon-danger">
+      <h1 className="font-primary-black text-8xl leading-none text-icon-accent-green">
         Fei
       </h1>
     </div>
