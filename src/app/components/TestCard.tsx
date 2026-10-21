@@ -1,11 +1,12 @@
 /**
- * TestCard — a self-contained reproduction of the "UI magician Agent" panel
- * from the attached Figma frame (254 x 508). Static markup only: no props,
- * no state, no interaction.
+ * TestCard — a 254x508 panel: a title row, a collapsed summary row, an
+ * "Add New Design" section, two labelled fields and a pair of actions.
  *
- * The frame's palette has no equivalent in the app's semantic token set, so
- * the measured colours are written as Tailwind arbitrary values rather than
- * mapped onto unrelated tokens.
+ * Presentational only: no props, no state, no interaction.
+ *
+ * The panel's palette has no equivalent in the app's semantic token set, so
+ * its colours are written as Tailwind arbitrary values rather than mapped
+ * onto unrelated tokens.
  */
 
 const GearIcon = (): JSX.Element => (
@@ -81,9 +82,7 @@ export const TestCard = (): JSX.Element => (
     className="flex min-h-[508px] w-[254px] flex-col bg-[#111111] px-5 py-5 font-primary text-[#b5b5b5]"
   >
     <div className="flex items-start justify-between">
-      <span className="text-[13.5px] leading-[16.34px]">
-        UI magician Agent
-      </span>
+      <span className="text-[13.5px] leading-[16.34px]">UI magician Agent</span>
       <GearIcon />
     </div>
 
