@@ -10,7 +10,7 @@ import { Project, ProjectId } from "@domain/project/project";
 import { UserId } from "@domain/user/user";
 import { CategoryId } from "@domain/category/category";
 import { IssueId } from "@domain/issue/issue";
-import { DEFAULT_PRIORITY_ID } from "@domain/priority/priority";
+import { PriorityId, DEFAULT_PRIORITY_ID } from "@domain/priority/priority";
 import { isValidSort, DEFAULT_SORT } from "@domain/filter/filter";
 import { getProject } from "@infrastructure/db/project";
 import {
@@ -120,6 +120,7 @@ export const action: ActionFunction = async ({ request }) => {
   if (_action === "createIssue") {
     const name = (formData.get("title") as string) || "";
     const categoryId = formData.get("status") as CategoryId;
+    const priority = (formData.get("priority") as PriorityId) || DEFAULT_PRIORITY_ID;
     const reporterId = formData.get("reporter") as UserId;
     const asigneeId = formData.get("asignee") as UserId;
 
@@ -132,7 +133,7 @@ export const action: ActionFunction = async ({ request }) => {
         name,
         description: "",
         categoryId,
-        priority: DEFAULT_PRIORITY_ID,
+        priority,
         asigneeId,
         reporterId,
         comments: [],

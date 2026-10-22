@@ -3,9 +3,11 @@ import { useFetcher } from "react-router";
 import { AiOutlinePlus } from "react-icons/ai";
 import cx from "classix";
 import { toast } from "react-toastify";
+import { DEFAULT_PRIORITY_ID } from "@domain/priority/priority";
 import { useUserStore } from "@app/store/user.store";
 import { Button } from "@app/components/button/button";
 import { SelectStatus } from "../issue-panel/select-status";
+import { SelectPriority } from "../issue-panel/select-priority";
 
 type ActionData = {
   issueId?: string;
@@ -125,19 +127,20 @@ export const QuickCreateIssue = (): JSX.Element => {
           />
           <div className="flex items-center justify-between gap-2">
             <SelectStatus initStatus="TODO" />
-            <div className="flex items-center gap-2">
-              <Button
-                type="button"
-                color="neutral"
-                variant="text"
-                onClick={closeForm}
-              >
-                Cancel
-              </Button>
-              <Button type="submit" disabled={isSubmitting || !title.trim()}>
-                {isSubmitting ? "Creating" : "Create"}
-              </Button>
-            </div>
+            <SelectPriority initPriority={DEFAULT_PRIORITY_ID} />
+          </div>
+          <div className="flex items-center justify-end gap-2">
+            <Button
+              type="button"
+              color="neutral"
+              variant="text"
+              onClick={closeForm}
+            >
+              Cancel
+            </Button>
+            <Button type="submit" disabled={isSubmitting || !title.trim()}>
+              {isSubmitting ? "Creating" : "Create"}
+            </Button>
           </div>
         </fetcher.Form>
       )}
