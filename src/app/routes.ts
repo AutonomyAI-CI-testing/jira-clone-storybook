@@ -21,5 +21,7 @@ export default [
     ]),
   ]),
 
+  route("building", "routes/building.tsx"),
+
   route("*", "routes/404.tsx"),
 ] satisfies RouteConfig;
