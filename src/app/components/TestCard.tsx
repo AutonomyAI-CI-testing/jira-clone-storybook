@@ -1,55 +1,65 @@
+import cx from "classix";
 import { FiChevronUp, FiInfo, FiSettings } from "react-icons/fi";
 
-/**
- * TestCard — a static recreation of the reference design panel.
- *
- * Smoke test only: no props, no state, no interactivity, and it is not wired
- * into any screen.
- *
- * The reference is a dark tool panel, so the root carries the app's `dark`
- * theme class and the card is built from the semantic tokens that class
- * redefines (`elevation-surface`, `font`, `background-input`, `border-input`).
- * The single literal is the action fill: the palette has no semantic token for
- * a warm-orange action — Brand Blue is the only action colour — and this card
- * sits outside the app's UI.
- */
+const BUTTON_LABELS = ["Awesome", "Prepare"];
+
+// The reference panel is a dark surface with warm-orange buttons. Neither colour
+// exists in this repo's token palette, so they are literals here on purpose: this
+// card is a self-contained smoke test and is never rendered inside the app.
+const INPUT_CLASS =
+  "mt-8 h-[65px] w-full rounded-md border-2 border-[#4d4d4d] bg-[#232323] text-center text-[24px] text-[#8e8e8e] placeholder:text-[#8e8e8e]";
+
 export const TestCard = (): JSX.Element => (
   <div
     id="testElem"
-    className="dark flex w-[508px] flex-col rounded bg-elevation-surface p-10 font-primary text-font"
+    className="w-[508px] bg-[#1a1a1a] px-10 pb-24 pt-10 font-primary text-[#c9c9c9]"
   >
     <div className="flex items-center justify-between">
-      <span className="font-primary-bold text-2xl">UI magician Agent</span>
-      <FiSettings size={24} aria-hidden />
+      <h2 className="font-primary-bold text-[28px] text-[#c9c9c9]">
+        UI magician Agent
+      </h2>
+      <FiSettings aria-hidden size={40} className="text-[#c9c9c9]" />
     </div>
 
-    <div className="mt-6 flex items-center gap-3">
-      <FiChevronUp size={20} aria-hidden />
-      <span className="text-lg">From entire frame to a singl...</span>
-    </div>
+    <CollapsibleRow
+      label="From entire frame to a singl..."
+      className="mt-7"
+      textClassName="text-[28px] text-[#8e8e8e]"
+    />
 
-    <div className="mt-14 flex items-center gap-3">
-      <FiChevronUp size={20} aria-hidden />
-      <span className="font-primary-bold text-xl">Add New Design</span>
-    </div>
+    <CollapsibleRow
+      label="Add New Design"
+      className="mt-36"
+      textClassName="font-primary-bold text-[30px] text-[#d0d0d0]"
+    />
 
     <Field
-      className="mt-6"
       label="Personal Access Token"
       placeholder="figd_xxxxxxxxxxxxxxxxxx"
+      className="mt-12"
     />
+
     <Field
-      className="mt-5"
       label="Design URL"
       placeholder="https://www.figma.com/file/"
+      className="mt-6"
     />
 
-    <div className="mt-8 flex items-center gap-8">
-      <ActionButton>Awesome</ActionButton>
-      <ActionButton>Prepare</ActionButton>
+    <div className="mt-14 flex gap-9">
+      {BUTTON_LABELS.map((label) => (
+        <button
+          key={label}
+          type="button"
+          className="h-[73px] w-[171px] rounded bg-[#8f3f1c] font-primary text-[28px] text-[#9c9088]"
+        >
+          {label}
+        </button>
+      ))}
     </div>
 
-    <span className="mt-14 font-primary-bold text-xl">Recent Breakdowns</span>
+    <h3 className="mt-24 font-primary-bold text-[30px] text-[#c9c9c9]">
+      Recent Breakdowns
+    </h3>
   </div>
 );
 
@@ -58,32 +68,39 @@ const Field = ({
   placeholder,
   className = "",
 }: FieldProps): JSX.Element => (
-  <div className={`flex flex-col gap-3 ${className}`}>
-    <div className="flex items-center gap-3">
-      <span className="text-base">{label}</span>
-      <FiInfo size={16} aria-hidden />
+  <div className={className}>
+    <div className="flex items-center gap-4">
+      <span className="text-[26px] text-[#c9c9c9]">{label}</span>
+      <FiInfo aria-hidden size={26} className="text-[#d0d0d0]" />
     </div>
     <input
-      type="text"
       readOnly
       aria-label={label}
       placeholder={placeholder}
-      className="rounded-md bg-background-input px-3 py-3 text-base outline outline-2 outline-border-input placeholder:text-font-subtlest"
+      className={INPUT_CLASS}
     />
   </div>
 );
 
-const ActionButton = ({ children }: { children: React.ReactNode }): JSX.Element => (
-  <button
-    type="button"
-    className="flex-1 cursor-pointer rounded-md bg-[#a03f14] px-6 py-3 font-primary-bold text-base text-[#d9b7a4]"
-  >
-    {children}
-  </button>
+const CollapsibleRow = ({
+  label,
+  className = "",
+  textClassName = "",
+}: CollapsibleRowProps): JSX.Element => (
+  <div className={cx("flex items-center gap-4", className)}>
+    <FiChevronUp aria-hidden size={34} className="shrink-0" />
+    <span className={cx("truncate", textClassName)}>{label}</span>
+  </div>
 );
 
 interface FieldProps {
   label: string;
   placeholder: string;
   className?: string;
+}
+
+interface CollapsibleRowProps {
+  label: string;
+  className?: string;
+  textClassName?: string;
 }
