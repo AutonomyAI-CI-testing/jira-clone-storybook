@@ -5,7 +5,6 @@ import {
   useSearchParams,
   useNavigation,
   useFetcher,
-  useLocation,
   useNavigate,
 } from "react-router";
 import * as Dialog from "@app/components/dialog/dialog";
@@ -15,6 +14,7 @@ import { Issue } from "@domain/issue/issue";
 import { defaultIssuesIds } from "@domain/issue/issue.mock";
 import { Comment, CommentId } from "@domain/comment/comment";
 import { useUserStore } from "@app/store/user.store";
+import { useBoardUrl } from "@app/hooks/useBoardUrl";
 import { ActionData as IssueActionData } from "@app/routes/__main/projects.$projectId/board/issue/$issueId";
 import { UserAvatar } from "@app/components/user-avatar/user-avatar";
 import { Button } from "@app/components/button/button";
@@ -43,7 +43,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const fetcher = useFetcher();
   const params = useSearchParams();
   const transition = useNavigation();
-  const location = useLocation();
+  const boardUrl = useBoardUrl();
   const navigate = useNavigate();
   const initStatus = (params[0].get("category") as CategoryType) || "TODO";
   const userIsNotReporter = user.id !== reporter.id;
@@ -108,11 +108,10 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
-        const previousUrl = location.pathname.split("/issue")[0];
-        navigate(previousUrl);
+        navigate(boardUrl);
       }, 300);
     }
-  }, [isOpen, navigate, location.pathname]);
+  }, [isOpen, navigate, boardUrl]);
 
   const wasSubmitting = useRef(false);
   useEffect(() => {

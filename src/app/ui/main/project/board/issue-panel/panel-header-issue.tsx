@@ -1,17 +1,17 @@
-import { Form, Link, useLocation } from "react-router";
+import { Form, Link } from "react-router";
 import * as AlertDialog from "@app/components/alert-dialog/alert-dialog";
 import cx from "classix";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoCloseOutline } from "react-icons/io5";
 import { IssueId } from "@domain/issue/issue";
+import { useBoardUrl } from "@app/hooks/useBoardUrl";
 import { TaskIcon } from "@app/components/icons";
 
 export const PanelHeaderIssue = ({
   id,
   deleteDisabled,
 }: PanelHeaderIssueProps): JSX.Element => {
-  const location = useLocation();
-  const previousUrl = location.pathname.split("/issue")[0];
+  const previousUrl = useBoardUrl();
 
   return (
     <div className="flex">
