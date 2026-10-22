@@ -26,7 +26,7 @@ const LETTERS = WORD.split("").map((letter, index) => ({
 
 export const BuildingView = () => {
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-between overflow-hidden bg-[var(--Neutral0)] pt-[12vh]">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-between overflow-hidden bg-[var(--Magenta200)] pt-[12vh]">
       <h1
         aria-label={WORD}
         className="relative flex font-primary-black text-[clamp(3.5rem,10vw,10rem)] leading-none tracking-tight"
