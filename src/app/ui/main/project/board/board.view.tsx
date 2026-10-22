@@ -11,13 +11,14 @@ import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
 import { UserAvatarList } from "./avatar-list";
 import { SelectSort } from "./select-sort";
 import { CategoryColumn } from "./category-column/category-column";
+import { QuickCreate } from "./quick-create";
 import { ProjectContextProvider } from "../project.store";
 import { EVENTS } from "@app/events/events";
 
 export const BoardView = ({ project }: Props): JSX.Element => {
   return (
     <ProjectContextProvider project={project}>
-      <div className="box-border flex h-full flex-col">
+      <div className="relative box-border flex h-full flex-col">
         <section className="flex items-center">
           <Search />
           <div className="mx-4 my-0 inline">
@@ -31,6 +32,7 @@ export const BoardView = ({ project }: Props): JSX.Element => {
           <Categories categories={project.categories} />
         </DndProvider>
         <Outlet />
+        <QuickCreate categories={project.categories} />
       </div>
     </ProjectContextProvider>
   );

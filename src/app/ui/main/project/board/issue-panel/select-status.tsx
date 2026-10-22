@@ -3,6 +3,7 @@ import cx from "classix";
 import { CategoryId, CategoryType } from "@domain/category/category";
 import { useProjectStore } from "@app/ui/main/project/project.store";
 import * as Select from "@app/components/select/select";
+import { categoryChipClass } from "../category-chip";
 
 export const SelectStatus = ({ initStatus }: Props): JSX.Element => {
   const projectStore = useProjectStore();
@@ -55,12 +56,7 @@ export const SelectStatus = ({ initStatus }: Props): JSX.Element => {
               <span
                 className={cx(
                   "flex w-fit items-center gap-2 rounded px-1 py-0.5 text-2xs uppercase",
-                  category.type === "TODO" &&
-                    "bg-background-accent-grey-subtler text-font-accent-grey",
-                  category.type === "IN_PROGRESS" &&
-                    "bg-background-accent-blue-subtler text-font-accent-blue",
-                  category.type === "DONE" &&
-                    "bg-background-accent-green-subtler text-font-accent-green"
+                  categoryChipClass(category.type)
                 )}
               >
                 <Select.ItemText>{category.name}</Select.ItemText>

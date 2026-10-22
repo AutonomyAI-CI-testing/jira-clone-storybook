@@ -7,11 +7,13 @@ import { data as json, redirect } from "react-router";
 import { useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 import { Project, ProjectId } from "@domain/project/project";
+import { UserId } from "@domain/user/user";
 import { CategoryId } from "@domain/category/category";
 import { IssueId } from "@domain/issue/issue";
 import { isValidSort, DEFAULT_SORT } from "@domain/filter/filter";
 import { getProject } from "@infrastructure/db/project";
 import {
+  createIssue,
   updateIssueCategory,
   UpdateIssueCategoryData,
 } from "@infrastructure/db/issue";
@@ -20,6 +22,7 @@ import { BoardView } from "@app/ui/main/project/board/board.view";
 import { EVENTS } from "@app/events/events";
 import { emitter } from "@app/events/emitter.server";
 import { formatTags, formatProperties } from "@utils/meta";
+import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data) return [];
@@ -64,6 +67,13 @@ type LoaderData = {
   project: Project;
 };
 
+export type QuickCreateActionData = {
+  id?: IssueId;
+  errors?: {
+    name?: string;
+  };
+};
+
 export const loader: LoaderFunction = async ({ request, params }) => {
   const url = new URL(request.url);
   const sortByParam = url.searchParams.get("sortBy") as string;
@@ -92,6 +102,33 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const _action = formData.get("_action") as string;
+
+  if (_action === "createIssue") {
+    const name = formData.get("title") as string;
+    const categoryId = formData.get("categoryId") as CategoryId;
+    const reporterId = formData.get("reporterId") as UserId;
+
+    if (!name || textAreOnlySpaces(name)) {
+      return json<QuickCreateActionData>(
+        { errors: { name: "Title is required" } },
+        { status: 400 }
+      );
+    }
+
+    const issueId = await createIssue({
+      name: name.trim(),
+      description: "",
+      categoryId,
+      priority: "low",
+      asigneeId: reporterId,
+      reporterId,
+      comments: [],
+    });
+
+    emitter.emit(EVENTS.ISSUE_CREATED, Date.now());
+
+    return json<QuickCreateActionData>({ id: issueId }, { status: 201 });
+  }
 
   if (_action === "updateIssueCategory") {
     const categoryId = formData.get("categoryId") as CategoryId;
