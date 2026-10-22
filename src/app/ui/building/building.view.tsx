@@ -1,31 +1,46 @@
 const WIZARD_ROBOT_IMAGE = "/images/wizard-robot.png";
 
-/** One colour per letter, walking the palette hues from red through to magenta. */
-const RAINBOW_LETTERS = [
-  { letter: "B", color: "var(--Red500)" },
-  { letter: "u", color: "var(--Orange500)" },
-  { letter: "i", color: "var(--Yellow500)" },
-  { letter: "l", color: "var(--Lime500)" },
-  { letter: "d", color: "var(--Green500)" },
-  { letter: "i", color: "var(--Teal500)" },
-  { letter: "n", color: "var(--Blue500)" },
-  { letter: "g", color: "var(--Magenta500)" },
+const WORD = "Building";
+
+/** The rainbow in hue order — one colour per letter, red through magenta. */
+const RAINBOW_HUES = [
+  "var(--Red500)",
+  "var(--Orange500)",
+  "var(--Yellow500)",
+  "var(--Lime500)",
+  "var(--Green500)",
+  "var(--Teal500)",
+  "var(--Blue500)",
+  "var(--Magenta500)",
 ];
+
+/** Halfway round the rainbow — the hue furthest from a letter's own, so the outline reads clearly. */
+const OUTLINE_OFFSET = RAINBOW_HUES.length / 2;
+
+/** Each letter is filled with one hue and outlined with the hue opposite it on the rainbow. */
+const LETTERS = WORD.split("").map((letter, index) => ({
+  letter: letter,
+  color: RAINBOW_HUES[index % RAINBOW_HUES.length],
+  outline: RAINBOW_HUES[(index + OUTLINE_OFFSET) % RAINBOW_HUES.length],
+}));
 
 export const BuildingView = () => {
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-between overflow-hidden bg-[var(--Neutral0)] pt-[12vh]">
       <h1
-        aria-label={RAINBOW_LETTERS.map(({ letter }) => letter).join("")}
+        aria-label={WORD}
         className="relative flex font-primary-black text-[clamp(3.5rem,10vw,10rem)] leading-none tracking-tight"
       >
-        {RAINBOW_LETTERS.map(({ letter, color }, index) => (
+        {LETTERS.map(({ letter, color, outline }, index) => (
           <span
             key={index}
             aria-hidden="true"
             className="animate-slide-up"
             style={{
               color: color,
+              WebkitTextStrokeWidth: "0.07em",
+              WebkitTextStrokeColor: outline,
+              paintOrder: "stroke",
               animationDelay: `${index * 80}ms`,
               animationFillMode: "both",
             }}
