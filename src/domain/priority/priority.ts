@@ -4,3 +4,5 @@ export type Priority = {
   name: string;
   order: number;
 };
+
+export const DEFAULT_PRIORITY_ID: PriorityId = "low";

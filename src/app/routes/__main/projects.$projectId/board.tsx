@@ -7,11 +7,14 @@ import { data as json, redirect } from "react-router";
 import { useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 import { Project, ProjectId } from "@domain/project/project";
+import { UserId } from "@domain/user/user";
 import { CategoryId } from "@domain/category/category";
 import { IssueId } from "@domain/issue/issue";
+import { PriorityId, DEFAULT_PRIORITY_ID } from "@domain/priority/priority";
 import { isValidSort, DEFAULT_SORT } from "@domain/filter/filter";
 import { getProject } from "@infrastructure/db/project";
 import {
+  createIssue,
   updateIssueCategory,
   UpdateIssueCategoryData,
 } from "@infrastructure/db/issue";
@@ -19,6 +22,7 @@ import { Error500 } from "@app/components/error-500/error-500";
 import { BoardView } from "@app/ui/main/project/board/board.view";
 import { EVENTS } from "@app/events/events";
 import { emitter } from "@app/events/emitter.server";
+import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -113,6 +117,36 @@ export const action: ActionFunction = async ({ request }) => {
       return json({ error: errorMsg }, { status: 500 });
     }
   }
+  if (_action === "createIssue") {
+    const name = (formData.get("title") as string) || "";
+    const categoryId = formData.get("status") as CategoryId;
+    const priority = (formData.get("priority") as PriorityId) || DEFAULT_PRIORITY_ID;
+    const reporterId = formData.get("reporter") as UserId;
+    const asigneeId = formData.get("asignee") as UserId;
+
+    if (!name || textAreOnlySpaces(name)) {
+      return json({ error: "Title is required" }, { status: 400 });
+    }
+
+    try {
+      const issueId = await createIssue({
+        name,
+        description: "",
+        categoryId,
+        priority,
+        asigneeId,
+        reporterId,
+        comments: [],
+      });
+      emitter.emit(EVENTS.ISSUE_CREATED, Date.now());
+      return json({ issueId }, { status: 201 });
+    } catch (error) {
+      const errorMsg =
+        error instanceof Error ? error.message : "Could not create issue";
+      return json({ error: errorMsg }, { status: 500 });
+    }
+  }
+
   console.error("Unknown action", _action);
 };
 
