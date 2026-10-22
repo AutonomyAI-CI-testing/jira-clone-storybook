@@ -11,6 +11,7 @@ import {
 import * as Dialog from "@app/components/dialog/dialog";
 import { toast } from "react-toastify";
 import { CategoryType } from "@domain/category/category";
+import { DEFAULT_PRIORITY_ID } from "@domain/priority/priority";
 import { Issue } from "@domain/issue/issue";
 import { defaultIssuesIds } from "@domain/issue/issue.mock";
 import { Comment, CommentId } from "@domain/comment/comment";
@@ -195,7 +196,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                     <div>
                       <p className="mb-1">Priority</p>
                       <SelectPriority
-                        initPriority={issue?.priority.id || "low"}
+                        initPriority={issue?.priority.id || DEFAULT_PRIORITY_ID}
                       />
                     </div>
                     <div>

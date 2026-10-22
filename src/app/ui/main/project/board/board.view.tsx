@@ -10,6 +10,7 @@ import { Search } from "@app/ui/main/project/board/search";
 import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
 import { UserAvatarList } from "./avatar-list";
 import { SelectSort } from "./select-sort";
+import { QuickCreateIssue } from "./quick-create-issue/quick-create-issue";
 import { CategoryColumn } from "./category-column/category-column";
 import { ProjectContextProvider } from "../project.store";
 import { EVENTS } from "@app/events/events";
@@ -85,9 +86,12 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
 
   return (
     <section className="mt-12 flex h-full flex-col">
-      <span className="mb-2 block justify-self-end font-primary-light text-2xs text-font-subtlest">
-        Press <Kbd>Shift</Kbd> + <Kbd>N</Kbd> to create a new issue
-      </span>
+      <div className="mb-2 flex items-center justify-between gap-4">
+        <QuickCreateIssue />
+        <span className="font-primary-light text-2xs text-font-subtlest">
+          Press <Kbd>Shift</Kbd> + <Kbd>N</Kbd> to create a new issue
+        </span>
+      </div>
       <div className="flex h-full gap-3">
         {categories.map((category) => (
           <CategoryColumn
