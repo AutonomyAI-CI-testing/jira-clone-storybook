@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { Outlet, useNavigate, useRevalidator } from "react-router";
+import { AiOutlinePlus } from "react-icons/ai";
 import { useEventSource } from "remix-utils/sse/react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -7,7 +8,9 @@ import { Project } from "@domain/project/project";
 import { Category } from "@domain/category/category";
 import { IssueId } from "@domain/issue/issue";
 import { Search } from "@app/ui/main/project/board/search";
+import { Button } from "@app/components/button/button";
 import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
+import { useSortBy } from "@app/hooks/useSortBy";
 import { UserAvatarList } from "./avatar-list";
 import { SelectSort } from "./select-sort";
 import { CategoryColumn } from "./category-column/category-column";
@@ -46,6 +49,8 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
   const [prevCategories, setPrevCategories] = useState(categories);
   const { revalidate } = useRevalidator();
   const navigate = useNavigate();
+  const sortBy = useSortBy();
+  const issueLink = sortBy ? `issue/new?sortBy=${sortBy}` : "issue/new";
 
   // Reset optimistic submissions when the categories data changes
   if (categories !== prevCategories) {
@@ -62,14 +67,18 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
     event: EVENTS.ISSUE_CHANGED,
   });
 
+  const openCreateIssue = useCallback((): void => {
+    navigate(issueLink);
+  }, [navigate, issueLink]);
+
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.shiftKey && e.key.toLowerCase() === "n") {
         e.preventDefault();
-        navigate("issue/new");
+        openCreateIssue();
       }
     },
-    [navigate]
+    [openCreateIssue]
   );
 
   // Revalidate to update category columns on event received
@@ -84,21 +93,29 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
   }, [onKeyDown]);
 
   return (
-    <section className="mt-12 flex h-full flex-col">
-      <span className="mb-2 block justify-self-end font-primary-light text-2xs text-font-subtlest">
-        Press <Kbd>Shift</Kbd> + <Kbd>N</Kbd> to create a new issue
-      </span>
-      <div className="flex h-full gap-3">
-        {categories.map((category) => (
-          <CategoryColumn
-            key={category.id}
-            category={category}
-            isDragging={isDragging}
-            submittingIssues={submittingIssues}
-            setSubmittingIssues={setSubmittingIssues}
-            handleDragging={setIsDragging}
-          />
-        ))}
+    <section className="mt-12 flex h-full min-h-0 flex-col">
+      <div className="flex h-full min-h-0 w-fit flex-col">
+        <div className="mb-2 flex items-center justify-between gap-4">
+          <span className="font-primary-light text-2xs text-font-subtlest">
+            Press <Kbd>Shift</Kbd> + <Kbd>N</Kbd> to create a new issue
+          </span>
+          <Button color="primary" variant="contained" onClick={openCreateIssue}>
+            <AiOutlinePlus size={18} />
+            New issue
+          </Button>
+        </div>
+        <div className="flex min-h-0 flex-1 gap-3">
+          {categories.map((category) => (
+            <CategoryColumn
+              key={category.id}
+              category={category}
+              isDragging={isDragging}
+              submittingIssues={submittingIssues}
+              setSubmittingIssues={setSubmittingIssues}
+              handleDragging={setIsDragging}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
