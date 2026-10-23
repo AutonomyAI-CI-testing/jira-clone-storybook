@@ -839,3 +839,22 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/* react-toastify hardcodes the notification's close button to white in its dark
+   theme and to 30% black in its light theme, and neither follows the app's own
+   toast surface: in the barbie theme the button is white on magenta, and in the
+   light theme it is a pale grey on white. Colour it with the app's icon token
+   instead, so it stays legible in every theme.
+
+   This sits outside `@layer base` on purpose: the Tailwind build only keeps a
+   layered rule whose class it finds in the app's own source, and this one is
+   react-toastify's, so inside the layer it is dropped. */
+.Toastify__toast .Toastify__close-button {
+  color: var(--color-icon) !important;
+  opacity: 0.8 !important;
+}
+
+.Toastify__toast .Toastify__close-button:hover,
+.Toastify__toast .Toastify__close-button:focus {
+  opacity: 1 !important;
+}
