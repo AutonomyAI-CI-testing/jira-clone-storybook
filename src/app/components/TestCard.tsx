@@ -10,12 +10,7 @@ const FIELD_INPUT =
   "mt-3 h-9 w-[211px] bg-[#272822] px-3 font-primary-bold text-[11.5px] leading-[13.92px] text-[#b5b5b5] outline-none placeholder:font-primary-bold";
 
 const ChevronUpIcon = ({ className }: { className: string }) => (
-  <svg
-    viewBox="0 0 12 8"
-    fill="none"
-    aria-hidden="true"
-    className={className}
-  >
+  <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" className={className}>
     <path
       d="M1 6.5 6 1.8l5 4.7"
       stroke="currentColor"
