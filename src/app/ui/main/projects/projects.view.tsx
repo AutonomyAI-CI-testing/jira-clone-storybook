@@ -1,35 +1,18 @@
-import { Link, Outlet } from "react-router";
-import { AiOutlinePlus } from "react-icons/ai";
-import { ProjectSummary } from "@domain/project/project";
-import { Button } from "@app/components/button/button";
-import { ProjectCard } from "./project-card/project-card";
+import { Outlet } from "react-router";
 
-export const ProjectsView = ({
-  projectsSummary,
-}: ProjectsViewProps): JSX.Element => {
+/**
+ * Deliberate one-off screen: a black canvas with the word "Fei" on it.
+ *
+ * It is intentionally off the design system. The palette has no black
+ * surface token and the page has to stay black in every theme, so the
+ * background is a literal and the red comes from the raw palette
+ * (`--Red600`) instead of a semantic token the themes would repaint.
+ */
+export const ProjectsView = (): JSX.Element => {
   return (
-    <div className="p-6">
-      <h1 className="font-primary-black text-2xl">PROJECTS</h1>
-      <div className="mt-8">
-        <Link to="new" className="flex w-fit">
-          <Button color="neutral" variant="subtlest" className="py-3 pl-3 pr-4">
-            <span>
-              <AiOutlinePlus size={22} />
-            </span>
-            <span className="leading-4">Add Project</span>
-          </Button>
-        </Link>
-      </div>
-      <div className="mt-4 grid grid-cols-[repeat(auto-fit,_400px)] gap-8">
-        {projectsSummary.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+    <div className="flex min-h-screen items-center justify-center bg-black">
+      <h1 className="font-primary-black text-9xl text-[var(--Red600)]">Fei</h1>
       <Outlet />
     </div>
   );
 };
-
-interface ProjectsViewProps {
-  projectsSummary: ProjectSummary[];
-}
