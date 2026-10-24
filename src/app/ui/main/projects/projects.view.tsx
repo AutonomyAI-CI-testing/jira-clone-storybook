@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 import { AiOutlinePlus } from "react-icons/ai";
 import { ProjectSummary } from "@domain/project/project";
 import { Button } from "@app/components/button/button";
@@ -7,6 +7,19 @@ import { ProjectCard } from "./project-card/project-card";
 export const ProjectsView = ({
   projectsSummary,
 }: ProjectsViewProps): JSX.Element => {
+  const { pathname } = useLocation();
+
+  // The projects index is a full-screen splash: black background, the word
+  // "Fei" centered, nothing else. Nested routes (e.g. /projects/new) keep the
+  // projects list behind them.
+  if (pathname === "/projects") {
+    return (
+      <div className="flex h-full flex-1 items-center justify-center bg-black">
+        <h1 className="font-primary-black text-9xl text-[#22a06b]">Fei</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6">
       <h1 className="font-primary-black text-2xl">PROJECTS</h1>
