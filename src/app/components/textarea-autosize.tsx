@@ -40,12 +40,18 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     setTextareaHeight(textareaRef.current.scrollHeight);
   }, [value]);
 
+  // `outline-2` on its own only sets the outline WIDTH. Without `outline`
+  // (the style) and a colour nothing renders, which left these fields as
+  // white-on-white in the light theme, where `background-input` is the same
+  // Neutral0 as the dialog surface behind them. The colour lives here rather
+  // than in app.css so a field can still override it, e.g. the title's
+  // `outline-border-danger` when the server rejects the form.
   return (
     <div className="relative">
       <textarea
         name={name}
         className={cx(
-          "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline outline-2 outline-border-input hover:bg-background-input-hovered focus-visible:bg-background-input-pressed focus-visible:outline-border-brand",
           textareaClassName
         )}
         value={value}
