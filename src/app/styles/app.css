@@ -17,6 +17,7 @@
     --toastify-text-color-dark: var(--color-font) !important;
     --toastify-text-color-light: var(--color-font) !important;
     --toastify-text-color-success: var(--color-font) !important;
+    --toastify-font-family: inherit !important;
   }
 
   :root {
