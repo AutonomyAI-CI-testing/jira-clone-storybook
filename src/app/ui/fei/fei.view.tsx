@@ -1,11 +1,13 @@
 /**
  * Standalone page holding a single word, centred on a plain white surface.
  *
- * `bg-white` / `text-black` are intentional here rather than the elevation and
- * font tokens: the page is specified to stay white with black text in every
- * theme, and the token system is theme-aware by design (in `dark` the surface
- * token resolves to a near-black). Tailwind's `white` / `black` are declared in
- * `tailwind.config.js`, so these are still theme values, not hex literals.
+ * The colours are fixed on purpose rather than taken from the semantic tokens:
+ * the page is specified to look the same in every theme, and the token layer is
+ * theme-aware by design — `--color-elevation-surface` resolves to a near-black
+ * in `dark`, and `--color-font-danger` to a pale salmon that would barely read
+ * on this page's white. White and black are declared in `tailwind.config.js`;
+ * the red is the palette's own `--Red600`, so the ramp stays the single source
+ * of truth for the value.
  *
  * The word is set in the heaviest CircularStd cut (`font-primary-black`, the
  * family the design system reserves for display statements) at `text-7xl`,
@@ -14,7 +16,9 @@
 export const FeiView = () => {
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-white">
-      <h1 className="font-primary-black text-7xl text-black">Fei</h1>
+      <h1 className="font-primary-black text-7xl text-[color:var(--Red600)]">
+        Fei
+      </h1>
     </div>
   );
 };
