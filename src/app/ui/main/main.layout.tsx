@@ -1,13 +1,20 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { User } from "@domain/user/user";
 import { UserContextProvider } from "@app/store/user.store";
 import { Header } from "./header/header";
 
+// The projects splash paints its own full-page surface, so the app header is
+// not rendered on those routes.
+const CHROMELESS_PATHS = ["/projects", "/projects/new"];
+
 export const MainLayout = ({ user }: Props) => {
+  const { pathname } = useLocation();
+  const showHeader = !CHROMELESS_PATHS.includes(pathname);
+
   return (
     <UserContextProvider user={user}>
       <div className="flex h-full flex-col">
-        <Header />
+        {showHeader && <Header />}
         <Outlet />
       </div>
     </UserContextProvider>
