@@ -1,4 +1,4 @@
-const ChevronUpIcon = ({ className }: { className: string }): JSX.Element => (
+const ChevronUpIcon = ({ className = "" }: IconProps): JSX.Element => (
   <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" className={className}>
     <path
       d="M1 6.5 6 1.5l5 5"
@@ -10,7 +10,7 @@ const ChevronUpIcon = ({ className }: { className: string }): JSX.Element => (
   </svg>
 );
 
-const GearIcon = ({ className }: { className: string }): JSX.Element => (
+const GearIcon = ({ className = "" }: IconProps): JSX.Element => (
   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className={className}>
     <circle cx="8" cy="8" r="4.6" stroke="currentColor" strokeWidth="1.4" />
     <circle cx="8" cy="8" r="1.7" stroke="currentColor" strokeWidth="1.4" />
@@ -27,7 +27,7 @@ const GearIcon = ({ className }: { className: string }): JSX.Element => (
   </svg>
 );
 
-const InfoIcon = ({ className }: { className: string }): JSX.Element => (
+const InfoIcon = ({ className = "" }: IconProps): JSX.Element => (
   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className={className}>
     <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.2" />
     <path
@@ -100,7 +100,7 @@ export const TestCard = (): JSX.Element => (
       id="test-card-url"
       readOnly
       placeholder="https://www.figma.com/file/"
-      className={`mt-[11px] h-[37px] border-2 border-[#929291] bg-[#272822] pl-5 text-[10.5px] leading-[12.71px] text-[#71726e] outline-none placeholder:text-[#71726e]`}
+      className="mt-[11px] h-[37px] border-2 border-[#929291] bg-[#272822] pl-5 text-[10.5px] leading-[12.71px] text-[#71726e] outline-none placeholder:text-[#71726e]"
     />
 
     <div className="mt-[22px] flex justify-end gap-[17px] pr-[3px]">
@@ -117,3 +117,7 @@ export const TestCard = (): JSX.Element => (
     </h2>
   </div>
 );
+
+interface IconProps {
+  className?: string;
+}
