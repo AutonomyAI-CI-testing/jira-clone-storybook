@@ -1,84 +1,130 @@
-import { FiChevronUp, FiInfo, FiSettings } from "react-icons/fi";
+const CARD_FIELDS = [
+  {
+    label: "Personal Access Token",
+    placeholder: "figd_xxxxxxxxxxxxxxxxxxxxxx",
+  },
+  { label: "Design URL", placeholder: "https://www.figma.com/file/" },
+];
 
-const FIELD_CLASS =
-  "mt-3 w-full rounded border border-border-bold bg-background-input px-4 py-4 font-primary-light text-base text-font placeholder:text-font-subtlest";
-
-// The design's rust fill has no semantic token — the palette's accents are the
-// brand blue and the semantic red/green/yellow — so this is the one place the
-// component reaches for a declared palette value.
-const ACTION_BUTTON_CLASS =
-  "w-[170px] rounded bg-[var(--Orange800)] px-4 py-4 font-primary text-base text-white hover:bg-[var(--Orange700)] active:bg-[var(--Orange900)]";
+const CARD_ACTIONS = ["Awesome", "Prepare"];
 
 /**
- * Static reproduction of the "UI magician Agent" Figma frame.
+ * Static card reproducing the "UI magician Agent" Figma frame.
  *
- * Smoke test: it takes no props and nothing in it is wired up. The root pins
- * the `dark` theme class, so the card keeps the design's dark palette on its
- * own whatever theme the app around it is in.
+ * Deliberately self-contained: no props, no state, no data. The frame is a dark
+ * panel, so its own subtree is pinned to the dark theme and every token inside
+ * resolves to its dark value whichever theme the app is in.
  */
 export const TestCard = (): JSX.Element => (
   <div
     id="testElem"
     className="dark w-[508px] bg-elevation-surface px-10 pb-12 pt-10 font-primary text-font"
   >
-    <div className="flex items-center justify-between">
-      <h1 className="font-primary-bold text-2xl">UI magician Agent</h1>
+    <div className="flex items-start justify-between">
+      <h2 className="font-primary-bold text-2xl">UI magician Agent</h2>
       <button
         type="button"
-        aria-label="Agent settings"
-        className="rounded p-1 text-font-subtle hover:bg-background-neutral hover:text-font"
+        aria-label="Open settings"
+        className="cursor-pointer rounded p-1 text-icon hover:bg-background-neutral"
       >
-        <FiSettings size={24} />
+        <GearIcon />
       </button>
     </div>
 
-    <div className="mt-6 flex items-center gap-3 text-font-subtle">
-      <FiChevronUp size={20} className="shrink-0" />
-      <span className="truncate font-primary-light text-base">
-        From entire frame to a singl…
+    <div className="mt-8 flex items-center gap-3 text-font-subtle">
+      <ChevronUpIcon />
+      <span className="min-w-0 truncate text-lg">
+        From entire frame to a single page
       </span>
     </div>
 
-    <div className="mt-20 flex items-center gap-3">
-      <FiChevronUp size={22} className="shrink-0" />
-      <h2 className="font-primary-bold text-2xl">Add New Design</h2>
+    <div className="mt-32 flex items-center gap-3">
+      <ChevronUpIcon />
+      <h3 className="font-primary-bold text-2xl">Add New Design</h3>
     </div>
 
-    <div className="mt-8">
-      <div className="flex items-center gap-2 text-font-subtle">
-        <span className="font-primary-light text-base">
-          Personal Access Token
-        </span>
-        <FiInfo size={20} className="shrink-0" />
-      </div>
-      <input
-        aria-label="Personal Access Token"
-        placeholder="figd_xxxxxxxxxxxxxxxxxxxxxx"
-        className={FIELD_CLASS}
-      />
+    <div className="mt-14 space-y-6">
+      {CARD_FIELDS.map((field) => (
+        <div key={field.label}>
+          <div className="flex items-center gap-2 text-font-subtle">
+            <span className="text-lg">{field.label}</span>
+            <InfoIcon />
+          </div>
+          <input
+            type="text"
+            readOnly
+            aria-label={field.label}
+            placeholder={field.placeholder}
+            className="mt-6 h-[70px] w-full rounded-md border border-border-bold bg-elevation-surface-raised px-6 text-lg placeholder:text-font-subtlest"
+          />
+        </div>
+      ))}
     </div>
 
-    <div className="mt-8">
-      <div className="flex items-center gap-2 text-font-subtle">
-        <span className="font-primary-light text-base">Design URL</span>
-        <FiInfo size={20} className="shrink-0" />
-      </div>
-      <input
-        aria-label="Design URL"
-        placeholder="https://www.figma.com/file/"
-        className={FIELD_CLASS}
-      />
+    <div className="mt-12 flex gap-9 pl-12">
+      {CARD_ACTIONS.map((action) => (
+        <button
+          key={action}
+          type="button"
+          // No semantic token covers the frame's rust fill, so this uses the
+          // nearest value the palette declares.
+          className="h-[70px] w-[170px] cursor-pointer rounded-md bg-[var(--Orange800)] text-xl text-font hover:bg-[var(--Orange700)]"
+        >
+          {action}
+        </button>
+      ))}
     </div>
 
-    <div className="mt-10 flex gap-6">
-      <button type="button" className={ACTION_BUTTON_CLASS}>
-        Awesome
-      </button>
-      <button type="button" className={ACTION_BUTTON_CLASS}>
-        Prepare
-      </button>
-    </div>
-
-    <h2 className="mt-16 font-primary-bold text-2xl">Recent Breakdowns</h2>
+    <h3 className="mt-24 font-primary-bold text-2xl">Recent Breakdowns</h3>
   </div>
+);
+
+const GearIcon = (): JSX.Element => (
+  <svg
+    width="26"
+    height="26"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+  </svg>
+);
+
+const ChevronUpIcon = (): JSX.Element => (
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="m18 15-6-6-6 6" />
+  </svg>
+);
+
+const InfoIcon = (): JSX.Element => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 11.5V17" />
+    <path d="M12 7.5h.01" />
+  </svg>
 );
