@@ -4,7 +4,7 @@ export const ProjectsView = (): JSX.Element => {
   return (
     <>
       <div className="fixed inset-0 z-40 flex items-center justify-center bg-black">
-        <h1 className="font-primary-black text-[color:var(--Red600)] text-[clamp(4rem,16vw,12rem)] leading-none">
+        <h1 className="font-primary-black text-[color:var(--Green600)] text-[clamp(4rem,16vw,12rem)] leading-none">
           Fei
         </h1>
       </div>
