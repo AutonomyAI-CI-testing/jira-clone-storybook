@@ -1,130 +1,95 @@
-const CARD_FIELDS = [
-  {
-    label: "Personal Access Token",
-    placeholder: "figd_xxxxxxxxxxxxxxxxxxxxxx",
-  },
-  { label: "Design URL", placeholder: "https://www.figma.com/file/" },
-];
-
-const CARD_ACTIONS = ["Awesome", "Prepare"];
+import { MdOutlineInfo, MdOutlineSettings } from "react-icons/md";
+import { RiArrowUpSLine } from "react-icons/ri";
 
 /**
- * Static card reproducing the "UI magician Agent" Figma frame.
+ * A static card built from a Figma frame — the smoke test for turning a design
+ * into a rendered component in this project.
  *
- * Deliberately self-contained: no props, no state, no data. The frame is a dark
- * panel, so its own subtree is pinned to the dark theme and every token inside
- * resolves to its dark value whichever theme the app is in.
+ * It takes no props and holds no state. The frame is a dark panel, so the card
+ * pins the dark theme scope on itself and styles everything else from the
+ * semantic tokens; it therefore renders the same in every app theme.
  */
 export const TestCard = (): JSX.Element => (
-  <div
-    id="testElem"
-    className="dark w-[508px] bg-elevation-surface px-10 pb-12 pt-10 font-primary text-font"
-  >
-    <div className="flex items-start justify-between">
-      <h2 className="font-primary-bold text-2xl">UI magician Agent</h2>
-      <button
-        type="button"
-        aria-label="Open settings"
-        className="cursor-pointer rounded p-1 text-icon hover:bg-background-neutral"
-      >
-        <GearIcon />
-      </button>
-    </div>
-
-    <div className="mt-8 flex items-center gap-3 text-font-subtle">
-      <ChevronUpIcon />
-      <span className="min-w-0 truncate text-lg">
-        From entire frame to a single page
-      </span>
-    </div>
-
-    <div className="mt-32 flex items-center gap-3">
-      <ChevronUpIcon />
-      <h3 className="font-primary-bold text-2xl">Add New Design</h3>
-    </div>
-
-    <div className="mt-14 space-y-6">
-      {CARD_FIELDS.map((field) => (
-        <div key={field.label}>
-          <div className="flex items-center gap-2 text-font-subtle">
-            <span className="text-lg">{field.label}</span>
-            <InfoIcon />
-          </div>
-          <input
-            type="text"
-            readOnly
-            aria-label={field.label}
-            placeholder={field.placeholder}
-            className="mt-6 h-[70px] w-full rounded-md border border-border-bold bg-elevation-surface-raised px-6 text-lg placeholder:text-font-subtlest"
-          />
-        </div>
-      ))}
-    </div>
-
-    <div className="mt-12 flex gap-9 pl-12">
-      {CARD_ACTIONS.map((action) => (
+  <div id="testElem" className="dark">
+    <div className="w-[508px] rounded-md bg-elevation-surface px-10 pb-16 pt-10 text-font">
+      <div className="flex items-center justify-between">
+        <h1 className="font-primary-bold text-2xl">UI magician Agent</h1>
         <button
-          key={action}
           type="button"
-          // No semantic token covers the frame's rust fill, so this uses the
-          // nearest value the palette declares.
-          className="h-[70px] w-[170px] cursor-pointer rounded-md bg-[var(--Orange800)] text-xl text-font hover:bg-[var(--Orange700)]"
+          aria-label="Open settings"
+          className="cursor-pointer rounded p-1 text-icon hover:bg-background-neutral-hovered active:bg-background-neutral-pressed"
         >
-          {action}
+          <MdOutlineSettings aria-hidden="true" className="text-2xl" />
         </button>
-      ))}
-    </div>
+      </div>
 
-    <h3 className="mt-24 font-primary-bold text-2xl">Recent Breakdowns</h3>
+      <div className="mt-6 flex items-center gap-2 text-font-subtle">
+        <RiArrowUpSLine aria-hidden="true" className="shrink-0 text-xl" />
+        <span className="truncate font-primary-light text-base">
+          From entire frame to a singl…
+        </span>
+      </div>
+
+      <div className="mt-44 flex items-center gap-2">
+        <RiArrowUpSLine aria-hidden="true" className="shrink-0 text-2xl" />
+        <h2 className="font-primary-bold text-2xl">Add New Design</h2>
+      </div>
+
+      <div className="mt-8 space-y-6">
+        <Field
+          id="personal-access-token"
+          label="Personal Access Token"
+          placeholder="figd_xxxxxxxxxxxxxxxxxxxxxx"
+        />
+        <Field
+          id="design-url"
+          label="Design URL"
+          placeholder="https://www.figma.com/file/"
+        />
+      </div>
+
+      <div className="mt-10 flex gap-9 pl-12">
+        {BUTTON_LABELS.map((label) => (
+          <button
+            key={label}
+            type="button"
+            // The frame's rust fill and its near-white button text have no
+            // semantic token, so they come from the palette in app.css.
+            className="w-[170px] cursor-pointer rounded bg-[var(--Orange800)] py-4 font-primary text-base text-[var(--DarkNeutral1100)] hover:bg-[var(--Orange700)] active:bg-[var(--Orange900)]"
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      <h2 className="mt-24 font-primary-bold text-xl">Recent Breakdowns</h2>
+    </div>
   </div>
 );
 
-const GearIcon = (): JSX.Element => (
-  <svg
-    width="26"
-    height="26"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <circle cx="12" cy="12" r="3" />
-    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-  </svg>
+const BUTTON_LABELS = ["Awesome", "Prepare"];
+
+const Field = ({ id, label, placeholder }: FieldProps): JSX.Element => (
+  <div>
+    <div className="flex items-center gap-2 text-font-subtle">
+      <label htmlFor={id} className="font-primary text-base">
+        {label}
+      </label>
+      <MdOutlineInfo aria-hidden="true" className="text-lg" />
+    </div>
+    <input
+      id={id}
+      name={id}
+      type="text"
+      readOnly
+      placeholder={placeholder}
+      className="mt-3 w-full rounded border border-border-bold bg-background-input px-4 py-4 font-primary-light text-base placeholder:text-font-subtle focus-visible:bg-background-input-pressed"
+    />
+  </div>
 );
 
-const ChevronUpIcon = (): JSX.Element => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="m18 15-6-6-6 6" />
-  </svg>
-);
-
-const InfoIcon = (): JSX.Element => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    aria-hidden="true"
-  >
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 11.5V17" />
-    <path d="M12 7.5h.01" />
-  </svg>
-);
+interface FieldProps {
+  id: string;
+  label: string;
+  placeholder: string;
+}
