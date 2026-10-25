@@ -5,12 +5,10 @@ import {
 } from "react-icons/hi";
 
 /**
- * A static rendering of the "UI magician Agent" Figma panel.
+ * The "UI magician Agent" panel from the Figma design, rendered as a static,
+ * self-contained card. Takes no props.
  *
- * Deliberately prop-free and self-contained: this is a smoke test of the
- * design-to-component path, not a production surface.
- *
- * The colours are the raw values from the design's style guide. This panel's
+ * The colours are the raw values from the design's style guide: this panel's
  * palette (near-black chrome, rust buttons) has no counterpart in the repo's
  * semantic token set, and the design is the spec here.
  */
