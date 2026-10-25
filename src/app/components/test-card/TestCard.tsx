@@ -1,16 +1,8 @@
-/**
- * TestCard — smoke test of the Figma-frame-to-component path.
- *
- * Reproduces the "UI magician Agent" panel: header row with settings icon,
- * a collapsed section row, an "Add New Design" section with two labelled
- * fields and a button pair, and a "Recent Breakdowns" heading.
- *
- * Deliberately inert: no props, no state, read-only fields, no handlers.
- * The frame's palette is not part of the product's token set, so its colours
- * are written as literal values rather than semantic tokens.
- */
-
-const ChevronUpIcon = ({ className }: IconProps): JSX.Element => (
+const ChevronUpIcon = ({
+  className,
+}: {
+  className: string;
+}): JSX.Element => (
   <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" className={className}>
     <path
       d="M1 6.5 6 1.5l5 5"
@@ -22,41 +14,52 @@ const ChevronUpIcon = ({ className }: IconProps): JSX.Element => (
   </svg>
 );
 
-const SettingsIcon = ({ className }: IconProps): JSX.Element => (
+const SettingsIcon = ({ className }: { className: string }): JSX.Element => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
     aria-hidden="true"
     className={className}
   >
-    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
     <path
-      d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+      d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58z"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLinecap="round"
       strokeLinejoin="round"
     />
+    <circle cx="12" cy="12" r="3.6" stroke="currentColor" strokeWidth="2" />
   </svg>
 );
 
-const InfoIcon = ({ className }: IconProps): JSX.Element => (
-  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className={className}>
-    <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.1" />
+const InfoIcon = ({ className }: { className: string }): JSX.Element => (
+  <svg
+    viewBox="0 0 16 16"
+    fill="none"
+    aria-hidden="true"
+    className={className}
+  >
+    <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.2" />
     <path
       d="M8 7.3v4.1"
       stroke="currentColor"
-      strokeWidth="1.1"
+      strokeWidth="1.2"
       strokeLinecap="round"
     />
-    <circle cx="8" cy="4.7" r="0.85" fill="currentColor" />
+    <circle cx="8" cy="4.9" r="0.85" fill="currentColor" />
   </svg>
 );
+
+const FIELD_LABEL_CLASS =
+  "mt-[11px] flex items-center gap-4 text-[11.5px] leading-[13.92px]";
+const FIELD_CLASS =
+  "w-[211px] bg-[#272822] pl-[19px] outline-none placeholder:text-[#737470]";
+const BUTTON_CLASS =
+  "h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] leading-[13.92px] text-[#8c8078]";
 
 export const TestCard = (): JSX.Element => (
   <div
     id="testElem"
-    className="flex w-[254px] flex-col bg-[#0d0d0d] px-5 pb-[62px] pt-5 font-primary"
+    className="flex w-[254px] flex-col bg-[#242424] px-5 pt-5 pb-[62px] font-primary"
   >
     <div className="flex items-center justify-between">
       <span className="text-[13.5px] leading-[16.34px] text-[#b5b5b5]">
@@ -81,7 +84,7 @@ export const TestCard = (): JSX.Element => (
 
     <label
       htmlFor="test-card-token"
-      className="mt-[28px] flex items-center gap-5 text-[11.5px] leading-[13.92px] text-[#a4a4a3]"
+      className={`mt-[28px] ${FIELD_LABEL_CLASS} text-[#a4a4a3]`}
     >
       Personal Access Token
       <InfoIcon className="h-[15px] w-[15px] shrink-0 text-[#a4a4a3]" />
@@ -90,12 +93,12 @@ export const TestCard = (): JSX.Element => (
       id="test-card-token"
       readOnly
       placeholder="figd_xxxxxxxxxxxxxxxxxxxxx"
-      className="mt-3 h-9 w-[211px] border border-[#a5adad] bg-[#272822] pl-[19px] text-[11.5px] leading-[13.92px] text-[#737470] placeholder:text-[#737470]"
+      className={`mt-3 h-9 border border-[#a5adad] text-[11.5px] leading-[13.92px] text-[#737470] ${FIELD_CLASS}`}
     />
 
     <label
       htmlFor="test-card-url"
-      className="mt-[11px] flex items-center gap-5 text-[11.5px] leading-[13.92px] text-[#a3a3a2]"
+      className={`${FIELD_LABEL_CLASS} text-[#a3a3a2]`}
     >
       Design URL
       <InfoIcon className="h-[15px] w-[15px] shrink-0 text-[#a3a3a2]" />
@@ -104,20 +107,14 @@ export const TestCard = (): JSX.Element => (
       id="test-card-url"
       readOnly
       placeholder="https://www.figma.com/file/"
-      className="mt-[11px] h-[37px] w-[211px] border-2 border-[#929291] bg-[#272822] pl-5 text-[10.5px] leading-[12.71px] text-[#71726e] placeholder:text-[#71726e]"
+      className={`mt-[11px] h-[37px] border-2 border-[#929291] pl-5 text-[10.5px] leading-[12.71px] text-[#71726e] placeholder:text-[#71726e] ${FIELD_CLASS}`}
     />
 
     <div className="mt-[22px] flex justify-end gap-[17px] pr-[3px]">
-      <button
-        type="button"
-        className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] leading-[13.92px] text-[#8c8078]"
-      >
+      <button type="button" className={BUTTON_CLASS}>
         Awesome
       </button>
-      <button
-        type="button"
-        className="h-[37px] w-[85px] rounded bg-[#843a17] text-[11.5px] leading-[13.92px] text-[#8c8078]"
-      >
+      <button type="button" className={BUTTON_CLASS}>
         Prepare
       </button>
     </div>
@@ -127,7 +124,3 @@ export const TestCard = (): JSX.Element => (
     </h2>
   </div>
 );
-
-interface IconProps {
-  className: string;
-}
