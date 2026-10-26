@@ -5,7 +5,7 @@ import {
 } from "react-icons/io5";
 
 const FIELD_CLASS =
-  "w-full rounded border border-[#8b949e] bg-[#22272b] px-6 py-5 font-primary-light text-[16px] text-[#e6edf3] outline-none placeholder:text-[#8b949e]";
+  "w-full rounded border border-[#8b949e] bg-[#22272b] px-6 py-5 font-primary-light text-[16px] text-[#e6edf3] placeholder:text-[#8b949e]";
 
 const BUTTON_CLASS =
   "w-[170px] rounded bg-[#9e3c12] py-2 font-primary text-[16px] text-[#d5d5d5]";
