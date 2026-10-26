@@ -53,6 +53,7 @@ const Field = ({ label, placeholder }: FieldProps): JSX.Element => (
     </div>
     <input
       type="text"
+      aria-label={label}
       placeholder={placeholder}
       className="mt-2 w-full rounded-md border-none bg-background-input p-3 text-font outline outline-2 outline-border-input placeholder:text-font-subtlest"
     />
