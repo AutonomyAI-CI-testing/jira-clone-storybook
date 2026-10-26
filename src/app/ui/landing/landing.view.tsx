@@ -17,9 +17,9 @@ export const LandingView = (): JSX.Element => {
 
   return (
     // The hero is a fixed light design, so pin the light theme: the white
-    // surface and the black type stay put whatever theme the app is in.
+    // surface and the type colours stay put whatever theme the app is in.
     <section className="light flex min-h-screen flex-col items-center justify-center bg-white px-6 text-center">
-      <h1 className="font-montserrat text-[64px] leading-[40px] font-bold text-black">
+      <h1 className="font-montserrat text-[64px] leading-[40px] font-bold text-font-danger">
         Let’s Find Your Ideal Space
       </h1>
       <p className="mt-[24px] font-montserrat text-[26px] leading-[40px] font-normal text-black">
