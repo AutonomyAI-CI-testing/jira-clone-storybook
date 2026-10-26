@@ -13,6 +13,7 @@ export const CreateProjectPanelHeader = ({
       </span>
       <Link
         to="/projects"
+        aria-label="Close project panel"
         className="ml-3 flex cursor-pointer rounded border-none p-0.5 text-icon hover:bg-background-accent-grey-subtlest"
       >
         <IoCloseOutline size={32} />
