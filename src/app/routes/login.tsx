@@ -66,8 +66,16 @@ export const action: ActionFunction = async ({ request }) => {
     const userSession = await getUserSession(request);
     userSession.setUser(userId);
 
+    // "Keep me signed in" keeps the cookie's default 30-day lifetime; without
+    // it the session ends when the browser closes.
+    const remember = formData.get("remember") === "true";
+
     return redirect("/projects", {
-      headers: { "Set-Cookie": await userSession.commit() },
+      headers: {
+        "Set-Cookie": await userSession.commit(
+          remember ? undefined : { maxAge: undefined }
+        ),
+      },
     });
   }
   console.error("Unknown action", _action);
