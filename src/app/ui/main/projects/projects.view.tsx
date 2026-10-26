@@ -1,32 +1,16 @@
-import { Link, Outlet } from "react-router";
-import { AiOutlinePlus } from "react-icons/ai";
+import { Outlet } from "react-router";
 import { ProjectSummary } from "@domain/project/project";
-import { Button } from "@app/components/button/button";
-import { ProjectCard } from "./project-card/project-card";
 
-export const ProjectsView = ({
-  projectsSummary,
-}: ProjectsViewProps): JSX.Element => {
+// The route still passes projectsSummary, but this page renders nothing from it.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const ProjectsView = (_props: ProjectsViewProps): JSX.Element => {
   return (
-    <div className="p-6">
-      <h1 className="font-primary-black text-2xl">PROJECTS</h1>
-      <div className="mt-8">
-        <Link to="new" className="flex w-fit">
-          <Button color="neutral" variant="subtlest" className="py-3 pl-3 pr-4">
-            <span>
-              <AiOutlinePlus size={22} />
-            </span>
-            <span className="leading-4">Add Project</span>
-          </Button>
-        </Link>
-      </div>
-      <div className="mt-4 grid grid-cols-[repeat(auto-fit,_400px)] gap-8">
-        {projectsSummary.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+    <>
+      <div className="flex flex-1 items-center justify-center bg-black">
+        <h1 className="font-primary-black text-9xl text-font-success">Fei</h1>
       </div>
       <Outlet />
-    </div>
+    </>
   );
 };
 
