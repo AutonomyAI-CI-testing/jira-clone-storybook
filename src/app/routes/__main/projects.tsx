@@ -4,9 +4,8 @@ import type {
   MetaFunction,
 } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
-import { ProjectId, ProjectSummary } from "@domain/project/project";
-import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
+import { ProjectId } from "@domain/project/project";
+import { deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { ProjectsView } from "@app/ui/main/projects/projects.view";
 import { formatTags, formatProperties } from "@utils/meta";
@@ -48,10 +47,6 @@ export const meta: MetaFunction = () => {
   return [{ title }, ...formatTags(tags), ...formatProperties(properties)];
 };
 
-type LoaderData = {
-  projectsSummary: ProjectSummary[];
-};
-
 export const loader: LoaderFunction = async ({ request }) => {
   const userSession = await getUserSession(request);
   const userId = userSession.getUser();
@@ -60,9 +55,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect("/login");
   }
 
-  const projectsSummary = await getProjectsSummary(userId);
-
-  return json<LoaderData>({ projectsSummary });
+  return json({});
 };
 
 export const action: ActionFunction = async ({ request }) => {
@@ -93,7 +86,10 @@ export function ErrorBoundary({ error }: { error: Error }) {
   );
 }
 
+export const handle = {
+  hideHeader: true,
+};
+
 export default function ProjectsRoute() {
-  const { projectsSummary } = useLoaderData() as LoaderData;
-  return <ProjectsView projectsSummary={projectsSummary} />;
+  return <ProjectsView />;
 }
