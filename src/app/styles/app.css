@@ -151,6 +151,53 @@
     --Magenta800: #943d73;
     --Magenta900: #50253f;
     --Magenta1000: #421f34;
+
+    /* AutonomyAI sign-in surface — see .login-surface below */
+    --AaiOrange: #f25730;
+    --AaiOrangeBright: #ff6a42;
+    --AaiOrangeDeep: #d94a1f;
+    --AaiOrangePeach: #ffa37a;
+    --AaiOrangeWashA: rgba(242, 87, 48, 0.12);
+    --AaiOrangeWashHoveredA: rgba(242, 87, 48, 0.18);
+    --AaiOrangeWashPressedA: rgba(242, 87, 48, 0.24);
+    --AaiOrangeHaloA: rgba(242, 87, 48, 0.28);
+    --AaiOrangeGlow: 0 6px 20px rgba(242, 87, 48, 0.25);
+
+    --AaiBlue: #9fd2ed;
+    --AaiBlueBright: #b6ddf2;
+    --AaiBlueDeep: #7cc0e4;
+    --AaiBlueWashA: rgba(159, 210, 237, 0.14);
+
+    --AaiOk: #4fb477;
+    --AaiOkBright: #63c68a;
+    --AaiOkDeep: #3d9a62;
+    --AaiOkWashA: rgba(79, 180, 119, 0.14);
+
+    --AaiWarn: #e8a13c;
+    --AaiWarnBright: #f0b25c;
+    --AaiWarnDeep: #cf8c2a;
+    --AaiWarnWashA: rgba(232, 161, 60, 0.14);
+
+    --AaiErr: #f0574a;
+    --AaiErrBright: #f4756a;
+    --AaiErrDeep: #d4402f;
+    --AaiErrWashA: rgba(240, 87, 74, 0.14);
+
+    --AaiNeutralWashA: rgba(244, 241, 239, 0.04);
+    --AaiNeutralWashPressedA: rgba(244, 241, 239, 0.08);
+
+    --Ink950: #0a0909;
+    --Ink900: #111010;
+    --Ink700: #1d1b1b;
+    --Ink600: #262323;
+    --Ink500: #2c2929;
+    --Ink400: #3b3737;
+    --Ink300: #5f5957;
+    --InkFg: #f4f1ef;
+    --InkFgMuted: #a9a29e;
+    --InkFgFaint: #6f6864;
+    --InkOverlayA: rgba(0, 0, 0, 0.5);
+    --InkDropA: rgba(10, 9, 9, 0.7);
   }
 }
 
@@ -838,4 +885,186 @@
   --color-background-disabled: var(--Neutral100A);
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------------------------------------------------------------------------
+   Login — the AutonomyAI sign-in surface
+
+   A self-contained brand surface that keeps its own dark palette whatever the
+   app theme is, so it re-declares the whole semantic --color-* set instead of
+   borrowing one of the theme blocks above. Put `.login-surface` on the page
+   root AND on any portalled content rendered over it (the user dropdown),
+   which escapes the page subtree. It carries tokens only — no layout — so it
+   is safe to put on an overlay.
+   --------------------------------------------------------------------------- */
+.login-surface {
+  /* Text */
+  --color-font: var(--InkFg);
+  --color-font-brand: var(--AaiOrange);
+  --color-font-success: var(--AaiOk);
+  --color-font-danger: var(--AaiErr);
+  --color-font-warning: var(--AaiWarn);
+  --color-font-info: var(--AaiBlue);
+  --color-font-accent-blue: var(--AaiBlue);
+  --color-font-accent-green: var(--AaiOk);
+  --color-font-accent-grey: var(--InkFgMuted);
+  --color-font-link: var(--AaiOrange);
+  --color-font-link-hovered: var(--AaiOrangeBright);
+  --color-font-link-pressed: var(--AaiOrangeDeep);
+  --color-font-subtle: var(--InkFgMuted);
+  --color-font-subtlest: var(--InkFgFaint);
+  --color-font-disabled: var(--Ink300);
+  --color-font-inverse: var(--Neutral0);
+
+  /* Link */
+  --color-link: var(--AaiOrange);
+  --color-link-pressed: var(--AaiOrangeDeep);
+
+  /* Icon */
+  --color-icon: var(--InkFg);
+  --color-icon-brand: var(--AaiOrange);
+  --color-icon-danger: var(--AaiErr);
+  --color-icon-selected: var(--AaiOrange);
+  --color-icon-subtle: var(--InkFgMuted);
+  --color-icon-inverse: var(--Neutral0);
+  --color-icon-disabled: var(--Ink300);
+  --color-icon-accent-green: var(--AaiOk);
+  --color-icon-accent-yellow: var(--AaiWarn);
+  --color-icon-accent-red: var(--AaiErr);
+
+  /* Border */
+  --color-border: var(--Ink400);
+  --color-border-bold: var(--Ink300);
+  --color-border-brand: var(--AaiOrange);
+  --color-border-success: var(--AaiOk);
+  --color-border-warning: var(--AaiWarn);
+  --color-border-danger: var(--AaiErr);
+  --color-border-info: var(--AaiBlue);
+  --color-border-selected: var(--AaiOrange);
+  --color-border-focused: var(--AaiOrange);
+  --color-border-input: var(--Ink400);
+  --color-border-disabled: var(--Ink600);
+  --color-border-accent-blue: var(--AaiBlue);
+  --color-border-accent-grey: var(--Ink300);
+
+  /* Elevation */
+  --color-elevation-surface: var(--Ink900);
+  --color-elevation-surface-hovered: var(--Ink700);
+  --color-elevation-surface-pressed: var(--Ink600);
+  --color-elevation-surface-overlay: var(--Ink700);
+  --color-elevation-surface-overlay-hovered: var(--Ink600);
+  --color-elevation-surface-overlay-pressed: var(--Ink500);
+  --color-elevation-surface-raised: var(--Ink700);
+  --color-elevation-surface-raised-hovered: var(--Ink600);
+  --color-elevation-surface-raised-pressed: var(--Ink500);
+  --color-elevation-surface-sunken: var(--Ink950);
+
+  --color-shadow-overflow: 0px 0px 8px var(--InkOverlayA), 0px 0px 1px var(--InkOverlayA);
+  --color-shadow-overlay: 0px 8px 12px var(--InkOverlayA), 0px 0px 1px var(--InkOverlayA);
+
+  /* Background */
+  --color-background-brand-subtlest: var(--AaiOrangeWashA);
+  --color-background-brand-subtlest-hovered: var(--AaiOrangeWashHoveredA);
+  --color-background-brand-subtlest-pressed: var(--AaiOrangeWashPressedA);
+  --color-background-brand-bold: var(--AaiOrange);
+  --color-background-brand-bold-hovered: var(--AaiOrangeBright);
+  --color-background-brand-bold-pressed: var(--AaiOrangeDeep);
+  --color-background-brand-boldest: var(--AaiOrangeDeep);
+  --color-background-brand-boldest-hovered: var(--AaiOrange);
+  --color-background-brand-boldest-pressed: var(--AaiOrangeBright);
+
+  --color-background-success: var(--AaiOkWashA);
+  --color-background-success-hovered: var(--AaiOkWashA);
+  --color-background-success-pressed: var(--AaiOkWashA);
+  --color-background-success-bold: var(--AaiOk);
+  --color-background-success-bold-hovered: var(--AaiOkBright);
+  --color-background-success-bold-pressed: var(--AaiOkDeep);
+
+  --color-background-danger: var(--AaiErrWashA);
+  --color-background-danger-hovered: var(--AaiErrWashA);
+  --color-background-danger-pressed: var(--AaiErrWashA);
+  --color-background-danger-bold: var(--AaiErr);
+  --color-background-danger-bold-hovered: var(--AaiErrBright);
+  --color-background-danger-bold-pressed: var(--AaiErrDeep);
+
+  --color-background-warning: var(--AaiWarnWashA);
+  --color-background-warning-hovered: var(--AaiWarnWashA);
+  --color-background-warning-pressed: var(--AaiWarnWashA);
+  --color-background-warning-bold: var(--AaiWarn);
+  --color-background-warning-bold-hovered: var(--AaiWarnBright);
+  --color-background-warning-bold-pressed: var(--AaiWarnDeep);
+
+  --color-background-info: var(--AaiBlueWashA);
+  --color-background-info-hovered: var(--AaiBlueWashA);
+  --color-background-info-pressed: var(--AaiBlueWashA);
+  --color-background-info-bold: var(--AaiBlue);
+  --color-background-info-bold-hovered: var(--AaiBlueBright);
+  --color-background-info-bold-pressed: var(--AaiBlueDeep);
+
+  --color-background-neutral: transparent;
+  --color-background-neutral-hovered: var(--AaiNeutralWashA);
+  --color-background-neutral-pressed: var(--AaiNeutralWashPressedA);
+  --color-background-neutral-bold: var(--Ink300);
+  --color-background-neutral-bold-hovered: var(--Ink400);
+  --color-background-neutral-bold-pressed: var(--Ink500);
+
+  --color-background-selected: var(--AaiOrangeWashA);
+  --color-background-selected-hovered: var(--AaiOrangeWashHoveredA);
+  --color-background-selected-pressed: var(--AaiOrangeWashPressedA);
+
+  --color-background-accent-green-subtlest: var(--AaiOkWashA);
+  --color-background-accent-green-subtler: var(--AaiOkWashA);
+  --color-background-accent-green-subtle: var(--AaiOk);
+  --color-background-accent-green-bolder: var(--AaiOk);
+  --color-background-accent-blue-subtlest: var(--AaiBlueWashA);
+  --color-background-accent-blue-subtler: var(--AaiBlueWashA);
+  --color-background-accent-blue-subtle: var(--AaiBlue);
+  --color-background-accent-blue-bolder: var(--AaiBlue);
+  --color-background-accent-grey-subtlest: var(--Ink700);
+  --color-background-accent-grey-subtler: var(--Ink600);
+  --color-background-accent-grey-subtle: var(--Ink300);
+  --color-background-accent-grey-bolder: var(--InkFgMuted);
+
+  --color-background-input: var(--Ink500);
+  --color-background-input-hovered: var(--Ink600);
+  --color-background-input-pressed: var(--Ink500);
+
+  --color-background-disabled: var(--AaiNeutralWashA);
+  --color-background-interaction: rgba(244, 241, 239, 0.3);
+  --color-background-drop: var(--InkDropA);
+}
+
+@layer components {
+  /* Film-grain texture over the whole sign-in surface — the design's signature. */
+  .login-surface-grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Toasts raised from the sign-in surface are portalled to <body>, so they
+     carry the surface's palette on the toast element itself. */
+  .login-surface-toast {
+    --toastify-color-light: var(--color-elevation-surface-overlay) !important;
+    --toastify-color-dark: var(--color-elevation-surface-overlay) !important;
+    --toastify-color-info: var(--color-border-info) !important;
+    --toastify-text-color-light: var(--color-font) !important;
+    --toastify-text-color-dark: var(--color-font) !important;
+  }
+
+  /* Warm off-axis glow lifting one corner of the brand panel. */
+  .login-surface-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 55% at 18% 8%, rgba(94, 84, 82, 0.45), transparent 60%),
+      radial-gradient(50% 50% at 92% 100%, rgba(242, 87, 48, 0.1), transparent 62%);
+  }
 }
