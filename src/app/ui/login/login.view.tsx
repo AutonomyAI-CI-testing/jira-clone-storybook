@@ -46,7 +46,7 @@ export const LoginView = ({ users }: Props) => {
             <p className="mb-3.5 font-primary-light text-xs uppercase tracking-[0.16em] text-font-subtlest">
               Sign in
             </p>
-            <h1 className="font-primary-black text-[30px] leading-[1.1] tracking-[-0.02em] text-font">
+            <h1 className="font-primary-black text-[30px] leading-[1.1] tracking-[-0.02em] text-font-danger">
               Select login user
             </h1>
             <p className="mt-[9px] font-primary-light text-[15px] leading-[1.5] text-font-subtle">
