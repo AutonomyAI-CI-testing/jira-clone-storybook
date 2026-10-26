@@ -132,7 +132,7 @@ export const CreateProjectPanelView = ({
                           </span>
                           <Checkbox.Root
                             id={`checkbox-${user.id}`}
-                            className="h-[36px] w-[36px] rounded-md bg-background-input outline outline-2 outline-border-input focus-visible:outline-border-brand"
+                            className="h-[36px] w-[36px] rounded-md bg-background-input"
                             name="user"
                             value={user.id}
                             defaultChecked={user.id === loggedUser?.id}
