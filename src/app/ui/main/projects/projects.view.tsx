@@ -8,7 +8,7 @@ export const ProjectsView = ({
   return (
     <>
       <div className="flex h-screen items-center justify-center bg-black">
-        <h1 className="font-primary-black text-8xl text-[color:var(--Red600)]">
+        <h1 className="font-primary-black text-8xl text-[color:var(--Green600)]">
           Fei
         </h1>
       </div>
