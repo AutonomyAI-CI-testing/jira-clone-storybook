@@ -10,6 +10,7 @@ import { formatDateTime } from "@utils/formatDateTime";
 export const ViewComment = ({
   comment,
   removeComment,
+  updateComment,
 }: ViewCommentProps): JSX.Element => {
   const { user } = useUserStore();
   const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -35,6 +36,7 @@ export const ViewComment = ({
   const save = (commentText: string): void => {
     setMessage(commentText);
     setIsEditing(false);
+    updateComment(comment.id, commentText);
   };
 
   const idleComment = (
@@ -114,4 +116,5 @@ const commentIsEdited = (comment: Comment): boolean => {
 interface ViewCommentProps {
   comment: Comment;
   removeComment: (commentId: CommentId) => void;
+  updateComment: (commentId: CommentId, message: string) => void;
 }
