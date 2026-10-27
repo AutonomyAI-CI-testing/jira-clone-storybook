@@ -1,0 +1,9 @@
+export const FeiView = () => {
+  return (
+    <div className="flex h-screen w-full items-center justify-center bg-elevation-surface">
+      <h1 className="font-primary-black text-5xl leading-none text-font-danger">
+        Fei
+      </h1>
+    </div>
+  );
+};
