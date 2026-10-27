@@ -3,11 +3,11 @@ import { User } from "@domain/user/user";
 import { UserContextProvider } from "@app/store/user.store";
 import { Header } from "./header/header";
 
-export const MainLayout = ({ user }: Props) => {
+export const MainLayout = ({ user, showHeader = true }: Props) => {
   return (
     <UserContextProvider user={user}>
       <div className="flex h-full flex-col">
-        <Header />
+        {showHeader && <Header />}
         <Outlet />
       </div>
     </UserContextProvider>
@@ -16,4 +16,5 @@ export const MainLayout = ({ user }: Props) => {
 
 interface Props {
   user: User;
+  showHeader?: boolean;
 }
