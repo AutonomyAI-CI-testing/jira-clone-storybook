@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useLocation } from "react-router";
 import { User } from "@domain/user/user";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { getUser } from "@infrastructure/db/user";
@@ -33,5 +33,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function AppRoute() {
   const { user } = useLoaderData() as LoaderData;
-  return <MainLayout user={user} />;
+  const location = useLocation();
+  return (
+    <MainLayout user={user} showHeader={location.pathname !== "/projects"} />
+  );
 }
