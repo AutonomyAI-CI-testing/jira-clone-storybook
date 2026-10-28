@@ -56,7 +56,7 @@ export const SelectStatus = ({ initStatus }: Props): JSX.Element => {
                 className={cx(
                   "flex w-fit items-center gap-2 rounded px-1 py-0.5 text-2xs uppercase",
                   category.type === "TODO" &&
-                    "bg-background-accent-grey-subtler text-font-accent-grey",
+                    "bg-background-accent-grey-subtler text-font",
                   category.type === "IN_PROGRESS" &&
                     "bg-background-accent-blue-subtler text-font-accent-blue",
                   category.type === "DONE" &&
