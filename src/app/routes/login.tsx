@@ -1,12 +1,5 @@
-import type {
-  LoaderFunction,
-  ActionFunction,
-  MetaFunction,
-} from "react-router";
-import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
-import { User } from "@domain/user/user";
-import { getUsers } from "@infrastructure/db/user";
+import type { ActionFunction, MetaFunction } from "react-router";
+import { redirect } from "react-router";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { LoginView } from "@app/ui/login/login.view";
 import { formatTags, formatProperties } from "@utils/meta";
@@ -48,15 +41,6 @@ export const meta: MetaFunction = () => {
   return [{ title }, ...formatTags(tags), ...formatProperties(properties)];
 };
 
-type LoaderData = {
-  users: User[];
-};
-
-export const loader: LoaderFunction = async () => {
-  const users = await getUsers();
-  return json<LoaderData>({ users });
-};
-
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const _action = formData.get("_action") as string;
@@ -74,6 +58,5 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function LoginRoute() {
-  const { users } = useLoaderData<LoaderData>();
-  return <LoginView users={users} />;
+  return <LoginView />;
 }
