@@ -4,7 +4,6 @@ import type {
   MetaFunction,
 } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
 import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
@@ -52,6 +51,9 @@ type LoaderData = {
   projectsSummary: ProjectSummary[];
 };
 
+/** The projects page is a full-page surface of its own: no app header. */
+export const handle = { hideHeader: true };
+
 export const loader: LoaderFunction = async ({ request }) => {
   const userSession = await getUserSession(request);
   const userId = userSession.getUser();
@@ -94,6 +96,5 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export default function ProjectsRoute() {
-  const { projectsSummary } = useLoaderData() as LoaderData;
-  return <ProjectsView projectsSummary={projectsSummary} />;
+  return <ProjectsView />;
 }
