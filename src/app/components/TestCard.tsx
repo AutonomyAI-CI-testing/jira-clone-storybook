@@ -61,7 +61,13 @@ const Field = ({ id, label, placeholder }: FieldProps): JSX.Element => (
       </label>
       <InfoIcon />
     </div>
-    <input id={id} type="text" readOnly placeholder={placeholder} className={INPUT_CLASS} />
+    <input
+      id={id}
+      type="text"
+      readOnly
+      placeholder={placeholder}
+      className={INPUT_CLASS}
+    />
   </div>
 );
 
