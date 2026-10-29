@@ -4,7 +4,6 @@ import type {
   MetaFunction,
 } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
 import { User } from "@domain/user/user";
 import { getUsers } from "@infrastructure/db/user";
 import { getUserSession } from "@app/session-storage/user-storage.server";
@@ -74,6 +73,5 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function LoginRoute() {
-  const { users } = useLoaderData<LoaderData>();
-  return <LoginView users={users} />;
+  return <LoginView />;
 }
