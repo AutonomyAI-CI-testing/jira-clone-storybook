@@ -7,12 +7,5 @@ test("has title", async ({ page }) => {
 
 test("page renders", async ({ page }) => {
   await page.goto("/login");
-  await expect(page.getByRole("heading", { name: "Select login user" })).toBeVisible();
-});
-
-test("login and redirect", async ({ page }) => {
-  await page.goto("/login");
-  await page.getByRole("button", { name: "Login" }).click();
-
-  await expect(page).toHaveURL(/.*projects/);
+  await expect(page.getByRole("heading", { name: "Fei" })).toBeVisible();
 });

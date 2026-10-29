@@ -1,13 +1,4 @@
-import type {
-  LoaderFunction,
-  ActionFunction,
-  MetaFunction,
-} from "react-router";
-import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
-import { User } from "@domain/user/user";
-import { getUsers } from "@infrastructure/db/user";
-import { getUserSession } from "@app/session-storage/user-storage.server";
+import type { MetaFunction } from "react-router";
 import { LoginView } from "@app/ui/login/login.view";
 import { formatTags, formatProperties } from "@utils/meta";
 
@@ -48,32 +39,6 @@ export const meta: MetaFunction = () => {
   return [{ title }, ...formatTags(tags), ...formatProperties(properties)];
 };
 
-type LoaderData = {
-  users: User[];
-};
-
-export const loader: LoaderFunction = async () => {
-  const users = await getUsers();
-  return json<LoaderData>({ users });
-};
-
-export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData();
-  const _action = formData.get("_action") as string;
-
-  if (_action === "setUser") {
-    const userId = formData.get("user") as string;
-    const userSession = await getUserSession(request);
-    userSession.setUser(userId);
-
-    return redirect("/projects", {
-      headers: { "Set-Cookie": await userSession.commit() },
-    });
-  }
-  console.error("Unknown action", _action);
-};
-
 export default function LoginRoute() {
-  const { users } = useLoaderData<LoaderData>();
-  return <LoginView users={users} />;
+  return <LoginView />;
 }
