@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState, useRef } from "react";
 import cx from "classix";
+import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 
 export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   const {
@@ -28,10 +29,6 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   const handleTitleChange = (e: React.FormEvent<HTMLTextAreaElement>): void => {
     const value = e.currentTarget.value;
     setValue(value);
-  };
-
-  const valueIsNotOnlySpaces = (): boolean => {
-    return !/^( )\1*$/.test(value);
   };
 
   useLayoutEffect(() => {
@@ -64,7 +61,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
           textareaClassName
         )}
       >
-        {(valueIsNotOnlySpaces() && value) || placeholder}
+        {(!textAreOnlySpaces(value) && value) || placeholder}
       </p>
     </div>
   );
