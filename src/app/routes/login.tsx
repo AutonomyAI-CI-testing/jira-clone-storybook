@@ -4,11 +4,9 @@ import type {
   MetaFunction,
 } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
 import { User } from "@domain/user/user";
 import { getUsers } from "@infrastructure/db/user";
 import { getUserSession } from "@app/session-storage/user-storage.server";
-import { LoginView } from "@app/ui/login/login.view";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: MetaFunction = () => {
@@ -74,6 +72,9 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function LoginRoute() {
-  const { users } = useLoaderData<LoaderData>();
-  return <LoginView users={users} />;
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-black">
+      <h1 className="font-primary-black text-8xl text-[var(--Green600)]">Fei</h1>
+    </div>
+  );
 }
