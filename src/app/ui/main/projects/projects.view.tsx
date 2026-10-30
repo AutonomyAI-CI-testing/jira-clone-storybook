@@ -1,30 +1,17 @@
-import { Link, Outlet } from "react-router";
-import { AiOutlinePlus } from "react-icons/ai";
+import { Outlet } from "react-router";
 import { ProjectSummary } from "@domain/project/project";
-import { Button } from "@app/components/button/button";
-import { ProjectCard } from "./project-card/project-card";
 
 export const ProjectsView = ({
   projectsSummary,
 }: ProjectsViewProps): JSX.Element => {
+  // The projects list is intentionally not rendered on this page. The prop
+  // stays part of this component's API so the route and its stories are
+  // unchanged, and `void` marks it as deliberately unused.
+  void projectsSummary;
+
   return (
-    <div className="p-6">
-      <h1 className="font-primary-black text-2xl">PROJECTS</h1>
-      <div className="mt-8">
-        <Link to="new" className="flex w-fit">
-          <Button color="neutral" variant="subtlest" className="py-3 pl-3 pr-4">
-            <span>
-              <AiOutlinePlus size={22} />
-            </span>
-            <span className="leading-4">Add Project</span>
-          </Button>
-        </Link>
-      </div>
-      <div className="mt-4 grid grid-cols-[repeat(auto-fit,_400px)] gap-8">
-        {projectsSummary.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+    <div className="flex h-full flex-grow items-center justify-center bg-black">
+      <h1 className="font-primary-black text-7xl text-[#22a06b]">Fei</h1>
       <Outlet />
     </div>
   );
