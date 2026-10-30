@@ -1,13 +1,19 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { User } from "@domain/user/user";
 import { UserContextProvider } from "@app/store/user.store";
 import { Header } from "./header/header";
 
+// The projects page renders its own full-bleed screen, so it hides the app header.
+const HEADERLESS_ROUTE = "/projects";
+
 export const MainLayout = ({ user }: Props) => {
+  const { pathname } = useLocation();
+  const showHeader = pathname !== HEADERLESS_ROUTE;
+
   return (
     <UserContextProvider user={user}>
       <div className="flex h-full flex-col">
-        <Header />
+        {showHeader && <Header />}
         <Outlet />
       </div>
     </UserContextProvider>
