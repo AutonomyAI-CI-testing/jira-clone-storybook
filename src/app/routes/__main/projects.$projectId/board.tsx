@@ -122,7 +122,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
 
   return (
     <div className="flex h-full items-center justify-center">
-      <Error500 message={errorMessage} href="board" />
+      <Error500 message={errorMessage} href="/projects" />
     </div>
   );
 }
