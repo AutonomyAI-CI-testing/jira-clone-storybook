@@ -94,10 +94,6 @@ type RouteFiles = {
     id: "routes/action/set-theme";
     page: "/action/set-theme";
   };
-  "routes/__main.tsx": {
-    id: "routes/__main";
-    page: "/projects" | "/projects/new" | "/projects/:projectId" | "/projects/:projectId/analytics" | "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId" | "/projects/:projectId/server-error" | "/projects/:projectId/*";
-  };
   "routes/__main/projects.tsx": {
     id: "routes/__main/projects";
     page: "/projects" | "/projects/new";
@@ -105,6 +101,10 @@ type RouteFiles = {
   "routes/__main/projects/new.tsx": {
     id: "routes/__main/projects/new";
     page: "/projects/new";
+  };
+  "routes/__main.tsx": {
+    id: "routes/__main";
+    page: "/projects/:projectId" | "/projects/:projectId/analytics" | "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId" | "/projects/:projectId/server-error" | "/projects/:projectId/*";
   };
   "routes/__main/projects.$projectId.tsx": {
     id: "routes/__main/projects.$projectId";
@@ -146,9 +146,9 @@ type RouteModules = {
   "routes/login": typeof import("./src/app/routes/login.tsx");
   "routes/action/logout": typeof import("./src/app/routes/action/logout.tsx");
   "routes/action/set-theme": typeof import("./src/app/routes/action/set-theme.tsx");
-  "routes/__main": typeof import("./src/app/routes/__main.tsx");
   "routes/__main/projects": typeof import("./src/app/routes/__main/projects.tsx");
   "routes/__main/projects/new": typeof import("./src/app/routes/__main/projects/new.tsx");
+  "routes/__main": typeof import("./src/app/routes/__main.tsx");
   "routes/__main/projects.$projectId": typeof import("./src/app/routes/__main/projects.$projectId.tsx");
   "routes/__main/projects.$projectId/analytics": typeof import("./src/app/routes/__main/projects.$projectId/analytics.tsx");
   "routes/__main/projects.$projectId/board": typeof import("./src/app/routes/__main/projects.$projectId/board.tsx");
