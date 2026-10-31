@@ -1,0 +1,7 @@
+export const FeiView = () => {
+  return (
+    <main className="grid h-screen place-items-center bg-elevation-surface">
+      <h1 className="font-primary-black text-5xl text-font-danger">Fei</h1>
+    </main>
+  );
+};
