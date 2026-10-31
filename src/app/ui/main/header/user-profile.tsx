@@ -11,7 +11,10 @@ export const UserProfile = (): JSX.Element => {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="ml-1 rounded-full outline outline-2 outline-border-disabled hover:outline-border-brand">
+      <DropdownMenu.Trigger
+        aria-label="Open account menu"
+        className="ml-1 rounded-full outline outline-2 outline-border-disabled hover:outline-border-brand"
+      >
         <UserAvatar {...user} />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
@@ -23,10 +26,12 @@ export const UserProfile = (): JSX.Element => {
             "radix-side-bottom:animate-slide-down radix-side-top:animate-slide-up"
           )}
         >
-          <DropdownMenu.Item className="flex flex-col items-center p-3 !outline-none">
+          {/* The user's own details are not an action: as a menu item this row
+              was a focus stop that did nothing and showed no focus ring. */}
+          <div className="flex flex-col items-center p-3">
             <UserAvatar {...user} size={80} />
             <span className="mt-2 text-lg text-font">{user.name}</span>
-          </DropdownMenu.Item>
+          </div>
           <DropdownMenu.Separator className="h-px bg-border" />
           <DropdownMenu.Item className="select-none p-1 !outline-none">
             <Form action="action/logout" method="post">

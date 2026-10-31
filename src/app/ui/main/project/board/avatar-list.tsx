@@ -32,6 +32,7 @@ const MoreUsers = ({ users }: MoreUsersProps): JSX.Element => (
   <div className="bg-elevation-surface">
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
+        aria-label={`Show all ${users.length} users`}
         className="-ml-[5px] box-content flex cursor-pointer items-center justify-center rounded-full border-2 border-border bg-background-neutral text-lg text-font hover:underline"
         style={{
           width: `${AVATAR_SIZE}px`,
