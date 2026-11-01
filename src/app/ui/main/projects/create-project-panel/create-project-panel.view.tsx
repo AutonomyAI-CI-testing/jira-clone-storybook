@@ -28,6 +28,7 @@ export const CreateProjectPanelView = ({
   const navigate = useNavigate();
   const actionData = useActionData() as ProjectActionData;
   const { user: loggedUser } = useUserStore();
+  const panelTitle = project?.id || "Create new project";
 
   const postData = useCallback(
     (formTarget: HTMLFormElement) => {
@@ -100,18 +101,21 @@ export const CreateProjectPanelView = ({
                 !isOpen && "translate-y-[10px] opacity-0"
               )}
             >
-              <CreateProjectPanelHeader
-                id={project?.id || "Create new project"}
-              />
+              <Dialog.Title className="sr-only mb-0">
+                {panelTitle}
+              </Dialog.Title>
+              <CreateProjectPanelHeader id={panelTitle} />
               <Form method="post" ref={formRef}>
                 <div className="mb-6">
-                  <Dialog.Title className="-ml-3 mb-8 mt-5">
+                  {/* text-3xl keeps the line-height the field's old heading wrapper
+                      gave this block, so nothing below it shifts. */}
+                  <div className="-ml-3 mb-8 mt-5 text-3xl">
                     <Title
                       initTitle={project?.name || ""}
                       maxLength={30}
                       error={actionData?.errors?.name}
                     />
-                  </Dialog.Title>
+                  </div>
                   <p className="font-primary-black">Description</p>
                   <div className="-ml-3 mb-5">
                     <Description initDescription={project?.description || ""} />

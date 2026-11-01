@@ -47,6 +47,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const navigate = useNavigate();
   const initStatus = (params[0].get("category") as CategoryType) || "TODO";
   const userIsNotReporter = user.id !== reporter.id;
+  const panelTitle = issue?.name || "Create new issue";
 
   const postData = useCallback(
     (formTarget: HTMLFormElement) => {
@@ -142,6 +143,9 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
               onPointerDownOutside={handleProgrammaticClose}
               className={isOpen ? "" : "translate-y-[10px] opacity-0"}
             >
+              <Dialog.Title className="sr-only mb-0">
+                {panelTitle}
+              </Dialog.Title>
               <PanelHeaderIssue
                 id={issue?.id || "Create new issue"}
                 deleteDisabled={
@@ -153,13 +157,11 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                 <div className="grid grid-cols-5 gap-16">
                   <section className="col-span-3">
                     <div className="my-5 -ml-3 mb-6">
-                      <Dialog.Title asChild>
-                        <Title
-                          initTitle={issue?.name || ""}
-                          readOnly={userIsNotReporter}
-                          error={actionData?.errors?.name}
-                        />
-                      </Dialog.Title>
+                      <Title
+                        initTitle={issue?.name || ""}
+                        readOnly={userIsNotReporter}
+                        error={actionData?.errors?.name}
+                      />
                     </div>
                     <p className="font-primary-black text-font">Description</p>
                     <div className="-ml-3 mb-6">
