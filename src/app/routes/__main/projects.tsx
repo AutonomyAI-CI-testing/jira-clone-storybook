@@ -3,8 +3,7 @@ import type {
   ActionFunction,
   MetaFunction,
 } from "react-router";
-import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
+import { data as json, redirect, Outlet, useMatch } from "react-router";
 import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
@@ -94,6 +93,9 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export default function ProjectsRoute() {
-  const { projectsSummary } = useLoaderData() as LoaderData;
-  return <ProjectsView projectsSummary={projectsSummary} />;
+  // The projects list is a full-screen splash. Nested routes, such as
+  // /projects/new, render on their own as usual.
+  const isProjectsList = useMatch("/projects");
+
+  return isProjectsList ? <ProjectsView /> : <Outlet />;
 }
