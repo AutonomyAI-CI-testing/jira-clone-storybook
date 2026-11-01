@@ -1,32 +1,26 @@
-import { Link, Outlet } from "react-router";
-import { AiOutlinePlus } from "react-icons/ai";
+import { Outlet } from "react-router";
 import { ProjectSummary } from "@domain/project/project";
-import { Button } from "@app/components/button/button";
-import { ProjectCard } from "./project-card/project-card";
 
-export const ProjectsView = ({
-  projectsSummary,
-}: ProjectsViewProps): JSX.Element => {
+/**
+ * A bare black canvas showing only the product name, centered.
+ *
+ * The page is deliberately outside the theme system: the surface stays black
+ * and the word keeps the same red in every theme, so both colours are fixed
+ * instead of following the theme-mapped tokens. The icon-grade danger red is
+ * the palette's bright red and stays legible on black.
+ *
+ * The projects summary the route passes is deliberately unused, so the list
+ * can be brought back without touching the route or its loader.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const ProjectsView = (_props: ProjectsViewProps): JSX.Element => {
   return (
-    <div className="p-6">
-      <h1 className="font-primary-black text-2xl">PROJECTS</h1>
-      <div className="mt-8">
-        <Link to="new" className="flex w-fit">
-          <Button color="neutral" variant="subtlest" className="py-3 pl-3 pr-4">
-            <span>
-              <AiOutlinePlus size={22} />
-            </span>
-            <span className="leading-4">Add Project</span>
-          </Button>
-        </Link>
-      </div>
-      <div className="mt-4 grid grid-cols-[repeat(auto-fit,_400px)] gap-8">
-        {projectsSummary.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+    <>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+        <h1 className="font-primary-black text-5xl text-icon-danger">Fei</h1>
       </div>
       <Outlet />
-    </div>
+    </>
   );
 };
 
