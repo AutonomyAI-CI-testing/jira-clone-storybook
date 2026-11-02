@@ -22,6 +22,9 @@ export const Sidebar = (props: Props): JSX.Element => {
           "flex h-full max-w-0 flex-col whitespace-nowrap bg-elevation-surface-sunken opacity-0 duration-300 ease-out",
           isOpen && "w-[240px] max-w-[240px] whitespace-normal opacity-100"
         )}
+        // Collapsed, the panel keeps its links in the DOM while showing none of
+        // them, so they are taken out of the tab order and the a11y tree too.
+        inert={!isOpen}
       >
         <section className="flex w-full items-start px-5 py-6">
           <img
