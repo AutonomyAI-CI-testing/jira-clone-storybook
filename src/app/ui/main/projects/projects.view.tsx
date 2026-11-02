@@ -9,7 +9,7 @@ export const ProjectsView = ({
 }: ProjectsViewProps): JSX.Element => {
   return (
     <div className="flex flex-1 items-center justify-center bg-black">
-      <h1 className="font-primary-black text-[10rem] leading-none text-[#ff0000]">
+      <h1 className="font-primary-black text-[10rem] leading-none text-[#00ff00]">
         Fei
       </h1>
       <Outlet />
