@@ -8,7 +8,7 @@ export const ProjectsView = (_props: ProjectsViewProps): JSX.Element => {
   return (
     <>
       <div className="dark fixed inset-0 z-50 flex items-center justify-center bg-black">
-        <h1 className="font-primary-black text-9xl text-font-danger">Fei</h1>
+        <h1 className="font-primary-black text-9xl text-font-success">Fei</h1>
       </div>
       <Outlet />
     </>
