@@ -14,7 +14,7 @@ export const TestCard = () => {
   return (
     <div
       id="testElem"
-      className="w-[254px] bg-black px-5 pt-5 pb-[62px] font-primary text-[#b5b5b5]"
+      className="w-[254px] bg-black px-5 pb-[62px] pt-5 font-primary text-[#b5b5b5]"
     >
       <div className="flex items-center justify-between">
         <span className="font-primary-bold text-xs">UI magician Agent</span>
@@ -32,7 +32,11 @@ export const TestCard = () => {
       </div>
 
       <div
-        className={cx("mt-7 flex items-center gap-4", LABEL_TEXT, "text-[#a4a4a3]")}
+        className={cx(
+          "mt-7 flex items-center gap-4",
+          LABEL_TEXT,
+          "text-[#a4a4a3]"
+        )}
       >
         <span>Personal Access Token</span>
         <InfoIcon />
@@ -48,7 +52,11 @@ export const TestCard = () => {
       </div>
 
       <div
-        className={cx("mt-[11px] flex items-center gap-4", LABEL_TEXT, "text-[#a3a3a2]")}
+        className={cx(
+          "mt-[11px] flex items-center gap-4",
+          LABEL_TEXT,
+          "text-[#a3a3a2]"
+        )}
       >
         <span>Design URL</span>
         <InfoIcon />
