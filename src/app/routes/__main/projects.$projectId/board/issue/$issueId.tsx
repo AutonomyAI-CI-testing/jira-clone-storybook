@@ -36,7 +36,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const description = issue.description || "No description";
   const image =
     "https://jira-clone.fly.dev/static/images/readme/issue-panel.png";
-  const url = `https://jira-clone.fly.dev/projects/${projectId}/board/issue/${issue.name}`;
+  const url = `https://jira-clone.fly.dev/projects/${projectId}/board/issue/${issue.id}`;
 
   const tags = {
     charset: "utf-8",
