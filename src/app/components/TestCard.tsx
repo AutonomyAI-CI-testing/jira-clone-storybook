@@ -32,6 +32,7 @@ export const TestCard = (): JSX.Element => (
     </div>
     <input
       type="text"
+      aria-label="Personal Access Token"
       placeholder="figd_xxxxxxxxxxxxxxxxxx"
       className={INPUT_CLASS}
     />
@@ -42,6 +43,7 @@ export const TestCard = (): JSX.Element => (
     </div>
     <input
       type="text"
+      aria-label="Design URL"
       placeholder="https://www.figma.com/file/"
       className={INPUT_CLASS}
     />
