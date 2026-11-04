@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import cx from "classix";
 import { useDrag } from "react-dnd";
 import { CategoryId } from "@domain/category/category";
 import { Issue, IssueId } from "@domain/issue/issue";
 import { PriorityId } from "@domain/priority/priority";
+import { boardQueryString, parseIssueFilters } from "@domain/filter/filter";
 import { TaskIcon } from "@app/components/icons";
 import { PriorityIcon } from "@app/components/priority-icon/priority-icon";
 import { useSortBy } from "@app/hooks/useSortBy";
@@ -22,9 +23,12 @@ export const IssueCard = ({
 }: Props): JSX.Element => {
   const issueIdPrefix = issue.id.split("-")[0];
   const sortBy = useSortBy();
-  const issueLink = sortBy
-    ? `issue/${issue.id}?sortBy=${sortBy}`
-    : `issue/${issue.id}`;
+  const [searchParams] = useSearchParams();
+  // Carry the board's filters into the panel, so closing it returns to the same view.
+  const issueLink = `issue/${issue.id}${boardQueryString(
+    sortBy,
+    parseIssueFilters(searchParams)
+  )}`;
 
   type Collected = { isDragging: boolean };
 

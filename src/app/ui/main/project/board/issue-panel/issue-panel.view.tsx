@@ -108,11 +108,11 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
-        const previousUrl = location.pathname.split("/issue")[0];
+        const previousUrl = `${location.pathname.split("/issue")[0]}${location.search}`;
         navigate(previousUrl);
       }, 300);
     }
-  }, [isOpen, navigate, location.pathname]);
+  }, [isOpen, navigate, location]);
 
   const wasSubmitting = useRef(false);
   useEffect(() => {

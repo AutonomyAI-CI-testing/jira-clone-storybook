@@ -31,13 +31,17 @@ export const Content = twix(
   "bg-elevation-surface-overlay py-1 shadow-md"
 );
 
+// Shared with the board's filter menus, which use Radix's DropdownMenu items
+// rather than Select's — the two must stay visually identical.
+export const selectItemClass = cx(
+  "relative flex cursor-pointer select-none items-center gap-2 border-l-[3px] border-l-transparent p-2 pl-8",
+  "font-primary-bold text-sm text-font hover:bg-background-selected active:bg-background-selected-pressed",
+  "focus:border-l-[3px] focus:border-l-border-selected focus:bg-background-selected"
+);
+
 export const Item = twix(
   Select.Item,
-  cx(
-    "relative flex cursor-pointer select-none items-center gap-2 border-l-[3px] border-l-transparent p-2 pl-8",
-    "font-primary-bold text-sm text-font hover:bg-background-selected active:bg-background-selected-pressed",
-    "outline-none focus:border-l-[3px] focus:border-l-border-selected focus:bg-background-selected focus-visible:outline-none"
-  )
+  cx(selectItemClass, "outline-none focus-visible:outline-none")
 );
 
 export const ItemIndicator = twix(

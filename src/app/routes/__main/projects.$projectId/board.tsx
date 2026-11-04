@@ -9,7 +9,7 @@ import invariant from "tiny-invariant";
 import { Project, ProjectId } from "@domain/project/project";
 import { CategoryId } from "@domain/category/category";
 import { IssueId } from "@domain/issue/issue";
-import { isValidSort, DEFAULT_SORT } from "@domain/filter/filter";
+import { isValidSort, DEFAULT_SORT, parseIssueFilters } from "@domain/filter/filter";
 import { getProject } from "@infrastructure/db/project";
 import {
   updateIssueCategory,
@@ -74,6 +74,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
   const project: Project | null = await getProject(projectId, {
     sortIssuesBy: sortBy,
+    filters: parseIssueFilters(url.searchParams),
   });
 
   if (!project) {
