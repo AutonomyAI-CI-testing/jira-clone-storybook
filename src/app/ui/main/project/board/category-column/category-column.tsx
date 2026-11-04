@@ -6,10 +6,13 @@ import cx from "classix";
 import { useDrop } from "react-dnd";
 import { Category } from "@domain/category/category";
 import { Issue, IssueId } from "@domain/issue/issue";
+import { matchesFilters } from "@domain/filter/filter";
 import { ScrollArea } from "@app/components/scroll-area/scroll-area";
 import { useProjectStore } from "@app/ui/main/project/project.store";
+import { useFilters } from "@app/hooks/useFilters";
 import { useSortBy } from "@app/hooks/useSortBy";
 import { IssueCard, DropItem, DRAG_ISSUE_CARD } from "./issue-card/issue-card";
+import { buildIssueLink } from "../issue-link";
 
 export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
   const {
@@ -23,11 +26,14 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
   const columnRef = useRef<HTMLDivElement>(null);
   const fetcher = useFetcher();
   const sortBy = useSortBy();
+  const { filters } = useFilters();
   const { search } = useProjectStore();
   const emptyCategory = category.issues.length === 0;
-  const issueLink = sortBy
-    ? `issue/new?category=${category.type}&sortBy=${sortBy}`
-    : `issue/new?category=${category.type}`;
+  const issueLink = buildIssueLink("issue/new", {
+    category: category.type,
+    sortBy,
+    filters,
+  });
 
   const updateIssueOnCardDrop = (item: DropItem) => {
     if (item.categoryId === category.id) {
@@ -61,10 +67,11 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
     [category.id]
   );
 
-  const filteredIssues = (): Issue[] =>
-    category.issues.filter((issue) => {
-      return issue.name.toLowerCase().includes(search);
-    });
+  const visibleIssues: Issue[] = category.issues.filter(
+    (issue) =>
+      issue.name.toLowerCase().includes(search) &&
+      matchesFilters(issue, filters)
+  );
 
   useEffect(() => {
     if (fetcher.data && fetcher.data.issueId) {
@@ -110,7 +117,7 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
       <div className="sticky left-0 top-0 flex justify-between px-3 py-2.5 font-primary-light text-xs uppercase text-font-subtlest duration-200 ease-in-out">
         <span className="flex gap-2">
           <span>{category.name}</span>
-          {!emptyCategory && <span>( {category.issues.length} )</span>}
+          {!emptyCategory && <span>( {visibleIssues.length} )</span>}
         </span>
         <Link
           to={issueLink}
@@ -126,9 +133,11 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
           <ScrollArea>
             <ul className="mt-1 max-w-[260px] px-3 pb-1">
               {emptyCategory ? (
-                <EmptyCategory />
+                <ColumnMessage label="No issues found" />
+              ) : visibleIssues.length === 0 ? (
+                <ColumnMessage label="No issues match your filters" />
               ) : (
-                filteredIssues().map((issue, index) => (
+                visibleIssues.map((issue, index) => (
                   <li key={index} className="mb-2">
                     <IssueCard
                       issue={issue}
@@ -155,9 +164,15 @@ interface CategoryColumnProps {
   handleDragging: (isDragging: boolean) => void;
 }
 
-const EmptyCategory = (): JSX.Element => (
+const ColumnMessage = ({ label }: ColumnMessageProps): JSX.Element => (
   <li className="mt-4 flex flex-col items-center text-font-subtlest">
     <RxValueNone size={36} />
-    <p className="mt-4 font-primary-light text-xs uppercase">No issues found</p>
+    <p className="mt-4 text-center font-primary-light text-xs uppercase">
+      {label}
+    </p>
   </li>
 );
+
+interface ColumnMessageProps {
+  label: string;
+}
