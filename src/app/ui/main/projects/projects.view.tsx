@@ -9,7 +9,7 @@ export const ProjectsView = (_props: ProjectsViewProps): JSX.Element => {
   return (
     <>
       <div className="fixed inset-0 z-20 grid place-items-center bg-black">
-        <h1 className="font-primary-black text-5xl text-[color:var(--Red500)]">
+        <h1 className="font-primary-black text-5xl text-[color:var(--Green500)]">
           Fei
         </h1>
       </div>
