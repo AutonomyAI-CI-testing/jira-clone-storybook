@@ -127,7 +127,11 @@ export const CreateProjectPanelView = ({
                           className="flex w-full cursor-pointer items-center justify-between gap-4 py-3"
                         >
                           <span className="flex items-center gap-4">
-                            <UserAvatar {...user} size={48} />
+                            {/* The name sits right beside the avatar, so the avatar's
+                                image alt text would repeat it to screen readers. */}
+                            <span aria-hidden="true" className="flex">
+                              <UserAvatar {...user} size={48} />
+                            </span>
                             <span>{user.name}</span>
                           </span>
                           <Checkbox.Root
