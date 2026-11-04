@@ -4,7 +4,7 @@ import { UserId } from "@domain/user/user";
 import { Project, ProjectSummary, ProjectId } from "@domain/project/project";
 import { Category, CategoryType } from "@domain/category/category";
 import { Priority } from "@domain/priority/priority";
-import { Sort } from "@domain/filter/filter";
+import { EMPTY_FILTERS, IssueFilters, Sort } from "@domain/filter/filter";
 import { db } from "./db.server";
 import { dnull } from "src/utils/dnull";
 
@@ -15,6 +15,7 @@ export const getProject = async (
   type PrismaSortType = Prisma.Enumerable<Prisma.IssueOrderByWithRelationInput>;
 
   const sortIssuesBy = options?.sortIssuesBy;
+  const filters = options?.filters ?? EMPTY_FILTERS;
   const sortByDate: PrismaSortType = {
     createdAt: "desc",
   };
@@ -29,6 +30,16 @@ export const getProject = async (
     ? [sortByDate, sortByPriority] 
     : [sortByPriority, sortByDate];
 
+  const issuesWhere: Prisma.IssueWhereInput = {};
+
+  if (filters.priorities.length > 0) {
+    issuesWhere.priorityId = { in: filters.priorities };
+  }
+
+  if (filters.assignees.length > 0) {
+    issuesWhere.asigneeId = { in: filters.assignees };
+  }
+
   const projectDb = await db.project.findUnique({
     where: {
       id: projectId,
@@ -41,7 +52,13 @@ export const getProject = async (
       },
       categories: {
         include: {
+          _count: {
+            select: {
+              issues: true,
+            },
+          },
           issues: {
+            where: issuesWhere,
             select: {
               id: true,
               name: true,
@@ -72,6 +89,7 @@ export const getProject = async (
       name: category.name,
       type: category.type as CategoryType,
       order: category.order,
+      issueCount: category._count.issues,
       issues: category.issues.map((issue) => ({
         id: issue.id,
         name: issue.name,
@@ -92,6 +110,7 @@ export const getProject = async (
 
 interface GetProjectOptions {
   sortIssuesBy: Sort;
+  filters?: IssueFilters;
 }
 
 export const getProjectSummary = async (projectId: ProjectId): Promise<ProjectSummary | null> => {

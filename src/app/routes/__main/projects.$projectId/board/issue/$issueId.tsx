@@ -14,7 +14,11 @@ import { CategoryId } from "@domain/category/category";
 import { Issue, IssueId } from "@domain/issue/issue";
 import { Comment, CommentId } from "@domain/comment/comment";
 import { PriorityId } from "@domain/priority/priority";
-import { isValidSort } from "@domain/filter/filter";
+import {
+  boardQueryString,
+  isValidSort,
+  parseIssueFilters,
+} from "@domain/filter/filter";
 import {
   getIssue,
   updateIssue,
@@ -103,10 +107,11 @@ export const action: ActionFunction = async ({ request, params }) => {
   const _action = formData.get("_action") as string;
   const url = new URL(request.url);
   const sortByParam = url.searchParams.get("sortBy") as string;
-  const sortBySeachParam = isValidSort(sortByParam)
-    ? `?sortBy=${sortByParam}`
-    : "";
-  const previousUrl = `/projects/${projectId}/board${sortBySeachParam}`;
+  const sortBy = isValidSort(sortByParam) ? sortByParam : null;
+  const previousUrl = `/projects/${projectId}/board${boardQueryString(
+    sortBy,
+    parseIssueFilters(url.searchParams)
+  )}`;
 
   if (_action === "update") {
     const name = formData.get("title") as string;

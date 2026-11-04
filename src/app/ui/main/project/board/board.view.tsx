@@ -10,6 +10,7 @@ import { Search } from "@app/ui/main/project/board/search";
 import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
 import { UserAvatarList } from "./avatar-list";
 import { SelectSort } from "./select-sort";
+import { FilterBar } from "./filter-bar";
 import { CategoryColumn } from "./category-column/category-column";
 import { ProjectContextProvider } from "../project.store";
 import { EVENTS } from "@app/events/events";
@@ -27,6 +28,7 @@ export const BoardView = ({ project }: Props): JSX.Element => {
             <SelectSort />
           </div>
         </section>
+        <FilterBar users={project.users} categories={project.categories} />
         <DndProvider backend={HTML5Backend}>
           <Categories categories={project.categories} />
         </DndProvider>
@@ -84,7 +86,7 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
   }, [onKeyDown]);
 
   return (
-    <section className="mt-12 flex h-full flex-col">
+    <section className="mt-6 flex h-full flex-col">
       <span className="mb-2 block justify-self-end font-primary-light text-2xs text-font-subtlest">
         Press <Kbd>Shift</Kbd> + <Kbd>N</Kbd> to create a new issue
       </span>

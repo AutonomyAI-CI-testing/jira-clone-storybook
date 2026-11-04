@@ -16,6 +16,9 @@ export interface Category {
   name: string;
   issues: Issue[];
   order: number;
+  // How many issues the column holds before the board's filters narrow it;
+  // absent when the column was read without a count.
+  issueCount?: number;
   createdAt?: number;
   updatedAt?: number;
 }

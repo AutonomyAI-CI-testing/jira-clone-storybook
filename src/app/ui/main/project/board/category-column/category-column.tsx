@@ -1,11 +1,17 @@
 import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
-import { Link, useFetcher } from "react-router";
+import { Link, useFetcher, useSearchParams } from "react-router";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxValueNone } from "react-icons/rx";
 import cx from "classix";
 import { useDrop } from "react-dnd";
 import { Category } from "@domain/category/category";
 import { Issue, IssueId } from "@domain/issue/issue";
+import {
+  boardSearchParams,
+  isFiltering,
+  issueMatchesSearch,
+  parseIssueFilters,
+} from "@domain/filter/filter";
 import { ScrollArea } from "@app/components/scroll-area/scroll-area";
 import { useProjectStore } from "@app/ui/main/project/project.store";
 import { useSortBy } from "@app/hooks/useSortBy";
@@ -24,10 +30,21 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
   const fetcher = useFetcher();
   const sortBy = useSortBy();
   const { search } = useProjectStore();
-  const emptyCategory = category.issues.length === 0;
-  const issueLink = sortBy
-    ? `issue/new?category=${category.type}&sortBy=${sortBy}`
-    : `issue/new?category=${category.type}`;
+  const [searchParams] = useSearchParams();
+  const filters = parseIssueFilters(searchParams);
+  const matchingIssues: Issue[] = category.issues.filter((issue) =>
+    issueMatchesSearch(issue, search)
+  );
+  const totalIssues = category.issueCount ?? category.issues.length;
+  const hasIssues = totalIssues > 0;
+  const emptyColumn = matchingIssues.length === 0;
+  const issuesCount = isFiltering(filters, search)
+    ? `${matchingIssues.length} of ${totalIssues}`
+    : `${totalIssues}`;
+
+  const issueLinkParams = boardSearchParams(sortBy, filters);
+  issueLinkParams.set("category", category.type);
+  const issueLink = `issue/new?${issueLinkParams.toString()}`;
 
   const updateIssueOnCardDrop = (item: DropItem) => {
     if (item.categoryId === category.id) {
@@ -60,11 +77,6 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
     }),
     [category.id]
   );
-
-  const filteredIssues = (): Issue[] =>
-    category.issues.filter((issue) => {
-      return issue.name.toLowerCase().includes(search);
-    });
 
   useEffect(() => {
     if (fetcher.data && fetcher.data.issueId) {
@@ -110,7 +122,7 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
       <div className="sticky left-0 top-0 flex justify-between px-3 py-2.5 font-primary-light text-xs uppercase text-font-subtlest duration-200 ease-in-out">
         <span className="flex gap-2">
           <span>{category.name}</span>
-          {!emptyCategory && <span>( {category.issues.length} )</span>}
+          {hasIssues && <span>( {issuesCount} )</span>}
         </span>
         <Link
           to={issueLink}
@@ -125,10 +137,10 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
         <div style={{ height: `${columnHeight}px` }}>
           <ScrollArea>
             <ul className="mt-1 max-w-[260px] px-3 pb-1">
-              {emptyCategory ? (
-                <EmptyCategory />
+              {emptyColumn ? (
+                <EmptyCategory isFiltered={hasIssues} />
               ) : (
-                filteredIssues().map((issue, index) => (
+                matchingIssues.map((issue, index) => (
                   <li key={index} className="mb-2">
                     <IssueCard
                       issue={issue}
@@ -155,9 +167,15 @@ interface CategoryColumnProps {
   handleDragging: (isDragging: boolean) => void;
 }
 
-const EmptyCategory = (): JSX.Element => (
+const EmptyCategory = ({ isFiltered }: EmptyCategoryProps): JSX.Element => (
   <li className="mt-4 flex flex-col items-center text-font-subtlest">
     <RxValueNone size={36} />
-    <p className="mt-4 font-primary-light text-xs uppercase">No issues found</p>
+    <p className="mt-4 font-primary-light text-xs uppercase">
+      {isFiltered ? "No matching issues" : "No issues found"}
+    </p>
   </li>
 );
+
+interface EmptyCategoryProps {
+  isFiltered: boolean;
+}

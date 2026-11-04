@@ -11,7 +11,7 @@ export const PanelHeaderIssue = ({
   deleteDisabled,
 }: PanelHeaderIssueProps): JSX.Element => {
   const location = useLocation();
-  const previousUrl = location.pathname.split("/issue")[0];
+  const previousUrl = `${location.pathname.split("/issue")[0]}${location.search}`;
 
   return (
     <div className="flex">
