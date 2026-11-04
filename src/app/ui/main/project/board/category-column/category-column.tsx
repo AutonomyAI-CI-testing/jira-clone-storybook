@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
-import { Link, useFetcher } from "react-router";
+import { Link, useFetcher, useLocation } from "react-router";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxValueNone } from "react-icons/rx";
 import cx from "classix";
@@ -8,7 +8,7 @@ import { Category } from "@domain/category/category";
 import { Issue, IssueId } from "@domain/issue/issue";
 import { ScrollArea } from "@app/components/scroll-area/scroll-area";
 import { useProjectStore } from "@app/ui/main/project/project.store";
-import { useSortBy } from "@app/hooks/useSortBy";
+import { boardSearchParams } from "@domain/filter/filter";
 import { IssueCard, DropItem, DRAG_ISSUE_CARD } from "./issue-card/issue-card";
 
 export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
@@ -22,12 +22,14 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
   const [columnHeight, setColumnHeight] = useState<number>(0);
   const columnRef = useRef<HTMLDivElement>(null);
   const fetcher = useFetcher();
-  const sortBy = useSortBy();
+  const location = useLocation();
   const { search } = useProjectStore();
   const emptyCategory = category.issues.length === 0;
-  const issueLink = sortBy
-    ? `issue/new?category=${category.type}&sortBy=${sortBy}`
-    : `issue/new?category=${category.type}`;
+  const issueLinkParams = boardSearchParams(
+    new URLSearchParams(location.search)
+  );
+  issueLinkParams.set("category", category.type);
+  const issueLink = `issue/new?${issueLinkParams.toString()}`;
 
   const updateIssueOnCardDrop = (item: DropItem) => {
     if (item.categoryId === category.id) {

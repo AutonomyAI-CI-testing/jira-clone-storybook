@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import cx from "classix";
 import { useDrag } from "react-dnd";
 import { CategoryId } from "@domain/category/category";
@@ -7,7 +7,7 @@ import { Issue, IssueId } from "@domain/issue/issue";
 import { PriorityId } from "@domain/priority/priority";
 import { TaskIcon } from "@app/components/icons";
 import { PriorityIcon } from "@app/components/priority-icon/priority-icon";
-import { useSortBy } from "@app/hooks/useSortBy";
+import { boardQueryString } from "@domain/filter/filter";
 
 export interface DropItem {
   issueId: IssueId;
@@ -21,10 +21,10 @@ export const IssueCard = ({
   handleDragging,
 }: Props): JSX.Element => {
   const issueIdPrefix = issue.id.split("-")[0];
-  const sortBy = useSortBy();
-  const issueLink = sortBy
-    ? `issue/${issue.id}?sortBy=${sortBy}`
-    : `issue/${issue.id}`;
+  const location = useLocation();
+  const issueLink = `issue/${issue.id}${boardQueryString(
+    new URLSearchParams(location.search)
+  )}`;
 
   type Collected = { isDragging: boolean };
 
