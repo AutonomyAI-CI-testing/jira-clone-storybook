@@ -4,7 +4,7 @@ import { UserId } from "@domain/user/user";
 import { Project, ProjectSummary, ProjectId } from "@domain/project/project";
 import { Category, CategoryType } from "@domain/category/category";
 import { Priority } from "@domain/priority/priority";
-import { Sort } from "@domain/filter/filter";
+import { IssueFilters, Sort } from "@domain/filter/filter";
 import { db } from "./db.server";
 import { dnull } from "src/utils/dnull";
 
@@ -29,6 +29,17 @@ export const getProject = async (
     ? [sortByDate, sortByPriority] 
     : [sortByPriority, sortByDate];
 
+  const issueWhere: Prisma.IssueWhereInput = {};
+  const filters = options?.filters;
+
+  if (filters?.priority) {
+    issueWhere.priorityId = filters.priority;
+  }
+
+  if (filters?.assignee) {
+    issueWhere.asigneeId = filters.assignee;
+  }
+
   const projectDb = await db.project.findUnique({
     where: {
       id: projectId,
@@ -42,6 +53,7 @@ export const getProject = async (
       categories: {
         include: {
           issues: {
+            where: issueWhere,
             select: {
               id: true,
               name: true,
@@ -92,6 +104,7 @@ export const getProject = async (
 
 interface GetProjectOptions {
   sortIssuesBy: Sort;
+  filters?: IssueFilters;
 }
 
 export const getProjectSummary = async (projectId: ProjectId): Promise<ProjectSummary | null> => {
