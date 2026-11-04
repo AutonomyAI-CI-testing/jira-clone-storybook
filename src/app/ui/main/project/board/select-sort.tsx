@@ -3,12 +3,14 @@ import * as Select from "@radix-ui/react-select";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 import { HiFlag } from "react-icons/hi";
 import { BsClockHistory } from "react-icons/bs";
-import { Sort, sortList, DEFAULT_SORT } from "@domain/filter/filter";
+import { Sort, sortList, DEFAULT_SORT, FILTER_PARAM, toFilterId } from "@domain/filter/filter";
+import { useFilters } from "@app/hooks/useFilters";
 import { useSortBy } from "@app/hooks/useSortBy";
 
 export const SelectSort = (): JSX.Element => {
   const submit = useSubmit();
   const sortBy = useSortBy() || DEFAULT_SORT;
+  const { filters } = useFilters();
 
   const SortIcon = ({ sort }: { sort: Sort }): JSX.Element =>
     // prettier-ignore
@@ -17,7 +19,15 @@ export const SelectSort = (): JSX.Element => {
       : <BsClockHistory size={16} />;
 
   const handleSubmit = (value: string): void => {
-    submit({ sortBy: value });
+    // Submitting rebuilds the whole query string, so the active filters ride along
+    const formData = new FormData();
+
+    formData.set("sortBy", value);
+    filters.forEach((filter) =>
+      formData.append(FILTER_PARAM, toFilterId(filter.type, filter.value))
+    );
+
+    submit(formData);
   };
 
   return (

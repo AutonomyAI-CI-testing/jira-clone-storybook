@@ -7,7 +7,9 @@ import { Issue, IssueId } from "@domain/issue/issue";
 import { PriorityId } from "@domain/priority/priority";
 import { TaskIcon } from "@app/components/icons";
 import { PriorityIcon } from "@app/components/priority-icon/priority-icon";
+import { useFilters } from "@app/hooks/useFilters";
 import { useSortBy } from "@app/hooks/useSortBy";
+import { buildIssueLink } from "../../issue-link";
 
 export interface DropItem {
   issueId: IssueId;
@@ -22,9 +24,8 @@ export const IssueCard = ({
 }: Props): JSX.Element => {
   const issueIdPrefix = issue.id.split("-")[0];
   const sortBy = useSortBy();
-  const issueLink = sortBy
-    ? `issue/${issue.id}?sortBy=${sortBy}`
-    : `issue/${issue.id}`;
+  const { filters } = useFilters();
+  const issueLink = buildIssueLink(`issue/${issue.id}`, { sortBy, filters });
 
   type Collected = { isDragging: boolean };
 
