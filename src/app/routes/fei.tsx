@@ -7,7 +7,7 @@ export default function FeiRoute() {
     // `light` pins the theme on this surface so the page is white whatever
     // theme the session is on.
     <div className="light flex h-full w-full items-center justify-center bg-elevation-surface">
-      <h1 className="font-primary-black text-5xl text-font">Fei</h1>
+      <h1 className="font-primary-black text-5xl text-font-danger">Fei</h1>
     </div>
   );
 }
