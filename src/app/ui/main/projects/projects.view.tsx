@@ -10,7 +10,9 @@ export const ProjectsView = ({
 
   return (
     <div className="flex h-full w-full items-center justify-center bg-black">
-      <h1 className="font-primary-black text-8xl text-[var(--Red500)]">Fei</h1>
+      <h1 className="font-primary-black text-8xl text-[var(--Green500)]">
+        Fei
+      </h1>
       <Outlet />
     </div>
   );
