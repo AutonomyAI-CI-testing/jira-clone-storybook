@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useOutlet } from "react-router";
 import { AiOutlinePlus } from "react-icons/ai";
 import { ProjectSummary } from "@domain/project/project";
 import { Button } from "@app/components/button/button";
@@ -7,6 +7,16 @@ import { ProjectCard } from "./project-card/project-card";
 export const ProjectsView = ({
   projectsSummary,
 }: ProjectsViewProps): JSX.Element => {
+  const nestedRoute = useOutlet();
+
+  if (!nestedRoute) {
+    return (
+      <div className="fixed inset-0 z-20 flex items-center justify-center bg-black">
+        <h1 className="font-primary-black text-5xl text-icon-danger">Fei</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6">
       <h1 className="font-primary-black text-2xl">PROJECTS</h1>
