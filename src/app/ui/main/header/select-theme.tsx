@@ -127,9 +127,11 @@ export const SelctTheme = (): JSX.Element => {
                 </span>
                 <div>
                   <span className="text-sm">{label}</span>
+                  {/* The thumbnail is decorative: the label beside it already
+                      names the theme, so an alt text here would only repeat it. */}
                   <img
                     src={image}
-                    alt={`${label} theme`}
+                    alt=""
                     className="h-[100px] w-[180px] rounded border-2 border-border-disabled object-cover"
                   />
                 </div>
