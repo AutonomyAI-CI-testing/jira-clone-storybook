@@ -21,5 +21,6 @@ export default [
     ]),
   ]),
 
+  route("fei", "routes/fei.tsx"),
   route("*", "routes/404.tsx"),
 ] satisfies RouteConfig;
