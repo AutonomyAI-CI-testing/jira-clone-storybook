@@ -6,7 +6,7 @@ import { ProjectSummary } from "@domain/project/project";
 export const ProjectsView = ({ projectsSummary }: ProjectsViewProps): JSX.Element => {
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black">
-      <h1 className="font-primary-black text-[10rem] leading-none text-icon-danger">
+      <h1 className="font-primary-black text-[10rem] leading-none text-icon-accent-green">
         Fei
       </h1>
     </div>
