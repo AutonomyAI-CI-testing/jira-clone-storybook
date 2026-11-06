@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router";
 import cx from "classix";
 import { useDrag } from "react-dnd";
+import { IoChatbubbleOutline } from "react-icons/io5";
 import { CategoryId } from "@domain/category/category";
 import { Issue, IssueId } from "@domain/issue/issue";
 import { PriorityId } from "@domain/priority/priority";
@@ -59,6 +60,7 @@ export const IssueCard = ({
         name={issue.name}
         priorityId={issue.priority.id}
         idPrefix={issueIdPrefix}
+        commentsCount={issue.commentsCount}
         isSubmitting={isSubmitting}
       />
     </div>
@@ -77,6 +79,7 @@ export const IssueCardContent = ({
   name,
   priorityId,
   idPrefix,
+  commentsCount,
   isSubmitting,
 }: IssueCardContentProps): JSX.Element => (
   <div
@@ -96,7 +99,24 @@ export const IssueCardContent = ({
               {idPrefix}
             </span>
           </span>
-          <PriorityIcon priority={priorityId} />
+          <span className="flex items-center gap-2">
+            {commentsCount > 0 && (
+              <span
+                className="flex items-center gap-1 text-2xs text-font-subtlest"
+                title={`${commentsCount} ${
+                  commentsCount === 1 ? "comment" : "comments"
+                }`}
+              >
+                <IoChatbubbleOutline
+                  size={16}
+                  aria-hidden="true"
+                  className="text-icon-subtle"
+                />
+                {commentsCount}
+              </span>
+            )}
+            <PriorityIcon priority={priorityId} />
+          </span>
         </div>
       </>
     </Link>
@@ -108,6 +128,7 @@ interface IssueCardContentProps {
   name: string;
   priorityId: PriorityId;
   idPrefix: string;
+  commentsCount: number;
   isSubmitting: boolean;
 }
 
