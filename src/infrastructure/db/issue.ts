@@ -40,6 +40,7 @@ export const getIssue = async (issueId: IssueId): Promise<Issue | null> => {
     priority: issueDb.priority as Priority,
     asignee: dnull(issueDb.asignee),
     reporter: dnull(issueDb.reporter),
+    commentCount: issueDb.comments.length,
     comments: issueDb.comments.map((comment) => ({
       ...comment,
       createdAt: comment.createdAt.getTime(),
