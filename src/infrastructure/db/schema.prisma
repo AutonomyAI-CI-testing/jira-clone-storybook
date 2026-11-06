@@ -20,14 +20,18 @@ model User {
 }
 
 model Project {
-  id          String     @id @default(uuid())
-  name        String
-  description String?
-  users       User[]
-  categories  Category[]
-  image       String
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id                   String     @id @default(uuid())
+  name                 String
+  description          String?
+  users                User[]
+  categories           Category[]
+  image                String
+  createdAt            DateTime   @default(now())
+  updatedAt            DateTime   @updatedAt
+  // The project's current sprint. Its capacity is the number of points the team
+  // can take in, and startedAt marks it as running.
+  sprintCapacityPoints Int        @default(30)
+  sprintStartedAt      DateTime?
 }
 
 model Category {
@@ -57,6 +61,10 @@ model Issue {
   updatedAt   DateTime  @updatedAt
   priority    Priority  @relation(fields: [priorityId], references: [id])
   priorityId  String
+  // The team's estimate for the issue, in story points, and whether it is in
+  // the project's current sprint (every other issue is in the backlog).
+  storyPoints Int?
+  inSprint    Boolean   @default(false)
 }
 
 model Comment {

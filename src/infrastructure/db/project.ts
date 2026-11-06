@@ -67,6 +67,7 @@ export const getProject = async (
     name: projectDb.name,
     description: projectDb.description || "",
     image: projectDb.image,
+    sprintCapacityPoints: projectDb.sprintCapacityPoints,
     categories: projectDb.categories.map((category) => ({
       id: category.id,
       name: category.name,

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
 import { HiOutlineViewBoards } from "react-icons/hi";
+import { FiFlag } from "react-icons/fi";
 import cx from "classix";
 import { RiArrowDropLeftLine } from "react-icons/ri";
 import { ImStatsDots } from "react-icons/im";
@@ -87,6 +88,11 @@ const navItems: NavItemProps[] = [
     href: "analytics",
     icon: <ImStatsDots size={20} />,
     name: "Analytics",
+  },
+  {
+    href: "sprint-planning",
+    icon: <FiFlag size={24} />,
+    name: "Sprint planning",
   },
   {
     href: "backlog",

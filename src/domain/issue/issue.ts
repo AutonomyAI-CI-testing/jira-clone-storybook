@@ -13,6 +13,10 @@ export interface Issue {
   asignee: User;
   comments: Comment[];
   priority: Priority;
+  // The team's estimate in story points, and whether the issue is in the
+  // project's sprint. Only the sprint planning read fills them in.
+  storyPoints?: number;
+  inSprint?: boolean;
   createdAt: number;
   updatedAt: number;
 }
