@@ -1,11 +1,7 @@
-// Standalone, theme-independent page: white surface, one word, nothing else.
-// `bg-white` is a declared literal in tailwind.config.js and the red is the raw
-// palette step `--Red600`, which `:root` declares once and no theme re-maps — so
-// the page keeps its colour under every theme class on <html>.
-//
-// Deliberately not `text-font-danger`: that role resolves to --Red800 under the
-// light theme but --Red300 under dark/lava/lime, so the accent would follow the
-// viewer's session instead of staying one red.
+// Standalone, theme-independent page: a white surface with one word on it.
+// `bg-white` is a declared literal in tailwind.config.js, and `--Red600` is a raw
+// palette step no theme re-maps, so the page holds its colour under every theme
+// class on <html> — a semantic role such as `text-font-danger` would flip.
 export default function FeiRoute() {
   return (
     <main className="flex h-full items-center justify-center bg-white">
