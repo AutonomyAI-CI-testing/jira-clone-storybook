@@ -11,7 +11,11 @@ const meta: Meta<typeof ProjectsView> = {
   },
   decorators: [
     (Story) => {
-      return withRemixStub(withMainContext(Story));
+      // The page is full-height; the story supplies the height the app shell
+      // would otherwise provide.
+      return (
+        <div className="h-screen">{withRemixStub(withMainContext(Story))}</div>
+      );
     },
   ],
 };
