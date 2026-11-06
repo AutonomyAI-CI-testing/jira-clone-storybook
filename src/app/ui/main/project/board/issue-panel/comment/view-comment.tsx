@@ -69,7 +69,11 @@ export const ViewComment = ({
 
   return (
     <div className="flex gap-6">
-      <UserAvatar {...comment.user} />
+      {/* The author's name is printed right beside the avatar, so the avatar's
+          image alt text would repeat it to screen readers. */}
+      <span aria-hidden="true" className="flex">
+        <UserAvatar {...comment.user} />
+      </span>
       <div style={{ width: "100%" }}>
         <p className="mr-4 inline-block font-primary-bold">
           {comment.user.name}

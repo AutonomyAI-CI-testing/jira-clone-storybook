@@ -205,7 +205,11 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                     <div>
                       <p className="mb-1">Reporter</p>
                       <div className="mt-1 flex w-fit items-center gap-2 rounded-full bg-background-neutral py-1 pb-1 pl-1 pr-3.5">
-                        <UserAvatar {...reporter} />
+                        {/* The reporter's name is printed beside the avatar, so the
+                            avatar's alt text/initials would repeat it to screen readers. */}
+                        <span aria-hidden="true" className="flex">
+                          <UserAvatar {...reporter} />
+                        </span>
                         <input
                           type="hidden"
                           name="reporter"
