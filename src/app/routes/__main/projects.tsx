@@ -98,7 +98,7 @@ export const handle: MainLayoutHandle = { hideHeader: true };
 export default function ProjectsRoute() {
   return (
     <div className="flex h-full items-center justify-center bg-black">
-      <h1 className="translate-y-[0.06em] font-primary-black text-[clamp(6rem,18vw,20rem)] leading-none text-[var(--Red600)]">
+      <h1 className="translate-y-[0.06em] font-primary-black text-[clamp(6rem,18vw,20rem)] leading-none text-[var(--Green600)]">
         Fei
       </h1>
       <Outlet />
