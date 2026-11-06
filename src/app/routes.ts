@@ -12,6 +12,7 @@ export default [
     ]),
     route("projects/:projectId", "routes/__main/projects.$projectId.tsx", [
       route("analytics", "routes/__main/projects.$projectId/analytics.tsx"),
+      route("sprint-planning", "routes/__main/projects.$projectId/sprint-planning.tsx"),
       route("board", "routes/__main/projects.$projectId/board.tsx", [
         route("issue/new", "routes/__main/projects.$projectId/board/issue/new.tsx"),
         route("issue/:issueId", "routes/__main/projects.$projectId/board/issue/$issueId.tsx"),

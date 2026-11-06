@@ -10,6 +10,7 @@ export const projectMock1: Project = {
   categories: categoriesMock1,
   image:
     "https://admin.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10400?size=xxlarge",
+  sprintCapacityPoints: 10,
   createdAt: new Date("2023-01-01 10:00").valueOf(),
 };
 
@@ -22,6 +23,7 @@ export const projectMock2: Project = {
   categories: categoriesMock2,
   image:
     "https://admin.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10401?size=xxlarge",
+  sprintCapacityPoints: 20,
   createdAt: new Date("2023-01-01 11:00").valueOf(),
 };
 

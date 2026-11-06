@@ -12,6 +12,8 @@ export interface Project {
   users: User[];
   categories: Category[];
   image: string;
+  // Points the team can take into the project's sprint.
+  sprintCapacityPoints: number;
   createdAt?: number;
   updatedAt?: number;
 }

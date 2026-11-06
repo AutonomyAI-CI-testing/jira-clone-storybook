@@ -49,11 +49,12 @@ const createProjectIfNotExists = async (project: Project): Promise<ProjectDB> =>
       name: project.name,
       description: project.description,
       image: project.image,
+      sprintCapacityPoints: project.sprintCapacityPoints,
       users: {
         connect: project.users.map((user) => ({ id: user.id })),
       },
     },
-    update: {},
+    update: { sprintCapacityPoints: project.sprintCapacityPoints },
   });
 };
 
@@ -85,6 +86,8 @@ const createIssueIfNotExists = async (issue: Issue, categoryId: CategoryId): Pro
       asignee: { connect: { id: issue.asignee.id } },
       reporter: { connect: { id: issue.reporter.id } },
       priority: { connect: { id: issue.priority.id } },
+      storyPoints: issue.storyPoints,
+      inSprint: issue.inSprint ?? false,
       comments: {
         create: issue.comments.map((comment) => ({
           id: comment.id,
