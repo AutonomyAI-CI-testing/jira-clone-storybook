@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { withMainContext, withRemixStub } from "@app/stories/utils";
-import { projectsMock } from "@domain/project/project.mock";
 import { ProjectsView } from "./projects.view";
 
 const meta: Meta<typeof ProjectsView> = {
@@ -10,6 +9,13 @@ const meta: Meta<typeof ProjectsView> = {
     layout: "fullscreen",
   },
   decorators: [
+    // The view fills its parent with h-full, so the story has to supply a
+    // definite height for the full-viewport splash to render at size.
+    (Story) => (
+      <div className="h-screen [&_div]:h-full">
+        <Story />
+      </div>
+    ),
     (Story) => {
       return withRemixStub(withMainContext(Story));
     },
@@ -19,28 +25,4 @@ const meta: Meta<typeof ProjectsView> = {
 export default meta;
 type Story = StoryObj<typeof ProjectsView>;
 
-const projectsSummary = projectsMock.map((project) => ({
-  id: project.id,
-  name: project.name,
-  description: project.description,
-  image: project.image,
-  createdAt: project.createdAt,
-}));
-
-export const Default: Story = {
-  args: {
-    projectsSummary: projectsSummary,
-  },
-};
-
-export const SingleProject: Story = {
-  args: {
-    projectsSummary: projectsSummary.slice(0, 1),
-  },
-};
-
-export const Empty: Story = {
-  args: {
-    projectsSummary: [],
-  },
-};
+export const Default: Story = {};
