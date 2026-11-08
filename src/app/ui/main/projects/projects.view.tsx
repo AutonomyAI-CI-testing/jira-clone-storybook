@@ -4,7 +4,7 @@ export const ProjectsView = (): JSX.Element => {
   return (
     <div className="relative h-full bg-black">
       <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="translate-y-[0.06em] font-primary-black text-[clamp(6rem,18vw,20rem)] leading-none text-[color:var(--Red600)]">
+        <h1 className="translate-y-[0.06em] font-primary-black text-[clamp(6rem,18vw,20rem)] leading-none text-[color:var(--Green600)]">
           Fei
         </h1>
       </div>
