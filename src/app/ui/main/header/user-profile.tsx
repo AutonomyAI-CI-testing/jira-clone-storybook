@@ -24,7 +24,12 @@ export const UserProfile = (): JSX.Element => {
           )}
         >
           <DropdownMenu.Item className="flex flex-col items-center p-3 !outline-none">
-            <UserAvatar {...user} size={80} />
+            {/* The user's name is printed right below the avatar, so the
+                avatar's alt text (or its initials fallback) would repeat the
+                name to screen readers. */}
+            <span aria-hidden="true" className="flex">
+              <UserAvatar {...user} size={80} />
+            </span>
             <span className="mt-2 text-lg text-font">{user.name}</span>
           </DropdownMenu.Item>
           <DropdownMenu.Separator className="h-px bg-border" />

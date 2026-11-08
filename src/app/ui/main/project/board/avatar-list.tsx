@@ -47,7 +47,12 @@ const MoreUsers = ({ users }: MoreUsersProps): JSX.Element => (
               key={user.id}
               className="mb-1 flex items-center justify-start gap-3 rounded px-1 py-1 outline-none last:mb-0 focus:bg-background-neutral focus-visible:outline-none"
             >
-              <UserAvatar {...user} size={44} />
+              {/* Each member's name is printed right beside their avatar, so the
+                  avatar's alt text (or its initials fallback) would repeat the
+                  name to screen readers. */}
+              <span aria-hidden="true" className="flex">
+                <UserAvatar {...user} size={44} />
+              </span>
               <span>{user.name}</span>
             </DropdownMenu.Item>
           ))}
