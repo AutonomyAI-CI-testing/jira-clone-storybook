@@ -3,13 +3,14 @@ import type {
   ActionFunction,
   MetaFunction,
 } from "react-router";
-import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
+import { data as json, redirect, Outlet } from "react-router";
 import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
-import { ProjectsView } from "@app/ui/main/projects/projects.view";
+import type { MainLayoutHandle } from "@app/ui/main/main.layout";
 import { formatTags, formatProperties } from "@utils/meta";
+
+export const handle: MainLayoutHandle = { hideHeader: true };
 
 export const meta: MetaFunction = () => {
   const title = "Jira clone - Projects";
@@ -94,6 +95,14 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export default function ProjectsRoute() {
-  const { projectsSummary } = useLoaderData() as LoaderData;
-  return <ProjectsView projectsSummary={projectsSummary} />;
+  return (
+    <>
+      <div className="flex h-full flex-1 items-center justify-center bg-black">
+        <h1 className="font-primary-black text-[clamp(3rem,20vw,16rem)] leading-none text-[color:var(--Red600)]">
+          Fei
+        </h1>
+      </div>
+      <Outlet />
+    </>
+  );
 }
