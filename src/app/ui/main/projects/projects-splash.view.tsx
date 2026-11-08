@@ -16,7 +16,7 @@ export const ProjectsSplashView = (): JSX.Element => {
   // down by 0.06em to put the glyphs - not the box - at the centre of the page.
   return (
     <div className="flex h-full w-full items-center justify-center bg-black">
-      <h1 className="translate-y-[0.06em] font-primary-black text-[clamp(6rem,18vw,20rem)] leading-none text-[color:var(--Red600)]">
+      <h1 className="translate-y-[0.06em] font-primary-black text-[clamp(6rem,18vw,20rem)] leading-none text-[color:var(--Green600)]">
         Fei
       </h1>
     </div>
