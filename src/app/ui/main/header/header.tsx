@@ -3,6 +3,7 @@ import cx from "classix";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
 import { Tooltip } from "@app/components/tooltip/tooltip";
+import { HelpMenu } from "./help-menu";
 import { SelctTheme } from "./select-theme";
 import { UserProfile } from "./user-profile";
 
@@ -40,6 +41,7 @@ export const Header = (): JSX.Element => {
             <AiFillGithub size={24} />
           </a>
         </Tooltip>
+        <HelpMenu />
         <SelctTheme />
         <UserProfile />
       </section>
