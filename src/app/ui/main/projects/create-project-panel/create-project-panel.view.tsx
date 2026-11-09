@@ -28,6 +28,10 @@ export const CreateProjectPanelView = ({
   const navigate = useNavigate();
   const actionData = useActionData() as ProjectActionData;
   const { user: loggedUser } = useUserStore();
+  // The signed-in user starts ticked, and the projects list only shows the
+  // projects you are a member of — so unticking yourself creates a project you
+  // can never reach again. Warn before that happens.
+  const [isLoggedUserSelected, setIsLoggedUserSelected] = useState(true);
 
   const postData = useCallback(
     (formTarget: HTMLFormElement) => {
@@ -136,6 +140,12 @@ export const CreateProjectPanelView = ({
                             name="user"
                             value={user.id}
                             defaultChecked={user.id === loggedUser?.id}
+                            onCheckedChange={
+                              user.id === loggedUser?.id
+                                ? (checked) =>
+                                    setIsLoggedUserSelected(checked === true)
+                                : undefined
+                            }
                           >
                             <Checkbox.Indicator className="flex h-[36px] w-[36px] rounded-md bg-background-brand-bold duration-150 ease-in flex-center">
                               <BsCheckLg
@@ -148,6 +158,15 @@ export const CreateProjectPanelView = ({
                       </li>
                     ))}
                   </ul>
+                  {!isLoggedUserSelected && (
+                    <p
+                      role="status"
+                      className="mt-4 font-primary-light text-sm text-font-warning"
+                    >
+                      This project will not appear in your projects list, because
+                      you are not on the team.
+                    </p>
+                  )}
                 </div>
                 <div className="mt-6 grid grid-cols-3 items-end justify-center">
                   <span className="font-primary-light text-2xs text-font-subtlest text-opacity-80">
