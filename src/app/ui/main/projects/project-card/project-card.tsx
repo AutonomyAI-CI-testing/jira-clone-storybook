@@ -3,9 +3,13 @@ import { MdDeleteOutline } from "react-icons/md";
 import cx from "classix";
 import { ProjectSummary, defaultProjectIds } from "@domain/project/project";
 import * as AlertDialog from "@app/components/alert-dialog/alert-dialog";
+import { Tooltip } from "@app/components/tooltip/tooltip";
 
 export const ProjectCard = ({ project }: Props): JSX.Element => {
   const isDefaultProject = defaultProjectIds.includes(project.id);
+  const deleteHint = isDefaultProject
+    ? "Cannot delete default project"
+    : "Delete project";
 
   return (
     <div className="w-[400px]">
@@ -31,24 +35,26 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
         </div>
       </Link>
       <AlertDialog.Root>
-        <AlertDialog.Trigger
-          className={cx(
-            "mt-1 flex items-center gap-1 border-none text-sm",
-            isDefaultProject
-              ? "cursor-not-allowed text-font-disabled text-opacity-50"
-              : "text-icon hover:text-font-danger"
-          )}
-          aria-label="Open delete issue dialog"
-          title={
-            isDefaultProject
-              ? "Cannot delete default project"
-              : "Delete project"
-          }
-          disabled={isDefaultProject}
-        >
-          <MdDeleteOutline size={15} />
-          Delete project
-        </AlertDialog.Trigger>
+        {/* A disabled button never fires the hover a native title tooltip
+            needs, so the reason is shown with the app's own tooltip instead.
+            The title stays, where it still reaches assistive tech as the
+            description. */}
+        <Tooltip title={deleteHint} show={isDefaultProject}>
+          <AlertDialog.Trigger
+            className={cx(
+              "mt-1 flex items-center gap-1 border-none text-sm",
+              isDefaultProject
+                ? "cursor-not-allowed text-font-disabled text-opacity-50"
+                : "text-icon hover:text-font-danger"
+            )}
+            aria-label="Open delete issue dialog"
+            title={deleteHint}
+            disabled={isDefaultProject}
+          >
+            <MdDeleteOutline size={15} />
+            Delete project
+          </AlertDialog.Trigger>
+        </Tooltip>
 
         <AlertDialog.Portal>
           <AlertDialog.Overlay />

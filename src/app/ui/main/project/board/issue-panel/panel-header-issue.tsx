@@ -1,5 +1,6 @@
 import { Form, Link, useLocation } from "react-router";
 import * as AlertDialog from "@app/components/alert-dialog/alert-dialog";
+import { Tooltip } from "@app/components/tooltip/tooltip";
 import cx from "classix";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoCloseOutline } from "react-icons/io5";
@@ -41,21 +42,30 @@ interface PanelHeaderIssueProps {
 const DeleteIssueModalDialog = ({
   disabled,
 }: DeleteIssueModalDialogProps): JSX.Element => {
+  const hint = disabled
+    ? "This user cannot delete the issue"
+    : "Delete issue";
+
   return (
     <AlertDialog.Root>
-      <AlertDialog.Trigger
-        className={cx(
-          "flex rounded border-none p-1.5 text-icon flex-center",
-          disabled
-            ? "cursor-not-allowed hover:text-font-disabled"
-            : "hover:bg-background-danger hover:text-font-danger"
-        )}
-        aria-label="Open delete issue dialog"
-        disabled={disabled}
-        title={disabled ? "This user cannot delete the issue" : "Delete issue"}
-      >
-        <MdDeleteOutline size={26} />
-      </AlertDialog.Trigger>
+      {/* A disabled button never fires the hover a native title tooltip needs,
+          so the reason is shown with the app's own tooltip instead. The title
+          stays, where it still reaches assistive tech as the description. */}
+      <Tooltip title={hint} show={disabled}>
+        <AlertDialog.Trigger
+          className={cx(
+            "flex rounded border-none p-1.5 text-icon flex-center",
+            disabled
+              ? "cursor-not-allowed hover:text-font-disabled"
+              : "hover:bg-background-danger hover:text-font-danger"
+          )}
+          aria-label="Open delete issue dialog"
+          disabled={disabled}
+          title={hint}
+        >
+          <MdDeleteOutline size={26} />
+        </AlertDialog.Trigger>
+      </Tooltip>
 
       <AlertDialog.Portal>
         <AlertDialog.Overlay />
