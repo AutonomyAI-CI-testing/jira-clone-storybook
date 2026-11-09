@@ -4,11 +4,11 @@ import type {
   MetaFunction,
 } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
 import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { ProjectsView } from "@app/ui/main/projects/projects.view";
+import type { MainLayoutHandle } from "@app/ui/main/main.layout";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: MetaFunction = () => {
@@ -47,6 +47,8 @@ export const meta: MetaFunction = () => {
 
   return [{ title }, ...formatTags(tags), ...formatProperties(properties)];
 };
+
+export const handle: MainLayoutHandle = { hideHeader: true };
 
 type LoaderData = {
   projectsSummary: ProjectSummary[];
@@ -94,6 +96,5 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export default function ProjectsRoute() {
-  const { projectsSummary } = useLoaderData() as LoaderData;
-  return <ProjectsView projectsSummary={projectsSummary} />;
+  return <ProjectsView />;
 }
