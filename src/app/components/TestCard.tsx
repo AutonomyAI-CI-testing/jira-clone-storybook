@@ -1,9 +1,20 @@
 import { FaChevronUp, FaCog, FaInfoCircle } from "react-icons/fa";
 
+const BUTTON_CLASS =
+  "h-[37px] w-[85px] rounded bg-[var(--Orange800)] font-primary-bold text-2xs text-[color:var(--Neutral600)]";
+
+const FIELD_LABEL_CLASS =
+  "font-primary-bold text-2xs text-[color:var(--DarkNeutral800)]";
+
+const FIELD_INPUT_CLASS =
+  "mt-3 h-9 w-full border-[color:var(--DarkNeutral800)] bg-[var(--DarkNeutral200)] px-4 text-2xs text-[color:var(--Neutral700)] placeholder:text-[color:var(--Neutral700)]";
+
 /**
- * Smoke-test component: a static reproduction of the "UI magician Agent" Figma
- * panel. Self-contained — no props, no state, no side effects. The panel pins
- * its own dark colours on purpose, so it does not re-skin with the app theme.
+ * A static reproduction of the "UI magician Agent" Figma panel.
+ *
+ * Self-contained on purpose: no props, no state, no side effects. The panel
+ * pins its own dark palette rather than using the theme tokens, because the
+ * design is a fixed dark surface that is not meant to re-skin with the app.
  */
 export const TestCard = () => (
   <div
@@ -48,10 +59,7 @@ export const TestCard = () => (
 
       <div className="mt-[28px]">
         <div className="flex items-center gap-2">
-          <label
-            htmlFor="test-card-token"
-            className="font-primary-bold text-2xs text-[color:var(--DarkNeutral800)]"
-          >
+          <label htmlFor="test-card-token" className={FIELD_LABEL_CLASS}>
             Personal Access Token
           </label>
           <FaInfoCircle
@@ -64,16 +72,13 @@ export const TestCard = () => (
           id="test-card-token"
           readOnly
           placeholder="figd_xxxxxxxxxxxxxxxxxx"
-          className="mt-3 h-9 w-full border border-[color:var(--DarkNeutral800)] bg-[var(--DarkNeutral200)] px-4 text-2xs text-[color:var(--Neutral700)] placeholder:text-[color:var(--Neutral700)]"
+          className={`${FIELD_INPUT_CLASS} border`}
         />
       </div>
 
       <div className="mt-3">
         <div className="flex items-center gap-2">
-          <label
-            htmlFor="test-card-url"
-            className="font-primary-bold text-2xs text-[color:var(--DarkNeutral800)]"
-          >
+          <label htmlFor="test-card-url" className={FIELD_LABEL_CLASS}>
             Design URL
           </label>
           <FaInfoCircle
@@ -86,21 +91,15 @@ export const TestCard = () => (
           id="test-card-url"
           readOnly
           placeholder="https://www.figma.com/file/:"
-          className="mt-3 h-9 w-full border-2 border-[color:var(--DarkNeutral800)] bg-[var(--DarkNeutral200)] px-4 text-2xs text-[color:var(--Neutral700)] placeholder:text-[color:var(--Neutral700)]"
+          className={`${FIELD_INPUT_CLASS} border-2`}
         />
       </div>
 
       <div className="mt-[22px] flex gap-[17px] pl-6">
-        <button
-          type="button"
-          className="h-[37px] w-[85px] rounded bg-[var(--Orange800)] font-primary-bold text-2xs text-[color:var(--Neutral600)]"
-        >
+        <button type="button" className={BUTTON_CLASS}>
           Awesome
         </button>
-        <button
-          type="button"
-          className="h-[37px] w-[85px] rounded bg-[var(--Orange800)] font-primary-bold text-2xs text-[color:var(--Neutral600)]"
-        >
+        <button type="button" className={BUTTON_CLASS}>
           Prepare
         </button>
       </div>
