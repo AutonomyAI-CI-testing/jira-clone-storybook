@@ -7,11 +7,22 @@ import cx from "classix";
 // travel from the trigger down to the content without the menu flickering shut.
 const CLOSE_DELAY = 150;
 
+// Neither item goes anywhere yet, so each one carries the same marker the
+// sidebar's disabled Backlog item does and drops its hover highlight the same
+// way - see NavItem in ui/main/project/sidebar/sidebar.tsx. The marker has no
+// fill: the sidebar's own `bg-grey-300` is a dead legacy class, and the token
+// fill that would replace it leaves this 12px label at 3.56:1 in the dark
+// themes (6:1 without one).
+const NOT_IMPLEMENTED = "Not implemented";
+const helpItems = ["Keyboard shortcuts", "Docs"];
+
 const menuItemClass = cx(
-  "flex cursor-pointer select-none items-center rounded px-3 py-2 text-sm text-font",
-  "hover:bg-background-brand-subtlest hover:text-font-brand",
-  "focus:bg-background-brand-subtlest focus:text-font-brand"
+  "flex items-center justify-between gap-4 rounded px-3 py-2 text-sm text-font",
+  "!cursor-not-allowed select-none"
 );
+
+const notImplementedClass =
+  "rounded px-2 py-1 text-2xs uppercase text-font-subtle";
 
 export const HelpMenu = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -27,10 +38,6 @@ export const HelpMenu = (): JSX.Element => {
   const closeMenuLater = (): void => {
     closeTimeout.current = setTimeout(() => setIsOpen(false), CLOSE_DELAY);
   };
-
-  // Both items are placeholders for now: they carry no destination yet, and
-  // selecting one only closes the menu.
-  const helpItems = ["Keyboard shortcuts", "Docs"];
 
   useEffect(() => {
     return () => {
@@ -64,7 +71,10 @@ export const HelpMenu = (): JSX.Element => {
         >
           {helpItems.map((item) => (
             <DropdownMenu.Item asChild key={item} className={menuItemClass}>
-              <a>{item}</a>
+              <a>
+                <span>{item}</span>
+                <span className={notImplementedClass}>{NOT_IMPLEMENTED}</span>
+              </a>
             </DropdownMenu.Item>
           ))}
         </DropdownMenu.Content>
