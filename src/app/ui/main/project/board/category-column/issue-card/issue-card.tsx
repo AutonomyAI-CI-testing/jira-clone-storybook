@@ -8,6 +8,7 @@ import { PriorityId } from "@domain/priority/priority";
 import { TaskIcon } from "@app/components/icons";
 import { PriorityIcon } from "@app/components/priority-icon/priority-icon";
 import { useSortBy } from "@app/hooks/useSortBy";
+import { DueDateChip } from "./due-date-chip";
 
 export interface DropItem {
   issueId: IssueId;
@@ -59,6 +60,7 @@ export const IssueCard = ({
         name={issue.name}
         priorityId={issue.priority.id}
         idPrefix={issueIdPrefix}
+        dueDate={issue.dueDate}
         isSubmitting={isSubmitting}
       />
     </div>
@@ -77,6 +79,7 @@ export const IssueCardContent = ({
   name,
   priorityId,
   idPrefix,
+  dueDate,
   isSubmitting,
 }: IssueCardContentProps): JSX.Element => (
   <div
@@ -89,13 +92,14 @@ export const IssueCardContent = ({
     <Link to={link}>
       <>
         <p className="line-clamp-2 min-h-[48px] w-full text-font">{name}</p>
-        <div className="flex items-center justify-between pt-4">
+        <div className="flex items-center justify-between gap-2 pt-4">
           <span className="flex items-center">
             <TaskIcon size={18} />
             <span className="ml-1.5 text-2xs text-font-subtlest">
               {idPrefix}
             </span>
           </span>
+          <DueDateChip dueDate={dueDate} />
           <PriorityIcon priority={priorityId} />
         </div>
       </>
@@ -108,6 +112,7 @@ interface IssueCardContentProps {
   name: string;
   priorityId: PriorityId;
   idPrefix: string;
+  dueDate?: number;
   isSubmitting: boolean;
 }
 

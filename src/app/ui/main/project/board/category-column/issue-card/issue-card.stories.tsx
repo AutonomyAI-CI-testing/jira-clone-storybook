@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { withRemixStub } from "@app/stories/utils";
+import { overdueDueDate, upcomingDueDate } from "@domain/issue/issue.mock";
 import { IssueCardContent } from "./issue-card";
 
 const meta: Meta<typeof IssueCardContent> = {
@@ -39,6 +40,12 @@ const meta: Meta<typeof IssueCardContent> = {
         type: "boolean",
       },
     },
+    dueDate: {
+      defaultValue: upcomingDueDate,
+      control: {
+        type: "number",
+      },
+    },
   },
   decorators: [
     (Story) =>
@@ -63,6 +70,7 @@ export const Default: Story = {
           name={args?.name || "Issue name"}
           priorityId={args?.priorityId || "low"}
           idPrefix={args?.idPrefix || "1234"}
+          dueDate={args?.dueDate}
           isSubmitting={args?.isSubmitting || false}
         />
       ))}
@@ -76,6 +84,7 @@ export const Standard: Story = {
     name: "Issue 1",
     priorityId: "high",
     idPrefix: "1234",
+    dueDate: upcomingDueDate,
     isSubmitting: false,
   },
 };
@@ -86,6 +95,7 @@ export const LongName: Story = {
     name: "This is a very long issue name that should be truncated",
     priorityId: "high",
     idPrefix: "1234",
+    dueDate: overdueDueDate,
     isSubmitting: false,
   },
 };

@@ -25,6 +25,7 @@ import { deleteComment } from "@infrastructure/db/comment";
 import { IssuePanel } from "@app/ui/main/project/board/issue-panel/issue-panel.view";
 import { Error404 } from "@app/components/error-404/error-404";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
+import { parseDueDate } from "@utils/due-date";
 import { EVENTS } from "@app/events/events";
 import { emitter } from "@app/events/emitter.server";
 import { formatTags, formatProperties } from "@utils/meta";
@@ -76,6 +77,7 @@ type LoaderData = {
 export type ActionData = {
   errors: {
     name?: string;
+    dueDate?: string;
   };
 };
 
@@ -115,6 +117,8 @@ export const action: ActionFunction = async ({ request, params }) => {
     const priority = formData.get("priority") as PriorityId;
     const asigneeId = formData.get("asignee") as UserId;
     const reporterId = formData.get("reporter") as UserId;
+    const dueDateValue = formData.get("dueDate");
+    const dueDate = parseDueDate(dueDateValue);
     const comments = JSON.parse(
       formData.get("comments") as string
     ) as Comment[];
@@ -124,6 +128,7 @@ export const action: ActionFunction = async ({ request, params }) => {
       description,
       categoryId,
       priority,
+      dueDate,
       asigneeId,
       reporterId,
       comments,
@@ -132,6 +137,13 @@ export const action: ActionFunction = async ({ request, params }) => {
     if (!name || textAreOnlySpaces(name)) {
       return json<ActionData>(
         { errors: { name: "Title is required" } },
+        { status: 400 }
+      );
+    }
+
+    if (dueDateValue && !dueDate) {
+      return json<ActionData>(
+        { errors: { dueDate: "Enter a valid date" } },
         { status: 400 }
       );
     }

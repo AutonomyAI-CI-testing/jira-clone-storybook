@@ -3,18 +3,19 @@ import * as Select from "@radix-ui/react-select";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 import { HiFlag } from "react-icons/hi";
 import { BsClockHistory } from "react-icons/bs";
-import { Sort, sortList, DEFAULT_SORT } from "@domain/filter/filter";
+import { FiCalendar } from "react-icons/fi";
+import { Sort, sortDict, sortList, DEFAULT_SORT } from "@domain/filter/filter";
 import { useSortBy } from "@app/hooks/useSortBy";
+
+const sortIcons: Record<Sort, JSX.Element> = {
+  date: <BsClockHistory size={16} />,
+  priority: <HiFlag size={16} />,
+  dueDate: <FiCalendar size={16} />,
+};
 
 export const SelectSort = (): JSX.Element => {
   const submit = useSubmit();
   const sortBy = useSortBy() || DEFAULT_SORT;
-
-  const SortIcon = ({ sort }: { sort: Sort }): JSX.Element =>
-    // prettier-ignore
-    sort === "priority" 
-      ? <HiFlag size={16} /> 
-      : <BsClockHistory size={16} />;
 
   const handleSubmit = (value: string): void => {
     submit({ sortBy: value });
@@ -30,7 +31,7 @@ export const SelectSort = (): JSX.Element => {
           <div className="mr-2 flex items-center">
             <FaSortAmountDownAlt size={14} />
           </div>
-          <Select.Value>Sort by {sortBy}</Select.Value>
+          <Select.Value>Sort by {sortDict[sortBy]}</Select.Value>
         </Select.Trigger>
         <Select.Content className="select-none rounded bg-elevation-surface-overlay p-1.5 shadow-blue">
           <Select.ScrollUpButton />
@@ -41,7 +42,7 @@ export const SelectSort = (): JSX.Element => {
                 value={sort.id}
                 className="flex cursor-pointer items-center justify-start gap-2 rounded border-none px-2 py-2 text-xs uppercase leading-none text-font-brand outline-none hover:bg-background-brand-subtlest-hovered focus:bg-background-brand-subtlest-hovered active:bg-background-brand-subtlest-pressed"
               >
-                <SortIcon sort={sort.id} />
+                {sortIcons[sort.id]}
                 <Select.ItemText>{sort.label}</Select.ItemText>
               </Select.Item>
             ))}
