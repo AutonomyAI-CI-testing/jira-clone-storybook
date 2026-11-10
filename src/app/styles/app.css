@@ -839,3 +839,28 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/* Motion here is decoration: it confirms a state that is already readable without it
+   (the dialog, the menu, the notification render the same content before and after
+   the animation). So the OS-wide "reduce motion" setting turns it off. The durations
+   are 0.01ms rather than `none` on purpose - `animationend` / `transitionend` still
+   fire, and Radix (dialogs, menus, tooltips) unmounts on those events, so `none`
+   would leave them stuck open. This sits outside @layer base because Tailwind only
+   keeps a layered rule whose selector it can match to a class used in src/; these are
+   universal selectors. `!important` is needed to out-rank the `animate-*` /
+   `transition-*` utilities that set the same properties.
+
+   `.Toastify__progress-bar` is left out on purpose, and it has to be: react-toastify
+   ends a notification when that bar's `trackProgress` animation finishes, so its
+   duration is a timer rather than decoration - collapsing it made every notification
+   disappear again within a second. It is a hairline that moves once, so keeping it
+   costs no motion worth sparing. */
+@media (prefers-reduced-motion: reduce) {
+  *:not(.Toastify__progress-bar),
+  *:not(.Toastify__progress-bar)::before,
+  *:not(.Toastify__progress-bar)::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
