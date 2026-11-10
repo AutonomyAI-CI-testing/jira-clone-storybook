@@ -57,6 +57,7 @@ model Issue {
   updatedAt   DateTime  @updatedAt
   priority    Priority  @relation(fields: [priorityId], references: [id])
   priorityId  String
+  dueDate     DateTime?
 }
 
 model Comment {

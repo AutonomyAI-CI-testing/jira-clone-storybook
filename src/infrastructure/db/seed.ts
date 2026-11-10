@@ -85,6 +85,7 @@ const createIssueIfNotExists = async (issue: Issue, categoryId: CategoryId): Pro
       asignee: { connect: { id: issue.asignee.id } },
       reporter: { connect: { id: issue.reporter.id } },
       priority: { connect: { id: issue.priority.id } },
+      dueDate: issue.dueDate ? new Date(issue.dueDate) : null,
       comments: {
         create: issue.comments.map((comment) => ({
           id: comment.id,

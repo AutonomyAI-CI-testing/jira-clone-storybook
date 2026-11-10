@@ -11,6 +11,14 @@ import { Issue } from "./issue";
 
 const createdAt = new Date("2022-01-18 11:00").valueOf();
 
+// Demo due dates are relative to today, so the seeded board always shows both
+// states: one issue late and one still ahead. The seeder only creates missing
+// rows, so a demo database has to be recreated to pick these up.
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
+const todayUtcMidnight = new Date().setUTCHours(0, 0, 0, 0);
+export const overdueDueDate = todayUtcMidnight - 3 * MS_PER_DAY;
+export const upcomingDueDate = todayUtcMidnight + 5 * MS_PER_DAY;
+
 // PROJECT 1
 export const todoIssuesMock1: Issue[] = [
   {
@@ -22,6 +30,7 @@ export const todoIssuesMock1: Issue[] = [
     asignee: userMock1,
     comments: [commentMock4, commentMock5],
     priority: priorityMedium,
+    dueDate: upcomingDueDate,
     categoryType: "DONE",
     createdAt,
     updatedAt: new Date("2022-01-23 15:28").valueOf(),
@@ -38,6 +47,7 @@ export const inProgressIssuesMock1: Issue[] = [
     asignee: userMock2, // Woody
     comments: [],
     priority: priorityHigh,
+    dueDate: overdueDueDate,
     categoryType: "IN_PROGRESS",
     createdAt,
     updatedAt: createdAt,
@@ -98,6 +108,7 @@ export const todoIssuesMock2: Issue[] = [
     comments: [],
     priority: priorityMedium,
     categoryType: "TODO",
+    dueDate: upcomingDueDate,
     createdAt,
     updatedAt: new Date("2022-01-18 11:01").valueOf(),
   },

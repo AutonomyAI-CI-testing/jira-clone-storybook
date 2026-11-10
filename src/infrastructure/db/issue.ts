@@ -38,6 +38,7 @@ export const getIssue = async (issueId: IssueId): Promise<Issue | null> => {
     description: issueDb.description || undefined,
     categoryType: issueDb.category.type as CategoryType,
     priority: issueDb.priority as Priority,
+    dueDate: issueDb.dueDate ? issueDb.dueDate.getTime() : undefined,
     asignee: dnull(issueDb.asignee),
     reporter: dnull(issueDb.reporter),
     comments: issueDb.comments.map((comment) => ({
@@ -62,6 +63,7 @@ export type CreateIssueInputData = {
   description: string;
   categoryId: CategoryId;
   priority: PriorityId;
+  dueDate?: number;
   asigneeId: UserId;
   reporterId: UserId;
   comments: Comment[];
@@ -72,6 +74,7 @@ export const createIssue = async (issue: CreateIssueInputData): Promise<IssueId>
       ...issue,
       priority: undefined,
       priorityId: issue.priority,
+      dueDate: issue.dueDate ? new Date(issue.dueDate) : null,
       comments: {
         create: issue.comments.map((comment) => {
           const commentInput: Omit<Prisma.CommentCreateInput, "issue"> = {
@@ -102,6 +105,7 @@ export const updateIssue = async (issue: UpdateIssueInputData) => {
       ...issue,
       priority: undefined,
       priorityId: issue.priority,
+      dueDate: issue.dueDate ? new Date(issue.dueDate) : null,
       comments: {
         upsert: issue.comments.map((comment) => {
           const commentInput: Omit<Prisma.CommentCreateInput, "issue"> = {

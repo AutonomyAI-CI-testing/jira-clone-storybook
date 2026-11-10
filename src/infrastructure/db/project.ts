@@ -4,7 +4,7 @@ import { UserId } from "@domain/user/user";
 import { Project, ProjectSummary, ProjectId } from "@domain/project/project";
 import { Category, CategoryType } from "@domain/category/category";
 import { Priority } from "@domain/priority/priority";
-import { Sort } from "@domain/filter/filter";
+import { Sort, DEFAULT_SORT } from "@domain/filter/filter";
 import { db } from "./db.server";
 import { dnull } from "src/utils/dnull";
 
@@ -14,7 +14,6 @@ export const getProject = async (
 ): Promise<Project | null> => {
   type PrismaSortType = Prisma.Enumerable<Prisma.IssueOrderByWithRelationInput>;
 
-  const sortIssuesBy = options?.sortIssuesBy;
   const sortByDate: PrismaSortType = {
     createdAt: "desc",
   };
@@ -23,11 +22,24 @@ export const getProject = async (
       order: "desc",
     },
   };
+  // SQLite orders NULLs first ascending, so undated issues need `nulls: "last"`
+  // to sit at the bottom of a column instead of floating to the top.
+  const sortByDueDate: PrismaSortType = {
+    dueDate: {
+      sort: "asc",
+      nulls: "last",
+    },
+  };
 
-  // prettier-ignore
-  const orderBy: PrismaSortType = sortIssuesBy === "date" 
-    ? [sortByDate, sortByPriority] 
-    : [sortByPriority, sortByDate];
+  // Keyed by the closed set of sorts, so a new one without an ordering is a
+  // type error rather than a silent fall-through.
+  const sortOrders: Record<Sort, PrismaSortType> = {
+    date: [sortByDate, sortByPriority],
+    priority: [sortByPriority, sortByDate],
+    dueDate: [sortByDueDate, sortByDate],
+  };
+
+  const orderBy = sortOrders[options?.sortIssuesBy || DEFAULT_SORT];
 
   const projectDb = await db.project.findUnique({
     where: {
@@ -46,6 +58,7 @@ export const getProject = async (
               id: true,
               name: true,
               priority: true,
+              dueDate: true,
               createdAt: true,
               reporter: true,
               asignee: true,
@@ -76,6 +89,7 @@ export const getProject = async (
         id: issue.id,
         name: issue.name,
         priority: issue.priority as Priority,
+        dueDate: issue.dueDate ? issue.dueDate.getTime() : undefined,
         reporter: dnull(issue.reporter),
         asignee: dnull(issue.asignee),
         comments: [],

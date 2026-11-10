@@ -28,6 +28,7 @@ import { SelectStatus } from "./select-status";
 import { SelectPriority } from "./select-priority";
 import { SelectAsignee } from "./select-asignee";
 import { CreatedUpdatedAt } from "./created-updated-at";
+import { IssueDueDate } from "./issue-due-date";
 import { Spinner } from "./spinner";
 
 export const IssuePanel = ({ issue }: Props): JSX.Element => {
@@ -40,7 +41,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const reporter = issue ? issue.reporter : user;
   const formRef = useRef<HTMLFormElement>(null);
   const actionData = useActionData() as IssueActionData;
-  const fetcher = useFetcher();
+  const fetcher = useFetcher<IssueActionData>();
   const params = useSearchParams();
   const transition = useNavigation();
   const location = useLocation();
@@ -202,6 +203,10 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       <p className="mb-1">Asignee</p>
                       <SelectAsignee initAsignee={issue?.asignee || user} />
                     </div>
+                    <IssueDueDate
+                      initDueDate={issue?.dueDate}
+                      error={fetcher.data?.errors?.dueDate}
+                    />
                     <div>
                       <p className="mb-1">Reporter</p>
                       <div className="mt-1 flex w-fit items-center gap-2 rounded-full bg-background-neutral py-1 pb-1 pl-1 pr-3.5">
