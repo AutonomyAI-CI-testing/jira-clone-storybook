@@ -18,6 +18,7 @@ import { useUserStore } from "@app/store/user.store";
 import { ActionData as IssueActionData } from "@app/routes/__main/projects.$projectId/board/issue/$issueId";
 import { UserAvatar } from "@app/components/user-avatar/user-avatar";
 import { Button } from "@app/components/button/button";
+import { CopyButton } from "@app/components/copy-button/copy-button";
 import { Title } from "@app/components/title/title";
 import { Description } from "@app/components/description/description";
 import { Kbd } from "@app/components/kbd-placeholder/kbd-placeholder";
@@ -152,14 +153,19 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
               <Form method="post" onSubmit={handleFormSumbit} ref={formRef}>
                 <div className="grid grid-cols-5 gap-16">
                   <section className="col-span-3">
-                    <div className="my-5 -ml-3 mb-6">
-                      <Dialog.Title asChild>
-                        <Title
-                          initTitle={issue?.name || ""}
-                          readOnly={userIsNotReporter}
-                          error={actionData?.errors?.name}
-                        />
-                      </Dialog.Title>
+                    <div className="my-5 -ml-3 mb-6 flex items-start gap-2">
+                      <div className="flex-grow">
+                        <Dialog.Title asChild>
+                          <Title
+                            initTitle={issue?.name || ""}
+                            readOnly={userIsNotReporter}
+                            error={actionData?.errors?.name}
+                          />
+                        </Dialog.Title>
+                      </div>
+                      {issue?.id ? (
+                        <CopyButton value={issue.id} label="Copy issue ID" />
+                      ) : null}
                     </div>
                     <p className="font-primary-black text-font">Description</p>
                     <div className="-ml-3 mb-6">
