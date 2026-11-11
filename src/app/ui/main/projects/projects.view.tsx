@@ -4,7 +4,7 @@ export const ProjectsView = (): JSX.Element => {
   return (
     <div className="flex h-full flex-1 flex-col bg-black">
       <div className="flex flex-1 items-center justify-center">
-        <h1 className="font-primary-black text-9xl text-[var(--Red600)]">
+        <h1 className="font-primary-black text-9xl text-[var(--Green600)]">
           Fei
         </h1>
       </div>
