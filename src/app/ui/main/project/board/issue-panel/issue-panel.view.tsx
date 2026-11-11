@@ -43,6 +43,10 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const fetcher = useFetcher();
   const params = useSearchParams();
   const transition = useNavigation();
+  // The panel saves through a fetcher, which never moves useNavigation's
+  // state, so both signals are combined: the Accept button has to reflect the
+  // save it actually started, not only a route transition.
+  const isPending = transition.state !== "idle" || fetcher.state !== "idle";
   const location = useLocation();
   const navigate = useNavigate();
   const initStatus = (params[0].get("category") as CategoryType) || "TODO";
@@ -228,10 +232,10 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       type="submit"
                       size="lg"
                       className="w-fit"
-                      disabled={transition.state !== "idle"}
+                      disabled={isPending}
                       aria-label="Accept changes"
                     >
-                      {transition.state !== "idle" ? (
+                      {isPending ? (
                         <>
                           Submmiting
                           <Spinner />
