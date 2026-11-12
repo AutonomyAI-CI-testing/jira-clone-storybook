@@ -12,7 +12,7 @@ export const ProjectsView = ({
   if (isProjectsIndex) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000]">
-        <h1 className="font-primary-black text-8xl text-[color:var(--Red500)]">
+        <h1 className="font-primary-black text-8xl text-[color:var(--Green500)]">
           Fei
         </h1>
       </div>
