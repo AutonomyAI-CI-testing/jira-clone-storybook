@@ -54,10 +54,15 @@ const SearchIcon = (): JSX.Element => (
 );
 
 const ClearIcon = ({ onClick }: ClearIconProps): JSX.Element => (
-  // onMouseDown is needed because blur (unfocus) happens
-  // before 'click' event, but not before 'onMouseDown'
+  // The input grows while it is focused and shrinks back when it blurs, which
+  // slides this button out from under the pointer before 'click' fires. Keeping
+  // the focus where it is on mousedown holds the button still, so a single
+  // 'click' handler covers both the pointer and the keyboard (Enter or Space on
+  // the focused button).
   <button
-    onMouseDown={onClick}
+    type="button"
+    onMouseDown={(e) => e.preventDefault()}
+    onClick={onClick}
     className={cx(
       iconBaseClass,
       "cursor-pointer rounded hover:bg-background-neutral"
