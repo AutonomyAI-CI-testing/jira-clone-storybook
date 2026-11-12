@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useMatch } from "react-router";
 import { AiOutlinePlus } from "react-icons/ai";
 import { ProjectSummary } from "@domain/project/project";
 import { Button } from "@app/components/button/button";
@@ -7,6 +7,18 @@ import { ProjectCard } from "./project-card/project-card";
 export const ProjectsView = ({
   projectsSummary,
 }: ProjectsViewProps): JSX.Element => {
+  const isProjectsIndex = useMatch("/projects");
+
+  if (isProjectsIndex) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000]">
+        <h1 className="font-primary-black text-8xl text-[color:var(--Green500)]">
+          Fei
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6">
       <h1 className="font-primary-black text-2xl">PROJECTS</h1>
