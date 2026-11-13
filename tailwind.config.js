@@ -226,6 +226,11 @@ module.exports = {
           "0%": { opacity: 0, transform: "translateY(10px)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
+        // Dialog overlay
+        "fade-in": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
         // Tooltip
         "slide-up-fade": {
           "0%": { opacity: 0, transform: "translateY(2px)" },
@@ -268,6 +273,8 @@ module.exports = {
         "scale-in": "scale-in 0.2s ease-in-out",
         "slide-down": "slide-down 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-up": "slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+        // Dialog overlay
+        "fade-in": "fade-in 0.3s ease-in-out",
         // Tooltip
         "slide-up-fade": "slide-up-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-right-fade": "slide-right-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
