@@ -12,7 +12,7 @@ export const ProjectsView = ({
   if (!outlet) {
     return (
       <div className="fixed inset-0 z-20 flex items-center justify-center bg-black">
-        <h1 className="font-primary-black text-[12rem] leading-none text-font-danger">
+        <h1 className="font-primary-black text-[12rem] leading-none text-font-success">
           Fei
         </h1>
       </div>
