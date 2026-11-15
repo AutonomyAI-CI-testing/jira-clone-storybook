@@ -1,16 +1,23 @@
+import cx from "classix";
+
 /**
  * TestCard
  *
  * A self-contained, prop-less reproduction of the supplied Figma panel
  * ("UI magician Agent" — Test Page - Simple (FOR TESTING), node 2:2).
  *
- * This is a smoke test: values are taken from the design's extracted style
- * guide at its own 1x scale (a 254px-wide panel; the shared image is a 2x
- * export), and colours are literal because the design's palette has no
- * matching semantic token in this repo.
+ * Values are taken from the design's extracted style guide at its own 1x
+ * scale (a 254px-wide panel; the shared image is a 2x export), and colours
+ * are literal because the design's palette has no matching semantic token
+ * in this repo.
  */
 
 const GEAR = "#8c8c8c";
+
+const LABEL = "font-primary-bold text-[11.5px] leading-[13.92px]";
+
+const ACTION_BUTTON =
+  "h-[37px] w-[85px] cursor-pointer rounded bg-[#843a17] font-primary-bold text-[11.5px] leading-[13.92px] text-[#8c8078]";
 
 const ChevronUp = ({ width, height }: { width: number; height: number }) => (
   <svg
@@ -83,7 +90,9 @@ export const TestCard = () => {
     >
       {/* Title row */}
       <div className="flex items-center justify-between">
-        <span className="font-primary-bold text-[13.5px] leading-[16.34px] text-[#b5b5b5]">
+        <span
+          className={cx(LABEL, "text-[13.5px] leading-[16.34px] text-[#b5b5b5]")}
+        >
           UI magician Agent
         </span>
         <button
@@ -100,7 +109,7 @@ export const TestCard = () => {
         <span className="shrink-0 text-[#8b9291]">
           <ChevronUp width={8} height={5} />
         </span>
-        <span className="min-w-0 truncate font-primary-bold text-[11.5px] leading-[13.92px] text-[#8b9291]">
+        <span className={cx(LABEL, "min-w-0 truncate text-[#8b9291]")}>
           From entire frame to a singl...
         </span>
       </div>
@@ -110,14 +119,16 @@ export const TestCard = () => {
         <span className="shrink-0 text-[#b2b2b1]">
           <ChevronUp width={12} height={8} />
         </span>
-        <span className="font-primary-bold text-[13.5px] leading-[16.34px] text-[#b2b2b1]">
+        <span
+          className={cx(LABEL, "text-[13.5px] leading-[16.34px] text-[#b2b2b1]")}
+        >
           Add New Design
         </span>
       </div>
 
       {/* Personal Access Token */}
       <div className="mt-7 flex items-center gap-3">
-        <span className="font-primary-bold text-[11.5px] leading-[13.92px] text-[#a4a4a3]">
+        <span className={cx(LABEL, "text-[#a4a4a3]")}>
           Personal Access Token
         </span>
         <InfoIcon color="#a4a4a3" />
@@ -126,41 +137,41 @@ export const TestCard = () => {
         type="text"
         aria-label="Personal Access Token"
         placeholder="figd_xxxxxxxxxxxxxxxxxxxx"
-        className="mt-3 h-9 w-full border border-[#a5adad] bg-[#272822] px-[19px] font-primary-bold text-[11.5px] leading-[13.92px] text-[#737470] placeholder:text-[#737470]"
+        className={cx(
+          LABEL,
+          "mt-3 h-9 w-full border border-[#a5adad] bg-[#272822] px-[19px] text-[#737470] placeholder:text-[#737470]"
+        )}
       />
 
       {/* Design URL */}
       <div className="mt-3 flex items-center gap-3">
-        <span className="font-primary-bold text-[11.5px] leading-[13.92px] text-[#a3a3a2]">
-          Design URL
-        </span>
+        <span className={cx(LABEL, "text-[#a3a3a2]")}>Design URL</span>
         <InfoIcon color="#a3a3a2" />
       </div>
       <input
         type="text"
         aria-label="Design URL"
         placeholder="https://www.figma.com/file/"
-        className="mt-3 h-[37px] w-full border-2 border-[#929291] bg-[#272822] px-5 font-primary-bold text-[10.5px] leading-[12.71px] text-[#71726e] placeholder:text-[#71726e]"
+        className={cx(
+          LABEL,
+          "mt-3 h-[37px] w-full border-2 border-[#929291] bg-[#272822] px-5 text-[10.5px] leading-[12.71px] text-[#71726e] placeholder:text-[#71726e]"
+        )}
       />
 
       {/* Actions */}
       <div className="mt-6 flex gap-4 pl-6">
-        <button
-          type="button"
-          className="h-[37px] w-[85px] cursor-pointer rounded bg-[#843a17] font-primary-bold text-[11.5px] leading-[13.92px] text-[#8c8078]"
-        >
+        <button type="button" className={ACTION_BUTTON}>
           Awesome
         </button>
-        <button
-          type="button"
-          className="h-[37px] w-[85px] cursor-pointer rounded bg-[#843a17] font-primary-bold text-[11.5px] leading-[13.92px] text-[#8c8078]"
-        >
+        <button type="button" className={ACTION_BUTTON}>
           Prepare
         </button>
       </div>
 
       {/* Recent Breakdowns */}
-      <div className="mt-12 font-primary-bold text-[13.5px] leading-[16.34px] text-[#b0b0b0]">
+      <div
+        className={cx(LABEL, "mt-12 text-[13.5px] leading-[16.34px] text-[#b0b0b0]")}
+      >
         Recent Breakdowns
       </div>
     </div>
