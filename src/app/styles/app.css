@@ -10,10 +10,14 @@
 
     --toastify-color-light: var(--color-elevation-surface-overlay) !important;
     --toastify-color-dark: var(--color-elevation-surface-overlay) !important;
-    --toastify-color-info: var(--color-border-info) !important;
-    --toastify-color-success: var(--color-border-success) !important;
-    --toastify-color-warning: var(--color-border-warning) !important;
-    --toastify-color-error: var(--color-border-danger) !important;
+    /* The toast type accent (the icon, and the countdown bar that follows it) is painted on
+       the toast surface, not on the page canvas. A theme whose toast surface is not the
+       canvas it was chosen for - Barbie - overrides --toastify-accent-*; every other theme
+       keeps the canvas accent. */
+    --toastify-color-info: var(--toastify-accent-info, var(--color-border-info)) !important;
+    --toastify-color-success: var(--toastify-accent-success, var(--color-border-success)) !important;
+    --toastify-color-warning: var(--toastify-accent-warning, var(--color-border-warning)) !important;
+    --toastify-color-error: var(--toastify-accent-danger, var(--color-border-danger)) !important;
     --toastify-text-color-dark: var(--color-font) !important;
     --toastify-text-color-light: var(--color-font) !important;
     --toastify-text-color-success: var(--color-font) !important;
@@ -838,4 +842,23 @@
   --color-background-disabled: var(--Neutral100A);
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
+
+  /* Toast - the accent the toast's type icon and its countdown bar paint on the toast
+     surface. This theme's toast surface is the light pink overlay, on which the canvas
+     accents measure 1.6-2.0:1, so the type colours come from the text role that is
+     chosen to read on this theme's surfaces instead. */
+  --toastify-accent-info: var(--color-font-info);
+  --toastify-accent-success: var(--color-font-success);
+  /* The warning text role lands on 2.998:1 on this theme's toast surface, so it steps one
+     step further down the ramp here. */
+  --toastify-accent-warning: var(--Orange900);
+  --toastify-accent-danger: var(--color-font-danger);
+}
+
+/* This theme's toast takes react-toastify's dark branch, whose dismiss glyph is painted
+   white for a dark surface: on the pink toast it measures 1.66:1. Paint it from the
+   theme's own on-surface text token instead. */
+.barbie .Toastify__close-button--dark {
+  color: var(--color-font);
+  opacity: 0.8;
 }
