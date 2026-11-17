@@ -40,8 +40,8 @@ export const meta: MetaFunction = () => {
 
 export default function ProjectsRoute() {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-black">
-      <h1 className="font-primary-black text-[clamp(6rem,14vw,14rem)] leading-none text-font-danger">
+    <div className="dark flex h-full w-full items-center justify-center bg-black">
+      <h1 className="font-primary-black text-[clamp(6rem,14vw,14rem)] leading-none text-font-success">
         Fei
       </h1>
     </div>
