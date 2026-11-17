@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
 export default function FeiRoute() {
   return (
     <main className="flex h-full items-center justify-center bg-white">
-      <h1 className="font-primary-black text-5xl leading-none text-black">
+      <h1 className="font-primary-black text-5xl leading-none text-[var(--Red700)]">
         Fei
       </h1>
     </main>
