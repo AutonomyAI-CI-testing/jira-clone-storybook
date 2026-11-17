@@ -8,6 +8,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
     setValue,
     placeholder,
     readOnly,
+    maxLength,
     autofocus,
     textareaClassName,
     onFocus,
@@ -52,6 +53,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         onChange={handleTitleChange}
         placeholder={placeholder}
         readOnly={readOnly}
+        maxLength={maxLength}
         onFocus={handleOnFocus}
         onBlur={onBlur}
         style={{ height: `${textareaHeight}px` }}
@@ -77,6 +79,7 @@ interface TitleProps {
   placeholder: string;
   autofocus?: boolean;
   readOnly?: boolean;
+  maxLength?: number;
   textareaClassName?: string;
   onFocus?: () => void;
   onBlur?: () => void;

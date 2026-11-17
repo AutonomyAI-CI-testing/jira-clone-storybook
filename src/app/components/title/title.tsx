@@ -26,9 +26,7 @@ export const Title = ({
   const onBlur = () => console.log("onBlur");
 
   const updateTitle = (newTitle: string) => {
-    if (newTitle.length > maxLength) return;
-
-    setTitle(newTitle);
+    setTitle(newTitle.slice(0, maxLength));
   };
 
   return (
@@ -38,6 +36,7 @@ export const Title = ({
         value={title}
         setValue={updateTitle}
         placeholder={placeholder}
+        maxLength={maxLength}
         readOnly={readOnly}
         onFocus={onFocus}
         onBlur={onBlur}
