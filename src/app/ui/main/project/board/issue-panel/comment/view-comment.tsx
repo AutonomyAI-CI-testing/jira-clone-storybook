@@ -39,7 +39,7 @@ export const ViewComment = ({
 
   const idleComment = (
     <div className="font-primary-light">
-      <p>{message}</p>
+      <p className="break-words">{message}</p>
       <div
         className={cx(
           "mt-3 text-font-subtlest",
