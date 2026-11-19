@@ -17,6 +17,9 @@ type Pages = {
   "/login": {
     params: {};
   };
+  "/fei": {
+    params: {};
+  };
   "/action/logout": {
     params: {};
   };
@@ -76,7 +79,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/action/logout" | "/action/set-theme" | "/projects" | "/projects/new" | "/projects/:projectId" | "/projects/:projectId/analytics" | "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId" | "/projects/:projectId/server-error" | "/projects/:projectId/*" | "/*";
+    page: "/" | "/login" | "/fei" | "/action/logout" | "/action/set-theme" | "/projects" | "/projects/new" | "/projects/:projectId" | "/projects/:projectId/analytics" | "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId" | "/projects/:projectId/server-error" | "/projects/:projectId/*" | "/*";
   };
   "routes/index.tsx": {
     id: "routes/index";
@@ -85,6 +88,10 @@ type RouteFiles = {
   "routes/login.tsx": {
     id: "routes/login";
     page: "/login";
+  };
+  "routes/fei.tsx": {
+    id: "routes/fei";
+    page: "/fei";
   };
   "routes/action/logout.tsx": {
     id: "routes/action/logout";
@@ -144,6 +151,7 @@ type RouteModules = {
   "root": typeof import("./src/app/root.tsx");
   "routes/index": typeof import("./src/app/routes/index.tsx");
   "routes/login": typeof import("./src/app/routes/login.tsx");
+  "routes/fei": typeof import("./src/app/routes/fei.tsx");
   "routes/action/logout": typeof import("./src/app/routes/action/logout.tsx");
   "routes/action/set-theme": typeof import("./src/app/routes/action/set-theme.tsx");
   "routes/__main": typeof import("./src/app/routes/__main.tsx");
