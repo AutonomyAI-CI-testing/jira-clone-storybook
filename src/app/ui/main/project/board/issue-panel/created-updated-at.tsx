@@ -1,10 +1,15 @@
 import { Issue } from "@domain/issue/issue";
 import { formatDateTime } from "@utils/formatDateTime";
 
-export const CreatedUpdatedAt = ({ issue }: Props): JSX.Element => {
+export const CreatedUpdatedAt = ({ issue }: Props): JSX.Element | null => {
+  // The panel is also rendered on the create route, where there is no issue yet
+  // and therefore nothing to date. Claiming "Just now" for both rows would
+  // describe a record that does not exist.
+  if (!issue) return null;
+
   const values = [
-    { label: "Created at:", value: issue?.createdAt },
-    { label: "Updated at:", value: issue?.updatedAt },
+    { label: "Created at:", value: issue.createdAt },
+    { label: "Updated at:", value: issue.updatedAt },
   ];
 
   return (
@@ -16,9 +21,7 @@ export const CreatedUpdatedAt = ({ issue }: Props): JSX.Element => {
               <p className="mb-2">{label}</p>
             </td>
             <td>
-              <p className="mb-2">
-                {value ? formatDateTime(value) : "Just now"}
-              </p>
+              <p className="mb-2">{formatDateTime(value)}</p>
             </td>
           </tr>
         ))}
