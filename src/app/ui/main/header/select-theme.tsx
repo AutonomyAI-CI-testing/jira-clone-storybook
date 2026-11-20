@@ -9,6 +9,7 @@ import {
   isValidPreference,
   getSystemTheme,
   DEFAULT_THEME,
+  isDarkTheme,
 } from "@app/store/theme.store";
 import { Tooltip } from "@app/components/tooltip/tooltip";
 
@@ -71,10 +72,10 @@ export const SelctTheme = (): JSX.Element => {
           aria-label="Open theme select"
           className="group flex h-[30px] w-[30px] rounded-full outline outline-2 outline-icon flex-center hover:bg-background-brand-subtlest hover:outline-border-brand"
         >
-          {theme === Theme.LIGHT ? (
-            <MdLightMode className={triggerIconClass} />
-          ) : (
+          {isDarkTheme(theme) ? (
             <MdDarkMode className={triggerIconClass} />
+          ) : (
+            <MdLightMode className={triggerIconClass} />
           )}
         </DropdownMenu.Trigger>
       </Tooltip>

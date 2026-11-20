@@ -16,6 +16,18 @@ export enum Theme {
   BARBIE = "barbie",
 }
 export const themes: Array<Theme> = Object.values(Theme);
+
+/**
+ * Themes whose palette is built on the dark neutral scale. `barbie` is a pale
+ * theme - its block aliases the magenta/teal/neutral scales - so it belongs to
+ * the light family along with `light`, not here.
+ */
+const darkThemes: Array<Theme> = [Theme.DARK, Theme.LAVA, Theme.LIME];
+
+/** A theme that is not resolved yet (no session) counts as the default, light. */
+export const isDarkTheme = (theme: Theme | null): boolean =>
+  theme !== null && darkThemes.includes(theme);
+
 export enum Preference {
   SELECTED = "selected",
   SYSTEM = "system",
