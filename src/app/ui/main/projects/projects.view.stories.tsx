@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { withMainContext, withRemixStub } from "@app/stories/utils";
-import { projectsMock } from "@domain/project/project.mock";
 import { ProjectsView } from "./projects.view";
 
 const meta: Meta<typeof ProjectsView> = {
@@ -13,34 +12,19 @@ const meta: Meta<typeof ProjectsView> = {
     (Story) => {
       return withRemixStub(withMainContext(Story));
     },
+    // The view fills the space the app shell leaves for it, so the story needs
+    // the same full-height flex column around it.
+    (Story) => {
+      return (
+        <div className="flex h-screen flex-col [&>div]:flex [&>div]:flex-1 [&>div]:flex-col">
+          <Story />
+        </div>
+      );
+    },
   ],
 };
 
 export default meta;
 type Story = StoryObj<typeof ProjectsView>;
 
-const projectsSummary = projectsMock.map((project) => ({
-  id: project.id,
-  name: project.name,
-  description: project.description,
-  image: project.image,
-  createdAt: project.createdAt,
-}));
-
-export const Default: Story = {
-  args: {
-    projectsSummary: projectsSummary,
-  },
-};
-
-export const SingleProject: Story = {
-  args: {
-    projectsSummary: projectsSummary.slice(0, 1),
-  },
-};
-
-export const Empty: Story = {
-  args: {
-    projectsSummary: [],
-  },
-};
+export const Default: Story = {};
