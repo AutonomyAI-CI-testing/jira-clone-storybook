@@ -17,6 +17,12 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
   const textareaRef = useRef<HTMLParagraphElement>(null);
 
+  // A read-only field must not invite typing: it keeps the sunken "not editable"
+  // surface instead of the input one, drops the hover/focus tints, and shows no
+  // placeholder it would only discard.
+  const displayPlaceholder = readOnly ? "" : placeholder;
+  const isReadOnly = Boolean(readOnly);
+
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
     const length = target.value.length;
@@ -45,12 +51,15 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
       <textarea
         name={name}
         className={cx(
-          "box-border w-full resize-none overflow-y-hidden rounded-md border-none bg-background-input p-3 text-font outline-2 hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
+          "box-border w-full resize-none overflow-y-hidden rounded-md border-none p-3 outline-2",
+          isReadOnly
+            ? "cursor-not-allowed bg-elevation-surface-sunken text-font-subtle"
+            : "bg-background-input text-font hover:bg-background-input-hovered focus-visible:bg-background-input-pressed",
           textareaClassName
         )}
         value={value}
         onChange={handleTitleChange}
-        placeholder={placeholder}
+        placeholder={displayPlaceholder}
         readOnly={readOnly}
         onFocus={handleOnFocus}
         onBlur={onBlur}
@@ -64,7 +73,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
           textareaClassName
         )}
       >
-        {(valueIsNotOnlySpaces() && value) || placeholder}
+        {(valueIsNotOnlySpaces() && value) || displayPlaceholder}
       </p>
     </div>
   );

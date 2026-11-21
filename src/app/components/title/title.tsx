@@ -53,7 +53,7 @@ export const Title = ({
           {error}
         </span>
       )}
-      {isFocus && (
+      {isFocus && !readOnly && (
         <span
           className={cx(
             "absolute right-0 top-full font-primary-light text-sm",

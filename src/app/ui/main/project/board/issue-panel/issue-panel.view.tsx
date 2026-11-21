@@ -161,6 +161,11 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                         />
                       </Dialog.Title>
                     </div>
+                    {userIsNotReporter && (
+                      <p className="-ml-3 -mt-4 mb-6 font-primary-light text-2xs text-font-subtlest">
+                        Only the reporter can edit the title and description.
+                      </p>
+                    )}
                     <p className="font-primary-black text-font">Description</p>
                     <div className="-ml-3 mb-6">
                       <Description
