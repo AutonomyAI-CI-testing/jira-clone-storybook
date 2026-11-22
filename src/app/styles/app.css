@@ -842,9 +842,9 @@
 
 /*
   The projects page paints its own black ground in every theme, so it pins the
-  red it draws the wordmark with to the palette step that holds contrast on
-  black (Red700) rather than inheriting each theme's own danger step.
+  green it draws the wordmark with to the palette step that holds contrast on
+  black (Green700) rather than inheriting each theme's own success step.
 */
 .projects-splash {
-  --color-font-danger: var(--Red700);
+  --color-font-success: var(--Green700);
 }
