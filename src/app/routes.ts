@@ -21,5 +21,7 @@ export default [
     ]),
   ]),
 
+  route("plan", "routes/plan.tsx"),
+
   route("*", "routes/404.tsx"),
 ] satisfies RouteConfig;
