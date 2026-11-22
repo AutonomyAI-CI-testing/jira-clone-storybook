@@ -839,3 +839,12 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/*
+  The projects page paints its own black ground in every theme, so it pins the
+  green it draws the wordmark with to the palette step that holds contrast on
+  black (Green700) rather than inheriting each theme's own success step.
+*/
+.projects-splash {
+  --color-font-success: var(--Green700);
+}
