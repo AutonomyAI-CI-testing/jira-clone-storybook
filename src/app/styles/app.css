@@ -839,3 +839,12 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/*
+  The projects page paints its own black ground in every theme, so it pins the
+  red it draws the wordmark with to the palette step that holds contrast on
+  black (Red700) rather than inheriting each theme's own danger step.
+*/
+.projects-splash {
+  --color-font-danger: var(--Red700);
+}
