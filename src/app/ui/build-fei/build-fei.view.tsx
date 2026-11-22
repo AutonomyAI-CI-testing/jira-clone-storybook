@@ -5,7 +5,7 @@ export const BuildFeiView = () => {
         src="/images/build-fei.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[78vh] w-auto max-w-none -translate-x-1/2"
+        className="pointer-events-none absolute bottom-0 left-1/2 h-[78vh] w-auto max-w-none -translate-x-1/2 outline outline-2 outline-border-success"
       />
       <h1 className="relative mt-[8vh] font-primary-black text-5xl text-font-danger">
         Build Fei
