@@ -79,7 +79,12 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
 
     const warningStyle = (): string => {
       if (variant === "contained") {
-        return "bg-background-warning-bold text-font-inverse hover:bg-background-warning-bold-hovered active:bg-background-warning-bold-pressed";
+        // The bold warning fill is the same Yellow400 in every theme, so the label
+        // cannot follow the theme: text-font-inverse is white in the light themes
+        // (1.98:1 on it) and text-font is the light ink of the dark themes (1.09:1).
+        // The palette's darkest ink clears AA against every state of the fill; the `!`
+        // is needed because the base `text-font` is emitted after this arbitrary value.
+        return "bg-background-warning-bold !text-[color:var(--Neutral1100)] hover:bg-background-warning-bold-hovered active:bg-background-warning-bold-pressed";
       }
 
       if (variant === "subtlest") {
