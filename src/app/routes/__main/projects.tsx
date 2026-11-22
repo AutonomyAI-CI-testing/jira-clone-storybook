@@ -89,7 +89,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
 export default function ProjectsRoute() {
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black">
-      <h1 className="font-primary-black text-9xl text-[color:var(--Red500)]">
+      <h1 className="font-primary-black text-9xl text-[color:var(--Green500)]">
         Fei
       </h1>
       <Outlet />
