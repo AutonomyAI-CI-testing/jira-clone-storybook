@@ -5,6 +5,7 @@ export default [
   route("login", "routes/login.tsx"),
   route("action/logout", "routes/action/logout.tsx"),
   route("action/set-theme", "routes/action/set-theme.tsx"),
+  route("plan-fei", "routes/plan-fei.tsx"),
 
   layout("routes/__main.tsx", [
     route("projects", "routes/__main/projects.tsx", [
