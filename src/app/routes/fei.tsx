@@ -6,8 +6,10 @@ export const meta: MetaFunction = () => [{ title: "Fei" }];
 // and any other app chrome stay off it.
 export default function FeiRoute() {
   return (
-    <main className="flex h-full items-center justify-center bg-white">
-      <h1 className="font-primary-black text-5xl leading-none text-black">
+    // `light` pins the token set to its light values, so the page keeps its own
+    // white surface and its ink colours whatever theme the app is set to.
+    <main className="light flex h-full items-center justify-center bg-white">
+      <h1 className="font-primary-black text-5xl leading-none text-font-danger">
         Fei
       </h1>
     </main>
