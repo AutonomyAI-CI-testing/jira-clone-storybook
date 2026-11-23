@@ -33,6 +33,16 @@ const meta: Meta<typeof Button> = {
         options: ["md", "lg"],
       },
     },
+    isLoading: {
+      control: {
+        type: "boolean",
+      },
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
 };
 
@@ -79,6 +89,43 @@ export const Default: Story = {
       </div>
     </>
   ),
+};
+
+const StateRow = ({
+  isLoading,
+  disabled,
+}: {
+  isLoading?: boolean;
+  disabled?: boolean;
+}): JSX.Element => (
+  <div className="grid grid-cols-3 gap-4 p-4">
+    {[
+      Primary,
+      Neutral,
+      Danger,
+      PrimarySubtle,
+      PrimaryText,
+      PrimaryContainedBig,
+    ].map((ButtonStory, index) => (
+      <Button
+        {...ButtonStory.args}
+        isLoading={isLoading}
+        disabled={disabled}
+        className="w-fit"
+        key={index}
+      >
+        {ButtonStory.args?.children}
+      </Button>
+    ))}
+  </div>
+);
+
+export const Loading: Story = {
+  render: () => <StateRow isLoading />,
+};
+
+export const Disabled: Story = {
+  render: () => <StateRow disabled />,
 };
 
 export const Primary: Story = {
