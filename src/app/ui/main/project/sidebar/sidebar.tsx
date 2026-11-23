@@ -113,12 +113,11 @@ const NavItem = ({ href, icon, name, disabled }: NavItemProps): JSX.Element => {
       className={({ isActive }) =>
         cx(
           "group flex w-full cursor-pointer items-center gap-4 rounded border-none p-2 text-sm",
-          isActive && !disabled
-            ? "bg-background-neutral text-font-brand"
-            : "text-font-subtlest",
           disabled
-            ? "!cursor-not-allowed hover:bg-transparent"
-            : "hover:bg-background-neutral"
+            ? "!cursor-not-allowed text-font-subtlest hover:bg-transparent"
+            : isActive
+              ? "bg-background-brand-subtlest text-font-brand"
+              : "text-font-subtlest hover:bg-background-neutral"
         )
       }
     >
