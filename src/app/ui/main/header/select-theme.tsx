@@ -69,7 +69,7 @@ export const SelctTheme = (): JSX.Element => {
       <Tooltip title="Select theme">
         <DropdownMenu.Trigger
           aria-label="Open theme select"
-          className="group flex h-[30px] w-[30px] rounded-full outline outline-2 outline-icon flex-center hover:bg-background-brand-subtlest hover:outline-border-brand"
+          className="group flex h-[30px] w-[30px] rounded-full outline outline-2 outline-icon flex-center hover:bg-background-brand-subtlest hover:outline-border-brand focus-visible:outline-border-brand"
         >
           {theme === Theme.LIGHT ? (
             <MdLightMode className={triggerIconClass} />
@@ -104,7 +104,7 @@ export const SelctTheme = (): JSX.Element => {
                 key={value}
                 value={value}
                 className={cx(
-                  "group flex gap-4 rounded px-2 pb-2 pt-1 outline outline-2 hover:outline-border-brand",
+                  "group flex gap-4 rounded px-2 pb-2 pt-1 outline outline-2 hover:outline-border-brand focus-visible:bg-background-selected focus-visible:outline-border-brand",
                   value === currentValue
                     ? "bg-background-brand-subtlest text-font-brand outline-border-brand"
                     : "outline-transparent"

@@ -11,7 +11,7 @@ export const UserProfile = (): JSX.Element => {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="ml-1 rounded-full outline outline-2 outline-border-disabled hover:outline-border-brand">
+      <DropdownMenu.Trigger className="ml-1 rounded-full outline outline-2 outline-border-disabled hover:outline-border-brand focus-visible:outline-border-brand">
         <UserAvatar {...user} />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
@@ -23,19 +23,19 @@ export const UserProfile = (): JSX.Element => {
             "radix-side-bottom:animate-slide-down radix-side-top:animate-slide-up"
           )}
         >
-          <DropdownMenu.Item className="flex flex-col items-center p-3 !outline-none">
+          <DropdownMenu.Item className="flex flex-col items-center p-3 !outline-none focus-visible:bg-background-selected">
             <UserAvatar {...user} size={80} />
             <span className="mt-2 text-lg text-font">{user.name}</span>
           </DropdownMenu.Item>
           <DropdownMenu.Separator className="h-px bg-border" />
-          <DropdownMenu.Item className="select-none p-1 !outline-none">
+          <DropdownMenu.Item className="group select-none p-1 !outline-none">
             <Form action="action/logout" method="post">
               <Button
                 color="danger"
                 variant="subtlest"
                 type="submit"
                 onClick={(e) => e.stopPropagation()} // To prevent dropdown menu from closing
-                className="w-full"
+                className="w-full group-focus-visible:bg-background-danger-hovered"
                 // className="flex w-full items-center gap-2 rounded bg-transparent p-2 text-sm text-font-danger hover:bg-background-danger-hovered active:bg-background-danger-pressed"
                 aria-label="Log out"
               >
