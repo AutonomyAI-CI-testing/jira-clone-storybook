@@ -839,3 +839,74 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/* ---------------------------------------------------------------------------
+   AutonomyAI sign-in page — a port of a supplied design.
+
+   The design carries its own palette and ships no token file with it, so its
+   variables are declared here, scoped to the page wrapper, and read from
+   Tailwind arbitrary values (`bg-[color:var(--cd-ink-900)]`). The values are
+   approximated from the literals the design's own CSS uses.
+
+   This is NOT a sixth theme: nothing is registered in `theme.store.tsx` or in
+   `tailwind.config.js`, the five themes are untouched, and the page is
+   fixed-palette wherever the session theme is set to.
+--------------------------------------------------------------------------- */
+.aai-signin {
+  color-scheme: dark;
+
+  --cd-ink-950: #0b0a0a;
+  --cd-ink-900: #131212;
+  --cd-ink-700: #1c1a1a;
+  --cd-ink-600: #242121;
+  --cd-ink-500: #2b2828;
+  --cd-ink-400: #37332f;
+  --cd-ink-300: #4b4643;
+
+  --cd-fg: #f4f2f1;
+  --cd-fg-muted: #a8a19d;
+  --cd-fg-faint: #78716d;
+
+  --cd-orange: #f25730;
+  --cd-orange-bright: #ff6a42;
+  --cd-orange-deep: #c8431f;
+  --cd-orange-peach: #ffa887;
+
+  --cd-blue: #9fd2ed;
+  --cd-warn: #e8a13c;
+  --cd-ok: #4fb477;
+  --cd-blue-ring: rgba(159, 210, 237, 0.12);
+  --cd-warn-ring: rgba(232, 161, 60, 0.12);
+  --cd-ok-ring: rgba(79, 180, 119, 0.14);
+
+  --cd-glow: 0 6px 18px rgba(242, 87, 48, 0.25);
+  --cd-glyph-glow:
+    0 0 0 1px rgba(242, 87, 48, 0.35), 0 6px 18px rgba(242, 87, 48, 0.25);
+
+  /* the app's own chrome on this page follows the design's accent */
+  --color-border-brand: var(--cd-orange);
+  --color-border-selected: var(--cd-orange);
+}
+
+/* film grain — the design's signature texture */
+.aai-signin::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* warm off-axis glow lifting the brand panel's corner */
+.aai-signin .aai-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 18% 8%, rgba(94, 84, 82, 0.45), transparent 60%),
+    radial-gradient(50% 50% at 92% 100%, rgba(242, 87, 48, 0.1), transparent 62%);
+}
