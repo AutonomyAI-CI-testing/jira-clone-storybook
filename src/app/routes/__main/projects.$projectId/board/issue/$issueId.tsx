@@ -143,7 +143,6 @@ export const action: ActionFunction = async ({ request, params }) => {
   }
 
   if (_action === "delete") {
-    console.log("DELETING ISSUE");
     await deleteIssue(id);
     await recordUserActivity(request, "worked");
     emitter.emit(EVENTS.ISSUE_DELETED, Date.now());
