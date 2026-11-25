@@ -4,7 +4,7 @@ import type {
   MetaFunction,
 } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useMatch } from "react-router";
 import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
@@ -95,5 +95,22 @@ export function ErrorBoundary({ error }: { error: Error }) {
 
 export default function ProjectsRoute() {
   const { projectsSummary } = useLoaderData() as LoaderData;
+  // The projects index is a single full-bleed splash. Child routes
+  // (`/projects/new`) keep the regular projects view.
+  const isProjectsIndex = Boolean(useMatch("/projects"));
+
+  if (isProjectsIndex) {
+    return (
+      <div className="grid flex-1 place-items-center bg-black">
+        {/* `icon-accent-green` rather than `font-success`: the splash sits on a
+            fixed black surface, and this is the green token that stays a true
+            green in every theme (`font-success` goes pale in dark/lava/lime). */}
+        <h1 className="font-primary-black text-[clamp(4rem,15vw,12rem)] leading-none text-icon-accent-green">
+          Fei
+        </h1>
+      </div>
+    );
+  }
+
   return <ProjectsView projectsSummary={projectsSummary} />;
 }
