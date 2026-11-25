@@ -16,6 +16,7 @@ import {
   UpdateIssueCategoryData,
 } from "@infrastructure/db/issue";
 import { Error500 } from "@app/components/error-500/error-500";
+import { recordUserActivity } from "@app/activity";
 import { BoardView } from "@app/ui/main/project/board/board.view";
 import { EVENTS } from "@app/events/events";
 import { emitter } from "@app/events/emitter.server";
@@ -103,6 +104,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     try {
       await updateIssueCategory(inputData);
+      await recordUserActivity(request, "worked");
       emitter.emit(EVENTS.ISSUE_CHANGED, Date.now());
       return json(null, { status: 201 });
     } catch (error) {

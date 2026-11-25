@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { withMainContext, withRemixStub } from "@app/stories/utils";
+import {
+  activityReadoutMock,
+  emptyActivityReadoutMock,
+} from "@domain/activity/activity.mock";
 import { AnalyticsView } from "./analytics.view";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,4 +23,14 @@ const meta: Meta<typeof AnalyticsView> = {
 export default meta;
 type Story = StoryObj<typeof AnalyticsView>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    activity: activityReadoutMock,
+  },
+};
+
+export const NothingRecordedYet: Story = {
+  args: {
+    activity: emptyActivityReadoutMock,
+  },
+};
