@@ -1,35 +1,18 @@
-import { Link, Outlet } from "react-router";
-import { AiOutlinePlus } from "react-icons/ai";
-import { ProjectSummary } from "@domain/project/project";
-import { Button } from "@app/components/button/button";
-import { ProjectCard } from "./project-card/project-card";
+import { useOutlet } from "react-router";
 
-export const ProjectsView = ({
-  projectsSummary,
-}: ProjectsViewProps): JSX.Element => {
+/**
+ * The projects list is a full-bleed screen: it paints its own background and
+ * shows nothing but the brand wordmark. Nested routes (the create project
+ * dialog) keep rendering on the app surface.
+ */
+export const ProjectsView = (): JSX.Element => {
+  const outlet = useOutlet();
+
+  if (outlet) return <>{outlet}</>;
+
   return (
-    <div className="p-6">
-      <h1 className="font-primary-black text-2xl">PROJECTS</h1>
-      <div className="mt-8">
-        <Link to="new" className="flex w-fit">
-          <Button color="neutral" variant="subtlest" className="py-3 pl-3 pr-4">
-            <span>
-              <AiOutlinePlus size={22} />
-            </span>
-            <span className="leading-4">Add Project</span>
-          </Button>
-        </Link>
-      </div>
-      <div className="mt-4 grid grid-cols-[repeat(auto-fit,_400px)] gap-8">
-        {projectsSummary.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
-      <Outlet />
+    <div className="flex flex-1 items-center justify-center bg-black">
+      <h1 className="font-primary-black text-9xl text-[#00ff00]">Fei</h1>
     </div>
   );
 };
-
-interface ProjectsViewProps {
-  projectsSummary: ProjectSummary[];
-}
