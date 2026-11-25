@@ -13,6 +13,7 @@ import {
 } from "@domain/category/category";
 import { getUsers } from "@infrastructure/db/user";
 import { createProject } from "@infrastructure/db/project";
+import { recordUserActivity } from "@app/activity";
 import { CreateProjectPanelView } from "@app/ui/main/projects/create-project-panel/create-project-panel.view";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 import { getRandomProjectImage } from "@utils/random-project-image";
@@ -117,6 +118,8 @@ export const action: ActionFunction = async ({ request }) => {
       image: getRandomProjectImage(),
       categories,
     });
+
+    await recordUserActivity(request, "worked");
 
     return redirect("/projects");
   }

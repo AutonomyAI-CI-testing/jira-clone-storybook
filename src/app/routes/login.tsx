@@ -8,6 +8,7 @@ import { useLoaderData } from "react-router";
 import { User } from "@domain/user/user";
 import { getUsers } from "@infrastructure/db/user";
 import { getUserSession } from "@app/session-storage/user-storage.server";
+import { recordActivityForUser } from "@app/activity";
 import { LoginView } from "@app/ui/login/login.view";
 import { formatTags, formatProperties } from "@utils/meta";
 
@@ -65,6 +66,9 @@ export const action: ActionFunction = async ({ request }) => {
     const userId = formData.get("user") as string;
     const userSession = await getUserSession(request);
     userSession.setUser(userId);
+
+    // The session is not committed yet, so the user is recorded directly.
+    await recordActivityForUser(userId, "signedIn");
 
     return redirect("/projects", {
       headers: { "Set-Cookie": await userSession.commit() },

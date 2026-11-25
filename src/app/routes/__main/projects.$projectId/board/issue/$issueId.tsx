@@ -22,6 +22,7 @@ import {
   UpdateIssueInputData,
 } from "@infrastructure/db/issue";
 import { deleteComment } from "@infrastructure/db/comment";
+import { recordUserActivity } from "@app/activity";
 import { IssuePanel } from "@app/ui/main/project/board/issue-panel/issue-panel.view";
 import { Error404 } from "@app/components/error-404/error-404";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
@@ -137,12 +138,14 @@ export const action: ActionFunction = async ({ request, params }) => {
     }
 
     await updateIssue(issueInputData);
+    await recordUserActivity(request, "worked");
     emitter.emit(EVENTS.ISSUE_CHANGED, Date.now());
   }
 
   if (_action === "delete") {
     console.log("DELETING ISSUE");
     await deleteIssue(id);
+    await recordUserActivity(request, "worked");
     emitter.emit(EVENTS.ISSUE_DELETED, Date.now());
   }
 
@@ -152,6 +155,7 @@ export const action: ActionFunction = async ({ request, params }) => {
     if (!commentId) return null;
 
     await deleteComment(commentId);
+    await recordUserActivity(request, "worked");
     return redirect(`/projects/${projectId}/board/issue/${id}`, 202);
   }
 

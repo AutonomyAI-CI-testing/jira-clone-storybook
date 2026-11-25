@@ -12,6 +12,7 @@ import { Comment } from "@domain/comment/comment";
 import { PriorityId } from "@domain/priority/priority";
 import { isValidSort } from "@domain/filter/filter";
 import { createIssue, CreateIssueInputData } from "@infrastructure/db/issue";
+import { recordUserActivity } from "@app/activity";
 import { IssuePanel } from "@app/ui/main/project/board/issue-panel/issue-panel.view";
 import { EVENTS } from "@app/events/events";
 import { emitter } from "@app/events/emitter.server";
@@ -113,6 +114,7 @@ export const action: ActionFunction = async ({ request, params }) => {
     }
 
     await createIssue(issueInputData);
+    await recordUserActivity(request, "worked");
 
     emitter.emit(EVENTS.ISSUE_CREATED, Date.now());
   }

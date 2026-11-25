@@ -8,6 +8,7 @@ import { useLoaderData } from "react-router";
 import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
+import { recordUserActivity } from "@app/activity";
 import { ProjectsView } from "@app/ui/main/projects/projects.view";
 import { formatTags, formatProperties } from "@utils/meta";
 
@@ -74,6 +75,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     if (projectId) {
       await deleteProject(projectId);
+      await recordUserActivity(request, "worked");
     } else {
       console.error("Project id not found: ", projectId);
     }
