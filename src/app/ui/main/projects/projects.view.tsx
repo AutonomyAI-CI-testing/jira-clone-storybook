@@ -8,7 +8,7 @@ import { Outlet } from "react-router";
 export const ProjectsView = (): JSX.Element => {
   return (
     <div className="grid h-full place-items-center bg-black">
-      <h1 className="font-primary-black text-[clamp(4rem,16vw,11rem)] text-icon-accent-red">
+      <h1 className="font-primary-black text-[clamp(4rem,16vw,11rem)] text-icon-accent-green">
         Fei
       </h1>
       <Outlet />
