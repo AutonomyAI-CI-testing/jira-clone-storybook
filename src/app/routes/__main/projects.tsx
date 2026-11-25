@@ -102,10 +102,10 @@ export default function ProjectsRoute() {
   if (isProjectsIndex) {
     return (
       <div className="grid flex-1 place-items-center bg-black">
-        {/* `icon-danger` rather than `font-danger`: the splash sits on a fixed
-            black surface, and this is the danger token that stays a true red in
-            every theme (`font-danger` goes salmon in dark/lava/lime). */}
-        <h1 className="font-primary-black text-[clamp(4rem,15vw,12rem)] leading-none text-icon-danger">
+        {/* `icon-accent-green` rather than `font-success`: the splash sits on a
+            fixed black surface, and this is the green token that stays a true
+            green in every theme (`font-success` goes pale in dark/lava/lime). */}
+        <h1 className="font-primary-black text-[clamp(4rem,15vw,12rem)] leading-none text-icon-accent-green">
           Fei
         </h1>
       </div>
