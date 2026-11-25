@@ -41,3 +41,13 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* Face used by the SuddenlySpaces design page; one variable file covers every weight. */
+@font-face {
+  font-family: "Montserrat";
+  src: url('../../../public/fonts/Montserrat-Variable.woff2') format('woff2');
+
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
