@@ -9,15 +9,12 @@ type Info = GetInfo<{
   module: Module
 }>
 
-type Matches = [{
+type Matches = | [{
   id: "root";
   module: typeof import("../../../../root.js");
 }, {
   id: "routes/__main";
   module: typeof import("../../../__main.js");
-}, {
-  id: "routes/__main/projects";
-  module: typeof import("../../projects.js");
 }, {
   id: "routes/__main/projects/new";
   module: typeof import("../new.js");
