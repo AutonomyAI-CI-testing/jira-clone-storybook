@@ -11,6 +11,8 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./src/app",
+  /* Vitest owns the unit tests (`*.test.ts(x)`); Playwright runs the end-to-end specs. */
+  testIgnore: ["**/*.test.ts", "**/*.test.tsx"],
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
