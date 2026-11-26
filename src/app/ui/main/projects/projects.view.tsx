@@ -11,7 +11,7 @@ export const ProjectsView = (): JSX.Element => {
 
   return (
     <div className="flex min-h-screen w-full flex-1 items-center justify-center bg-black">
-      <h1 className="font-primary-black leading-none text-[clamp(4rem,20vw,14rem)] text-[#ff0000]">
+      <h1 className="font-primary-black leading-none text-[clamp(4rem,20vw,14rem)] text-[#00ff00]">
         Fei
       </h1>
     </div>
