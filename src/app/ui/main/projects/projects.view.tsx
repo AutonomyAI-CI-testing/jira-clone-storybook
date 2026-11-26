@@ -7,7 +7,7 @@ import { Outlet } from "react-router";
 export const ProjectsView = (): JSX.Element => {
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black">
-      <h1 className="font-primary-black text-7xl text-font-danger sm:text-9xl">
+      <h1 className="font-primary-black text-7xl text-font-success sm:text-9xl">
         Fei
       </h1>
       <Outlet />
