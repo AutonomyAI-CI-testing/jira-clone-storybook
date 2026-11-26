@@ -1,15 +1,15 @@
 export const BuildFeiView = () => {
   return (
-    <div className="relative h-full overflow-hidden">
+    <div className="relative flex h-full flex-col overflow-hidden pb-4">
+      <h1 className="relative z-10 mt-[3vh] text-center font-primary-black text-5xl text-font">
+        Build fei
+      </h1>
       <img
         src="/images/build-fei-mascot.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-4 h-[76vh] w-full select-none object-contain object-bottom"
+        className="pointer-events-none mt-3 min-h-0 w-full flex-1 select-none object-contain object-bottom"
       />
-      <h1 className="relative z-10 mt-[8vh] text-center font-primary-black text-5xl text-font">
-        Build fei
-      </h1>
     </div>
   );
 };
