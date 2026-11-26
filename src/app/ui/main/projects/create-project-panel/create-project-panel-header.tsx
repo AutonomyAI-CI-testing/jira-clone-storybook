@@ -14,7 +14,6 @@ export const CreateProjectPanelHeader = ({
       <Link
         to="/projects"
         className="ml-3 flex cursor-pointer rounded border-none p-0.5 text-icon hover:bg-background-accent-grey-subtlest"
-        aria-label="Close project panel"
       >
         <IoCloseOutline size={32} />
       </Link>

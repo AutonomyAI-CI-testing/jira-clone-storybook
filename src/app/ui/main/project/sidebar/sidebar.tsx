@@ -18,6 +18,7 @@ export const Sidebar = (props: Props): JSX.Element => {
   return (
     <aside className="relative flex">
       <div
+        id="project-sidebar"
         className={cx(
           "flex h-full max-w-0 flex-col whitespace-nowrap bg-elevation-surface-sunken opacity-0 duration-300 ease-out",
           isOpen && "w-[240px] max-w-[240px] whitespace-normal opacity-100"
@@ -58,11 +59,13 @@ export const Sidebar = (props: Props): JSX.Element => {
         <div className="absolute -left-[3px] h-full w-[3px] bg-gradient-to-l from-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0.0)] opacity-50" />
         <button
           onClick={toggleSidebar}
+          aria-label="Toggle sidebar"
+          aria-expanded={isOpen}
+          aria-controls="project-sidebar"
           className={cx(
             "absolute -left-[12px] mt-6 flex h-[24px] w-[24px] cursor-pointer items-center justify-center rounded-full border-none bg-elevation-surface-raised text-icon shadow-[0_1px_5px_-1px_rgba(0,0,0,0.3)] transition-transform delay-150 duration-200 ease-in hover:bg-icon-brand hover:text-font-inverse",
             !isOpen && "rotate-180"
           )}
-          aria-label="Toggle sidebar"
         >
           <RiArrowDropLeftLine size={24} />
         </button>
