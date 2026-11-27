@@ -6,10 +6,13 @@ export default [
   route("action/logout", "routes/action/logout.tsx"),
   route("action/set-theme", "routes/action/set-theme.tsx"),
 
+  // The projects page is a full-page standalone screen: it renders no app
+  // chrome, so it does not sit under the main layout.
+  route("projects", "routes/__main/projects.tsx", [
+    route("new", "routes/__main/projects/new.tsx"),
+  ]),
+
   layout("routes/__main.tsx", [
-    route("projects", "routes/__main/projects.tsx", [
-      route("new", "routes/__main/projects/new.tsx"),
-    ]),
     route("projects/:projectId", "routes/__main/projects.$projectId.tsx", [
       route("analytics", "routes/__main/projects.$projectId/analytics.tsx"),
       route("board", "routes/__main/projects.$projectId/board.tsx", [
