@@ -3,13 +3,15 @@ import type {
   ActionFunction,
   MetaFunction,
 } from "react-router";
-import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
-import { ProjectId, ProjectSummary } from "@domain/project/project";
-import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
+import { redirect } from "react-router";
+import { ProjectId } from "@domain/project/project";
+import { deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { ProjectsView } from "@app/ui/main/projects/projects.view";
 import { formatTags, formatProperties } from "@utils/meta";
+
+// The page is a full-bleed splash, so it renders without the app header.
+export const handle = { hideHeader: true };
 
 export const meta: MetaFunction = () => {
   const title = "Jira clone - Projects";
@@ -48,10 +50,8 @@ export const meta: MetaFunction = () => {
   return [{ title }, ...formatTags(tags), ...formatProperties(properties)];
 };
 
-type LoaderData = {
-  projectsSummary: ProjectSummary[];
-};
-
+// The projects page renders no data of its own, so the loader only guards the
+// route: without a user session there is nothing to show.
 export const loader: LoaderFunction = async ({ request }) => {
   const userSession = await getUserSession(request);
   const userId = userSession.getUser();
@@ -60,9 +60,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect("/login");
   }
 
-  const projectsSummary = await getProjectsSummary(userId);
-
-  return json<LoaderData>({ projectsSummary });
+  return null;
 };
 
 export const action: ActionFunction = async ({ request }) => {
@@ -94,6 +92,5 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export default function ProjectsRoute() {
-  const { projectsSummary } = useLoaderData() as LoaderData;
-  return <ProjectsView projectsSummary={projectsSummary} />;
+  return <ProjectsView />;
 }
