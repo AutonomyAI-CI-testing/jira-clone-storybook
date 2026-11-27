@@ -74,69 +74,69 @@ type Pages = {
 };
 
 type RouteFiles = {
-  "root.tsx": {
+  "root.tsx": | {
     id: "root";
     page: "/" | "/login" | "/action/logout" | "/action/set-theme" | "/projects" | "/projects/new" | "/projects/:projectId" | "/projects/:projectId/analytics" | "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId" | "/projects/:projectId/server-error" | "/projects/:projectId/*" | "/*";
   };
-  "routes/index.tsx": {
+  "routes/index.tsx": | {
     id: "routes/index";
-    page: "/";
+    page: | "/";
   };
-  "routes/login.tsx": {
+  "routes/login.tsx": | {
     id: "routes/login";
-    page: "/login";
+    page: | "/login";
   };
-  "routes/action/logout.tsx": {
+  "routes/action/logout.tsx": | {
     id: "routes/action/logout";
-    page: "/action/logout";
+    page: | "/action/logout";
   };
-  "routes/action/set-theme.tsx": {
+  "routes/action/set-theme.tsx": | {
     id: "routes/action/set-theme";
-    page: "/action/set-theme";
+    page: | "/action/set-theme";
   };
-  "routes/__main.tsx": {
-    id: "routes/__main";
-    page: "/projects" | "/projects/new" | "/projects/:projectId" | "/projects/:projectId/analytics" | "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId" | "/projects/:projectId/server-error" | "/projects/:projectId/*";
-  };
-  "routes/__main/projects.tsx": {
+  "routes/__main/projects.tsx": | {
     id: "routes/__main/projects";
-    page: "/projects" | "/projects/new";
+    page: | "/projects";
   };
-  "routes/__main/projects/new.tsx": {
+  "routes/__main.tsx": | {
+    id: "routes/__main";
+    page: "/projects/new" | "/projects/:projectId" | "/projects/:projectId/analytics" | "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId" | "/projects/:projectId/server-error" | "/projects/:projectId/*";
+  };
+  "routes/__main/projects/new.tsx": | {
     id: "routes/__main/projects/new";
-    page: "/projects/new";
+    page: | "/projects/new";
   };
-  "routes/__main/projects.$projectId.tsx": {
+  "routes/__main/projects.$projectId.tsx": | {
     id: "routes/__main/projects.$projectId";
     page: "/projects/:projectId" | "/projects/:projectId/analytics" | "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId" | "/projects/:projectId/server-error" | "/projects/:projectId/*";
   };
-  "routes/__main/projects.$projectId/analytics.tsx": {
+  "routes/__main/projects.$projectId/analytics.tsx": | {
     id: "routes/__main/projects.$projectId/analytics";
-    page: "/projects/:projectId/analytics";
+    page: | "/projects/:projectId/analytics";
   };
-  "routes/__main/projects.$projectId/board.tsx": {
+  "routes/__main/projects.$projectId/board.tsx": | {
     id: "routes/__main/projects.$projectId/board";
     page: "/projects/:projectId/board" | "/projects/:projectId/board/issue/new" | "/projects/:projectId/board/issue/:issueId";
   };
-  "routes/__main/projects.$projectId/board/issue/new.tsx": {
+  "routes/__main/projects.$projectId/board/issue/new.tsx": | {
     id: "routes/__main/projects.$projectId/board/issue/new";
-    page: "/projects/:projectId/board/issue/new";
+    page: | "/projects/:projectId/board/issue/new";
   };
-  "routes/__main/projects.$projectId/board/issue/$issueId.tsx": {
+  "routes/__main/projects.$projectId/board/issue/$issueId.tsx": | {
     id: "routes/__main/projects.$projectId/board/issue/$issueId";
-    page: "/projects/:projectId/board/issue/:issueId";
+    page: | "/projects/:projectId/board/issue/:issueId";
   };
-  "routes/__main/projects.$projectId/server-error.tsx": {
+  "routes/__main/projects.$projectId/server-error.tsx": | {
     id: "routes/__main/projects.$projectId/server-error";
-    page: "/projects/:projectId/server-error";
+    page: | "/projects/:projectId/server-error";
   };
-  "routes/__main/projects.$projectId/$.tsx": {
+  "routes/__main/projects.$projectId/$.tsx": | {
     id: "routes/__main/projects.$projectId/$";
-    page: "/projects/:projectId/*";
+    page: | "/projects/:projectId/*";
   };
-  "routes/404.tsx": {
+  "routes/404.tsx": | {
     id: "routes/404";
-    page: "/*";
+    page: | "/*";
   };
 };
 
@@ -146,8 +146,8 @@ type RouteModules = {
   "routes/login": typeof import("./src/app/routes/login.tsx");
   "routes/action/logout": typeof import("./src/app/routes/action/logout.tsx");
   "routes/action/set-theme": typeof import("./src/app/routes/action/set-theme.tsx");
-  "routes/__main": typeof import("./src/app/routes/__main.tsx");
   "routes/__main/projects": typeof import("./src/app/routes/__main/projects.tsx");
+  "routes/__main": typeof import("./src/app/routes/__main.tsx");
   "routes/__main/projects/new": typeof import("./src/app/routes/__main/projects/new.tsx");
   "routes/__main/projects.$projectId": typeof import("./src/app/routes/__main/projects.$projectId.tsx");
   "routes/__main/projects.$projectId/analytics": typeof import("./src/app/routes/__main/projects.$projectId/analytics.tsx");
