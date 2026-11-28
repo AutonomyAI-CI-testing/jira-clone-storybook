@@ -1,35 +1,22 @@
-import { Link, Outlet } from "react-router";
-import { AiOutlinePlus } from "react-icons/ai";
-import { ProjectSummary } from "@domain/project/project";
-import { Button } from "@app/components/button/button";
-import { ProjectCard } from "./project-card/project-card";
+import { Outlet } from "react-router";
 
-export const ProjectsView = ({
-  projectsSummary,
-}: ProjectsViewProps): JSX.Element => {
+/**
+ * The projects page is a full-page takeover: a black ground with the product
+ * name centered in large green type, and nothing else on the page.
+ *
+ * Both colors come from the raw palette rather than from the semantic
+ * `--color-*` roles: the design system has no black surface, and green is
+ * reserved for success/done semantics. The page reads the same in every theme.
+ */
+export const ProjectsView = (): JSX.Element => {
   return (
-    <div className="p-6">
-      <h1 className="font-primary-black text-2xl">PROJECTS</h1>
-      <div className="mt-8">
-        <Link to="new" className="flex w-fit">
-          <Button color="neutral" variant="subtlest" className="py-3 pl-3 pr-4">
-            <span>
-              <AiOutlinePlus size={22} />
-            </span>
-            <span className="leading-4">Add Project</span>
-          </Button>
-        </Link>
-      </div>
-      <div className="mt-4 grid grid-cols-[repeat(auto-fit,_400px)] gap-8">
-        {projectsSummary.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+    <>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+        <h1 className="font-primary-black text-[clamp(6rem,18vw,14rem)] leading-none text-[color:var(--Green600)]">
+          Fei
+        </h1>
       </div>
       <Outlet />
-    </div>
+    </>
   );
 };
-
-interface ProjectsViewProps {
-  projectsSummary: ProjectSummary[];
-}
