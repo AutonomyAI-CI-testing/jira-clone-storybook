@@ -14,18 +14,30 @@ export const TestCard = (): JSX.Element => {
         <p className="font-primary-bold text-[13.5px] leading-[16.34px] text-[#b5b5b5]">
           UI magician Agent
         </p>
-        <IoSettingsOutline size={15} className="text-[#b5b5b5]" />
+        <IoSettingsOutline
+          aria-hidden="true"
+          size={15}
+          className="text-[#b5b5b5]"
+        />
       </div>
 
       <div className="mt-[18px] flex items-center gap-1.5 pl-[3px]">
-        <IoChevronUpOutline size={11} className="text-[#8b9291]" />
+        <IoChevronUpOutline
+          aria-hidden="true"
+          size={11}
+          className="text-[#8b9291]"
+        />
         <p className="truncate font-primary-bold text-[11.5px] leading-[13.92px] text-[#8b9291]">
           From entire frame to a singl...
         </p>
       </div>
 
       <div className="mt-[77px] flex items-center gap-1 pl-[6px]">
-        <IoChevronUpOutline size={12} className="text-[#b2b2b1]" />
+        <IoChevronUpOutline
+          aria-hidden="true"
+          size={12}
+          className="text-[#b2b2b1]"
+        />
         <p className="font-primary-bold text-[13.5px] leading-[16.34px] text-[#b2b2b1]">
           Add New Design
         </p>
@@ -35,7 +47,11 @@ export const TestCard = (): JSX.Element => {
         <p className="font-primary-bold text-[11.5px] leading-[13.92px] text-[#a4a4a3]">
           Personal Access Token
         </p>
-        <IoInformationCircleOutline size={15} className="text-[#a4a4a3]" />
+        <IoInformationCircleOutline
+          aria-hidden="true"
+          size={15}
+          className="text-[#a4a4a3]"
+        />
       </div>
 
       <div className="mt-3 flex h-9 items-center border border-[#a5adad] bg-[#272822] pl-[19px]">
@@ -48,7 +64,11 @@ export const TestCard = (): JSX.Element => {
         <p className="font-primary-bold text-[11.5px] leading-[13.92px] text-[#a3a3a2]">
           Design URL
         </p>
-        <IoInformationCircleOutline size={15} className="text-[#a3a3a2]" />
+        <IoInformationCircleOutline
+          aria-hidden="true"
+          size={15}
+          className="text-[#a3a3a2]"
+        />
       </div>
 
       <div className="mt-3 flex h-9 items-center border-2 border-[#929291] bg-[#272822] pl-[19px]">
