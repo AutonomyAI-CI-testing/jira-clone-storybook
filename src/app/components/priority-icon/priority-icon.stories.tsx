@@ -5,6 +5,7 @@ import { PriorityIcon } from "./priority-icon";
 
 const meta: Meta<typeof PriorityIcon> = {
   title: "Components/PriorityIcon",
+  component: PriorityIcon,
   parameters: {
     layout: "centered",
   },
