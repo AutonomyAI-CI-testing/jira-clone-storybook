@@ -4,11 +4,12 @@ import type {
   MetaFunction,
 } from "react-router";
 import { data as json, redirect } from "react-router";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useOutlet } from "react-router";
 import { ProjectId, ProjectSummary } from "@domain/project/project";
 import { getProjectsSummary, deleteProject } from "@infrastructure/db/project";
 import { getUserSession } from "@app/session-storage/user-storage.server";
 import { ProjectsView } from "@app/ui/main/projects/projects.view";
+import { SplashView } from "@app/ui/main/splash/splash.view";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: MetaFunction = () => {
@@ -95,5 +96,13 @@ export function ErrorBoundary({ error }: { error: Error }) {
 
 export default function ProjectsRoute() {
   const { projectsSummary } = useLoaderData() as LoaderData;
+  const childRoute = useOutlet();
+
+  // The projects index is the app's splash screen. Its nested routes
+  // (e.g. /projects/new) keep opening over the projects list.
+  if (!childRoute) {
+    return <SplashView />;
+  }
+
   return <ProjectsView projectsSummary={projectsSummary} />;
 }
